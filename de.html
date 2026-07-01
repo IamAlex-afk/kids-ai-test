@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kids AI Test — Was ist KI wirklich? Kostenlos, ohne Registrierung</title>
+  <meta name="description" content="Was ist Künstliche Intelligenz? Kostenlose Bildungserfahrung für alle Altersgruppen: 3–99 Jahre. Lerne, spiele, erhalte deine einzigartige Karte. Ohne Registrierung, ohne Daten.">
+  <meta name="keywords" content="KI für Kinder, was ist KI, ChatGPT lebendig, kann KI fühlen, KI Bildung Kinder, Quiz Künstliche Intelligenz">
+  <meta name="author" content="Alex Bitkin — Mind-OS">
+  <meta property="og:title" content="Kids AI Test — Was ist KI wirklich?">
+  <meta property="og:description" content="Kostenlose KI-Bildung für alle Altersgruppen. Lerne · Spiele · Erhalte deine einzigartige Karte.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://iamalex-afk.github.io/kids-ai-test/de.html">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://iamalex-afk.github.io/kids-ai-test/de.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+  <link rel="stylesheet" href="css/main.css">
+  <meta name="theme-color" content="#8b5cf6">
+  <style>
+    .flow-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:20px 0; }
+    @media(max-width:600px){ .flow-steps { grid-template-columns:repeat(2,1fr); } }
+    .flow-step { background:var(--card); border:1px solid var(--border); border-radius:var(--r); padding:16px 12px; text-align:center; position:relative; }
+    .flow-step-num { position:absolute; top:-10px; left:12px; background:var(--accent); color:var(--bg); font-size:.7rem; font-weight:900; padding:2px 8px; border-radius:10px; }
+    .flow-step-icon { font-size:2rem; display:block; margin-bottom:6px; }
+    .flow-step-title { font-size:.85rem; font-weight:700; color:var(--text); }
+    .flow-step-desc  { font-size:.75rem; color:var(--muted); margin-top:4px; line-height:1.4; }
+    .age-card .age-label   { font-size:1.4rem; font-weight:900; display:block; margin:6px 0 4px; }
+    .age-card .age-range   { font-size:.8rem; color:var(--muted2); display:block; margin-bottom:6px; }
+    .age-card .age-tagline { font-size:.75rem; color:var(--muted); display:block; line-height:1.4; }
+    .section-heading { font-size:clamp(1.1rem,4vw,1.5rem); font-weight:900; color:var(--text); margin-bottom:6px; }
+    .section-explain { color:var(--muted2); font-size:.9rem; line-height:1.6; margin-bottom:20px; }
+    .hero-sub { font-size:1rem; line-height:1.7; }
+    .hero-title { font-size:clamp(2rem,8vw,3.2rem); }
+    .hero-title .line-1 { font-size:.55em; letter-spacing:3px; font-weight:700; }
+    @media(max-width:480px){ .age-group { display:none; } }
+    .parent-body { display:none; }
+  </style>
+</head>
+<body data-age="">
+<div class="stars" aria-hidden="true"></div>
+<div id="boot">
+  <div class="boot-lines">
+    <p class="boot-line" style="animation-delay:.1s">▶  KI-Fakten aus verifizierten Quellen werden geladen...</p>
+    <p class="boot-line" style="animation-delay:.7s">▶  9 Sprachen · 4 Altersgruppen · 0 Werbung · 0 Registrierung</p>
+    <p class="boot-line warn" style="animation-delay:1.3s">▶  FAKT: KI fühlt nicht. KI denkt nicht. KI ist ein Werkzeug.</p>
+    <p class="boot-line info" style="animation-delay:1.9s">▶  Bereit. Lass uns herausfinden, was KI wirklich ist.</p>
+  </div>
+  <div class="boot-progress"><div class="boot-bar"><div class="boot-fill" id="boot-fill"></div></div></div>
+  <p class="boot-access" id="boot-access">ZUGANG GEWÄHRT</p>
+</div>
+<div class="page">
+  <div class="top-bar">
+    <div class="lang-group">
+      <button class="top-btn" data-lang-switch="en">🇬🇧 EN</button>
+      <button class="top-btn" data-lang-switch="ru">🇷🇺 RU</button>
+      <button class="top-btn" data-lang-switch="pt">🇧🇷 PT</button>
+      <button class="top-btn" data-lang-switch="es">🇪🇸 ES</button>
+      <button class="top-btn active" data-lang-switch="de">🇩🇪 DE</button>
+      <button class="top-btn" data-lang-switch="fr">🇫🇷 FR</button>
+      <button class="top-btn" data-lang-switch="hi">🇮🇳 HI</button>
+      <button class="top-btn" data-lang-switch="id">🇮🇩 ID</button>
+      <button class="top-btn" data-lang-switch="tr">🇹🇷 TR</button>
+    </div>
+    <div class="age-group" id="age-group">
+      <button class="top-btn" data-age-quick="tiny"  title="3–5 Jahre">🧸</button>
+      <button class="top-btn" data-age-quick="child" title="6–9 Jahre">🎮</button>
+      <button class="top-btn" data-age-quick="teen"  title="10–13 Jahre">📱</button>
+      <button class="top-btn" data-age-quick="adult" title="14+">🧠</button>
+    </div>
+  </div>
+  <div class="hero">
+    <div class="hero-mascot"><span class="mascot-emoji" id="hero-mascot-emoji">🤖</span><div class="mascot-shadow"></div></div>
+    <h1 class="hero-title">
+      <span class="line-1">KIDS AI TEST</span>
+      <span class="line-2">Was ist KI wirklich?</span>
+    </h1>
+    <div class="hero-badge">🔒 KOSTENLOS · OHNE REGISTRIERUNG · OHNE DATENSPEICHERUNG</div>
+    <p class="hero-sub">
+      Millionen Kinder fragen: <em>„Ist ChatGPT lebendig? Kann KI Schmerz fühlen? Ist Alexa mein Freund?"</em><br>
+      Hier sind die <strong>echten Antworten</strong> — wissenschaftlich fundiert, altersgerecht aufbereitet.
+    </p>
+  </div>
+  <div class="sec-header"><span class="sec-header-text">SO FUNKTIONIERT ES</span><div class="sec-header-line"></div></div>
+  <div class="flow-steps">
+    <div class="flow-step"><span class="flow-step-num">SCHRITT 1</span><span class="flow-step-icon">👤</span><div class="flow-step-title">Wähle dein Alter</div><div class="flow-step-desc">Inhalte angepasst für 3–5, 6–9, 10–13 oder 14+ Jahre</div></div>
+    <div class="flow-step"><span class="flow-step-num">SCHRITT 2</span><span class="flow-step-icon">📖</span><div class="flow-step-title">Lerne, wie KI funktioniert</div><div class="flow-step-desc">Kurze Lektionen mit echter Wissenschaft, Mini-Test dazwischen</div></div>
+    <div class="flow-step"><span class="flow-step-num">SCHRITT 3</span><span class="flow-step-icon">🎮</span><div class="flow-step-title">Spiele Mensch oder KI?</div><div class="flow-step-desc">Lies einen Text — rate: Mensch oder KI hat ihn geschrieben?</div></div>
+    <div class="flow-step"><span class="flow-step-num">SCHRITT 4</span><span class="flow-step-icon">🃏</span><div class="flow-step-title">Verdiene deine einzigartige Karte</div><div class="flow-step-desc">Quiz → Punktzahl → Karte mit fortlaufender Nummer</div></div>
+  </div>
+  <div id="age-picker">
+    <div class="sec-header" style="margin-top:36px"><span class="sec-header-text">SCHRITT 1</span><div class="sec-header-line"></div></div>
+    <h2 class="section-heading">Wie alt bist du?</h2>
+    <p class="section-explain">Wir passen die Lektionen, Fragen und das Spiel an dein Alter an — damit alles Sinn ergibt. Tippe auf deine Altersgruppe, um zu beginnen.</p>
+    <div class="age-grid">
+      <button class="age-card" data-age="tiny"  aria-label="3 bis 5 Jahre"><span class="age-icon">🧸</span><span class="age-label">3 – 5</span><span class="age-range">Kleiner Entdecker</span><span class="age-tagline">Große Bilder, einfache Worte, Ja/Nein-Fragen</span></button>
+      <button class="age-card" data-age="child" aria-label="6 bis 9 Jahre"><span class="age-icon">🎮</span><span class="age-label">6 – 9</span><span class="age-range">Junior-Detektiv</span><span class="age-tagline">Geschichten, Beispiele, Quiz mit 4 Optionen</span></button>
+      <button class="age-card" data-age="teen"  aria-label="10 bis 13 Jahre"><span class="age-icon">📱</span><span class="age-label">10 – 13</span><span class="age-range">KI-Detektiv</span><span class="age-tagline">Tiefgang: Transformer, Vorurteile, echte Forschung</span></button>
+      <button class="age-card" data-age="adult" aria-label="14 Jahre und älter"><span class="age-icon">🧠</span><span class="age-label">14 +</span><span class="age-range">KI-Analyst</span><span class="age-tagline">Technische Tiefe, Politik, Likert-Skala</span></button>
+    </div>
+  </div>
+  <div id="lessons" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">SCHRITT 2 · LERNEN</span><div class="sec-header-line"></div></div>
+    <h2 class="section-heading">Wie KI wirklich funktioniert</h2>
+    <p class="section-explain">Kurze Lektionen mit echter Wissenschaft. Nach jeder Lektion — eine schnelle Überprüfung.</p>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;margin-bottom:18px;">
+      <div class="quiz-prog-top"><span class="quiz-prog-label" id="lesson-count">Lektion 1 / 3</span><span class="quiz-prog-score" id="lesson-phase-label">Lektion</span></div>
+      <div class="quiz-prog-bar" style="margin-top:8px"><div class="quiz-prog-fill" id="lesson-prog-fill" style="width:0%"></div></div>
+    </div>
+    <div id="lesson-content"></div>
+  </div>
+  <div id="game" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">SCHRITT 3 · SPIEL</span><div class="sec-header-line"></div></div>
+    <h2 class="section-heading">👤 Mensch oder 🤖 KI?</h2>
+    <p class="section-explain">Lies den Text unten. Entscheide, wer ihn geschrieben hat — ein echter Mensch oder eine KI.<br>Kein Trick — vertrau deinem Gefühl und lerne aus der Erklärung.</p>
+    <div class="game-wrap" id="game-content"></div>
+  </div>
+  <div id="quiz" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">SCHRITT 4 · ABSCHLUSSQUIZ</span><div class="sec-header-line"></div></div>
+    <h2 class="section-heading">Abschlussquiz 🧠</h2>
+    <p class="section-explain">Beantworte alle Fragen — dann erhältst du deine einzigartige Karte mit deiner Punktzahl.<br>Jede Frage hat eine verifizierte Quelle, die auf echte Forschung verweist.</p>
+    <div class="quiz-wrap" id="quiz-content"></div>
+  </div>
+  <div id="result" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">DEIN ERGEBNIS</span><div class="sec-header-line"></div></div>
+    <div id="result-summary"></div>
+    <div id="card-area" class="hidden">
+      <div class="sec-header" style="margin-top:32px"><span class="sec-header-text">DEINE EINZIGARTIGE KARTE 🃏</span><div class="sec-header-line"></div></div>
+      <div class="card-section">
+        <h3 style="margin-bottom:8px">Karte #<span id="card-number">—</span> · <span id="card-name-display">—</span></h3>
+        <p>Deine Nummer = Sekunden seit dem Projektstart.<br><strong>Kleinere Nummer = früherer Teilnehmer.</strong> Verifiziert durch quelloffenes SHA-256. Kann nicht gefälscht werden.</p>
+        <canvas id="result-canvas" aria-label="Deine Kids AI Test Teilnehmerkarte" style="max-width:100%;border-radius:var(--r-sm);margin:16px auto;display:block;border:1px solid var(--border);"></canvas>
+        <div id="card-qr" style="display:flex;justify-content:center;margin:12px 0;"></div>
+        <div id="card-info"></div>
+        <div class="action-row">
+          <button class="btn-primary hidden" id="btn-download-card">⬇️ PNG herunterladen</button>
+          <button class="btn-outline hidden"  id="btn-share-card">📤 Meine Karte teilen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="protocols" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">WAS JETZT TUN</span><div class="sec-header-line"></div></div>
+    <h2 class="section-heading">Einfache Regeln für das Leben mit KI</h2>
+    <p class="section-explain">KI ist jetzt überall. Diese Regeln helfen dir, die Kontrolle zu behalten.</p>
+    <div class="protocols-grid" id="protocols-list"></div>
+  </div>
+  <div id="tracker" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">TÄGLICHE ÜBERPRÜFUNG</span><div class="sec-header-line"></div></div>
+    <div class="tracker-wrap">
+      <p class="tracker-question">📈 Wie bewusst fühlst du dich heute bezüglich KI?</p>
+      <div class="tracker-history" id="tracker-chart"></div>
+      <div id="tracker-log-area">
+        <input type="range" id="tracker-slider" class="tracker-slider" min="1" max="5" step="1" value="3" aria-label="KI-Bewusstseinslevel von 1 bis 5">
+        <div class="tracker-scale"><span>1 — Anfänger</span><span id="tracker-val-display" style="font-weight:900;color:var(--accent)">3</span><span>5 — Selbstsicher</span></div>
+        <div class="tracker-value" id="tracker-current-val">3</div>
+        <button class="tracker-log-btn" id="btn-tracker-log">✓ Heute eintragen</button>
+      </div>
+    </div>
+  </div>
+  <div class="parent-wrap" id="parent">
+    <button class="parent-toggle" id="parent-toggle" aria-expanded="false">👪 FÜR ELTERN UND PÄDAGOGEN — klicken zum Erweitern<span class="parent-arrow">▼</span></button>
+    <div class="parent-body" id="parent-body">
+      <h4>🔒 Null Datenerfassung</h4><p>Keine Cookies, kein Tracking, keine Registrierung. Fortschritte werden nur im localStorage des Browsers gespeichert — verlassen das Gerät nie.</p>
+      <h4>📚 Quellen</h4><p>Jede Tatsache ist mit ihrer Originalquelle verknüpft: arXiv-Artikel, UNESCO, MIT, EU-KI-Gesetz. Keine Sensationsmacherei.</p>
+      <h4>🌍 Open Source · GPL v3</h4><p>Gesamter Code auf <a href="https://github.com/IamAlex-afk/kids-ai-test" target="_blank" rel="noopener">GitHub</a>. Keine Werbung. Keine Bezahlschranke.</p>
+      <h4>💬 Fragen zum Besprechen mit deinem Kind</h4>
+      <ul>
+        <li>Kann Alexa sich nach dir sehnen? Woher weißt du das?</li>
+        <li>Wenn KI eine Geschichte schreibt, wer ist der echte Autor?</li>
+        <li>Was macht KI besser als Menschen? Was machen Menschen besser?</li>
+        <li>Wenn KI sagt, etwas ist wahr — wie kannst du es überprüfen?</li>
+        <li>Würdest du KI eine wichtige Entscheidung für dich treffen lassen?</li>
+      </ul>
+    </div>
+  </div>
+  <footer>
+    <div>🤖 <strong>Kids AI Test</strong> · <a href="https://github.com/IamAlex-afk/kids-ai-test" target="_blank" rel="noopener">GitHub</a> · <a href="https://github.com/IamAlex-afk/kids-ai-test/blob/main/LICENSE" target="_blank" rel="noopener">GPL v3</a> · <a href="https://iamalex-afk.github.io/human-os-patch-33-protocols/" target="_blank" rel="noopener">Hauptseite: 33 Protokolle</a></div>
+    <div style="margin-top:6px">Für immer kostenlos · Keine Werbung · Keine Daten · Erstellt von <a href="https://github.com/IamAlex-afk" target="_blank" rel="noopener">Alex Bitkin</a></div>
+    <div style="margin-top:8px;font-size:.7rem;opacity:.45;line-height:1.6">Bildungsinhalte durch Peer-Review-Quellen verifiziert.<br>arXiv · UNESCO · MIT · EU-KI-Gesetz</div>
+  </footer>
+</div>
+<script src="data/de.js"></script>
+<script src="js/names.js"></script>
+<script src="js/card.js"></script>
+<script src="js/core.js"></script>
+</body>
+</html>

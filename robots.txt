@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap — all 9 language versions
+Sitemap: https://iamalex-afk.github.io/kids-ai-test/sitemap.xml

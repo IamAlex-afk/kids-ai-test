@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kids AI Test — Qu'est-ce que l'IA vraiment ? Gratuit, Sans Inscription</title>
+  <meta name="description" content="Qu'est-ce que l'intelligence artificielle ? Expérience éducative gratuite pour tous les âges : 3–99 ans. Apprends, joue, gagne ta carte unique. Sans inscription, sans données.">
+  <meta name="keywords" content="IA pour enfants, qu'est-ce que l'IA, ChatGPT est-il vivant, l'IA peut-elle ressentir, éducation IA enfants, quiz intelligence artificielle">
+  <meta name="author" content="Alex Bitkin — Mind-OS">
+  <meta property="og:title" content="Kids AI Test — Qu'est-ce que l'IA vraiment ?">
+  <meta property="og:description" content="Éducation à l'IA gratuite pour tous les âges. Apprends · Joue · Gagne ta carte unique.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://iamalex-afk.github.io/kids-ai-test/fr.html">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://iamalex-afk.github.io/kids-ai-test/fr.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+  <link rel="stylesheet" href="css/main.css">
+  <meta name="theme-color" content="#8b5cf6">
+  <style>
+    .flow-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:20px 0; }
+    @media(max-width:600px){ .flow-steps { grid-template-columns:repeat(2,1fr); } }
+    .flow-step { background:var(--card); border:1px solid var(--border); border-radius:var(--r); padding:16px 12px; text-align:center; position:relative; }
+    .flow-step-num { position:absolute; top:-10px; left:12px; background:var(--accent); color:var(--bg); font-size:.7rem; font-weight:900; padding:2px 8px; border-radius:10px; }
+    .flow-step-icon { font-size:2rem; display:block; margin-bottom:6px; }
+    .flow-step-title { font-size:.85rem; font-weight:700; color:var(--text); }
+    .flow-step-desc  { font-size:.75rem; color:var(--muted); margin-top:4px; line-height:1.4; }
+    .age-card .age-label   { font-size:1.4rem; font-weight:900; display:block; margin:6px 0 4px; }
+    .age-card .age-range   { font-size:.8rem; color:var(--muted2); display:block; margin-bottom:6px; }
+    .age-card .age-tagline { font-size:.75rem; color:var(--muted); display:block; line-height:1.4; }
+    .section-heading { font-size:clamp(1.1rem,4vw,1.5rem); font-weight:900; color:var(--text); margin-bottom:6px; }
+    .section-explain { color:var(--muted2); font-size:.9rem; line-height:1.6; margin-bottom:20px; }
+    .hero-sub { font-size:1rem; line-height:1.7; }
+    .hero-title { font-size:clamp(2rem,8vw,3.2rem); }
+    .hero-title .line-1 { font-size:.55em; letter-spacing:3px; font-weight:700; }
+    @media(max-width:480px){ .age-group { display:none; } }
+    .parent-body { display:none; }
+  </style>
+</head>
+<body data-age="">
+<div class="stars" aria-hidden="true"></div>
+<div id="boot">
+  <div class="boot-lines">
+    <p class="boot-line" style="animation-delay:.1s">▶  Chargement des faits sur l'IA depuis des sources vérifiées...</p>
+    <p class="boot-line" style="animation-delay:.7s">▶  9 langues · 4 tranches d'âge · 0 publicité · 0 inscription</p>
+    <p class="boot-line warn" style="animation-delay:1.3s">▶  FAIT : L'IA ne ressent rien. L'IA ne pense pas. L'IA est un outil.</p>
+    <p class="boot-line info" style="animation-delay:1.9s">▶  Prêt. Découvrons ce qu'est vraiment l'IA.</p>
+  </div>
+  <div class="boot-progress"><div class="boot-bar"><div class="boot-fill" id="boot-fill"></div></div></div>
+  <p class="boot-access" id="boot-access">ACCÈS ACCORDÉ</p>
+</div>
+<div class="page">
+  <div class="top-bar">
+    <div class="lang-group">
+      <button class="top-btn" data-lang-switch="en">🇬🇧 EN</button>
+      <button class="top-btn" data-lang-switch="ru">🇷🇺 RU</button>
+      <button class="top-btn" data-lang-switch="pt">🇧🇷 PT</button>
+      <button class="top-btn" data-lang-switch="es">🇪🇸 ES</button>
+      <button class="top-btn" data-lang-switch="de">🇩🇪 DE</button>
+      <button class="top-btn active" data-lang-switch="fr">🇫🇷 FR</button>
+      <button class="top-btn" data-lang-switch="hi">🇮🇳 HI</button>
+      <button class="top-btn" data-lang-switch="id">🇮🇩 ID</button>
+      <button class="top-btn" data-lang-switch="tr">🇹🇷 TR</button>
+    </div>
+    <div class="age-group" id="age-group">
+      <button class="top-btn" data-age-quick="tiny"  title="3–5 ans">🧸</button>
+      <button class="top-btn" data-age-quick="child" title="6–9 ans">🎮</button>
+      <button class="top-btn" data-age-quick="teen"  title="10–13 ans">📱</button>
+      <button class="top-btn" data-age-quick="adult" title="14+">🧠</button>
+    </div>
+  </div>
+  <div class="hero">
+    <div class="hero-mascot"><span class="mascot-emoji" id="hero-mascot-emoji">🤖</span><div class="mascot-shadow"></div></div>
+    <h1 class="hero-title">
+      <span class="line-1">KIDS AI TEST</span>
+      <span class="line-2">Qu'est-ce que l'IA vraiment ?</span>
+    </h1>
+    <div class="hero-badge">🔒 GRATUIT · SANS INSCRIPTION · SANS COLLECTE DE DONNÉES</div>
+    <p class="hero-sub">
+      Des millions d'enfants demandent : <em>« ChatGPT est-il vivant ? L'IA peut-elle ressentir la douleur ? Alexa est-elle mon amie ? »</em><br>
+      Voici les <strong>vraies réponses</strong> — basées sur la science, adaptées à ton âge.
+    </p>
+  </div>
+  <div class="sec-header"><span class="sec-header-text">COMMENT ÇA MARCHE</span><div class="sec-header-line"></div></div>
+  <div class="flow-steps">
+    <div class="flow-step"><span class="flow-step-num">ÉTAPE 1</span><span class="flow-step-icon">👤</span><div class="flow-step-title">Choisis ton âge</div><div class="flow-step-desc">Contenu adapté pour 3–5, 6–9, 10–13 ou 14+ ans</div></div>
+    <div class="flow-step"><span class="flow-step-num">ÉTAPE 2</span><span class="flow-step-icon">📖</span><div class="flow-step-title">Apprends comment fonctionne l'IA</div><div class="flow-step-desc">Leçons courtes avec de la vraie science, mini-test entre chaque</div></div>
+    <div class="flow-step"><span class="flow-step-num">ÉTAPE 3</span><span class="flow-step-icon">🎮</span><div class="flow-step-title">Joue Humain ou IA ?</div><div class="flow-step-desc">Lis un texte — devine : humain ou IA l'a écrit ?</div></div>
+    <div class="flow-step"><span class="flow-step-num">ÉTAPE 4</span><span class="flow-step-icon">🃏</span><div class="flow-step-title">Gagne ta carte unique</div><div class="flow-step-desc">Quiz → score → carte avec numéro séquentiel</div></div>
+  </div>
+  <div id="age-picker">
+    <div class="sec-header" style="margin-top:36px"><span class="sec-header-text">ÉTAPE 1</span><div class="sec-header-line"></div></div>
+    <h2 class="section-heading">Quel âge as-tu ?</h2>
+    <p class="section-explain">Nous adaptons les leçons, les questions et le jeu à ton âge — pour que tout soit clair. Appuie sur ton groupe d'âge pour commencer.</p>
+    <div class="age-grid">
+      <button class="age-card" data-age="tiny"  aria-label="3 à 5 ans"><span class="age-icon">🧸</span><span class="age-label">3 – 5</span><span class="age-range">Petit Explorateur</span><span class="age-tagline">Grandes images, mots simples, questions oui/non</span></button>
+      <button class="age-card" data-age="child" aria-label="6 à 9 ans"><span class="age-icon">🎮</span><span class="age-label">6 – 9</span><span class="age-range">Détective Jr.</span><span class="age-tagline">Histoires, exemples, quiz à 4 options</span></button>
+      <button class="age-card" data-age="teen"  aria-label="10 à 13 ans"><span class="age-icon">📱</span><span class="age-label">10 – 13</span><span class="age-range">Détective IA</span><span class="age-tagline">En profondeur : transformeurs, biais, vraie recherche</span></button>
+      <button class="age-card" data-age="adult" aria-label="14 ans et plus"><span class="age-icon">🧠</span><span class="age-label">14 +</span><span class="age-range">Analyste IA</span><span class="age-tagline">Profondeur technique, politique, échelle Likert</span></button>
+    </div>
+  </div>
+  <div id="lessons" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">ÉTAPE 2 · APPRENDRE</span><div class="sec-header-line"></div></div>
+    <h2 class="section-heading">Comment l'IA fonctionne vraiment</h2>
+    <p class="section-explain">Leçons courtes avec de la vraie science. Après chaque leçon — une vérification rapide pour s'assurer que c'est clair.</p>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;margin-bottom:18px;">
+      <div class="quiz-prog-top"><span class="quiz-prog-label" id="lesson-count">Leçon 1 / 3</span><span class="quiz-prog-score" id="lesson-phase-label">Leçon</span></div>
+      <div class="quiz-prog-bar" style="margin-top:8px"><div class="quiz-prog-fill" id="lesson-prog-fill" style="width:0%"></div></div>
+    </div>
+    <div id="lesson-content"></div>
+  </div>
+  <div id="game" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">ÉTAPE 3 · JEU</span><div class="sec-header-line"></div></div>
+    <h2 class="section-heading">👤 Humain ou 🤖 IA ?</h2>
+    <p class="section-explain">Lis le texte ci-dessous. Décide qui l'a écrit — un vrai humain ou une IA.<br>Pas de piège — fais confiance à ce que tu ressens et apprends de l'explication.</p>
+    <div class="game-wrap" id="game-content"></div>
+  </div>
+  <div id="quiz" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">ÉTAPE 4 · QUIZ FINAL</span><div class="sec-header-line"></div></div>
+    <h2 class="section-heading">Quiz Final 🧠</h2>
+    <p class="section-explain">Réponds à toutes les questions — tu recevras ensuite ta carte unique avec ton score.<br>Chaque question a une source vérifiée liée à la vraie recherche.</p>
+    <div class="quiz-wrap" id="quiz-content"></div>
+  </div>
+  <div id="result" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">TON RÉSULTAT</span><div class="sec-header-line"></div></div>
+    <div id="result-summary"></div>
+    <div id="card-area" class="hidden">
+      <div class="sec-header" style="margin-top:32px"><span class="sec-header-text">TA CARTE UNIQUE 🃏</span><div class="sec-header-line"></div></div>
+      <div class="card-section">
+        <h3 style="margin-bottom:8px">Carte #<span id="card-number">—</span> · <span id="card-name-display">—</span></h3>
+        <p>Ton numéro = secondes depuis le lancement de ce projet.<br><strong>Numéro plus petit = participant plus ancien.</strong> Vérifié par SHA-256 open source. Impossible à falsifier.</p>
+        <canvas id="result-canvas" aria-label="Ta carte Kids AI Test" style="max-width:100%;border-radius:var(--r-sm);margin:16px auto;display:block;border:1px solid var(--border);"></canvas>
+        <div id="card-qr" style="display:flex;justify-content:center;margin:12px 0;"></div>
+        <div id="card-info"></div>
+        <div class="action-row">
+          <button class="btn-primary hidden" id="btn-download-card">⬇️ Télécharger PNG</button>
+          <button class="btn-outline hidden"  id="btn-share-card">📤 Partager ma carte</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="protocols" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">QUE FAIRE MAINTENANT</span><div class="sec-header-line"></div></div>
+    <h2 class="section-heading">Règles simples pour vivre avec l'IA</h2>
+    <p class="section-explain">L'IA est partout maintenant. Ce sont les règles qui t'aident à rester en contrôle.</p>
+    <div class="protocols-grid" id="protocols-list"></div>
+  </div>
+  <div id="tracker" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">CHECK QUOTIDIEN</span><div class="sec-header-line"></div></div>
+    <div class="tracker-wrap">
+      <p class="tracker-question">📈 À quel point te sens-tu conscient de l'IA aujourd'hui ?</p>
+      <div class="tracker-history" id="tracker-chart"></div>
+      <div id="tracker-log-area">
+        <input type="range" id="tracker-slider" class="tracker-slider" min="1" max="5" step="1" value="3" aria-label="Niveau de conscience IA de 1 à 5">
+        <div class="tracker-scale"><span>1 — Débutant</span><span id="tracker-val-display" style="font-weight:900;color:var(--accent)">3</span><span>5 — Confiant</span></div>
+        <div class="tracker-value" id="tracker-current-val">3</div>
+        <button class="tracker-log-btn" id="btn-tracker-log">✓ Enregistrer aujourd'hui</button>
+      </div>
+    </div>
+  </div>
+  <div class="parent-wrap" id="parent">
+    <button class="parent-toggle" id="parent-toggle" aria-expanded="false">👪 POUR LES PARENTS ET ÉDUCATEURS — cliquez pour développer<span class="parent-arrow">▼</span></button>
+    <div class="parent-body" id="parent-body">
+      <h4>🔒 Zéro collecte de données</h4><p>Sans cookies, sans suivi, sans inscription. La progression est stockée uniquement dans le localStorage du navigateur — ne quitte jamais l'appareil.</p>
+      <h4>📚 Sources</h4><p>Chaque fait est lié à sa source originale : articles arXiv, UNESCO, MIT, Loi européenne sur l'IA. Sans sensationnalisme.</p>
+      <h4>🌍 Open Source · GPL v3</h4><p>Tout le code est sur <a href="https://github.com/IamAlex-afk/kids-ai-test" target="_blank" rel="noopener">GitHub</a>. Sans publicité. Sans niveau payant.</p>
+      <h4>💬 Questions à discuter avec votre enfant</h4>
+      <ul>
+        <li>Alexa peut-elle se sentir seule ? Comment le sais-tu ?</li>
+        <li>Si l'IA écrit une histoire, qui est le vrai auteur ?</li>
+        <li>Que fait l'IA mieux que les humains ? Que font les humains mieux ?</li>
+        <li>Si l'IA dit que quelque chose est vrai, comment le vérifies-tu ?</li>
+        <li>Ferais-tu confiance à l'IA pour prendre une décision importante pour toi ?</li>
+      </ul>
+    </div>
+  </div>
+  <footer>
+    <div>🤖 <strong>Kids AI Test</strong> · <a href="https://github.com/IamAlex-afk/kids-ai-test" target="_blank" rel="noopener">GitHub</a> · <a href="https://github.com/IamAlex-afk/kids-ai-test/blob/main/LICENSE" target="_blank" rel="noopener">GPL v3</a> · <a href="https://iamalex-afk.github.io/human-os-patch-33-protocols/" target="_blank" rel="noopener">Site Principal : 33 Protocoles</a></div>
+    <div style="margin-top:6px">Gratuit pour toujours · Sans publicité · Sans données · Fait par <a href="https://github.com/IamAlex-afk" target="_blank" rel="noopener">Alex Bitkin</a></div>
+    <div style="margin-top:8px;font-size:.7rem;opacity:.45;line-height:1.6">Contenu éducatif vérifié par des sources à comité de lecture.<br>arXiv · UNESCO · MIT · Loi européenne sur l'IA</div>
+  </footer>
+</div>
+<script src="data/fr.js"></script>
+<script src="js/names.js"></script>
+<script src="js/card.js"></script>
+<script src="js/core.js"></script>
+</body>
+</html>
