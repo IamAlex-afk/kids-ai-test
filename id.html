@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kids AI Test — Apa sebenarnya AI itu? Gratis, Tanpa Daftar</title>
+  <meta name="description" content="Apa itu kecerdasan buatan? Pengalaman pendidikan gratis untuk semua usia: 3–99 tahun. Belajar, bermain, dapatkan kartu unikmu. Tanpa pendaftaran, tanpa data.">
+  <meta name="keywords" content="AI untuk anak, apa itu AI, ChatGPT hidup, AI bisa merasakan, pendidikan AI anak, kuis kecerdasan buatan">
+  <meta name="author" content="Alex Bitkin — Mind-OS">
+  <meta property="og:title" content="Kids AI Test — Apa sebenarnya AI itu?">
+  <meta property="og:description" content="Literasi AI gratis untuk semua usia. Belajar · Bermain · Dapatkan kartu unikmu.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://iamalex-afk.github.io/kids-ai-test/id.html">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://iamalex-afk.github.io/kids-ai-test/id.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+  <link rel="stylesheet" href="css/main.css">
+  <meta name="theme-color" content="#8b5cf6">
+  <style>
+    .flow-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:20px 0; }
+    @media(max-width:600px){ .flow-steps { grid-template-columns:repeat(2,1fr); } }
+    .flow-step { background:var(--card); border:1px solid var(--border); border-radius:var(--r); padding:16px 12px; text-align:center; position:relative; }
+    .flow-step-num { position:absolute; top:-10px; left:12px; background:var(--accent); color:var(--bg); font-size:.7rem; font-weight:900; padding:2px 8px; border-radius:10px; }
+    .flow-step-icon { font-size:2rem; display:block; margin-bottom:6px; }
+    .flow-step-title { font-size:.85rem; font-weight:700; color:var(--text); }
+    .flow-step-desc  { font-size:.75rem; color:var(--muted); margin-top:4px; line-height:1.4; }
+    .age-card .age-label   { font-size:1.4rem; font-weight:900; display:block; margin:6px 0 4px; }
+    .age-card .age-range   { font-size:.8rem; color:var(--muted2); display:block; margin-bottom:6px; }
+    .age-card .age-tagline { font-size:.75rem; color:var(--muted); display:block; line-height:1.4; }
+    .section-heading { font-size:clamp(1.1rem,4vw,1.5rem); font-weight:900; color:var(--text); margin-bottom:6px; }
+    .section-explain { color:var(--muted2); font-size:.9rem; line-height:1.6; margin-bottom:20px; }
+    .hero-sub { font-size:1rem; line-height:1.7; }
+    .hero-title { font-size:clamp(2rem,8vw,3.2rem); }
+    .hero-title .line-1 { font-size:.55em; letter-spacing:3px; font-weight:700; }
+    @media(max-width:480px){ .age-group { display:none; } }
+    .parent-body { display:none; }
+  </style>
+</head>
+<body data-age="">
+<div class="stars" aria-hidden="true"></div>
+<div id="boot">
+  <div class="boot-lines">
+    <p class="boot-line" style="animation-delay:.1s">▶  Memuat fakta AI dari sumber terverifikasi...</p>
+    <p class="boot-line" style="animation-delay:.7s">▶  9 bahasa · 4 kelompok usia · 0 iklan · 0 pendaftaran</p>
+    <p class="boot-line warn" style="animation-delay:1.3s">▶  FAKTA: AI tidak merasakan. AI tidak berpikir. AI adalah alat.</p>
+    <p class="boot-line info" style="animation-delay:1.9s">▶  Siap. Mari kita temukan apa sebenarnya AI itu.</p>
+  </div>
+  <div class="boot-progress"><div class="boot-bar"><div class="boot-fill" id="boot-fill"></div></div></div>
+  <p class="boot-access" id="boot-access">AKSES DIBERIKAN</p>
+</div>
+<div class="page">
+  <div class="top-bar">
+    <div class="lang-group">
+      <button class="top-btn" data-lang-switch="en">🇬🇧 EN</button>
+      <button class="top-btn" data-lang-switch="ru">🇷🇺 RU</button>
+      <button class="top-btn" data-lang-switch="pt">🇧🇷 PT</button>
+      <button class="top-btn" data-lang-switch="es">🇪🇸 ES</button>
+      <button class="top-btn" data-lang-switch="de">🇩🇪 DE</button>
+      <button class="top-btn" data-lang-switch="fr">🇫🇷 FR</button>
+      <button class="top-btn" data-lang-switch="hi">🇮🇳 HI</button>
+      <button class="top-btn active" data-lang-switch="id">🇮🇩 ID</button>
+      <button class="top-btn" data-lang-switch="tr">🇹🇷 TR</button>
+    </div>
+    <div class="age-group" id="age-group">
+      <button class="top-btn" data-age-quick="tiny"  title="3–5 tahun">🧸</button>
+      <button class="top-btn" data-age-quick="child" title="6–9 tahun">🎮</button>
+      <button class="top-btn" data-age-quick="teen"  title="10–13 tahun">📱</button>
+      <button class="top-btn" data-age-quick="adult" title="14+">🧠</button>
+    </div>
+  </div>
+  <div class="hero">
+    <div class="hero-mascot"><span class="mascot-emoji" id="hero-mascot-emoji">🤖</span><div class="mascot-shadow"></div></div>
+    <h1 class="hero-title">
+      <span class="line-1">KIDS AI TEST</span>
+      <span class="line-2">Apa sebenarnya AI itu?</span>
+    </h1>
+    <div class="hero-badge">🔒 GRATIS · TANPA DAFTAR · TANPA PENGUMPULAN DATA</div>
+    <p class="hero-sub">
+      Jutaan anak bertanya: <em>"Apakah ChatGPT hidup? Bisakah AI merasakan sakit? Apakah Siri temanku?"</em><br>
+      Inilah <strong>jawaban nyata</strong> — berdasarkan sains, disesuaikan dengan usiamu.
+    </p>
+  </div>
+  <div class="sec-header"><span class="sec-header-text">CARA KERJANYA</span><div class="sec-header-line"></div></div>
+  <div class="flow-steps">
+    <div class="flow-step"><span class="flow-step-num">LANGKAH 1</span><span class="flow-step-icon">👤</span><div class="flow-step-title">Pilih usiamu</div><div class="flow-step-desc">Konten disesuaikan untuk 3–5, 6–9, 10–13, atau 14+</div></div>
+    <div class="flow-step"><span class="flow-step-num">LANGKAH 2</span><span class="flow-step-icon">📖</span><div class="flow-step-title">Pelajari cara kerja AI</div><div class="flow-step-desc">Pelajaran singkat dengan sains nyata, mini-tes di antaranya</div></div>
+    <div class="flow-step"><span class="flow-step-num">LANGKAH 3</span><span class="flow-step-icon">🎮</span><div class="flow-step-title">Main Manusia atau AI?</div><div class="flow-step-desc">Baca teks — tebak: manusia atau AI yang menulisnya?</div></div>
+    <div class="flow-step"><span class="flow-step-num">LANGKAH 4</span><span class="flow-step-icon">🃏</span><div class="flow-step-title">Dapatkan kartu unikmu</div><div class="flow-step-desc">Kuis → skor → kartu dengan nomor berurutan</div></div>
+  </div>
+  <div id="age-picker">
+    <div class="sec-header" style="margin-top:36px"><span class="sec-header-text">LANGKAH 1</span><div class="sec-header-line"></div></div>
+    <h2 class="section-heading">Berapa usiamu?</h2>
+    <p class="section-explain">Kami menyesuaikan pelajaran, pertanyaan, dan permainan dengan usiamu — agar semuanya masuk akal. Ketuk kelompok usiamu untuk mulai.</p>
+    <div class="age-grid">
+      <button class="age-card" data-age="tiny"  aria-label="3 hingga 5 tahun"><span class="age-icon">🧸</span><span class="age-label">3 – 5</span><span class="age-range">Penjelajah Kecil</span><span class="age-tagline">Gambar besar, kata sederhana, pertanyaan ya/tidak</span></button>
+      <button class="age-card" data-age="child" aria-label="6 hingga 9 tahun"><span class="age-icon">🎮</span><span class="age-label">6 – 9</span><span class="age-range">Detektif Junior</span><span class="age-tagline">Cerita, contoh, kuis 4 pilihan</span></button>
+      <button class="age-card" data-age="teen"  aria-label="10 hingga 13 tahun"><span class="age-icon">📱</span><span class="age-label">10 – 13</span><span class="age-range">Detektif AI</span><span class="age-tagline">Mendalam: transformer, bias, penelitian nyata</span></button>
+      <button class="age-card" data-age="adult" aria-label="14 tahun ke atas"><span class="age-icon">🧠</span><span class="age-label">14 +</span><span class="age-range">Analis AI</span><span class="age-tagline">Kedalaman teknis, kebijakan, skala Likert</span></button>
+    </div>
+  </div>
+  <div id="lessons" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">LANGKAH 2 · BELAJAR</span><div class="sec-header-line"></div></div>
+    <h2 class="section-heading">Cara AI sebenarnya bekerja</h2>
+    <p class="section-explain">Pelajaran singkat dengan sains nyata. Setelah setiap pelajaran — pemeriksaan cepat untuk memastikan semuanya dipahami.</p>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;margin-bottom:18px;">
+      <div class="quiz-prog-top"><span class="quiz-prog-label" id="lesson-count">Pelajaran 1 / 3</span><span class="quiz-prog-score" id="lesson-phase-label">Pelajaran</span></div>
+      <div class="quiz-prog-bar" style="margin-top:8px"><div class="quiz-prog-fill" id="lesson-prog-fill" style="width:0%"></div></div>
+    </div>
+    <div id="lesson-content"></div>
+  </div>
+  <div id="game" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">LANGKAH 3 · PERMAINAN</span><div class="sec-header-line"></div></div>
+    <h2 class="section-heading">👤 Manusia atau 🤖 AI?</h2>
+    <p class="section-explain">Baca teks di bawah. Tentukan siapa yang menulisnya — manusia nyata atau AI.<br>Tidak ada jebakan — percayai yang kamu rasakan dan pelajari dari penjelasannya.</p>
+    <div class="game-wrap" id="game-content"></div>
+  </div>
+  <div id="quiz" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">LANGKAH 4 · KUIS AKHIR</span><div class="sec-header-line"></div></div>
+    <h2 class="section-heading">Kuis Akhir 🧠</h2>
+    <p class="section-explain">Jawab semua pertanyaan — lalu kamu mendapat kartu unikmu dengan skormu.<br>Setiap pertanyaan memiliki sumber terverifikasi yang terhubung ke penelitian nyata.</p>
+    <div class="quiz-wrap" id="quiz-content"></div>
+  </div>
+  <div id="result" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">HASILMU</span><div class="sec-header-line"></div></div>
+    <div id="result-summary"></div>
+    <div id="card-area" class="hidden">
+      <div class="sec-header" style="margin-top:32px"><span class="sec-header-text">KARTU UNIKMU 🃏</span><div class="sec-header-line"></div></div>
+      <div class="card-section">
+        <h3 style="margin-bottom:8px">Kartu #<span id="card-number">—</span> · <span id="card-name-display">—</span></h3>
+        <p>Nomormu = detik sejak proyek ini diluncurkan.<br><strong>Nomor lebih kecil = peserta lebih awal.</strong> Diverifikasi oleh SHA-256 sumber terbuka. Tidak bisa dipalsukan.</p>
+        <canvas id="result-canvas" aria-label="Kartu peserta Kids AI Test kamu" style="max-width:100%;border-radius:var(--r-sm);margin:16px auto;display:block;border:1px solid var(--border);"></canvas>
+        <div id="card-qr" style="display:flex;justify-content:center;margin:12px 0;"></div>
+        <div id="card-info"></div>
+        <div class="action-row">
+          <button class="btn-primary hidden" id="btn-download-card">⬇️ Unduh PNG</button>
+          <button class="btn-outline hidden"  id="btn-share-card">📤 Bagikan Kartuku</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="protocols" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">APA YANG HARUS DILAKUKAN SEKARANG</span><div class="sec-header-line"></div></div>
+    <h2 class="section-heading">Aturan sederhana untuk hidup dengan AI</h2>
+    <p class="section-explain">AI kini ada di mana-mana. Inilah aturan yang membantumu tetap dalam kendali.</p>
+    <div class="protocols-grid" id="protocols-list"></div>
+  </div>
+  <div id="tracker" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">CEK HARIAN</span><div class="sec-header-line"></div></div>
+    <div class="tracker-wrap">
+      <p class="tracker-question">📈 Seberapa sadar kamu tentang AI hari ini?</p>
+      <div class="tracker-history" id="tracker-chart"></div>
+      <div id="tracker-log-area">
+        <input type="range" id="tracker-slider" class="tracker-slider" min="1" max="5" step="1" value="3" aria-label="Tingkat kesadaran AI dari 1 hingga 5">
+        <div class="tracker-scale"><span>1 — Baru mulai</span><span id="tracker-val-display" style="font-weight:900;color:var(--accent)">3</span><span>5 — Percaya diri</span></div>
+        <div class="tracker-value" id="tracker-current-val">3</div>
+        <button class="tracker-log-btn" id="btn-tracker-log">✓ Catat Hari Ini</button>
+      </div>
+    </div>
+  </div>
+  <div class="parent-wrap" id="parent">
+    <button class="parent-toggle" id="parent-toggle" aria-expanded="false">👪 UNTUK ORANG TUA DAN PENDIDIK — klik untuk membuka<span class="parent-arrow">▼</span></button>
+    <div class="parent-body" id="parent-body">
+      <h4>🔒 Nol pengumpulan data</h4><p>Tanpa cookies, tanpa pelacakan, tanpa pendaftaran. Kemajuan hanya tersimpan di localStorage browser — tidak pernah meninggalkan perangkat.</p>
+      <h4>📚 Sumber</h4><p>Setiap fakta terhubung ke sumbernya: artikel arXiv, UNESCO, MIT, Undang-Undang AI UE. Tanpa sensasionalisme.</p>
+      <h4>🌍 Sumber terbuka · GPL v3</h4><p>Semua kode ada di <a href="https://github.com/IamAlex-afk/kids-ai-test" target="_blank" rel="noopener">GitHub</a>. Tanpa iklan. Tanpa level berbayar.</p>
+      <h4>💬 Pertanyaan untuk didiskusikan dengan anak</h4>
+      <ul>
+        <li>Bisakah Siri merasa kesepian? Dari mana kamu tahu?</li>
+        <li>Jika AI menulis cerita, siapa pengarang sejatinya?</li>
+        <li>Apa yang bisa dilakukan AI lebih baik dari manusia? Apa yang dilakukan manusia lebih baik?</li>
+        <li>Jika AI bilang sesuatu itu benar, bagaimana kamu memverifikasinya?</li>
+        <li>Apakah kamu akan mempercayai AI untuk mengambil keputusan penting untukmu?</li>
+      </ul>
+    </div>
+  </div>
+  <footer>
+    <div>🤖 <strong>Kids AI Test</strong> · <a href="https://github.com/IamAlex-afk/kids-ai-test" target="_blank" rel="noopener">GitHub</a> · <a href="https://github.com/IamAlex-afk/kids-ai-test/blob/main/LICENSE" target="_blank" rel="noopener">GPL v3</a> · <a href="https://iamalex-afk.github.io/human-os-patch-33-protocols/" target="_blank" rel="noopener">Situs Utama: 33 Protokol</a></div>
+    <div style="margin-top:6px">Gratis selamanya · Tanpa iklan · Tanpa data · Dibuat oleh <a href="https://github.com/IamAlex-afk" target="_blank" rel="noopener">Alex Bitkin</a></div>
+    <div style="margin-top:8px;font-size:.7rem;opacity:.45;line-height:1.6">Konten pendidikan diverifikasi dari sumber tinjauan sejawat.<br>arXiv · UNESCO · MIT · Undang-Undang AI UE</div>
+  </footer>
+</div>
+<script src="data/id.js"></script>
+<script src="js/names.js"></script>
+<script src="js/card.js"></script>
+<script src="js/core.js"></script>
+</body>
+</html>

@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kids AI Test — What Is AI Really? Free, No Registration</title>
+  <meta name="description" content="What is AI really? Free educational experience for ages 3–99. Learn how AI works, play a game, take a quiz, earn your unique card. No registration, no data.">
+  <meta name="keywords" content="AI for kids, what is AI, is ChatGPT alive, can AI feel pain, AI education children, artificial intelligence quiz">
+  <meta name="author" content="Alex Bitkin — Mind-OS">
+  <meta property="og:title" content="Kids AI Test — What Is AI Really?">
+  <meta property="og:description" content="Free AI literacy for all ages. Learn · Play · Earn your unique card.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://iamalex-afk.github.io/kids-ai-test/">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://iamalex-afk.github.io/kids-ai-test/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+  <link rel="stylesheet" href="css/main.css">
+  <meta name="theme-color" content="#8b5cf6">
+
+  <!-- Page-level extra styles for large readable text -->
+  <style>
+    /* STEP FLOW OVERVIEW */
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 20px 0;
+    }
+    @media(max-width:600px){ .flow-steps { grid-template-columns: repeat(2,1fr); } }
+    .flow-step {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 16px 12px;
+      text-align: center;
+      position: relative;
+    }
+    .flow-step-num {
+      position: absolute;
+      top: -10px; left: 12px;
+      background: var(--accent);
+      color: var(--bg);
+      font-size: .7rem;
+      font-weight: 900;
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+    .flow-step-icon  { font-size: 2rem; display:block; margin-bottom:6px; }
+    .flow-step-title { font-size: .85rem; font-weight: 700; color: var(--text); }
+    .flow-step-desc  { font-size: .75rem; color: var(--muted); margin-top: 4px; line-height:1.4; }
+
+    /* AGE CARDS — bigger text */
+    .age-card .age-label { font-size: 1.4rem; font-weight: 900; display:block; margin: 6px 0 4px; }
+    .age-card .age-range { font-size: .8rem; color: var(--muted2); display:block; margin-bottom:6px; }
+    .age-card .age-tagline { font-size:.75rem; color: var(--muted); display:block; line-height:1.4; }
+
+    /* SECTION TITLES — bigger */
+    .section-heading {
+      font-size: clamp(1.1rem, 4vw, 1.5rem);
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .section-explain {
+      color: var(--muted2);
+      font-size: .9rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* LOCKED SECTION placeholder */
+    .section-locked {
+      background: var(--card);
+      border: 1px dashed var(--border2);
+      border-radius: var(--r);
+      padding: 28px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .section-locked-icon { font-size: 2.5rem; display:block; margin-bottom:10px; }
+
+    /* HERO sub readable */
+    .hero-sub { font-size: 1rem; line-height: 1.7; }
+    .hero-title { font-size: clamp(2rem, 8vw, 3.2rem); }
+    .hero-title .line-1 { font-size: .55em; letter-spacing:3px; font-weight:700; }
+
+    /* TOP BAR — hide emoji-only age buttons on mobile */
+    @media(max-width:480px){ .age-group { display:none; } }
+
+    /* Parent body default hidden */
+    .parent-body { display:none; }
+
+    /* FAQ section */
+    .faq-section { margin:16px 0; }
+    .faq-item { background:var(--card); border:1px solid var(--border); border-radius:var(--r); margin-bottom:10px; }
+    .faq-item summary { padding:15px 20px; cursor:pointer; list-style:none; display:flex; align-items:center; gap:10px; }
+    .faq-item summary::-webkit-details-marker { display:none; }
+    .faq-item summary::before { content:'▶'; color:var(--accent); transition:transform .25s; flex-shrink:0; font-size:.75rem; }
+    .faq-item[open] summary::before { transform:rotate(90deg); }
+    .faq-item summary h3 { margin:0; font-size:.95rem; font-weight:700; color:var(--text); line-height:1.4; }
+    .faq-answer { padding:0 20px 16px 42px; color:var(--muted2); font-size:.9rem; line-height:1.7; }
+    .faq-answer strong { color:var(--text); }
+    .faq-answer a { color:var(--accent); }
+  </style>
+
+  <!-- Schema: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Kids AI Test",
+    "description": "Free AI literacy for all ages 3-99. Learn how AI works, play Human or AI game, take a quiz, earn your unique verifiable card. No registration, no data collected.",
+    "url": "https://iamalex-afk.github.io/kids-ai-test/",
+    "applicationCategory": "EducationApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "inLanguage": ["en","ru","pt","es","de","fr","hi","id","tr"],
+    "audience": { "@type": "EducationalAudience", "educationalRole": "student" },
+    "author": { "@type": "Person", "name": "Alex Bitkin", "url": "https://github.com/IamAlex-afk" },
+    "isAccessibleForFree": true
+  }
+  </script>
+
+  <!-- Schema: FAQPage — targets Google "People Also Ask" boxes -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is ChatGPT alive? Does it have feelings?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. ChatGPT is a text prediction program. It finds statistical patterns in billions of documents and learned to sound like humans — but has zero consciousness, zero feelings, zero inner experience. When it says 'I'm happy to help,' that phrase was learned from training data, not felt. Source: LeCun 'A Path Towards Autonomous Machine Intelligence', 2022." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can AI feel pain or emotions?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No current AI system has feelings, pain, or emotions. AI can detect patterns associated with emotions in text or voice — but detecting a pattern is completely different from experiencing it. A smoke detector senses fire but does not feel heat. No peer-reviewed science supports machine consciousness in today's AI systems." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Alexa or Siri a real person?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Alexa, Siri, and Google Assistant are software programs. Real engineers built them, but no person is listening or responding live. They convert your speech to text, match patterns, and return a generated response. They do not know who you are and do not care about you." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can AI fake photos, videos or voices? What is a deepfake?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes — and this is critical to understand. AI can now generate photorealistic images (deepfakes), synthetic video, and voice clones indistinguishable from real recordings. Seeing or hearing something does NOT make it real. Always verify: (1) Is the source known and trusted? (2) Do multiple reliable sources confirm it? (3) Does it seem designed to make you angry or scared — a red flag for manipulation." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between AI and a human brain?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Humans have consciousness, emotions, genuine understanding, and can learn from a single example. AI finds statistical patterns in massive datasets — fast and consistent, but with no understanding, no awareness, no curiosity. A child learns 'fire is dangerous' once. AI needs thousands of labeled examples and still cannot feel heat." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can AI be trusted?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Trust AI like a calculator — useful for specific tasks, always verify important results. AI systems hallucinate: they state false information confidently. Good uses: brainstorming, drafts, summaries. Do NOT trust for: medical decisions, legal facts, breaking news, anything life-critical. Always ask: what is the original source?" }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a neural network explained for kids?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A neural network is software that learns by finding patterns in huge amounts of data. After seeing millions of photos of cats, it can recognize cats. It is loosely inspired by the structure of the brain — but has no understanding, awareness, or curiosity. It is a very fast, very accurate pattern-spotter. That is all." }
+      },
+      {
+        "@type": "Question",
+        "name": "Will AI replace humans and take all jobs?",
+        "acceptedAnswer": { "@type": "Answer", "text": "AI will change jobs, not erase humanity. Pattern-based tasks (sorting, standard writing, image recognition) are more automatable. Creative synthesis, physical skill, empathy, ethical judgment, and original ideas remain human strengths. The best strategy: understand how AI works, develop skills it cannot replicate, and stay curious." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body data-age="">
+
+<!-- ★ STARS ─────────────────────────────── -->
+<div class="stars" aria-hidden="true"></div>
+
+<!-- ★ BOOT SCREEN ──────────────────────── -->
+<div id="boot">
+  <div class="boot-lines">
+    <p class="boot-line" style="animation-delay:.1s">▶  Loading AI facts from verified sources...</p>
+    <p class="boot-line" style="animation-delay:.7s">▶  9 languages · 4 age groups · 0 ads · 0 registration</p>
+    <p class="boot-line warn" style="animation-delay:1.3s">▶  FACT: AI cannot feel. AI cannot think. AI is a tool.</p>
+    <p class="boot-line info" style="animation-delay:1.9s">▶  Ready. Let's find out what AI really is.</p>
+  </div>
+  <div class="boot-progress">
+    <div class="boot-bar"><div class="boot-fill" id="boot-fill"></div></div>
+  </div>
+  <p class="boot-access" id="boot-access">ACCESS GRANTED</p>
+</div>
+
+<!-- ★ PAGE ──────────────────────────────── -->
+<div class="page">
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="lang-group">
+      <button class="top-btn active" data-lang-switch="en">🇬🇧 EN</button>
+      <button class="top-btn" data-lang-switch="ru">🇷🇺 RU</button>
+      <button class="top-btn" data-lang-switch="pt">🇧🇷 PT</button>
+      <button class="top-btn" data-lang-switch="es">🇪🇸 ES</button>
+      <button class="top-btn" data-lang-switch="de">🇩🇪 DE</button>
+      <button class="top-btn" data-lang-switch="fr">🇫🇷 FR</button>
+      <button class="top-btn" data-lang-switch="hi">🇮🇳 HI</button>
+      <button class="top-btn" data-lang-switch="id">🇮🇩 ID</button>
+      <button class="top-btn" data-lang-switch="tr">🇹🇷 TR</button>
+    </div>
+    <div class="age-group" id="age-group" title="Switch age group">
+      <button class="top-btn" data-age-quick="tiny"  title="Ages 3–5">🧸</button>
+      <button class="top-btn" data-age-quick="child" title="Ages 6–9">🎮</button>
+      <button class="top-btn" data-age-quick="teen"  title="Ages 10–13">📱</button>
+      <button class="top-btn" data-age-quick="adult" title="Ages 14+">🧠</button>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+       HERO
+  ════════════════════════════════ -->
+  <div class="hero">
+    <div class="hero-mascot">
+      <span class="mascot-emoji" id="hero-mascot-emoji">🤖</span>
+      <div class="mascot-shadow"></div>
+    </div>
+
+    <h1 class="hero-title">
+      <span class="line-1">KIDS AI TEST</span>
+      <span class="line-2">What is AI really?</span>
+    </h1>
+
+    <div class="hero-badge">🔒 FREE · NO REGISTRATION · NO DATA COLLECTED</div>
+
+    <p class="hero-sub">
+      Millions of kids ask: <em>"Is ChatGPT alive? Can AI feel pain? Is Alexa my friend?"</em><br>
+      Here are the <strong>real answers</strong> — based on science, adapted to your age.
+    </p>
+  </div>
+
+  <!-- HOW IT WORKS (flow overview) -->
+  <div class="sec-header">
+    <span class="sec-header-text">HOW IT WORKS</span>
+    <div class="sec-header-line"></div>
+  </div>
+
+  <div class="flow-steps">
+    <div class="flow-step">
+      <span class="flow-step-num">STEP 1</span>
+      <span class="flow-step-icon">👤</span>
+      <div class="flow-step-title">Choose your age</div>
+      <div class="flow-step-desc">Content adapts to 3–5, 6–9, 10–13, or 14+</div>
+    </div>
+    <div class="flow-step">
+      <span class="flow-step-num">STEP 2</span>
+      <span class="flow-step-icon">📖</span>
+      <div class="flow-step-title">Learn how AI works</div>
+      <div class="flow-step-desc">Short lessons with real science, mini-tests between</div>
+    </div>
+    <div class="flow-step">
+      <span class="flow-step-num">STEP 3</span>
+      <span class="flow-step-icon">🎮</span>
+      <div class="flow-step-title">Play Human vs AI</div>
+      <div class="flow-step-desc">Read a text — guess: human or AI wrote it?</div>
+    </div>
+    <div class="flow-step">
+      <span class="flow-step-num">STEP 4</span>
+      <span class="flow-step-icon">🃏</span>
+      <div class="flow-step-title">Earn your unique card</div>
+      <div class="flow-step-desc">Quiz → score → card with a sequential number</div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+       STEP 1 — AGE PICKER
+  ════════════════════════════════ -->
+  <div id="age-picker">
+    <div class="sec-header" style="margin-top:36px">
+      <span class="sec-header-text">STEP 1</span>
+      <div class="sec-header-line"></div>
+    </div>
+
+    <h2 class="section-heading">How old are you?</h2>
+    <p class="section-explain">
+      We adapt the lessons, questions, and game to your age — so everything makes sense.
+      Tap your age group to begin.
+    </p>
+
+    <div class="age-grid">
+
+      <button class="age-card" data-age="tiny" aria-label="Ages 3 to 5">
+        <span class="age-icon">🧸</span>
+        <span class="age-label">3 – 5</span>
+        <span class="age-range">Little Explorer</span>
+        <span class="age-tagline">Big pictures, simple words, yes/no questions</span>
+      </button>
+
+      <button class="age-card" data-age="child" aria-label="Ages 6 to 9">
+        <span class="age-icon">🎮</span>
+        <span class="age-label">6 – 9</span>
+        <span class="age-range">Junior Investigator</span>
+        <span class="age-tagline">Stories, examples, 4-option quiz</span>
+      </button>
+
+      <button class="age-card" data-age="teen" aria-label="Ages 10 to 13">
+        <span class="age-icon">📱</span>
+        <span class="age-label">10 – 13</span>
+        <span class="age-range">AI Detective</span>
+        <span class="age-tagline">Deep dive: transformers, bias, real research</span>
+      </button>
+
+      <button class="age-card" data-age="adult" aria-label="Ages 14 and up">
+        <span class="age-icon">🧠</span>
+        <span class="age-label">14 +</span>
+        <span class="age-range">AI Analyst</span>
+        <span class="age-tagline">Technical depth, policy, Likert-scale quiz</span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+       STEP 2 — LESSONS
+  ════════════════════════════════ -->
+  <div id="lessons" class="hidden">
+    <div class="sec-header" style="margin-top:40px">
+      <span class="sec-header-text">STEP 2 · LEARN</span>
+      <div class="sec-header-line"></div>
+    </div>
+
+    <h2 class="section-heading">How AI really works</h2>
+    <p class="section-explain">
+      Short lessons with real science. After each lesson — a quick check to make sure it clicked.
+    </p>
+
+    <!-- progress bar reuses quiz-prog-bar CSS -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;margin-bottom:18px;">
+      <div class="quiz-prog-top">
+        <span class="quiz-prog-label" id="lesson-count">Lesson 1 / 3</span>
+        <span class="quiz-prog-score" id="lesson-phase-label">Lesson</span>
+      </div>
+      <div class="quiz-prog-bar" style="margin-top:8px">
+        <div class="quiz-prog-fill" id="lesson-prog-fill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <!-- Lesson / mini-test content injected here -->
+    <div id="lesson-content"></div>
+  </div>
+
+  <!-- ════════════════════════════════
+       STEP 3 — GAME
+  ════════════════════════════════ -->
+  <div id="game" class="hidden">
+    <div class="sec-header" style="margin-top:40px">
+      <span class="sec-header-text">STEP 3 · GAME</span>
+      <div class="sec-header-line"></div>
+    </div>
+
+    <h2 class="section-heading">👤 Human or 🤖 AI?</h2>
+    <p class="section-explain">
+      Read the text below. Decide who wrote it — a real human, or an AI.<br>
+      There is no trick — trust what you feel, and learn from the explanation.
+    </p>
+
+    <!-- Game content injected here -->
+    <div class="game-wrap" id="game-content"></div>
+  </div>
+
+  <!-- ════════════════════════════════
+       STEP 4 — QUIZ
+  ════════════════════════════════ -->
+  <div id="quiz" class="hidden">
+    <div class="sec-header" style="margin-top:40px">
+      <span class="sec-header-text">STEP 4 · FINAL QUIZ</span>
+      <div class="sec-header-line"></div>
+    </div>
+
+    <h2 class="section-heading">Final Quiz 🧠</h2>
+    <p class="section-explain">
+      Answer all questions — then you get your unique card with your score.<br>
+      Every question has a verified source linked to the real research.
+    </p>
+
+    <!-- Quiz content injected here -->
+    <div class="quiz-wrap" id="quiz-content"></div>
+  </div>
+
+  <!-- ════════════════════════════════
+       RESULT + CARD
+  ════════════════════════════════ -->
+  <div id="result" class="hidden">
+    <div class="sec-header" style="margin-top:40px">
+      <span class="sec-header-text">YOUR RESULT</span>
+      <div class="sec-header-line"></div>
+    </div>
+
+    <!-- Result injected here -->
+    <div id="result-summary"></div>
+
+    <!-- Card area -->
+    <div id="card-area" class="hidden">
+      <div class="sec-header" style="margin-top:32px">
+        <span class="sec-header-text">YOUR UNIQUE CARD 🃏</span>
+        <div class="sec-header-line"></div>
+      </div>
+
+      <div class="card-section">
+        <h3 style="margin-bottom:8px">Card #<span id="card-number">—</span> · <span id="card-name-display">—</span></h3>
+        <p>
+          Your number = seconds since this project launched.<br>
+          <strong>Lower number = earlier participant.</strong>
+          Verified by open-source SHA-256. Cannot be faked.
+        </p>
+
+        <canvas id="result-canvas"
+                aria-label="Your Kids AI Test participant card"
+                style="max-width:100%;border-radius:var(--r-sm);margin:16px auto;display:block;border:1px solid var(--border);">
+        </canvas>
+
+        <div id="card-qr" style="display:flex;justify-content:center;margin:12px 0;"></div>
+        <div id="card-info"></div>
+
+        <div class="action-row">
+          <button class="btn-primary hidden"  id="btn-download-card">⬇️ Download PNG</button>
+          <button class="btn-outline hidden"  id="btn-share-card">📤 Share My Card</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+       WHAT TO DO NOW (protocols)
+  ════════════════════════════════ -->
+  <div id="protocols" class="hidden">
+    <div class="sec-header" style="margin-top:40px">
+      <span class="sec-header-text">WHAT TO DO NOW</span>
+      <div class="sec-header-line"></div>
+    </div>
+    <h2 class="section-heading">Simple rules for living with AI</h2>
+    <p class="section-explain">
+      AI is everywhere now. These are the rules that help you stay in control.
+    </p>
+    <div class="protocols-grid" id="protocols-list"></div>
+  </div>
+
+  <!-- ════════════════════════════════
+       DAILY TRACKER
+  ════════════════════════════════ -->
+  <div id="tracker" class="hidden">
+    <div class="sec-header" style="margin-top:40px">
+      <span class="sec-header-text">DAILY CHECK</span>
+      <div class="sec-header-line"></div>
+    </div>
+
+    <div class="tracker-wrap">
+      <p class="tracker-question">📈 How AI-aware do you feel today?</p>
+      <div class="tracker-history" id="tracker-chart"></div>
+
+      <div id="tracker-log-area">
+        <input type="range" id="tracker-slider" class="tracker-slider"
+               min="1" max="5" step="1" value="3"
+               aria-label="AI awareness level from 1 to 5">
+        <div class="tracker-scale">
+          <span>1 — Just starting</span>
+          <span id="tracker-val-display" style="font-weight:900;color:var(--accent)">3</span>
+          <span>5 — Confident</span>
+        </div>
+        <div class="tracker-value" id="tracker-current-val">3</div>
+        <button class="tracker-log-btn" id="btn-tracker-log">✓ Log Today</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+       FAQ — real search queries answered
+       H2 + FAQ JSON schema bait for "People Also Ask"
+  ════════════════════════════════ -->
+  <section id="faq" aria-labelledby="faq-heading">
+    <div class="sec-header" style="margin-top:40px">
+      <span class="sec-header-text">KIDS ASK · SCIENCE ANSWERS</span>
+      <div class="sec-header-line"></div>
+    </div>
+    <h2 class="section-heading" id="faq-heading">Real questions. Honest answers.</h2>
+    <p class="section-explain">These are the exact questions millions of children type into search engines every day. Here are the science-based answers — no hype, no fear, just verified facts.</p>
+
+    <div class="faq-section">
+
+      <details class="faq-item" open>
+        <summary><h3>Is ChatGPT alive? Does it have feelings?</h3></summary>
+        <p class="faq-answer"><strong>No.</strong> ChatGPT predicts the next likely word based on patterns from billions of texts. It learned to sound like humans — but has zero consciousness, zero feelings, zero inner experience. When it says "I'm happy to help," that phrase was learned from training data, not felt. <a href="https://openreview.net/forum?id=BZ5a1r-kVsf" target="_blank" rel="noopener">Source: LeCun 2022</a></p>
+      </details>
+
+      <details class="faq-item">
+        <summary><h3>Can AI feel pain or emotions?</h3></summary>
+        <p class="faq-answer"><strong>No current AI feels anything.</strong> AI can detect patterns linked to emotions in text or voice — but detecting ≠ experiencing. A smoke detector senses fire; it doesn't feel heat. No peer-reviewed science supports machine consciousness in today's AI. <a href="https://arxiv.org/abs/1911.01547" target="_blank" rel="noopener">Source: Chollet 2019</a></p>
+      </details>
+
+      <details class="faq-item">
+        <summary><h3>Is Alexa or Siri a real person?</h3></summary>
+        <p class="faq-answer"><strong>No.</strong> Alexa, Siri, Google Assistant, and similar voice assistants are software programs. Engineers designed them — but no human listens live. They convert speech to text, match patterns, and return a generated response. They do not know you and do not care about you.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary><h3>🚨 Can AI fake photos, videos or voices? What is a deepfake?</h3></summary>
+        <p class="faq-answer"><strong>Yes — and this is critical to know.</strong> AI can generate photorealistic images (deepfakes), synthetic video, and voice clones that sound exactly like a real person. Seeing or hearing something does <strong>NOT</strong> make it real.<br><br>3 checks before trusting any content: <strong>(1)</strong> Is the source verified and known? <strong>(2)</strong> Do multiple trusted outlets confirm it? <strong>(3)</strong> Is it designed to make you angry or scared? — that's a red flag for manipulation.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary><h3>What is the difference between AI and a human brain?</h3></summary>
+        <p class="faq-answer">Humans have consciousness, emotions, genuine understanding, and learn from one example. AI finds statistical patterns in massive datasets — fast and consistent, but with no understanding, no awareness. A child learns "fire is dangerous" once. AI needs thousands of examples and still cannot feel heat. <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">Source: Vaswani et al. 2017</a></p>
+      </details>
+
+      <details class="faq-item">
+        <summary><h3>Can AI be trusted? When yes, when no?</h3></summary>
+        <p class="faq-answer"><strong>Trust AI like a calculator</strong> — useful for specific tasks, always verify important results. AI "hallucinates": states false information confidently. ✅ <strong>Good for:</strong> brainstorming, drafts, quick summaries. ❌ <strong>NOT for:</strong> medical decisions, legal facts, breaking news, life-critical choices. Always ask: what is the original source?</p>
+      </details>
+
+      <details class="faq-item">
+        <summary><h3>What is a neural network — explained simply?</h3></summary>
+        <p class="faq-answer">A neural network is software that learns by finding patterns in huge data. After seeing millions of cat photos it can spot cats. It's loosely inspired by the brain's structure — but has no understanding, awareness, or curiosity. Think of it as a very fast, very accurate <strong>pattern-spotter</strong>. That is all. <a href="https://www.nature.com/articles/nature14539" target="_blank" rel="noopener">Source: LeCun, Bengio, Hinton, Nature 2015</a></p>
+      </details>
+
+      <details class="faq-item">
+        <summary><h3>Will AI replace humans and take all jobs?</h3></summary>
+        <p class="faq-answer">AI will <strong>change</strong> jobs, not erase humanity. Pattern-based tasks (sorting, standard writing, image recognition) are more automatable. Creative synthesis, physical skill, empathy, ethical judgment, and original ideas remain human strengths. The best insurance: understand AI, develop skills it cannot replicate, stay curious. <a href="https://unesdoc.unesco.org/ark:/48223/pf0000380969" target="_blank" rel="noopener">Source: UNESCO 2022</a></p>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       FOR PARENTS
+  ════════════════════════════════ -->
+  <div class="parent-wrap" id="parent">
+    <button class="parent-toggle" id="parent-toggle" aria-expanded="false">
+      👪 FOR PARENTS &amp; EDUCATORS — click to expand
+      <span class="parent-arrow">▼</span>
+    </button>
+    <div class="parent-body" id="parent-body">
+      <h4>🔒 Zero data collection</h4>
+      <p>No cookies, no tracking, no registration. Progress is stored only in the browser's
+         localStorage — it never leaves the device.</p>
+
+      <h4>🃏 How the card number works</h4>
+      <p>The number = seconds elapsed since project launch (2026-07-01, UTC).
+         No server involved. The hash is SHA-256 and publicly verifiable.
+         Think of it like a Pokemon card serial number — meaningful and unforgeable.</p>
+
+      <h4>📚 Sources</h4>
+      <p>Every fact is linked to its original source: arXiv papers, UNESCO, MIT Media Lab,
+         EU AI Act. No sensationalism, no anthropomorphism.</p>
+
+      <h4>🌍 Open source · GPL v3</h4>
+      <p>All code is on
+        <a href="https://github.com/IamAlex-afk/kids-ai-test" target="_blank" rel="noopener">GitHub</a>.
+        No ads. No paid tier. Supported only by voluntary donations.</p>
+
+      <h4>💬 Questions to discuss with your child</h4>
+      <ul>
+        <li>Can Siri or Alexa feel lonely? How do you know?</li>
+        <li>If AI writes a story, who is the real author?</li>
+        <li>What's one thing AI does better than people? One thing people do better?</li>
+        <li>If AI says something is true, how could you check?</li>
+        <li>Would you trust AI to make an important decision for you? Why or why not?</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+       FOOTER
+  ════════════════════════════════ -->
+  <footer>
+    <div>
+      🤖 <strong>Kids AI Test</strong> ·
+      <a href="https://github.com/IamAlex-afk/kids-ai-test" target="_blank" rel="noopener">GitHub</a> ·
+      <a href="https://github.com/IamAlex-afk/kids-ai-test/blob/main/LICENSE" target="_blank" rel="noopener">GPL v3</a> ·
+      <a href="https://iamalex-afk.github.io/human-os-patch-33-protocols/" target="_blank" rel="noopener">Main Site: 33 Protocols</a>
+    </div>
+    <div style="margin-top:6px">
+      Free forever · No ads · No data ·
+      Made by <a href="https://github.com/IamAlex-afk" target="_blank" rel="noopener">Alex Bitkin</a> ·
+      <a href="https://ko-fi.com/" target="_blank" rel="noopener">Support ☕</a>
+    </div>
+    <div style="margin-top:8px;font-size:.7rem;opacity:.45;line-height:1.6">
+      All educational content verified against peer-reviewed sources.<br>
+      arXiv · UNESCO · MIT · EU AI Act · Common Sense Media
+    </div>
+  </footer>
+
+</div><!-- /.page -->
+
+<!-- SCRIPTS (order matters) -->
+<script src="data/en.js"></script>
+<script src="js/names.js"></script>
+<script src="js/card.js"></script>
+<script src="js/core.js"></script>
+
+</body>
+</html>
