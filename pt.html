@@ -73,17 +73,20 @@
 </div>
 <div class="page">
   <div class="top-bar">
-    <div class="lang-group">
-      <button class="top-btn" data-lang-switch="en">🇬🇧 EN</button>
-      <button class="top-btn" data-lang-switch="ru">🇷🇺 RU</button>
-      <button class="top-btn active" data-lang-switch="pt">🇧🇷 PT</button>
-      <button class="top-btn" data-lang-switch="es">🇪🇸 ES</button>
-      <button class="top-btn" data-lang-switch="de">🇩🇪 DE</button>
-      <button class="top-btn" data-lang-switch="fr">🇫🇷 FR</button>
-      <button class="top-btn" data-lang-switch="hi">🇮🇳 HI</button>
-      <button class="top-btn" data-lang-switch="id">🇮🇩 ID</button>
-      <button class="top-btn" data-lang-switch="tr">🇹🇷 TR</button>
-      <button class="top-btn" data-lang-switch="vi">🇻🇳 VI</button>
+    <div class="lang-switcher" id="lang-switcher">
+      <button class="lang-globe" id="lang-globe" aria-label="Switch language" aria-expanded="false">🌐 <span id="lang-cur">PT</span> <span class="lang-arrow">▾</span></button>
+      <div class="lang-dropdown" id="lang-dropdown">
+      <a class="lang-opt" href="index.html">🇬🇧 English</a>
+      <a class="lang-opt" href="ru.html">🇷🇺 Русский</a>
+      <a class="lang-opt" href="de.html">🇩🇪 Deutsch</a>
+      <a class="lang-opt" href="es.html">🇪🇸 Español</a>
+      <a class="lang-opt" href="fr.html">🇫🇷 Français</a>
+      <a class="lang-opt" href="hi.html">🇮🇳 हिंदी</a>
+      <a class="lang-opt" href="id.html">🇮🇩 Bahasa</a>
+      <a class="lang-opt active" href="pt.html">🇧🇷 Português</a>
+      <a class="lang-opt" href="tr.html">🇹🇷 Türkçe</a>
+      <a class="lang-opt" href="vi.html">🇻🇳 Tiếng Việt</a>
+      </div>
     </div>
     <div class="age-group" id="age-group">
       <button class="top-btn" data-age-quick="tiny"  title="3–5 anos">🧸</button>
