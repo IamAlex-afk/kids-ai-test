@@ -31,7 +31,6 @@
     if (_actx && _actx.state === 'suspended') _actx.resume();
     return _actx;
   }
-
   function tone(freq, start, dur, type, vol) {
     const ctx = ac(); if (!ctx) return;
     const o = ctx.createOscillator(), g = ctx.createGain();
@@ -43,7 +42,6 @@
     g.gain.exponentialRampToValueAtTime(0.001, t0 + dur);
     o.start(t0); o.stop(t0 + dur + 0.04);
   }
-
   const sndPop    = () => { tone(880, 0, 0.07, 'sine', 0.18); tone(1320, 0.03, 0.06, 'triangle', 0.12); };
   const sndError  = () => { tone(200, 0, 0.14, 'sawtooth', 0.13); tone(130, 0.10, 0.18, 'sawtooth', 0.10); };
   const sndStreak = () => { tone(1047, 0, 0.06, 'sine', 0.20); tone(1319, 0.05, 0.06, 'sine', 0.18); };
@@ -53,26 +51,22 @@
   const haptic = (p) => navigator.vibrate && navigator.vibrate(p);
 
   /* ─── HELPERS ─────────────────────────────────────────────────────── */
-  function lerp(a, b, t) { return a + (b - a) * Math.min(1, Math.max(0, t)); }
+  function lerp(a, b, tt) { return a + (b - a) * Math.min(1, Math.max(0, tt)); }
 
   function rrect(ctx, x, y, w, h, r) {
     r = Math.min(r, w / 2, h / 2);
     ctx.beginPath();
     ctx.moveTo(x + r, y);
-    ctx.lineTo(x + w - r, y);
-    ctx.arcTo(x + w, y, x + w, y + r, r);
-    ctx.lineTo(x + w, y + h - r);
-    ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
-    ctx.lineTo(x + r, y + h);
-    ctx.arcTo(x, y + h, x, y + h - r, r);
-    ctx.lineTo(x, y + r);
-    ctx.arcTo(x, y, x + r, y, r);
+    ctx.lineTo(x + w - r, y); ctx.arcTo(x + w, y, x + w, y + r, r);
+    ctx.lineTo(x + w, y + h - r); ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
+    ctx.lineTo(x + r, y + h); ctx.arcTo(x, y + h, x, y + h - r, r);
+    ctx.lineTo(x, y + r); ctx.arcTo(x, y, x + r, y, r);
     ctx.closePath();
   }
 
-  function cssv(name, fb) {
-    const v = getComputedStyle(document.body).getPropertyValue(name).trim();
-    return v || fb;
+  function seededRng(seed) {
+    let s = seed;
+    return () => { s = ((s * 1664525 + 1013904223) | 0) >>> 0; return s / 0xffffffff; };
   }
 
   /* ─── PARTICLES ───────────────────────────────────────────────────── */
@@ -84,23 +78,19 @@
       particles.push({ x: cx, y: cy, vx: Math.cos(angle) * spd, vy: Math.sin(angle) * spd, alpha: 1, sz: 2 + Math.random() * 4, color });
     }
   }
-
   function tickParticles(arr) {
     for (let i = arr.length - 1; i >= 0; i--) {
-      const p = arr[i];
-      p.x += p.vx; p.y += p.vy;
-      p.vx *= 0.90; p.vy *= 0.90;
-      p.alpha -= 0.028;
+      const p = arr[i]; p.x += p.vx; p.y += p.vy;
+      p.vx *= 0.90; p.vy *= 0.90; p.alpha -= 0.028;
       if (p.alpha <= 0) arr.splice(i, 1);
     }
   }
-
   function drawParticles(ctx, arr) {
     ctx.save();
     arr.forEach(p => {
       ctx.globalAlpha = Math.max(0, p.alpha);
-      ctx.shadowBlur  = 8; ctx.shadowColor = p.color;
-      ctx.fillStyle   = p.color;
+      ctx.shadowBlur = 8; ctx.shadowColor = p.color;
+      ctx.fillStyle = p.color;
       ctx.beginPath(); ctx.arc(p.x, p.y, p.sz, 0, Math.PI * 2); ctx.fill();
     });
     ctx.restore(); ctx.shadowBlur = 0;
@@ -110,14 +100,12 @@
   function spawnFloat(floats, x, y, text, color) {
     floats.push({ x, y, text, color: color || '#ffd700', alpha: 1.3, vy: -1.4 });
   }
-
   function tickFloats(arr) {
     for (let i = arr.length - 1; i >= 0; i--) {
       arr[i].y += arr[i].vy; arr[i].alpha -= 0.024;
       if (arr[i].alpha <= 0) arr.splice(i, 1);
     }
   }
-
   function drawFloats(ctx, arr, cell) {
     ctx.save(); ctx.textAlign = 'center';
     arr.forEach(f => {
@@ -130,6 +118,366 @@
     ctx.restore(); ctx.shadowBlur = 0; ctx.globalAlpha = 1;
   }
 
+  /* ─── BACKGROUND PRE-RENDER ───────────────────────────────────────── */
+  function buildBgCanvas(W, H, cell, cols, rows) {
+    const bc = document.createElement('canvas');
+    bc.width = W; bc.height = H;
+    const g = bc.getContext('2d');
+    g.fillStyle = '#07080f';
+    g.fillRect(0, 0, W, H);
+
+    // Grid lines
+    g.strokeStyle = 'rgba(34,211,238,0.065)';
+    g.lineWidth = 0.5;
+    for (let x = 0; x <= W; x += cell) { g.beginPath(); g.moveTo(x, 0); g.lineTo(x, H); g.stroke(); }
+    for (let y = 0; y <= H; y += cell) { g.beginPath(); g.moveTo(0, y); g.lineTo(W, y); g.stroke(); }
+
+    // Circuit traces (seeded)
+    const rng = seededRng(137);
+    for (let i = 0; i < 10; i++) {
+      const gx = (Math.floor(rng() * (cols - 1)) + 0.5) * cell;
+      const gy = (Math.floor(rng() * (rows - 1)) + 0.5) * cell;
+      const len = (1 + Math.floor(rng() * 3)) * cell;
+      const horiz = rng() > 0.5;
+      g.strokeStyle = `rgba(34,211,238,${0.10 + rng() * 0.12})`;
+      g.lineWidth = 1.5;
+      g.beginPath();
+      if (horiz) { g.moveTo(gx, gy); g.lineTo(gx + len, gy); }
+      else       { g.moveTo(gx, gy); g.lineTo(gx, gy + len); }
+      g.stroke();
+      // junction dot
+      g.fillStyle = `rgba(34,211,238,${0.25 + rng() * 0.2})`;
+      g.beginPath(); g.arc(gx, gy, 2.5, 0, Math.PI * 2); g.fill();
+      if (horiz) { g.beginPath(); g.arc(gx + len, gy, 2, 0, Math.PI * 2); g.fill(); }
+      else       { g.beginPath(); g.arc(gx, gy + len, 2, 0, Math.PI * 2); g.fill(); }
+    }
+
+    // Corner dots
+    g.fillStyle = 'rgba(34,211,238,0.07)';
+    for (let x = 0; x <= W; x += cell * 2)
+      for (let y = 0; y <= H; y += cell * 2) {
+        g.beginPath(); g.arc(x, y, 1.5, 0, Math.PI * 2); g.fill();
+      }
+
+    return bc;
+  }
+
+  /* ─── MONITOR HEAD RENDERER ───────────────────────────────────────── */
+  function drawMonitor(ctx, cx, cy, cell, dir, now, eating, dead) {
+    ctx.save();
+    ctx.translate(cx, cy);
+    const angle = dir.x > 0 ? 0 : dir.x < 0 ? Math.PI : dir.y > 0 ? Math.PI/2 : -Math.PI/2;
+    ctx.rotate(angle);
+
+    const s = cell;
+    const mw = s * 0.88, mh = s * 0.70;
+    const mx = -mw/2, my = -mh/2 - s * 0.03;
+
+    // Outer glow
+    ctx.shadowBlur = dead ? 28 : eating ? 36 : 20;
+    ctx.shadowColor = dead ? '#f87171' : eating ? '#ffffff' : '#22d3ee';
+    ctx.fillStyle   = dead ? '#1a0808' : '#0a1628';
+    ctx.strokeStyle = dead ? '#f87171' : eating ? '#aaffff' : '#22d3ee';
+    ctx.lineWidth = 2;
+    rrect(ctx, mx, my, mw, mh, Math.min(7, s * 0.15));
+    ctx.fill(); ctx.stroke();
+    ctx.shadowBlur = 0;
+
+    // Screen
+    const sw = mw * 0.80, sh = mh * 0.65;
+    const sx = -sw/2, sy = my + (mh - sh)/2 + mh * 0.04;
+
+    if (dead) {
+      // Static / noise on screen
+      ctx.fillStyle = '#0a0000';
+      rrect(ctx, sx, sy, sw, sh, 3); ctx.fill();
+      for (let n = 0; n < 28; n++) {
+        const nx2 = sx + Math.random() * sw;
+        const ny2 = sy + Math.random() * sh;
+        const bri = Math.random();
+        ctx.fillStyle = `rgba(248,113,113,${bri * 0.7})`;
+        ctx.fillRect(nx2, ny2, 2 + Math.random() * 4, 1 + Math.random() * 2);
+      }
+    } else {
+      // Normal screen
+      const sg = ctx.createRadialGradient(0, sy + sh * 0.4, 0, 0, sy + sh * 0.4, sw * 0.75);
+      sg.addColorStop(0, eating ? '#003322' : '#003d55');
+      sg.addColorStop(1, '#000d1a');
+      ctx.fillStyle = sg;
+      rrect(ctx, sx, sy, sw, sh, 3); ctx.fill();
+
+      // Moving scan line
+      const scanPos = ((now * 0.055) % sh);
+      ctx.fillStyle = `rgba(34,211,238,${eating ? 0.22 : 0.08})`;
+      ctx.fillRect(sx, sy + scanPos, sw, 2);
+
+      // Horizontal scan texture
+      ctx.fillStyle = 'rgba(0,0,0,0.22)';
+      for (let sl = 0; sl < sh; sl += 3) ctx.fillRect(sx, sy + sl, sw, 1);
+
+      // Screen border
+      ctx.strokeStyle = eating ? 'rgba(100,255,200,0.8)' : 'rgba(34,211,238,0.4)';
+      ctx.lineWidth = 1;
+      rrect(ctx, sx, sy, sw, sh, 3); ctx.stroke();
+
+      // Eyes
+      const blink = Math.sin(now * 0.0028) > 0.92;
+      const eyeY = sy + sh * 0.35;
+      const eyeX = sw * 0.20;
+      const eyeR = Math.max(1.5, s * 0.072);
+      ctx.shadowBlur = eating ? 18 : 10;
+      ctx.shadowColor = eating ? '#ffff44' : '#00ffff';
+      ctx.fillStyle   = eating ? '#ffff66' : '#00ffff';
+      [-1, 1].forEach(side => {
+        ctx.beginPath();
+        ctx.ellipse(side * eyeX, eyeY, eyeR, blink ? Math.max(0.5, eyeR * 0.08) : eyeR, 0, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      ctx.shadowBlur = 0;
+
+      // Mouth
+      ctx.strokeStyle = eating ? 'rgba(255,255,80,0.85)' : 'rgba(0,255,200,0.5)';
+      ctx.lineWidth = Math.max(1, s * 0.038);
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      if (eating) {
+        ctx.arc(0, eyeY + eyeR * 3.0, eyeR * 1.4, -Math.PI * 0.75, -Math.PI * 0.25);
+      } else {
+        ctx.arc(0, eyeY + eyeR * 2.8, eyeR * 1.3, 0.25, Math.PI - 0.25);
+      }
+      ctx.stroke();
+    }
+
+    // Monitor stand
+    const standY = my + mh;
+    ctx.fillStyle = dead ? '#1a0808' : '#0d2040';
+    ctx.strokeStyle = dead ? 'rgba(248,113,113,0.35)' : 'rgba(34,211,238,0.35)';
+    ctx.lineWidth = 1;
+    ctx.fillRect(-s * 0.065, standY, s * 0.13, s * 0.11);
+    ctx.shadowBlur = 4;
+    ctx.shadowColor = dead ? '#f87171' : '#22d3ee';
+    ctx.fillStyle = dead ? '#120808' : '#0a1525';
+    rrect(ctx, -s * 0.28, standY + s * 0.10, s * 0.56, s * 0.09, 2);
+    ctx.fill(); ctx.stroke();
+    ctx.shadowBlur = 0;
+
+    ctx.restore();
+  }
+
+  /* ─── KEYBOARD SEGMENT RENDERER ──────────────────────────────────── */
+  const KEY_LABELS = ['ESC','F1','TAB','ALT','DEL','←','→','↑','↓','SPC','CTL','F2','END','INS','F3','PgUp'];
+
+  function drawKeySegment(ctx, px, py, cell, idx, alpha) {
+    const pad = cell * 0.10;
+    const x = px + pad, y = py + pad;
+    const w = cell - pad * 2, h = cell - pad * 2;
+    const r = Math.min(5, cell * 0.14);
+
+    // Drop shadow (3D depth)
+    ctx.fillStyle = `rgba(80,20,130,${alpha * 0.55})`;
+    rrect(ctx, x + 1.5, y + 2.5, w, h, r);
+    ctx.fill();
+
+    // Keycap face
+    const kg = ctx.createLinearGradient(x, y, x, y + h);
+    kg.addColorStop(0, `rgba(60,22,110,${alpha})`);
+    kg.addColorStop(0.55, `rgba(32,10,70,${alpha})`);
+    kg.addColorStop(1,    `rgba(16,4,42,${alpha})`);
+    ctx.fillStyle = kg;
+    ctx.shadowBlur = 7;
+    ctx.shadowColor = `rgba(168,85,247,${alpha * 0.45})`;
+    rrect(ctx, x, y, w, h - 1, r);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+
+    // Border
+    ctx.strokeStyle = `rgba(168,85,247,${alpha * 0.72})`;
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    // Top highlight
+    ctx.strokeStyle = `rgba(210,160,255,${alpha * 0.42})`;
+    ctx.lineWidth = 1.5;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.moveTo(x + r + 1, y + 1.5);
+    ctx.lineTo(x + w - r - 1, y + 1.5);
+    ctx.stroke();
+
+    // Left edge highlight
+    ctx.strokeStyle = `rgba(180,120,240,${alpha * 0.22})`;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(x + 1.5, y + r);
+    ctx.lineTo(x + 1.5, y + h - r - 1);
+    ctx.stroke();
+
+    // Key label
+    if (cell >= 18) {
+      const label = KEY_LABELS[idx % KEY_LABELS.length];
+      const fs = Math.max(5, Math.round(cell * 0.21));
+      ctx.fillStyle = `rgba(195,135,255,${alpha * 0.72})`;
+      ctx.font = `700 ${fs}px monospace`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(label, px + cell / 2, py + cell / 2 + 1);
+    }
+  }
+
+  /* ─── CABLE / TAIL RENDERER ───────────────────────────────────────── */
+  function smoothPathThrough(ctx, pts) {
+    if (pts.length < 2) return;
+    ctx.beginPath();
+    ctx.moveTo(pts[0].x, pts[0].y);
+    for (let i = 1; i < pts.length - 1; i++) {
+      const mx = (pts[i].x + pts[i + 1].x) / 2;
+      const my = (pts[i].y + pts[i + 1].y) / 2;
+      ctx.quadraticCurveTo(pts[i].x, pts[i].y, mx, my);
+    }
+    ctx.lineTo(pts[pts.length - 1].x, pts[pts.length - 1].y);
+  }
+
+  function drawCable(ctx, centerPts, cell, now) {
+    if (centerPts.length < 2) return;
+    const baseW = cell * 0.27;
+    ctx.save();
+
+    // Outer glow
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.strokeStyle = 'rgba(34,211,238,0.10)';
+    ctx.lineWidth   = baseW * 2.5;
+    ctx.lineCap     = 'round';
+    ctx.lineJoin    = 'round';
+    ctx.shadowBlur  = 10;
+    ctx.shadowColor = '#22d3ee';
+    smoothPathThrough(ctx, centerPts);
+    ctx.stroke();
+
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.shadowBlur = 0;
+
+    // Jacket (dark outer layer)
+    ctx.strokeStyle = '#071520';
+    ctx.lineWidth   = baseW * 1.7;
+    smoothPathThrough(ctx, centerPts);
+    ctx.stroke();
+
+    // Inner conductor glow
+    ctx.strokeStyle = 'rgba(34,211,238,0.60)';
+    ctx.lineWidth   = baseW * 0.32;
+    smoothPathThrough(ctx, centerPts);
+    ctx.stroke();
+
+    // Animated dashed stripe
+    ctx.strokeStyle = 'rgba(34,211,238,0.28)';
+    ctx.lineWidth   = baseW * 0.15;
+    ctx.setLineDash([cell * 0.38, cell * 0.28]);
+    ctx.lineDashOffset = -(now * 0.016) % (cell * 0.66);
+    smoothPathThrough(ctx, centerPts);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Connector rings at junctions
+    centerPts.forEach((p, i) => {
+      if (i === 0 || i % 2 !== 0) return;
+      ctx.fillStyle = 'rgba(34,211,238,0.38)';
+      ctx.beginPath(); ctx.arc(p.x, p.y, baseW * 0.52, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = 'rgba(34,211,238,0.18)';
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(p.x, p.y, baseW * 0.80, 0, Math.PI * 2); ctx.stroke();
+    });
+
+    ctx.restore();
+  }
+
+  /* ─── CRT OVERLAY ─────────────────────────────────────────────────── */
+  function drawCRTOverlay(ctx, W, H) {
+    // Vignette
+    const vg = ctx.createRadialGradient(W/2, H/2, H * 0.3, W/2, H/2, H * 0.82);
+    vg.addColorStop(0, 'rgba(0,0,0,0)');
+    vg.addColorStop(1, 'rgba(0,0,0,0.45)');
+    ctx.fillStyle = vg;
+    ctx.fillRect(0, 0, W, H);
+
+    // Subtle scanlines over everything
+    ctx.fillStyle = 'rgba(0,0,0,0.07)';
+    for (let y = 0; y < H; y += 4) ctx.fillRect(0, y, W, 2);
+  }
+
+  /* ─── TOKEN RENDERER ──────────────────────────────────────────────── */
+  function drawToken(ctx, tok, cell, isTarget, sizing, now) {
+    const x = tok.x * cell, y = tok.y * cell;
+    const cx2 = x + cell / 2, cy2 = y + cell / 2;
+    ctx.save();
+
+    if (isTarget) {
+      // Correct token — holographic data chip
+      const pulse = 0.55 + 0.40 * Math.sin(now / 190);
+      const color = '#00ff88';
+
+      // Outer halo
+      ctx.globalCompositeOperation = 'lighter';
+      ctx.globalAlpha = 0.18 * pulse;
+      ctx.shadowBlur  = 24 + 8 * pulse;
+      ctx.shadowColor = color;
+      ctx.fillStyle   = color;
+      ctx.beginPath(); ctx.arc(cx2, cy2, cell * 0.66, 0, Math.PI * 2); ctx.fill();
+      ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1;
+
+      // Hexagonal ring
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1.8;
+      ctx.globalAlpha = 0.3 + 0.28 * pulse;
+      ctx.shadowBlur = 10; ctx.shadowColor = color;
+      const hr = cell * 0.44;
+      ctx.beginPath();
+      for (let h = 0; h < 6; h++) {
+        const ha = (Math.PI / 3) * h - Math.PI / 6 + (now * 0.0008);
+        h === 0 ? ctx.moveTo(cx2 + Math.cos(ha) * hr, cy2 + Math.sin(ha) * hr)
+                : ctx.lineTo(cx2 + Math.cos(ha) * hr, cy2 + Math.sin(ha) * hr);
+      }
+      ctx.closePath(); ctx.stroke();
+      ctx.globalAlpha = 1; ctx.shadowBlur = 0;
+
+      // Text
+      ctx.fillStyle = color;
+      ctx.shadowBlur = 14; ctx.shadowColor = color;
+    } else {
+      // Decoy — red error / virus
+      const dPulse = 0.6 + 0.35 * Math.sin(now / 130 + tok.x);
+      const color  = '#f87171';
+
+      ctx.globalAlpha = 0.38 + 0.12 * dPulse;
+      ctx.shadowBlur  = 8; ctx.shadowColor = color;
+      // jagged X cross
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2;
+      const xr = cell * 0.3;
+      ctx.beginPath(); ctx.moveTo(cx2 - xr, cy2 - xr); ctx.lineTo(cx2 + xr, cy2 + xr); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(cx2 + xr, cy2 - xr); ctx.lineTo(cx2 - xr, cy2 + xr); ctx.stroke();
+      ctx.globalAlpha = 0.42;
+      ctx.fillStyle = color;
+      ctx.shadowBlur = 5; ctx.shadowColor = color;
+    }
+
+    // Token text
+    let fs = Math.round(cell * sizing.baseMult);
+    ctx.font = `800 ${fs}px system-ui, sans-serif`;
+    while (ctx.measureText(tok.text).width > sizing.maxW && fs > sizing.minFont) {
+      fs--; ctx.font = `800 ${fs}px system-ui, sans-serif`;
+    }
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    if (isTarget) {
+      ctx.fillStyle = '#00ff88';
+      ctx.fillText(tok.text, cx2, cy2);
+    } else {
+      ctx.globalAlpha = 0.5;
+      ctx.fillStyle = '#f87171';
+      ctx.fillText(tok.text, cx2, cy2);
+    }
+    ctx.restore();
+  }
+
   /* ═══════════════════════════════════════════════════════════════════
      MAIN GAME CLASS
   ═══════════════════════════════════════════════════════════════════ */
@@ -139,18 +487,20 @@
     const lang   = opts.lang || 'en';
     const rounds = opts.rounds || [];
 
-    let alive   = true;
-    let roundIdx = 0;
-    let rafId   = null;
-    let els     = {};
+    let alive      = true;
+    let roundIdx   = 0;
+    let rafId      = null;
+    let els        = {};
     let cleanupFns = [];
     let currentRound = null;
+    let bgCanvas   = null;
 
-    // Visual effects state
+    // Visual effects
     let particles  = [];
     let floats     = [];
     let hitStopEnd = 0;
     let flashEnd   = 0;
+    let eatingEnd  = 0;
 
     // Game logic state
     let dir, pendingDir, snake, prevSnake, lastMoveTs, target, decoyList, tick, sess;
@@ -174,11 +524,7 @@
     rafId = requestAnimationFrame(renderLoop);
     playRound(0);
 
-    function renderLoop() {
-      if (!alive) return;
-      draw();
-      rafId = requestAnimationFrame(renderLoop);
-    }
+    function renderLoop() { if (!alive) return; draw(); rafId = requestAnimationFrame(renderLoop); }
 
     /* ─── DOM ─────────────────────────────────────────────────────── */
     function buildFrame() {
@@ -215,20 +561,28 @@
       els.overlay  = container.querySelector('#sk-overlay');
       els.ctx      = els.canvas.getContext('2d');
 
+      // Responsive dimensions — fill container width, tall on mobile
+      const avW = Math.min(container.clientWidth || window.innerWidth - 16, window.innerWidth - 16);
+      const avH = Math.min(window.innerHeight - 160, 580);
+      const targetCols = Math.max(9, Math.min(14, Math.floor(avW / cfg.cell)));
+      cfg.cell = Math.floor(avW / targetCols);
+      cfg.cols = Math.max(9, Math.floor(avW / cfg.cell));
+      cfg.rows = Math.max(7, Math.min(14, Math.floor(avH / cfg.cell)));
+
       els.canvas.width  = cfg.cols * cfg.cell;
       els.canvas.height = cfg.rows * cfg.cell;
       els.canvas.style.width = '100%';
       els.canvas.style.maxWidth = (cfg.cols * cfg.cell) + 'px';
 
+      bgCanvas = buildBgCanvas(cfg.cols * cfg.cell, cfg.rows * cfg.cell, cfg.cell, cfg.cols, cfg.rows);
+
       container.querySelectorAll('.sk-dbtn').forEach(btn =>
         on(btn, 'pointerdown', (e) => { e.preventDefault(); setDir(btn.dataset.dir); })
       );
-
       on(document, 'keydown', (e) => {
         const map = { ArrowUp:'up', w:'up', W:'up', ArrowDown:'down', s:'down', S:'down', ArrowLeft:'left', a:'left', A:'left', ArrowRight:'right', d:'right', D:'right' };
         if (map[e.key]) { e.preventDefault(); setDir(map[e.key]); }
       });
-
       let tx0 = 0, ty0 = 0;
       on(els.canvas, 'touchstart', (e) => { const t0 = e.changedTouches[0]; tx0 = t0.clientX; ty0 = t0.clientY; }, { passive: true });
       on(els.canvas, 'touchend', (e) => {
@@ -287,7 +641,6 @@
           if (!occ.has(x + ',' + y)) cells.push({ x, y });
       return cells;
     }
-
     function freeCell(occ) {
       const cells = emptyCells(occ);
       return cells.length ? cells[Math.floor(Math.random() * cells.length)] : { x: 0, y: 0 };
@@ -326,10 +679,7 @@
       clearTimeout(tick);
       if (!alive) return;
 
-      // Save prev positions for interpolation
-      // Each body segment[i] will move to where segment[i-1] was
       const snapPrev = snake.map(s => ({ ...s }));
-
       dir = pendingDir;
       const hx = snake[0].x + dir.x, hy = snake[0].y + dir.y;
       let nx = hx, ny = hy;
@@ -340,36 +690,25 @@
       } else if (hx < 0 || hx >= cfg.cols || hy < 0 || hy >= cfg.rows) {
         doFail(round); return;
       }
-
       if (!cfg.wrap && snake.some((s, i) => i > 0 && s.x === nx && s.y === ny)) {
         doFail(round); return;
       }
 
       snake.unshift({ x: nx, y: ny });
       lastMoveTs = Date.now();
-
-      // prevSnake: for each NEW segment index i, its visual "from" position
-      // new snake[0] came from snapPrev[0]; new snake[i>0] is same as snapPrev[i-1]
       prevSnake = [snapPrev[0], ...snapPrev];
 
       let ate = false;
       if (nx === target.x && ny === target.y) {
         ate = true;
-        sess.collected++;
-        streak++;
-
-        // Hit-stop — freeze snake render 45ms for impact feel
+        sess.collected++; streak++;
         hitStopEnd = Date.now() + 45;
+        eatingEnd  = Date.now() + 160;
         sndPop(); haptic([50]);
-
-        // Particle burst at eaten cell center
         spawnBurst(particles, nx * cfg.cell + cfg.cell / 2, ny * cfg.cell + cfg.cell / 2, '#00ff88');
-
-        // Floating combo label
         if (streak === 2) spawnFloat(floats, nx * cfg.cell + cfg.cell / 2, ny * cfg.cell, t(lang, 'combo2'), '#ffd700');
         else if (streak === 3) { spawnFloat(floats, nx * cfg.cell + cfg.cell / 2, ny * cfg.cell, t(lang, 'combo3'), '#ff9500'); sndStreak(); }
         else if (streak >= 5 && streak % 5 === 0) { spawnFloat(floats, nx * cfg.cell + cfg.cell / 2, ny * cfg.cell, t(lang, 'combo5'), '#22d3ee'); sndStreak(); }
-
         onProgress(round);
       } else {
         const di = decoyList.findIndex(d => d.x === nx && d.y === ny);
@@ -399,7 +738,6 @@
     function doFail(round) {
       sndError(); haptic([100, 50, 100]); streak = 0;
       flashEnd = Date.now() + 320;
-      // Scatter death particles along body
       (snake || []).forEach((seg, i) => {
         if (i % 2 === 0) spawnBurst(particles, seg.x * cfg.cell + cfg.cell / 2, seg.y * cfg.cell + cfg.cell / 2, '#f87171', 6);
       });
@@ -441,172 +779,87 @@
       const cell = cfg.cell;
       const W    = els.canvas.width, H = els.canvas.height;
       const now  = Date.now();
+      const isDead   = now < flashEnd;
+      const isEating = now < eatingEnd;
 
-      const CYAN = cssv('--accent',  '#22d3ee');
-      const PURP = cssv('--accent2', '#a855f7');
-      const GREN = '#00ff88';
-      const RED  = '#f87171';
-      const BG   = cssv('--bg2', '#0d1117');
+      // Background (pre-rendered circuit board)
+      ctx.drawImage(bgCanvas, 0, 0);
 
-      // ── Background
-      ctx.fillStyle = BG;
-      ctx.fillRect(0, 0, W, H);
-
-      // Subtle dot grid
-      ctx.save();
-      ctx.fillStyle = 'rgba(255,255,255,0.04)';
-      for (let x = cell; x < W; x += cell)
-        for (let y = cell; y < H; y += cell) {
-          ctx.beginPath(); ctx.arc(x, y, 1, 0, Math.PI * 2); ctx.fill();
-        }
-      ctx.restore();
-
-      // Flash overlay on error
-      if (now < flashEnd) {
-        ctx.fillStyle = 'rgba(248,113,113,0.14)';
+      // Red flash overlay on error/death
+      if (isDead) {
+        const flashAlpha = 0.08 + 0.10 * Math.sin(now * 0.04);
+        ctx.fillStyle = `rgba(248,113,113,${flashAlpha})`;
         ctx.fillRect(0, 0, W, H);
       }
 
       if (!snake || !prevSnake) {
-        // Still draw particles during pre-round
         tickParticles(particles); drawParticles(ctx, particles);
         tickFloats(floats); drawFloats(ctx, floats, cell);
+        drawCRTOverlay(ctx, W, H);
         return;
       }
 
-      // Interpolation factor: 0 = just moved, 1 = about to move
+      // Interpolation
       const isHitStop = now < hitStopEnd;
-      const lerpT = isHitStop
-        ? 1
-        : Math.min(1, (now - lastMoveTs) / sess.speed);
+      const lerpT = isHitStop ? 1 : Math.min(1, (now - lastMoveTs) / sess.speed);
 
-      // ── Snake body (back to front for correct layering)
-      for (let i = snake.length - 1; i >= 0; i--) {
-        const cur  = snake[i];
+      // Compute interpolated center positions for each segment
+      const iCenters = snake.map((cur, i) => {
         const prev = prevSnake[i] || cur;
-        const isHead = i === 0;
-
-        // Interpolate between prev position and current
-        let fx = prev.x, fy = prev.y;
-        const tx2 = cur.x, ty2 = cur.y;
-        // Handle wrap-around teleport — don't lerp across the whole grid
-        if (cfg.wrap) {
-          if (tx2 - fx >  cfg.cols / 2) fx += cfg.cols;
-          if (fx - tx2 >  cfg.cols / 2) fx -= cfg.cols;
-          if (ty2 - fy >  cfg.rows / 2) fy += cfg.rows;
-          if (fy - ty2 >  cfg.rows / 2) fy -= cfg.rows;
-        }
-        const lx = lerp(fx, tx2, lerpT) * cell;
-        const ly = lerp(fy, ty2, lerpT) * cell;
-
-        const pct  = i / Math.max(1, snake.length - 1);
-        const pad  = isHead ? 1.5 : 2 + pct * 2.5;
-        const size = cell - pad * 2;
-        const r    = size * (isHead ? 0.42 : 0.32);
-
-        // Glow
-        const glowR = isHead ? 24 : Math.max(6, 18 - pct * 14);
-        ctx.shadowBlur  = glowR;
-        ctx.shadowColor = isHead ? CYAN : PURP;
-        ctx.globalAlpha = Math.max(0.18, 1 - pct * 0.68);
-        ctx.fillStyle   = isHead ? CYAN : PURP;
-
-        rrect(ctx, lx + pad, ly + pad, size, size, r);
-        ctx.fill();
-      }
-      ctx.shadowBlur = 0; ctx.globalAlpha = 1;
-
-      // Head highlight (inner bright core)
-      {
-        const cur  = snake[0];
-        const prev = prevSnake[0] || cur;
         let fx = prev.x, fy = prev.y;
         if (cfg.wrap) {
-          if (cur.x - fx > cfg.cols/2) fx += cfg.cols;
-          if (fx - cur.x > cfg.cols/2) fx -= cfg.cols;
-          if (cur.y - fy > cfg.rows/2) fy += cfg.rows;
-          if (fy - cur.y > cfg.rows/2) fy -= cfg.rows;
+          if (cur.x - fx >  cfg.cols / 2) fx += cfg.cols;
+          if (fx - cur.x >  cfg.cols / 2) fx -= cfg.cols;
+          if (cur.y - fy >  cfg.rows / 2) fy += cfg.rows;
+          if (fy - cur.y >  cfg.rows / 2) fy -= cfg.rows;
         }
-        const lx = lerp(fx, cur.x, lerpT) * cell;
-        const ly = lerp(fy, cur.y, lerpT) * cell;
-        const pad = 1.5, size = cell - pad * 2;
+        return {
+          x: lerp(fx, cur.x, lerpT) * cell,
+          y: lerp(fy, cur.y, lerpT) * cell,
+          cx: lerp(fx, cur.x, lerpT) * cell + cell / 2,
+          cy: lerp(fy, cur.y, lerpT) * cell + cell / 2,
+        };
+      });
 
-        ctx.save();
-        ctx.globalAlpha = 0.35;
-        ctx.fillStyle = '#ffffff';
-        ctx.shadowBlur = 6; ctx.shadowColor = '#ffffff';
-        rrect(ctx, lx + pad + 2, ly + pad + 2, size - 4, (size - 4) * 0.38, 4);
-        ctx.fill();
-        ctx.restore();
+      const n = iCenters.length;
+      const cableStart = Math.max(2, n - Math.max(3, Math.floor(n * 0.30)));
 
-        // LED eyes
-        const eyeOff = cell * 0.22, eyeR = Math.max(1.5, cell * 0.09);
-        const perp   = { x: -dir.y, y: dir.x };
-        const ecx = lx + cell / 2 + dir.x * eyeOff;
-        const ecy = ly + cell / 2 + dir.y * eyeOff;
-        ctx.save();
-        ctx.shadowBlur = 10; ctx.shadowColor = '#fff'; ctx.fillStyle = '#ffffff';
-        [-1, 1].forEach(side => {
-          ctx.beginPath();
-          ctx.arc(ecx + perp.x * eyeOff * side, ecy + perp.y * eyeOff * side, eyeR, 0, Math.PI * 2);
-          ctx.fill();
-        });
-        ctx.restore();
+      // 1. Draw cable (tail as smooth bezier path)
+      if (n > cableStart) {
+        const cablePts = iCenters.slice(cableStart).map(c => ({ x: c.cx, y: c.cy }));
+        // Connect first cable segment to the last keyboard segment
+        if (cableStart > 0) cablePts.unshift({ x: iCenters[cableStart - 1].cx, y: iCenters[cableStart - 1].cy });
+        drawCable(ctx, cablePts, cell, now);
       }
 
-      // ── Tokens
+      // 2. Draw keyboard body segments (back to front, skip head)
+      for (let i = Math.min(n - 1, cableStart - 1); i >= 1; i--) {
+        const seg = iCenters[i];
+        const alpha = Math.max(0.3, 1 - (i / Math.max(1, n - 1)) * 0.55);
+        drawKeySegment(ctx, seg.x, seg.y, cell, i, alpha);
+      }
+
+      // 3. Draw monitor head
+      if (n > 0) {
+        const head = iCenters[0];
+        drawMonitor(ctx, head.cx, head.cy, cell, dir, now, isEating, isDead);
+      }
+
+      // Tokens
       const unit = (currentRound && currentRound.unit) || 'letter';
       const sizing = unit === 'phrase' ? { maxW: cell * 4.6, baseMult: 0.38, minFont: 7 }
                    : unit === 'word'   ? { maxW: cell * 3.2, baseMult: 0.42, minFont: 8 }
-                   :                     { maxW: cell * 2.2, baseMult: 0.5,  minFont: 10 };
+                   :                     { maxW: cell * 2.2, baseMult: 0.50, minFont: 10 };
 
-      if (target) drawToken(ctx, target, cell, GREN, true, sizing, now);
-      (decoyList || []).forEach(d => drawToken(ctx, d, cell, RED, false, sizing, now));
+      if (target) drawToken(ctx, target, cell, true, sizing, now);
+      (decoyList || []).forEach(d => drawToken(ctx, d, cell, false, sizing, now));
 
-      // ── Particles & floats
+      // Particles and floats
       tickParticles(particles); drawParticles(ctx, particles);
       tickFloats(floats);       drawFloats(ctx, floats, cell);
-    }
 
-    /* ─── TOKEN DRAW ──────────────────────────────────────────────── */
-    function drawToken(ctx, tok, cell, color, glow, sizing, now) {
-      const x = tok.x * cell, y = tok.y * cell;
-      ctx.save();
-
-      if (glow) {
-        const pulse = 0.55 + 0.40 * Math.sin(now / 190);
-
-        // Outer halo (lighter blend)
-        ctx.globalCompositeOperation = 'lighter';
-        ctx.globalAlpha = 0.20 * pulse;
-        ctx.shadowBlur = 22 + 10 * pulse; ctx.shadowColor = color;
-        ctx.fillStyle = color;
-        ctx.beginPath(); ctx.arc(x + cell / 2, y + cell / 2, cell * 0.68, 0, Math.PI * 2); ctx.fill();
-        ctx.globalCompositeOperation = 'source-over'; ctx.globalAlpha = 1;
-
-        // Pulsing ring
-        ctx.strokeStyle = color;
-        ctx.lineWidth = 1.8;
-        ctx.globalAlpha = 0.28 + 0.28 * pulse;
-        ctx.shadowBlur = 10; ctx.shadowColor = color;
-        ctx.beginPath(); ctx.arc(x + cell / 2, y + cell / 2, cell * 0.46, 0, Math.PI * 2); ctx.stroke();
-        ctx.globalAlpha = 1;
-      }
-
-      // Text
-      ctx.fillStyle = color;
-      ctx.globalAlpha = glow ? 1 : 0.48;
-      ctx.shadowBlur = glow ? 14 : 3;
-      ctx.shadowColor = color;
-
-      let fs = Math.round(cell * sizing.baseMult);
-      ctx.font = `800 ${fs}px system-ui, sans-serif`;
-      while (ctx.measureText(tok.text).width > sizing.maxW && fs > sizing.minFont) {
-        fs--; ctx.font = `800 ${fs}px system-ui, sans-serif`;
-      }
-      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText(tok.text, x + cell / 2, y + cell / 2);
-      ctx.restore();
+      // CRT overlay (vignette + scanlines)
+      drawCRTOverlay(ctx, W, H);
     }
 
   } // end KatSnake

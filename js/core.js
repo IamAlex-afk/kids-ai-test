@@ -16,10 +16,10 @@ const LS_KEY           = 'kat_v1';
 const CARD_SALT        = 'KAT-2026-MIND-OS-OPEN';
 
 const AGE_CFG = {
-  tiny:  { lessons: 3, gameRounds: 3 },
-  child: { lessons: 4, gameRounds: 4 },
-  teen:  { lessons: 5, gameRounds: 5 },
-  adult: { lessons: 6, gameRounds: 5 },
+  tiny:  { lessons: 3, gameRounds: 15 },
+  child: { lessons: 4, gameRounds: 16 },
+  teen:  { lessons: 5, gameRounds: 15 },
+  adult: { lessons: 6, gameRounds: 15 },
 };
 
 const MASCOTS = { tiny: '🧸', child: '🎮', teen: '📱', adult: '🧠' };
