@@ -24,6 +24,14 @@
   const STR = {
     en: { ready: 'Get Ready!', spell: 'Spell', build: 'Build', round: 'Round', start: 'Start ▶', cont: 'Continue →', hint: 'Arrows / swipe / buttons to move. Grab the glowing target — dodge the red ones!' },
     ru: { ready: 'Приготовься!', spell: 'Собери слово', build: 'Собери фразу', round: 'Раунд', start: 'Старт ▶', cont: 'Дальше →', hint: 'Стрелки / свайп / кнопки — чтобы двигаться. Хватай светящуюся цель — избегай красных!' },
+    de: { ready: 'Fertig!', spell: 'Buchstabiere', build: 'Bilde', round: 'Runde', start: 'Start ▶', cont: 'Weiter →', hint: 'Pfeile / Wischen / Tasten zum Bewegen. Schnapp das leuchtende Ziel — weiche den roten aus!' },
+    es: { ready: '¡Listo!', spell: 'Deletrea', build: 'Construye', round: 'Ronda', start: 'Comenzar ▶', cont: 'Continuar →', hint: 'Flechas / desliza / botones para mover. Atrapa el objetivo brillante — ¡esquiva los rojos!' },
+    fr: { ready: 'Prêt !', spell: 'Épelle', build: 'Construis', round: 'Manche', start: 'Commencer ▶', cont: 'Continuer →', hint: 'Flèches / glisse / boutons pour bouger. Attrape la cible lumineuse — évite les rouges !' },
+    hi: { ready: 'तैयार!', spell: 'शब्द बनाओ', build: 'वाक्य बनाओ', round: 'राउंड', start: 'शुरू ▶', cont: 'आगे →', hint: 'तीर / स्वाइप / बटन से चलो। चमकते लक्ष्य को पकड़ो — लाल से बचो!' },
+    id: { ready: 'Siap!', spell: 'Eja', build: 'Buat', round: 'Babak', start: 'Mulai ▶', cont: 'Lanjutkan →', hint: 'Panah / gesek / tombol untuk bergerak. Ambil target bercahaya — hindari yang merah!' },
+    pt: { ready: 'Pronto!', spell: 'Soletrar', build: 'Construir', round: 'Rodada', start: 'Iniciar ▶', cont: 'Continuar →', hint: 'Setas / deslize / botões para mover. Pegue o alvo brilhante — desvie dos vermelhos!' },
+    tr: { ready: 'Hazır!', spell: 'Yaz', build: 'İnşa Et', round: 'Tur', start: 'Başla ▶', cont: 'Devam →', hint: 'Oklar / kaydır / düğmeler ile hareket et. Parlayan hedefi yakala — kırmızılardan kaç!' },
+    vi: { ready: 'Sẵn sàng!', spell: 'Đánh vần', build: 'Xây dựng', round: 'Vòng', start: 'Bắt đầu ▶', cont: 'Tiếp tục →', hint: 'Mũi tên / vuốt / nút để di chuyển. Bắt mục tiêu sáng — tránh những cái đỏ!' },
   };
   function t(lang, key) { return (STR[lang] || STR.en)[key]; }
 
