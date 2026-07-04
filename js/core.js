@@ -170,7 +170,28 @@ function selectAge(age) {
   show('tracker');
   initTracker();
 
-  setTimeout(() => startLessons(), 500);
+  setTimeout(() => { show('mode-picker'); scrollTo('mode-picker'); initModePicker(); }, 400);
+}
+
+function initModePicker() {
+  const btnLearn = $('btn-mode-learn');
+  const btnPlay  = $('btn-mode-play');
+  if (btnLearn) {
+    btnLearn.onclick = () => {
+      hide('mode-picker');
+      startLessons();
+    };
+  }
+  if (btnPlay) {
+    btnPlay.onclick = () => {
+      hide('mode-picker');
+      const picker = $('game-picker');
+      if (picker) picker.style.display = 'grid';
+      updateGamePicker();
+      show('game');
+      scrollTo('game');
+    };
+  }
 }
 
 /* ─────────────────────────────────────────────
@@ -197,9 +218,9 @@ function renderLesson() {
   const fill = $('lesson-prog-fill');
   if (fill) fill.style.width = pct + '%';
   const cnt  = $('lesson-count');
-  if (cnt) cnt.textContent = `Lesson ${idx + 1} / ${lessons.length}`;
+  if (cnt) cnt.textContent = `${ui('lesson_label') || 'Lesson'} ${idx + 1} / ${lessons.length}`;
   const ph = $('lesson-phase-label');
-  if (ph) ph.textContent = 'Lesson';
+  if (ph) ph.textContent = ui('lesson_label') || 'Lesson';
 
   const container = $('lesson-content');
   if (!container) return;
@@ -214,13 +235,12 @@ function renderLesson() {
           <h3 class="step-title">${lesson.title}</h3>
           <p class="step-text">${lesson.text}</p>
           ${lesson.example ? `<div class="step-example">💡 ${lesson.example}</div>` : ''}
-          ${lesson.source ? `<p class="step-text mt-sm"><a href="${lesson.sourceUrl || '#'}" target="_blank" rel="noopener" class="text-accent">📚 ${lesson.source}</a></p>` : ''}
         </div>
       </div>
     </div>
     <div class="action-row">
       <button class="btn-primary" id="btn-next-lesson">
-        ${hasTest ? '🧪 Quick Check →' : idx === lessons.length - 1 ? '🎮 Ready for the Game!' : 'Got it! Next →'}
+        ${hasTest ? '🧪 ' + (ui('mini_test_label')||'Quick Check') + ' →' : idx === lessons.length - 1 ? ui('lesson_last_btn')||'🎮 Ready for the Game!' : ui('lesson_next_btn')||'Got it! Next →'}
       </button>
     </div>
   `;
@@ -247,16 +267,17 @@ function renderMiniTest() {
   if (!q) { advanceLesson(); return; }
 
   const ph = $('lesson-phase-label');
-  if (ph) ph.textContent = 'Quick Check';
+  if (ph) ph.textContent = ui('check_label') || 'Check';
 
   const container = $('lesson-content');
   if (!container) return;
 
+  const checkLabel = ui('mini_test_label') || 'Quick Check';
   container.innerHTML = `
     <div class="quiz-wrap anim-fade-up">
       <div class="quiz-progress">
         <div class="quiz-prog-top">
-          <span class="quiz-prog-label">Quick Check ${qIdx + 1}/${qs.length}</span>
+          <span class="quiz-prog-label">${checkLabel} ${qIdx + 1}/${qs.length}</span>
         </div>
       </div>
       <div class="q-wrap">
@@ -329,96 +350,84 @@ function onLessonsDone() {
   container.innerHTML = `
     <div class="card green anim-scale-in" style="text-align:center;padding:32px;">
       <p style="font-size:3rem;margin-bottom:12px;">🎉</p>
-      <h3 class="step-title">Lessons Complete!</h3>
-      <p class="step-text">You know how AI really works. Now let's see if you can SPOT it!</p>
+      <h3 class="step-title">${ui('lessons_done_title')||'Lessons Complete!'}</h3>
+      <p class="step-text">${ui('lessons_done_text')||"You know how AI really works. Now let's see if you can SPOT it!"}</p>
       <div class="action-row" style="justify-content:center;margin-top:20px;">
-        <button class="btn-primary" id="btn-go-game">Play Human vs AI →</button>
+        <button class="btn-primary" id="btn-go-game">🎮 ${ui('btn_start_game')||'Play &amp; Learn'} →</button>
       </div>
     </div>
   `;
-  $('btn-go-game').addEventListener('click', startGame);
+  $('btn-go-game').addEventListener('click', () => {
+    const picker = document.getElementById('game-picker');
+    if (picker) picker.style.display = 'grid';
+    updateGamePicker();
+    show('game');
+    scrollTo('game');
+  });
 }
 
 /* ─────────────────────────────────────────────
-   GAME ENGINE
+   GAME ENGINE — AI Snake
+   Eats letters/words/phrases in order (from ageData().snake) while
+   dodging decoy tokens. Engine lives in snake.js (window.KAT_Snake).
 ───────────────────────────────────────────── */
+function updateGamePicker() {
+  const age = S.age;
+  const lang = S.lang || 'en';
+  const isRu = lang === 'ru';
+
+  const snakeDesc = {
+    tiny:  isRu ? 'Собирай буквы и слова про ИИ, уклоняйся от красных. Простые слова!' : 'Collect easy AI words — big letters, simple facts!',
+    child: isRu ? 'Собирай термины ИИ по порядку. Узнай как работает ИИ.' : 'Collect AI terms in order. Learn how AI really works.',
+    teen:  isRu ? 'Сложные термины ИИ: градиент, нейросеть, эпоха. Только для смелых.' : 'Advanced AI terms: gradient, neural net, epoch. For the brave.',
+    adult: isRu ? 'Профессиональные термины ИИ. Для тех кто хочет понять глубже.' : 'Professional AI terms. For those who want to go deeper.',
+  };
+  const duelDesc = {
+    tiny:  isRu ? 'Лёгкий режим для малышей 3–6 лет: безопасность в интернете с картинками.' : 'Easy mode for ages 3–6: online safety with pictures.',
+    child: isRu ? 'Два робота дерутся знаниями. Про ИИ и безопасность в сети. Есть таймер!' : 'Two robots battle with knowledge. AI & online safety. Timer included!',
+    teen:  isRu ? 'Сложные вопросы про ИИ, фишинг, нейросети. Кто умнее — ты или соперник?' : 'Hard questions on AI, phishing, neural nets. Who\'s smarter — you or the rival?',
+    adult: isRu ? 'Тест знаний по безопасности и ИИ. Заработай доспехи роботу!' : 'AI & safety knowledge battle. Earn your robot the full armor set!',
+  };
+
+  const snEl = document.getElementById('snake-desc');
+  const duEl = document.getElementById('duel-desc');
+  const duGo = document.getElementById('duel-go');
+  const btnSnake = document.getElementById('btn-start-snake');
+
+  if (snEl) snEl.textContent = snakeDesc[age] || snakeDesc.child;
+  if (duEl) duEl.textContent = duelDesc[age] || duelDesc.child;
+  if (duGo) duGo.href = isRu ? 'duel/ru.html' : 'duel/';
+  if (btnSnake) {
+    btnSnake.removeEventListener('click', startGame);
+    btnSnake.addEventListener('click', startGame);
+  }
+}
+
 function startGame() {
   const cfg   = AGE_CFG[S.age] || AGE_CFG.child;
   S.game      = { idx: 0, score: 0, rounds: cfg.gameRounds, done: false };
   lsSave();
   show('game');
   scrollTo('game');
-  renderGameRound();
-}
+  const picker = document.getElementById('game-picker');
+  if (picker) picker.style.display = 'none';
 
-function renderGameRound() {
   const data   = ageData();
-  const rounds = data?.game || [];
-  const idx    = S.game.idx;
-
-  if (idx >= S.game.rounds || !rounds[idx]) { onGameDone(); return; }
-
-  const round = rounds[idx];
-
+  const rounds = (data?.snake || []).slice(0, cfg.gameRounds);
   const container = $('game-content');
-  if (!container) return;
+  if (!container || !rounds.length || !window.KAT_Snake) { onGameDone(); return; }
 
-  container.innerHTML = `
-    <div class="game-score-row">
-      <div class="game-score-box">
-        <span class="game-score-num">${S.game.score}</span>
-        <span class="game-score-lbl">CORRECT</span>
-      </div>
-      <div class="game-round-info">Round ${idx + 1} / ${S.game.rounds}</div>
-      <div class="game-score-box">
-        <span class="game-score-num">${idx - S.game.score}</span>
-        <span class="game-score-lbl">WRONG</span>
-      </div>
-    </div>
-
-    <div class="game-text-card anim-fade-in">
-      ${round.text}
-    </div>
-
-    <div class="game-buttons">
-      <button class="game-btn game-btn-human" id="btn-human">
-        👤 Human
-      </button>
-      <button class="game-btn game-btn-ai" id="btn-ai">
-        🤖 AI
-      </button>
-    </div>
-
-    <div class="game-verdict" id="game-verdict"></div>
-  `;
-
-  $('btn-human').addEventListener('click', () => answerGame(true, round));
-  $('btn-ai').addEventListener('click',    () => answerGame(false, round));
-}
-
-function answerGame(guessedHuman, round) {
-  const correct = guessedHuman === round.isHuman;
-
-  $('btn-human').disabled = true;
-  $('btn-ai').disabled    = true;
-
-  if (correct) S.game.score++;
-
-  const verdict = $('game-verdict');
-  if (verdict) {
-    verdict.classList.add(correct ? 'correct' : 'wrong');
-    verdict.innerHTML = `
-      ${correct ? '✅' : '❌'}
-      <strong>${round.isHuman ? '👤 This was written by a HUMAN' : '🤖 This was written by AI'}</strong><br>
-      <span style="font-size:.85rem;font-weight:400;">${round.explanation}</span>
-      ${round.source ? `<br><a href="${round.sourceUrl || '#'}" target="_blank" rel="noopener" style="font-size:.8rem;opacity:.7">📚 ${round.source}</a>` : ''}
-    `;
-  }
-
-  S.game.idx++;
-  lsSave();
-
-  setTimeout(() => renderGameRound(), 2200);
+  window.KAT_Snake.start(container, {
+    age:  S.age,
+    lang: S.lang,
+    rounds,
+    onRoundComplete(idx) {
+      S.game.idx   = idx + 1;
+      S.game.score = idx + 1;
+      lsSave();
+    },
+    onAllDone() { onGameDone(); },
+  });
 }
 
 function onGameDone() {
@@ -426,8 +435,8 @@ function onGameDone() {
   lsSave();
 
   const pct = Math.round((S.game.score / S.game.rounds) * 100);
-  const msg = pct >= 80 ? '🏆 Excellent! You can spot AI almost every time!'
-            : pct >= 50 ? '👍 Good work! You\'re getting better at spotting patterns.'
+  const msg = pct >= 80 ? '🏆 Excellent! You spelled it all out — and now you know why it matters!'
+            : pct >= 50 ? '👍 Good work! You\'re getting the hang of how AI really works.'
             : '🧠 AI is tricky! That\'s exactly why learning about it matters.';
 
   const container = $('game-content');
@@ -568,8 +577,7 @@ function answerQuiz(value, q, clickedBtn) {
     fb.classList.remove('hidden');
     fb.style.background  = correct ? 'rgba(0,255,136,.07)' : 'rgba(248,113,113,.07)';
     fb.style.borderLeft  = `3px solid ${correct ? 'var(--green)' : 'var(--red)'}`;
-    fb.innerHTML = `${correct ? '✅' : '💡'} ${q.explanation}
-      ${q.source ? `<br><a href="${q.sourceUrl || '#'}" target="_blank" rel="noopener" class="text-accent" style="font-size:.8rem">📚 ${q.source}</a>` : ''}`;
+    fb.innerHTML = `${correct ? '✅' : '💡'} ${q.explanation}`;
   }
 
   setTimeout(() => {
@@ -634,7 +642,7 @@ function showResult() {
       <div class="axes-grid" style="margin-top:20px;text-align:left;">
         <div class="axis-row">
           <div class="axis-top">
-            <span class="axis-name">🎮 Game (Human vs AI)</span>
+            <span class="axis-name">🐍 Game (AI Snake)</span>
             <span class="axis-pct">${S.game.score}/${S.game.rounds}</span>
           </div>
           <div class="axis-bar">
@@ -688,6 +696,38 @@ function renderProtocols() {
       <div class="protocol-text">${p.text}</div>
     </div>
   `).join('');
+
+  renderDuelCta(container.parentElement);
+}
+
+// AI Duel is a bonus robot-battle game for ages 3-12 — surface it for
+// tiny/child/teen, skip it for adult (14+), where it would feel out of place.
+// Not routed through ui()/data files: duel/ only has en+ru content so far,
+// and ui() falls back to the raw key name (not English text) when a key
+// is missing from a language's data file.
+const DUEL_CTA_STR = {
+  en: { text: 'Want more? Battle robots with AI trivia in a bonus game.', btn: 'Play AI Duel →' },
+  ru: { text: 'Хочешь ещё? Сразись роботами в викторине про ИИ — бонусная игра.', btn: 'Играть в AI-Дуэль →' },
+};
+function renderDuelCta(sectionEl) {
+  if (!sectionEl) return;
+  const existing = $('duel-cta');
+  if (existing) existing.remove();
+  if (S.age === 'adult') return;
+
+  const href = S.lang === 'ru' ? 'duel/ru.html' : 'duel/';
+  const str  = DUEL_CTA_STR[S.lang] || DUEL_CTA_STR.en;
+  const cta = document.createElement('div');
+  cta.id = 'duel-cta';
+  cta.className = 'card accent2';
+  cta.style.cssText = 'margin-top:20px;padding:20px;text-align:center;';
+  cta.innerHTML = `
+    <p class="step-text">🥊 ${str.text}</p>
+    <div class="action-row" style="justify-content:center;margin-top:12px;">
+      <a class="btn-outline" href="${href}">${str.btn}</a>
+    </div>
+  `;
+  sectionEl.appendChild(cta);
 }
 
 /* ─────────────────────────────────────────────

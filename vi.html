@@ -1,0 +1,260 @@
+﻿<!DOCTYPE html>
+<html lang="vi" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI cho Trẻ em — Câu hỏi & Trò chơi Miễn phí | AI là gì?</title>
+  <meta name="description" content="ChatGPT có sống không? AI có cảm xúc không? Bài kiểm tra kiến thức AI miễn phí cho trẻ từ 3–17 tuổi. Bài học, trò chơi, câu hỏi, thẻ duy nhất. Không đăng ký.">
+  <meta name="keywords" content="AI cho trẻ em, trí tuệ nhân tạo cho trẻ, ChatGPT trẻ em, giải thích AI cho bé, trò chơi giáo dục AI, câu hỏi AI trẻ em miễn phí">
+  <meta name="author" content="Alex Bitkin — Mind-OS">
+  <meta property="og:title" content="AI cho Trẻ em — Câu hỏi & Trò chơi Miễn phí">
+  <meta property="og:description" content="AI là gì? Học · Chơi · Nhận thẻ của bạn. Cho trẻ 3–17 tuổi.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://iamalex-afk.github.io/kids-ai-test/vi.html">
+  <meta property="og:image" content="https://iamalex-afk.github.io/kids-ai-test/og.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI cho Trẻ em — Câu hỏi & Trò chơi Miễn phí">
+  <meta name="twitter:description" content="AI là gì? Học · Chơi · Nhận thẻ của bạn. Cho trẻ 3–17 tuổi.">
+  <meta name="twitter:image" content="https://iamalex-afk.github.io/kids-ai-test/og.svg">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://iamalex-afk.github.io/kids-ai-test/vi.html">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":["WebApplication","EducationalApplication"],"name":"Kids AI Test","isAccessibleForFree":true,"applicationCategory":"EducationApplication","audience":{"@type":"EducationalAudience","suggestedMinAge":3,"suggestedMaxAge":17},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"Alex Bitkin","url":"https://github.com/IamAlex-afk"},"image":"https://iamalex-afk.github.io/kids-ai-test/og.svg"}</script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+  <link rel="stylesheet" href="css/main.css">
+  <meta name="theme-color" content="#8b5cf6">
+  <style>
+    .flow-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:20px 0; }
+    @media(max-width:600px){ .flow-steps { grid-template-columns:repeat(2,1fr); } }
+    .flow-step { background:var(--card); border:1px solid var(--border); border-radius:var(--r); padding:16px 12px; text-align:center; position:relative; }
+    .flow-step-num { position:absolute; top:-10px; left:12px; background:var(--accent); color:var(--bg); font-size:.7rem; font-weight:900; padding:2px 8px; border-radius:10px; }
+    .flow-step-icon { font-size:2rem; display:block; margin-bottom:6px; }
+    .flow-step-title { font-size:.85rem; font-weight:700; color:var(--text); }
+    .flow-step-desc  { font-size:.75rem; color:var(--muted); margin-top:4px; line-height:1.4; }
+    .age-card .age-label   { font-size:1.4rem; font-weight:900; display:block; margin:6px 0 4px; }
+    .age-card .age-range   { font-size:.8rem; color:var(--muted2); display:block; margin-bottom:6px; }
+    .age-card .age-tagline { font-size:.75rem; color:var(--muted); display:block; line-height:1.4; }
+    .section-heading { font-size:clamp(1.1rem,4vw,1.5rem); font-weight:900; color:var(--text); margin-bottom:6px; }
+    .section-explain { color:var(--muted2); font-size:.9rem; line-height:1.6; margin-bottom:20px; }
+    .hero-sub { font-size:1rem; line-height:1.7; }
+    .hero-title { font-size:clamp(2rem,8vw,3.2rem); }
+    .hero-title .line-1 { font-size:.55em; letter-spacing:3px; font-weight:700; }
+    @media(max-width:480px){ .age-group { display:none; } }
+    .parent-body { display:none; }
+    .mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;}
+    @media(max-width:480px){.mode-grid{grid-template-columns:1fr;}}
+    .mode-card{background:var(--card);border:2px solid var(--border);border-radius:var(--r);padding:32px 20px;text-align:center;cursor:pointer;transition:transform .15s,border-color .2s,box-shadow .2s;display:flex;flex-direction:column;align-items:center;gap:10px;font-family:inherit;color:inherit;}
+    .mode-card:hover{transform:translateY(-4px);}
+    .mode-card:active{transform:translateY(1px);}
+    .mode-icon{font-size:3.5rem;line-height:1;}
+    .mode-title{font-size:1.3rem;font-weight:900;color:var(--text);}
+    .mode-desc{font-size:.9rem;color:var(--muted2);line-height:1.55;max-width:220px;}
+    .mode-badge{font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:10px;letter-spacing:.5px;}
+    .learn-mode{border-color:var(--accent);}.learn-mode:hover{border-color:var(--accent);box-shadow:0 10px 28px rgba(139,92,246,.28);}
+    .learn-mode .mode-badge{background:rgba(139,92,246,.15);color:var(--accent);}
+    .play-mode{border-color:#22c55e;}.play-mode:hover{border-color:#22c55e;box-shadow:0 10px 28px rgba(34,197,94,.24);}
+    .play-mode .mode-badge{background:rgba(34,197,94,.15);color:#22c55e;}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Kids AI Test — AI thực sự là gì?",
+    "description": "Trí tuệ nhân tạo thực sự là gì? Trải nghiệm giáo dục miễn phí cho mọi lứa tuổi: 3–99 tuổi. Học, chơi, nhận thẻ độc nhất của bạn. Không đăng ký, không thu thập dữ liệu.",
+    "url": "https://iamalex-afk.github.io/kids-ai-test/vi.html",
+    "applicationCategory": "EducationApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "inLanguage": "vi",
+    "audience": { "@type": "EducationalAudience", "educationalRole": "student" },
+    "author": { "@type": "Person", "name": "Alex Bitkin", "url": "https://github.com/IamAlex-afk" },
+    "isAccessibleForFree": true
+  }
+  </script>
+</head>
+<body data-age="">
+<div class="stars" aria-hidden="true"></div>
+<div id="boot">
+  <div class="boot-lines">
+    <p class="boot-line" style="animation-delay:.1s">▶  Đang tải các dữ kiện AI đã được xác minh...</p>
+    <p class="boot-line" style="animation-delay:.7s">▶  11 ngôn ngữ · 4 nhóm tuổi · 0 quảng cáo · 0 đăng ký</p>
+    <p class="boot-line warn" style="animation-delay:1.3s">▶  SỰ THẬT: AI không cảm nhận. AI không suy nghĩ. AI là một công cụ.</p>
+    <p class="boot-line info" style="animation-delay:1.9s">▶  Sẵn sàng. Hãy cùng tìm hiểu AI thực sự là gì.</p>
+  </div>
+  <div class="boot-progress"><div class="boot-bar"><div class="boot-fill" id="boot-fill"></div></div></div>
+  <p class="boot-access" id="boot-access">ĐÃ CẤP QUYỀN TRUY CẬP</p>
+</div>
+<div class="page">
+  <div class="top-bar">
+    <div class="lang-group">
+      <button class="top-btn" data-lang-switch="en">🇬🇧 EN</button>
+      <button class="top-btn" data-lang-switch="ru">🇷🇺 RU</button>
+      <button class="top-btn" data-lang-switch="pt">🇧🇷 PT</button>
+      <button class="top-btn" data-lang-switch="es">🇪🇸 ES</button>
+      <button class="top-btn" data-lang-switch="de">🇩🇪 DE</button>
+      <button class="top-btn" data-lang-switch="fr">🇫🇷 FR</button>
+      <button class="top-btn" data-lang-switch="hi">🇮🇳 HI</button>
+      <button class="top-btn" data-lang-switch="id">🇮🇩 ID</button>
+      <button class="top-btn" data-lang-switch="tr">🇹🇷 TR</button>
+      <button class="top-btn active" data-lang-switch="vi">🇻🇳 VI</button>
+      <button class="top-btn" data-lang-switch="th">🇹🇭 TH</button>
+    </div>
+    <div class="age-group" id="age-group">
+      <button class="top-btn" data-age-quick="tiny"  title="3–5 tuổi">🧸</button>
+      <button class="top-btn" data-age-quick="child" title="6–9 tuổi">🎮</button>
+      <button class="top-btn" data-age-quick="teen"  title="10–13 tuổi">📱</button>
+      <button class="top-btn" data-age-quick="adult" title="14+">🧠</button>
+    </div>
+  </div>
+  <div class="hero">
+    <div class="hero-mascot"><span class="mascot-emoji" id="hero-mascot-emoji">🤖</span><div class="mascot-shadow"></div></div>
+    <h1 class="hero-title">
+      <span class="line-1">KIDS AI TEST</span>
+      <span class="line-2">AI thực sự là gì?</span>
+    </h1>
+    <div class="hero-badge">🔒 MIỄN PHÍ · KHÔNG ĐĂNG KÝ · KHÔNG LƯU DỮ LIỆU</div>
+    <p class="hero-sub">
+      Hàng triệu trẻ em hỏi: <em>“ChatGPT có sống không? AI có thể cảm thấy đau không? Alexa có phải bạn của mình không?”</em><br>
+      Đây là <strong>câu trả lời thật</strong> — dựa trên khoa học, phù hợp với từng độ tuổi.
+    </p>
+  </div>
+  <div class="sec-header"><span class="sec-header-text">CÁCH HOẠT ĐỘNG</span><div class="sec-header-line"></div></div>
+  <div class="flow-steps">
+    <div class="flow-step"><span class="flow-step-num">BƯỚC 1</span><span class="flow-step-icon">👤</span><div class="flow-step-title">Chọn độ tuổi của bạn</div><div class="flow-step-desc">Nội dung phù hợp cho 3–5, 6–9, 10–13 hoặc 14+ tuổi</div></div>
+    <div class="flow-step"><span class="flow-step-num">BƯỚC 2</span><span class="flow-step-icon">🔀</span><div class="flow-step-title">Chọn hướng đi</div><div class="flow-step-desc">Học + kiểm tra → thẻ  ·  HOẶC  ·  thẳng đến trò chơi</div></div>
+    <div class="flow-step"><span class="flow-step-num">BƯỚC 3</span><span class="flow-step-icon">🎮</span><div class="flow-step-title">Chơi trò chơi</div><div class="flow-step-desc">🐍 Rắn AI hoặc ⚔️ Đấu AI — học khi chơi</div></div>
+    <div class="flow-step"><span class="flow-step-num">BƯỚC 4</span><span class="flow-step-icon">🃏</span><div class="flow-step-title">Nhận thẻ độc nhất của bạn</div><div class="flow-step-desc">Đố vui → điểm số → thẻ với số thứ tự</div></div>
+  </div>
+  <div id="age-picker">
+    <div class="sec-header" style="margin-top:36px"><span class="sec-header-text">BƯỚC 1</span><div class="sec-header-line"></div></div>
+    <h2 class="section-heading">Bạn bao nhiêu tuổi?</h2>
+    <p class="section-explain">Chúng tôi điều chỉnh bài học, câu hỏi và trò chơi theo độ tuổi của bạn — để mọi thứ đều hợp lý. Nhấn vào nhóm tuổi của bạn để bắt đầu.</p>
+    <div class="age-grid">
+      <button class="age-card" data-age="tiny"  aria-label="3 đến 5 tuổi"><span class="age-icon">🧸</span><span class="age-label">3 – 5</span><span class="age-range">Nhà thám hiểm nhỏ</span><span class="age-tagline">Hình ảnh lớn, từ đơn giản, câu hỏi Có/Không</span></button>
+      <button class="age-card" data-age="child" aria-label="6 đến 9 tuổi"><span class="age-icon">🎮</span><span class="age-label">6 – 9</span><span class="age-range">Thám tử nhí</span><span class="age-tagline">Câu chuyện, ví dụ, đố vui 4 lựa chọn</span></button>
+      <button class="age-card" data-age="teen"  aria-label="10 đến 13 tuổi"><span class="age-icon">📱</span><span class="age-label">10 – 13</span><span class="age-range">Thám tử AI</span><span class="age-tagline">Chuyên sâu: Transformer, thiên vị, nghiên cứu thực tế</span></button>
+      <button class="age-card" data-age="adult" aria-label="14 tuổi trở lên"><span class="age-icon">🧠</span><span class="age-label">14 +</span><span class="age-range">Nhà phân tích AI</span><span class="age-tagline">Chiều sâu kỹ thuật, chính sách, thang đo Likert</span></button>
+    </div>
+  </div>
+  <div id="mode-picker" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">BƯỚC 2</span><div class="sec-header-line"></div></div>
+    <h2 class="section-heading">Bạn muốn làm gì?</h2>
+    <div class="mode-grid">
+      <button class="mode-card learn-mode" id="btn-mode-learn">
+        <span class="mode-icon">📖</span>
+        <span class="mode-badge">HỌC & KIỂM TRA</span>
+        <span class="mode-title">Học và làm bài</span>
+        <span class="mode-desc">3–6 bài học → kiểm tra → nhận thẻ độc nhất của bạn</span>
+      </button>
+      <button class="mode-card play-mode" id="btn-mode-play">
+        <span class="mode-icon">🎮</span>
+        <span class="mode-badge">TRÒ CHƠI</span>
+        <span class="mode-title">Chơi và học</span>
+        <span class="mode-desc">Rắn AI · Đấu AI — học trong khi chơi, không cần bài kiểm tra</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="lessons" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">BƯỚC 2 · HỌC</span><div class="sec-header-line"></div></div>
+    <h2 class="section-heading">AI thực sự hoạt động như thế nào</h2>
+    <p class="section-explain">Bài học ngắn với khoa học thật. Sau mỗi bài học — một bài kiểm tra nhanh.</p>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px 18px;margin-bottom:18px;">
+      <div class="quiz-prog-top"><span class="quiz-prog-label" id="lesson-count">Bài học 1 / 3</span><span class="quiz-prog-score" id="lesson-phase-label">Bài học</span></div>
+      <div class="quiz-prog-bar" style="margin-top:8px"><div class="quiz-prog-fill" id="lesson-prog-fill" style="width:0%"></div></div>
+    </div>
+    <div id="lesson-content"></div>
+  </div>
+  <div id="game" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">BƯỚC 3 · TRÒ CHƠI</span><div class="sec-header-line"></div></div>
+    <h2 class="section-heading">🎮 Chơi và học</h2>
+    <p class="section-explain" id="game-intro">Hai trò chơi — hai cách học về AI. Chọn một (hoặc chơi cả hai!).</p>
+    <div id="game-picker" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px;">
+      <div class="card" style="text-align:center;padding:20px;">
+        <div style="font-size:2.4rem">🐍</div>
+        <div style="font-weight:900;font-size:1.05rem;margin:8px 0 4px">Rắn AI</div>
+        <div class="section-explain" id="snake-desc" style="margin:0 0 14px;font-size:.85rem">Thu thập thuật ngữ AI, tránh token đỏ. Học sự thật thật.</div>
+        <button class="btn-primary" id="btn-start-snake" style="width:100%">Chơi Rắn →</button>
+      </div>
+      <div class="card" style="text-align:center;padding:20px;border-color:var(--accent2,#7c3aed);">
+        <div style="font-size:2.4rem">⚔️</div>
+        <div style="font-weight:900;font-size:1.05rem;margin:8px 0 4px">Đấu AI</div>
+        <div class="section-explain" id="duel-desc" style="margin:0 0 14px;font-size:.85rem">Robot chiến đấu — trả lời câu hỏi về AI &amp; an toàn mạng.</div>
+        <a id="duel-go" href="duel/" class="btn-primary" style="display:block;text-decoration:none">Chơi Đấu →</a>
+      </div>
+    </div>
+    <div class="game-wrap" id="game-content"></div>
+  </div>
+  <div id="quiz" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">BƯỚC 4 · ĐỐ VUI CUỐI CÙNG</span><div class="sec-header-line"></div></div>
+    <h2 class="section-heading">Đố vui cuối cùng 🧠</h2>
+    <p class="section-explain">Trả lời tất cả câu hỏi — sau đó bạn sẽ nhận được thẻ độc nhất với điểm số của mình.<br>Mỗi câu hỏi có nguồn đã được xác minh, liên kết đến nghiên cứu thực tế.</p>
+    <div class="quiz-wrap" id="quiz-content"></div>
+  </div>
+  <div id="result" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">KẾT QUẢ CỦA BẠN</span><div class="sec-header-line"></div></div>
+    <div id="result-summary"></div>
+    <div id="card-area" class="hidden">
+      <div class="sec-header" style="margin-top:32px"><span class="sec-header-text">THẺ ĐỘC NHẤT CỦA BẠN 🃏</span><div class="sec-header-line"></div></div>
+      <div class="card-section">
+        <h3 style="margin-bottom:8px">Thẻ #<span id="card-number">—</span> · <span id="card-name-display">—</span></h3>
+        <p>Số của bạn = số giây kể từ khi dự án khởi động.<br><strong>Số nhỏ hơn = người tham gia sớm hơn.</strong> Được xác minh bằng SHA-256 mã nguồn mở. Không thể làm giả.</p>
+        <canvas id="result-canvas" aria-label="Thẻ người tham gia Kids AI Test của bạn" style="max-width:100%;border-radius:var(--r-sm);margin:16px auto;display:block;border:1px solid var(--border);"></canvas>
+        <div id="card-qr" style="display:flex;justify-content:center;margin:12px 0;"></div>
+        <div id="card-info"></div>
+        <div class="action-row">
+          <button class="btn-primary hidden" id="btn-download-card">⬇️ Tải PNG</button>
+          <button class="btn-outline hidden"  id="btn-share-card">📤 Chia sẻ thẻ của tôi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="protocols" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">PHẢI LÀM GÌ BÂY GIỜ</span><div class="sec-header-line"></div></div>
+    <h2 class="section-heading">Quy tắc đơn giản để sống cùng AI</h2>
+    <p class="section-explain">AI hiện ở khắp mọi nơi. Những quy tắc này giúp bạn giữ quyền kiểm soát.</p>
+    <div class="protocols-grid" id="protocols-list"></div>
+  </div>
+  <div id="tracker" class="hidden">
+    <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">KIỂM TRA HÀNG NGÀY</span><div class="sec-header-line"></div></div>
+    <div class="tracker-wrap">
+      <p class="tracker-question">📈 Hôm nay bạn cảm thấy mình hiểu biết về AI đến mức nào?</p>
+      <div class="tracker-history" id="tracker-chart"></div>
+      <div id="tracker-log-area">
+        <input type="range" id="tracker-slider" class="tracker-slider" min="1" max="5" step="1" value="3" aria-label="Mức độ hiểu biết về AI từ 1 đến 5">
+        <div class="tracker-scale"><span>1 — Mới bắt đầu</span><span id="tracker-val-display" style="font-weight:900;color:var(--accent)">3</span><span>5 — Tự tin</span></div>
+        <div class="tracker-value" id="tracker-current-val">3</div>
+        <button class="tracker-log-btn" id="btn-tracker-log">✓ Ghi nhận hôm nay</button>
+      </div>
+    </div>
+  </div>
+  <div class="parent-wrap" id="parent">
+    <button class="parent-toggle" id="parent-toggle" aria-expanded="false">👪 DÀNH CHO PHỤ HUYNH VÀ GIÁO VIÊN — nhấn để mở rộng<span class="parent-arrow">▼</span></button>
+    <div class="parent-body" id="parent-body">
+      <h4>🔒 Không thu thập dữ liệu</h4><p>Không cookie, không theo dõi, không đăng ký. Tiến trình chỉ được lưu trong localStorage của trình duyệt — không bao giờ rời khỏi thiết bị.</p>
+      <h4>📚 Nguồn tham khảo</h4><p>Mỗi sự thật đều được liên kết với nguồn gốc: bài báo arXiv, UNESCO, MIT, Đạo luật AI của EU. Không giật gân.</p>
+      <h4>🌍 Mã nguồn mở · GPL v3</h4><p>Toàn bộ mã nguồn trên <a href="https://github.com/IamAlex-afk/kids-ai-test" target="_blank" rel="noopener">GitHub</a>. Không quảng cáo. Không tường phí.</p>
+      <h4>💬 Câu hỏi để thảo luận cùng con bạn</h4>
+      <ul>
+        <li>Alexa có thể nhớ bạn không? Làm sao bạn biết được?</li>
+        <li>Khi AI viết một câu chuyện, ai mới thực sự là tác giả?</li>
+        <li>AI làm gì tốt hơn con người? Con người làm gì tốt hơn?</li>
+        <li>Khi AI nói điều gì đó là đúng — làm sao bạn kiểm tra được?</li>
+        <li>Bạn có để AI đưa ra một quyết định quan trọng thay bạn không?</li>
+      </ul>
+    </div>
+  </div>
+  <footer>
+    <div>🤖 <strong>Kids AI Test</strong> · <a href="duel/">🥊 Trò chơi phụ: AI Duel (tiếng Anh)</a> · <a href="https://github.com/IamAlex-afk/kids-ai-test" target="_blank" rel="noopener">GitHub</a> · <a href="https://github.com/IamAlex-afk/kids-ai-test/blob/main/LICENSE" target="_blank" rel="noopener">GPL v3</a> · <a href="https://iamalex-afk.github.io/human-os-patch-33-protocols/" target="_blank" rel="noopener">Trang chính: 33 Giao thức</a></div>
+    <div style="margin-top:6px">Mãi mãi miễn phí · Không quảng cáo · Không dữ liệu · Được tạo bởi <a href="https://github.com/IamAlex-afk" target="_blank" rel="noopener">Alex Bitkin</a></div>
+    <div style="margin-top:8px;font-size:.7rem;opacity:.45;line-height:1.6">Nội dung giáo dục được xác minh qua các nguồn bình duyệt.<br>arXiv · UNESCO · MIT · Đạo luật AI của EU</div>
+  </footer>
+</div>
+<script src="data/vi.js"></script>
+<script src="js/names.js"></script>
+<script src="js/card.js"></script>
+<script src="js/snake.js"></script>
+<script src="js/core.js"></script>
+</body>
+</html>
