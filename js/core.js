@@ -380,35 +380,41 @@ const PI_STR = {
 };
 
 function showParentInfo(onSelf, onChild) {
-  const s = PI_STR[S.lang] || PI_STR.en;
+  const d = (window.PARENTS_FAQ || {})[S.lang] || (window.PARENTS_FAQ || {}).en || {};
   const existing = $('parent-info-screen');
   if (existing) existing.remove();
+
+  const faqHtml = (d.faq || []).map(item => `
+    <details class="pi-faq-item">
+      <summary class="pi-faq-q">${item.q}</summary>
+      <div class="pi-faq-a">${item.a}</div>
+    </details>`).join('');
+
+  const discussHtml = (d.discuss || []).map(q => `<li>${q}</li>`).join('');
 
   const wrap = document.createElement('div');
   wrap.id = 'parent-info-screen';
   wrap.className = 'anim-fade-up';
   wrap.innerHTML = `
     <div class="pi-header">
-      <div class="pi-title">${s.title}</div>
-      <div class="pi-subtitle">${s.subtitle}</div>
+      <div class="pi-title">${d.title || 'For Parents'}</div>
+      <div class="pi-subtitle">${d.intro || ''}</div>
     </div>
     <div class="pi-grid">
-      <div class="pi-card"><div class="pi-card-h">${s.why_h}</div><div class="pi-card-t">${s.why}</div></div>
-      <div class="pi-card"><div class="pi-card-h">${s.priv_h}</div><div class="pi-card-t">${s.priv}</div></div>
-      <div class="pi-card"><div class="pi-card-h">${s.card_h}</div><div class="pi-card-t">${s.card}</div></div>
-      <div class="pi-card"><div class="pi-card-h">${s.src_h}</div><div class="pi-card-t">${s.src}</div></div>
-      <div class="pi-card pi-card--wide"><div class="pi-card-h">${s.q_h}</div><ul class="pi-qlist">${s.questions.map(q=>`<li>${q}</li>`).join('')}</ul></div>
-      <div class="pi-card"><div class="pi-card-h">${s.share_h}</div><div class="pi-card-t">${s.share}</div></div>
-      <div class="pi-card"><div class="pi-card-h">${s.oss_h}</div><div class="pi-card-t">${s.oss}</div></div>
+      <div class="pi-card"><div class="pi-card-h">${d.priv_h||'🔒'}</div><div class="pi-card-t">${d.priv||''}</div></div>
+      <div class="pi-card"><div class="pi-card-h">${d.src_h||'📚'}</div><div class="pi-card-t">${d.src||''}</div></div>
+      <div class="pi-card pi-card--wide"><div class="pi-card-h">${d.discuss_h||'💬'}</div><ul class="pi-qlist">${discussHtml}</ul></div>
     </div>
     <div class="pi-proto">
-      <span class="pi-proto-by">${s.proto_by}</span>
+      <span class="pi-proto-by">${d.proto_by||''}</span>
       <a class="pi-proto-link" href="https://iamAlex-afk.github.io/human-os-patch-33-protocols/" target="_blank" rel="noopener">AI Biohacking: 33 Protocols ↗</a>
-      <div class="pi-proto-desc">${s.proto_desc}</div>
+      <div class="pi-proto-desc">${d.proto_desc||''}</div>
     </div>
+    <h3 class="pi-faq-title">${d.faq_h||'FAQ'}</h3>
+    <div class="pi-faq">${faqHtml}</div>
     <div class="pi-actions">
-      <button class="pi-btn-child" id="pi-btn-child">${s.cta_child}</button>
-      <button class="pi-btn-self" id="pi-btn-self">${s.cta_self}</button>
+      <button class="pi-btn-child" id="pi-btn-child">${d.cta_child||'← Back'}</button>
+      <button class="pi-btn-self" id="pi-btn-self">${d.cta_self||'Take test →'}</button>
     </div>
   `;
 
