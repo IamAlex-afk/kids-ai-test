@@ -113,7 +113,13 @@ function boot() {
 
 function afterBoot() {
   renderTopBar();
-  restoreProgress();
+  if (S.age) {
+    restoreProgress();
+  } else {
+    initParent();
+    initFlipCards();
+    showUserTypePicker();
+  }
 }
 
 /* ─────────────────────────────────────────────
@@ -187,6 +193,134 @@ const MODE_STR = {
   tr: { step:'ADIM 2', q:'Ne yapmak istiyorsun?', lb:'ÖĞREN + TEST', lt:'Dersler & Quiz', ld:'3–6 ders → test → özel kartını kazan', pb:'OYUNLAR', pt:'Oyna & Öğren', pd:'YZ Yılan · YZ Düello — oynayarak öğren' },
   vi: { step:'BƯỚC 2', q:'Bạn muốn làm gì?', lb:'HỌC + KIỂM TRA', lt:'Bài học & Câu hỏi', ld:'3–6 bài học → câu hỏi → nhận thẻ độc đáo của bạn', pb:'TRÒ CHƠI', pt:'Chơi & Học', pd:'AI Rắn · AI Đấu — học qua chơi' },
 };
+
+/* ─────────────────────────────────────────────
+   USER-TYPE PICKER (shown on first visit)
+───────────────────────────────────────────── */
+const UT_STR = {
+  en: { q:'Who are you?', parent:'Parent / Adult', child:'I am a Child',
+        pd:'Lessons · Deep quiz · Unique card', cd:'Games · Stories · Fun quiz',
+        age:'How old are you?', back:'← Back' },
+  ru: { q:'Кто ты?', parent:'Родитель / Взрослый', child:'Я Ребёнок',
+        pd:'Уроки · Тест · Уникальная карточка', cd:'Игры · Истории · Лёгкий тест',
+        age:'Сколько тебе лет?', back:'← Назад' },
+  de: { q:'Wer bist du?', parent:'Elternteil / Erwachsener', child:'Ich bin ein Kind',
+        pd:'Lektionen · Quiz · Einzigartige Karte', cd:'Spiele · Geschichten · Leichtes Quiz',
+        age:'Wie alt bist du?', back:'← Zurück' },
+  es: { q:'¿Quién eres?', parent:'Padre / Adulto', child:'Soy un Niño',
+        pd:'Lecciones · Quiz · Tarjeta única', cd:'Juegos · Historias · Quiz fácil',
+        age:'¿Cuántos años tienes?', back:'← Atrás' },
+  fr: { q:'Qui es-tu ?', parent:'Parent / Adulte', child:'Je suis un Enfant',
+        pd:'Leçons · Quiz · Carte unique', cd:'Jeux · Histoires · Quiz sympa',
+        age:'Quel âge as-tu ?', back:'← Retour' },
+  hi: { q:'तुम कौन हो?', parent:'माता-पिता / वयस्क', child:'मैं एक बच्चा हूँ',
+        pd:'पाठ · प्रश्नोत्तरी · कार्ड', cd:'खेल · कहानियाँ · आसान टेस्ट',
+        age:'तुम्हारी उम्र क्या है?', back:'← वापस' },
+  id: { q:'Siapa kamu?', parent:'Orang Tua / Dewasa', child:'Saya Anak-anak',
+        pd:'Pelajaran · Kuis · Kartu unik', cd:'Game · Cerita · Kuis mudah',
+        age:'Berapa umurmu?', back:'← Kembali' },
+  pt: { q:'Quem é você?', parent:'Pai / Adulto', child:'Sou uma Criança',
+        pd:'Lições · Quiz · Cartão único', cd:'Jogos · Histórias · Quiz fácil',
+        age:'Quantos anos você tem?', back:'← Voltar' },
+  tr: { q:'Sen kimsin?', parent:'Ebeveyn / Yetişkin', child:'Ben Bir Çocuğum',
+        pd:'Dersler · Test · Özel kart', cd:'Oyunlar · Hikayeler · Kolay test',
+        age:'Kaç yaşındasın?', back:'← Geri' },
+  vi: { q:'Bạn là ai?', parent:'Phụ huynh / Người lớn', child:'Tôi là Trẻ em',
+        pd:'Bài học · Câu hỏi · Thẻ độc đáo', cd:'Trò chơi · Câu chuyện · Quiz dễ',
+        age:'Bạn bao nhiêu tuổi?', back:'← Quay lại' },
+};
+
+const UT_AGES = {
+  tiny:  { icon:'🧸', range:'3 – 6' },
+  child: { icon:'🎮', range:'7 – 12' },
+  teen:  { icon:'📱', range:'13 – 17' },
+};
+
+function showUserTypePicker() {
+  const existing = $('age-picker');
+  if (existing) existing.style.display = 'none';
+
+  const s = UT_STR[S.lang] || UT_STR.en;
+
+  const wrap = document.createElement('div');
+  wrap.id = 'user-type-screen';
+  wrap.innerHTML = `
+    <div id="ut-p1" class="ut-page anim-fade-up">
+      <h2 class="ut-title">${s.q}</h2>
+      <div class="ut-cards">
+        <button class="ut-card ut-parent" id="btn-ut-parent">
+          <div class="ut-icon">🧠</div>
+          <div class="ut-label">${s.parent}</div>
+          <div class="ut-desc">${s.pd}</div>
+        </button>
+        <button class="ut-card ut-child" id="btn-ut-child">
+          <div class="ut-icon">🧒</div>
+          <div class="ut-label">${s.child}</div>
+          <div class="ut-desc">${s.cd}</div>
+        </button>
+      </div>
+    </div>
+    <div id="ut-p2" class="ut-page hidden">
+      <button class="ut-back" id="btn-ut-back">${s.back}</button>
+      <h2 class="ut-title">${s.age}</h2>
+      <div class="ut-child-ages">
+        ${Object.entries(UT_AGES).map(([age, d]) => `
+          <button class="age-card ut-age-card" data-age="${age}">
+            <span class="age-icon">${d.icon}</span>
+            <span class="age-label">${d.range}</span>
+          </button>`).join('')}
+      </div>
+    </div>
+  `;
+
+  if (existing && existing.parentNode) {
+    existing.parentNode.insertBefore(wrap, existing);
+  } else {
+    (document.querySelector('main') || document.body).prepend(wrap);
+  }
+
+  $('btn-ut-parent').addEventListener('click', () =>
+    utGo(() => { wrap.remove(); if (existing) existing.style.display = ''; selectAge('adult'); })
+  );
+  $('btn-ut-child').addEventListener('click', () => {
+    $('ut-p1').classList.add('hidden');
+    $('ut-p2').classList.remove('hidden');
+    $('ut-p2').classList.add('anim-fade-up');
+  });
+  $('btn-ut-back').addEventListener('click', () => {
+    $('ut-p2').classList.add('hidden');
+    $('ut-p1').classList.remove('hidden');
+    $('ut-p1').classList.add('anim-fade-up');
+  });
+  wrap.querySelectorAll('.ut-age-card').forEach(btn => {
+    btn.addEventListener('click', () =>
+      utGo(() => { wrap.remove(); if (existing) existing.style.display = ''; selectAge(btn.dataset.age); })
+    );
+  });
+}
+
+function utGo(cb) {
+  const el = $('user-type-screen');
+  if (!el) { cb(); return; }
+  el.style.transition = 'opacity .25s ease, transform .25s ease';
+  el.style.opacity = '0';
+  el.style.transform = 'scale(.97)';
+  setTimeout(cb, 260);
+}
+
+/* ─────────────────────────────────────────────
+   WEB SPEECH API
+───────────────────────────────────────────── */
+function speakText(text) {
+  if (!('speechSynthesis' in window) || S.age !== 'tiny') return;
+  window.speechSynthesis.cancel();
+  const utt = new SpeechSynthesisUtterance(text);
+  utt.lang  = { ru:'ru-RU', de:'de-DE', es:'es-ES', fr:'fr-FR', hi:'hi-IN',
+                id:'id-ID', pt:'pt-BR', tr:'tr-TR', vi:'vi-VN' }[S.lang] || 'en-US';
+  utt.rate  = 0.82;
+  utt.pitch = 1.15;
+  window.speechSynthesis.speak(utt);
+}
 
 function initModePicker() {
   const s = MODE_STR[S.lang] || MODE_STR.en;
@@ -316,14 +450,31 @@ function renderMiniTest() {
     </div>
   `;
 
+  speakText(q.q);
+
   const opts = $('mt-options');
-  q.options.forEach((opt, i) => {
-    const btn = document.createElement('button');
-    btn.className   = 'ans';
-    btn.innerHTML   = `<span class="ans-icon">◦</span> ${opt}`;
-    btn.addEventListener('click', () => answerMiniTest(i, q, btn));
-    opts.appendChild(btn);
-  });
+  const isTiny = S.age === 'tiny';
+  const displayOpts = isTiny ? q.options.slice(0, 2) : q.options;
+
+  if (isTiny) {
+    opts.className = 'tiny-answers';
+    const tinyIcons = ['🟢', '🔴'];
+    displayOpts.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'ans-tiny';
+      btn.innerHTML = `<span class="ans-big">${tinyIcons[i]}</span><span class="ans-word">${opt}</span>`;
+      btn.addEventListener('click', () => answerMiniTest(i, q, btn));
+      opts.appendChild(btn);
+    });
+  } else {
+    displayOpts.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.className   = 'ans';
+      btn.innerHTML   = `<span class="ans-icon">◦</span> ${opt}`;
+      btn.addEventListener('click', () => answerMiniTest(i, q, btn));
+      opts.appendChild(btn);
+    });
+  }
 }
 
 function answerMiniTest(choiceIdx, q, clickedBtn) {
@@ -349,7 +500,10 @@ function answerMiniTest(choiceIdx, q, clickedBtn) {
     fb.innerHTML = `${correct ? '✅' : '❌'} ${q.explanation || (correct ? ui('mini_correct') : ui('mini_wrong'))}`;
   }
 
-  if (correct) S.lesson.mt.score++;
+  if (correct) {
+    S.lesson.mt.score++;
+    if (S.age === 'tiny') tinySuccess(clickedBtn);
+  }
   lsSave();
 
   setTimeout(() => {
@@ -357,7 +511,22 @@ function answerMiniTest(choiceIdx, q, clickedBtn) {
     const qs = ageData()?.lessons[S.lesson.idx]?.miniTest || [];
     if (S.lesson.mt.idx < qs.length) renderMiniTest();
     else advanceLesson();
-  }, 1800);
+  }, S.age === 'tiny' ? 1600 : 1800);
+}
+
+function tinySuccess(btn) {
+  if (!btn) return;
+  btn.classList.add('tiny-correct');
+  const stars = ['⭐','🌟','✨','💫'];
+  const wrap = btn.closest('.tiny-answers') || btn.parentNode;
+  stars.forEach((s, i) => {
+    const el = document.createElement('span');
+    el.className = 'tiny-star';
+    el.textContent = s;
+    el.style.cssText = `--dx:${(Math.random()-.5)*120}px;--dy:${-(40+Math.random()*60)}px;animation-delay:${i*80}ms`;
+    wrap.appendChild(el);
+    setTimeout(() => el.remove(), 1200);
+  });
 }
 
 function advanceLesson() {
@@ -568,6 +737,8 @@ function renderQuestion() {
     </div>
   `;
 
+  speakText(q.q);
+
   $$('#q-answers button').forEach(btn => {
     btn.addEventListener('click', () => answerQuiz(Number(btn.dataset.v), q, btn));
   });
@@ -711,6 +882,23 @@ function showResult() {
     renderProtocols();
     scrollTo('protocols');
   });
+
+  if (S.age === 'adult') renderBookRec(container);
+}
+
+function renderBookRec(container) {
+  if (!container || container.querySelector('.book-rec')) return;
+  const el = document.createElement('div');
+  el.className = 'book-rec anim-fade-up';
+  el.innerHTML = `
+    <div class="book-rec-badge">📚 Recommendation</div>
+    <div class="book-rec-title">AI Biohacking: 33 Protocols for Consciousness Reboot</div>
+    <div class="book-rec-text">A unique guide written from AI's perspective — 33 protocols to reboot your mindset in the age of artificial intelligence. A systematic approach to cognitive productivity and conscious adaptation to the AI era.</div>
+    <a class="book-rec-link" href="https://www.amazon.it/dp/B0G35SBQR3" target="_blank" rel="noopener">
+      📖 Read on Amazon →
+    </a>
+  `;
+  container.appendChild(el);
 }
 
 /* ─────────────────────────────────────────────
