@@ -295,7 +295,13 @@ function showUserTypePicker() {
   }
 
   $('btn-ut-parent').addEventListener('click', () =>
-    utGo(() => { wrap.remove(); if (existing) existing.style.display = ''; selectAge('adult'); })
+    utGo(() => {
+      wrap.remove();
+      showParentInfo(
+        () => { if (existing) existing.style.display = ''; selectAge('adult'); },
+        () => showUserTypePicker()
+      );
+    })
   );
   $('btn-ut-child').addEventListener('click', () => {
     $('ut-p1').classList.add('hidden');
@@ -321,6 +327,101 @@ function utGo(cb) {
   el.style.opacity = '0';
   el.style.transform = 'scale(.97)';
   setTimeout(cb, 260);
+}
+
+/* ─────────────────────────────────────────────
+   PARENT INFO SCREEN
+───────────────────────────────────────────── */
+const PI_STR = {
+  en: {
+    title:'For Parents',
+    subtitle:'AI literacy for the next generation',
+    why_h:'🎯 Why this site?',
+    why:'Children interact with AI daily — voice assistants, recommendation algorithms, content filters. This test helps them understand what AI is, what it can and cannot do, and how to think critically. Not just fun — real AI literacy.',
+    priv_h:'🔒 Zero data collection',
+    priv:'No cookies, no tracking, no registration. Progress is stored only in localStorage — it never leaves the device.',
+    card_h:'🃏 About the card number',
+    card:'The number = seconds since project launch (July 1 2026, UTC). No server. The hash is SHA-256, publicly verifiable — like a Pokémon serial number.',
+    src_h:'📚 Sources',
+    src:'Every fact links to a primary source: arXiv papers, UNESCO, MIT Media Lab, EU AI Act. No sensationalism, no anthropomorphizing.',
+    q_h:'💬 Questions to discuss with your child',
+    questions:['Can Alice miss you? How do you know?','If AI wrote a story — who is the real author?','What can AI do better than people? What do people do better?','If AI says it\'s true — how do you verify it?','Would you trust AI to make an important decision for you?'],
+    share_h:'📱 About sharing',
+    share:'The Share button uses the standard browser dialog showing Telegram, WhatsApp and other installed apps. The site sends no data to third parties.',
+    oss_h:'🌍 Open source · GPL v3',
+    oss:'All code is on GitHub. No ads. No paid tier. Supported only by voluntary donations.',
+    cta_self:'Take the test yourself →',
+    cta_child:'← Set up for child',
+    proto_by:'By the same author:',
+    proto_desc:'A guide to mindset rebooting in the AI era',
+  },
+  ru: {
+    title:'Для родителей',
+    subtitle:'ИИ-грамотность для следующего поколения',
+    why_h:'🎯 Зачем этот сайт?',
+    why:'Дети взаимодействуют с ИИ каждый день — голосовые помощники, алгоритмы рекомендаций, фильтры контента. Этот тест помогает понять: что такое ИИ, что он умеет и не умеет, как мыслить критически. Не просто развлечение — настоящая ИИ-грамотность.',
+    priv_h:'🔒 Ноль сбора данных',
+    priv:'Никаких куки, никакого трекинга, никакой регистрации. Прогресс хранится только в localStorage браузера — он никогда не покидает устройство.',
+    card_h:'🃏 О номере карточки',
+    card:'Номер = секунды с момента запуска проекта (1 июля 2026, UTC). Никакого сервера. Хэш — SHA-256, публично верифицируется. Как серийный номер карточки покемона.',
+    src_h:'📚 Источники',
+    src:'Каждый факт привязан к первоисточнику: статьи arXiv, ЮНЕСКО, MIT Media Lab, Закон ЕС об ИИ, Яндекс Учебник. Никакой сенсационности, никакой антропоморфизации.',
+    q_h:'💬 Вопросы для обсуждения с ребёнком',
+    questions:['Может ли Алиса скучать по тебе? Откуда ты знаешь?','Если ИИ написал рассказ — кто настоящий автор?','Что умеет ИИ лучше людей? А что люди делают лучше ИИ?','Если ИИ говорит, что это правда — как проверить?','Доверил бы ты ИИ принять за тебя важное решение? Почему да или нет?'],
+    share_h:'📱 О социальных сетях и сервисах',
+    share:'Кнопка «Поделиться» использует стандартный браузерный диалог — ВКонтакте, Telegram и другие установленные на устройстве приложения. Сайт не отправляет данные в сторонние сервисы напрямую.',
+    oss_h:'🌍 Открытый код · GPL v3',
+    oss:'Весь код находится на GitHub. Никакой рекламы. Никакого платного уровня. Поддерживается только добровольными пожертвованиями.',
+    cta_self:'Пройти тест самому →',
+    cta_child:'← Настроить для ребёнка',
+    proto_by:'От того же автора:',
+    proto_desc:'Руководство по перезагрузке мышления в эпоху ИИ',
+  },
+};
+
+function showParentInfo(onSelf, onChild) {
+  const s = PI_STR[S.lang] || PI_STR.en;
+  const existing = $('parent-info-screen');
+  if (existing) existing.remove();
+
+  const wrap = document.createElement('div');
+  wrap.id = 'parent-info-screen';
+  wrap.className = 'anim-fade-up';
+  wrap.innerHTML = `
+    <div class="pi-header">
+      <div class="pi-title">${s.title}</div>
+      <div class="pi-subtitle">${s.subtitle}</div>
+    </div>
+    <div class="pi-grid">
+      <div class="pi-card"><div class="pi-card-h">${s.why_h}</div><div class="pi-card-t">${s.why}</div></div>
+      <div class="pi-card"><div class="pi-card-h">${s.priv_h}</div><div class="pi-card-t">${s.priv}</div></div>
+      <div class="pi-card"><div class="pi-card-h">${s.card_h}</div><div class="pi-card-t">${s.card}</div></div>
+      <div class="pi-card"><div class="pi-card-h">${s.src_h}</div><div class="pi-card-t">${s.src}</div></div>
+      <div class="pi-card pi-card--wide"><div class="pi-card-h">${s.q_h}</div><ul class="pi-qlist">${s.questions.map(q=>`<li>${q}</li>`).join('')}</ul></div>
+      <div class="pi-card"><div class="pi-card-h">${s.share_h}</div><div class="pi-card-t">${s.share}</div></div>
+      <div class="pi-card"><div class="pi-card-h">${s.oss_h}</div><div class="pi-card-t">${s.oss}</div></div>
+    </div>
+    <div class="pi-proto">
+      <span class="pi-proto-by">${s.proto_by}</span>
+      <a class="pi-proto-link" href="https://iamAlex-afk.github.io/human-os-patch-33-protocols/" target="_blank" rel="noopener">AI Biohacking: 33 Protocols ↗</a>
+      <div class="pi-proto-desc">${s.proto_desc}</div>
+    </div>
+    <div class="pi-actions">
+      <button class="pi-btn-child" id="pi-btn-child">${s.cta_child}</button>
+      <button class="pi-btn-self" id="pi-btn-self">${s.cta_self}</button>
+    </div>
+  `;
+
+  (document.querySelector('main') || document.body).prepend(wrap);
+
+  function piGo(cb) {
+    wrap.style.transition = 'opacity .22s ease';
+    wrap.style.opacity = '0';
+    setTimeout(() => { wrap.remove(); cb(); }, 240);
+  }
+
+  $('pi-btn-self').addEventListener('click', () => piGo(onSelf));
+  $('pi-btn-child').addEventListener('click', () => piGo(onChild));
 }
 
 /* ─────────────────────────────────────────────

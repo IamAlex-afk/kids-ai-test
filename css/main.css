@@ -1114,4 +1114,134 @@ footer a:hover { text-decoration: underline; }
   text-decoration: none;
   transition: opacity var(--t-fast), transform var(--t-fast);
 }
+
+/* ═══════════════════════════════════════════════
+   PARENT INFO SCREEN
+═══════════════════════════════════════════════ */
+#parent-info-screen {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+.pi-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.pi-title {
+  font-size: var(--fs-xl);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 6px;
+}
+.pi-subtitle {
+  color: var(--muted2);
+  font-size: var(--fs-sm);
+}
+.pi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+@media (max-width: 540px) {
+  .pi-grid { grid-template-columns: 1fr; }
+}
+.pi-card {
+  background: var(--surface2);
+  border: 1px solid rgba(99,102,241,.18);
+  border-radius: 14px;
+  padding: 16px 18px;
+}
+.pi-card--wide {
+  grid-column: 1 / -1;
+}
+.pi-card-h {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.pi-card-t {
+  font-size: 0.82rem;
+  color: var(--muted2);
+  line-height: 1.55;
+}
+.pi-qlist {
+  margin: 0;
+  padding-left: 18px;
+  list-style: disc;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 20px;
+  color: var(--muted2);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+@media (max-width: 540px) {
+  .pi-qlist { grid-template-columns: 1fr; }
+}
+.pi-proto {
+  background: linear-gradient(135deg, rgba(124,58,237,.12), rgba(34,211,238,.08));
+  border: 1px solid rgba(124,58,237,.3);
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+}
+.pi-proto-by {
+  font-size: 0.8rem;
+  color: var(--muted2);
+}
+.pi-proto-link {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--accent2);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(124,58,237,.4);
+  transition: color var(--t-fast);
+}
+.pi-proto-link:hover { color: var(--accent); }
+.pi-proto-desc {
+  width: 100%;
+  font-size: 0.78rem;
+  color: var(--muted2);
+  margin-top: 2px;
+}
+.pi-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.pi-btn-child {
+  padding: 12px 24px;
+  border-radius: 2rem;
+  border: 1px solid rgba(99,102,241,.4);
+  background: transparent;
+  color: var(--muted2);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--t-fast), color var(--t-fast);
+}
+.pi-btn-child:hover { background: var(--surface2); color: var(--text); }
+.pi-btn-self {
+  padding: 12px 28px;
+  border-radius: 2rem;
+  border: none;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(99,102,241,.35);
+  transition: opacity var(--t-fast), transform var(--t-fast);
+}
+.pi-btn-self:hover { opacity: .88; transform: translateY(-1px); }
 .book-rec-link:hover { opacity: .88; transform: translateY(-1px); }
