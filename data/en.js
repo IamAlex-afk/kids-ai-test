@@ -9,7 +9,7 @@
    Sources listed inline as { source, sourceUrl }.
 
    Data structure:  window.LANG_DATA = { meta, ui, ages: { tiny, child, teen, adult } }
-   Each age group:  { lessons[], game[], quiz[], results[], protocols[], trackerLabels[] }
+   Each age group:  { lessons[], snake[], quiz[], results[], protocols[], trackerLabels[] }
 ═══════════════════════════════════════════════════════════════════ */
 
 window.LANG_DATA = {
@@ -53,6 +53,10 @@ window.LANG_DATA = {
     age_adult_desc:  'AI Analyst',
 
     // Lessons
+    lesson_label:    'Lesson',
+    check_label:     'Check',
+    mode_learn:      'Learn & Test',
+    mode_play:       'Play Games',
     lesson_next_btn:  'Got it! Next →',
     lesson_last_btn:  'I\'m ready for the game! 🎮',
     lessons_done_title: 'Lessons complete! 🎉',
@@ -188,26 +192,28 @@ window.LANG_DATA = {
         },
       ],
 
-      // "Human or AI?" game — 3 rounds for tiny
-      game: [
+      // AI Snake — spell a short word, letter by letter (3 rounds for tiny)
+      snake: [
         {
-          text:       '"The sun is a big bright star. It is very hot and far away. We need it to live."',
-          isHuman:    false,
-          explanation: 'AI wrote this! It learned facts from books and put them together. But it doesn\'t actually SEE the sun.',
-          source:     'GPT-4 output example',
-          sourceUrl:  'https://openai.com/research/gpt-4',
+          unit:    'letter',
+          targets: ['B', 'O', 'T'],
+          decoys:  ['X', 'Q'],
+          icon:    '🤖',
+          fact:    'A bot is a computer program. It is not alive — but it can help you play and learn!',
         },
         {
-          text:       '"Today I fell off my bike and it really hurt but my mum gave me a hug and it got better 🤕❤️"',
-          isHuman:    true,
-          explanation: 'A real person wrote this! They felt pain AND love — AI cannot feel either.',
-          source:     null,
+          unit:    'letter',
+          targets: ['H', 'E', 'L', 'P'],
+          decoys:  ['Z', 'V'],
+          icon:    '💛',
+          fact:    'AI can help you find answers — but a grown-up should always check with you too.',
         },
         {
-          text:       '"Cats are wonderful pets. They are independent and clean themselves. Many families enjoy having cats."',
-          isHuman:    false,
-          explanation: 'AI wrote this — notice how it sounds very general and perfect? Real people write with more personal details and emotions.',
-          source:     null,
+          unit:    'letter',
+          targets: ['S', 'T', 'O', 'P'],
+          decoys:  ['K', 'J'],
+          icon:    '🛑',
+          fact:    'You can always say STOP. If a game or app feels weird, tell a grown-up right away.',
         },
       ],
 
@@ -369,30 +375,39 @@ window.LANG_DATA = {
         },
       ],
 
-      game: [
+      // AI Snake — spell longer words, letter by letter (4 rounds for child)
+      snake: [
         {
-          text:       '"Photosynthesis is the process by which plants convert sunlight into energy, using carbon dioxide and water to produce glucose and oxygen."',
-          isHuman:    false,
-          explanation: 'AI wrote this — it\'s textbook-perfect, no personal angle, no mistakes. Real students usually add "we learned this in class" or make small errors.',
-          source:    null,
+          unit:    'letter',
+          targets: ['D', 'A', 'T', 'A'],
+          decoys:  ['X', 'Z', 'Q'],
+          icon:    '📚',
+          fact:    'AI learns by looking at huge piles of data — like studying millions of flashcards before a test.',
         },
         {
-          text:       '"ok so basically i was trying to explain to my friend why the sky is blue and i totally blanked 😂 i know it has something to do with light scattering but i couldnt remember the word"',
-          isHuman:    true,
-          explanation: 'Human! The informal tone, the emoji, the honesty about forgetting — AI almost never writes like this naturally.',
-          source:    null,
+          unit:    'letter',
+          targets: ['E', 'R', 'R', 'O', 'R'],
+          decoys:  ['Q', 'X', 'J'],
+          icon:    '❗',
+          fact:    'AI can be wrong! It guesses based on patterns, so always double-check important answers.',
+          source:    'Stanford AI Index 2024',
+          sourceUrl: 'https://aiindex.stanford.edu',
         },
         {
-          text:       '"To make a peanut butter sandwich, first gather your ingredients: bread, peanut butter, and optionally jam. Spread the peanut butter evenly on one slice."',
-          isHuman:    false,
-          explanation: 'AI — the instruction-manual style, "optionally", "gather your ingredients" are patterns AI loves. Humans write recipes more casually.',
-          source:    null,
+          unit:    'letter',
+          targets: ['P', 'R', 'I', 'V', 'A', 'T', 'E'],
+          decoys:  ['Q', 'X', 'Z'],
+          icon:    '🔒',
+          fact:    'Never type your real name, address, or password into an AI chat. Keep that private!',
         },
         {
-          text:       '"ngl dinosaurs were cooler than anything alive today and the fact that birds are basically tiny dinosaurs still blows my mind every single time"',
-          isHuman:    true,
-          explanation: 'Human! "ngl", the rambling enthusiasm, the "every single time" — this is genuine excitement, not pattern matching.',
-          source:    null,
+          unit:    'letter',
+          targets: ['C', 'H', 'E', 'C', 'K'],
+          decoys:  ['Q', 'X'],
+          icon:    '✅',
+          fact:    'Before you believe something AI told you, check it with a trusted adult or a real book.',
+          source:    'Common Sense Media, "AI & Children", 2024',
+          sourceUrl: 'https://www.commonsensemedia.org/research',
         },
       ],
 
@@ -614,36 +629,48 @@ window.LANG_DATA = {
         },
       ],
 
-      game: [
+      // AI Snake — eat whole words in order to build a sentence (5 rounds for teen)
+      snake: [
         {
-          text:       '"The deployment of large language models presents novel challenges for content moderation infrastructure, particularly regarding the balance between harmful content prevention and legitimate information access."',
-          isHuman:    false,
-          explanation: 'AI — the perfectly structured academic-sounding sentence, abstract nouns stacked on each other. Real researchers usually write more directly and often include specific examples.',
-          source:    null,
+          unit:    'word',
+          targets: ['AI', 'LEARNS', 'FROM', 'HUMANS'],
+          decoys:  ['ALIENS', 'MAGIC', 'ROBOTS'],
+          icon:    '🧠',
+          fact:    'AI systems learn patterns from massive human-made datasets. If that data is biased, the AI repeats the bias.',
+          source:    'Stanford AI Index 2024',
+          sourceUrl: 'https://aiindex.stanford.edu',
         },
         {
-          text:       '"I spent three hours reading about transformer architectures yesterday and I still don\'t get why self-attention is better than RNNs, like intuitively it makes sense but the math just isn\'t clicking for me"',
-          isHuman:    true,
-          explanation: 'Human — the honest confusion, "three hours", "just isn\'t clicking" — authentic frustration no AI would express about its own architecture.',
-          source:    null,
+          unit:    'word',
+          targets: ['DEEPFAKES', 'CAN', 'LOOK', 'REAL'],
+          decoys:  ['CARTOONS', 'MOVIES'],
+          icon:    '🎭',
+          fact:    'AI can generate fake video and audio of real people. Always check the source before you trust or share it.',
+          source:    'Common Sense Media, "AI & Children", 2024',
+          sourceUrl: 'https://www.commonsensemedia.org/research',
         },
         {
-          text:       '"I understand your concerns about AI safety. It\'s important to consider multiple perspectives on this complex issue. There are valid arguments on both sides, and researchers continue to make progress in addressing these challenges."',
-          isHuman:    false,
-          explanation: 'Classic AI "both-sidesing" — deliberately vague, non-committal, covering every angle without saying anything specific. RLHF trained AI to be agreeable and avoid controversy.',
-          source:    null,
+          unit:    'word',
+          targets: ['YOUR', 'DATA', 'HAS', 'VALUE'],
+          decoys:  ['NOTHING', 'MAGIC'],
+          icon:    '💰',
+          fact:    'Apps and chatbots collect what you type and click. Companies use that data to train models and sell ads.',
         },
         {
-          text:       '"honestly the way people hype up AI writing is insane. i can always tell when a student used chatgpt because the writing has this specific cadence that feels like... smooth but empty? like perfectly grammatical but no actual perspective"',
-          isHuman:    true,
-          explanation: 'Human — "honestly", the specific observation "smooth but empty", the searching for words ("feels like..."). Real intellectual frustration.',
-          source:    null,
+          unit:    'word',
+          targets: ['ALGORITHMS', 'CAN', 'BE', 'ADDICTIVE'],
+          decoys:  ['BORING', 'RANDOM'],
+          icon:    '⏳',
+          fact:    'Recommendation feeds are built to keep you watching. Notice when a feed is designed to hook you, not inform you.',
         },
         {
-          text:       '"To address your question comprehensively, it\'s essential to first establish a foundational understanding of the relevant concepts before exploring the nuanced implications and potential applications in contemporary contexts."',
-          isHuman:    false,
-          explanation: 'AI filler — "comprehensively", "foundational understanding", "nuanced implications" with zero actual content. AI uses these patterns to sound thorough while saying nothing.',
-          source:    null,
+          unit:    'word',
+          targets: ['HUMANS', 'MAKE', 'THE', 'FINAL', 'CALL'],
+          decoys:  ['ROBOTS', 'LUCK'],
+          icon:    '🧑‍⚖️',
+          fact:    'AI can suggest, but for anything important — health, money, safety — a human should decide.',
+          source:    'UNESCO "AI Competency Framework", 2022',
+          sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
         },
       ],
 
@@ -944,36 +971,50 @@ window.LANG_DATA = {
         },
       ],
 
-      game: [
+      // AI Snake — eat phrase chunks to build a fully-cited fact (5 rounds for adult)
+      snake: [
         {
-          text:       '"The intersection of epistemological frameworks and contemporary AI deployment raises fundamental questions about the nature of knowledge representation in distributed systems, necessitating a re-evaluation of traditional philosophical paradigms."',
-          isHuman:    false,
-          explanation: 'AI — dense academic jargon stacked without saying anything specific. Humans writing academic content usually have a specific argument; this has none.',
-          source:    null,
+          unit:    'phrase',
+          targets: ['AI MODELS', 'REFLECT', 'THE BIASES', 'IN THEIR TRAINING DATA'],
+          decoys:  ['PURE LOGIC', 'NO OPINIONS AT ALL'],
+          icon:    '⚖️',
+          fact:    'Machine learning models mirror patterns — including social biases — present in the text and images they were trained on.',
+          source:    'Bender et al., "On the Dangers of Stochastic Parrots", 2021',
+          sourceUrl: 'https://dl.acm.org/doi/10.1145/3442188.3445922',
         },
         {
-          text:       '"I went back and reread the Searle paper for the third time and I think I finally understand why it\'s wrong — he assumes understanding requires phenomenal consciousness but that\'s exactly the point in dispute, he\'s not even trying to steelman the computationalist position"',
-          isHuman:    true,
-          explanation: 'Human — the re-reading, the frustration turned to insight, the specific argument, "steelman" — this is genuine intellectual engagement over time.',
-          source:    null,
+          unit:    'phrase',
+          targets: ['GENERATIVE AI', 'CAN PRODUCE', 'CONFIDENT', 'BUT FALSE ANSWERS'],
+          decoys:  ['ALWAYS 100% CORRECT', 'NEVER GUESSES'],
+          icon:    '💭',
+          fact:    'This is called "hallucination" — a fluent-sounding answer with no basis in fact. Always verify claims that matter.',
+          source:    'Ji et al., "Survey of Hallucination in NLG", 2023',
+          sourceUrl: 'https://arxiv.org/abs/2202.03629',
         },
         {
-          text:       '"I\'m unable to assist with that request. However, I\'d be happy to help you explore this topic from a different angle while ensuring we maintain appropriate boundaries and respect for all stakeholders involved."',
-          isHuman:    false,
-          explanation: 'Classic AI refusal pattern — "unable to assist" + immediate pivot + "appropriate boundaries" + "all stakeholders". RLHF created this exact linguistic pattern to avoid controversy.',
-          source:    null,
+          unit:    'phrase',
+          targets: ['YOUR PROMPTS', 'MAY BE STORED', 'AND USED', 'TO TRAIN FUTURE MODELS'],
+          decoys:  ['DELETED INSTANTLY', 'KEPT FULLY SECRET'],
+          icon:    '🔐',
+          fact:    'Read a service\'s privacy policy before sharing sensitive information with any AI tool.',
         },
         {
-          text:       '"wait so constitutional AI means the model criticizes its own outputs against a written constitution? that\'s actually kind of elegant, like instead of human raters you use the model itself as the rater with explicit principles"',
-          isHuman:    true,
-          explanation: 'Human — "wait so", arriving at understanding in real time, "that\'s actually kind of elegant" — the authentic surprise of someone figuring something out.',
-          source:    null,
+          unit:    'phrase',
+          targets: ['VOICE CLONING', 'CAN COPY', 'A VOICE', 'FROM SECONDS OF AUDIO'],
+          decoys:  ['REQUIRES HOURS OF TAPE', 'IS IMPOSSIBLE TODAY'],
+          icon:    '📞',
+          fact:    'Voice-cloning scams are rising. Agree on a family "safe word" to verify unexpected calls asking for money.',
+          source:    'FTC Consumer Alerts, 2023',
+          sourceUrl: 'https://consumer.ftc.gov/consumer-alerts',
         },
         {
-          text:       '"It is important to note that while AI systems demonstrate remarkable capabilities across numerous domains, significant challenges remain regarding interpretability, alignment, and the ethical deployment of these technologies in high-stakes environments."',
-          isHuman:    false,
-          explanation: 'AI hedging — "important to note", "remarkable capabilities", "significant challenges remain" — this is RLHF output optimized to acknowledge concerns without committing to any position.',
-          source:    null,
+          unit:    'phrase',
+          targets: ['CRITICAL THINKING', 'IS THE BEST', 'DEFENSE', 'AGAINST AI MISUSE'],
+          decoys:  ['BLIND TRUST', 'TOTAL AVOIDANCE'],
+          icon:    '🛡️',
+          fact:    'The goal isn\'t to fear AI — it\'s to question sources, verify facts, and keep humans in charge of decisions.',
+          source:    'UNESCO "AI Competency Framework", 2022',
+          sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
         },
       ],
 

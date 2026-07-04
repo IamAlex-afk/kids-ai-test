@@ -14,90 +14,204 @@
     <xhtml:link rel="alternate" hreflang="hi" href="https://iamalex-afk.github.io/kids-ai-test/hi.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://iamalex-afk.github.io/kids-ai-test/id.html"/>
     <xhtml:link rel="alternate" hreflang="tr" href="https://iamalex-afk.github.io/kids-ai-test/tr.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://iamalex-afk.github.io/kids-ai-test/vi.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-03</lastmod>
   </url>
 
   <!-- Russian -->
   <url>
     <loc>https://iamalex-afk.github.io/kids-ai-test/ru.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamalex-afk.github.io/kids-ai-test/"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://iamalex-afk.github.io/kids-ai-test/ru.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://iamalex-afk.github.io/kids-ai-test/pt.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://iamalex-afk.github.io/kids-ai-test/es.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://iamalex-afk.github.io/kids-ai-test/de.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://iamalex-afk.github.io/kids-ai-test/fr.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://iamalex-afk.github.io/kids-ai-test/hi.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://iamalex-afk.github.io/kids-ai-test/id.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://iamalex-afk.github.io/kids-ai-test/tr.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://iamalex-afk.github.io/kids-ai-test/vi.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/"/>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-03</lastmod>
   </url>
 
   <!-- Portuguese (Brazil) -->
   <url>
     <loc>https://iamalex-afk.github.io/kids-ai-test/pt.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamalex-afk.github.io/kids-ai-test/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://iamalex-afk.github.io/kids-ai-test/ru.html"/>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://iamalex-afk.github.io/kids-ai-test/pt.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://iamalex-afk.github.io/kids-ai-test/es.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://iamalex-afk.github.io/kids-ai-test/de.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://iamalex-afk.github.io/kids-ai-test/fr.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://iamalex-afk.github.io/kids-ai-test/hi.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://iamalex-afk.github.io/kids-ai-test/id.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://iamalex-afk.github.io/kids-ai-test/tr.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://iamalex-afk.github.io/kids-ai-test/vi.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/"/>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-03</lastmod>
   </url>
 
   <!-- Spanish -->
   <url>
     <loc>https://iamalex-afk.github.io/kids-ai-test/es.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamalex-afk.github.io/kids-ai-test/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://iamalex-afk.github.io/kids-ai-test/ru.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://iamalex-afk.github.io/kids-ai-test/pt.html"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://iamalex-afk.github.io/kids-ai-test/es.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://iamalex-afk.github.io/kids-ai-test/de.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://iamalex-afk.github.io/kids-ai-test/fr.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://iamalex-afk.github.io/kids-ai-test/hi.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://iamalex-afk.github.io/kids-ai-test/id.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://iamalex-afk.github.io/kids-ai-test/tr.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://iamalex-afk.github.io/kids-ai-test/vi.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/"/>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-03</lastmod>
   </url>
 
   <!-- German -->
   <url>
     <loc>https://iamalex-afk.github.io/kids-ai-test/de.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamalex-afk.github.io/kids-ai-test/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://iamalex-afk.github.io/kids-ai-test/ru.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://iamalex-afk.github.io/kids-ai-test/pt.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://iamalex-afk.github.io/kids-ai-test/es.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://iamalex-afk.github.io/kids-ai-test/de.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://iamalex-afk.github.io/kids-ai-test/fr.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://iamalex-afk.github.io/kids-ai-test/hi.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://iamalex-afk.github.io/kids-ai-test/id.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://iamalex-afk.github.io/kids-ai-test/tr.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://iamalex-afk.github.io/kids-ai-test/vi.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/"/>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-03</lastmod>
   </url>
 
   <!-- French -->
   <url>
     <loc>https://iamalex-afk.github.io/kids-ai-test/fr.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamalex-afk.github.io/kids-ai-test/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://iamalex-afk.github.io/kids-ai-test/ru.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://iamalex-afk.github.io/kids-ai-test/pt.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://iamalex-afk.github.io/kids-ai-test/es.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://iamalex-afk.github.io/kids-ai-test/de.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://iamalex-afk.github.io/kids-ai-test/fr.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://iamalex-afk.github.io/kids-ai-test/hi.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://iamalex-afk.github.io/kids-ai-test/id.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://iamalex-afk.github.io/kids-ai-test/tr.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://iamalex-afk.github.io/kids-ai-test/vi.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/"/>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-03</lastmod>
   </url>
 
   <!-- Hindi -->
   <url>
     <loc>https://iamalex-afk.github.io/kids-ai-test/hi.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamalex-afk.github.io/kids-ai-test/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://iamalex-afk.github.io/kids-ai-test/ru.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://iamalex-afk.github.io/kids-ai-test/pt.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://iamalex-afk.github.io/kids-ai-test/es.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://iamalex-afk.github.io/kids-ai-test/de.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://iamalex-afk.github.io/kids-ai-test/fr.html"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://iamalex-afk.github.io/kids-ai-test/hi.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://iamalex-afk.github.io/kids-ai-test/id.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://iamalex-afk.github.io/kids-ai-test/tr.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://iamalex-afk.github.io/kids-ai-test/vi.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/"/>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-03</lastmod>
   </url>
 
   <!-- Indonesian -->
   <url>
     <loc>https://iamalex-afk.github.io/kids-ai-test/id.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamalex-afk.github.io/kids-ai-test/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://iamalex-afk.github.io/kids-ai-test/ru.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://iamalex-afk.github.io/kids-ai-test/pt.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://iamalex-afk.github.io/kids-ai-test/es.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://iamalex-afk.github.io/kids-ai-test/de.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://iamalex-afk.github.io/kids-ai-test/fr.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://iamalex-afk.github.io/kids-ai-test/hi.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://iamalex-afk.github.io/kids-ai-test/id.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://iamalex-afk.github.io/kids-ai-test/tr.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://iamalex-afk.github.io/kids-ai-test/vi.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/"/>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-03</lastmod>
   </url>
 
   <!-- Turkish -->
   <url>
     <loc>https://iamalex-afk.github.io/kids-ai-test/tr.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamalex-afk.github.io/kids-ai-test/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://iamalex-afk.github.io/kids-ai-test/ru.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://iamalex-afk.github.io/kids-ai-test/pt.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://iamalex-afk.github.io/kids-ai-test/es.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://iamalex-afk.github.io/kids-ai-test/de.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://iamalex-afk.github.io/kids-ai-test/fr.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://iamalex-afk.github.io/kids-ai-test/hi.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://iamalex-afk.github.io/kids-ai-test/id.html"/>
     <xhtml:link rel="alternate" hreflang="tr" href="https://iamalex-afk.github.io/kids-ai-test/tr.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://iamalex-afk.github.io/kids-ai-test/vi.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/"/>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <lastmod>2026-07-01</lastmod>
+    <lastmod>2026-07-03</lastmod>
+  </url>
+
+  <!-- Vietnamese -->
+  <url>
+    <loc>https://iamalex-afk.github.io/kids-ai-test/vi.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamalex-afk.github.io/kids-ai-test/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://iamalex-afk.github.io/kids-ai-test/ru.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://iamalex-afk.github.io/kids-ai-test/pt.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://iamalex-afk.github.io/kids-ai-test/es.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://iamalex-afk.github.io/kids-ai-test/de.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://iamalex-afk.github.io/kids-ai-test/fr.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://iamalex-afk.github.io/kids-ai-test/hi.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://iamalex-afk.github.io/kids-ai-test/id.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://iamalex-afk.github.io/kids-ai-test/tr.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://iamalex-afk.github.io/kids-ai-test/vi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <lastmod>2026-07-03</lastmod>
+  </url>
+
+  <!-- AI Duel — bonus game, English -->
+  <url>
+    <loc>https://iamalex-afk.github.io/kids-ai-test/duel/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamalex-afk.github.io/kids-ai-test/duel/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://iamalex-afk.github.io/kids-ai-test/duel/ru.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/duel/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-07-03</lastmod>
+  </url>
+
+  <!-- AI Duel — bonus game, Russian -->
+  <url>
+    <loc>https://iamalex-afk.github.io/kids-ai-test/duel/ru.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://iamalex-afk.github.io/kids-ai-test/duel/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://iamalex-afk.github.io/kids-ai-test/duel/ru.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/duel/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>2026-07-03</lastmod>
   </url>
 
 </urlset>

@@ -3,16 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kids AI Test — What Is AI Really? Free, No Registration</title>
-  <meta name="description" content="What is AI really? Free educational experience for ages 3–99. Learn how AI works, play a game, take a quiz, earn your unique card. No registration, no data.">
-  <meta name="keywords" content="AI for kids, what is AI, is ChatGPT alive, can AI feel pain, AI education children, artificial intelligence quiz">
+  <title>AI for Kids — Free Quiz, Games & AI Literacy Test | No Sign-Up</title>
+  <meta name="description" content="Is ChatGPT alive? Can AI feel? Free AI literacy test for ages 3–17 — learn how AI really works through interactive lessons, fun games, and a quiz. Earn your unique verified card. Zero registration, zero ads.">
+  <meta name="keywords" content="AI for kids, artificial intelligence for children, ChatGPT for kids, how to explain AI to a child, AI games educational, AI quiz children, teach kids about AI, free AI education">
   <meta name="author" content="Alex Bitkin — Mind-OS">
-  <meta property="og:title" content="Kids AI Test — What Is AI Really?">
-  <meta property="og:description" content="Free AI literacy for all ages. Learn · Play · Earn your unique card.">
+  <meta property="og:title" content="AI for Kids — Free Quiz & Games | Learn How ChatGPT Works">
+  <meta property="og:description" content="Is ChatGPT alive? Can AI feel? Free AI literacy for ages 3–17. Learn · Play · Earn your unique card. Zero registration, zero ads.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://iamalex-afk.github.io/kids-ai-test/">
+  <meta property="og:image" content="https://iamalex-afk.github.io/kids-ai-test/og.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI for Kids — Free Quiz & Games">
+  <meta name="twitter:description" content="Free AI literacy test for children ages 3–17. Learn · Play · Earn your unique card.">
+  <meta name="twitter:image" content="https://iamalex-afk.github.io/kids-ai-test/og.svg">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://iamalex-afk.github.io/kids-ai-test/">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":["WebApplication","EducationalApplication"],"name":"Kids AI Test","url":"https://iamalex-afk.github.io/kids-ai-test/","description":"Free AI literacy test and educational games for children ages 3–17. Learn how AI really works, play games, take quizzes, earn your unique verified card.","applicationCategory":"EducationApplication","isAccessibleForFree":true,"inLanguage":["en","ru","de","es","fr","hi","id","pt","tr","vi"],"audience":{"@type":"EducationalAudience","educationalRole":"student","suggestedMinAge":3,"suggestedMaxAge":17},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"Alex Bitkin","url":"https://github.com/IamAlex-afk"},"image":"https://iamalex-afk.github.io/kids-ai-test/og.svg"}</script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
   <link rel="stylesheet" href="css/main.css">
   <meta name="theme-color" content="#8b5cf6">
@@ -91,6 +99,29 @@
     /* Parent body default hidden */
     .parent-body { display:none; }
 
+    /* MODE PICKER */
+    .mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;}
+    @media(max-width:480px){.mode-grid{grid-template-columns:1fr;}}
+    .mode-card{
+      background:var(--card);border:2px solid var(--border);border-radius:var(--r);
+      padding:32px 20px;text-align:center;cursor:pointer;
+      transition:transform .15s,border-color .2s,box-shadow .2s;
+      display:flex;flex-direction:column;align-items:center;gap:10px;
+      font-family:inherit;color:inherit;
+    }
+    .mode-card:hover{transform:translateY(-4px);}
+    .mode-card:active{transform:translateY(1px);}
+    .mode-icon{font-size:3.5rem;line-height:1;}
+    .mode-title{font-size:1.3rem;font-weight:900;color:var(--text);}
+    .mode-desc{font-size:.9rem;color:var(--muted2);line-height:1.55;max-width:220px;}
+    .mode-badge{font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:10px;letter-spacing:.5px;}
+    .learn-mode{border-color:var(--accent);}
+    .learn-mode:hover{border-color:var(--accent);box-shadow:0 10px 28px rgba(139,92,246,.28);}
+    .learn-mode .mode-badge{background:rgba(139,92,246,.15);color:var(--accent);}
+    .play-mode{border-color:#22c55e;}
+    .play-mode:hover{border-color:#22c55e;box-shadow:0 10px 28px rgba(34,197,94,.24);}
+    .play-mode .mode-badge{background:rgba(34,197,94,.15);color:#22c55e;}
+
     /* FAQ section */
     .faq-section { margin:16px 0; }
     .faq-item { background:var(--card); border:1px solid var(--border); border-radius:var(--r); margin-bottom:10px; }
@@ -115,7 +146,7 @@
     "applicationCategory": "EducationApplication",
     "operatingSystem": "Any",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "inLanguage": ["en","ru","pt","es","de","fr","hi","id","tr"],
+    "inLanguage": ["en","ru","pt","es","de","fr","hi","id","tr","vi"],
     "audience": { "@type": "EducationalAudience", "educationalRole": "student" },
     "author": { "@type": "Person", "name": "Alex Bitkin", "url": "https://github.com/IamAlex-afk" },
     "isAccessibleForFree": true
@@ -181,7 +212,7 @@
 <div id="boot">
   <div class="boot-lines">
     <p class="boot-line" style="animation-delay:.1s">▶  Loading AI facts from verified sources...</p>
-    <p class="boot-line" style="animation-delay:.7s">▶  9 languages · 4 age groups · 0 ads · 0 registration</p>
+    <p class="boot-line" style="animation-delay:.7s">▶  10 languages · 4 age groups · 0 ads · 0 registration</p>
     <p class="boot-line warn" style="animation-delay:1.3s">▶  FACT: AI cannot feel. AI cannot think. AI is a tool.</p>
     <p class="boot-line info" style="animation-delay:1.9s">▶  Ready. Let's find out what AI really is.</p>
   </div>
@@ -206,6 +237,8 @@
       <button class="top-btn" data-lang-switch="hi">🇮🇳 HI</button>
       <button class="top-btn" data-lang-switch="id">🇮🇩 ID</button>
       <button class="top-btn" data-lang-switch="tr">🇹🇷 TR</button>
+      <button class="top-btn" data-lang-switch="vi">🇻🇳 VI</button>
+      <button class="top-btn" data-lang-switch="th">🇹🇭 TH</button>
     </div>
     <div class="age-group" id="age-group" title="Switch age group">
       <button class="top-btn" data-age-quick="tiny"  title="Ages 3–5">🧸</button>
@@ -252,15 +285,15 @@
     </div>
     <div class="flow-step">
       <span class="flow-step-num">STEP 2</span>
-      <span class="flow-step-icon">📖</span>
-      <div class="flow-step-title">Learn how AI works</div>
-      <div class="flow-step-desc">Short lessons with real science, mini-tests between</div>
+      <span class="flow-step-icon">🔀</span>
+      <div class="flow-step-title">Choose your path</div>
+      <div class="flow-step-desc">Lessons + Quiz → card  ·  OR  ·  Jump straight to games</div>
     </div>
     <div class="flow-step">
       <span class="flow-step-num">STEP 3</span>
       <span class="flow-step-icon">🎮</span>
-      <div class="flow-step-title">Play Human vs AI</div>
-      <div class="flow-step-desc">Read a text — guess: human or AI wrote it?</div>
+      <div class="flow-step-title">Play games</div>
+      <div class="flow-step-desc">🐍 AI Snake or ⚔️ AI Duel — both teach AI concepts while playing</div>
     </div>
     <div class="flow-step">
       <span class="flow-step-num">STEP 4</span>
@@ -319,6 +352,31 @@
   </div>
 
   <!-- ════════════════════════════════
+       MODE PICKER (shown after age)
+  ════════════════════════════════ -->
+  <div id="mode-picker" class="hidden">
+    <div class="sec-header" style="margin-top:40px">
+      <span class="sec-header-text">STEP 2</span>
+      <div class="sec-header-line"></div>
+    </div>
+    <h2 class="section-heading">What do you want to do?</h2>
+    <div class="mode-grid">
+      <button class="mode-card learn-mode" id="btn-mode-learn">
+        <span class="mode-icon">📖</span>
+        <span class="mode-badge">LEARN + TEST</span>
+        <span class="mode-title">Lessons &amp; Quiz</span>
+        <span class="mode-desc">3–6 bite-size lessons → quiz → earn your unique numbered card</span>
+      </button>
+      <button class="mode-card play-mode" id="btn-mode-play">
+        <span class="mode-icon">🎮</span>
+        <span class="mode-badge">GAMES</span>
+        <span class="mode-title">Play &amp; Learn</span>
+        <span class="mode-desc">AI Snake · AI Duel — learn while having fun, no test required</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
        STEP 2 — LESSONS
   ════════════════════════════════ -->
   <div id="lessons" class="hidden">
@@ -356,13 +414,26 @@
       <div class="sec-header-line"></div>
     </div>
 
-    <h2 class="section-heading">👤 Human or 🤖 AI?</h2>
-    <p class="section-explain">
-      Read the text below. Decide who wrote it — a real human, or an AI.<br>
-      There is no trick — trust what you feel, and learn from the explanation.
-    </p>
+    <h2 class="section-heading">🎮 Play &amp; Learn</h2>
+    <p class="section-explain" id="game-intro">Two games — two ways to learn about AI. Pick one (or try both!).</p>
 
-    <!-- Game content injected here -->
+    <!-- Game picker — two cards side by side -->
+    <div id="game-picker" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px;">
+      <div class="card" style="text-align:center;padding:20px;">
+        <div style="font-size:2.4rem">🐍</div>
+        <div style="font-weight:900;font-size:1.05rem;margin:8px 0 4px">AI Snake</div>
+        <div class="section-explain" id="snake-desc" style="margin:0 0 14px;font-size:.85rem">Collect AI terms, dodge red tokens. Learn real facts.</div>
+        <button class="btn-primary" id="btn-start-snake" style="width:100%">Play Snake →</button>
+      </div>
+      <div class="card" style="text-align:center;padding:20px;border-color:var(--accent2,#7c3aed);">
+        <div style="font-size:2.4rem">⚔️</div>
+        <div style="font-weight:900;font-size:1.05rem;margin:8px 0 4px">AI Duel</div>
+        <div class="section-explain" id="duel-desc" style="margin:0 0 14px;font-size:.85rem">Battle robots — answer questions about AI &amp; online safety.</div>
+        <a id="duel-go" href="duel/" class="btn-primary" style="display:block;text-decoration:none">Play Duel →</a>
+      </div>
+    </div>
+
+    <!-- Snake game content injected here -->
     <div class="game-wrap" id="game-content"></div>
   </div>
 
@@ -472,63 +543,6 @@
   </div>
 
   <!-- ════════════════════════════════
-       FAQ — real search queries answered
-       H2 + FAQ JSON schema bait for "People Also Ask"
-  ════════════════════════════════ -->
-  <section id="faq" aria-labelledby="faq-heading">
-    <div class="sec-header" style="margin-top:40px">
-      <span class="sec-header-text">KIDS ASK · SCIENCE ANSWERS</span>
-      <div class="sec-header-line"></div>
-    </div>
-    <h2 class="section-heading" id="faq-heading">Real questions. Honest answers.</h2>
-    <p class="section-explain">These are the exact questions millions of children type into search engines every day. Here are the science-based answers — no hype, no fear, just verified facts.</p>
-
-    <div class="faq-section">
-
-      <details class="faq-item" open>
-        <summary><h3>Is ChatGPT alive? Does it have feelings?</h3></summary>
-        <p class="faq-answer"><strong>No.</strong> ChatGPT predicts the next likely word based on patterns from billions of texts. It learned to sound like humans — but has zero consciousness, zero feelings, zero inner experience. When it says "I'm happy to help," that phrase was learned from training data, not felt. <a href="https://openreview.net/forum?id=BZ5a1r-kVsf" target="_blank" rel="noopener">Source: LeCun 2022</a></p>
-      </details>
-
-      <details class="faq-item">
-        <summary><h3>Can AI feel pain or emotions?</h3></summary>
-        <p class="faq-answer"><strong>No current AI feels anything.</strong> AI can detect patterns linked to emotions in text or voice — but detecting ≠ experiencing. A smoke detector senses fire; it doesn't feel heat. No peer-reviewed science supports machine consciousness in today's AI. <a href="https://arxiv.org/abs/1911.01547" target="_blank" rel="noopener">Source: Chollet 2019</a></p>
-      </details>
-
-      <details class="faq-item">
-        <summary><h3>Is Alexa or Siri a real person?</h3></summary>
-        <p class="faq-answer"><strong>No.</strong> Alexa, Siri, Google Assistant, and similar voice assistants are software programs. Engineers designed them — but no human listens live. They convert speech to text, match patterns, and return a generated response. They do not know you and do not care about you.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary><h3>🚨 Can AI fake photos, videos or voices? What is a deepfake?</h3></summary>
-        <p class="faq-answer"><strong>Yes — and this is critical to know.</strong> AI can generate photorealistic images (deepfakes), synthetic video, and voice clones that sound exactly like a real person. Seeing or hearing something does <strong>NOT</strong> make it real.<br><br>3 checks before trusting any content: <strong>(1)</strong> Is the source verified and known? <strong>(2)</strong> Do multiple trusted outlets confirm it? <strong>(3)</strong> Is it designed to make you angry or scared? — that's a red flag for manipulation.</p>
-      </details>
-
-      <details class="faq-item">
-        <summary><h3>What is the difference between AI and a human brain?</h3></summary>
-        <p class="faq-answer">Humans have consciousness, emotions, genuine understanding, and learn from one example. AI finds statistical patterns in massive datasets — fast and consistent, but with no understanding, no awareness. A child learns "fire is dangerous" once. AI needs thousands of examples and still cannot feel heat. <a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">Source: Vaswani et al. 2017</a></p>
-      </details>
-
-      <details class="faq-item">
-        <summary><h3>Can AI be trusted? When yes, when no?</h3></summary>
-        <p class="faq-answer"><strong>Trust AI like a calculator</strong> — useful for specific tasks, always verify important results. AI "hallucinates": states false information confidently. ✅ <strong>Good for:</strong> brainstorming, drafts, quick summaries. ❌ <strong>NOT for:</strong> medical decisions, legal facts, breaking news, life-critical choices. Always ask: what is the original source?</p>
-      </details>
-
-      <details class="faq-item">
-        <summary><h3>What is a neural network — explained simply?</h3></summary>
-        <p class="faq-answer">A neural network is software that learns by finding patterns in huge data. After seeing millions of cat photos it can spot cats. It's loosely inspired by the brain's structure — but has no understanding, awareness, or curiosity. Think of it as a very fast, very accurate <strong>pattern-spotter</strong>. That is all. <a href="https://www.nature.com/articles/nature14539" target="_blank" rel="noopener">Source: LeCun, Bengio, Hinton, Nature 2015</a></p>
-      </details>
-
-      <details class="faq-item">
-        <summary><h3>Will AI replace humans and take all jobs?</h3></summary>
-        <p class="faq-answer">AI will <strong>change</strong> jobs, not erase humanity. Pattern-based tasks (sorting, standard writing, image recognition) are more automatable. Creative synthesis, physical skill, empathy, ethical judgment, and original ideas remain human strengths. The best insurance: understand AI, develop skills it cannot replicate, stay curious. <a href="https://unesdoc.unesco.org/ark:/48223/pf0000380969" target="_blank" rel="noopener">Source: UNESCO 2022</a></p>
-      </details>
-
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════
        FOR PARENTS
   ════════════════════════════════ -->
   <div class="parent-wrap" id="parent">
@@ -546,9 +560,28 @@
          No server involved. The hash is SHA-256 and publicly verifiable.
          Think of it like a Pokemon card serial number — meaningful and unforgeable.</p>
 
+      <h4>❓ Common questions your child may ask</h4>
+      <div class="faq-section" style="margin-bottom:16px">
+        <details class="faq-item" open>
+          <summary><h3>Is ChatGPT alive? Does it have feelings?</h3></summary>
+          <p class="faq-answer"><strong>No.</strong> ChatGPT predicts the next likely word based on patterns from billions of texts. It learned to sound like humans — but has zero consciousness, zero feelings, zero inner experience. When it says "I'm happy to help," that phrase was learned from training data, not felt.</p>
+        </details>
+        <details class="faq-item">
+          <summary><h3>Can AI feel pain or emotions?</h3></summary>
+          <p class="faq-answer"><strong>No.</strong> AI can detect patterns linked to emotions in text or voice — but detecting ≠ experiencing. A smoke detector senses fire; it doesn't feel heat. No scientific research confirms machine consciousness in today's AI.</p>
+        </details>
+        <details class="faq-item">
+          <summary><h3>🚨 Can AI fake photos, videos or voices?</h3></summary>
+          <p class="faq-answer"><strong>Yes — this is important to know.</strong> AI can generate photorealistic deepfakes, synthetic video, and voice clones. Seeing or hearing something does <strong>NOT</strong> make it real. Teach your child: verify source → check other outlets → beware of content designed to provoke strong emotions.</p>
+        </details>
+        <details class="faq-item">
+          <summary><h3>Will AI take all jobs?</h3></summary>
+          <p class="faq-answer">AI will <strong>change</strong> jobs, not erase humanity. Creativity, physical skill, empathy, and ethical judgment remain human strengths. Best preparation: understand AI, develop uniquely human skills, stay curious.</p>
+        </details>
+      </div>
+
       <h4>📚 Sources</h4>
-      <p>Every fact is linked to its original source: arXiv papers, UNESCO, MIT Media Lab,
-         EU AI Act. No sensationalism, no anthropomorphism.</p>
+      <p>Educational content verified against peer-reviewed research (arXiv, UNESCO, MIT Media Lab, EU AI Act). No sensationalism, no anthropomorphism.</p>
 
       <h4>🌍 Open source · GPL v3</h4>
       <p>All code is on
@@ -572,6 +605,7 @@
   <footer>
     <div>
       🤖 <strong>Kids AI Test</strong> ·
+      <a href="duel/">🥊 Bonus: AI Duel</a> ·
       <a href="https://github.com/IamAlex-afk/kids-ai-test" target="_blank" rel="noopener">GitHub</a> ·
       <a href="https://github.com/IamAlex-afk/kids-ai-test/blob/main/LICENSE" target="_blank" rel="noopener">GPL v3</a> ·
       <a href="https://iamalex-afk.github.io/human-os-patch-33-protocols/" target="_blank" rel="noopener">Main Site: 33 Protocols</a>
@@ -593,6 +627,7 @@
 <script src="data/en.js"></script>
 <script src="js/names.js"></script>
 <script src="js/card.js"></script>
+<script src="js/snake.js"></script>
 <script src="js/core.js"></script>
 
 </body>

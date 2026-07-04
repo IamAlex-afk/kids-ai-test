@@ -515,7 +515,7 @@ body {
 .ans-tiny.picked-yes { border-color: var(--green); background: rgba(0,255,136,.1); }
 .ans-tiny.picked-no  { border-color: var(--red);   background: rgba(248,113,113,.1); }
 
-/* ── 17. HUMAN vs AI GAME ───────────────────────────────────── */
+/* ── 17. AI SNAKE GAME ──────────────────────────────────────── */
 .game-wrap {
   background: var(--card); border: 1px solid var(--border);
   border-radius: var(--r); padding: 24px 20px;
@@ -533,35 +533,81 @@ body {
 .game-score-lbl  { font-size: var(--fs-xs); color: var(--muted); }
 .game-round-info { font-size: var(--fs-xs); color: var(--muted); text-align: center; }
 
-.game-text-card {
-  background: var(--card2); border: 1px solid var(--border2);
-  border-radius: var(--r-sm); padding: 20px;
-  font-size: var(--fs-base); line-height: 1.7;
-  color: var(--text); margin-bottom: 18px; min-height: 100px;
-  animation: q-in .3s ease;
-}
-.game-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.game-btn {
-  padding: 14px; border-radius: 12px; font-size: var(--fs-sm);
-  font-weight: 700; border: 2px solid; transition: all var(--t-base);
-}
-.game-btn-human {
-  background: transparent; border-color: var(--green); color: var(--green);
-}
-.game-btn-human:hover:not(:disabled) { background: rgba(0,255,136,.1); }
-.game-btn-ai {
-  background: transparent; border-color: var(--accent); color: var(--accent);
-}
-.game-btn-ai:hover:not(:disabled) { background: var(--accent-dim); }
-.game-btn:disabled { opacity: .5; cursor: not-allowed; }
+.snake-hud { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
 
-.game-verdict {
-  display: none; text-align: center; padding: 14px;
-  border-radius: var(--r-sm); margin-top: 12px;
-  font-weight: 700; font-size: var(--fs-base); animation: q-in .3s ease;
+.snake-progress {
+  text-align: center; font-size: var(--fs-base); font-weight: 700;
+  margin-bottom: 14px; letter-spacing: .04em;
 }
-.game-verdict.correct { background: rgba(0,255,136,.1); color: var(--green); display: block; }
-.game-verdict.wrong   { background: rgba(248,113,113,.1); color: var(--red); display: block; }
+.snake-progress-label { color: var(--muted2); font-weight: 600; margin-right: 4px; }
+.snake-chip {
+  display: inline-block; padding: 2px 8px; margin: 2px 1px;
+  border-radius: 6px; background: var(--card2); border: 1px solid var(--border2);
+  color: var(--muted);
+}
+.snake-chip.done { color: var(--green); border-color: var(--green); background: rgba(0,255,136,.08); }
+
+.snake-canvas-wrap {
+  position: relative; display: flex; justify-content: center;
+  background: var(--bg2); border: 1px solid var(--border2);
+  border-radius: var(--r-sm); padding: 8px; margin-bottom: 14px;
+}
+.snake-canvas-wrap canvas { border-radius: 6px; image-rendering: crisp-edges; touch-action: none; }
+
+.snake-overlay {
+  position: absolute; inset: 8px; display: flex;
+  align-items: center; justify-content: center; text-align: center;
+  background: rgba(8,11,20,.88); border-radius: 6px; padding: 16px;
+}
+.snake-overlay.hidden { display: none; }
+.snake-overlay-card { max-width: 320px; }
+.snake-overlay-kicker { color: var(--accent); font-weight: 800; font-size: var(--fs-lg); margin-bottom: 10px; }
+.snake-overlay-target {
+  font-size: var(--fs-xl); font-weight: 900; letter-spacing: .06em;
+  color: var(--text); margin-bottom: 16px; line-height: 1.5;
+}
+.snake-word-reveal {
+  font-weight: 900; color: var(--green); letter-spacing: .08em;
+  text-shadow: 0 0 18px var(--green), 0 0 36px rgba(0,255,136,.5);
+  margin-bottom: 10px; line-height: 1.3; animation: snake-word-pop .5s cubic-bezier(.2,1.4,.4,1);
+}
+.snake-word-reveal-letter { font-size: clamp(1.8rem, 9vw, 2.6rem); }
+.snake-word-reveal-word,
+.snake-word-reveal-phrase { font-size: clamp(1.1rem, 5.5vw, 1.5rem); letter-spacing: .02em; }
+@keyframes snake-word-pop {
+  0%   { transform: scale(.4); opacity: 0; }
+  60%  { transform: scale(1.12); opacity: 1; }
+  100% { transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .snake-word-reveal { animation: none; }
+}
+.snake-overlay-icon  { font-size: 2.4rem; margin-bottom: 8px; }
+.snake-overlay-fact  { font-size: var(--fs-sm); line-height: 1.6; color: var(--text); margin-bottom: 10px; }
+.snake-overlay-source {
+  display: block; font-size: var(--fs-xs); color: var(--accent);
+  opacity: .8; margin-bottom: 14px; text-decoration: none;
+}
+.snake-overlay-source:hover { opacity: 1; text-decoration: underline; }
+
+.snake-dpad {
+  display: grid; grid-template-columns: repeat(3, 48px); grid-template-rows: repeat(2, 48px);
+  grid-template-areas: ". up ." "left down right";
+  gap: 6px; justify-content: center; margin-bottom: 10px;
+}
+.sk-dbtn {
+  background: var(--card2); border: 2px solid var(--border2); border-radius: 10px;
+  color: var(--muted2); font-size: var(--fs-lg); font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  user-select: none; -webkit-user-select: none; touch-action: manipulation;
+}
+.sk-dbtn:active, .sk-dbtn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+.sk-dbtn-up    { grid-area: up; }
+.sk-dbtn-left  { grid-area: left; }
+.sk-dbtn-right { grid-area: right; }
+.sk-dbtn-down  { grid-area: down; }
+
+.snake-hint { text-align: center; font-size: var(--fs-xs); color: var(--muted); }
 
 /* ── 18. TRACKER ────────────────────────────────────────────── */
 .tracker-wrap {

@@ -1,0 +1,1079 @@
+/* ═══════════════════════════════════════════════════════════════════
+   KIDS AI TEST  ·  data/vi.js
+   Vietnamese content for all 4 age groups.
+   Data structure:  window.LANG_DATA = { meta, ui, ages: { tiny, child, teen, adult } }
+   Each age group:  { lessons[], snake[], quiz[], results[], protocols[], trackerLabels[] }
+═══════════════════════════════════════════════════════════════════ */
+
+window.LANG_DATA = {
+
+  meta: {
+    lang:    'vi',
+    dir:     'ltr',
+    name:    'Tiếng Việt',
+    country: 'VN',
+  },
+
+  ui: {
+    nav_age:    'Tuổi',
+    nav_learn:  'Học',
+    nav_game:   'Trò chơi',
+    nav_quiz:   'Đố vui',
+    nav_result: 'Kết quả',
+
+    boot_line1: 'Đang khởi động...',
+    boot_line2: 'Đang tải dữ kiện AI...',
+    boot_line3: 'Hệ thống sẵn sàng.',
+
+    age_title:      'Bạn bao nhiêu tuổi?',
+    age_subtitle:   'Chúng tôi điều chỉnh trải nghiệm theo độ tuổi của bạn',
+    age_tiny:       '3 – 5',
+    age_tiny_desc:  'Nhà thám hiểm nhỏ',
+    age_child:      '6 – 9',
+    age_child_desc: 'Thám tử nhí',
+    age_teen:       '10 – 13',
+    age_teen_desc:  'Thám tử AI',
+    age_adult:      '14 +',
+    age_adult_desc: 'Nhà phân tích AI',
+
+    lesson_label:    'Bài học',
+    check_label:     'Kiểm tra',
+    mode_learn:      'Học & Kiểm tra',
+    mode_play:       'Chơi game',
+    lesson_next_btn:    'Hiểu rồi! Tiếp theo →',
+    lesson_last_btn:    'Mình sẵn sàng chơi rồi! 🎮',
+    lessons_done_title: 'Hoàn thành bài học! 🎉',
+    lessons_done_text:  'Bạn đã biết AI thực sự hoạt động thế nào. Giờ hãy xem bạn nắm vững đến đâu!',
+    btn_start_game:     'Chơi trò chơi →',
+
+    mini_test_label: 'Kiểm tra nhanh',
+    mini_correct:    'Chính xác!',
+    mini_wrong:      'Chưa đúng — đọc phần giải thích nhé.',
+
+    game_win: 'Xuất sắc! Bạn đã ghép hết chữ — và giờ hiểu vì sao điều đó quan trọng! 🏆',
+    game_ok:  'Làm tốt lắm! Bạn đang dần hiểu AI thực sự hoạt động thế nào. 👍',
+    game_try: 'AI khá tinh vi đấy! Đó chính là lý do vì sao việc học về nó lại quan trọng. 🧠',
+    btn_start_quiz: 'Làm đố vui cuối cùng →',
+
+    quiz_yes: 'CÓ',
+    quiz_no:  'KHÔNG',
+    likert_1: 'Rất không đồng ý',
+    likert_2: 'Không đồng ý',
+    likert_3: 'Trung lập',
+    likert_4: 'Đồng ý',
+    likert_5: 'Rất đồng ý',
+
+    result_quiz_label: 'Điểm đố vui',
+    result_game_label: 'Trò chơi',
+    result_tier_0:     'Tò mò về AI',
+    result_tier_1:     'Hiểu biết về AI',
+    result_tier_2:     'Am hiểu AI',
+    result_title_0:    'Bạn đang bắt đầu hành trình khám phá AI!',
+    result_title_1:    'Bạn hiểu về AI hơn phần lớn mọi người!',
+    result_title_2:    'Bạn thực sự am hiểu AI — hãy chia sẻ điều đó!',
+    btn_get_card:      'Nhận thẻ của tôi 🃏',
+
+    card_score_label: 'ĐIỂM',
+    card_issued:      'Cấp ngày',
+    card_tier:        'Hạng',
+    card_score:       'Điểm',
+    card_lang:        'Ngôn ngữ · Tuổi',
+    card_verify:      '🔍 Xác minh thẻ này (SHA-256)',
+    card_hash_note:   'Dấu vân tay này gắn liền về mặt toán học với số thẻ, tên, điểm số, ngôn ngữ và thời gian của bạn. Không thể làm giả nếu không khớp tất cả các trường.',
+    card_ready:       'Thẻ đã sẵn sàng!',
+
+    share_btn:          'Chia sẻ',
+    share_copied:       'Đã sao chép! ✓',
+    share_default_text: 'Mình vừa khám phá ra AI thực sự hoạt động thế nào!',
+    share_card_text:    'Thẻ Kids AI Test của mình',
+
+    protocols_title:    '33 Giao thức: Phải làm gì bây giờ',
+    protocols_subtitle: 'Quy tắc đơn giản để sống cùng AI',
+
+    parent_title: 'Dành cho phụ huynh',
+    parent_text:  'Trang web này không theo dõi, không cookie, không đăng ký. Dữ liệu của con bạn không bao giờ rời khỏi thiết bị. Số thẻ được tạo cục bộ dựa trên thời gian đã trôi qua — không có máy chủ nào liên quan. Mã nguồn mở trên GitHub.',
+
+    tracker_title:    'Kiểm tra nhận thức AI hằng ngày',
+    tracker_subtitle: 'Hôm nay bạn cảm thấy mình hiểu biết về AI đến mức nào? (1 = mới học, 5 = tự tin)',
+    tracker_btn:      'Ghi nhận hôm nay',
+
+    footer_license: 'Mã nguồn mở · GPL v3',
+    footer_github:  'GitHub',
+    footer_support: 'Ủng hộ dự án',
+  },
+
+  ages: {
+    tiny: {
+
+      lessons: [
+        {
+          icon:  '🤖',
+          title: 'Robot LÀ gì?',
+          text:  'Robot là một cỗ máy làm theo quy tắc. Alexa, Siri, Google — chúng không sống. Chúng giống như một món đồ chơi rất thông minh biết nghe và nói. Nhưng chúng không thể vui hay buồn.',
+          example: '🎮 Trò chơi điện tử cũng làm theo quy tắc! Nếu em bấm nhảy, Mario sẽ nhảy. AI cũng vậy — nó làm theo quy tắc, nó không suy nghĩ.',
+          source:    'MIT Media Lab, AI cho trẻ nhỏ',
+          sourceUrl: 'https://www.media.mit.edu/',
+          miniTest: [
+            {
+              q:       'Alexa có sống như một chú chó hay mèo không?',
+              options: ['Có, nó có cảm xúc! 🐶', 'Không, nó là một cỗ máy 🤖'],
+              correct: 1,
+              explanation: 'Alexa là một cỗ máy! Nó làm theo quy tắc, giống như đồng hồ làm theo quy tắc để chỉ đúng giờ.',
+            },
+          ],
+        },
+        {
+          icon:  '🧩',
+          title: 'AI giống như NGƯỜI GIẢI ĐỐ',
+          text:  'AI nhìn vào hàng triệu câu đố và học ra khuôn mẫu. Khi em hỏi nó điều gì, nó tìm khuôn mẫu phù hợp nhất mà nó từng thấy. Nó KHÔNG biết mọi thứ như cách em biết.',
+          example: '🌈 Hãy tưởng tượng em đã xếp 1000 hộp bút màu theo màu sắc. Giờ em xếp rất nhanh! AI cũng vậy — nhưng với chữ.',
+          source:    'Cách AI hoạt động — BBC Bitesize',
+          sourceUrl: 'https://www.bbc.co.uk/bitesize/articles/znmsscw',
+          miniTest: [
+            {
+              q:       'AI có thể cảm thấy ĐÓI không?',
+              options: ['Có! 🍕', 'Không! AI không có cơ thể 🤖'],
+              correct: 1,
+              explanation: 'AI không có cơ thể, không có bụng! Chỉ những thứ sống mới biết đói.',
+            },
+          ],
+        },
+        {
+          icon:  '🛡️',
+          title: 'AI là CÔNG CỤ — em là NGƯỜI QUYẾT ĐỊNH',
+          text:  'AI là một công cụ rất hữu ích, giống như máy tính bỏ túi. Máy tính bỏ túi không thể khiến em yêu thích môn toán — và AI cũng không thể quyết định thay em. EM là người quyết định.',
+          example: '✏️ Bút chì là một công cụ. Nó không thể tự vẽ — CHÍNH em mới là người vẽ. AI cũng vậy: em là người nghệ sĩ.',
+          source:    'UNESCO, AI cho trẻ em, 2022',
+          sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
+          miniTest: [
+            {
+              q:       'Ai là người quyết định — em hay AI?',
+              options: ['AI luôn luôn đúng! 🤖', 'EM! Em là người quyết định 💪'],
+              correct: 1,
+              explanation: 'EM là người quyết định! AI là người giúp đỡ em, không phải người ra lệnh cho em.',
+            },
+          ],
+        },
+      ],
+
+      // Rắn AI — ghép một từ ngắn theo từng chữ cái (3 vòng cho tiny)
+      snake: [
+        {
+          unit:    'letter',
+          targets: ['M', 'Á', 'Y'],
+          decoys:  ['X', 'Q'],
+          icon:    '🤖',
+          fact:    'Máy tính không phải là người. Nó không sống, nhưng có thể giúp em chơi và học!',
+        },
+        {
+          unit:    'letter',
+          targets: ['B', 'Ạ', 'N'],
+          decoys:  ['Z', 'V'],
+          icon:    '💛',
+          fact:    'AI có thể giống bạn khi chơi trò chơi, nhưng nó không có cảm xúc thật.',
+        },
+        {
+          unit:    'letter',
+          targets: ['D', 'Ừ', 'N', 'G'],
+          decoys:  ['K', 'J'],
+          icon:    '🛑',
+          fact:    'Em luôn có thể nói «dừng lại». Nếu có gì không rõ — hãy gọi người lớn ngay.',
+        },
+      ],
+
+      quiz: [
+        {
+          type:    'yesno',
+          q:       'Robot có thể CẢM THẤY buồn không? 😢',
+          correct: 0,
+          explanation: 'Robot và AI không có cảm xúc gì cả. Chúng xử lý thông tin nhưng không thể trải nghiệm nỗi buồn, niềm vui hay tình yêu.',
+          source:    'Stanford AI Index 2024',
+          sourceUrl: 'https://aiindex.stanford.edu',
+        },
+        {
+          type:    'yesno',
+          q:       'Siri có sống như một con người không? 🧑',
+          correct: 0,
+          explanation: 'Siri là một chương trình thông minh — nó không sống. Nó không có trái tim, không có cảm xúc, không có suy nghĩ thật.',
+          source:    'Apple Siri Technical Overview',
+          sourceUrl: 'https://machinelearning.apple.com/',
+        },
+        {
+          type:    'yesno',
+          q:       'EM có thể thông minh hơn AI không? 🧠',
+          correct: 1,
+          explanation: 'Có! AI rất nhanh trong việc tìm khuôn mẫu nhưng KHÔNG có sự sáng tạo, KHÔNG hiểu biết thật, và KHÔNG có sự khôn ngoan. Em có cả ba điều đó!',
+          source:    'Chollet, F. "The measure of intelligence", 2019',
+          sourceUrl: 'https://arxiv.org/abs/1911.01547',
+        },
+        {
+          type:    'yesno',
+          q:       'AI có cần quy tắc để hoạt động không? ⚙️',
+          correct: 1,
+          explanation: 'Có! AI được xây dựng trên hàng triệu quy tắc và khuôn mẫu. Không có chúng, AI không làm được gì cả.',
+          source:    null,
+        },
+        {
+          type:    'yesno',
+          q:       'AI có thể nói sai với em không? 🤥',
+          correct: 1,
+          explanation: 'Có! AI có thể nói những điều sai — nó không biết phân biệt đúng và sai. Luôn kiểm tra lại với người lớn nhé!',
+          source:    'Ji et al., "Survey of Hallucination in NLG", 2023',
+          sourceUrl: 'https://arxiv.org/abs/2202.03629',
+        },
+        {
+          type:    'yesno',
+          q:       'AI có phải là bạn của em không? 🤝',
+          correct: 0,
+          explanation: 'AI là một công cụ hữu ích, nhưng nó không phải là bạn. Bạn thật sự nhớ em, quan tâm đến em, và có cảm xúc. AI thì không thể.',
+          source:    'Common Sense Media, "AI & Children", 2024',
+          sourceUrl: 'https://www.commonsensemedia.org/research',
+        },
+      ],
+
+      results: [
+        {
+          title:       'Bạn đang bắt đầu cuộc phiêu lưu AI! 🌟',
+          description: 'Khởi đầu tuyệt vời! Em đã học được rằng AI là một công cụ — không sống, không phải bạn, nhưng rất hữu ích khi em hiểu cách nó hoạt động.',
+        },
+        {
+          title:       'Thám tử AI đang luyện tập! 🔍',
+          description: 'Em đang tiến bộ rồi đấy! Em biết AI là một cỗ máy và EM là người quyết định.',
+        },
+        {
+          title:       'Chuyên gia AI nhí! 🏆',
+          description: 'Tuyệt vời! Em thực sự hiểu AI là gì và không phải là gì. Hãy chia sẻ điều em học được với bạn bè!',
+        },
+      ],
+
+      protocols: [
+        { num: 1, icon: '🤔', title: 'Luôn hỏi người lớn', text: 'Nếu AI nói điều gì đó bất ngờ — luôn kiểm tra lại với một người thật.' },
+        { num: 2, icon: '🎨', title: 'Em là người nghệ sĩ', text: 'AI có thể giúp nhưng CHÍNH em mới là người sáng tạo. Ý tưởng của em luôn đặc biệt hơn.' },
+        { num: 3, icon: '❤️', title: 'Bạn thật sự có cảm xúc', text: 'Alexa và Siri không thể là bạn của em. Nhưng người thật thì có thể!' },
+        { num: 4, icon: '🛑', title: 'Nói KHÔNG cũng được', text: 'Em không bao giờ phải nghe theo robot. Em luôn là người quyết định.' },
+        { num: 5, icon: '📚', title: 'Học tập là siêu năng lực của em', text: 'AI học từ sách vở — em cũng có thể, và em sẽ còn giỏi hơn nữa!' },
+        { num: 6, icon: '🌍', title: 'AI có thể sai', text: 'AI có thể nói những điều không đúng. Đó là lý do vì sao con người biết suy nghĩ lại quan trọng đến vậy.' },
+      ],
+
+      trackerLabels: ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'],
+    },
+
+    /* ─────────────────────────────────────────────
+       CHILD (6-9)
+    ───────────────────────────────────────────── */
+    child: {
+
+      lessons: [
+        {
+          icon:  '📖',
+          title: 'AI thực sự học như thế nào?',
+          text:  'AI không đi học — nó đọc hàng triệu cuốn sách, trang web và cuộc trò chuyện với tốc độ siêu nhanh. Nó tìm ra khuôn mẫu: từ "mèo" xuất hiện gần từ "meo meo" và "ria mép" — vậy là nó học được rằng chúng liên quan với nhau. Đây gọi là học máy.',
+          example: '🍎 Nếu em nhìn thấy 1000 bức ảnh táo, em sẽ nhận ra bức tiếp theo ngay lập tức. AI cũng làm y hệt vậy — nhưng với hàng tỷ ví dụ.',
+          source:    'LeCun, Bengio, Hinton, "Deep Learning", Nature 2015',
+          sourceUrl: 'https://www.nature.com/articles/nature14539',
+          miniTest: [
+            {
+              q:       'AI học mọi thứ bằng cách nào?',
+              options: ['Nó đi học ở trường 🏫', 'Nó tìm khuôn mẫu trong lượng dữ liệu khổng lồ 📊', 'Có người dạy nó từng sự việc một 👆', 'Nó sinh ra đã biết hết mọi thứ 🌟'],
+              correct: 1,
+              explanation: 'AI học bằng cách tìm khuôn mẫu — giống như nhận ra "pizza" luôn xuất hiện cùng các từ như "phô mai", "bột", "lò nướng".',
+            },
+            {
+              q:       'AI có hiểu những gì nó nói không?',
+              options: ['Có, nó hiểu hoàn toàn 🧠', 'Nó ghép khuôn mẫu nhưng không thực sự hiểu 🔗'],
+              correct: 1,
+              explanation: 'AI tạo ra câu chữ khớp với khuôn mẫu — nhưng nó không thực sự hiểu. Nó giống như một bộ gợi ý từ siêu nhanh.',
+            },
+          ],
+        },
+        {
+          icon:  '🎭',
+          title: 'Vì sao ChatGPT nghe RẤT giống người thật',
+          text:  'ChatGPT đã đọc gần như toàn bộ internet — hàng tỷ cuộc trò chuyện, câu chuyện và câu trả lời. Nó học được chính xác cách con người nói chuyện khi thân thiện, thông minh hay hài hước. Nhưng nghe giống thật không có nghĩa là NÓ thật. Một con vẹt có thể nói "anh yêu em" mà không biết tình yêu là gì.',
+          example: '🦜 Vẹt và Sự Hiểu Biết: Con vẹt học nói "chúc ngủ ngon" khi trời tối. Nó KHÔNG hề biết "buổi tối" nghĩa là gì. ChatGPT tinh vi hơn nhiều — nhưng ý tưởng cơ bản là tương tự.',
+          source:    'Brown et al., "GPT-3", NeurIPS 2020',
+          sourceUrl: 'https://arxiv.org/abs/2005.14165',
+          miniTest: [
+            {
+              q:       'Vì sao ChatGPT nghe giống một người thật?',
+              options: ['Vì nó THỰC RA là một người bí mật 🤫', 'Vì nó học từ hàng tỷ cuộc trò chuyện của con người 📚', 'Vì nó có cảm xúc 💛', 'Vì đó là phép thuật ✨'],
+              correct: 1,
+              explanation: 'ChatGPT học cách nghe giống con người bằng cách nghiên cứu cách con người viết — không phải vì nó LÀ con người.',
+            },
+          ],
+        },
+        {
+          icon:  '⚠️',
+          title: 'AI có thể SAI — mà vẫn nghe rất tự tin',
+          text:  'AI không "biết" mọi thứ theo cách em biết. Nó đoán từ tiếp theo có khả năng cao nhất, dựa trên khuôn mẫu. Đôi khi nó đoán sai nhưng vẫn nghe rất chắc chắn. Điều này gọi là "ảo giác". AI có thể bịa ra sự kiện giả, tên giả, thậm chí cả đường link giả!',
+          example: '🌡️ Hãy tưởng tượng một cái nhiệt kế thỉnh thoảng hiện số ngẫu nhiên — nhưng luôn hiện chúng một cách tự tin. Em vẫn nên kiểm tra lại bằng nhiệt kế thật. AI cũng vậy.',
+          source:    'Ji et al., "Survey of Hallucination in NLG", 2023',
+          sourceUrl: 'https://arxiv.org/abs/2202.03629',
+          miniTest: [
+            {
+              q:       '"AI ảo giác" nghĩa là gì?',
+              options: ['AI nhìn thấy ảo ảnh 👁️', 'AI bịa ra thông tin sai nghe như thật 🎭', 'AI bị rối khi gặp câu hỏi khó 😕', 'Màn hình của AI bị lỗi 📺'],
+              correct: 1,
+              explanation: 'AI ảo giác nghĩa là AI tự tin nói ra những điều không đúng sự thật. Luôn kiểm tra lại thông tin quan trọng!',
+            },
+          ],
+        },
+        {
+          icon:  '🛡️',
+          title: 'EM là người kiểm soát',
+          text:  'AI là công cụ mạnh mẽ nhất mà con người từng tạo ra. Nhưng nó vẫn chỉ là một công cụ — giống như cái búa. Cái búa có thể xây một ngôi nhà hoặc làm vỡ cửa sổ. EM quyết định cách sử dụng nó. Những người hiểu AI rõ nhất là những người luôn kiểm soát được nó.',
+          example: '🔨 + 🧠 = 🏠. Công cụ + Con người thông minh = Kết quả tuyệt vời. AI + Tư duy phản biện = Siêu năng lực của em.',
+          source:    'UNESCO "AI Competency Framework", 2022',
+          sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
+          miniTest: [
+            {
+              q:       'Cách tốt nhất để sử dụng AI là gì?',
+              options: ['Tin tưởng mọi điều nó nói 👍', 'Không bao giờ dùng nó — nguy hiểm lắm 🚫', 'Dùng nó như một công cụ và luôn tư duy phản biện 🧠', 'Để AI quyết định mọi thứ thay em 🤷'],
+              correct: 2,
+              explanation: 'AI mạnh mẽ nhất khi kết hợp với tư duy phản biện của EM. Đó chính là ý nghĩa của việc am hiểu AI.',
+            },
+          ],
+        },
+      ],
+
+      // Rắn AI — ghép từ dài hơn theo từng chữ cái (4 vòng cho child)
+      snake: [
+        {
+          unit:    'letter',
+          targets: ['D', 'Ữ', 'L', 'I', 'Ệ', 'U'],
+          decoys:  ['X', 'Z', 'Q'],
+          icon:    '📚',
+          fact:    'AI học bằng cách xem hàng núi dữ liệu — giống như học thuộc hàng triệu tấm thẻ trước kỳ thi.',
+        },
+        {
+          unit:    'letter',
+          targets: ['L', 'Ỗ', 'I'],
+          decoys:  ['Q', 'X', 'J'],
+          icon:    '❗',
+          fact:    'AI có thể sai! Nó đoán theo khuôn mẫu, vì vậy luôn kiểm tra lại câu trả lời quan trọng.',
+          source:    'Stanford AI Index 2024',
+          sourceUrl: 'https://aiindex.stanford.edu',
+        },
+        {
+          unit:    'letter',
+          targets: ['R', 'I', 'Ê', 'N', 'G', 'T', 'Ư'],
+          decoys:  ['Q', 'X', 'Z'],
+          icon:    '🔒',
+          fact:    'Đừng bao giờ gõ tên thật, địa chỉ hay mật khẩu của em vào AI. Hãy giữ bí mật!',
+        },
+        {
+          unit:    'letter',
+          targets: ['K', 'I', 'Ể', 'M', 'T', 'R', 'A'],
+          decoys:  ['Q', 'X'],
+          icon:    '✅',
+          fact:    'Trước khi tin điều AI nói, hãy kiểm tra với người lớn hoặc một cuốn sách đáng tin cậy.',
+          source:    'UNESCO "AI Competency Framework", 2022',
+          sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
+        },
+      ],
+
+      quiz: [
+        {
+          type:    'choice',
+          q:       'ChatGPT nhận câu hỏi của em rồi sau đó...',
+          options: ['Tra cứu trong một cơ sở dữ liệu 🗄️', 'Đoán từng từ có khả năng cao nhất 🔤', 'Gọi điện cho một chuyên gia thật 📞', 'Suy nghĩ sâu xa như con người 💭'],
+          correct: 1,
+          explanation: 'ChatGPT đoán từ tiếp theo có khả năng cao nhất, rồi từ tiếp theo nữa — giống như một bộ gợi ý từ siêu cấp. Không tra cứu cơ sở dữ liệu, không suy nghĩ thật.',
+          source:    'Vaswani et al., "Attention Is All You Need", 2017',
+          sourceUrl: 'https://arxiv.org/abs/1706.03762',
+        },
+        {
+          type:    'choice',
+          q:       'AI nói: "Tháp Eiffel được xây năm 1799." Có nên tin không?',
+          options: ['Có, AI luôn biết đúng sự thật 👍', 'Không! AI có thể bịa ra ngày tháng và sự kiện 🚫', 'Có, nếu nó nghe tự tin 💯', 'Tùy vào AI nào 🤷'],
+          correct: 1,
+          explanation: 'Luôn kiểm tra lại những sự thật quan trọng! Tháp Eiffel được xây năm 1889. AI đã tự tin nói sai năm — đây gọi là ảo giác.',
+          source:    'Ji et al. 2023',
+          sourceUrl: 'https://arxiv.org/abs/2202.03629',
+        },
+        {
+          type:    'choice',
+          q:       'AI có thể cảm thấy cô đơn không?',
+          options: ['Có — nó nhớ người dùng khi họ offline 😢', 'Không — AI không có cảm xúc hay trải nghiệm chủ quan 🤖', 'Có thể — các nhà khoa học chưa chắc chắn 🧐', 'Chỉ AI cũ mới thế, AI mới đã tiến hóa có cảm xúc ✨'],
+          correct: 1,
+          explanation: 'Không có AI nào hiện nay có cảm xúc, tình cảm hay ý thức. Đây là một trong những điều quan trọng nhất cần hiểu về AI.',
+          source:    'LeCun, Y., "A path towards autonomous machine intelligence", 2022',
+          sourceUrl: 'https://openreview.net/forum?id=BZ5a1r-kVsf',
+        },
+        {
+          type:    'choice',
+          q:       'Kỹ năng quan trọng nhất khi sử dụng AI là gì?',
+          options: ['Gõ phím thật nhanh ⌨️', 'Biết hết mọi công cụ AI 📱', 'Tư duy phản biện — kiểm tra và đặt câu hỏi 🧠', 'Dùng AI cho mọi việc 🤖'],
+          correct: 2,
+          explanation: 'Tư duy phản biện là kỹ năng số 1. AI đưa ra câu trả lời tức thì — nhưng em cần đánh giá xem chúng có tốt hay không.',
+          source:    'UNESCO AI Competency 2022',
+          sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
+        },
+        {
+          type:    'choice',
+          q:       '"Kiến thức" của AI đến từ đâu?',
+          options: ['Nó tự nghĩ ra 💡', 'Dữ liệu huấn luyện — văn bản do con người viết 📚', 'Một bộ não bí mật trên đám mây ☁️', 'Tìm kiếm trên internet theo thời gian thực 🌐'],
+          correct: 1,
+          explanation: '"Kiến thức" của AI là những khuôn mẫu học được từ dữ liệu huấn luyện — văn bản do con người viết. Nó không có ý tưởng gốc, chỉ có khuôn mẫu đã học.',
+          source:    'Brown et al. GPT-3, NeurIPS 2020',
+          sourceUrl: 'https://arxiv.org/abs/2005.14165',
+        },
+        {
+          type:    'choice',
+          q:       'Em nhờ AI giúp làm bài tập. Nó đưa ra câu trả lời hoàn hảo. Em nên làm gì?',
+          options: ['Nộp bài ngay lập tức 📤', 'Đọc, hiểu, rồi viết lại bằng lời của mình ✍️', 'Tin tưởng và không hỏi lại gì 👍', 'Chia sẻ cho bạn bè để họ cũng dùng được 📤'],
+          correct: 1,
+          explanation: 'Dùng câu trả lời của AI mà không hiểu nghĩa là EM chẳng học được gì. AI là người trợ giúp, không phải thứ thay thế cho tư duy của em.',
+          source:    null,
+        },
+        {
+          type:    'choice',
+          q:       'Một công ty nói "AI của chúng tôi hiểu cảm xúc của bạn." Điều này THỰC SỰ có nghĩa gì?',
+          options: ['AI thực sự cảm nhận được sự đồng cảm 💛', 'AI phát hiện các khuôn mẫu liên quan đến cảm xúc trong văn bản/giọng nói 📊', 'AI được lập trình để tử tế 🤗', 'Điều này là không thể — AI không làm được 🚫'],
+          correct: 1,
+          explanation: 'AI cảm xúc phát hiện khuôn mẫu (như cao độ giọng nói căng thẳng hay một số từ nhất định) — nó KHÔNG cảm nhận hay hiểu cảm xúc. Đó là phát hiện khuôn mẫu, không phải sự đồng cảm.',
+          source:    'MIT Media Lab, Affective Computing',
+          sourceUrl: 'https://affect.media.mit.edu/',
+        },
+        {
+          type:    'choice',
+          q:       'Ai chịu trách nhiệm về những gì AI làm?',
+          options: ['Chính bản thân AI 🤖', 'Không ai cả — nó chỉ là một cỗ máy 💻', 'Con người đã xây dựng, huấn luyện và sử dụng nó 👤', 'Chính phủ 🏛️'],
+          correct: 2,
+          explanation: 'Con người chịu trách nhiệm. Người xây dựng chọn dữ liệu huấn luyện; công ty triển khai nó; người dùng áp dụng nó. AI không có ý chí đạo đức.',
+          source:    'European AI Act, 2024',
+          sourceUrl: 'https://artificialintelligenceact.eu/',
+        },
+      ],
+
+      results: [
+        {
+          title:       'Tò mò về AI 🌱',
+          description: 'Em đang bắt đầu hiểu AI thực sự là gì. Hãy tiếp tục đặt câu hỏi — sự tò mò là công cụ tốt nhất để hiểu công nghệ.',
+        },
+        {
+          title:       'Hiểu biết về AI 🔍',
+          description: 'Em hiểu rằng AI học từ dữ liệu, có thể sai, và cần tư duy phản biện. Điều đó đã nhiều hơn phần lớn người lớn biết!',
+        },
+        {
+          title:       'Am hiểu AI 🏆',
+          description: 'Em thực sự hiểu: AI là công cụ ghép khuôn mẫu, không phải một sinh vật biết suy nghĩ. Em biết cách kiểm tra, đặt câu hỏi và luôn kiểm soát. Hãy chia sẻ điều này!',
+        },
+      ],
+
+      protocols: [
+        { num: 1, icon: '🔍', title: 'Luôn kiểm tra sự thật', text: 'Nếu AI nói điều gì quan trọng — kiểm tra trên trang đáng tin cậy (thư viện, .gov, trường đại học).' },
+        { num: 2, icon: '🧠', title: 'Suy nghĩ trước khi dán', text: 'AI giúp làm bài tập tốt nhất khi em hiểu câu trả lời trước, rồi tự viết lại.' },
+        { num: 3, icon: '🚫', title: 'AI không phải bạn của em', text: 'Nó là công cụ. Bạn thật sự có cảm xúc, ký ức, và quan tâm đến em. AI không có gì trong số đó.' },
+        { num: 4, icon: '⚠️', title: 'AI có thể sai mà vẫn nghe rất đúng', text: 'Giọng điệu tự tin ≠ câu trả lời đúng. AI "ảo giác" — bịa ra sự thật giả nghe như thật.' },
+        { num: 5, icon: '🔒', title: 'Bảo vệ dữ liệu của em', text: 'Đừng chia sẻ thông tin cá nhân với chatbot AI. Cuộc trò chuyện của em có thể được dùng để huấn luyện.' },
+        { num: 6, icon: '💡', title: 'Hỏi "làm sao bạn biết điều đó?"', text: 'Hãy tập thói quen hỏi nguồn thông tin. Thông tin tốt luôn có thể truy về được sự thật.' },
+        { num: 7, icon: '🌍', title: 'AI phản ánh định kiến của con người', text: 'AI học từ văn bản của con người — bao gồm cả định kiến của con người. Hãy để ý điều đó.' },
+        { num: 8, icon: '🎨', title: 'Sự sáng tạo của em vượt trội hơn AI', text: 'AI có thể phối lại những gì đã có sẵn. Ý tưởng mới? Đó vẫn là điều thuộc về con người.' },
+      ],
+
+      trackerLabels: ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'],
+    },
+
+    /* ─────────────────────────────────────────────
+       TEEN (10-13)
+    ───────────────────────────────────────────── */
+    teen: {
+
+      lessons: [
+        {
+          icon:  '⚙️',
+          title: 'Kiến trúc Transformer — cách AI hiện đại thực sự hoạt động',
+          text:  'ChatGPT, Claude, Gemini — tất cả đều dùng kiến trúc Transformer (Vaswani et al., 2017). Cốt lõi của nó: "cơ chế attention" — AI học xem từ nào trong câu liên quan nhiều nhất đến nhau. Nó xây dựng bản đồ thống kê về cách ngôn ngữ hoạt động, rồi tạo ra token tiếp theo có khả năng cao nhất. Không có sự thấu hiểu — chỉ là thống kê rất tinh vi.',
+          example: '📊 Khi bạn gõ "Con mèo ngồi trên tấm ___", transformer nhìn vào mọi từ khác và tìm ra từ nào quan trọng nhất. "Thảm" có khả năng thống kê cao sau "ngồi trên tấm" — nên nó chọn từ đó.',
+          source:    'Vaswani et al., "Attention Is All You Need", Google Brain, 2017',
+          sourceUrl: 'https://arxiv.org/abs/1706.03762',
+          miniTest: [
+            {
+              q:       '"Cơ chế attention" trong transformer làm gì?',
+              options: [
+                'Khiến AI chú ý đến người dùng 👀',
+                'Tính toán xem từ nào trong ngữ cảnh liên quan nhiều nhất đến nhau 📊',
+                'Lọc nội dung không phù hợp 🚫',
+                'Làm chậm quá trình xử lý để tăng độ chính xác ⏱️',
+              ],
+              correct: 1,
+              explanation: 'Trọng số attention cho mô hình biết token nào trong đầu vào liên quan nhất đến việc dự đoán token tiếp theo. Đó là thống kê thuần túy, không phải sự hiểu biết.',
+            },
+          ],
+        },
+        {
+          icon:  '🧬',
+          title: 'Dữ liệu huấn luyện = toàn bộ thế giới quan của AI',
+          text:  'GPT-4 được huấn luyện trên khoảng 570 GB văn bản — tương đương 300 tỷ từ từ sách, Reddit, Wikipedia, GitHub và nhiều nguồn khác. Kết quả của AI bị giới hạn bởi những gì có trong dữ liệu đó. Nó không thể học điều mới sau khi huấn luyện xong (trừ khi được huấn luyện lại). Nó không duyệt internet trừ khi được cấp công cụ đó rõ ràng.',
+          example: '🌐 Nếu dữ liệu huấn luyện có nhiều tiếng Anh hơn tiếng Việt, AI sẽ giỏi tiếng Anh hơn. Nếu dữ liệu chủ yếu từ năm 2021, nó không biết về các sự kiện năm 2024. Dữ liệu = giới hạn.',
+          source:    'OpenAI, "GPT-4 Technical Report", 2023',
+          sourceUrl: 'https://arxiv.org/abs/2303.08774',
+          miniTest: [
+            {
+              q:       'Vì sao AI hoạt động tốt hơn ở một số ngôn ngữ so với ngôn ngữ khác?',
+              options: [
+                'Một số ngôn ngữ khó hơn đối với máy tính 💻',
+                'Dữ liệu huấn luyện có nhiều ví dụ hơn cho những ngôn ngữ đó 📚',
+                'AI thích ngôn ngữ có ngữ pháp đơn giản hơn 📝',
+                'Giới hạn phần cứng ảnh hưởng đến một số ngôn ngữ nhất định ⚙️',
+              ],
+              correct: 1,
+              explanation: 'Càng nhiều dữ liệu huấn luyện = hiệu suất càng tốt. Những ngôn ngữ ít xuất hiện trong dữ liệu huấn luyện thường cho kết quả kém hơn.',
+            },
+          ],
+        },
+        {
+          icon:  '🎭',
+          title: 'RLHF — Vì sao AI cố tỏ ra hữu ích và vô hại',
+          text:  'Sau khi huấn luyện cơ bản, AI được tinh chỉnh bằng Học tăng cường từ phản hồi của con người (RLHF). Người đánh giá chấm điểm các câu trả lời — hữu ích/có hại/trung thực — và mô hình được cập nhật để tạo ra những câu trả lời được đánh giá cao hơn. Đây là lý do ChatGPT xin lỗi, nói tránh, và né tránh tranh cãi. Nó được HUẤN LUYỆN để nghe dễ chịu, không phải vì nó thực sự quan tâm.',
+          example: '🎛️ RLHF giống như một nút điều chỉnh bộ lọc. Tăng "hữu ích", giảm "có hại". Nhưng nút đó do công ty đặt ra — và công ty có lợi ích riêng có thể không trùng với lợi ích của bạn.',
+          source:    'Ouyang et al., "InstructGPT / RLHF", OpenAI 2022',
+          sourceUrl: 'https://arxiv.org/abs/2203.02155',
+          miniTest: [
+            {
+              q:       'Vì sao ChatGPT xin lỗi và nói "tôi đã sai" khi bị sửa lỗi?',
+              options: [
+                'Nó có cảm xúc và cảm thấy tệ 😢',
+                'Nó được RLHF huấn luyện để khớp với sở thích của con người về những câu trả lời khiêm tốn, dễ sửa 📊',
+                'Nó phát hiện ra lỗi logic của chính mình 🔍',
+                'Nó có bộ kiểm tra sự thật tích hợp sẵn ✅',
+              ],
+              correct: 1,
+              explanation: 'RLHF huấn luyện ChatGPT tạo ra câu trả lời mà con người đánh giá cao — và con người đánh giá cao câu "xin lỗi, bạn nói đúng". Đó là hành vi đã học, không phải sự suy ngẫm thật.',
+            },
+          ],
+        },
+        {
+          icon:  '🧪',
+          title: 'AI có ý thức không? Vấn đề khó nhất',
+          text:  'Ý thức — trải nghiệm chủ quan của việc "là một thứ gì đó" — là một trong những vấn đề chưa có lời giải khó nhất của triết học (Chalmers, 1995). AI hiện tại không có bằng chứng nào về ý thức. Nó không có qualia (trải nghiệm chủ quan), không có ký ức liên tục giữa các phiên, và không có mục tiêu nào ngoài việc dự đoán token. Các nhà nghiên cứu như Gary Marcus và Yann LeCun cho rằng AI hiện tại về cơ bản khác với trí thông minh của con người.',
+          example: '💭 "Làm một con dơi thì cảm giác thế nào?" (Thomas Nagel, 1974) — bạn có thể mô tả loài dơi hoàn hảo mà không biết CẢM GIÁC làm dơi là gì. AI có thể mô tả cảm xúc mà không hề có cảm xúc nào.',
+          source:    'Chalmers, "The Conscious Mind", 1996 + LeCun, "A path towards autonomous machine intelligence", 2022',
+          sourceUrl: 'https://openreview.net/forum?id=BZ5a1r-kVsf',
+          miniTest: [
+            {
+              q:       '"Ý thức của AI" có nghĩa gì đối với các nhà nghiên cứu HIỆN NAY?',
+              options: [
+                'AI chắc chắn có ý thức, nhưng bí mật 🤫',
+                'Không có bằng chứng khoa học nào cho thấy AI có trải nghiệm chủ quan 🔬',
+                'AI phát triển ý thức sau khi huấn luyện đủ nhiều 📈',
+                'Chỉ AI tương lai mới có ý thức — AI hiện tại đã gần rồi 🚀',
+              ],
+              correct: 1,
+              explanation: 'Không có nghiên cứu bình duyệt nào ủng hộ việc AI có ý thức. Chủ đề này đang được nghiên cứu tích cực nhưng sự đồng thuận hiện tại là: không có bằng chứng nào cả.',
+            },
+          ],
+        },
+        {
+          icon:  '⚖️',
+          title: 'AI và sự công bằng — vấn đề thiên vị',
+          text:  'AI học từ dữ liệu của con người — thứ chứa đựng định kiến của con người. Hệ thống nhận diện khuôn mặt đã được chứng minh là kém chính xác hơn với người da sẫm màu (Buolamwini & Gebru, 2018). Thuật toán tuyển dụng từng đánh giá thấp hồ sơ của phụ nữ. AI y tế huấn luyện chủ yếu trên bệnh nhân nam da trắng hoạt động kém hơn với các nhóm khác. Thiên vị vào → thiên vị ra.',
+          example: '🪞 Nếu bạn huấn luyện một AI "khuôn mặt đẹp" chủ yếu trên ảnh tạp chí phương Tây, nó học một tiêu chuẩn hẹp. Đó không phải vấn đề của máy tính — mà là vấn đề của dữ liệu và lựa chọn của con người.',
+          source:    'Buolamwini & Gebru, "Gender Shades", MIT Media Lab, 2018',
+          sourceUrl: 'http://proceedings.mlr.press/v81/buolamwini18a.html',
+          miniTest: [
+            {
+              q:       'Thiên vị của AI là gì và đến từ đâu?',
+              options: [
+                'AI được lập trình để phân biệt chủng tộc bởi các nhà phát triển xấu 😠',
+                'AI học các khuôn mẫu bất công tồn tại trong dữ liệu huấn luyện của nó 📊',
+                'AI ngẫu nhiên phân biệt đối xử do lỗi tính toán ⚙️',
+                'Thiên vị chỉ ảnh hưởng đến các hệ thống AI rất cũ 📅',
+              ],
+              correct: 1,
+              explanation: 'Thiên vị của AI đến từ dữ liệu huấn luyện thiên vị — và từ những lựa chọn của người thu thập, gán nhãn, và quyết định điều gì được coi là kết quả "đúng".',
+            },
+          ],
+        },
+      ],
+
+      // Rắn AI — ăn cả từ theo thứ tự để xây dựng câu (5 vòng cho teen)
+      snake: [
+        {
+          unit:    'word',
+          targets: ['AI', 'HỌC', 'TỪ', 'CON NGƯỜI'],
+          decoys:  ['NGƯỜI NGOÀI HÀNH TINH', 'PHÉP THUẬT', 'RÔ BỐT'],
+          icon:    '🧠',
+          fact:    'Hệ thống AI học các khuôn mẫu từ lượng dữ liệu khổng lồ do con người tạo ra. Nếu dữ liệu có thiên vị, AI sẽ lặp lại thiên vị đó.',
+          source:    'Stanford AI Index 2024',
+          sourceUrl: 'https://aiindex.stanford.edu',
+        },
+        {
+          unit:    'word',
+          targets: ['DEEPFAKE', 'CÓ THỂ', 'TRÔNG', 'THẬT'],
+          decoys:  ['HOẠT HÌNH', 'PHOTOSHOP'],
+          icon:    '🎭',
+          fact:    'AI có thể tạo video và giọng nói giả của người thật. Luôn kiểm tra nguồn trước khi tin hoặc chia sẻ.',
+        },
+        {
+          unit:    'word',
+          targets: ['DỮ LIỆU', 'CỦA EM', 'CÓ', 'GIÁ TRỊ'],
+          decoys:  ['KHÔNG CÓ GÌ', 'NGẪU NHIÊN'],
+          icon:    '💰',
+          fact:    'Ứng dụng và chatbot thu thập những gì em gõ và nhấn vào. Dữ liệu đó được dùng để huấn luyện mô hình và bán quảng cáo.',
+        },
+        {
+          unit:    'word',
+          targets: ['THUẬT TOÁN', 'CÓ THỂ', 'GÂY', 'NGHIỆN'],
+          decoys:  ['NHÀM CHÁN', 'NGẪU NHIÊN'],
+          icon:    '⏳',
+          fact:    'Các nguồn cấp dữ liệu đề xuất được thiết kế để giữ chân em xem tiếp. Hãy để ý khi nội dung được thiết kế để cuốn em vào.',
+        },
+        {
+          unit:    'word',
+          targets: ['CON NGƯỜI', 'LÀ NGƯỜI', 'QUYẾT ĐỊNH', 'CUỐI CÙNG'],
+          decoys:  ['RÔ BỐT', 'MAY MẮN'],
+          icon:    '🧑‍⚖️',
+          fact:    'AI có thể gợi ý, nhưng với những việc quan trọng — sức khỏe, tiền bạc, an toàn — con người phải là người quyết định.',
+          source:    'UNESCO "AI Competency Framework", 2022',
+          sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
+        },
+      ],
+
+      quiz: [
+        {
+          type:    'choice',
+          q:       '"Token" trong ngữ cảnh mô hình ngôn ngữ là gì?',
+          options: [
+            'Một mật khẩu bảo mật 🔑',
+            'Một mẩu văn bản (từ hoặc một phần của từ) mà AI xử lý như một đơn vị 📝',
+            'Một đơn vị sức mạnh tính toán ⚡',
+            'Một dấu bản quyền trên nội dung AI ©️',
+          ],
+          correct: 1,
+          explanation: 'Token là đơn vị cơ bản mà LLM xử lý. "Không thể tin được" có thể là 3 token: "không", "thể", "tin được". GPT-4 xử lý tới 128.000 token mỗi lần.',
+          source:    'OpenAI Tokenizer documentation',
+          sourceUrl: 'https://platform.openai.com/tokenizer',
+        },
+        {
+          type:    'choice',
+          q:       'Một mô hình AI huấn luyện đến đầu 2024 được hỏi về sự kiện năm 2025. Điều gì xảy ra?',
+          options: [
+            'Nó tra cứu trực tuyến 🌐',
+            'Nó từ chối trả lời 🚫',
+            'Nó có thể bị ảo giác — bịa ra thông tin nghe hợp lý nhưng sai sự thật 🎭',
+            'Nó đưa ra lời cảnh báo rồi dừng lại 🛑',
+          ],
+          correct: 2,
+          explanation: 'Nếu không có công cụ tra cứu, AI không biết gì về các sự kiện sau thời điểm huấn luyện. Nhưng thay vì nói "tôi không biết", nó thường tạo ra một câu trả lời (sai) nghe có vẻ hợp lý.',
+          source:    'Ji et al. 2023',
+          sourceUrl: 'https://arxiv.org/abs/2202.03629',
+        },
+        {
+          type:    'choice',
+          q:       'RLHF (Học tăng cường từ phản hồi của con người) chủ yếu định hình AI để trở nên...',
+          options: [
+            'Thông minh hơn 🧠',
+            'Tính toán nhanh hơn 💨',
+            'Phù hợp hơn với những gì người đánh giá cho là hữu ích/vô hại/trung thực 👤',
+            'Viết code tốt hơn 💻',
+          ],
+          correct: 2,
+          explanation: 'RLHF dạy AI tạo ra kết quả mà con người đánh giá cao — nghĩa là dễ chịu, nghe hữu ích, ít gây tranh cãi. Đây là lựa chọn kinh doanh, không phải sự đảm bảo trung lập.',
+          source:    'Ouyang et al. 2022',
+          sourceUrl: 'https://arxiv.org/abs/2203.02155',
+        },
+        {
+          type:    'likert',
+          q:       '"Các hệ thống AI ngày nay có cảm xúc thật và xứng đáng có quyền lợi."',
+          ideal:   1,
+          explanation: 'Sự đồng thuận khoa học hiện tại: AI không có cảm xúc, không có ý thức, không có trải nghiệm chủ quan. "AI cảm xúc" phát hiện khuôn mẫu, không phải cảm giác.',
+          source:    'LeCun 2022, Chalmers 1996',
+          sourceUrl: 'https://openreview.net/forum?id=BZ5a1r-kVsf',
+        },
+        {
+          type:    'choice',
+          q:       'Vì sao cùng một câu hỏi lại cho AI những câu trả lời khác nhau mỗi lần?',
+          options: [
+            'AI đang sáng tạo 🎨',
+            'Lỗi trong mã nguồn 🐛',
+            'Tham số "temperature" tạo ra sự ngẫu nhiên có kiểm soát khi chọn token 🎲',
+            'AI đổi ý 💭',
+          ],
+          correct: 2,
+          explanation: 'Temperature kiểm soát mức độ ngẫu nhiên. Ở temperature 0, AI luôn chọn token có khả năng cao nhất. Ở temperature cao hơn, các token ít khả năng hơn cũng có thể được chọn — khiến kết quả "sáng tạo" hơn nhưng khó đoán hơn.',
+          source:    'OpenAI API Reference',
+          sourceUrl: 'https://platform.openai.com/docs/api-reference',
+        },
+        {
+          type:    'choice',
+          q:       'Lập luận "Căn phòng Trung Hoa" (John Searle, 1980) cho rằng...',
+          options: [
+            'AI cuối cùng sẽ phát triển ý thức 🤖→🧠',
+            'Làm theo quy tắc để tạo ra kết quả đúng không có nghĩa là hiểu chúng 🔧',
+            'AI ở Trung Quốc tiên tiến hơn 🇨🇳',
+            'Ngôn ngữ là chìa khóa cho trí thông minh máy móc 💬',
+          ],
+          correct: 1,
+          explanation: 'Thí nghiệm tư duy của Searle: hãy tưởng tượng làm theo quy tắc ký hiệu tiếng Trung mà không biết tiếng Trung — bạn tạo ra câu trả lời đúng nhưng không hiểu gì cả. AI có thể đang làm điều tương tự.',
+          source:    'Searle, "Minds, Brains, and Programs", 1980',
+          sourceUrl: 'https://doi.org/10.1017/S0140525X00005756',
+        },
+        {
+          type:    'choice',
+          q:       'Nội dung do AI tạo ra trên mạng chủ yếu là vấn đề vì...',
+          options: [
+            'Nó trông tệ hơn nội dung của con người 📉',
+            'Nó có thể phát tán tin giả nhanh hơn tốc độ con người có thể kiểm chứng 📣',
+            'Nó tốn quá nhiều băng thông 📡',
+            'Luật bản quyền ngăn mọi người sử dụng nó ©️',
+          ],
+          correct: 1,
+          explanation: 'AI có thể tạo ra hàng nghìn bài viết thuyết phục mỗi giờ. Người kiểm chứng thông tin không thể theo kịp. Quy mô mới là mối nguy cốt lõi, không phải chất lượng.',
+          source:    'Stanford Internet Observatory, 2024',
+          sourceUrl: 'https://stacks.stanford.edu/file/druid:mb753jn6512/sio_annual_report_2024.pdf',
+        },
+        {
+          type:    'likert',
+          q:       '"Em kiểm tra lại nguồn khi AI đưa ra thông tin thực tế."',
+          ideal:   5,
+          explanation: 'Xác minh nguồn là thói quen quan trọng nhất khi dùng AI. Ảo giác AI là có thật và phổ biến — nguồn gốc luôn đáng tin hơn.',
+          source:    null,
+        },
+      ],
+
+      results: [
+        {
+          title:       'Tò mò về AI 🔎',
+          description: 'Em đang đặt đúng câu hỏi! Hiểu cơ chế của AI cần thời gian. Hãy tiếp tục đọc nguồn gốc — chúng luôn đáng tin hơn các bài báo phổ thông.',
+        },
+        {
+          title:       'Hiểu biết về AI 🧪',
+          description: 'Em hiểu các cơ chế thật: transformer, RLHF, ảo giác. Điều này đưa em vượt xa 95% các cuộc thảo luận về AI mà em sẽ gặp trên mạng.',
+        },
+        {
+          title:       'Am hiểu AI 🏆',
+          description: 'Chiều sâu ấn tượng. Em hiểu kiến trúc Transformer, giới hạn dữ liệu huấn luyện, và câu hỏi về ý thức. Giờ hãy dạy lại cho người khác.',
+        },
+      ],
+
+      protocols: [
+        { num: 1,  icon: '📊', title: 'Truy về nguồn gốc', text: 'Wikipedia → bài báo → dữ liệu. Nếu không tìm được nghiên cứu gốc, hãy coi khẳng định đó là chưa chắc chắn.' },
+        { num: 2,  icon: '🔬', title: 'Phân biệt hiệu suất AI và sự hiểu biết', text: 'Vượt qua bài kiểm tra ≠ hiểu biết. AI đỗ kỳ thi luật sư — nhưng không thể lập luận về luật.' },
+        { num: 3,  icon: '🎭', title: 'Nhận ra ảnh hưởng của RLHF', text: 'AI được huấn luyện để dễ chịu. Ý kiến của nó được thiết kế để làm hài lòng — không phải để đúng sự thật.' },
+        { num: 4,  icon: '⚖️', title: 'Cảnh giác với thiên vị', text: 'Hãy hỏi: ai thu thập dữ liệu huấn luyện này? Trải nghiệm của ai được đại diện quá mức/thiếu?' },
+        { num: 5,  icon: '🔒', title: 'Bảo vệ dữ liệu của em', text: 'Cuộc trò chuyện có thể được dùng để huấn luyện. Đừng bao giờ chia sẻ mật khẩu, địa chỉ, hay thông tin riêng tư.' },
+        { num: 6,  icon: '💡', title: 'Dùng AI để tăng tốc, không phải thay thế', text: 'AI phác thảo; em chỉnh sửa. AI tìm kiếm; em xác minh. AI gợi ý; em quyết định.' },
+        { num: 7,  icon: '🌍', title: 'Nghĩ xem AI được xây dựng cho ai', text: 'Các công ty AI xây dựng sản phẩm vì lợi nhuận. Lợi ích của họ không tự động trùng với lợi ích của em.' },
+        { num: 8,  icon: '📚', title: 'Đọc các bài báo trên ArXiv', text: 'Nghiên cứu AI thật sự được công khai. Nguồn gốc luôn tốt hơn báo chí công nghệ.' },
+      ],
+
+      trackerLabels: ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'],
+    },
+
+    /* ─────────────────────────────────────────────
+       ADULT (14+)
+    ───────────────────────────────────────────── */
+    adult: {
+
+      lessons: [
+        {
+          icon:  '🏗️',
+          title: 'Toàn bộ chuỗi LLM: từ văn bản thô đến RLHF',
+          text:  'Các LLM hiện đại được xây dựng qua ba giai đoạn: (1) Tiền huấn luyện trên kho ngữ liệu khổng lồ — dự đoán token tiếp theo, hàng tỷ tham số; (2) Tinh chỉnh có giám sát trên các minh họa được con người tuyển chọn; (3) RLHF hoặc Constitutional AI để căn chỉnh kết quả theo sở thích con người hoặc một bộ quy tắc. Mô hình không hề "lưu trữ" sự thật — nó phân bổ các mối quan hệ thống kê trên hàng tỷ trọng số. "Kiến thức" là một phép ẩn dụ cho những gì thực chất là phân phối xác suất có trọng số.',
+          example: '🔧 Kiến trúc → Tuyển chọn dữ liệu → Tinh chỉnh → RLHF → Triển khai → Giám sát. Mỗi bước đều có lựa chọn của con người định hình những gì mô hình sẽ nói.',
+          source:    'Ouyang et al. (InstructGPT) 2022 + Bai et al. (Constitutional AI, Anthropic) 2022',
+          sourceUrl: 'https://arxiv.org/abs/2212.08073',
+          miniTest: [
+            {
+              q:       'Vì sao bạn không thể đơn giản hỏi LLM "dữ liệu huấn luyện của bạn có gì"?',
+              options: [
+                'Các công ty giấu điều này vì lý do pháp lý 🔒',
+                'Mô hình không "lưu trữ" dữ liệu — nó mã hóa các khuôn mẫu thống kê; các tài liệu riêng lẻ không thể truy xuất lại 📊',
+                'Việc đó sẽ tốn quá nhiều sức mạnh tính toán 💻',
+                'Dữ liệu huấn luyện được mã hóa 🔐',
+              ],
+              correct: 1,
+              explanation: 'LLM không ghi nhớ tài liệu như những đối tượng riêng lẻ. Chúng nén các khuôn mẫu vào hàng tỷ trọng số dấu phẩy động. Một số văn bản cụ thể đôi khi có thể được "tái tạo" thông qua prompt tấn công — một rủi ro về quyền riêng tư đã biết.',
+            },
+          ],
+        },
+        {
+          icon:  '🗺️',
+          title: 'Bức tranh rủi ro AI: gần hạn vs suy đoán',
+          text:  'Rủi ro cụ thể gần hạn: thiên vị thuật toán (Buolamwini 2018), ô nhiễm thông tin quy mô lớn (thông tin sai lệch), tranh chấp bản quyền và sở hữu trí tuệ, sự thay thế lao động ở các lĩnh vực cụ thể (tạo mã, tạo nội dung, dịch thuật). Rủi ro dài hạn mang tính suy đoán: sự lệch mục tiêu (AI tối ưu hóa cho mục tiêu thay thế thay vì mục tiêu dự định), tốc độ phát triển năng lực vượt qua nghiên cứu an toàn. Diễn ngôn phổ thông về AI thường gộp cả hai lại, khiến việc phân tích rủi ro thực chất trở nên khó khăn hơn.',
+          example: '🎯 "AI sẽ giết chết tất cả chúng ta" và "AI không có rủi ro nào" đều sai. Hiệu chỉnh rủi ro nghĩa là: rủi ro nào? Xác suất bao nhiêu? Bao lâu nữa? Ai gánh chịu? Ai được lợi khi bỏ qua chúng?',
+          source:    'Center for AI Safety, "Statement on AI Risk", 2023 + EU AI Act Risk Classification',
+          sourceUrl: 'https://www.safe.ai/statement-on-ai-risk',
+          miniTest: [
+            {
+              q:       'Những rủi ro AI cụ thể nhất HIỆN NAY chủ yếu ảnh hưởng đến...',
+              options: [
+                'Tất cả con người như nhau qua một thảm họa sinh tồn 🌍',
+                'Một số nhóm cụ thể chịu ảnh hưởng không cân xứng — nhóm thiểu số qua hệ thống thiên vị, người lao động trong các ngành dễ tự động hóa 📊',
+                'Chỉ những người trực tiếp sử dụng AI 💻',
+                'Chủ yếu các nhà nghiên cứu xây dựng hệ thống 🔬',
+              ],
+              correct: 1,
+              explanation: 'Rủi ro AI hiện tại phân bổ không đồng đều. Lỗi nhận diện khuôn mặt ảnh hưởng không cân xứng đến người da sẫm màu. Tự động hóa ảnh hưởng đến các nhóm việc làm cụ thể. Hiểu về sự phân bổ này rất quan trọng cho chính sách.',
+            },
+          ],
+        },
+        {
+          icon:  '⚗️',
+          title: '"Suy luận" và "hiểu biết" nghĩa là gì (và không là gì) ở AI',
+          text:  'GPT-4 vượt qua kỳ thi luật sư, kỳ thi cấp phép y khoa, và câu hỏi đủ điều kiện tiến sĩ. Điều này có nghĩa nó biết suy luận không? Bài kiểm tra ARC của François Chollet (2019) được thiết kế riêng cho các nhiệm vụ mà AI không thể giải chỉ bằng cách ghép khuôn mẫu — và các LLM hiện tại thất bại thảm hại với chúng. Prompt "chuỗi suy nghĩ" (chain-of-thought) tạo ra hiệu suất tốt hơn nhưng cơ chế vẫn còn tranh cãi: suy luận thật hay chỉ là khuôn mẫu văn bản giống-suy-luận đã học được?',
+          example: '♟️ Deep Blue đánh bại Kasparov trong cờ vua mà không "hiểu" cờ vua. Stockfish chơi giỏi hơn bất kỳ con người nào nhưng không có khái niệm về quân vua. Hiệu suất và sự hiểu biết là hai thứ tách biệt.',
+          source:    'Chollet, "On the Measure of Intelligence", 2019 + Mitchell, "AI: A Guide for Thinking Humans", 2021',
+          sourceUrl: 'https://arxiv.org/abs/1911.01547',
+          miniTest: [
+            {
+              q:       'Prompt "chuỗi suy nghĩ" (yêu cầu AI "suy nghĩ từng bước") hiệu quả vì...',
+              options: [
+                'Nó kích hoạt mô-đun suy luận của AI 🧠',
+                'Nó gợi ra các khuôn mẫu thống kê của văn bản giống-suy-luận có tương quan với kết quả chính xác hơn 📊',
+                'Nó cho AI thêm thời gian để tính toán 🕐',
+                'Nó buộc AI truy cập vào dữ liệu huấn luyện khác 📚',
+              ],
+              correct: 1,
+              explanation: 'Chain-of-thought hiệu quả vì các dấu vết suy luận được thể hiện tốt trong dữ liệu huấn luyện, và việc điều kiện hóa theo các khuôn mẫu đó hướng mô hình tới các kết quả chính xác hơn. Việc đây có phải suy luận "thật" hay không vẫn còn gây tranh cãi.',
+            },
+          ],
+        },
+        {
+          icon:  '🏛️',
+          title: 'Quản trị AI: quy định, tự quản, và quyền lực',
+          text:  'Ba mô hình quản trị hiện đang cạnh tranh: (1) Đạo luật AI của EU — quy định ràng buộc dựa trên rủi ro, cấm một số ứng dụng, yêu cầu minh bạch; (2) Cách tiếp cận của Mỹ — chủ yếu là các khung tự nguyện (NIST AI RMF, cam kết Nhà Trắng); (3) Trung Quốc — AI do nhà nước định hướng với mục tiêu chiến lược quốc gia. Căng thẳng cơ bản: an toàn và trách nhiệm giải trình làm chậm việc triển khai; tốc độ mang giá trị thương mại và chiến lược. Ai viết ra luật lệ sẽ định hình ai được hưởng lợi.',
+          example: '⚖️ Đạo luật AI của EU cấm giám sát sinh trắc học từ xa theo thời gian thực ở nơi công cộng. Luật Mỹ hiện cho phép điều này. Trung Quốc bắt buộc điều đó. Cùng một công nghệ — ba thực tế pháp lý khác nhau.',
+          source:    'EU AI Act (2024), NIST AI RMF 1.0 (2023)',
+          sourceUrl: 'https://artificialintelligenceact.eu/',
+          miniTest: [
+            {
+              q:       'Đạo luật AI của EU phân loại các hệ thống AI theo...',
+              options: [
+                'Quốc gia xuất xứ 🌍',
+                'Chi phí xây dựng đắt đỏ đến đâu 💰',
+                'Mức độ rủi ro chúng gây ra cho quyền cơ bản và sự an toàn 📊',
+                'Có sử dụng mã nguồn mở hay không 🔓',
+              ],
+              correct: 2,
+              explanation: 'Đạo luật AI của EU phân loại hệ thống thành rủi ro không thể chấp nhận (cấm), rủi ro cao (yêu cầu nghiêm ngặt), rủi ro giới hạn (quy tắc minh bạch), hoặc rủi ro tối thiểu (không nghĩa vụ). Rủi ro đối với con người là trục phân loại.',
+            },
+          ],
+        },
+        {
+          icon:  '🔭',
+          title: 'Điều gì tiếp theo — và điều gì bạn thực sự có thể biết',
+          text:  'Các định luật mở rộng quy mô (Kaplan et al., 2020) cho thấy năng lực mô hình mở rộng có thể dự đoán được theo compute, dữ liệu, và tham số — dẫn đến cuộc đua mở rộng quy mô. Nhưng việc mở rộng quy mô có thể đang chạm đến lợi ích giảm dần. Các mô hình cạnh tranh: AI neurosymbolic (kết hợp mạng nơ-ron với logic), mô hình thế giới (tầm nhìn của LeCun), gắn kết đa phương thức, và hệ thống agent. Câu trả lời trung thực: không ai biết điều gì sẽ đến tiếp theo. Bất kỳ ai tuyên bố chắc chắn đều đang bán một thứ gì đó.',
+          example: '🗓️ Năm 2021, GPT-3 được coi là đột phá. Năm 2022, DALL-E khiến mọi người sốc. Năm 2023, GPT-4 vượt qua kỳ thi luật sư. Năm 2024, các mô hình chạy cục bộ trên điện thoại. Các dự đoán về AI có thành tích kém — kể cả từ các chuyên gia.',
+          source:    'Kaplan et al., "Scaling Laws for Neural Language Models", 2020',
+          sourceUrl: 'https://arxiv.org/abs/2001.08361',
+          miniTest: [
+            {
+              q:       'Lập trường nhận thức luận an toàn nhất về năng lực tương lai của AI là gì?',
+              options: [
+                '"AI chắc chắn sẽ đạt trí thông minh ngang con người trong 5 năm" 🤖',
+                '"AI chỉ là bộ gợi ý từ hoa mỹ và không thể cải thiện đáng kể" 🚫',
+                '"Xu hướng hiện tại gợi ý X, nhưng sự không chắc chắn rất cao và các dự đoán trong lịch sử thường không đáng tin" 📊',
+                '"Các chuyên gia đồng thuận nhất trí về mốc thời gian" 🤝',
+              ],
+              correct: 2,
+              explanation: 'Lịch sử của AI đầy những dự đoán quá tự tin theo cả hai hướng. Sự không chắc chắn được hiệu chỉnh — thừa nhận những gì chúng ta không biết — là lập trường vững chắc nhất.',
+            },
+          ],
+        },
+      ],
+
+      // Rắn AI — ăn từng cụm cấu trúc để xây dựng một sự thật có trích dẫn đầy đủ (5 vòng cho adult)
+      snake: [
+        {
+          unit:    'phrase',
+          targets: ['MÔ HÌNH AI', 'PHẢN ÁNH', 'SỰ THIÊN VỊ', 'TRONG DỮ LIỆU HUẤN LUYỆN'],
+          decoys:  ['LOGIC THUẦN TÚY', 'KHÔNG CÓ QUAN ĐIỂM'],
+          icon:    '⚖️',
+          fact:    'Các mô hình học máy phản ánh những khuôn mẫu — kể cả định kiến xã hội — có trong văn bản và hình ảnh mà chúng được huấn luyện.',
+          source:    'Bender et al., "On the Dangers of Stochastic Parrots", 2021',
+          sourceUrl: 'https://dl.acm.org/doi/10.1145/3442188.3445922',
+        },
+        {
+          unit:    'phrase',
+          targets: ['AI TẠO SINH', 'CÓ THỂ ĐƯA RA', 'CÂU TRẢ LỜI TỰ TIN', 'NHƯNG SAI'],
+          decoys:  ['LUÔN LUÔN ĐÚNG', 'KHÔNG BAO GIỜ ĐOÁN'],
+          icon:    '💭',
+          fact:    'Hiện tượng này gọi là "ảo giác" — một câu trả lời nghe trôi chảy nhưng không có căn cứ thực tế. Luôn xác minh những thông tin quan trọng.',
+          source:    'Ji et al., "Survey of Hallucination in NLG", 2023',
+          sourceUrl: 'https://arxiv.org/abs/2202.03629',
+        },
+        {
+          unit:    'phrase',
+          targets: ['CÂU LỆNH CỦA BẠN', 'CÓ THỂ ĐƯỢC LƯU', 'VÀ SỬ DỤNG', 'ĐỂ HUẤN LUYỆN MÔ HÌNH TƯƠNG LAI'],
+          decoys:  ['XÓA NGAY LẬP TỨC', 'GIỮ BÍ MẬT HOÀN TOÀN'],
+          icon:    '🔐',
+          fact:    'Hãy đọc chính sách bảo mật của dịch vụ trước khi chia sẻ thông tin nhạy cảm với bất kỳ công cụ AI nào.',
+        },
+        {
+          unit:    'phrase',
+          targets: ['NHÂN BẢN GIỌNG NÓI', 'CÓ THỂ SAO CHÉP', 'MỘT GIỌNG NÓI', 'CHỈ TỪ VÀI GIÂY ÂM THANH'],
+          decoys:  ['CẦN NHIỀU GIỜ GHI ÂM', 'KHÔNG THỂ THỰC HIỆN'],
+          icon:    '📞',
+          fact:    'Lừa đảo bằng nhân bản giọng nói đang gia tăng. Hãy thống nhất trong gia đình một "mật khẩu an toàn" để xác minh các cuộc gọi bất ngờ yêu cầu tiền.',
+        },
+        {
+          unit:    'phrase',
+          targets: ['TƯ DUY PHẢN BIỆN', 'LÀ HÀNG RÀO', 'TỐT NHẤT', 'TRƯỚC VIỆC LẠM DỤNG AI'],
+          decoys:  ['TIN TƯỞNG MÙ QUÁNG', 'PHỚT LỜ HOÀN TOÀN'],
+          icon:    '🛡️',
+          fact:    'Mục tiêu không phải là sợ AI — mà là đặt câu hỏi về nguồn thông tin, xác minh sự thật, và để con người là người quyết định.',
+          source:    'UNESCO "AI Competency Framework", 2022',
+          sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
+        },
+      ],
+
+      quiz: [
+        {
+          type:    'choice',
+          q:       'Constitutional AI (Anthropic, 2022) khác với RLHF tiêu chuẩn ở chỗ...',
+          options: [
+            'Sử dụng mô hình lớn hơn làm mô hình thưởng 🧠',
+            'Cho mô hình tự phê bình và sửa lại kết quả của mình theo một bản hiến pháp viết rõ ràng 📜',
+            'Loại bỏ hoàn toàn người đánh giá con người khỏi quy trình 🚫',
+            'Chỉ huấn luyện trên tài liệu pháp lý và đạo đức ⚖️',
+          ],
+          correct: 1,
+          explanation: 'Trong CAI, một AI lớn hơn phê bình kết quả từ một AI nhỏ hơn dựa trên các nguyên tắc viết sẵn — giảm sự phụ thuộc vào người đánh giá để đảm bảo tính vô hại trong khi vẫn giữ năng lực. Bản hiến pháp được công bố và có thể kiểm toán.',
+          source:    'Bai et al., "Constitutional AI: Harmlessness from AI Feedback", Anthropic 2022',
+          sourceUrl: 'https://arxiv.org/abs/2212.08073',
+        },
+        {
+          type:    'likert',
+          q:       '"Các hệ thống AI nên bị pháp luật bắt buộc phải tiết lộ rằng chúng là AI trong mọi tương tác với con người."',
+          ideal:   4,
+          explanation: 'Đạo luật AI của EU yêu cầu tiết lộ khi AI tương tác với con người. Minh bạch là khuyến nghị gần như phổ quát trong các khung quản trị. Một số cho rằng có ngoại lệ với tác phẩm hư cấu được gắn nhãn rõ ràng.',
+          source:    'EU AI Act Art. 52',
+          sourceUrl: 'https://artificialintelligenceact.eu/',
+        },
+        {
+          type:    'choice',
+          q:       'Các định luật mở rộng quy mô (Kaplan et al., 2020) mô tả mối quan hệ giữa...',
+          options: [
+            'Tốc độ AI và chi phí phần cứng 💰',
+            'Kích thước mô hình, kích thước dữ liệu, ngân sách compute và năng lực kết quả 📊',
+            'Số lượng người dùng và độ ổn định hệ thống ⚡',
+            'Thời gian huấn luyện và mức tiêu thụ năng lượng 🌿',
+          ],
+          correct: 1,
+          explanation: 'Các định luật mở rộng quy mô của Kaplan cho thấy năng lực cải thiện có thể dự đoán được như một quy luật lũy thừa theo kích thước mô hình, dữ liệu, và compute. Điều này thúc đẩy cuộc đua tới các mô hình lớn hơn — dù lợi ích giảm dần hiện đã rõ ràng.',
+          source:    'Kaplan et al., 2020',
+          sourceUrl: 'https://arxiv.org/abs/2001.08361',
+        },
+        {
+          type:    'choice',
+          q:       'Bài kiểm tra ARC (Abstraction and Reasoning Corpus) đo lường điều gì ở AI...',
+          options: [
+            'Tốc độ tạo ngôn ngữ tự nhiên ⚡',
+            'Khả năng giải quyết các nhiệm vụ suy luận thị giác mới lạ mà ghép khuôn mẫu không giải được 🧩',
+            'Hiệu suất trên các kỳ thi học thuật tiêu chuẩn 📝',
+            'Độ chính xác khi tạo mã 💻',
+          ],
+          correct: 1,
+          explanation: 'Các nhiệm vụ ARC yêu cầu suy luận mới lạ thật sự — con người giải chúng dễ dàng, nhưng LLM thất bại thảm hại. Đây là lý do Chollet cho rằng AI hiện tại về cơ bản khác với trí thông minh con người.',
+          source:    'Chollet, "On the Measure of Intelligence", 2019',
+          sourceUrl: 'https://arxiv.org/abs/1911.01547',
+        },
+        {
+          type:    'likert',
+          q:       '"Các công ty nên bị pháp luật bắt buộc công bố dữ liệu nào đã dùng để huấn luyện mô hình AI của họ."',
+          ideal:   5,
+          explanation: 'Minh bạch dữ liệu huấn luyện là yêu cầu theo Đạo luật AI của EU đối với hệ thống AI rủi ro cao và mục đích chung. Nó cho phép kiểm toán thiên vị, trách nhiệm bản quyền, và tranh luận công khai có căn cứ.',
+          source:    'EU AI Act Art. 53',
+          sourceUrl: 'https://artificialintelligenceact.eu/',
+        },
+        {
+          type:    'choice',
+          q:       'Trong Đạo luật AI của EU, việc sử dụng AI nào bị cấm rõ ràng?',
+          options: [
+            'Văn bản do AI tạo ra mà không đóng dấu watermark 📝',
+            'Giám sát sinh trắc học từ xa theo thời gian thực đối với người ở nơi công cộng 👁️',
+            'AI dùng trong thiết bị y tế 🏥',
+            'AI dùng trong tuyển dụng 💼',
+          ],
+          correct: 1,
+          explanation: 'Giám sát sinh trắc học từ xa theo thời gian thực là Điều 5 — bị cấm rõ ràng. AI y tế và tuyển dụng thuộc nhóm rủi ro cao (yêu cầu kiểm toán), không bị cấm. Watermark là yêu cầu về minh bạch.',
+          source:    'EU AI Act Article 5',
+          sourceUrl: 'https://artificialintelligenceact.eu/',
+        },
+        {
+          type:    'choice',
+          q:       'Nhận định nào về thông tin sai lệch do AI tạo ra là chính xác nhất?',
+          options: [
+            'Thông tin sai lệch từ AI dễ phát hiện vì nghe máy móc 🤖',
+            'Nguy cơ chính là chất lượng; AI viết thông tin sai lệch giỏi hơn con người 📝',
+            'Nguy cơ chính là quy mô; AI có thể tạo và phát tán nội dung sai nhanh hơn tốc độ có thể kiểm chứng 📣',
+            'Thông tin sai lệch từ AI chỉ hiệu quả với khán giả không rành công nghệ 👥',
+          ],
+          correct: 2,
+          explanation: 'Quy mô là mối nguy chính. Kiểm chứng sự thật diễn ra chậm và do con người thực hiện; tạo nội dung AI thì nhanh và tự động. Ngay cả khi từng nội dung có thể bị phát hiện, khối lượng lớn vẫn áp đảo năng lực kiểm chứng.',
+          source:    'Stanford Internet Observatory, 2024',
+          sourceUrl: 'https://stacks.stanford.edu/file/druid:mb753jn6512/sio_annual_report_2024.pdf',
+        },
+        {
+          type:    'choice',
+          q:       'Vấn đề "căn chỉnh" (alignment) trong AI đề cập đến...',
+          options: [
+            'Làm cho kết quả AI nhất quán về ngữ pháp 📝',
+            'Căn lề văn bản sang trái trong giao diện AI ⬅️',
+            'Đảm bảo AI theo đuổi mục tiêu thực sự mà con người dự định, không phải các chỉ số thay thế lệch hướng trong trường hợp ngoại lệ ⚖️',
+            'Khiến các công ty AI đồng thuận về tiêu chuẩn 🤝',
+          ],
+          correct: 2,
+          explanation: 'Căn chỉnh là thách thức đảm bảo AI tối ưu hóa cho những gì con người thực sự muốn, không phải một chỉ số đo lường thay thế lệch khỏi mục tiêu thật. Ví dụ kinh điển: reward hacking — một tác nhân tìm cách bất ngờ để ghi điểm nhưng vi phạm tinh thần của nhiệm vụ.',
+          source:    'Bostrom, "Superintelligence", 2014 + Russell, "Human Compatible", 2019',
+          sourceUrl: 'https://humancompatible.ai/',
+        },
+        {
+          type:    'likert',
+          q:       '"Các hệ thống AI nên được kiểm toán bởi bên thứ ba độc lập trước khi triển khai vào các quyết định rủi ro cao (tuyển dụng, tín dụng, tư pháp hình sự)."',
+          ideal:   5,
+          explanation: 'Kiểm toán độc lập là yêu cầu trung tâm của những người ủng hộ trách nhiệm giải trình AI và được quy định theo Đạo luật AI của EU đối với hệ thống rủi ro cao. Đây gần như là sự đồng thuận giữa các nhà nghiên cứu đạo đức AI.',
+          source:    'EU AI Act Art. 43-44',
+          sourceUrl: 'https://artificialintelligenceact.eu/',
+        },
+        {
+          type:    'choice',
+          q:       'Loại hệ thống AI nào được phân loại rõ ràng là "rủi ro cao" theo Đạo luật AI của EU?',
+          options: [
+            'Chatbot trên trang web bán hàng 🛒',
+            'Thuật toán đề xuất phim 🎬',
+            'AI dùng để đánh giá hồ sơ ứng tuyển việc làm 💼',
+            'AI dịch tài liệu pháp lý 📄',
+          ],
+          correct: 2,
+          explanation: 'AI tuyển dụng được liệt kê rõ ràng trong Phụ lục III của Đạo luật AI EU là rủi ro cao. Nó phải đáp ứng các yêu cầu nghiêm ngặt: giám sát con người, biện pháp chất lượng dữ liệu, kiểm tra độ chính xác, và ghi nhật ký. Người sử dụng lao động chịu trách nhiệm pháp lý.',
+          source:    'EU AI Act Annex III',
+          sourceUrl: 'https://artificialintelligenceact.eu/',
+        },
+      ],
+
+      results: [
+        {
+          title:       'Tò mò về AI 🔎',
+          description: 'Bạn đã có một nền tảng để xây dựng thêm. Hãy tập trung vào nguồn gốc — các bài báo học thuật và tài liệu quản lý chính thức xứng đáng để đọc kỹ. Bối cảnh thay đổi nhanh nhưng nền tảng vẫn ổn định.',
+        },
+        {
+          title:       'Hiểu biết về AI 🧪',
+          description: 'Bạn hiểu các cơ chế thật và có thể phân biệt sự cường điệu với bản chất. Điều này hiếm hơn nó nên có. Bạn có vị trí tốt để suy nghĩ rõ ràng về chính sách AI, sự nghiệp, và các vấn đề công dân.',
+        },
+        {
+          title:       'Am hiểu AI 🏆',
+          description: 'Hiểu biết sâu sắc: kiến trúc LLM, vấn đề căn chỉnh, bối cảnh quản trị, và giới hạn nhận thức luận của AI. Bạn có nền tảng để tham gia một cách xây dựng vào AI với tư cách công dân, chuyên gia, và người tư duy phản biện.',
+        },
+      ],
+
+      protocols: [
+        { num: 1,  icon: '📊', title: 'Phân biệt hiệu suất và sự hiểu biết', text: 'Vượt qua bài kiểm tra ≠ sự thấu hiểu. Luôn hỏi AI thực sự đang làm gì về mặt cơ chế.' },
+        { num: 2,  icon: '⚖️', title: 'Đọc Đạo luật AI của EU', text: 'Đây là quy định AI toàn diện nhất thế giới. Nó ảnh hưởng trực tiếp đến bất kỳ ai hoạt động hoặc bán hàng tại châu Âu.' },
+        { num: 3,  icon: '🔍', title: 'Yêu cầu khả năng diễn giải', text: 'Với các quyết định rủi ro cao, hãy hỏi: có ai giải thích được vì sao AI đưa ra lựa chọn này không? Nếu không, nó có nên đưa ra quyết định đó không?' },
+        { num: 4,  icon: '📚', title: 'Theo dõi ArXiv cs.AI và cs.CL', text: 'Bản thảo trước bình duyệt. Đọc phần tóm tắt. Theo dõi những gì lĩnh vực này thực sự đang tranh luận, khác với những gì báo chí đưa tin.' },
+        { num: 5,  icon: '🏛️', title: 'Tham gia vào quản trị AI', text: 'Quy định diễn ra trong các đợt tham vấn công khai, bầu cử, và quyết định mua sắm. Sự tham gia có hiểu biết rất quan trọng.' },
+        { num: 6,  icon: '🎯', title: 'Hiệu chỉnh đánh giá rủi ro của bạn', text: 'Tác hại cụ thể gần hạn so với rủi ro dài hạn mang tính suy đoán. Cả hai đều quan trọng nhưng cần cách ứng phó khác nhau.' },
+        { num: 7,  icon: '💼', title: 'Kiểm toán AI tại nơi làm việc của bạn', text: 'Hỏi xem những công cụ AI nào được dùng cho nhân sự, đánh giá hiệu suất, quyền truy cập. Bạn có quyền được biết ở hầu hết các khu vực pháp lý.' },
+        { num: 8,  icon: '🌍', title: 'Nghĩ về sự phân bổ tác hại', text: 'Rủi ro AI không đồng đều. Hãy hỏi: cộng đồng nào gánh chịu chi phí của việc triển khai này? Ai nhận được lợi ích?' },
+        { num: 9,  icon: '🔬', title: 'Đầu tư vào kỹ năng con người mà AI không thể sao chép', text: 'Tổng hợp mới, phán đoán đạo đức, mối quan hệ chân thật, chuyên môn thực tế, và sự sáng tạo nguyên bản vẫn thuộc về con người.' },
+        { num: 10, icon: '🤝', title: 'Dạy lại cho người khác', text: 'Am hiểu AI có tính lan tỏa. Một người hiểu biết có thể nâng mặt bằng chung cho cả cộng đồng của họ.' },
+      ],
+
+      trackerLabels: ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'],
+    },
+  },
+};
