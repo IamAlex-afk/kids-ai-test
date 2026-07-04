@@ -853,6 +853,24 @@ footer a:hover { text-decoration: underline; }
   .result-hero { border: 2px solid #000; }
 }
 
+/* ── 32a. SHARE BUTTON ──────────────────────────────────────── */
+.btn-share {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+  color: #fff;
+  font-weight: 800;
+  font-size: var(--fs-sm);
+  padding: 12px 22px;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: opacity var(--t-fast), transform var(--t-fast);
+  box-shadow: 0 4px 20px rgba(239,68,68,.35);
+}
+.btn-share:hover { opacity: .88; transform: translateY(-2px); }
+
 /* ── 32b. TINY MODE ─────────────────────────────────────────── */
 .tiny-answers {
   display: grid;
