@@ -675,13 +675,7 @@ function onLessonsDone() {
       </div>
     </div>
   `;
-  $('btn-go-game').addEventListener('click', () => {
-    const picker = document.getElementById('game-picker');
-    if (picker) picker.style.display = 'grid';
-    updateGamePicker();
-    show('game');
-    scrollTo('game');
-  });
+  $('btn-go-game').addEventListener('click', startGame);
 }
 
 /* ─────────────────────────────────────────────
@@ -689,43 +683,6 @@ function onLessonsDone() {
    Eats letters/words/phrases in order (from ageData().snake) while
    dodging decoy tokens. Engine lives in snake.js (window.KAT_Snake).
 ───────────────────────────────────────────── */
-function updateGamePicker() {
-  const age = S.age;
-  const lang = S.lang || 'en';
-  const isRu = lang === 'ru';
-
-  const snakeDescs = {
-    tiny:  { en:'Collect easy AI words — big letters, simple facts!', ru:'Собирай буквы и слова про ИИ, уклоняйся от красных. Простые слова!', de:'Sammle einfache KI-Wörter — große Buchstaben, einfache Fakten!', es:'¡Colecciona palabras de IA fáciles — letras grandes, hechos simples!', fr:'Collecte des mots d\'IA faciles — grandes lettres, faits simples !', hi:'आसान AI शब्द इकट्ठा करो — बड़े अक्षर, सरल तथ्य!', id:'Kumpulkan kata-kata AI mudah — huruf besar, fakta sederhana!', pt:'Colete palavras de IA fáceis — letras grandes, fatos simples!', tr:'Kolay YZ kelimelerini topla — büyük harfler, basit gerçekler!', vi:'Thu thập các từ AI dễ — chữ lớn, sự thật đơn giản!' },
-    child: { en:'Collect AI terms in order. Learn how AI really works.', ru:'Собирай термины ИИ по порядку. Узнай как работает ИИ.', de:'Sammle KI-Begriffe der Reihe nach. Lerne wie KI wirklich funktioniert.', es:'Colecciona términos de IA en orden. Aprende cómo funciona la IA.', fr:'Collecte les termes d\'IA en ordre. Apprends comment fonctionne l\'IA.', hi:'क्रम में AI शब्द इकट्ठा करो। जानो AI कैसे काम करता है।', id:'Kumpulkan istilah AI secara berurutan. Pelajari cara kerja AI.', pt:'Colete termos de IA em ordem. Aprenda como a IA funciona.', tr:'YZ terimlerini sırayla topla. YZ\'nin nasıl çalıştığını öğren.', vi:'Thu thập thuật ngữ AI theo thứ tự. Tìm hiểu cách AI hoạt động.' },
-    teen:  { en:'Advanced AI terms: gradient, neural net, epoch. For the brave.', ru:'Сложные термины ИИ: градиент, нейросеть, эпоха. Только для смелых.', de:'Fortgeschrittene KI-Begriffe: Gradient, neuronales Netz, Epoche. Für Mutige.', es:'Términos avanzados de IA: gradiente, red neuronal, época. Para los valientes.', fr:'Termes avancés d\'IA : gradient, réseau neuronal, époque. Pour les courageux.', hi:'उन्नत AI शब्द: ग्रेडिएंट, न्यूरल नेट, एपॉक। बहादुरों के लिए।', id:'Istilah AI lanjutan: gradien, jaringan saraf, epoch. Untuk yang berani.', pt:'Termos avançados de IA: gradiente, rede neural, época. Para os corajosos.', tr:'Gelişmiş YZ terimleri: gradyan, sinir ağı, epoch. Yürekli olanlar için.', vi:'Thuật ngữ AI nâng cao: gradient, mạng nơ-ron, epoch. Dành cho người dũng cảm.' },
-    adult: { en:'Professional AI terms. For those who want to go deeper.', ru:'Профессиональные термины ИИ. Для тех кто хочет понять глубже.', de:'Professionelle KI-Begriffe. Für alle, die tiefer eintauchen möchten.', es:'Términos profesionales de IA. Para quienes quieren ir más a fondo.', fr:'Termes professionnels d\'IA. Pour ceux qui veulent aller plus loin.', hi:'पेशेवर AI शब्द। उन लोगों के लिए जो गहराई से समझना चाहते हैं।', id:'Istilah AI profesional. Untuk mereka yang ingin memahami lebih dalam.', pt:'Termos profissionais de IA. Para quem quer ir mais fundo.', tr:'Profesyonel YZ terimleri. Daha derine inmek isteyenler için.', vi:'Thuật ngữ AI chuyên nghiệp. Dành cho những ai muốn đi sâu hơn.' },
-  };
-  const duelDescs = {
-    tiny:  { en:'Easy mode for ages 3–6: online safety with pictures.', ru:'Лёгкий режим для малышей 3–6 лет: безопасность в интернете с картинками.', de:'Einfacher Modus für 3–6 Jahre: Online-Sicherheit mit Bildern.', es:'Modo fácil para 3–6 años: seguridad en internet con imágenes.', fr:'Mode facile pour 3–6 ans : sécurité en ligne avec des images.', hi:'3–6 साल के लिए आसान मोड: तस्वीरों के साथ ऑनलाइन सुरक्षा।', id:'Mode mudah untuk usia 3–6: keamanan online dengan gambar.', pt:'Modo fácil para 3–6 anos: segurança online com imagens.', tr:'3–6 yaş için kolay mod: resimlerle çevrimiçi güvenlik.', vi:'Chế độ dễ cho 3–6 tuổi: an toàn trực tuyến với hình ảnh.' },
-    child: { en:'Two robots battle with knowledge. AI & online safety. Timer included!', ru:'Два робота дерутся знаниями. Про ИИ и безопасность в сети. Есть таймер!', de:'Zwei Roboter kämpfen mit Wissen. KI & Online-Sicherheit. Mit Timer!', es:'¡Dos robots batallan con conocimiento. IA y seguridad online. ¡Con temporizador!', fr:'Deux robots s\'affrontent avec des connaissances. IA & sécurité en ligne. Avec minuteur !', hi:'दो रोबोट ज्ञान से लड़ते हैं। AI और ऑनलाइन सुरक्षा। टाइमर के साथ!', id:'Dua robot bertarung dengan pengetahuan. AI & keamanan online. Ada timer!', pt:'Dois robôs batalham com conhecimento. IA e segurança online. Com cronômetro!', tr:'İki robot bilgiyle savaşıyor. YZ ve çevrimiçi güvenlik. Sayaç dahil!', vi:'Hai robot đấu tranh bằng kiến thức. AI & an toàn trực tuyến. Có hẹn giờ!' },
-    teen:  { en:'Hard questions on AI, phishing, neural nets. Who\'s smarter — you or the rival?', ru:'Сложные вопросы про ИИ, фишинг, нейросети. Кто умнее — ты или соперник?', de:'Schwere Fragen zu KI, Phishing, neuronalen Netzen. Wer ist klüger — du oder der Gegner?', es:'Preguntas difíciles sobre IA, phishing, redes neuronales. ¿Quién es más listo — tú o el rival?', fr:'Questions difficiles sur l\'IA, le phishing, les réseaux neuronaux. Qui est le plus intelligent ?', hi:'AI, फिशिंग, न्यूरल नेट पर कठिन सवाल। कौन स्मार्ट है — तुम या प्रतिद्वंद्वी?', id:'Pertanyaan sulit tentang AI, phishing, jaringan saraf. Siapa yang lebih pintar — kamu atau rival?', pt:'Perguntas difíceis sobre IA, phishing, redes neurais. Quem é mais esperto — você ou o rival?', tr:'YZ, kimlik avı, sinir ağları hakkında zor sorular. Daha akıllı kim — sen mi rakip mi?', vi:'Câu hỏi khó về AI, lừa đảo, mạng nơ-ron. Ai thông minh hơn — bạn hay đối thủ?' },
-    adult: { en:'AI & safety knowledge battle. Earn your robot the full armor set!', ru:'Тест знаний по безопасности и ИИ. Заработай доспехи роботу!', de:'KI & Sicherheitswissen-Duell. Verdiene deinem Roboter das volle Rüstungsset!', es:'Batalla de conocimientos sobre IA y seguridad. ¡Gana la armadura completa para tu robot!', fr:'Bataille de connaissances sur l\'IA et la sécurité. Gagne l\'armure complète pour ton robot !', hi:'AI और सुरक्षा ज्ञान की लड़ाई। अपने रोबोट के लिए पूरा कवच जीतो!', id:'Pertarungan pengetahuan AI & keamanan. Dapatkan set armor lengkap untuk robotmu!', pt:'Batalha de conhecimento sobre IA e segurança. Ganhe a armadura completa para o seu robô!', tr:'YZ ve güvenlik bilgisi savaşı. Robotuna tam zırh setini kazan!', vi:'Trận chiến kiến thức AI & an toàn. Kiếm bộ giáp đầy đủ cho robot của bạn!' },
-  };
-  const snakeDesc = Object.fromEntries(Object.keys(snakeDescs).map(a => [a, snakeDescs[a][lang] || snakeDescs[a].en]));
-  const duelDesc  = Object.fromEntries(Object.keys(duelDescs).map(a => [a, duelDescs[a][lang] || duelDescs[a].en]));
-
-  const snEl = document.getElementById('snake-desc');
-  const duEl = document.getElementById('duel-desc');
-  const duGo = document.getElementById('duel-go');
-  const btnSnake = document.getElementById('btn-start-snake');
-
-  const GAME_BTN = { en:'Play Snake →', ru:'Играть в Змейку →', de:'Schlange spielen →', es:'Jugar Serpiente →', fr:'Jouer au Serpent →', hi:'साँप खेलो →', id:'Main Ular →', pt:'Jogar Cobra →', tr:'Yılan Oyna →', vi:'Chơi Rắn →' };
-  const DUEL_BTN = { en:'Play Duel →', ru:'Играть в Дуэль →', de:'Duell spielen →', es:'Jugar Duelo →', fr:'Jouer au Duel →', hi:'दुएल खेलो →', id:'Main Duel →', pt:'Jogar Duelo →', tr:'Düello Oyna →', vi:'Chơi Đấu →' };
-
-  if (snEl) snEl.textContent = snakeDesc[age] || snakeDesc.child;
-  if (duEl) duEl.textContent = duelDesc[age] || duelDesc.child;
-  if (duGo) { duGo.href = isRu ? 'duel/ru.html' : 'duel/'; duGo.textContent = DUEL_BTN[lang] || DUEL_BTN.en; }
-  if (btnSnake) {
-    btnSnake.textContent = GAME_BTN[lang] || GAME_BTN.en;
-    btnSnake.removeEventListener('click', startGame);
-    btnSnake.addEventListener('click', startGame);
-  }
-}
 
 function startGame() {
   const cfg   = AGE_CFG[S.age] || AGE_CFG.child;
@@ -733,8 +690,6 @@ function startGame() {
   lsSave();
   show('game');
   scrollTo('game');
-  const picker = document.getElementById('game-picker');
-  if (picker) picker.style.display = 'none';
 
   const data   = ageData();
   const rounds = (data?.snake || []).slice(0, cfg.gameRounds);
@@ -1086,45 +1041,6 @@ function renderProtocols() {
     </div>
   `).join('');
 
-  renderDuelCta(container.parentElement);
-}
-
-// AI Duel is a bonus robot-battle game for ages 3-12 — surface it for
-// tiny/child/teen, skip it for adult (14+), where it would feel out of place.
-// Not routed through ui()/data files: duel/ only has en+ru content so far,
-// and ui() falls back to the raw key name (not English text) when a key
-// is missing from a language's data file.
-const DUEL_CTA_STR = {
-  en: { text: 'Want more? Battle robots with AI trivia in a bonus game.', btn: 'Play AI Duel →' },
-  ru: { text: 'Хочешь ещё? Сразись роботами в викторине про ИИ — бонусная игра.', btn: 'Играть в AI-Дуэль →' },
-  de: { text: 'Noch mehr? Kämpfe gegen Roboter mit KI-Trivia in einem Bonusspiel.', btn: 'KI-Duell spielen →' },
-  es: { text: '¿Quieres más? Batalla con robots en un juego de trivia de IA.', btn: 'Jugar Duelo IA →' },
-  fr: { text: 'Encore plus ? Affronte des robots en trivia IA dans un jeu bonus.', btn: 'Jouer au Duel IA →' },
-  hi: { text: 'और चाहते हो? बोनस गेम में AI ट्रिविया के साथ रोबोट से लड़ो।', btn: 'AI दुएल खेलो →' },
-  id: { text: 'Mau lebih? Bertarung dengan robot dalam trivia AI di game bonus.', btn: 'Main AI Duel →' },
-  pt: { text: 'Quer mais? Batalhe com robôs em trivia de IA em um jogo bônus.', btn: 'Jogar Duelo IA →' },
-  tr: { text: 'Daha fazlasını ister misin? Bonus oyunda robotlara karşı YZ bilgi yarışması yap.', btn: 'YZ Düellosu Oyna →' },
-  vi: { text: 'Muốn thêm không? Chiến đấu với robot bằng câu đố AI trong trò chơi thưởng.', btn: 'Chơi Đấu AI →' },
-};
-function renderDuelCta(sectionEl) {
-  if (!sectionEl) return;
-  const existing = $('duel-cta');
-  if (existing) existing.remove();
-  if (S.age === 'adult') return;
-
-  const href = S.lang === 'ru' ? 'duel/ru.html' : 'duel/';
-  const str  = DUEL_CTA_STR[S.lang] || DUEL_CTA_STR.en;
-  const cta = document.createElement('div');
-  cta.id = 'duel-cta';
-  cta.className = 'card accent2';
-  cta.style.cssText = 'margin-top:20px;padding:20px;text-align:center;';
-  cta.innerHTML = `
-    <p class="step-text">🥊 ${str.text}</p>
-    <div class="action-row" style="justify-content:center;margin-top:12px;">
-      <a class="btn-outline" href="${href}">${str.btn}</a>
-    </div>
-  `;
-  sectionEl.appendChild(cta);
 }
 
 /* ─────────────────────────────────────────────
