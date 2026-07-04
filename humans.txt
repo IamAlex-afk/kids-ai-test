@@ -1,0 +1,10 @@
+/* TEAM */
+Author: Aleksei Sergeevich Bitkin
+Site: https://github.com/IamAlex-afk
+Project: Mind-OS
+
+/* SITE */
+Last update: 2026-07-04
+Language: en, ru, de, es, fr, hi, id, pt, tr, vi
+Standards: HTML5, CSS3, Vanilla JS, Canvas API
+License: GPL v3
