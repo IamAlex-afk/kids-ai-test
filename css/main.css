@@ -150,7 +150,7 @@ body {
   color: var(--green);
   font-size: clamp(.7rem, 2vw, .9rem);
   margin: 2px 0; line-height: 1.5;
-  opacity: 0; animation: line-in .05s forwards;
+  opacity: 0; animation: line-in .4s forwards;
 }
 @keyframes line-in { to { opacity: 1; } }
 .boot-line.warn  { color: var(--yellow); }
@@ -169,7 +169,7 @@ body {
   height: 100%; width: 0;
   background: linear-gradient(90deg, var(--green), var(--accent));
   border-radius: 3px;
-  transition: width 1.2s ease;
+  transition: width 2.4s ease;
 }
 .boot-access {
   opacity: 0; color: #fff;
