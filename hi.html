@@ -32,7 +32,8 @@
   <link rel="alternate" hreflang="vi" href="https://iamalex-afk.github.io/kids-ai-test/vi.html">
   <link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/">  <script type="application/ld+json">{"@context":"https://schema.org","@type":["WebApplication","EducationalApplication"],"name":"Kids AI Test","isAccessibleForFree":true,"applicationCategory":"EducationApplication","audience":{"@type":"EducationalAudience","suggestedMinAge":3,"suggestedMaxAge":17},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"Alex Bitkin","url":"https://github.com/IamAlex-afk"},"image":"https://iamalex-afk.github.io/kids-ai-test/og.png"}</script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
-  <link rel="stylesheet" href="css/main.css">
+    <link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="css/main.css">
   <meta name="theme-color" content="#8b5cf6">
   <style>
     .flow-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:20px 0; }
@@ -227,8 +228,9 @@
 <script src="js/card.js"></script>
 <script src="js/snake.js"></script>
 <script src="js/core.js"></script>
-</body>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{})}</script></body>
 </html>
+
 
 
 

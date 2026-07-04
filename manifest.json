@@ -1,0 +1,21 @@
+{
+  "name": "Kids AI Test — Learn What AI Really Is",
+  "short_name": "Kids AI Test",
+  "description": "Free AI education for children aged 3–17. 10 languages, 4 age groups, snake game, quiz, unique card. No signup, no data collection.",
+  "lang": "en",
+  "dir": "ltr",
+  "start_url": "/kids-ai-test/",
+  "scope": "/kids-ai-test/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0a0a0f",
+  "theme_color": "#8b5cf6",
+  "categories": ["education", "kids", "games"],
+  "icons": [
+    {
+      "src": "og.png",
+      "sizes": "1200x630",
+      "type": "image/png"
+    }
+  ]
+}
