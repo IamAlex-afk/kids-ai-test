@@ -126,7 +126,22 @@ function afterBoot() {
    TOP BAR
 ───────────────────────────────────────────── */
 function renderTopBar() {
-  // Language buttons — already in HTML, just wire click
+  // Globe language switcher
+  const globe = $('lang-globe');
+  const dropdown = $('lang-dropdown');
+  if (globe && dropdown) {
+    globe.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = dropdown.classList.toggle('open');
+      globe.setAttribute('aria-expanded', open);
+    });
+    document.addEventListener('click', () => {
+      dropdown.classList.remove('open');
+      globe.setAttribute('aria-expanded', 'false');
+    }, { passive: true });
+  }
+
+  // Legacy lang-switch buttons (fallback if still present)
   $$('[data-lang-switch]').forEach(btn => {
     btn.addEventListener('click', () => {
       const lang = btn.dataset.langSwitch;

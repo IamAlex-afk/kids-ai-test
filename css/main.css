@@ -193,7 +193,7 @@ body {
   padding: 12px 16px; max-width: var(--max-w); margin: 0 auto;
   gap: 10px; flex-wrap: wrap;
 }
-.lang-group, .age-group { display: flex; gap: 6px; }
+.age-group { display: flex; gap: 6px; }
 .top-btn {
   background: var(--card); border: 1px solid var(--border);
   color: var(--muted); padding: 5px 14px;
@@ -205,6 +205,64 @@ body {
 .top-btn.active { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
 .top-btn.age-active {
   border-color: var(--accent2); color: var(--accent2); background: var(--accent2-dim);
+}
+
+/* ── Globe Language Switcher ── */
+.lang-switcher {
+  position: relative;
+  z-index: 100;
+}
+.lang-globe {
+  display: flex; align-items: center; gap: 5px;
+  background: var(--card); border: 1px solid var(--border);
+  color: var(--muted2); padding: 6px 14px;
+  border-radius: 20px; font-size: var(--fs-xs);
+  font-weight: 700; cursor: pointer;
+  transition: all var(--t-base); white-space: nowrap;
+  letter-spacing: .4px;
+}
+.lang-globe:hover { border-color: var(--accent); color: var(--accent); }
+.lang-arrow { font-size: .65rem; opacity: .7; transition: transform var(--t-base); }
+.lang-globe[aria-expanded="true"] .lang-arrow { transform: rotate(180deg); }
+.lang-globe[aria-expanded="true"] { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+
+.lang-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: var(--card2);
+  border: 1px solid var(--border2);
+  border-radius: var(--r);
+  padding: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  min-width: 220px;
+  box-shadow: 0 16px 48px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.04);
+  opacity: 0;
+  transform: translateY(-8px) scale(.97);
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease;
+  backdrop-filter: blur(12px);
+}
+.lang-dropdown.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+.lang-opt {
+  display: flex; align-items: center; gap: 7px;
+  padding: 8px 10px;
+  border-radius: var(--r-sm);
+  font-size: var(--fs-xs); font-weight: 600;
+  color: var(--muted2); text-decoration: none;
+  transition: background var(--t-fast), color var(--t-fast);
+  white-space: nowrap;
+}
+.lang-opt:hover { background: var(--border); color: var(--text); }
+.lang-opt.active {
+  background: var(--accent-dim); color: var(--accent);
+  border: 1px solid rgba(34,211,238,.2);
 }
 
 /* ── 9. STAMP ──────────────────────────────────────────────── */
