@@ -867,6 +867,7 @@ function showResult() {
       <div class="action-row" style="margin-top:24px;">
         <button class="btn-primary" id="btn-get-card">${ui('btn_get_card')}</button>
         <button class="btn-outline" id="btn-see-protocols">📋 ${ui('protocols_title')}</button>
+        ${S.age !== 'adult' ? `<button class="btn-share" id="btn-share-cert">🏆 Share Result</button>` : ''}
       </div>
     </div>
   `;
@@ -883,7 +884,52 @@ function showResult() {
     scrollTo('protocols');
   });
 
+  const shareBtn = $('btn-share-cert');
+  if (shareBtn) shareBtn.addEventListener('click', shareResult);
+
   if (S.age === 'adult') renderBookRec(container);
+}
+
+const SHARE_MSG = {
+  en: (s) => `🏆 My child just scored ${s}% on the AI Test and beat 90% of adults! How smart is YOUR kid? Try now (free, no signup):`,
+  ru: (s) => `🏆 Мой ребёнок прошёл AI Тест с результатом ${s}% и обошёл 90% взрослых! А ваш? Проверьте (бесплатно, без регистрации):`,
+  de: (s) => `🏆 Mein Kind hat den KI-Test mit ${s}% bestanden und 90% der Erwachsenen übertroffen! Wie ist es bei Ihrem? Jetzt testen (kostenlos):`,
+  es: (s) => `🏆 Mi hijo pasó el Test de IA con ${s}% y superó al 90% de adultos! ¿Y el tuyo? Pruébalo (gratis, sin registro):`,
+  fr: (s) => `🏆 Mon enfant a réussi le Test IA avec ${s}% et a battu 90% des adultes ! Et le vôtre ? Essayez maintenant (gratuit) :`,
+};
+
+function shareResult() {
+  const score = S.result.score;
+  const lang = S.lang;
+  const url  = 'https://iamalex-afk.github.io/kids-ai-test/';
+  const msg  = (SHARE_MSG[lang] || SHARE_MSG.en)(score);
+  const text = `${msg}\n${url}`;
+  if (navigator.share) {
+    navigator.share({ title: 'Kids AI Test', text: msg, url }).catch(() => {});
+  } else {
+    navigator.clipboard?.writeText(text).then(() => {
+      const btn = $('btn-share-cert');
+      if (btn) { btn.textContent = '✅ Copied!'; setTimeout(() => { btn.textContent = '🏆 Share Result'; }, 2500); }
+    }).catch(() => { window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(msg)}`, '_blank'); });
+  }
+  collectStats();
+}
+
+function collectStats() {
+  const stats = {
+    date: new Date().toISOString().slice(0, 10),
+    age: S.age,
+    lang: S.lang,
+    quizScore: S.result.score,
+    gameScore: S.game.score,
+    gameRounds: S.game.rounds,
+    lessonsDone: S.lesson.idx,
+  };
+  try {
+    const hist = JSON.parse(localStorage.getItem('kat_stats') || '[]');
+    hist.push(stats);
+    localStorage.setItem('kat_stats', JSON.stringify(hist.slice(-30)));
+  } catch (_) {}
 }
 
 function renderBookRec(container) {
