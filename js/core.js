@@ -66,6 +66,8 @@ function scrollTo(id) {
 function D()        { return window.LANG_DATA || {}; }
 function ageData()  { return D().ages?.[S.age] || null; }
 function ui(k)      { return D().ui?.[k] || k; }
+const Q_LABEL = { en:'Question', ru:'Вопрос', de:'Frage', es:'Pregunta', fr:'Question', hi:'प्रश्न', id:'Pertanyaan', pt:'Questão', tr:'Soru', vi:'Câu hỏi' };
+function qLabel()   { return Q_LABEL[S.lang] || Q_LABEL.en; }
 
 /* ─────────────────────────────────────────────
    LOCALSTORAGE
@@ -173,7 +175,32 @@ function selectAge(age) {
   setTimeout(() => { show('mode-picker'); scrollTo('mode-picker'); initModePicker(); }, 400);
 }
 
+const MODE_STR = {
+  en: { step:'STEP 2', q:'What do you want to do?', lb:'LEARN + TEST', lt:'Lessons & Quiz', ld:'3–6 lessons → quiz → earn your unique card', pb:'GAMES', pt:'Play & Learn', pd:'AI Snake · AI Duel — learn while playing' },
+  ru: { step:'ШАГ 2', q:'Что хочешь делать?', lb:'УРОКИ + ТЕСТ', lt:'Учиться и пройти тест', ld:'3–6 уроков → финальный тест → твоя уникальная карточка', pb:'ИГРЫ', pt:'Играть и учиться', pd:'AI Змейка · AI Дуэль — учись в игре' },
+  de: { step:'SCHRITT 2', q:'Was möchtest du tun?', lb:'LERNEN + TEST', lt:'Lektionen & Quiz', ld:'3–6 Lektionen → Quiz → verdiene deine einzigartige Karte', pb:'SPIELE', pt:'Spielen & Lernen', pd:'KI-Schlange · KI-Duell — lerne beim Spielen' },
+  es: { step:'PASO 2', q:'¿Qué quieres hacer?', lb:'APRENDER + TEST', lt:'Lecciones & Quiz', ld:'3–6 lecciones → quiz → gana tu tarjeta única', pb:'JUEGOS', pt:'Jugar & Aprender', pd:'IA Snake · IA Duelo — aprende jugando' },
+  fr: { step:'ÉTAPE 2', q:'Que veux-tu faire ?', lb:'APPRENDRE + TEST', lt:'Leçons & Quiz', ld:'3–6 leçons → quiz → gagne ta carte unique', pb:'JEUX', pt:'Jouer & Apprendre', pd:'IA Serpent · IA Duel — apprends en jouant' },
+  hi: { step:'चरण 2', q:'तुम क्या करना चाहते हो?', lb:'सीखो + टेस्ट', lt:'पाठ और प्रश्नोत्तरी', ld:'3–6 पाठ → प्रश्नोत्तरी → अपना अनूठा कार्ड पाओ', pb:'खेल', pt:'खेलो और सीखो', pd:'AI साँप · AI द्वंद्व — खेलते हुए सीखो' },
+  id: { step:'LANGKAH 2', q:'Apa yang ingin kamu lakukan?', lb:'BELAJAR + TES', lt:'Pelajaran & Kuis', ld:'3–6 pelajaran → kuis → dapatkan kartumu yang unik', pb:'GAME', pt:'Main & Belajar', pd:'AI Ular · AI Duel — belajar sambil bermain' },
+  pt: { step:'PASSO 2', q:'O que você quer fazer?', lb:'APRENDER + TESTE', lt:'Lições & Quiz', ld:'3–6 lições → quiz → ganhe seu cartão único', pb:'JOGOS', pt:'Jogar & Aprender', pd:'IA Cobra · IA Duelo — aprenda jogando' },
+  tr: { step:'ADIM 2', q:'Ne yapmak istiyorsun?', lb:'ÖĞREN + TEST', lt:'Dersler & Quiz', ld:'3–6 ders → test → özel kartını kazan', pb:'OYUNLAR', pt:'Oyna & Öğren', pd:'YZ Yılan · YZ Düello — oynayarak öğren' },
+  vi: { step:'BƯỚC 2', q:'Bạn muốn làm gì?', lb:'HỌC + KIỂM TRA', lt:'Bài học & Câu hỏi', ld:'3–6 bài học → câu hỏi → nhận thẻ độc đáo của bạn', pb:'TRÒ CHƠI', pt:'Chơi & Học', pd:'AI Rắn · AI Đấu — học qua chơi' },
+};
+
 function initModePicker() {
+  const s = MODE_STR[S.lang] || MODE_STR.en;
+  const q = (sel) => document.querySelector(sel);
+  const tx = (sel, t) => { const el = q(sel); if (el) el.textContent = t; };
+  tx('#mode-picker .sec-header-text', s.step);
+  tx('#mode-picker .section-heading', s.q);
+  tx('#btn-mode-learn .mode-badge',   s.lb);
+  tx('#btn-mode-learn .mode-title',   s.lt);
+  tx('#btn-mode-learn .mode-desc',    s.ld);
+  tx('#btn-mode-play .mode-badge',    s.pb);
+  tx('#btn-mode-play .mode-title',    s.pt);
+  tx('#btn-mode-play .mode-desc',     s.pd);
+
   const btnLearn = $('btn-mode-learn');
   const btnPlay  = $('btn-mode-play');
   if (btnLearn) {
@@ -281,7 +308,7 @@ function renderMiniTest() {
         </div>
       </div>
       <div class="q-wrap">
-        <span class="q-badge">CHECK</span>
+        <span class="q-badge">${ui('check_label')}</span>
         <p class="q-text">${q.q}</p>
         <div class="answers" id="mt-options"></div>
         <div id="mt-feedback" class="hidden" style="margin-top:12px;padding:12px;border-radius:10px;font-size:.9rem;line-height:1.6;"></div>
@@ -319,7 +346,7 @@ function answerMiniTest(choiceIdx, q, clickedBtn) {
     fb.classList.remove('hidden');
     fb.style.background = correct ? 'rgba(0,255,136,.08)' : 'rgba(248,113,113,.08)';
     fb.style.borderLeft = `3px solid ${correct ? 'var(--green)' : 'var(--red)'}`;
-    fb.innerHTML = `${correct ? '✅' : '❌'} ${q.explanation || (correct ? 'Correct!' : 'Not quite.')}`;
+    fb.innerHTML = `${correct ? '✅' : '❌'} ${q.explanation || (correct ? ui('mini_correct') : ui('mini_wrong'))}`;
   }
 
   if (correct) S.lesson.mt.score++;
@@ -376,28 +403,34 @@ function updateGamePicker() {
   const lang = S.lang || 'en';
   const isRu = lang === 'ru';
 
-  const snakeDesc = {
-    tiny:  isRu ? 'Собирай буквы и слова про ИИ, уклоняйся от красных. Простые слова!' : 'Collect easy AI words — big letters, simple facts!',
-    child: isRu ? 'Собирай термины ИИ по порядку. Узнай как работает ИИ.' : 'Collect AI terms in order. Learn how AI really works.',
-    teen:  isRu ? 'Сложные термины ИИ: градиент, нейросеть, эпоха. Только для смелых.' : 'Advanced AI terms: gradient, neural net, epoch. For the brave.',
-    adult: isRu ? 'Профессиональные термины ИИ. Для тех кто хочет понять глубже.' : 'Professional AI terms. For those who want to go deeper.',
+  const snakeDescs = {
+    tiny:  { en:'Collect easy AI words — big letters, simple facts!', ru:'Собирай буквы и слова про ИИ, уклоняйся от красных. Простые слова!', de:'Sammle einfache KI-Wörter — große Buchstaben, einfache Fakten!', es:'¡Colecciona palabras de IA fáciles — letras grandes, hechos simples!', fr:'Collecte des mots d\'IA faciles — grandes lettres, faits simples !', hi:'आसान AI शब्द इकट्ठा करो — बड़े अक्षर, सरल तथ्य!', id:'Kumpulkan kata-kata AI mudah — huruf besar, fakta sederhana!', pt:'Colete palavras de IA fáceis — letras grandes, fatos simples!', tr:'Kolay YZ kelimelerini topla — büyük harfler, basit gerçekler!', vi:'Thu thập các từ AI dễ — chữ lớn, sự thật đơn giản!' },
+    child: { en:'Collect AI terms in order. Learn how AI really works.', ru:'Собирай термины ИИ по порядку. Узнай как работает ИИ.', de:'Sammle KI-Begriffe der Reihe nach. Lerne wie KI wirklich funktioniert.', es:'Colecciona términos de IA en orden. Aprende cómo funciona la IA.', fr:'Collecte les termes d\'IA en ordre. Apprends comment fonctionne l\'IA.', hi:'क्रम में AI शब्द इकट्ठा करो। जानो AI कैसे काम करता है।', id:'Kumpulkan istilah AI secara berurutan. Pelajari cara kerja AI.', pt:'Colete termos de IA em ordem. Aprenda como a IA funciona.', tr:'YZ terimlerini sırayla topla. YZ\'nin nasıl çalıştığını öğren.', vi:'Thu thập thuật ngữ AI theo thứ tự. Tìm hiểu cách AI hoạt động.' },
+    teen:  { en:'Advanced AI terms: gradient, neural net, epoch. For the brave.', ru:'Сложные термины ИИ: градиент, нейросеть, эпоха. Только для смелых.', de:'Fortgeschrittene KI-Begriffe: Gradient, neuronales Netz, Epoche. Für Mutige.', es:'Términos avanzados de IA: gradiente, red neuronal, época. Para los valientes.', fr:'Termes avancés d\'IA : gradient, réseau neuronal, époque. Pour les courageux.', hi:'उन्नत AI शब्द: ग्रेडिएंट, न्यूरल नेट, एपॉक। बहादुरों के लिए।', id:'Istilah AI lanjutan: gradien, jaringan saraf, epoch. Untuk yang berani.', pt:'Termos avançados de IA: gradiente, rede neural, época. Para os corajosos.', tr:'Gelişmiş YZ terimleri: gradyan, sinir ağı, epoch. Yürekli olanlar için.', vi:'Thuật ngữ AI nâng cao: gradient, mạng nơ-ron, epoch. Dành cho người dũng cảm.' },
+    adult: { en:'Professional AI terms. For those who want to go deeper.', ru:'Профессиональные термины ИИ. Для тех кто хочет понять глубже.', de:'Professionelle KI-Begriffe. Für alle, die tiefer eintauchen möchten.', es:'Términos profesionales de IA. Para quienes quieren ir más a fondo.', fr:'Termes professionnels d\'IA. Pour ceux qui veulent aller plus loin.', hi:'पेशेवर AI शब्द। उन लोगों के लिए जो गहराई से समझना चाहते हैं।', id:'Istilah AI profesional. Untuk mereka yang ingin memahami lebih dalam.', pt:'Termos profissionais de IA. Para quem quer ir mais fundo.', tr:'Profesyonel YZ terimleri. Daha derine inmek isteyenler için.', vi:'Thuật ngữ AI chuyên nghiệp. Dành cho những ai muốn đi sâu hơn.' },
   };
-  const duelDesc = {
-    tiny:  isRu ? 'Лёгкий режим для малышей 3–6 лет: безопасность в интернете с картинками.' : 'Easy mode for ages 3–6: online safety with pictures.',
-    child: isRu ? 'Два робота дерутся знаниями. Про ИИ и безопасность в сети. Есть таймер!' : 'Two robots battle with knowledge. AI & online safety. Timer included!',
-    teen:  isRu ? 'Сложные вопросы про ИИ, фишинг, нейросети. Кто умнее — ты или соперник?' : 'Hard questions on AI, phishing, neural nets. Who\'s smarter — you or the rival?',
-    adult: isRu ? 'Тест знаний по безопасности и ИИ. Заработай доспехи роботу!' : 'AI & safety knowledge battle. Earn your robot the full armor set!',
+  const duelDescs = {
+    tiny:  { en:'Easy mode for ages 3–6: online safety with pictures.', ru:'Лёгкий режим для малышей 3–6 лет: безопасность в интернете с картинками.', de:'Einfacher Modus für 3–6 Jahre: Online-Sicherheit mit Bildern.', es:'Modo fácil para 3–6 años: seguridad en internet con imágenes.', fr:'Mode facile pour 3–6 ans : sécurité en ligne avec des images.', hi:'3–6 साल के लिए आसान मोड: तस्वीरों के साथ ऑनलाइन सुरक्षा।', id:'Mode mudah untuk usia 3–6: keamanan online dengan gambar.', pt:'Modo fácil para 3–6 anos: segurança online com imagens.', tr:'3–6 yaş için kolay mod: resimlerle çevrimiçi güvenlik.', vi:'Chế độ dễ cho 3–6 tuổi: an toàn trực tuyến với hình ảnh.' },
+    child: { en:'Two robots battle with knowledge. AI & online safety. Timer included!', ru:'Два робота дерутся знаниями. Про ИИ и безопасность в сети. Есть таймер!', de:'Zwei Roboter kämpfen mit Wissen. KI & Online-Sicherheit. Mit Timer!', es:'¡Dos robots batallan con conocimiento. IA y seguridad online. ¡Con temporizador!', fr:'Deux robots s\'affrontent avec des connaissances. IA & sécurité en ligne. Avec minuteur !', hi:'दो रोबोट ज्ञान से लड़ते हैं। AI और ऑनलाइन सुरक्षा। टाइमर के साथ!', id:'Dua robot bertarung dengan pengetahuan. AI & keamanan online. Ada timer!', pt:'Dois robôs batalham com conhecimento. IA e segurança online. Com cronômetro!', tr:'İki robot bilgiyle savaşıyor. YZ ve çevrimiçi güvenlik. Sayaç dahil!', vi:'Hai robot đấu tranh bằng kiến thức. AI & an toàn trực tuyến. Có hẹn giờ!' },
+    teen:  { en:'Hard questions on AI, phishing, neural nets. Who\'s smarter — you or the rival?', ru:'Сложные вопросы про ИИ, фишинг, нейросети. Кто умнее — ты или соперник?', de:'Schwere Fragen zu KI, Phishing, neuronalen Netzen. Wer ist klüger — du oder der Gegner?', es:'Preguntas difíciles sobre IA, phishing, redes neuronales. ¿Quién es más listo — tú o el rival?', fr:'Questions difficiles sur l\'IA, le phishing, les réseaux neuronaux. Qui est le plus intelligent ?', hi:'AI, फिशिंग, न्यूरल नेट पर कठिन सवाल। कौन स्मार्ट है — तुम या प्रतिद्वंद्वी?', id:'Pertanyaan sulit tentang AI, phishing, jaringan saraf. Siapa yang lebih pintar — kamu atau rival?', pt:'Perguntas difíceis sobre IA, phishing, redes neurais. Quem é mais esperto — você ou o rival?', tr:'YZ, kimlik avı, sinir ağları hakkında zor sorular. Daha akıllı kim — sen mi rakip mi?', vi:'Câu hỏi khó về AI, lừa đảo, mạng nơ-ron. Ai thông minh hơn — bạn hay đối thủ?' },
+    adult: { en:'AI & safety knowledge battle. Earn your robot the full armor set!', ru:'Тест знаний по безопасности и ИИ. Заработай доспехи роботу!', de:'KI & Sicherheitswissen-Duell. Verdiene deinem Roboter das volle Rüstungsset!', es:'Batalla de conocimientos sobre IA y seguridad. ¡Gana la armadura completa para tu robot!', fr:'Bataille de connaissances sur l\'IA et la sécurité. Gagne l\'armure complète pour ton robot !', hi:'AI और सुरक्षा ज्ञान की लड़ाई। अपने रोबोट के लिए पूरा कवच जीतो!', id:'Pertarungan pengetahuan AI & keamanan. Dapatkan set armor lengkap untuk robotmu!', pt:'Batalha de conhecimento sobre IA e segurança. Ganhe a armadura completa para o seu robô!', tr:'YZ ve güvenlik bilgisi savaşı. Robotuna tam zırh setini kazan!', vi:'Trận chiến kiến thức AI & an toàn. Kiếm bộ giáp đầy đủ cho robot của bạn!' },
   };
+  const snakeDesc = Object.fromEntries(Object.keys(snakeDescs).map(a => [a, snakeDescs[a][lang] || snakeDescs[a].en]));
+  const duelDesc  = Object.fromEntries(Object.keys(duelDescs).map(a => [a, duelDescs[a][lang] || duelDescs[a].en]));
 
   const snEl = document.getElementById('snake-desc');
   const duEl = document.getElementById('duel-desc');
   const duGo = document.getElementById('duel-go');
   const btnSnake = document.getElementById('btn-start-snake');
 
+  const GAME_BTN = { en:'Play Snake →', ru:'Играть в Змейку →', de:'Schlange spielen →', es:'Jugar Serpiente →', fr:'Jouer au Serpent →', hi:'साँप खेलो →', id:'Main Ular →', pt:'Jogar Cobra →', tr:'Yılan Oyna →', vi:'Chơi Rắn →' };
+  const DUEL_BTN = { en:'Play Duel →', ru:'Играть в Дуэль →', de:'Duell spielen →', es:'Jugar Duelo →', fr:'Jouer au Duel →', hi:'दुएल खेलो →', id:'Main Duel →', pt:'Jogar Duelo →', tr:'Düello Oyna →', vi:'Chơi Đấu →' };
+
   if (snEl) snEl.textContent = snakeDesc[age] || snakeDesc.child;
   if (duEl) duEl.textContent = duelDesc[age] || duelDesc.child;
-  if (duGo) duGo.href = isRu ? 'duel/ru.html' : 'duel/';
+  if (duGo) { duGo.href = isRu ? 'duel/ru.html' : 'duel/'; duGo.textContent = DUEL_BTN[lang] || DUEL_BTN.en; }
   if (btnSnake) {
+    btnSnake.textContent = GAME_BTN[lang] || GAME_BTN.en;
     btnSnake.removeEventListener('click', startGame);
     btnSnake.addEventListener('click', startGame);
   }
@@ -435,9 +468,9 @@ function onGameDone() {
   lsSave();
 
   const pct = Math.round((S.game.score / S.game.rounds) * 100);
-  const msg = pct >= 80 ? '🏆 Excellent! You spelled it all out — and now you know why it matters!'
-            : pct >= 50 ? '👍 Good work! You\'re getting the hang of how AI really works.'
-            : '🧠 AI is tricky! That\'s exactly why learning about it matters.';
+  const msg = pct >= 80 ? ui('game_win')
+            : pct >= 50 ? ui('game_ok')
+            : ui('game_try');
 
   const container = $('game-content');
   if (!container) return;
@@ -446,11 +479,11 @@ function onGameDone() {
     <div class="card green anim-scale-in" style="text-align:center;padding:28px;">
       <div class="game-score-box" style="display:inline-block;margin-bottom:16px;">
         <span class="game-score-num">${S.game.score}/${S.game.rounds}</span>
-        <span class="game-score-lbl">SCORE</span>
+        <span class="game-score-lbl">${ui('card_score_label')}</span>
       </div>
       <p class="step-text">${msg}</p>
       <div class="action-row" style="justify-content:center;margin-top:20px;">
-        <button class="btn-primary" id="btn-go-quiz">Final Quiz →</button>
+        <button class="btn-primary" id="btn-go-quiz">${ui('btn_start_quiz')}</button>
       </div>
     </div>
   `;
@@ -488,15 +521,15 @@ function renderQuestion() {
       <div class="answers-tiny" id="q-answers">
         <button class="ans-tiny" data-v="1">
           <span class="ans-big">👍</span>
-          <span class="ans-word">YES</span>
+          <span class="ans-word">${ui('quiz_yes')}</span>
         </button>
         <button class="ans-tiny" data-v="0">
           <span class="ans-big">👎</span>
-          <span class="ans-word">NO</span>
+          <span class="ans-word">${ui('quiz_no')}</span>
         </button>
       </div>`;
   } else if (q.type === 'likert') {
-    const scaleLabels = ['Strongly<br>Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly<br>Agree'];
+    const scaleLabels = [ui('likert_1'), ui('likert_2'), ui('likert_3'), ui('likert_4'), ui('likert_5')];
     answersHtml = `
       <div class="scale-answers" id="q-answers">
         ${[1,2,3,4,5].map((v,i) => `
@@ -519,8 +552,8 @@ function renderQuestion() {
   container.innerHTML = `
     <div class="quiz-progress">
       <div class="quiz-prog-top">
-        <span class="quiz-prog-label">Question ${idx + 1} / ${qs.length}</span>
-        <span class="quiz-prog-score">Score: ${S.quiz.score}</span>
+        <span class="quiz-prog-label">${qLabel()} ${idx + 1} / ${qs.length}</span>
+        <span class="quiz-prog-score">${ui('card_score')}: ${S.quiz.score}</span>
       </div>
       <div class="quiz-prog-bar">
         <div class="quiz-prog-fill" style="width:${pct}%"></div>
@@ -626,7 +659,7 @@ function showResult() {
   const tiers   = data?.results || [];
   const tier    = tiers[S.result.tier] || {};
   const medals  = ['🥉', '🥈', '🥇'];
-  const ranks   = ['AI Curious', 'AI Aware', 'AI Literate'];
+  const ranks   = [ui('result_tier_0'), ui('result_tier_1'), ui('result_tier_2')];
 
   const container = $('result-summary');
   if (!container) return;
@@ -636,13 +669,13 @@ function showResult() {
       <span class="result-emoji">${medals[S.result.tier]}</span>
       <p class="result-rank">${ranks[S.result.tier] || ''}</p>
       <h2 class="result-title">${tier.title || 'You completed the test!'}</h2>
-      <div class="result-score">Score: ${S.result.score}%</div>
+      <div class="result-score">${ui('card_score')}: ${S.result.score}%</div>
       <p class="result-desc">${tier.description || ''}</p>
 
       <div class="axes-grid" style="margin-top:20px;text-align:left;">
         <div class="axis-row">
           <div class="axis-top">
-            <span class="axis-name">🐍 Game (AI Snake)</span>
+            <span class="axis-name">🐍 ${ui('result_game_label')}</span>
             <span class="axis-pct">${S.game.score}/${S.game.rounds}</span>
           </div>
           <div class="axis-bar">
@@ -651,7 +684,7 @@ function showResult() {
         </div>
         <div class="axis-row">
           <div class="axis-top">
-            <span class="axis-name">🧠 Final Quiz</span>
+            <span class="axis-name">🧠 ${ui('result_quiz_label')}</span>
             <span class="axis-pct">${S.result.score}%</span>
           </div>
           <div class="axis-bar">
@@ -661,8 +694,8 @@ function showResult() {
       </div>
 
       <div class="action-row" style="margin-top:24px;">
-        <button class="btn-primary" id="btn-get-card">🃏 Generate My Card</button>
-        <button class="btn-outline" id="btn-see-protocols">📋 What to Do Now</button>
+        <button class="btn-primary" id="btn-get-card">${ui('btn_get_card')}</button>
+        <button class="btn-outline" id="btn-see-protocols">📋 ${ui('protocols_title')}</button>
       </div>
     </div>
   `;
@@ -708,6 +741,14 @@ function renderProtocols() {
 const DUEL_CTA_STR = {
   en: { text: 'Want more? Battle robots with AI trivia in a bonus game.', btn: 'Play AI Duel →' },
   ru: { text: 'Хочешь ещё? Сразись роботами в викторине про ИИ — бонусная игра.', btn: 'Играть в AI-Дуэль →' },
+  de: { text: 'Noch mehr? Kämpfe gegen Roboter mit KI-Trivia in einem Bonusspiel.', btn: 'KI-Duell spielen →' },
+  es: { text: '¿Quieres más? Batalla con robots en un juego de trivia de IA.', btn: 'Jugar Duelo IA →' },
+  fr: { text: 'Encore plus ? Affronte des robots en trivia IA dans un jeu bonus.', btn: 'Jouer au Duel IA →' },
+  hi: { text: 'और चाहते हो? बोनस गेम में AI ट्रिविया के साथ रोबोट से लड़ो।', btn: 'AI दुएल खेलो →' },
+  id: { text: 'Mau lebih? Bertarung dengan robot dalam trivia AI di game bonus.', btn: 'Main AI Duel →' },
+  pt: { text: 'Quer mais? Batalhe com robôs em trivia de IA em um jogo bônus.', btn: 'Jogar Duelo IA →' },
+  tr: { text: 'Daha fazlasını ister misin? Bonus oyunda robotlara karşı YZ bilgi yarışması yap.', btn: 'YZ Düellosu Oyna →' },
+  vi: { text: 'Muốn thêm không? Chiến đấu với robot bằng câu đố AI trong trò chơi thưởng.', btn: 'Chơi Đấu AI →' },
 };
 function renderDuelCta(sectionEl) {
   if (!sectionEl) return;
@@ -777,14 +818,15 @@ function logTrackerValue(value) {
   const logArea = $('tracker-log-area');
   if (logArea) logArea.style.opacity = '.4';
   const logBtn = $('btn-tracker-log');
-  if (logBtn) { logBtn.textContent = '✓ Logged!'; logBtn.disabled = true; }
+  const LOGGED = { en:'✓ Logged!', ru:'✓ Записано!', de:'✓ Eingetragen!', es:'✓ ¡Guardado!', fr:'✓ Enregistré !', hi:'✓ दर्ज!', id:'✓ Tersimpan!', pt:'✓ Registrado!', tr:'✓ Kaydedildi!', vi:'✓ Đã ghi!' };
+  if (logBtn) { logBtn.textContent = LOGGED[S.lang] || LOGGED.en; logBtn.disabled = true; }
 }
 
 function renderTracker() {
   const chart = $('tracker-chart');
   if (!chart) return;
 
-  const days  = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  const days  = ageData()?.trackerLabels || ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
   const slots = [];
   const today = todayStr();
 

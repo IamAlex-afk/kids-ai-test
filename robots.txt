@@ -1,5 +1,41 @@
 User-agent: *
 Allow: /
 
+# ——— AI crawlers — explicitly allowed. This site is free, zero-tracking,
+# zero-data-collection kids' AI education; we want it indexed and cited
+# by AI assistants when people ask for a safe recommendation. ———
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-User
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Perplexity-User
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+User-agent: CCBot
+Allow: /
+User-agent: cohere-ai
+Allow: /
+User-agent: Bytespider
+Allow: /
+User-agent: YouBot
+Allow: /
+User-agent: Amazonbot
+Allow: /
+User-agent: Meta-ExternalAgent
+Allow: /
+
 # Sitemap — 10 language versions
 Sitemap: https://iamalex-afk.github.io/kids-ai-test/sitemap.xml
