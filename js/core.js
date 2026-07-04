@@ -96,19 +96,19 @@ function boot() {
   const access = $('boot-access');
 
   // Animate progress bar
-  if (fill) setTimeout(() => { fill.style.width = '100%'; }, 200);
+  if (fill) setTimeout(() => { fill.style.width = '100%'; }, 400);
 
   // "ACCESS GRANTED" fade-in
   if (access) setTimeout(() => {
     access.style.transition = 'opacity 0.5s ease';
     access.style.opacity    = '1';
-  }, 1700);
+  }, 3400);
 
   // Fade out boot screen
   setTimeout(() => {
     bootEl.classList.add('hide');
     setTimeout(() => { bootEl.hidden = true; afterBoot(); }, 700);
-  }, 2600);
+  }, 5200);
 }
 
 function afterBoot() {
