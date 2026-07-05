@@ -192,26 +192,5 @@
     <lastmod>2026-07-03</lastmod>
   </url>
 
-  <!-- AI Duel — bonus game, English -->
-  <url>
-    <loc>https://iamalex-afk.github.io/kids-ai-test/duel/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://iamalex-afk.github.io/kids-ai-test/duel/"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://iamalex-afk.github.io/kids-ai-test/duel/ru.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/duel/"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-07-03</lastmod>
-  </url>
-
-  <!-- AI Duel — bonus game, Russian -->
-  <url>
-    <loc>https://iamalex-afk.github.io/kids-ai-test/duel/ru.html</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://iamalex-afk.github.io/kids-ai-test/duel/"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://iamalex-afk.github.io/kids-ai-test/duel/ru.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/duel/"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <lastmod>2026-07-03</lastmod>
-  </url>
 
 </urlset>

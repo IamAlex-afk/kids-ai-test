@@ -197,16 +197,16 @@ function selectAge(age) {
 }
 
 const MODE_STR = {
-  en: { step:'STEP 2', q:'What do you want to do?', lb:'LEARN + TEST', lt:'Lessons & Quiz', ld:'3–6 lessons → quiz → earn your unique card', pb:'GAMES', pt:'Play & Learn', pd:'AI Snake · AI Duel — learn while playing' },
-  ru: { step:'ШАГ 2', q:'Что хочешь делать?', lb:'УРОКИ + ТЕСТ', lt:'Учиться и пройти тест', ld:'3–6 уроков → финальный тест → твоя уникальная карточка', pb:'ИГРЫ', pt:'Играть и учиться', pd:'AI Змейка · AI Дуэль — учись в игре' },
-  de: { step:'SCHRITT 2', q:'Was möchtest du tun?', lb:'LERNEN + TEST', lt:'Lektionen & Quiz', ld:'3–6 Lektionen → Quiz → verdiene deine einzigartige Karte', pb:'SPIELE', pt:'Spielen & Lernen', pd:'KI-Schlange · KI-Duell — lerne beim Spielen' },
-  es: { step:'PASO 2', q:'¿Qué quieres hacer?', lb:'APRENDER + TEST', lt:'Lecciones & Quiz', ld:'3–6 lecciones → quiz → gana tu tarjeta única', pb:'JUEGOS', pt:'Jugar & Aprender', pd:'IA Snake · IA Duelo — aprende jugando' },
-  fr: { step:'ÉTAPE 2', q:'Que veux-tu faire ?', lb:'APPRENDRE + TEST', lt:'Leçons & Quiz', ld:'3–6 leçons → quiz → gagne ta carte unique', pb:'JEUX', pt:'Jouer & Apprendre', pd:'IA Serpent · IA Duel — apprends en jouant' },
-  hi: { step:'चरण 2', q:'तुम क्या करना चाहते हो?', lb:'सीखो + टेस्ट', lt:'पाठ और प्रश्नोत्तरी', ld:'3–6 पाठ → प्रश्नोत्तरी → अपना अनूठा कार्ड पाओ', pb:'खेल', pt:'खेलो और सीखो', pd:'AI साँप · AI द्वंद्व — खेलते हुए सीखो' },
-  id: { step:'LANGKAH 2', q:'Apa yang ingin kamu lakukan?', lb:'BELAJAR + TES', lt:'Pelajaran & Kuis', ld:'3–6 pelajaran → kuis → dapatkan kartumu yang unik', pb:'GAME', pt:'Main & Belajar', pd:'AI Ular · AI Duel — belajar sambil bermain' },
-  pt: { step:'PASSO 2', q:'O que você quer fazer?', lb:'APRENDER + TESTE', lt:'Lições & Quiz', ld:'3–6 lições → quiz → ganhe seu cartão único', pb:'JOGOS', pt:'Jogar & Aprender', pd:'IA Cobra · IA Duelo — aprenda jogando' },
-  tr: { step:'ADIM 2', q:'Ne yapmak istiyorsun?', lb:'ÖĞREN + TEST', lt:'Dersler & Quiz', ld:'3–6 ders → test → özel kartını kazan', pb:'OYUNLAR', pt:'Oyna & Öğren', pd:'YZ Yılan · YZ Düello — oynayarak öğren' },
-  vi: { step:'BƯỚC 2', q:'Bạn muốn làm gì?', lb:'HỌC + KIỂM TRA', lt:'Bài học & Câu hỏi', ld:'3–6 bài học → câu hỏi → nhận thẻ độc đáo của bạn', pb:'TRÒ CHƠI', pt:'Chơi & Học', pd:'AI Rắn · AI Đấu — học qua chơi' },
+  en: { step:'STEP 2', q:'What do you want to do?', lb:'LEARN + TEST', lt:'Lessons & Quiz', ld:'3–6 lessons → quiz → earn your unique card', pb:'GAMES', pt:'Play & Learn', pd:'AI Snake — learn while playing' },
+  ru: { step:'ШАГ 2', q:'Что хочешь делать?', lb:'УРОКИ + ТЕСТ', lt:'Учиться и пройти тест', ld:'3–6 уроков → финальный тест → твоя уникальная карточка', pb:'ИГРЫ', pt:'Играть и учиться', pd:'AI Змейка — учись в игре' },
+  de: { step:'SCHRITT 2', q:'Was möchtest du tun?', lb:'LERNEN + TEST', lt:'Lektionen & Quiz', ld:'3–6 Lektionen → Quiz → verdiene deine einzigartige Karte', pb:'SPIELE', pt:'Spielen & Lernen', pd:'KI-Schlange — lerne beim Spielen' },
+  es: { step:'PASO 2', q:'¿Qué quieres hacer?', lb:'APRENDER + TEST', lt:'Lecciones & Quiz', ld:'3–6 lecciones → quiz → gana tu tarjeta única', pb:'JUEGOS', pt:'Jugar & Aprender', pd:'IA Snake — aprende jugando' },
+  fr: { step:'ÉTAPE 2', q:'Que veux-tu faire ?', lb:'APPRENDRE + TEST', lt:'Leçons & Quiz', ld:'3–6 leçons → quiz → gagne ta carte unique', pb:'JEUX', pt:'Jouer & Apprendre', pd:'IA Serpent — apprends en jouant' },
+  hi: { step:'चरण 2', q:'तुम क्या करना चाहते हो?', lb:'सीखो + टेस्ट', lt:'पाठ और प्रश्नोत्तरी', ld:'3–6 पाठ → प्रश्नोत्तरी → अपना अनूठा कार्ड पाओ', pb:'खेल', pt:'खेलो और सीखो', pd:'AI साँप — खेलते हुए सीखो' },
+  id: { step:'LANGKAH 2', q:'Apa yang ingin kamu lakukan?', lb:'BELAJAR + TES', lt:'Pelajaran & Kuis', ld:'3–6 pelajaran → kuis → dapatkan kartumu yang unik', pb:'GAME', pt:'Main & Belajar', pd:'AI Ular — belajar sambil bermain' },
+  pt: { step:'PASSO 2', q:'O que você quer fazer?', lb:'APRENDER + TESTE', lt:'Lições & Quiz', ld:'3–6 lições → quiz → ganhe seu cartão único', pb:'JOGOS', pt:'Jogar & Aprender', pd:'IA Cobra — aprenda jogando' },
+  tr: { step:'ADIM 2', q:'Ne yapmak istiyorsun?', lb:'ÖĞREN + TEST', lt:'Dersler & Quiz', ld:'3–6 ders → test → özel kartını kazan', pb:'OYUNLAR', pt:'Oyna & Öğren', pd:'YZ Yılan — oynayarak öğren' },
+  vi: { step:'BƯỚC 2', q:'Bạn muốn làm gì?', lb:'HỌC + KIỂM TRA', lt:'Bài học & Câu hỏi', ld:'3–6 bài học → câu hỏi → nhận thẻ độc đáo của bạn', pb:'TRÒ CHƠI', pt:'Chơi & Học', pd:'AI Rắn — học qua chơi' },
 };
 
 /* ─────────────────────────────────────────────
