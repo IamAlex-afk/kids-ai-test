@@ -194,6 +194,17 @@
     }
     return out;
   }
+  // Pickup orbs are sized for a single letter (16px). 'word'/'phrase'
+  // worlds put whole words on them instead — shrink to fit so e.g.
+  // "УЧИТСЯ" doesn't spill out past the glow circle.
+  function pickupFont(ctx, text) {
+    let size = 16;
+    ctx.font = `800 ${size}px system-ui, sans-serif`;
+    while (size > 8 && ctx.measureText(text).width > 26) {
+      size--; ctx.font = `800 ${size}px system-ui, sans-serif`;
+    }
+    return ctx.font;
+  }
   function seededRng(seed) {
     let s = seed >>> 0;
     return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 0xffffffff; };
@@ -588,10 +599,17 @@
     function showFact(round) {
       state.paused = true;
       playCollectSound(); haptic([40, 20, 60]);
+      // Letters concatenate into one word ('B','O','T' -> "BOT"), but
+      // 'word'/'phrase' rounds hold separate tokens that need a real space
+      // between them ('ИИ','УЧИТСЯ' -> "ИИ УЧИТСЯ") — joining those with ''
+      // welds them into one unbroken, unwrappable string that blows out
+      // of the card. Same distinction js/snake.js already makes.
+      const wordDisplay = round.unit === 'letter' ? round.targets.join('') : round.targets.join(' ');
+      const sizeClass = round.unit === 'letter' ? 'snake-word-reveal-letter' : 'snake-word-reveal-word';
       els.overlay.classList.remove('hidden');
       els.overlay.innerHTML = `
         <div class="snake-overlay-card">
-          <p class="snake-word-reveal snake-word-reveal-letter">${round.targets.join('')}</p>
+          <p class="snake-word-reveal ${sizeClass}">${wordDisplay}</p>
           <p class="snake-overlay-icon">${round.icon || '💡'}</p>
           <p class="snake-overlay-fact">${round.fact || ''}</p>
           <button class="btn-primary" id="pf-cont-btn">${t(lang, 'cont')}</button>
@@ -1026,7 +1044,8 @@
           ctx.shadowBlur = 14 * pulse; ctx.shadowColor = '#00ff88';
           ctx.fillStyle = 'rgba(0,255,136,0.14)';
           ctx.beginPath(); ctx.arc(0, 0, 15 * pulse, 0, Math.PI * 2); ctx.fill();
-          ctx.font = '800 16px system-ui, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.font = pickupFont(ctx, s.text);
           ctx.fillStyle = '#00ff88'; ctx.fillText(s.text, 0, 1);
         } else if (s.kind === 'fake') {
           const glitch = Math.random() < 0.35;
@@ -1034,7 +1053,8 @@
           ctx.shadowBlur = 12; ctx.shadowColor = '#c084fc';
           ctx.fillStyle = 'rgba(192,132,252,0.14)';
           ctx.beginPath(); ctx.arc(glitch ? 2 : 0, 0, 15, 0, Math.PI * 2); ctx.fill();
-          ctx.font = '800 16px system-ui, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.font = pickupFont(ctx, s.text);
           ctx.fillStyle = '#c084fc'; ctx.fillText(s.text, glitch ? 2 : 0, 1);
         } else if (s.kind === 'coin') {
           ctx.shadowBlur = 10; ctx.shadowColor = '#fbbf24';
