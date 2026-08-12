@@ -39,16 +39,50 @@
     adult: { baseSpeed: 4.8, maxSpeed: 9.5, rampSec: 38, gravity: 0.68, jumpVel: -11.9, gapMax: 1500, gapMin: 850,  obstacleMax: 6, doubleJump: true,  slide: true,  dash: true,  hints: 'never',  partStages: 4 },
   };
 
-  const OBSTACLES = ['🐛', '🎭', '🦠', '⚠️'];
-  const OVERHEAD  = ['📡', '💬'];
+  // Each age gets its OWN obstacle cast and colour mood — not just a speed
+  // multiplier. A 4-year-old and a 16-year-old should recognise their game
+  // as different at a glance, not only feel it in the controls.
+  const AGE_OBSTACLES = {
+    tiny:  ['🫥', '🔌', '🧊', '💤'],   // glitchy-face / unplugged / frozen / sleepy — off, not scary
+    child: ['🐛', '🎭', '🦠', '⚠️'],   // bug / fake-mask / virus / warning
+    teen:  ['💀', '🌀', '⚡', '🔺'],   // danger / glitch-loop / power-surge / alert
+    adult: ['🕳️', '🔻', '💢', '⛔'],   // data-void / corruption / conflict / blocked
+  };
+  const AGE_OVERHEAD = {
+    teen:  ['📡', '💬'],
+    adult: ['👁️', '🔻'],
+  };
 
-  const WORLD_THEMES = [
-    { name: 'space', sky: ['#05060f', '#0b1030'], accent: '#22d3ee', ground: '#161c3a', deco: '★' },
-    { name: 'jungle', sky: ['#02120a', '#08281a'], accent: '#34d399', ground: '#123320', deco: '🌿' },
-    { name: 'city', sky: ['#0a0510', '#1d0f30'], accent: '#f472b6', ground: '#2a1b3d', deco: '▢' },
-    { name: 'lab', sky: ['#050b0f', '#0a1e22'], accent: '#fbbf24', ground: '#1c2b2f', deco: '○' },
-  ];
-  function themeFor(worldIdx) { return WORLD_THEMES[worldIdx % WORLD_THEMES.length]; }
+  const WORLD_THEMES_BY_AGE = {
+    tiny: [   // bright, warm, toybox — nothing dark or ominous
+      { name: 'space',  sky: ['#1a1035', '#2d1b54'], accent: '#93c5fd', ground: '#2a2050', deco: '★' },
+      { name: 'jungle', sky: ['#0f2818', '#1a4028'], accent: '#86efac', ground: '#1c4028', deco: '🌿' },
+      { name: 'city',   sky: ['#2a0f2e', '#3d1a42'], accent: '#f9a8d4', ground: '#3a1f3d', deco: '▢' },
+      { name: 'lab',    sky: ['#241505', '#3a2408'], accent: '#fde68a', ground: '#2e2410', deco: '○' },
+    ],
+    child: [  // the original neon set
+      { name: 'space',  sky: ['#05060f', '#0b1030'], accent: '#22d3ee', ground: '#161c3a', deco: '★' },
+      { name: 'jungle', sky: ['#02120a', '#08281a'], accent: '#34d399', ground: '#123320', deco: '🌿' },
+      { name: 'city',   sky: ['#0a0510', '#1d0f30'], accent: '#f472b6', ground: '#2a1b3d', deco: '▢' },
+      { name: 'lab',    sky: ['#050b0f', '#0a1e22'], accent: '#fbbf24', ground: '#1c2b2f', deco: '○' },
+    ],
+    teen: [   // cooler, harder-edged neon
+      { name: 'space',  sky: ['#030308', '#0a0a2a'], accent: '#818cf8', ground: '#12122e', deco: '★' },
+      { name: 'jungle', sky: ['#010c08', '#052018'], accent: '#2dd4bf', ground: '#0a2820', deco: '🌿' },
+      { name: 'city',   sky: ['#08030c', '#170a24'], accent: '#e879f9', ground: '#20122e', deco: '▢' },
+      { name: 'lab',    sky: ['#030608', '#071418'], accent: '#facc15', ground: '#141f22', deco: '○' },
+    ],
+    adult: [  // darkest, most technical / muted
+      { name: 'space',  sky: ['#020204', '#06061a'], accent: '#6366f1', ground: '#0c0c1e', deco: '★' },
+      { name: 'jungle', sky: ['#000806', '#031810'], accent: '#14b8a6', ground: '#061e18', deco: '🌿' },
+      { name: 'city',   sky: ['#050208', '#100618'], accent: '#c026d3', ground: '#160c1e', deco: '▢' },
+      { name: 'lab',    sky: ['#020404', '#0a1214'], accent: '#ca8a04', ground: '#0f1719', deco: '○' },
+    ],
+  };
+  function themeFor(age, worldIdx) {
+    const set = WORLD_THEMES_BY_AGE[age] || WORLD_THEMES_BY_AGE.child;
+    return set[worldIdx % set.length];
+  }
 
   const SKINS = { cyan: '#22d3ee', green: '#34d399', gold: '#fbbf24' };
 
@@ -340,7 +374,9 @@
     const lang = opts.lang || 'en';
     const world = opts.world;
     const worldIdx = opts.worldIdx;
-    const theme = themeFor(worldIdx);
+    const theme = themeFor(age, worldIdx);
+    const obstacleGlyphs = AGE_OBSTACLES[age] || AGE_OBSTACLES.child;
+    const overheadGlyphs = AGE_OVERHEAD[age] || AGE_OVERHEAD.teen;
     const rng = seededRng(worldIdx * 7919 + 13);
 
     let alive = true, rafId = null, els = {}, cleanupFns = [];
@@ -590,14 +626,14 @@
         return;
       }
       if (cfg.slide && roll < 0.80) {
-        state.spawned.push({ kind: 'overhead', x: spawnX, y: state.groundY - 34, w: 22, h: 22, glyph: OVERHEAD[Math.floor(Math.random() * OVERHEAD.length)] });
+        state.spawned.push({ kind: 'overhead', x: spawnX, y: state.groundY - 34, w: 22, h: 22, glyph: overheadGlyphs[Math.floor(Math.random() * overheadGlyphs.length)] });
       } else {
-        state.spawned.push({ kind: 'obstacle', x: spawnX, y: state.groundY - 14, w: 24, h: 24, glyph: OBSTACLES[Math.floor(Math.random() * OBSTACLES.length)] });
+        state.spawned.push({ kind: 'obstacle', x: spawnX, y: state.groundY - 14, w: 24, h: 24, glyph: obstacleGlyphs[Math.floor(Math.random() * obstacleGlyphs.length)] });
       }
       // Cluster extra obstacles for older ages (more on-screen at once)
       const activeHazards = countKind('obstacle') + countKind('overhead');
       if (activeHazards < cfg.obstacleMax && Math.random() < (cfg.obstacleMax - 2) * 0.12) {
-        state.spawned.push({ kind: 'obstacle', x: spawnX + 90 + Math.random() * 60, y: state.groundY - 14, w: 24, h: 24, glyph: OBSTACLES[Math.floor(Math.random() * OBSTACLES.length)] });
+        state.spawned.push({ kind: 'obstacle', x: spawnX + 90 + Math.random() * 60, y: state.groundY - 14, w: 24, h: 24, glyph: obstacleGlyphs[Math.floor(Math.random() * obstacleGlyphs.length)] });
       }
     }
 
@@ -1011,7 +1047,7 @@
         const stars = getStars(age, i);
         const isUnlocked = worldUnlocked(age, i);
         const best = window.KAT_Leaderboard ? window.KAT_Leaderboard.getBest(age, i) : 0;
-        const theme = themeFor(i);
+        const theme = themeFor(age, i);
         const card = document.createElement('button');
         card.className = 'pf-world-card' + (cleared ? ' cleared' : '') + (isUnlocked ? '' : ' locked');
         card.style.borderColor = cleared ? 'var(--green)' : theme.accent + '55';
