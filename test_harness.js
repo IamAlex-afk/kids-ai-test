@@ -73,6 +73,14 @@ const rounds = [
   { unit: 'letter', targets: ['А', 'Й'], decoys: [], icon: '🛡️', fact: 'Факт про безопасность.' },
   { unit: 'phrase', targets: ['НЕ', 'ВСЕГДА', 'ПРАВ'], decoys: [], icon: '🔬', fact: 'Факт про ограничения.' },
 ];
+const quiz = [
+  { type: 'yesno', q: 'Может ли робот чувствовать грусть?', correct: 0, explanation: 'Нет, роботы не чувствуют.' },
+  { type: 'yesno', q: 'Можешь ли ты быть умнее ИИ?', correct: 1, explanation: 'Да, у тебя есть настоящее творчество.' },
+];
+const protocols = [
+  { num: 1, icon: '🤔', title: 'Спроси взрослого', text: 'Если ИИ сказал что-то удивительное — проверь с мамой или папой.' },
+  { num: 2, icon: '🛑', title: 'Можно сказать НЕТ', text: 'Тебе не нужно слушаться робота.' },
+];
 
 const container = window.document.getElementById('container');
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
@@ -80,7 +88,7 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 async function testAge(age) {
   console.log('--- age:', age, '---');
   window.KAT_Platformer.startWorldSelect(container, {
-    age, lang: 'ru', lessons, rounds,
+    age, lang: 'ru', lessons, rounds, quiz, protocols,
     onAllDone() { console.log('  onAllDone fired'); },
   });
 
@@ -160,12 +168,58 @@ async function testWinPath() {
   console.log('  back-to-worlds exercised (should re-render with 1+ stars and unlocked skin picker if full build reached)');
 }
 
+async function testQuizPath() {
+  console.log('--- quiz-at-checkpoint path (child, 4-letter world) ---');
+  // Only 2 letters total: the seeded opening letter (always collected
+  // within a few seconds, per the win-path test above) already crosses
+  // frac=0.5 >= the 0.3 checkpoint threshold, and 1 < totalLetters(2) so
+  // the win path doesn't short-circuit the quiz check.
+  const soloLessons = [{ icon: '🧠', title: 'Тест викторины', text: 'Мир для проверки вопроса на чекпоинте.' }];
+  const soloRounds = [
+    { unit: 'letter', targets: ['А', 'Б'], decoys: [], icon: '🤖', fact: 'Факт 1.' },
+  ];
+  window.KAT_Platformer.startWorldSelect(container, {
+    age: 'child', lang: 'ru', lessons: soloLessons, rounds: soloRounds, quiz, protocols,
+    onAllDone() {},
+  });
+  const cards = container.querySelectorAll('.pf-world-card');
+  if (!cards.length) { errors.push('[quiz-path] no world cards'); return; }
+  cards[0].dispatchEvent(new window.Event('click', { bubbles: true }));
+  const startBtn = container.querySelector('#pf-start-btn');
+  if (!startBtn) { errors.push('[quiz-path] no start button'); return; }
+  startBtn.dispatchEvent(new window.Event('click', { bubbles: true }));
+
+  // 4 letters total; the 30% checkpoint crosses on the very first pickup
+  // (1/4 = 0.25... second pickup = 0.5, crosses 0.3). Give it a few
+  // seconds of real time to actually collect via the auto-runner.
+  let sawQuiz = false;
+  for (let i = 0; i < 60 && !sawQuiz; i++) {
+    await sleep(100);
+    if (errors.length) return;
+    const yesBtn = container.querySelector('#pf-quiz-yes');
+    if (yesBtn) sawQuiz = true;
+  }
+  console.log('  quiz overlay appeared at a checkpoint:', sawQuiz);
+  if (!sawQuiz) { errors.push('[quiz-path] quiz overlay never appeared within 6s on a world with a full quiz pool'); return; }
+
+  container.querySelector('#pf-quiz-yes').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await sleep(100);
+  const contBtn = container.querySelector('#pf-quiz-cont');
+  if (!contBtn) { errors.push('[quiz-path] no continue button after answering the quiz'); return; }
+  console.log('  answered quiz, explanation + continue button rendered without throwing');
+  contBtn.dispatchEvent(new window.Event('click', { bubbles: true }));
+  await sleep(2500);
+  if (errors.length) return;
+  console.log('  resumed after quiz without throwing');
+}
+
 (async () => {
   for (const age of ['tiny', 'child', 'teen', 'adult']) {
     await testAge(age);
     if (errors.length) break;
   }
   if (!errors.length) await testWinPath();
+  if (!errors.length) await testQuizPath();
 
   if (errors.length) {
     console.log('\n=== ERRORS FOUND ===');

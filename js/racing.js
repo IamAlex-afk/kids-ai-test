@@ -79,8 +79,8 @@
   const SKINS = { cyan: '#22d3ee', red: '#f87171', gold: '#fbbf24' };
 
   const STR = {
-    en: { ready: 'Get Ready!', start: 'Start ▶', cont: 'Continue →', hint: 'Tap left/right (or ←/→) to change lanes.', worlds: 'Choose a track', cleared: 'CLEARED', best: 'Best', worldClear: 'Track Clear!', gameOver: 'Run ended', record: 'New record!', back: '← Tracks', backGames: '← Games', again: 'Run Again', letters: 'Letters', score: 'Score', part: 'Car', checkpoint: 'Checkpoint!', shieldOn: 'Shield up!', boostOn: 'Boost!', skin: 'Car colour', exit: 'Exit', mute: 'Sound', left: '◀', right: '▶', boost: 'BOOST', achUnlocked: 'Achievement unlocked!', fakeHit: 'That letter was fake!', locked: 'Needs 2★ in the previous track', streak: 'day streak', streakBonus: 'Streak bonus', achTrack1: 'First track cleared', achTrack5: '5 tracks cleared', achFlawless: 'Flawless run' },
-    ru: { ready: 'Приготовься!', start: 'Старт ▶', cont: 'Дальше →', hint: 'Тап влево/вправо (или ←/→) — смена полосы.', worlds: 'Выбери трассу', cleared: 'ПРОЙДЕНО', best: 'Рекорд', worldClear: 'Трасса пройдена!', gameOver: 'Заезд окончен', record: 'Новый рекорд!', back: '← Трассы', backGames: '← Игры', again: 'Ещё раз', letters: 'Буквы', score: 'Очки', part: 'Машина', checkpoint: 'Чекпоинт!', shieldOn: 'Щит поднят!', boostOn: 'Ускорение!', skin: 'Цвет машины', exit: 'Выход', mute: 'Звук', left: '◀', right: '▶', boost: 'УСКОРЕНИЕ', achUnlocked: 'Новое достижение!', fakeHit: 'Это была подделка!', locked: 'Нужно 2★ на предыдущей трассе', streak: 'дней подряд', streakBonus: 'Бонус за серию', achTrack1: 'Первая трасса пройдена', achTrack5: '5 трасс пройдено', achFlawless: 'Идеальный заезд' },
+    en: { ready: 'Get Ready!', start: 'Start ▶', cont: 'Continue →', hint: 'Tap left/right (or ←/→) to change lanes.', worlds: 'Choose a track', cleared: 'CLEARED', best: 'Best', worldClear: 'Track Clear!', gameOver: 'Run ended', record: 'New record!', back: '← Tracks', backGames: '← Games', again: 'Run Again', letters: 'Letters', score: 'Score', part: 'Car', checkpoint: 'Checkpoint!', shieldOn: 'Shield up!', boostOn: 'Boost!', skin: 'Car colour', exit: 'Exit', mute: 'Sound', left: '◀', right: '▶', boost: 'BOOST', achUnlocked: 'Achievement unlocked!', fakeHit: 'That letter was fake!', locked: 'Needs 2★ in the previous track', streak: 'day streak', streakBonus: 'Streak bonus', achTrack1: 'First track cleared', achTrack5: '5 tracks cleared', achFlawless: 'Flawless run', yes: 'Yes', no: 'No', quizKicker: 'Pit stop!' },
+    ru: { ready: 'Приготовься!', start: 'Старт ▶', cont: 'Дальше →', hint: 'Тап влево/вправо (или ←/→) — смена полосы.', worlds: 'Выбери трассу', cleared: 'ПРОЙДЕНО', best: 'Рекорд', worldClear: 'Трасса пройдена!', gameOver: 'Заезд окончен', record: 'Новый рекорд!', back: '← Трассы', backGames: '← Игры', again: 'Ещё раз', letters: 'Буквы', score: 'Очки', part: 'Машина', checkpoint: 'Чекпоинт!', shieldOn: 'Щит поднят!', boostOn: 'Ускорение!', skin: 'Цвет машины', exit: 'Выход', mute: 'Звук', left: '◀', right: '▶', boost: 'УСКОРЕНИЕ', achUnlocked: 'Новое достижение!', fakeHit: 'Это была подделка!', locked: 'Нужно 2★ на предыдущей трассе', streak: 'дней подряд', streakBonus: 'Бонус за серию', achTrack1: 'Первая трасса пройдена', achTrack5: '5 трасс пройдено', achFlawless: 'Идеальный заезд', yes: 'Да', no: 'Нет', quizKicker: 'Пит-стоп!' },
   };
   function t(lang, key) { const d = STR[lang] || STR.en; return d[key] || STR.en[key] || key; }
 
@@ -390,6 +390,12 @@
     const worldIdx = opts.worldIdx;
     const theme = themeFor(age, worldIdx);
     const hazardColors = AGE_HAZARD_COLORS[age] || AGE_HAZARD_COLORS.child;
+    const protocolPool = opts.protocols || [];
+    const quizQueue = (opts.quiz || []).slice();
+    for (let i = quizQueue.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [quizQueue[i], quizQueue[j]] = [quizQueue[j], quizQueue[i]];
+    }
 
     let alive = true, rafId = null, els = {}, cleanupFns = [];
 
@@ -410,7 +416,7 @@
       over: false, won: false, paused: true,
       everHit: false, everLostPart: false,
       shakeUntil: 0,
-      checkpointsHit: [], lastCheckpoint: null,
+      checkpointsHit: [], lastCheckpoint: null, pendingQuiz: null,
       lane: Math.floor(cfg.lanes / 2),
       laneVisual: Math.floor(cfg.lanes / 2),
       boostUntil: 0,
@@ -639,7 +645,13 @@
 
       const entry = letterQueue[item.qidx];
       if (state.collected >= totalLetters) { finishRun('won'); return; }
-      if (entry && entry.isLastOfRound) showFact(world.rounds[entry.roundIdx]);
+      const pendingFact = (entry && entry.isLastOfRound) ? world.rounds[entry.roundIdx] : null;
+      if (state.pendingQuiz) {
+        const q = state.pendingQuiz; state.pendingQuiz = null;
+        showQuiz(q, () => { if (pendingFact) showFact(pendingFact); });
+      } else if (pendingFact) {
+        showFact(pendingFact);
+      }
     }
     function collectCoin(item) {
       state.coins += 10;
@@ -664,7 +676,38 @@
         state.lastCheckpoint = { collected: state.collected, parts: state.parts, elapsedMs: state.elapsedMs, coins: state.coins };
         playCheckpointSound(); haptic([15, 10, 15]);
         toast('🚩 ' + t(lang, 'checkpoint'));
+        if (quizQueue.length) state.pendingQuiz = quizQueue.pop();
       }
+    }
+
+    function showQuiz(q, cb) {
+      state.paused = true;
+      els.overlay.classList.remove('hidden');
+      els.overlay.innerHTML = `
+        <div class="snake-overlay-card">
+          <p class="snake-overlay-kicker">🚩 ${t(lang, 'quizKicker')}</p>
+          <p class="pf-lesson-text" style="font-weight:700;">${q.q}</p>
+          <div class="action-row" style="justify-content:center;gap:10px;margin-bottom:4px;">
+            <button class="btn-primary" id="rc-quiz-yes">👍 ${t(lang,'yes')}</button>
+            <button class="btn-primary" id="rc-quiz-no" style="background:var(--card2)">👎 ${t(lang,'no')}</button>
+          </div>
+        </div>`;
+      const answer = (val) => {
+        const correct = val === q.correct;
+        (correct ? playCheckpointSound : playHitSound)();
+        els.overlay.innerHTML = `
+          <div class="snake-overlay-card">
+            <p class="snake-overlay-kicker" style="color:${correct ? 'var(--green)' : 'var(--red)'}">${correct ? '✅' : '❌'}</p>
+            <p class="snake-overlay-fact">${q.explanation || ''}</p>
+            <button class="btn-primary" id="rc-quiz-cont">${t(lang,'cont')}</button>
+          </div>`;
+        els.overlay.querySelector('#rc-quiz-cont').addEventListener('click', () => {
+          if (!alive) return;
+          els.overlay.classList.add('hidden'); state.paused = false; cb();
+        }, { once: true });
+      };
+      els.overlay.querySelector('#rc-quiz-yes').addEventListener('click', () => answer(1), { once: true });
+      els.overlay.querySelector('#rc-quiz-no').addEventListener('click', () => answer(0), { once: true });
     }
 
     function respawnAtCheckpoint() {
@@ -737,6 +780,8 @@
 
       if (reason === 'exit') { teardown(); if (opts.onExit) opts.onExit(); return; }
 
+      const protocol = state.won && protocolPool.length ? protocolPool[worldIdx % protocolPool.length] : null;
+
       els.overlay.classList.remove('hidden');
       els.overlay.innerHTML = `
         <div class="snake-overlay-card">
@@ -746,6 +791,7 @@
           ${isRecord ? `<p class="snake-overlay-fact" style="color:var(--green)">🏆 ${t(lang,'record')}</p>` : ''}
           <p class="snake-overlay-fact">${t(lang,'letters')}: ${state.collected}/${totalLetters} · 🪙 ${state.coins} · ${t(lang,'best')}: ${best}</p>
           ${streakInfo ? `<p class="snake-overlay-fact">🔥 ${streakInfo.count} ${t(lang,'streak')}${streakBonus ? ' · +' + streakBonus + ' ' + t(lang,'streakBonus') : ''}</p>` : ''}
+          ${protocol ? `<p class="snake-overlay-fact" style="border-top:1px solid var(--border2);padding-top:8px;">${protocol.icon || '📋'} <strong>${protocol.title || ''}</strong><br>${protocol.text || ''}</p>` : ''}
           ${newAch.length ? `<p class="snake-overlay-fact" style="color:var(--yellow)">🏅 ${t(lang,'achUnlocked')}<br>${newAch.join('<br>')}</p>` : ''}
           <div class="action-row" style="justify-content:center;gap:8px;flex-wrap:wrap;">
             <button class="btn-primary" id="rc-again-btn">${t(lang,'again')}</button>
@@ -937,7 +983,7 @@
           <span class="pf-world-meta">${t(lang,'locked')}</span>`;
         card.addEventListener('click', () => {
           if (!isUnlocked) return;
-          new RaceRun(container, { age, lang, world: w, worldIdx: i, onExit: render });
+          new RaceRun(container, { age, lang, world: w, worldIdx: i, onExit: render, quiz: opts.quiz, protocols: opts.protocols });
         });
         grid.appendChild(card);
       });
