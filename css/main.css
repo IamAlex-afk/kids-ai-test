@@ -667,6 +667,66 @@ body {
 
 .snake-hint { text-align: center; font-size: var(--fs-xs); color: var(--muted); }
 
+/* ── PLATFORMER — Circuit Runner ─────────────────────────────── */
+.pf-controls {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 10px; margin-bottom: 10px;
+}
+.pf-btn {
+  background: var(--card2); border: 2px solid var(--border2); border-radius: 12px;
+  color: var(--muted2); font-size: var(--fs-base); font-weight: 800;
+  padding: 14px 22px; user-select: none; -webkit-user-select: none; touch-action: manipulation;
+}
+.pf-btn:active, .pf-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+.pf-btn-jump { margin-left: auto; }
+
+.pf-world-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 10px; margin-bottom: 10px;
+}
+.pf-world-card {
+  background: var(--card2); border: 1px solid var(--border2); border-radius: var(--r-sm);
+  padding: 14px 10px; text-align: center; display: flex; flex-direction: column; gap: 4px;
+  color: var(--text);
+}
+.pf-world-card:hover, .pf-world-card:active { border-color: var(--accent); }
+.pf-world-card.cleared { border-color: var(--green); }
+.pf-world-icon { font-size: 1.8rem; }
+.pf-world-title { font-size: var(--fs-sm); font-weight: 700; }
+.pf-world-meta { font-size: var(--fs-xs); color: var(--muted); min-height: 1em; }
+
+.pf-ach-summary { text-align: center; font-size: var(--fs-xs); color: var(--muted2); margin-bottom: 10px; }
+
+.pf-skin-row { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 14px; }
+.pf-skin-label { font-size: var(--fs-xs); color: var(--muted); }
+.pf-skin-dot {
+  width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--border2);
+  padding: 0; cursor: pointer;
+}
+.pf-skin-dot.active { border-color: var(--text); box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--text); }
+
+.pf-subhud {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+  font-size: var(--fs-sm); color: var(--text); font-weight: 700;
+}
+.pf-icon-btn {
+  margin-left: auto; background: var(--card2); border: 1px solid var(--border2); border-radius: 8px;
+  color: var(--muted2); font-size: var(--fs-base); padding: 4px 10px; line-height: 1.4;
+}
+.pf-icon-btn:hover, .pf-icon-btn:active { border-color: var(--accent); color: var(--accent); }
+#pf-shield { font-size: var(--fs-base); }
+
+.pf-toast {
+  position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+  background: rgba(8,11,20,.92); border: 1px solid var(--accent); border-radius: var(--r-sm);
+  padding: 6px 14px; font-size: var(--fs-sm); font-weight: 700; color: var(--text);
+  z-index: 2; pointer-events: none; transition: opacity .2s;
+}
+.pf-toast.hidden { opacity: 0; display: none; }
+
+.pf-btn-dash { color: var(--yellow); }
+.pf-btn-dash:active, .pf-btn-dash:hover { border-color: var(--yellow); color: var(--yellow); }
+
 /* ── 18. TRACKER ────────────────────────────────────────────── */
 .tracker-wrap {
   background: var(--card); border: 1px solid var(--border);
