@@ -691,8 +691,10 @@ body {
 }
 .pf-world-card:hover, .pf-world-card:active { border-color: var(--accent); }
 .pf-world-card.cleared { border-color: var(--green); }
+.pf-world-card.locked { opacity: 0.45; cursor: not-allowed; }
 .pf-world-icon { font-size: 1.8rem; }
 .pf-world-title { font-size: var(--fs-sm); font-weight: 700; }
+.pf-world-stars { font-size: var(--fs-sm); letter-spacing: 1px; color: var(--yellow); min-height: 1em; }
 .pf-world-meta { font-size: var(--fs-xs); color: var(--muted); min-height: 1em; }
 
 .pf-ach-summary { text-align: center; font-size: var(--fs-xs); color: var(--muted2); margin-bottom: 10px; }

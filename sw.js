@@ -1,5 +1,5 @@
 /* Kids AI Test — Service Worker v2026.1 — offline + PWA support */
-const CACHE = 'kat-2026-08b';
+const CACHE = 'kat-2026-08c';
 const PRECACHE = [
   './', './index.html', './ru.html', './de.html', './es.html',
   './fr.html', './hi.html', './id.html', './pt.html', './tr.html', './vi.html',
