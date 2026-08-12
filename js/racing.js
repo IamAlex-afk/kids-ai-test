@@ -27,18 +27,23 @@
 
   /* ─── AGE CONFIG ─────────────────────────────────────────────────── */
   const AGE_CFG = {
-    tiny:  { lanes: 2, baseSpeed: 2.4, maxSpeed: 4.6, rampSec: 55, gapMax: 1300, gapMin: 950,  obstacleMax: 2, boost: false, hints: 'always', partStages: 4 },
+    // 3 lanes for every age — difficulty comes from speed/gaps/traffic
+    // density instead of lane count, so it always reads as a proper
+    // 3-lane racing road rather than a cramped 2-lane strip.
+    tiny:  { lanes: 3, baseSpeed: 2.4, maxSpeed: 4.6, rampSec: 55, gapMax: 1300, gapMin: 950,  obstacleMax: 2, boost: false, hints: 'always', partStages: 4 },
     child: { lanes: 3, baseSpeed: 3.2, maxSpeed: 6.4, rampSec: 48, gapMax: 1100, gapMin: 800,  obstacleMax: 4, boost: false, hints: 'first3', partStages: 4 },
     teen:  { lanes: 3, baseSpeed: 4.2, maxSpeed: 8.4, rampSec: 42, gapMax: 950,  gapMin: 620,  obstacleMax: 5, boost: true,  hints: 'never',  partStages: 4 },
-    adult: { lanes: 4, baseSpeed: 4.6, maxSpeed: 9.2, rampSec: 38, gapMax: 850,  gapMin: 520,  obstacleMax: 6, boost: true,  hints: 'never',  partStages: 4 },
+    adult: { lanes: 3, baseSpeed: 4.6, maxSpeed: 9.2, rampSec: 38, gapMax: 850,  gapMin: 520,  obstacleMax: 6, boost: true,  hints: 'never',  partStages: 4 },
   };
 
-  // Same "own visual identity per age" principle as the platformer.
-  const AGE_HAZARDS = {
-    tiny:  ['🐢', '🚧', '🍦'],
-    child: ['🚗', '🚧', '🛢️'],
-    teen:  ['🚙', '⚡', '🕳️'],
-    adult: ['🚘', '💥', '🕳️'],
+  // Oncoming traffic colour per age (drawn as real car shapes via
+  // drawTrafficCar, not emoji) — softer/warmer for the youngest, harsher
+  // reds for the oldest, same "own identity per age" principle as before.
+  const AGE_HAZARD_COLORS = {
+    tiny:  ['#fb923c', '#fbbf24'],
+    child: ['#f87171', '#fb923c'],
+    teen:  ['#ef4444', '#dc2626'],
+    adult: ['#dc2626', '#991b1b'],
   };
   const WORLD_THEMES_BY_AGE = {
     tiny: [
@@ -270,6 +275,41 @@
   // visible car from stage 0 — collected parts add decoration (spoiler,
   // stripe, headlight glow, exhaust flames) instead of the body
   // "materializing" out of a near-invisible outline.
+  // A natural-looking top-down car silhouette shared by the player's car
+  // and oncoming traffic: tapered nose, visible wheels poking out past the
+  // body (the single biggest visual cue that reads as "a real car" from
+  // above), windshield + rear window. Traffic cars call this directly with
+  // fixed styling; the player's car layers stage-based extras on top.
+  function carBody(ctx, bodyFill, edgeColor) {
+    // Body: a hexagon-ish tapered shape instead of a plain rounded rect —
+    // narrower nose, wider cabin, slightly tapered tail.
+    ctx.fillStyle = bodyFill; ctx.strokeStyle = edgeColor; ctx.lineWidth = 2.2;
+    ctx.beginPath();
+    ctx.moveTo(0, -19);
+    ctx.quadraticCurveTo(9, -17, 10, -6);
+    ctx.lineTo(10, 10);
+    ctx.quadraticCurveTo(10, 17, 5, 19);
+    ctx.lineTo(-5, 19);
+    ctx.quadraticCurveTo(-10, 17, -10, 10);
+    ctx.lineTo(-10, -6);
+    ctx.quadraticCurveTo(-9, -17, 0, -19);
+    ctx.closePath();
+    ctx.fill(); ctx.stroke();
+
+    // Wheels — dark rectangles poking out past the body on both axles.
+    ctx.fillStyle = '#15171c';
+    [-12, 12].forEach(wx => {
+      ctx.fillRect(wx - 2, -13, 4, 9);
+      ctx.fillRect(wx - 2, 5, 4, 9);
+    });
+
+    // Windshield (front) + rear window, with a roof strip between them.
+    ctx.fillStyle = 'rgba(140,210,255,0.4)';
+    rrect(ctx, -7, -14, 14, 9, 3); ctx.fill();
+    ctx.fillStyle = 'rgba(140,210,255,0.22)';
+    rrect(ctx, -6, 8, 12, 7, 3); ctx.fill();
+  }
+
   function drawCar(ctx, x, y, opts) {
     const { partStage, maxStage, hurt, shielded, boosting, skinColor, now } = opts;
     ctx.save();
@@ -280,41 +320,38 @@
 
     if (boosting) {
       ctx.fillStyle = 'rgba(251,191,36,0.6)';
-      ctx.beginPath(); ctx.moveTo(-5, 18); ctx.lineTo(0, 30 + Math.random() * 8); ctx.lineTo(5, 18); ctx.fill();
+      ctx.beginPath(); ctx.moveTo(-5, 19); ctx.lineTo(0, 32 + Math.random() * 8); ctx.lineTo(5, 19); ctx.fill();
     }
 
-    // Body — always solid from stage 0.
-    ctx.fillStyle = bodyFill; ctx.strokeStyle = glow; ctx.lineWidth = 2.5;
-    rrect(ctx, -12, -20, 24, 38, 8); ctx.fill(); ctx.stroke();
+    carBody(ctx, bodyFill, glow);
 
-    // Windshield
-    ctx.fillStyle = 'rgba(150,220,255,0.35)';
-    rrect(ctx, -8, -13, 16, 12, 3); ctx.fill();
-
-    // Headlights (brighter once stage 1+)
+    // Headlights (brighter once stage 1+) + taillights.
     ctx.fillStyle = partStage >= 1 ? '#fef08a' : 'rgba(254,240,138,0.4)';
     ctx.shadowBlur = partStage >= 1 ? 8 : 0; ctx.shadowColor = '#fef08a';
-    ctx.beginPath(); ctx.arc(-7, -18, 2, 0, Math.PI * 2); ctx.fill();
-    ctx.beginPath(); ctx.arc(7, -18, 2, 0, Math.PI * 2); ctx.fill();
-    ctx.shadowBlur = hurt ? 20 : (boosting ? 24 : 14); ctx.shadowColor = glow;
+    ctx.beginPath(); ctx.arc(-6, -17, 1.8, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(6, -17, 1.8, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#f87171'; ctx.shadowBlur = 0;
+    ctx.beginPath(); ctx.arc(-6, 17, 1.4, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(6, 17, 1.4, 0, Math.PI * 2); ctx.fill();
+    ctx.shadowColor = glow; ctx.shadowBlur = hurt ? 20 : (boosting ? 24 : 14);
 
     // Racing stripe (stage 2+)
     if (partStage >= 2) {
       ctx.strokeStyle = `${glow}cc`; ctx.lineWidth = 3;
-      ctx.beginPath(); ctx.moveTo(0, -17); ctx.lineTo(0, 15); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(0, -16); ctx.lineTo(0, 16); ctx.stroke();
     }
 
     // Spoiler (stage 3+)
     if (partStage >= 3) {
       ctx.fillStyle = bodyFill; ctx.strokeStyle = glow; ctx.lineWidth = 1.5;
-      rrect(ctx, -11, 14, 22, 4, 2); ctx.fill(); ctx.stroke();
+      rrect(ctx, -9, 15, 18, 4, 2); ctx.fill(); ctx.stroke();
     }
 
     // Max-stage: pulsing top light
     if (partStage >= maxStage) {
       const pulse = 0.7 + 0.3 * Math.sin(now * 0.01);
       ctx.globalAlpha = pulse; ctx.fillStyle = '#ffe066'; ctx.shadowBlur = 12;
-      ctx.beginPath(); ctx.arc(0, -22, 2.4, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(0, -21, 2.4, 0, Math.PI * 2); ctx.fill();
       ctx.globalAlpha = 1;
     }
 
@@ -328,6 +365,20 @@
     ctx.restore(); ctx.shadowBlur = 0;
   }
 
+  // Oncoming traffic — same natural car silhouette, fixed simple styling
+  // (no stage upgrades, no shield ring), just recoloured per age.
+  function drawTrafficCar(ctx, x, y, color) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.shadowColor = color; ctx.shadowBlur = 10;
+    carBody(ctx, color, 'rgba(0,0,0,0.35)');
+    ctx.shadowBlur = 0;
+    ctx.fillStyle = '#fef08a';
+    ctx.beginPath(); ctx.arc(-6, -17, 1.6, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(6, -17, 1.6, 0, Math.PI * 2); ctx.fill();
+    ctx.restore();
+  }
+
   /* ═══════════════════════════════════════════════════════════════════
      ONE RUN
   ═══════════════════════════════════════════════════════════════════ */
@@ -338,7 +389,7 @@
     const world = opts.world;
     const worldIdx = opts.worldIdx;
     const theme = themeFor(age, worldIdx);
-    const hazardGlyphs = AGE_HAZARDS[age] || AGE_HAZARDS.child;
+    const hazardColors = AGE_HAZARD_COLORS[age] || AGE_HAZARD_COLORS.child;
 
     let alive = true, rafId = null, els = {}, cleanupFns = [];
 
@@ -570,7 +621,7 @@
         }
         const wantExtra = Math.random() < (cfg.obstacleMax - 2) * 0.15 ? 2 : 1;
         const count = Math.min(wantExtra, freeLanes.length - 1);
-        freeLanes.slice(0, count).forEach(l => state.spawned.push({ kind: 'hazard', lane: l, y: -30, glyph: hazardGlyphs[Math.floor(Math.random() * hazardGlyphs.length)] }));
+        freeLanes.slice(0, count).forEach(l => state.spawned.push({ kind: 'hazard', lane: l, y: -30, color: hazardColors[Math.floor(Math.random() * hazardColors.length)] }));
       }
     }
 
@@ -818,13 +869,8 @@
         } else if (s.kind === 'oil') {
           ctx.globalAlpha = 0.6; ctx.fillStyle = '#1e293b';
           ctx.beginPath(); ctx.ellipse(0, 0, 14, 7, 0, 0, Math.PI * 2); ctx.fill();
-        } else {
-          const pulse = 0.85 + 0.15 * Math.sin(now * 0.008 + s.y);
-          ctx.shadowBlur = 10 * pulse; ctx.shadowColor = '#f87171';
-          ctx.fillStyle = 'rgba(248,113,113,0.16)';
-          ctx.beginPath(); ctx.arc(0, 0, 16 * pulse, 0, Math.PI * 2); ctx.fill();
-          ctx.font = '18px system-ui, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-          ctx.fillText(s.glyph, 0, 1);
+        } else if (s.kind === 'hazard') {
+          drawTrafficCar(ctx, 0, 0, s.color);
         }
         ctx.restore();
       });
