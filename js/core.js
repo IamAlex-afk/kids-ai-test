@@ -473,6 +473,16 @@ function initModePicker() {
       startGame();
     };
   }
+
+  if (window.KAT_Companion) {
+    let widget = $('mode-picker').querySelector('#kat-companion-mount');
+    if (!widget) {
+      widget = document.createElement('div');
+      widget.id = 'kat-companion-mount';
+      $('mode-picker').appendChild(widget);
+    }
+    window.KAT_Companion.render(widget, S.lang);
+  }
 }
 
 /* ─────────────────────────────────────────────
@@ -744,6 +754,7 @@ function launchSnake(container) {
       S.game.idx   = idx + 1;
       S.game.score = idx + 1;
       lsSave();
+      window.KAT_Companion?.addKnowledge(1, S.lang);
     },
     onAllDone() { onGameDone(); },
   });
