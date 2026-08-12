@@ -280,10 +280,33 @@
   // body (the single biggest visual cue that reads as "a real car" from
   // above), windshield + rear window. Traffic cars call this directly with
   // fixed styling; the player's car layers stage-based extras on top.
+  // Lighten (positive) or darken (negative) a '#rrggbb' colour by percent.
+  function shadeColor(hex, percent) {
+    const num = parseInt(hex.replace('#', ''), 16);
+    const amt = Math.round(2.55 * percent);
+    let r = (num >> 16) + amt, g = ((num >> 8) & 0xff) + amt, b = (num & 0xff) + amt;
+    r = Math.max(0, Math.min(255, r)); g = Math.max(0, Math.min(255, g)); b = Math.max(0, Math.min(255, b));
+    return `rgb(${r},${g},${b})`;
+  }
+
   function carBody(ctx, bodyFill, edgeColor) {
+    // Soft contact shadow grounds the car instead of it floating over the
+    // road — drawn first, underneath everything.
+    const shadowGrad = ctx.createRadialGradient(0, 23, 0, 0, 23, 15);
+    shadowGrad.addColorStop(0, 'rgba(0,0,0,0.4)');
+    shadowGrad.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = shadowGrad;
+    ctx.beginPath(); ctx.ellipse(0, 23, 13, 5, 0, 0, Math.PI * 2); ctx.fill();
+
     // Body: a hexagon-ish tapered shape instead of a plain rounded rect —
-    // narrower nose, wider cabin, slightly tapered tail.
-    ctx.fillStyle = bodyFill; ctx.strokeStyle = edgeColor; ctx.lineWidth = 2.2;
+    // narrower nose, wider cabin, slightly tapered tail. Filled with a
+    // light-to-dark diagonal gradient (single light source, upper-left)
+    // instead of a flat colour, so it reads as a rounded painted surface.
+    const bodyGrad = ctx.createLinearGradient(-10, -19, 10, 19);
+    bodyGrad.addColorStop(0, shadeColor(bodyFill, 32));
+    bodyGrad.addColorStop(0.5, bodyFill);
+    bodyGrad.addColorStop(1, shadeColor(bodyFill, -28));
+    ctx.fillStyle = bodyGrad; ctx.strokeStyle = edgeColor; ctx.lineWidth = 2.2;
     ctx.beginPath();
     ctx.moveTo(0, -19);
     ctx.quadraticCurveTo(9, -17, 10, -6);
@@ -296,18 +319,31 @@
     ctx.closePath();
     ctx.fill(); ctx.stroke();
 
-    // Wheels — dark rectangles poking out past the body on both axles.
-    ctx.fillStyle = '#15171c';
+    // Wheels — dark rectangles poking out past the body on both axles,
+    // with a faint rim highlight so they don't read as flat black blocks.
     [-12, 12].forEach(wx => {
-      ctx.fillRect(wx - 2, -13, 4, 9);
-      ctx.fillRect(wx - 2, 5, 4, 9);
+      [-13, 5].forEach(wy => {
+        ctx.fillStyle = '#0d0e12'; ctx.fillRect(wx - 2, wy, 4, 9);
+        ctx.fillStyle = 'rgba(255,255,255,0.12)'; ctx.fillRect(wx - 2, wy, 4, 1.5);
+      });
     });
 
-    // Windshield (front) + rear window, with a roof strip between them.
-    ctx.fillStyle = 'rgba(140,210,255,0.4)';
+    // Windshield (front) + rear window, with a roof strip between them —
+    // a subtle gradient instead of a flat tint for a glassy feel.
+    const glass = ctx.createLinearGradient(0, -14, 0, -5);
+    glass.addColorStop(0, 'rgba(190,230,255,0.55)'); glass.addColorStop(1, 'rgba(140,210,255,0.25)');
+    ctx.fillStyle = glass;
     rrect(ctx, -7, -14, 14, 9, 3); ctx.fill();
     ctx.fillStyle = 'rgba(140,210,255,0.22)';
     rrect(ctx, -6, 8, 12, 7, 3); ctx.fill();
+
+    // Specular highlight — soft bright streak on the hood, the single
+    // biggest cue that reads as "glossy painted surface" vs flat colour.
+    const hl = ctx.createRadialGradient(-3, -11, 0, -3, -11, 7);
+    hl.addColorStop(0, 'rgba(255,255,255,0.4)');
+    hl.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = hl;
+    ctx.beginPath(); ctx.ellipse(-3, -11, 5, 8, -0.3, 0, Math.PI * 2); ctx.fill();
   }
 
   function drawCar(ctx, x, y, opts) {
