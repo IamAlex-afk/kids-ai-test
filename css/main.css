@@ -1353,3 +1353,21 @@ footer a:hover { text-decoration: underline; }
   margin-top: 0;
 }
 .book-rec-link:hover { opacity: .88; transform: translateY(-1px); }
+
+/* ── KAT COMPANION — persistent AI pet widget ────────────────── */
+.kat-companion {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--r);
+  padding: 10px 14px; margin: 16px 0; max-width: 420px;
+}
+.kat-companion-canvas { flex: 0 0 auto; touch-action: manipulation; cursor: pointer; }
+.kat-companion-info { flex: 1 1 auto; min-width: 0; }
+.kat-companion-title { font-weight: 800; font-size: var(--fs-sm); color: var(--text); margin-bottom: 4px; }
+.kat-companion-bar {
+  height: 6px; background: var(--card2); border-radius: 4px; overflow: hidden; margin-bottom: 4px;
+}
+.kat-companion-fill {
+  height: 100%; background: linear-gradient(90deg, var(--accent), #a78bfa);
+  border-radius: 4px; transition: width .4s ease;
+}
+.kat-companion-sub { font-size: var(--fs-xs); color: var(--muted); }
