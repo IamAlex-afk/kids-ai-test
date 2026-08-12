@@ -106,20 +106,24 @@
   const playDashSound   = () => sweep(400, 900, 0, 0.16, 'sawtooth', 0.12);
   const haptic = (p) => navigator.vibrate && navigator.vibrate(p);
 
-  /* ─── CHIPTUNE BACKGROUND LOOP (4-chord, per-world) ─────────────── */
+  /* ─── CHIPTUNE BACKGROUND LOOP (8-step, per-world, has rests) ────── */
+  // A straight 4-note arpeggio repeating every 550ms reads as a dentist's-
+  // office loop within a minute. This uses an 8-step pattern with rests
+  // and a slower tempo so it sits in the background instead of nagging.
   const WORLD_CHORDS = [
-    [220.0, 261.6, 329.6, 392.0],  // space   — Am-ish
-    [196.0, 246.9, 293.7, 349.2],  // jungle  — Gm-ish
-    [233.1, 277.2, 349.2, 415.3],  // city    — Bbm-ish
-    [261.6, 329.6, 392.0, 466.2],  // lab     — Cmaj-ish
+    [220.0, 0, 329.6, 0, 261.6, 0, 329.6, 392.0],   // space
+    [196.0, 0, 293.7, 0, 246.9, 0, 293.7, 349.2],   // jungle
+    [233.1, 0, 349.2, 0, 277.2, 0, 349.2, 415.3],   // city
+    [261.6, 0, 392.0, 0, 329.6, 0, 392.0, 466.2],   // lab
   ];
   function MusicLoop(worldIdx) {
     let timer = null, step = 0;
-    const chord = WORLD_CHORDS[worldIdx % WORLD_CHORDS.length];
+    const pattern = WORLD_CHORDS[worldIdx % WORLD_CHORDS.length];
     function tick() {
-      if (!MUTED) tone(chord[step % chord.length], 0, 0.5, 'triangle', 0.035);
+      const freq = pattern[step % pattern.length];
+      if (!MUTED && freq) tone(freq, 0, 0.7, 'triangle', 0.02);
       step++;
-      timer = setTimeout(tick, 550);
+      timer = setTimeout(tick, 720);
     }
     return {
       start() { if (!timer) tick(); },
@@ -501,7 +505,7 @@
       els.overlay.innerHTML = `
         <div class="snake-overlay-card">
           <p class="snake-overlay-kicker">${world.icon} ${world.title}</p>
-          <p class="snake-overlay-target" style="font-size:var(--fs-sm)">${world.lessonText || ''}</p>
+          <p class="pf-lesson-text">${world.lessonText || ''}</p>
           <button class="btn-primary" id="pf-start-btn">${t(lang, 'start')}</button>
         </div>`;
       els.overlay.querySelector('#pf-start-btn').addEventListener('click', () => {
@@ -678,7 +682,11 @@
       els.letters.textContent = state.collected + '/' + totalLetters;
       els.parts.textContent = state.parts + '/' + cfg.partStages;
       els.coins.textContent = '🪙 ' + state.coins;
-      state.spawned = []; state.platforms = [];
+      // NOT clearing state.spawned/platforms here: this runs from inside
+      // the entity-collision loop in update() (via takeHit), which is
+      // actively iterating that same array. Reassigning/emptying it mid-loop
+      // leaves later iterations reading undefined and throws. The 1.4s
+      // invulnerability window below is what actually keeps the player safe.
       player.hurtUntil = Date.now() + 1400;
       spawnBurst(particles, player.x, player.y - 15, '#f87171', 16);
     }
