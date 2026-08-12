@@ -96,19 +96,21 @@ function boot() {
   const access = $('boot-access');
 
   // Animate progress bar
-  if (fill) setTimeout(() => { fill.style.width = '100%'; }, 400);
+  if (fill) setTimeout(() => { fill.style.width = '100%'; }, 300);
 
   // "ACCESS GRANTED" fade-in
   if (access) setTimeout(() => {
     access.style.transition = 'opacity 0.5s ease';
     access.style.opacity    = '1';
-  }, 3400);
+  }, 1700);
 
-  // Fade out boot screen
+  // Fade out boot screen — kept short: the boot overlay blocks all clicks
+  // (z-index 9999, opaque), so a long wait here reads as "the site is
+  // broken / buttons don't work" rather than "still loading".
   setTimeout(() => {
     bootEl.classList.add('hide');
-    setTimeout(() => { bootEl.hidden = true; afterBoot(); }, 700);
-  }, 5200);
+    setTimeout(() => { bootEl.hidden = true; afterBoot(); }, 500);
+  }, 2600);
 }
 
 function afterBoot() {
@@ -468,11 +470,7 @@ function initModePicker() {
   if (btnPlay) {
     btnPlay.onclick = () => {
       hide('mode-picker');
-      const picker = $('game-picker');
-      if (picker) picker.style.display = 'grid';
-      updateGamePicker();
-      show('game');
-      scrollTo('game');
+      startGame();
     };
   }
 }
@@ -695,6 +693,18 @@ function startGame() {
   const rounds = (data?.snake || []).slice(0, cfg.gameRounds);
   const container = $('game-content');
   if (!container || !rounds.length || !window.KAT_Snake) { onGameDone(); return; }
+
+  const usePlatformer = new URLSearchParams(location.search).get('game') === 'platformer' && window.KAT_Platformer;
+  if (usePlatformer) {
+    window.KAT_Platformer.startWorldSelect(container, {
+      age: S.age,
+      lang: S.lang,
+      lessons: data?.lessons || [],
+      rounds,
+      onAllDone() { onGameDone(); },
+    });
+    return;
+  }
 
   window.KAT_Snake.start(container, {
     age:  S.age,
