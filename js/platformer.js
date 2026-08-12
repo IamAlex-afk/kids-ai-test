@@ -701,15 +701,23 @@
     }
 
     function maybeCheckpoint() {
+      // On very short worlds a single letter can cross more than one
+      // threshold at once (e.g. a 2-letter world jumps 0.5 -> 1.0) — only
+      // announce the highest one newly crossed, but still record it as the
+      // respawn snapshot either way.
       const frac = state.collected / totalLetters;
+      let newlyHit = null;
       [0.3, 0.6, 0.9].forEach(cp => {
         if (frac >= cp && !state.checkpointsHit.includes(cp)) {
           state.checkpointsHit.push(cp);
-          state.lastCheckpoint = { collected: state.collected, parts: state.parts, elapsedMs: state.elapsedMs, coins: state.coins };
-          playCheckpointSound(); haptic([15, 10, 15]);
-          toast('🚩 ' + t(lang, 'checkpoint'));
+          newlyHit = cp;
         }
       });
+      if (newlyHit !== null) {
+        state.lastCheckpoint = { collected: state.collected, parts: state.parts, elapsedMs: state.elapsedMs, coins: state.coins };
+        playCheckpointSound(); haptic([15, 10, 15]);
+        toast('🚩 ' + t(lang, 'checkpoint'));
+      }
     }
 
     function respawnAtCheckpoint() {
@@ -837,24 +845,38 @@
           if (player.vy >= 0 && wasAbove && player.y >= py) { landedPlatform = p; landedPlatform._y = py; break; }
         }
       }
+      const jumpBufferReady = player.jumpBuffered && now - player.jumpBuffered < 150;
       if (landedPlatform) {
-        player.y = landedPlatform._y; player.vy = 0; player.onPlatform = landedPlatform;
-        if (!player.onGround) { player.onGround = true; player.lastGroundTs = now; player.jumpsUsed = 0; }
-        if (!landedPlatform.touchedAt) landedPlatform.touchedAt = now;
-        if (landedPlatform.kind === 'unstable' && now - landedPlatform.touchedAt > 1000 && !landedPlatform.gone) {
-          landedPlatform.gone = true;
-          spawnBurst(particles, player.x, player.y, '#f59e0b', 10);
+        if (jumpBufferReady) {
+          player.y = landedPlatform._y;
+          player.jumpBuffered = 0; player.vy = cfg.jumpVel; player.jumpsUsed = 1; player.onGround = false; player.onPlatform = null;
+        } else {
+          player.y = landedPlatform._y; player.vy = 0; player.onPlatform = landedPlatform;
+          if (!player.onGround) { player.onGround = true; player.lastGroundTs = now; player.jumpsUsed = 0; }
+          if (!landedPlatform.touchedAt) landedPlatform.touchedAt = now;
         }
       } else if (player.y >= state.groundY) {
         player.y = state.groundY; player.vy = 0; player.onPlatform = null;
-        if (!player.onGround && player.jumpBuffered && now - player.jumpBuffered < 150) {
-          player.jumpBuffered = 0; player.vy = cfg.jumpVel;
+        if (jumpBufferReady) {
+          player.jumpBuffered = 0; player.vy = cfg.jumpVel; player.jumpsUsed = 1; player.onGround = false;
         } else {
           player.onGround = true; player.lastGroundTs = now; player.jumpsUsed = 0;
         }
       } else {
         player.onGround = false; player.onPlatform = null;
       }
+
+      // Unstable platforms crumble on a timer once first touched, whether
+      // or not the player is still standing on them right now — otherwise
+      // one briefly stepped on and left behind shakes forever without ever
+      // actually breaking.
+      state.platforms.forEach(p => {
+        if (!p.gone && p.kind === 'unstable' && p.touchedAt && now - p.touchedAt > 1000) {
+          p.gone = true;
+          spawnBurst(particles, (p.x1 + p.x2) / 2, platformY(p), '#f59e0b', 10);
+          if (player.onPlatform === p) { player.onPlatform = null; player.onGround = false; player.vy = 0.5; }
+        }
+      });
 
       // Spawning
       trySpawn();
@@ -894,9 +916,6 @@
         p.x1 -= dx; p.x2 -= dx;
         if (p.x2 < -80) state.platforms.splice(i, 1);
       }
-
-      // If standing on a platform that just crumbled, drop through
-      if (player.onPlatform && player.onPlatform.gone) { player.onGround = false; player.vy = 0.5; player.onPlatform = null; }
 
       tickParticles(particles);
     }
