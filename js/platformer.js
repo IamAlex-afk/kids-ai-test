@@ -94,8 +94,8 @@
   const SKINS = { cyan: '#22d3ee', green: '#34d399', gold: '#fbbf24' };
 
   const STR = {
-    en: { ready: 'Get Ready!', start: 'Start ▶', cont: 'Continue →', hint: 'Tap / Space / ↑ to jump. Tap twice for double jump.', worlds: 'Choose a world', cleared: 'CLEARED', best: 'Best', worldClear: 'World Clear!', gameOver: 'Run ended', record: 'New record!', back: '← Worlds', again: 'Run Again', letters: 'Letters', score: 'Score', part: 'Robot', checkpoint: 'Checkpoint!', shieldOn: 'Shield up!', magnetOn: 'Magnet!', skin: 'Robot colour', exit: 'Exit', mute: 'Sound', dash: 'DASH', slide: 'SLIDE', jump: 'JUMP', achUnlocked: 'Achievement unlocked!', fakeHit: 'That letter was fake!', locked: 'Needs 2★ in the previous world', streak: 'day streak', streakBonus: 'Streak bonus' },
-    ru: { ready: 'Приготовься!', start: 'Старт ▶', cont: 'Дальше →', hint: 'Тап / Пробел / ↑ — прыжок. Два тапа — двойной прыжок.', worlds: 'Выбери мир', cleared: 'ПРОЙДЕНО', best: 'Рекорд', worldClear: 'Мир пройден!', gameOver: 'Забег окончен', record: 'Новый рекорд!', back: '← Миры', again: 'Ещё раз', letters: 'Буквы', score: 'Очки', part: 'Робот', checkpoint: 'Чекпоинт!', shieldOn: 'Щит поднят!', magnetOn: 'Магнит!', skin: 'Цвет робота', exit: 'Выход', mute: 'Звук', dash: 'РЫВОК', slide: 'СКОЛЬЖ', jump: 'ПРЫЖОК', achUnlocked: 'Новое достижение!', fakeHit: 'Это была подделка!', locked: 'Нужно 2★ в предыдущем мире', streak: 'дней подряд', streakBonus: 'Бонус за серию' },
+    en: { ready: 'Get Ready!', start: 'Start ▶', cont: 'Continue →', hint: 'Tap / Space / ↑ to jump. Tap twice for double jump.', worlds: 'Choose a world', cleared: 'CLEARED', best: 'Best', worldClear: 'World Clear!', gameOver: 'Run ended', record: 'New record!', back: '← Worlds', again: 'Run Again', letters: 'Letters', score: 'Score', part: 'Robot', checkpoint: 'Checkpoint!', shieldOn: 'Shield up!', magnetOn: 'Magnet!', skin: 'Robot colour', exit: 'Exit', mute: 'Sound', dash: 'DASH', slide: 'SLIDE', jump: 'JUMP', achUnlocked: 'Achievement unlocked!', fakeHit: 'That letter was fake!', locked: 'Needs 2★ in the previous world', streak: 'day streak', streakBonus: 'Streak bonus', achWorld1: 'First world cleared', achWorld5: '5 worlds cleared', achFlawless: 'Flawless run' },
+    ru: { ready: 'Приготовься!', start: 'Старт ▶', cont: 'Дальше →', hint: 'Тап / Пробел / ↑ — прыжок. Два тапа — двойной прыжок.', worlds: 'Выбери мир', cleared: 'ПРОЙДЕНО', best: 'Рекорд', worldClear: 'Мир пройден!', gameOver: 'Забег окончен', record: 'Новый рекорд!', back: '← Миры', again: 'Ещё раз', letters: 'Буквы', score: 'Очки', part: 'Робот', checkpoint: 'Чекпоинт!', shieldOn: 'Щит поднят!', magnetOn: 'Магнит!', skin: 'Цвет робота', exit: 'Выход', mute: 'Звук', dash: 'РЫВОК', slide: 'СКОЛЬЖ', jump: 'ПРЫЖОК', achUnlocked: 'Новое достижение!', fakeHit: 'Это была подделка!', locked: 'Нужно 2★ в предыдущем мире', streak: 'дней подряд', streakBonus: 'Бонус за серию', achWorld1: 'Первый мир пройден', achWorld5: '5 миров пройдено', achFlawless: 'Идеальный забег' },
   };
   function t(lang, key) { const d = STR[lang] || STR.en; return d[key] || STR.en[key] || key; }
 
@@ -288,9 +288,9 @@
   const ACH_RULES = [
     { id: 'letters50', check: a => a.collectedLetters >= 50, label: (l) => '🔤 50 ' + t(l, 'letters') },
     { id: 'letters200', check: a => a.collectedLetters >= 200, label: (l) => '🔤 200 ' + t(l, 'letters') },
-    { id: 'worlds1', check: a => a.worldsCompleted >= 1, label: () => '🌍 First world cleared' },
-    { id: 'worlds5', check: a => a.worldsCompleted >= 5, label: () => '🌍 5 worlds cleared' },
-    { id: 'flawless1', check: a => a.flawlessRuns >= 1, label: () => '💎 Flawless run' },
+    { id: 'worlds1', check: a => a.worldsCompleted >= 1, label: (l) => '🌍 ' + t(l, 'achWorld1') },
+    { id: 'worlds5', check: a => a.worldsCompleted >= 5, label: (l) => '🌍 ' + t(l, 'achWorld5') },
+    { id: 'flawless1', check: a => a.flawlessRuns >= 1, label: (l) => '💎 ' + t(l, 'achFlawless') },
     { id: 'score1000', check: a => a.totalScore >= 1000, label: (l) => '⭐ 1000 ' + t(l, 'score') },
   ];
   function updateAchievements(delta, lang, onUnlock) {
@@ -487,7 +487,7 @@
           <div class="pf-toast hidden" id="pf-toast"></div>
         </div>
         <div class="pf-controls" id="pf-controls">
-          ${cfg.slide ? `<button class="pf-btn pf-btn-duck" id="pf-slide">▼ ${t(lang,'slide')}</button>` : '<span></span>'}
+          ${cfg.slide ? `<button class="pf-btn pf-btn-slide" id="pf-slide">▼ ${t(lang,'slide')}</button>` : '<span></span>'}
           ${cfg.dash  ? `<button class="pf-btn pf-btn-dash" id="pf-dash">⚡ ${t(lang,'dash')}</button>` : '<span></span>'}
           <button class="pf-btn pf-btn-jump" id="pf-jump">▲ ${t(lang,'jump')}</button>
         </div>
