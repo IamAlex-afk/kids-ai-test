@@ -32,11 +32,18 @@
   function writeJSON(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch (_) {} }
 
   /* ─── AGE CONFIG ─────────────────────────────────────────────────── */
+  // gapMax/gapMin = time between spawns, in ms. gapMax used to be the
+  // starting value (up to 2.7s for tiny) — meaning the game was at its
+  // emptiest right at the start, before anything had ramped up, then
+  // still had to travel the width of the canvas to reach the player.
+  // Difficulty should come from SPEED ramping, not from starving spawns
+  // early on — so the gap range is now much tighter and only mildly
+  // shrinks with progress, keeping the screen consistently active.
   const AGE_CFG = {
-    tiny:  { baseSpeed: 2.5, maxSpeed: 5.0, rampSec: 55, gravity: 0.48, jumpVel: -10.4, gapMax: 2700, gapMin: 2000, obstacleMax: 2, doubleJump: true,  slide: false, dash: false, hints: 'always', partStages: 4 },
-    child: { baseSpeed: 3.5, maxSpeed: 7.0, rampSec: 48, gravity: 0.56, jumpVel: -11.0, gapMax: 2200, gapMin: 1500, obstacleMax: 4, doubleJump: true,  slide: false, dash: false, hints: 'first3', partStages: 4 },
-    teen:  { baseSpeed: 4.5, maxSpeed: 9.0, rampSec: 42, gravity: 0.64, jumpVel: -11.6, gapMax: 1700, gapMin: 1000, obstacleMax: 6, doubleJump: true,  slide: true,  dash: true,  hints: 'never',  partStages: 4 },
-    adult: { baseSpeed: 4.8, maxSpeed: 9.5, rampSec: 38, gravity: 0.68, jumpVel: -11.9, gapMax: 1500, gapMin: 850,  obstacleMax: 6, doubleJump: true,  slide: true,  dash: true,  hints: 'never',  partStages: 4 },
+    tiny:  { baseSpeed: 2.5, maxSpeed: 5.0, rampSec: 55, gravity: 0.48, jumpVel: -10.4, gapMax: 1400, gapMin: 1000, obstacleMax: 2, doubleJump: true,  slide: false, dash: false, hints: 'always', partStages: 4 },
+    child: { baseSpeed: 3.5, maxSpeed: 7.0, rampSec: 48, gravity: 0.56, jumpVel: -11.0, gapMax: 1200, gapMin: 850,  obstacleMax: 4, doubleJump: true,  slide: false, dash: false, hints: 'first3', partStages: 4 },
+    teen:  { baseSpeed: 4.5, maxSpeed: 9.0, rampSec: 42, gravity: 0.64, jumpVel: -11.6, gapMax: 1000, gapMin: 650,  obstacleMax: 6, doubleJump: true,  slide: true,  dash: true,  hints: 'never',  partStages: 4 },
+    adult: { baseSpeed: 4.8, maxSpeed: 9.5, rampSec: 38, gravity: 0.68, jumpVel: -11.9, gapMax: 900,  gapMin: 550,  obstacleMax: 6, doubleJump: true,  slide: true,  dash: true,  hints: 'never',  partStages: 4 },
   };
 
   // Each age gets its OWN obstacle cast and colour mood — not just a speed
