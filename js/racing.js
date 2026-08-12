@@ -79,8 +79,8 @@
   const SKINS = { cyan: '#22d3ee', red: '#f87171', gold: '#fbbf24' };
 
   const STR = {
-    en: { ready: 'Get Ready!', start: 'Start ▶', cont: 'Continue →', hint: 'Tap left/right (or ←/→) to change lanes.', worlds: 'Choose a track', cleared: 'CLEARED', best: 'Best', worldClear: 'Track Clear!', gameOver: 'Run ended', record: 'New record!', back: '← Tracks', backGames: '← Games', again: 'Run Again', letters: 'Letters', score: 'Score', part: 'Car', checkpoint: 'Checkpoint!', shieldOn: 'Shield up!', boostOn: 'Boost!', skin: 'Car colour', exit: 'Exit', mute: 'Sound', left: '◀', right: '▶', boost: 'BOOST', achUnlocked: 'Achievement unlocked!', fakeHit: 'That letter was fake!', locked: 'Needs 2★ in the previous track', streak: 'day streak', streakBonus: 'Streak bonus', achTrack1: 'First track cleared', achTrack5: '5 tracks cleared', achFlawless: 'Flawless run', yes: 'Yes', no: 'No', quizKicker: 'Pit stop!' },
-    ru: { ready: 'Приготовься!', start: 'Старт ▶', cont: 'Дальше →', hint: 'Тап влево/вправо (или ←/→) — смена полосы.', worlds: 'Выбери трассу', cleared: 'ПРОЙДЕНО', best: 'Рекорд', worldClear: 'Трасса пройдена!', gameOver: 'Заезд окончен', record: 'Новый рекорд!', back: '← Трассы', backGames: '← Игры', again: 'Ещё раз', letters: 'Буквы', score: 'Очки', part: 'Машина', checkpoint: 'Чекпоинт!', shieldOn: 'Щит поднят!', boostOn: 'Ускорение!', skin: 'Цвет машины', exit: 'Выход', mute: 'Звук', left: '◀', right: '▶', boost: 'УСКОРЕНИЕ', achUnlocked: 'Новое достижение!', fakeHit: 'Это была подделка!', locked: 'Нужно 2★ на предыдущей трассе', streak: 'дней подряд', streakBonus: 'Бонус за серию', achTrack1: 'Первая трасса пройдена', achTrack5: '5 трасс пройдено', achFlawless: 'Идеальный заезд', yes: 'Да', no: 'Нет', quizKicker: 'Пит-стоп!' },
+    en: { ready: 'Get Ready!', start: 'Start ▶', cont: 'Continue →', hint: 'Tap left/right (or ←/→) to change lanes.', worlds: 'Choose a track', cleared: 'CLEARED', best: 'Best', worldClear: 'Track Clear!', gameOver: 'Run ended', record: 'New record!', back: '← Tracks', backGames: '← Games', again: 'Run Again', letters: 'Letters', score: 'Score', part: 'Car', checkpoint: 'Checkpoint!', shieldOn: 'Shield up!', boostOn: 'Boost!', skin: 'Car colour', exit: 'Exit', mute: 'Sound', left: '◀', right: '▶', boost: 'BOOST', achUnlocked: 'Achievement unlocked!', fakeHit: 'That letter was fake!', locked: 'Needs 2★ in the previous track', streak: 'day streak', streakBonus: 'Streak bonus', achTrack1: 'First track cleared', achTrack5: '5 tracks cleared', achFlawless: 'Flawless run', yes: 'Yes', no: 'No', quizKicker: 'Pit stop!', lockedFinal: 'Needs 3★ on every earlier track' },
+    ru: { ready: 'Приготовься!', start: 'Старт ▶', cont: 'Дальше →', hint: 'Тап влево/вправо (или ←/→) — смена полосы.', worlds: 'Выбери трассу', cleared: 'ПРОЙДЕНО', best: 'Рекорд', worldClear: 'Трасса пройдена!', gameOver: 'Заезд окончен', record: 'Новый рекорд!', back: '← Трассы', backGames: '← Игры', again: 'Ещё раз', letters: 'Буквы', score: 'Очки', part: 'Машина', checkpoint: 'Чекпоинт!', shieldOn: 'Щит поднят!', boostOn: 'Ускорение!', skin: 'Цвет машины', exit: 'Выход', mute: 'Звук', left: '◀', right: '▶', boost: 'УСКОРЕНИЕ', achUnlocked: 'Новое достижение!', fakeHit: 'Это была подделка!', locked: 'Нужно 2★ на предыдущей трассе', streak: 'дней подряд', streakBonus: 'Бонус за серию', achTrack1: 'Первая трасса пройдена', achTrack5: '5 трасс пройдено', achFlawless: 'Идеальный заезд', yes: 'Да', no: 'Нет', quizKicker: 'Пит-стоп!', lockedFinal: 'Нужно 3★ на всех предыдущих трассах' },
   };
   function t(lang, key) { const d = STR[lang] || STR.en; return d[key] || STR.en[key] || key; }
 
@@ -219,7 +219,16 @@
     if (stars > (all[age][worldIdx] || 0)) all[age][worldIdx] = stars;
     writeJSON(LS_STARS, all);
   }
-  function worldUnlocked(age, worldIdx) { return worldIdx === 0 || getStars(age, worldIdx - 1) >= 2; }
+  // Intermediate worlds: 2★ in the one right before. The LAST world of an
+  // age is a real mastery gate — every earlier world must be 3-starred.
+  function worldUnlocked(age, worldIdx, totalWorlds) {
+    if (worldIdx === 0) return true;
+    if (totalWorlds && worldIdx === totalWorlds - 1) {
+      for (let i = 0; i < totalWorlds - 1; i++) if (getStars(age, i) < 3) return false;
+      return true;
+    }
+    return getStars(age, worldIdx - 1) >= 2;
+  }
 
   const LS_STREAK = 'kat_race_streak_v1';
   function getStreak() { return readJSON(LS_STREAK, { lastDate: '', count: 0 }); }
@@ -450,7 +459,7 @@
       speed: cfg.baseSpeed,
       roadY: 0,
       over: false, won: false, paused: true,
-      everHit: false, everLostPart: false,
+      everHit: false, everLostPart: false, everRespawned: false,
       shakeUntil: 0,
       checkpointsHit: [], lastCheckpoint: null, pendingQuiz: null,
       lane: Math.floor(cfg.lanes / 2),
@@ -748,6 +757,7 @@
     }
 
     function respawnAtCheckpoint() {
+      state.everRespawned = true;
       const cp = state.lastCheckpoint || { collected: 0, parts: 0, elapsedMs: 0, coins: state.coins };
       state.collected = cp.collected; state.parts = cp.parts; state.elapsedMs = cp.elapsedMs; state.coins = cp.coins;
       els.letters.textContent = state.collected + '/' + totalLetters;
@@ -793,7 +803,10 @@
 
       let stars = 0, streakBonus = 0, streakInfo = null;
       if (state.won) {
-        stars = !state.everHit ? 3 : (!state.everLostPart ? 2 : 1);
+        // 3★ flawless; 2★ took damage but never needed a checkpoint rescue;
+        // 1★ needed at least one. See platformer.js for why this replaced
+        // the old "every hit must be shield-absorbed" rule.
+        stars = !state.everHit ? 3 : (!state.everRespawned ? 2 : 1);
         setStarsIfBetter(age, worldIdx, stars);
         const { streak, bonus } = bumpStreak();
         streakInfo = streak;
@@ -1003,7 +1016,7 @@
       worlds.forEach((w, i) => {
         const cleared = isCleared(age, i);
         const stars = getStars(age, i);
-        const isUnlocked = worldUnlocked(age, i);
+        const isUnlocked = worldUnlocked(age, i, worlds.length);
         const raceAgeKey = 'race_' + age;
         const best = window.KAT_Leaderboard ? window.KAT_Leaderboard.getBest(raceAgeKey, i) : 0;
         const th = themeFor(age, i);
@@ -1017,7 +1030,7 @@
           <span class="pf-world-meta">${best ? t(lang,'best') + ': ' + best : ''}</span>` : `
           <span class="pf-world-icon">🔒</span>
           <span class="pf-world-title">${w.title}</span>
-          <span class="pf-world-meta">${t(lang,'locked')}</span>`;
+          <span class="pf-world-meta">${i === worlds.length - 1 ? t(lang,'lockedFinal') : t(lang,'locked')}</span>`;
         card.addEventListener('click', () => {
           if (!isUnlocked) return;
           new RaceRun(container, { age, lang, world: w, worldIdx: i, onExit: render, quiz: opts.quiz, protocols: opts.protocols });
