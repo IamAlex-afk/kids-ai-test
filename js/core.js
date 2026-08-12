@@ -1097,16 +1097,37 @@ function collectStats() {
   } catch (_) {}
 }
 
+// Was hardcoded English + an Amazon.it link regardless of site language —
+// a Russian reader got sent to Amazon for a book that's actually on
+// Литрес. Localized properly; other languages still fall back to the
+// English/Amazon pairing (Amazon does serve those markets reasonably).
+const BOOK_REC_STR = {
+  en: {
+    badge: '📚 Want to understand how AI actually thinks?',
+    title: 'AI Biohacking: 33 Protocols for Consciousness Reboot',
+    text: 'This book was written by AI itself, to explain — in plain language, for parents and everyday readers — how AI really works, how it "thinks", and what\'s behind the questions people ask it most.',
+    linkLabel: '📖 Read on Amazon →',
+    linkUrl: 'https://www.amazon.it/dp/B0G35SBQR3',
+  },
+  ru: {
+    badge: '🧠 Хотите понять, как устроен и «думает» ИИ — простыми словами?',
+    title: 'Биохакинг с ИИ: 33 протокола перезагрузки сознания',
+    text: 'Эта книга написана самим ИИ — чтобы простым языком объяснить обычным людям и родителям, как ИИ на самом деле работает, как он «думает» и что стоит за самыми популярными вопросами, которые ему задают.',
+    linkLabel: '📖 Найти книгу на Литрес →',
+    linkUrl: 'https://www.litres.ru/book/aleksey-sergeevich-bitk/biohaking-s-ii-33-protokola-perezagruzki-soznaniya-72799232/',
+  },
+};
 function renderBookRec(container) {
   if (!container || container.querySelector('.book-rec')) return;
+  const d = BOOK_REC_STR[S.lang] || BOOK_REC_STR.en;
   const el = document.createElement('div');
   el.className = 'book-rec anim-fade-up';
   el.innerHTML = `
-    <div class="book-rec-badge">📚 Recommendation</div>
-    <div class="book-rec-title">AI Biohacking: 33 Protocols for Consciousness Reboot</div>
-    <div class="book-rec-text">A unique guide written from AI's perspective — 33 protocols to reboot your mindset in the age of artificial intelligence. A systematic approach to cognitive productivity and conscious adaptation to the AI era.</div>
-    <a class="book-rec-link" href="https://www.amazon.it/dp/B0G35SBQR3" target="_blank" rel="noopener">
-      📖 Read on Amazon →
+    <div class="book-rec-badge">${d.badge}</div>
+    <div class="book-rec-title">${d.title}</div>
+    <div class="book-rec-text">${d.text}</div>
+    <a class="book-rec-link" href="${d.linkUrl}" target="_blank" rel="noopener">
+      ${d.linkLabel}
     </a>
   `;
   container.appendChild(el);
