@@ -757,6 +757,7 @@ function launchPlatformer(container) {
     lessons: data?.lessons || [],
     rounds,
     onAllDone() { onGameDone(); },
+    onBack: window.KAT_Snake ? () => renderGamePicker(container) : null,
   });
 }
 

@@ -94,8 +94,8 @@
   const SKINS = { cyan: '#22d3ee', green: '#34d399', gold: '#fbbf24' };
 
   const STR = {
-    en: { ready: 'Get Ready!', start: 'Start ▶', cont: 'Continue →', hint: 'Tap / Space / ↑ to jump. Tap twice for double jump.', worlds: 'Choose a world', cleared: 'CLEARED', best: 'Best', worldClear: 'World Clear!', gameOver: 'Run ended', record: 'New record!', back: '← Worlds', again: 'Run Again', letters: 'Letters', score: 'Score', part: 'Robot', checkpoint: 'Checkpoint!', shieldOn: 'Shield up!', magnetOn: 'Magnet!', skin: 'Robot colour', exit: 'Exit', mute: 'Sound', dash: 'DASH', slide: 'SLIDE', jump: 'JUMP', achUnlocked: 'Achievement unlocked!', fakeHit: 'That letter was fake!', locked: 'Needs 2★ in the previous world', streak: 'day streak', streakBonus: 'Streak bonus', achWorld1: 'First world cleared', achWorld5: '5 worlds cleared', achFlawless: 'Flawless run' },
-    ru: { ready: 'Приготовься!', start: 'Старт ▶', cont: 'Дальше →', hint: 'Тап / Пробел / ↑ — прыжок. Два тапа — двойной прыжок.', worlds: 'Выбери мир', cleared: 'ПРОЙДЕНО', best: 'Рекорд', worldClear: 'Мир пройден!', gameOver: 'Забег окончен', record: 'Новый рекорд!', back: '← Миры', again: 'Ещё раз', letters: 'Буквы', score: 'Очки', part: 'Робот', checkpoint: 'Чекпоинт!', shieldOn: 'Щит поднят!', magnetOn: 'Магнит!', skin: 'Цвет робота', exit: 'Выход', mute: 'Звук', dash: 'РЫВОК', slide: 'СКОЛЬЖ', jump: 'ПРЫЖОК', achUnlocked: 'Новое достижение!', fakeHit: 'Это была подделка!', locked: 'Нужно 2★ в предыдущем мире', streak: 'дней подряд', streakBonus: 'Бонус за серию', achWorld1: 'Первый мир пройден', achWorld5: '5 миров пройдено', achFlawless: 'Идеальный забег' },
+    en: { ready: 'Get Ready!', start: 'Start ▶', cont: 'Continue →', hint: 'Tap / Space / ↑ to jump. Tap twice for double jump.', worlds: 'Choose a world', cleared: 'CLEARED', best: 'Best', worldClear: 'World Clear!', gameOver: 'Run ended', record: 'New record!', back: '← Worlds', again: 'Run Again', letters: 'Letters', score: 'Score', part: 'Robot', checkpoint: 'Checkpoint!', shieldOn: 'Shield up!', magnetOn: 'Magnet!', skin: 'Robot colour', exit: 'Exit', mute: 'Sound', dash: 'DASH', slide: 'SLIDE', jump: 'JUMP', achUnlocked: 'Achievement unlocked!', fakeHit: 'That letter was fake!', locked: 'Needs 2★ in the previous world', streak: 'day streak', streakBonus: 'Streak bonus', achWorld1: 'First world cleared', achWorld5: '5 worlds cleared', achFlawless: 'Flawless run', backGames: '← Games' },
+    ru: { ready: 'Приготовься!', start: 'Старт ▶', cont: 'Дальше →', hint: 'Тап / Пробел / ↑ — прыжок. Два тапа — двойной прыжок.', worlds: 'Выбери мир', cleared: 'ПРОЙДЕНО', best: 'Рекорд', worldClear: 'Мир пройден!', gameOver: 'Забег окончен', record: 'Новый рекорд!', back: '← Миры', again: 'Ещё раз', letters: 'Буквы', score: 'Очки', part: 'Робот', checkpoint: 'Чекпоинт!', shieldOn: 'Щит поднят!', magnetOn: 'Магнит!', skin: 'Цвет робота', exit: 'Выход', mute: 'Звук', dash: 'РЫВОК', slide: 'СКОЛЬЖ', jump: 'ПРЫЖОК', achUnlocked: 'Новое достижение!', fakeHit: 'Это была подделка!', locked: 'Нужно 2★ в предыдущем мире', streak: 'дней подряд', streakBonus: 'Бонус за серию', achWorld1: 'Первый мир пройден', achWorld5: '5 миров пройдено', achFlawless: 'Идеальный забег', backGames: '← Игры' },
   };
   function t(lang, key) { const d = STR[lang] || STR.en; return d[key] || STR.en[key] || key; }
 
@@ -724,6 +724,7 @@
       if (stage > state.parts) { state.parts = stage; els.parts.textContent = state.parts + '/' + cfg.partStages; }
 
       maybeCheckpoint();
+      updateAchievements({ letters: 1 }, lang, (list) => { if (list.length) toast('🏅 ' + list[0]); });
 
       const entry = letterQueue[item.qidx];
       if (state.collected >= totalLetters) { finishRun('won'); return; }
@@ -832,8 +833,10 @@
 
       if (state.parts === cfg.partStages && !skinsUnlocked()) unlockSkins();
 
+      // letters are counted live per-pickup in collectLetter() — not repeated
+      // here, or every run would double (triple, ...) count its own letters.
       let newAch = [];
-      updateAchievements({ letters: state.collected, score, worldWon: state.won, flawless: state.won && !state.everHit }, lang, (list) => { newAch = list; });
+      updateAchievements({ score, worldWon: state.won, flawless: state.won && !state.everHit }, lang, (list) => { newAch = list; });
 
       const board = window.KAT_Leaderboard;
       const { isRecord } = board ? board.saveScore(age, worldIdx, score, '') : { isRecord: false };
@@ -1020,6 +1023,15 @@
       const tick = 30, off = state.worldX % tick;
       for (let x = -off; x < W; x += tick) { ctx.beginPath(); ctx.moveTo(x, state.groundY + 22); ctx.lineTo(x - 10, state.groundY + 32); ctx.stroke(); }
 
+      // A second, wider-spaced row of theme-accent studs for a bit of
+      // ground texture instead of one flat tinted rectangle.
+      ctx.fillStyle = theme.accent; ctx.globalAlpha = 0.22;
+      const studGap = 70, studOff = state.worldX % studGap;
+      for (let x = -studOff; x < W; x += studGap) {
+        ctx.beginPath(); ctx.arc(x, state.groundY + 46, 1.6, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+
       // Platforms
       state.platforms.forEach(p => {
         if (p.gone) return;
@@ -1075,9 +1087,15 @@
           ctx.strokeStyle = '#34d399'; ctx.lineWidth = 3;
           ctx.beginPath(); ctx.moveTo(-10, 6); ctx.lineTo(-6, -6); ctx.lineTo(0, 6); ctx.lineTo(6, -6); ctx.lineTo(10, 6); ctx.stroke();
         } else {
-          ctx.font = '20px system-ui, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-          ctx.shadowBlur = 10; ctx.shadowColor = '#f87171';
-          ctx.fillText(s.glyph, 0, 0);
+          // Give hazards the same "glowing badge" treatment as pickups —
+          // before, obstacles were a bare emoji floating with just a
+          // shadow, which read as unfinished next to the polished pickups.
+          const hazPulse = 0.85 + 0.15 * Math.sin(now * 0.008 + s.x);
+          ctx.shadowBlur = 10 * hazPulse; ctx.shadowColor = '#f87171';
+          ctx.fillStyle = 'rgba(248,113,113,0.16)';
+          ctx.beginPath(); ctx.arc(0, 0, 15 * hazPulse, 0, Math.PI * 2); ctx.fill();
+          ctx.font = '18px system-ui, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText(s.glyph, 0, 1);
         }
         ctx.restore();
       });
@@ -1117,10 +1135,12 @@
       const unlocked = skinsUnlocked();
       const streak = getStreak();
       container.innerHTML = `
+        ${opts.onBack ? `<button class="pf-icon-btn" id="pf-back-games" style="margin-bottom:8px;">${t(lang,'backGames')}</button>` : ''}
         <p class="snake-hint" style="margin-bottom:4px;font-weight:700;">${t(lang, 'worlds')}</p>
         <p class="pf-ach-summary">🏆 ${ach.collectedLetters} ${t(lang,'letters').toLowerCase()} · 🌍 ${ach.worldsCompleted} · ⭐ ${ach.totalScore}${streak.count ? ' · 🔥 ' + streak.count : ''}</p>
         <div class="pf-world-grid" id="pf-world-grid"></div>
         ${unlocked ? `<div class="pf-skin-row" id="pf-skin-row"></div>` : ''}`;
+      if (opts.onBack) container.querySelector('#pf-back-games').addEventListener('click', opts.onBack);
       const grid = container.querySelector('#pf-world-grid');
       worlds.forEach((w, i) => {
         const cleared = isCleared(age, i);
