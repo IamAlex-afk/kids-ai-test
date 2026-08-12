@@ -740,7 +740,7 @@
       const answer = (val) => {
         const correct = val === q.correct;
         (correct ? playCheckpointSound : playHitSound)();
-        if (correct) window.KAT_Companion?.addKnowledge(1, lang);
+        if (correct) window.KAT_Companion?.recordAccomplishment('q_' + q.q, lang);
         els.overlay.innerHTML = `
           <div class="snake-overlay-card">
             <p class="snake-overlay-kicker" style="color:${correct ? 'var(--green)' : 'var(--red)'}">${correct ? '✅' : '❌'}</p>
@@ -815,7 +815,7 @@
 
       const seconds = (Date.now() - state.startTs) / 1000;
       const score = Math.round(seconds * 10) + state.collected * 50 + state.coins + streakBonus;
-      if (state.won) { playWinSound(); markCleared(age, worldIdx); window.KAT_Companion?.addKnowledge(2, lang); }
+      if (state.won) { playWinSound(); markCleared(age, worldIdx); window.KAT_Companion?.recordAccomplishment(`race_${age}_w${worldIdx}`, lang); }
       else if (reason !== 'exit') playGameOverSound();
 
       if (state.parts === cfg.partStages && !skinsUnlocked()) unlockSkins();

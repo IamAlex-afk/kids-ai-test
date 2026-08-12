@@ -1372,3 +1372,30 @@ footer a:hover { text-decoration: underline; }
   border-radius: 4px; transition: width .4s ease;
 }
 .kat-companion-sub { font-size: var(--fs-xs); color: var(--muted); }
+.kat-companion-train-btn {
+  flex: 0 0 auto; background: var(--card2); border: 1px solid var(--accent); border-radius: 8px;
+  color: var(--accent); font-size: var(--fs-xs); font-weight: 700; padding: 8px 10px;
+}
+.kat-companion-train-btn:hover, .kat-companion-train-btn:active { background: var(--accent-dim); }
+
+.kat-companion-overlay {
+  position: fixed; inset: 0; z-index: 9998; display: flex; align-items: center; justify-content: center;
+  background: rgba(4,6,12,.82); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  padding: 16px;
+}
+.kat-companion-modal {
+  position: relative; width: 100%; max-width: 340px;
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--r);
+  padding: 20px; text-align: center;
+}
+.kat-companion-close {
+  position: absolute; top: 8px; right: 8px;
+}
+.kat-companion-big-canvas { display: block; margin: 0 auto 6px; }
+.kat-companion-list { display: flex; flex-direction: column; gap: 6px; max-height: 260px; overflow-y: auto; }
+.kat-companion-list-item {
+  text-align: left; background: var(--card2); border: 1px solid var(--border2); border-radius: 8px;
+  padding: 8px 10px; font-size: var(--fs-xs); color: var(--text);
+}
+.kat-companion-list-item:hover, .kat-companion-list-item:active { border-color: var(--accent); }
+.kat-companion-list-item.known { color: var(--muted2); border-color: var(--green); }
