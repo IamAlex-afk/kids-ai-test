@@ -683,10 +683,18 @@ function onLessonsDone() {
 ───────────────────────────────────────────── */
 
 const GAME_PICKER_STR = {
-  en: { title: 'Choose a game', snakeName: '🐍 AI Snake', snakeDesc: 'Classic — eat the right letters', pfName: '🤖 Circuit Runner', pfDesc: 'New — run, jump, dodge, build your robot' },
-  ru: { title: 'Выбери игру', snakeName: '🐍 AI Змейка', snakeDesc: 'Классика — собирай нужные буквы', pfName: '🤖 Circuit Runner', pfDesc: 'Новое — беги, прыгай, собери робота' },
+  en: { title: 'Choose a game', snakeName: '🐍 AI Snake', snakeDesc: 'Classic — eat the right letters', pfName: '🤖 Circuit Runner', pfDesc: 'Run, jump, dodge, build your robot', raceName: '🏎️ Circuit Racer', raceDesc: 'Switch lanes, dodge traffic, build your car' },
+  ru: { title: 'Выбери игру', snakeName: '🐍 AI Змейка', snakeDesc: 'Классика — собирай нужные буквы', pfName: '🤖 Circuit Runner', pfDesc: 'Беги, прыгай, собери робота', raceName: '🏎️ Circuit Racer', raceDesc: 'Меняй полосы, уклоняйся, собери машину' },
 };
 function gpStr(k) { const d = GAME_PICKER_STR[S.lang] || GAME_PICKER_STR.en; return d[k] || GAME_PICKER_STR.en[k]; }
+
+function availableGames() {
+  const games = [];
+  if (window.KAT_Snake) games.push({ icon: '🐍', name: gpStr('snakeName'), desc: gpStr('snakeDesc'), launch: launchSnake });
+  if (window.KAT_Platformer) games.push({ icon: '🤖', name: gpStr('pfName'), desc: gpStr('pfDesc'), launch: launchPlatformer });
+  if (window.KAT_Racing) games.push({ icon: '🏎️', name: gpStr('raceName'), desc: gpStr('raceDesc'), launch: launchRacing });
+  return games;
+}
 
 function startGame() {
   const cfg   = AGE_CFG[S.age] || AGE_CFG.child;
@@ -698,32 +706,28 @@ function startGame() {
   const container = $('game-content');
   if (!container) { onGameDone(); return; }
 
-  if (window.KAT_Platformer && window.KAT_Snake) {
-    renderGamePicker(container);
-  } else if (window.KAT_Platformer) {
-    launchPlatformer(container);
-  } else {
-    launchSnake(container);
-  }
+  const games = availableGames();
+  if (games.length > 1) renderGamePicker(container, games);
+  else if (games.length === 1) games[0].launch(container);
+  else onGameDone();
 }
 
-function renderGamePicker(container) {
+function renderGamePicker(container, games) {
+  games = games || availableGames();
   container.innerHTML = `
     <p class="snake-hint" style="margin-bottom:10px;font-weight:700;">${gpStr('title')}</p>
-    <div class="pf-world-grid">
-      <button class="pf-world-card" id="gp-snake">
-        <span class="pf-world-icon">🐍</span>
-        <span class="pf-world-title">${gpStr('snakeName')}</span>
-        <span class="pf-world-meta">${gpStr('snakeDesc')}</span>
-      </button>
-      <button class="pf-world-card" id="gp-platformer">
-        <span class="pf-world-icon">🤖</span>
-        <span class="pf-world-title">${gpStr('pfName')}</span>
-        <span class="pf-world-meta">${gpStr('pfDesc')}</span>
-      </button>
-    </div>`;
-  $('gp-snake').addEventListener('click', () => launchSnake(container));
-  $('gp-platformer').addEventListener('click', () => launchPlatformer(container));
+    <div class="pf-world-grid" id="gp-grid"></div>`;
+  const grid = container.querySelector('#gp-grid');
+  games.forEach(g => {
+    const card = document.createElement('button');
+    card.className = 'pf-world-card';
+    card.innerHTML = `
+      <span class="pf-world-icon">${g.icon}</span>
+      <span class="pf-world-title">${g.name}</span>
+      <span class="pf-world-meta">${g.desc}</span>`;
+    card.addEventListener('click', () => g.launch(container));
+    grid.appendChild(card);
+  });
 }
 
 function launchSnake(container) {
@@ -757,7 +761,23 @@ function launchPlatformer(container) {
     lessons: data?.lessons || [],
     rounds,
     onAllDone() { onGameDone(); },
-    onBack: window.KAT_Snake ? () => renderGamePicker(container) : null,
+    onBack: availableGames().length > 1 ? () => renderGamePicker(container) : null,
+  });
+}
+
+function launchRacing(container) {
+  const cfg    = AGE_CFG[S.age] || AGE_CFG.child;
+  const data   = ageData();
+  const rounds = (data?.snake || []).slice(0, cfg.gameRounds);
+  if (!rounds.length || !window.KAT_Racing) { onGameDone(); return; }
+
+  window.KAT_Racing.startWorldSelect(container, {
+    age: S.age,
+    lang: S.lang,
+    lessons: data?.lessons || [],
+    rounds,
+    onAllDone() { onGameDone(); },
+    onBack: availableGames().length > 1 ? () => renderGamePicker(container) : null,
   });
 }
 
