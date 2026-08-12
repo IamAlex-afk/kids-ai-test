@@ -729,6 +729,12 @@ body {
 .pf-btn-dash { color: var(--yellow); }
 .pf-btn-dash:active, .pf-btn-dash:hover { border-color: var(--yellow); color: var(--yellow); }
 
+.pf-lesson-text {
+  font-size: var(--fs-sm); font-weight: 400; letter-spacing: normal;
+  line-height: 1.5; color: var(--text); margin-bottom: 16px;
+  white-space: normal; overflow-wrap: break-word; text-align: center;
+}
+
 /* ── 18. TRACKER ────────────────────────────────────────────── */
 .tracker-wrap {
   background: var(--card); border: 1px solid var(--border);
