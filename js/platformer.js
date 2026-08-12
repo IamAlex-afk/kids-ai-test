@@ -94,8 +94,8 @@
   const SKINS = { cyan: '#22d3ee', green: '#34d399', gold: '#fbbf24' };
 
   const STR = {
-    en: { ready: 'Get Ready!', start: 'Start ▶', cont: 'Continue →', hint: 'Tap / Space / ↑ to jump. Tap twice for double jump.', worlds: 'Choose a world', cleared: 'CLEARED', best: 'Best', worldClear: 'World Clear!', gameOver: 'Run ended', record: 'New record!', back: '← Worlds', again: 'Run Again', letters: 'Letters', score: 'Score', part: 'Robot', checkpoint: 'Checkpoint!', shieldOn: 'Shield up!', magnetOn: 'Magnet!', skin: 'Robot colour', exit: 'Exit', mute: 'Sound', dash: 'DASH', slide: 'SLIDE', jump: 'JUMP', achUnlocked: 'Achievement unlocked!', fakeHit: 'That letter was fake!', locked: 'Needs 2★ in the previous world', streak: 'day streak', streakBonus: 'Streak bonus', achWorld1: 'First world cleared', achWorld5: '5 worlds cleared', achFlawless: 'Flawless run', backGames: '← Games', yes: 'Yes', no: 'No', quizKicker: 'Quick question!' },
-    ru: { ready: 'Приготовься!', start: 'Старт ▶', cont: 'Дальше →', hint: 'Тап / Пробел / ↑ — прыжок. Два тапа — двойной прыжок.', worlds: 'Выбери мир', cleared: 'ПРОЙДЕНО', best: 'Рекорд', worldClear: 'Мир пройден!', gameOver: 'Забег окончен', record: 'Новый рекорд!', back: '← Миры', again: 'Ещё раз', letters: 'Буквы', score: 'Очки', part: 'Робот', checkpoint: 'Чекпоинт!', shieldOn: 'Щит поднят!', magnetOn: 'Магнит!', skin: 'Цвет робота', exit: 'Выход', mute: 'Звук', dash: 'РЫВОК', slide: 'СКОЛЬЖ', jump: 'ПРЫЖОК', achUnlocked: 'Новое достижение!', fakeHit: 'Это была подделка!', locked: 'Нужно 2★ в предыдущем мире', streak: 'дней подряд', streakBonus: 'Бонус за серию', achWorld1: 'Первый мир пройден', achWorld5: '5 миров пройдено', achFlawless: 'Идеальный забег', backGames: '← Игры', yes: 'Да', no: 'Нет', quizKicker: 'Быстрый вопрос!' },
+    en: { ready: 'Get Ready!', start: 'Start ▶', cont: 'Continue →', hint: 'Tap / Space / ↑ to jump. Tap twice for double jump.', worlds: 'Choose a world', cleared: 'CLEARED', best: 'Best', worldClear: 'World Clear!', gameOver: 'Run ended', record: 'New record!', back: '← Worlds', again: 'Run Again', letters: 'Letters', score: 'Score', part: 'Robot', checkpoint: 'Checkpoint!', shieldOn: 'Shield up!', magnetOn: 'Magnet!', skin: 'Robot colour', exit: 'Exit', mute: 'Sound', dash: 'DASH', slide: 'SLIDE', jump: 'JUMP', achUnlocked: 'Achievement unlocked!', fakeHit: 'That letter was fake!', locked: 'Needs 2★ in the previous world', streak: 'day streak', streakBonus: 'Streak bonus', achWorld1: 'First world cleared', achWorld5: '5 worlds cleared', achFlawless: 'Flawless run', backGames: '← Games', yes: 'Yes', no: 'No', quizKicker: 'Quick question!', lockedFinal: 'Needs 3★ on every earlier world' },
+    ru: { ready: 'Приготовься!', start: 'Старт ▶', cont: 'Дальше →', hint: 'Тап / Пробел / ↑ — прыжок. Два тапа — двойной прыжок.', worlds: 'Выбери мир', cleared: 'ПРОЙДЕНО', best: 'Рекорд', worldClear: 'Мир пройден!', gameOver: 'Забег окончен', record: 'Новый рекорд!', back: '← Миры', again: 'Ещё раз', letters: 'Буквы', score: 'Очки', part: 'Робот', checkpoint: 'Чекпоинт!', shieldOn: 'Щит поднят!', magnetOn: 'Магнит!', skin: 'Цвет робота', exit: 'Выход', mute: 'Звук', dash: 'РЫВОК', slide: 'СКОЛЬЖ', jump: 'ПРЫЖОК', achUnlocked: 'Новое достижение!', fakeHit: 'Это была подделка!', locked: 'Нужно 2★ в предыдущем мире', streak: 'дней подряд', streakBonus: 'Бонус за серию', achWorld1: 'Первый мир пройден', achWorld5: '5 миров пройдено', achFlawless: 'Идеальный забег', backGames: '← Игры', yes: 'Да', no: 'Нет', quizKicker: 'Быстрый вопрос!', lockedFinal: 'Нужно 3★ на всех предыдущих мирах' },
   };
   function t(lang, key) { const d = STR[lang] || STR.en; return d[key] || STR.en[key] || key; }
 
@@ -267,8 +267,15 @@
     if (stars > (all[age][worldIdx] || 0)) all[age][worldIdx] = stars;
     writeJSON(LS_STARS, all);
   }
-  function worldUnlocked(age, worldIdx) {
-    return worldIdx === 0 || getStars(age, worldIdx - 1) >= 2;
+  // Intermediate worlds: 2★ in the one right before. The LAST world of an
+  // age is a real mastery gate — every earlier world must be 3-starred.
+  function worldUnlocked(age, worldIdx, totalWorlds) {
+    if (worldIdx === 0) return true;
+    if (totalWorlds && worldIdx === totalWorlds - 1) {
+      for (let i = 0; i < totalWorlds - 1; i++) if (getStars(age, i) < 3) return false;
+      return true;
+    }
+    return getStars(age, worldIdx - 1) >= 2;
   }
 
   /* ─── STREAK (soft — a missed day never erases progress) ─────────── */
@@ -478,6 +485,7 @@
       shiftHeld: false,
       everHit: false,
       everLostPart: false,
+      everRespawned: false,
       shakeUntil: 0,
       checkpointsHit: [],
       lastCheckpoint: null,
@@ -854,6 +862,7 @@
     }
 
     function respawnAtCheckpoint() {
+      state.everRespawned = true;
       const cp = state.lastCheckpoint || { collected: 0, parts: 0, elapsedMs: 0, coins: state.coins };
       state.collected = cp.collected; state.parts = cp.parts; state.elapsedMs = cp.elapsedMs; state.coins = cp.coins;
       els.letters.textContent = state.collected + '/' + totalLetters;
@@ -899,7 +908,12 @@
 
       let stars = 0, streakBonus = 0, streakInfo = null;
       if (state.won) {
-        stars = !state.everHit ? 3 : (!state.everLostPart ? 2 : 1);
+        // 3★ flawless (never touched); 2★ took damage but never needed a
+        // checkpoint rescue; 1★ needed at least one. Previously 2★ required
+        // every single hit to be shield-absorbed, which made it nearly
+        // unreachable by luck alone — one unshielded scrape dropped straight
+        // to 1★ even on an otherwise clean run.
+        stars = !state.everHit ? 3 : (!state.everRespawned ? 2 : 1);
         setStarsIfBetter(age, worldIdx, stars);
         const { streak, bonus } = bumpStreak();
         streakInfo = streak;
@@ -1231,7 +1245,7 @@
       worlds.forEach((w, i) => {
         const cleared = isCleared(age, i);
         const stars = getStars(age, i);
-        const isUnlocked = worldUnlocked(age, i);
+        const isUnlocked = worldUnlocked(age, i, worlds.length);
         const best = window.KAT_Leaderboard ? window.KAT_Leaderboard.getBest(age, i) : 0;
         const theme = themeFor(age, i);
         const card = document.createElement('button');
@@ -1244,7 +1258,7 @@
           <span class="pf-world-meta">${best ? t(lang,'best') + ': ' + best : ''}</span>` : `
           <span class="pf-world-icon">🔒</span>
           <span class="pf-world-title">${w.title}</span>
-          <span class="pf-world-meta">${t(lang,'locked')}</span>`;
+          <span class="pf-world-meta">${i === worlds.length - 1 ? t(lang,'lockedFinal') : t(lang,'locked')}</span>`;
         card.addEventListener('click', () => {
           if (!isUnlocked) return;
           new PfRun(container, { age, lang, world: w, worldIdx: i, onExit: render, quiz: opts.quiz, protocols: opts.protocols });
