@@ -24,9 +24,10 @@ window.HTMLCanvasElement.prototype.getContext = function () {
   const noop = () => {};
   const ctx = {
     save: noop, restore: noop, translate: noop, rotate: noop, scale: noop,
-    beginPath: noop, moveTo: noop, lineTo: noop, arc: noop, arcTo: noop,
+    beginPath: noop, moveTo: noop, lineTo: noop, arc: noop, arcTo: noop, ellipse: noop, quadraticCurveTo: noop,
     closePath: noop, fill: noop, stroke: noop, fillRect: noop, clearRect: noop,
     fillText: noop, strokeText: noop, drawImage: noop, createLinearGradient: () => ({ addColorStop: noop }),
+    createRadialGradient: () => ({ addColorStop: noop }),
     measureText: (s) => ({ width: (s || '').length * 8 }),
     set fillStyle(v) {}, get fillStyle() { return '#000'; },
     set strokeStyle(v) {}, get strokeStyle() { return '#000'; },

@@ -174,6 +174,14 @@
 
   /* ─── HELPERS ─────────────────────────────────────────────────────── */
   function lerp(a, b, tt) { return a + (b - a) * Math.min(1, Math.max(0, tt)); }
+  // Lighten (positive) or darken (negative) a '#rrggbb' colour by percent.
+  function shadeColor(hex, percent) {
+    const num = parseInt(hex.replace('#', ''), 16);
+    const amt = Math.round(2.55 * percent);
+    let r = (num >> 16) + amt, g = ((num >> 8) & 0xff) + amt, b = (num & 0xff) + amt;
+    r = Math.max(0, Math.min(255, r)); g = Math.max(0, Math.min(255, g)); b = Math.max(0, Math.min(255, b));
+    return `rgb(${r},${g},${b})`;
+  }
   function rrect(ctx, x, y, w, h, r) {
     r = Math.min(r, w / 2, h / 2);
     ctx.beginPath();
@@ -337,17 +345,36 @@
 
     const h = sliding ? 0.55 : 1;
 
+    // Soft contact shadow — grounds the robot instead of it floating.
+    const shadowGrad = ctx.createRadialGradient(0, 16 * h, 0, 0, 16 * h, 13);
+    shadowGrad.addColorStop(0, 'rgba(0,0,0,0.38)');
+    shadowGrad.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = shadowGrad;
+    ctx.beginPath(); ctx.ellipse(0, 16 * h, 12, 4, 0, 0, Math.PI * 2); ctx.fill();
+
     // Legs — always solid
     ctx.strokeStyle = glow; ctx.lineWidth = 4.5; ctx.lineCap = 'round';
     ctx.beginPath(); ctx.moveTo(-6, -6 * h); ctx.lineTo(-6 + legPhase * 5, 14 * h); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(6, -6 * h); ctx.lineTo(6 - legPhase * 5, 14 * h); ctx.stroke();
 
-    // Torso — always a solid filled body, from stage 0. More plating detail
-    // (rivets/panel line) once stage 1+ is reached; a lit chest core once
-    // any part has been collected.
-    ctx.fillStyle = bodyFill;
+    // Torso — always a solid filled body, from stage 0, with a diagonal
+    // light-to-dark gradient (single light source, upper-left) instead of
+    // a flat fill so the plating reads as rounded metal. More plating
+    // detail (rivets/panel line) once stage 1+ is reached; a lit chest
+    // core once any part has been collected.
+    const torsoGrad = ctx.createLinearGradient(-11, -22 * h, 11, 8 * h);
+    torsoGrad.addColorStop(0, shadeColor(bodyFill, 30));
+    torsoGrad.addColorStop(0.5, bodyFill);
+    torsoGrad.addColorStop(1, shadeColor(bodyFill, -25));
+    ctx.fillStyle = torsoGrad;
     ctx.strokeStyle = glow; ctx.lineWidth = 2.5;
     rrect(ctx, -11, -22 * h, 22, 30 * h, 7); ctx.fill(); ctx.stroke();
+    // Specular highlight on the chest plate.
+    const torsoHl = ctx.createRadialGradient(-4, -14 * h, 0, -4, -14 * h, 7);
+    torsoHl.addColorStop(0, 'rgba(255,255,255,0.3)');
+    torsoHl.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = torsoHl;
+    ctx.beginPath(); ctx.ellipse(-4, -14 * h, 5, 8, -0.2, 0, Math.PI * 2); ctx.fill();
     if (partStage >= 1) {
       ctx.strokeStyle = `${glow}88`; ctx.lineWidth = 1;
       ctx.beginPath(); ctx.moveTo(-11, -10 * h); ctx.lineTo(11, -10 * h); ctx.stroke();
@@ -367,7 +394,11 @@
     // Head — always a solid, complete round head with eyes from stage 0.
     // Stage 3+ adds a visor plate; max stage adds the antenna + light.
     const headY = -30 * h - bob;
-    ctx.fillStyle = bodyFill;
+    const headGrad = ctx.createLinearGradient(-9, headY - 9, 9, headY + 7);
+    headGrad.addColorStop(0, shadeColor(bodyFill, 30));
+    headGrad.addColorStop(0.5, bodyFill);
+    headGrad.addColorStop(1, shadeColor(bodyFill, -25));
+    ctx.fillStyle = headGrad;
     ctx.strokeStyle = glow; ctx.lineWidth = 2.5;
     rrect(ctx, -9, headY - 9, 18, 16, 6); ctx.fill(); ctx.stroke();
     ctx.fillStyle = hurt ? '#f87171' : '#00ffff';
