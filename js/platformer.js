@@ -299,6 +299,9 @@
   function unlockSkins() { writeJSON(LS_SKIN_UNLOCKED, true); }
 
   /* ─── ROBOT RENDERER ─────────────────────────────────────────────── */
+  // The robot is a COMPLETE, solid, clearly-visible character from the very
+  // first frame (stage 0) — collecting parts makes it more decorated/glowy,
+  // it never starts as a half-invisible outline waiting to "materialize".
   function drawRobot(ctx, x, y, opts) {
     const { partStage, maxStage, onGround, now, hurt, sliding, shielded, dashing, jumpsUsed, skinColor } = opts;
     ctx.save();
@@ -306,53 +309,62 @@
     const legPhase = onGround ? Math.sin(now * 0.018) : (jumpsUsed >= 2 ? Math.sin(now * 0.05) * 0.6 : 0);
     const bob = onGround ? Math.abs(Math.sin(now * 0.018)) * 2 : 0;
     const glow = hurt ? '#f87171' : skinColor;
-    ctx.shadowColor = glow; ctx.shadowBlur = hurt ? 22 : (dashing ? 26 : 14);
+    const bodyFill = hurt ? '#5a1414' : '#12213f';
+    ctx.shadowColor = glow; ctx.shadowBlur = hurt ? 22 : (dashing ? 26 : 16);
 
     if (dashing) {
-      ctx.strokeStyle = 'rgba(255,255,255,0.35)'; ctx.lineWidth = 3;
+      ctx.strokeStyle = 'rgba(255,255,255,0.4)'; ctx.lineWidth = 3;
       for (let i = 1; i <= 3; i++) { ctx.beginPath(); ctx.moveTo(-14 - i * 8, -10); ctx.lineTo(-14 - i * 8 - 10, -10); ctx.stroke(); }
     }
 
     const h = sliding ? 0.55 : 1;
-    ctx.strokeStyle = glow; ctx.lineWidth = 4; ctx.lineCap = 'round';
+
+    // Legs — always solid
+    ctx.strokeStyle = glow; ctx.lineWidth = 4.5; ctx.lineCap = 'round';
     ctx.beginPath(); ctx.moveTo(-6, -6 * h); ctx.lineTo(-6 + legPhase * 5, 14 * h); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(6, -6 * h); ctx.lineTo(6 - legPhase * 5, 14 * h); ctx.stroke();
 
-    ctx.fillStyle = hurt ? '#3a0d0d' : '#0a1628';
-    ctx.strokeStyle = glow; ctx.lineWidth = 2;
+    // Torso — always a solid filled body, from stage 0. More plating detail
+    // (rivets/panel line) once stage 1+ is reached; a lit chest core once
+    // any part has been collected.
+    ctx.fillStyle = bodyFill;
+    ctx.strokeStyle = glow; ctx.lineWidth = 2.5;
+    rrect(ctx, -11, -22 * h, 22, 30 * h, 7); ctx.fill(); ctx.stroke();
     if (partStage >= 1) {
-      rrect(ctx, -11, -22 * h, 22, 30 * h, 6); ctx.fill(); ctx.stroke();
-    } else {
-      ctx.globalAlpha = 0.35;
-      rrect(ctx, -9, -18 * h, 18, 24 * h, 5); ctx.stroke();
-      ctx.globalAlpha = 1;
+      ctx.strokeStyle = `${glow}88`; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(-11, -10 * h); ctx.lineTo(11, -10 * h); ctx.stroke();
+      const corePulse = 0.7 + 0.3 * Math.sin(now * 0.008);
+      ctx.shadowBlur = 8; ctx.fillStyle = glow; ctx.globalAlpha = corePulse;
+      ctx.beginPath(); ctx.arc(0, -14 * h, 3.2, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = 1; ctx.shadowBlur = hurt ? 22 : (dashing ? 26 : 16);
     }
 
-    if (partStage >= 2) {
-      ctx.strokeStyle = glow; ctx.lineWidth = 3.5;
-      const armLift = !onGround ? -6 : 0;
-      ctx.beginPath(); ctx.moveTo(-11, -14 * h); ctx.lineTo(-18, -2 * h - legPhase * 4 + armLift); ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(11, -14 * h); ctx.lineTo(18, -2 * h + legPhase * 4 + armLift); ctx.stroke();
-    }
+    // Arms — stubby nubs from the start, extend into full arms at stage 2+
+    ctx.strokeStyle = glow; ctx.lineWidth = partStage >= 2 ? 3.5 : 3;
+    const armLift = !onGround ? -6 : 0;
+    const armLen = partStage >= 2 ? 1 : 0.45;
+    ctx.beginPath(); ctx.moveTo(-11, -14 * h); ctx.lineTo(-11 - 7 * armLen, -2 * h - legPhase * 4 * armLen + armLift * armLen); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(11, -14 * h); ctx.lineTo(11 + 7 * armLen, -2 * h + legPhase * 4 * armLen + armLift * armLen); ctx.stroke();
 
+    // Head — always a solid, complete round head with eyes from stage 0.
+    // Stage 3+ adds a visor plate; max stage adds the antenna + light.
     const headY = -30 * h - bob;
+    ctx.fillStyle = bodyFill;
+    ctx.strokeStyle = glow; ctx.lineWidth = 2.5;
+    rrect(ctx, -9, headY - 9, 18, 16, 6); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = hurt ? '#f87171' : '#00ffff';
+    ctx.shadowBlur = 10;
+    ctx.beginPath(); ctx.arc(-3.5, headY - 1, partStage >= 3 ? 1.8 : 1.4, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(3.5, headY - 1, partStage >= 3 ? 1.8 : 1.4, 0, Math.PI * 2); ctx.fill();
+    ctx.shadowBlur = hurt ? 22 : (dashing ? 26 : 16);
     if (partStage >= 3) {
-      ctx.fillStyle = hurt ? '#3a0d0d' : '#0d2040';
-      rrect(ctx, -9, headY - 9, 18, 16, 5); ctx.fill(); ctx.stroke();
-      ctx.fillStyle = hurt ? '#f87171' : '#00ffff';
-      ctx.shadowBlur = 10;
-      ctx.beginPath(); ctx.arc(-3.5, headY - 1, 1.8, 0, Math.PI * 2); ctx.fill();
-      ctx.beginPath(); ctx.arc(3.5, headY - 1, 1.8, 0, Math.PI * 2); ctx.fill();
-      if (partStage >= maxStage) {
-        ctx.strokeStyle = glow; ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.moveTo(0, headY - 9); ctx.lineTo(0, headY - 16); ctx.stroke();
-        ctx.beginPath(); ctx.arc(0, headY - 18, 2.4, 0, Math.PI * 2); ctx.fillStyle = '#ffe066'; ctx.fill();
-      }
-    } else {
-      ctx.globalAlpha = 0.3;
-      ctx.strokeStyle = glow;
-      rrect(ctx, -7, headY - 7, 14, 12, 4); ctx.stroke();
-      ctx.globalAlpha = 1;
+      ctx.strokeStyle = `${glow}aa`; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(-9, headY + 3); ctx.lineTo(9, headY + 3); ctx.stroke();
+    }
+    if (partStage >= maxStage) {
+      ctx.strokeStyle = glow; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(0, headY - 9); ctx.lineTo(0, headY - 16); ctx.stroke();
+      ctx.beginPath(); ctx.arc(0, headY - 18, 2.4, 0, Math.PI * 2); ctx.fillStyle = '#ffe066'; ctx.fill();
     }
 
     if (shielded) {
@@ -398,7 +410,7 @@
       magnetUntil: 0,
       spawned: [],
       platforms: [],
-      nextSpawnAt: 900,
+      nextSpawnAt: 250,
       nextPlatformAt: 4500,
       elapsedMs: 0,
       speed: cfg.baseSpeed,
@@ -548,7 +560,22 @@
         if (!alive) return;
         els.overlay.classList.add('hidden'); state.paused = false; state.startTs = Date.now();
         music.start();
+        seedOpeningSpawn();
       }, { once: true });
+    }
+
+    // Without this, the run opens on an empty runway: nothing spawns for
+    // ~250ms, then it still has to travel the full canvas width to reach
+    // the player — several dead seconds of "nothing happening" before the
+    // very first letter/obstacle. Put one letter within easy reach right away.
+    function seedOpeningSpawn() {
+      const nextLetter = letterQueue[0];
+      if (!nextLetter) return;
+      state.spawned.push({ kind: 'letter', x: els.canvas.width * 0.62, y: state.groundY - 34, w: 22, h: 22, text: nextLetter.text, qidx: 0 });
+      // Also guarantee one working bonus shows up almost immediately —
+      // with only a ~16% combined chance per random spawn, it's easy for a
+      // short test run to never see one and conclude "bonuses don't work".
+      state.spawned.push({ kind: 'shield', x: els.canvas.width * 0.9, y: state.groundY - 34, w: 22, h: 22 });
     }
 
     function showFact(round) {
@@ -923,15 +950,22 @@
     /* ─── RENDER ──────────────────────────────────────────────────── */
     function drawBackground(ctx, W, H, now) {
       const grad = ctx.createLinearGradient(0, 0, 0, H);
-      grad.addColorStop(0, theme.sky[0]); grad.addColorStop(1, theme.sky[1]);
+      grad.addColorStop(0, theme.sky[0]); grad.addColorStop(0.7, theme.sky[1]); grad.addColorStop(1, theme.sky[1]);
       ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H);
 
+      // Soft glow band along the horizon so the sky doesn't just stop dead
+      // at the ground line.
+      const horizonGrad = ctx.createLinearGradient(0, state.groundY - 60, 0, state.groundY + 22);
+      horizonGrad.addColorStop(0, 'rgba(0,0,0,0)'); horizonGrad.addColorStop(1, theme.accent + '22');
+      ctx.fillStyle = horizonGrad; ctx.fillRect(0, state.groundY - 60, W, 82);
+
       ctx.save();
-      ctx.globalAlpha = 0.5; ctx.fillStyle = theme.accent; ctx.font = '10px system-ui';
+      ctx.fillStyle = theme.accent;
       const parX = (state.worldX * 0.15) % 60;
       bgStars.forEach((s, i) => {
         const x = ((s.x - parX + i * 3) % (W + 40)) - 20;
-        ctx.globalAlpha = 0.25 + 0.25 * Math.sin(now * 0.001 + i);
+        ctx.font = Math.round(6 + s.r * 9) + 'px system-ui';
+        ctx.globalAlpha = 0.3 + 0.3 * Math.sin(now * 0.001 + i);
         ctx.fillText(theme.deco, x, s.y % (H * 0.6));
       });
       ctx.restore();
