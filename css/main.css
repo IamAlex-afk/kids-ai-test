@@ -1362,6 +1362,7 @@ footer a:hover { text-decoration: underline; }
 }
 .kat-companion-canvas { flex: 0 0 auto; touch-action: manipulation; cursor: pointer; }
 .kat-companion-info { flex: 1 1 auto; min-width: 0; }
+.kat-companion-label { font-size: var(--fs-xs); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--accent); margin-bottom: 2px; }
 .kat-companion-title { font-weight: 800; font-size: var(--fs-sm); color: var(--text); margin-bottom: 4px; }
 .kat-companion-bar {
   height: 6px; background: var(--card2); border-radius: 4px; overflow: hidden; margin-bottom: 4px;
