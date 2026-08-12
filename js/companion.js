@@ -178,6 +178,7 @@
     wrap.innerHTML = `
       <canvas class="kat-companion-canvas" width="90" height="90"></canvas>
       <div class="kat-companion-info">
+        <div class="kat-companion-label">${t(lang, 'title')}</div>
         <div class="kat-companion-title" id="kc-title"></div>
         <div class="kat-companion-bar"><div class="kat-companion-fill" id="kc-fill"></div></div>
         <div class="kat-companion-sub" id="kc-sub"></div>
