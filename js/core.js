@@ -760,6 +760,8 @@ function launchPlatformer(container) {
     lang: S.lang,
     lessons: data?.lessons || [],
     rounds,
+    quiz: (data?.quiz || []).filter(q => q.type === 'yesno'),
+    protocols: data?.protocols || [],
     onAllDone() { onGameDone(); },
     onBack: availableGames().length > 1 ? () => renderGamePicker(container) : null,
   });
@@ -776,6 +778,8 @@ function launchRacing(container) {
     lang: S.lang,
     lessons: data?.lessons || [],
     rounds,
+    quiz: (data?.quiz || []).filter(q => q.type === 'yesno'),
+    protocols: data?.protocols || [],
     onAllDone() { onGameDone(); },
     onBack: availableGames().length > 1 ? () => renderGamePicker(container) : null,
   });

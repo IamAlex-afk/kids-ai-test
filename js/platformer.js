@@ -94,8 +94,8 @@
   const SKINS = { cyan: '#22d3ee', green: '#34d399', gold: '#fbbf24' };
 
   const STR = {
-    en: { ready: 'Get Ready!', start: 'Start ▶', cont: 'Continue →', hint: 'Tap / Space / ↑ to jump. Tap twice for double jump.', worlds: 'Choose a world', cleared: 'CLEARED', best: 'Best', worldClear: 'World Clear!', gameOver: 'Run ended', record: 'New record!', back: '← Worlds', again: 'Run Again', letters: 'Letters', score: 'Score', part: 'Robot', checkpoint: 'Checkpoint!', shieldOn: 'Shield up!', magnetOn: 'Magnet!', skin: 'Robot colour', exit: 'Exit', mute: 'Sound', dash: 'DASH', slide: 'SLIDE', jump: 'JUMP', achUnlocked: 'Achievement unlocked!', fakeHit: 'That letter was fake!', locked: 'Needs 2★ in the previous world', streak: 'day streak', streakBonus: 'Streak bonus', achWorld1: 'First world cleared', achWorld5: '5 worlds cleared', achFlawless: 'Flawless run', backGames: '← Games' },
-    ru: { ready: 'Приготовься!', start: 'Старт ▶', cont: 'Дальше →', hint: 'Тап / Пробел / ↑ — прыжок. Два тапа — двойной прыжок.', worlds: 'Выбери мир', cleared: 'ПРОЙДЕНО', best: 'Рекорд', worldClear: 'Мир пройден!', gameOver: 'Забег окончен', record: 'Новый рекорд!', back: '← Миры', again: 'Ещё раз', letters: 'Буквы', score: 'Очки', part: 'Робот', checkpoint: 'Чекпоинт!', shieldOn: 'Щит поднят!', magnetOn: 'Магнит!', skin: 'Цвет робота', exit: 'Выход', mute: 'Звук', dash: 'РЫВОК', slide: 'СКОЛЬЖ', jump: 'ПРЫЖОК', achUnlocked: 'Новое достижение!', fakeHit: 'Это была подделка!', locked: 'Нужно 2★ в предыдущем мире', streak: 'дней подряд', streakBonus: 'Бонус за серию', achWorld1: 'Первый мир пройден', achWorld5: '5 миров пройдено', achFlawless: 'Идеальный забег', backGames: '← Игры' },
+    en: { ready: 'Get Ready!', start: 'Start ▶', cont: 'Continue →', hint: 'Tap / Space / ↑ to jump. Tap twice for double jump.', worlds: 'Choose a world', cleared: 'CLEARED', best: 'Best', worldClear: 'World Clear!', gameOver: 'Run ended', record: 'New record!', back: '← Worlds', again: 'Run Again', letters: 'Letters', score: 'Score', part: 'Robot', checkpoint: 'Checkpoint!', shieldOn: 'Shield up!', magnetOn: 'Magnet!', skin: 'Robot colour', exit: 'Exit', mute: 'Sound', dash: 'DASH', slide: 'SLIDE', jump: 'JUMP', achUnlocked: 'Achievement unlocked!', fakeHit: 'That letter was fake!', locked: 'Needs 2★ in the previous world', streak: 'day streak', streakBonus: 'Streak bonus', achWorld1: 'First world cleared', achWorld5: '5 worlds cleared', achFlawless: 'Flawless run', backGames: '← Games', yes: 'Yes', no: 'No', quizKicker: 'Quick question!' },
+    ru: { ready: 'Приготовься!', start: 'Старт ▶', cont: 'Дальше →', hint: 'Тап / Пробел / ↑ — прыжок. Два тапа — двойной прыжок.', worlds: 'Выбери мир', cleared: 'ПРОЙДЕНО', best: 'Рекорд', worldClear: 'Мир пройден!', gameOver: 'Забег окончен', record: 'Новый рекорд!', back: '← Миры', again: 'Ещё раз', letters: 'Буквы', score: 'Очки', part: 'Робот', checkpoint: 'Чекпоинт!', shieldOn: 'Щит поднят!', magnetOn: 'Магнит!', skin: 'Цвет робота', exit: 'Выход', mute: 'Звук', dash: 'РЫВОК', slide: 'СКОЛЬЖ', jump: 'ПРЫЖОК', achUnlocked: 'Новое достижение!', fakeHit: 'Это была подделка!', locked: 'Нужно 2★ в предыдущем мире', streak: 'дней подряд', streakBonus: 'Бонус за серию', achWorld1: 'Первый мир пройден', achWorld5: '5 миров пройдено', achFlawless: 'Идеальный забег', backGames: '← Игры', yes: 'Да', no: 'Нет', quizKicker: 'Быстрый вопрос!' },
   };
   function t(lang, key) { const d = STR[lang] || STR.en; return d[key] || STR.en[key] || key; }
 
@@ -408,6 +408,13 @@
     const obstacleGlyphs = AGE_OBSTACLES[age] || AGE_OBSTACLES.child;
     const overheadGlyphs = AGE_OVERHEAD[age] || AGE_OVERHEAD.teen;
     const rng = seededRng(worldIdx * 7919 + 13);
+    const protocolPool = opts.protocols || [];
+    // Shuffled once per run so repeat checkpoints don't repeat questions.
+    const quizQueue = (opts.quiz || []).slice();
+    for (let i = quizQueue.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [quizQueue[i], quizQueue[j]] = [quizQueue[j], quizQueue[i]];
+    }
 
     let alive = true, rafId = null, els = {}, cleanupFns = [];
     let bgStars = [];
@@ -443,6 +450,7 @@
       shakeUntil: 0,
       checkpointsHit: [],
       lastCheckpoint: null,
+      pendingQuiz: null,
     };
 
     const player = { x: 0, y: 0, prevY: 0, vy: 0, onGround: true, w: 26, h: 30, lastGroundTs: 0, jumpBuffered: 0, hurtUntil: 0, jumpsUsed: 0, dashUntil: 0, onPlatform: null };
@@ -728,7 +736,13 @@
 
       const entry = letterQueue[item.qidx];
       if (state.collected >= totalLetters) { finishRun('won'); return; }
-      if (entry && entry.isLastOfRound) showFact(world.rounds[entry.roundIdx]);
+      const pendingFact = (entry && entry.isLastOfRound) ? world.rounds[entry.roundIdx] : null;
+      if (state.pendingQuiz) {
+        const q = state.pendingQuiz; state.pendingQuiz = null;
+        showQuiz(q, () => { if (pendingFact) showFact(pendingFact); });
+      } else if (pendingFact) {
+        showFact(pendingFact);
+      }
     }
     function collectCoin(item) {
       state.coins += 10;
@@ -770,7 +784,41 @@
         state.lastCheckpoint = { collected: state.collected, parts: state.parts, elapsedMs: state.elapsedMs, coins: state.coins };
         playCheckpointSound(); haptic([15, 10, 15]);
         toast('🚩 ' + t(lang, 'checkpoint'));
+        if (quizQueue.length) state.pendingQuiz = quizQueue.pop();
       }
+    }
+
+    // A quiz question is real content from data.quiz (yes/no + a written
+    // explanation) — not invented here, just surfaced at checkpoints so
+    // the three games stop reusing only the same ~15 letter-rounds.
+    function showQuiz(q, cb) {
+      state.paused = true;
+      els.overlay.classList.remove('hidden');
+      els.overlay.innerHTML = `
+        <div class="snake-overlay-card">
+          <p class="snake-overlay-kicker">🚩 ${t(lang, 'quizKicker')}</p>
+          <p class="pf-lesson-text" style="font-weight:700;">${q.q}</p>
+          <div class="action-row" style="justify-content:center;gap:10px;margin-bottom:4px;">
+            <button class="btn-primary" id="pf-quiz-yes">👍 ${t(lang,'yes')}</button>
+            <button class="btn-primary" id="pf-quiz-no" style="background:var(--card2)">👎 ${t(lang,'no')}</button>
+          </div>
+        </div>`;
+      const answer = (val) => {
+        const correct = val === q.correct;
+        (correct ? playCheckpointSound : playHitSound)();
+        els.overlay.innerHTML = `
+          <div class="snake-overlay-card">
+            <p class="snake-overlay-kicker" style="color:${correct ? 'var(--green)' : 'var(--red)'}">${correct ? '✅' : '❌'}</p>
+            <p class="snake-overlay-fact">${q.explanation || ''}</p>
+            <button class="btn-primary" id="pf-quiz-cont">${t(lang,'cont')}</button>
+          </div>`;
+        els.overlay.querySelector('#pf-quiz-cont').addEventListener('click', () => {
+          if (!alive) return;
+          els.overlay.classList.add('hidden'); state.paused = false; cb();
+        }, { once: true });
+      };
+      els.overlay.querySelector('#pf-quiz-yes').addEventListener('click', () => answer(1), { once: true });
+      els.overlay.querySelector('#pf-quiz-no').addEventListener('click', () => answer(0), { once: true });
     }
 
     function respawnAtCheckpoint() {
@@ -844,6 +892,11 @@
 
       if (reason === 'exit') { teardown(); if (opts.onExit) opts.onExit(); return; }
 
+      // A protocol card (real, written safety/practical tip from
+      // data.protocols) on every world clear — cycles by world index so
+      // repeated clears eventually surface all of them, not just letters.
+      const protocol = state.won && protocolPool.length ? protocolPool[worldIdx % protocolPool.length] : null;
+
       els.overlay.classList.remove('hidden');
       els.overlay.innerHTML = `
         <div class="snake-overlay-card">
@@ -853,6 +906,7 @@
           ${isRecord ? `<p class="snake-overlay-fact" style="color:var(--green)">🏆 ${t(lang,'record')}</p>` : ''}
           <p class="snake-overlay-fact">${t(lang,'letters')}: ${state.collected}/${totalLetters} · 🪙 ${state.coins} · ${t(lang,'best')}: ${best}</p>
           ${streakInfo ? `<p class="snake-overlay-fact">🔥 ${streakInfo.count} ${t(lang,'streak')}${streakBonus ? ' · +' + streakBonus + ' ' + t(lang,'streakBonus') : ''}</p>` : ''}
+          ${protocol ? `<p class="snake-overlay-fact" style="border-top:1px solid var(--border2);padding-top:8px;">${protocol.icon || '📋'} <strong>${protocol.title || ''}</strong><br>${protocol.text || ''}</p>` : ''}
           ${newAch.length ? `<p class="snake-overlay-fact" style="color:var(--yellow)">🏅 ${t(lang,'achUnlocked')}<br>${newAch.join('<br>')}</p>` : ''}
           <div class="action-row" style="justify-content:center;gap:8px;flex-wrap:wrap;">
             <button class="btn-primary" id="pf-again-btn">${t(lang,'again')}</button>
@@ -1161,7 +1215,7 @@
           <span class="pf-world-meta">${t(lang,'locked')}</span>`;
         card.addEventListener('click', () => {
           if (!isUnlocked) return;
-          new PfRun(container, { age, lang, world: w, worldIdx: i, onExit: render });
+          new PfRun(container, { age, lang, world: w, worldIdx: i, onExit: render, quiz: opts.quiz, protocols: opts.protocols });
         });
         grid.appendChild(card);
       });
