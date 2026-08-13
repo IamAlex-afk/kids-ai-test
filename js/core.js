@@ -758,6 +758,7 @@ function launchSnake(container) {
       window.KAT_Companion?.recordAccomplishment(`snake_${S.age}_${idx}`, S.lang);
     },
     onAllDone() { onGameDone(); },
+    onExit: availableGames().length > 1 ? () => renderGamePicker(container) : () => onGameDone(),
   });
 }
 

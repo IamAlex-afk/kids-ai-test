@@ -11,16 +11,16 @@
   };
 
   const STR = {
-    en: { ready:'Get Ready!', spell:'Spell', build:'Build', round:'Round', start:'Start ▶', cont:'Continue →', hint:'Arrows / swipe / buttons. Grab the glowing target!', combo2:'x2 Combo!', combo3:'🔥 On Fire!', combo5:'⚡ Unstoppable!' },
-    ru: { ready:'Приготовься!', spell:'Собери слово', build:'Собери фразу', round:'Раунд', start:'Старт ▶', cont:'Дальше →', hint:'Стрелки / свайп / кнопки. Хватай светящуюся цель!', combo2:'x2 Комбо!', combo3:'🔥 В огне!', combo5:'⚡ Неудержим!' },
-    de: { ready:'Fertig!', spell:'Buchstabiere', build:'Bilde', round:'Runde', start:'Start ▶', cont:'Weiter →', hint:'Pfeile / Wischen / Tasten. Schnapp das leuchtende Ziel!', combo2:'x2 Kombo!', combo3:'🔥 Brennt!', combo5:'⚡ Unaufhaltbar!' },
-    es: { ready:'¡Listo!', spell:'Deletrea', build:'Construye', round:'Ronda', start:'Comenzar ▶', cont:'Continuar →', hint:'Flechas / desliza / botones. ¡Atrapa el objetivo!', combo2:'¡x2 Combo!', combo3:'🔥 ¡En llamas!', combo5:'⚡ ¡Imparable!' },
-    fr: { ready:'Prêt !', spell:'Épelle', build:'Construis', round:'Manche', start:'Commencer ▶', cont:'Continuer →', hint:'Flèches / glisse / boutons. Attrape la cible !', combo2:'x2 Combo !', combo3:'🔥 En feu !', combo5:'⚡ Inarrêtable !' },
-    hi: { ready:'तैयार!', spell:'शब्द बनाओ', build:'वाक्य बनाओ', round:'राउंड', start:'शुरू ▶', cont:'आगे →', hint:'तीर / स्वाइप / बटन। चमकते लक्ष्य को पकड़ो!', combo2:'x2 कॉम्बो!', combo3:'🔥 जोश में!', combo5:'⚡ अजेय!' },
-    id: { ready:'Siap!', spell:'Eja', build:'Buat', round:'Babak', start:'Mulai ▶', cont:'Lanjutkan →', hint:'Panah / gesek / tombol. Ambil target!', combo2:'x2 Kombo!', combo3:'🔥 Membara!', combo5:'⚡ Tak Terhentikan!' },
-    pt: { ready:'Pronto!', spell:'Soletrar', build:'Construir', round:'Rodada', start:'Iniciar ▶', cont:'Continuar →', hint:'Setas / deslize / botões. Pegue o alvo!', combo2:'x2 Combo!', combo3:'🔥 Em chamas!', combo5:'⚡ Imparável!' },
-    tr: { ready:'Hazır!', spell:'Yaz', build:'İnşa Et', round:'Tur', start:'Başla ▶', cont:'Devam →', hint:'Oklar / kaydır / düğmeler. Parlayan hedefi yakala!', combo2:'x2 Kombo!', combo3:'🔥 Alev aldı!', combo5:'⚡ Durdurulamaz!' },
-    vi: { ready:'Sẵn sàng!', spell:'Đánh vần', build:'Xây dựng', round:'Vòng', start:'Bắt đầu ▶', cont:'Tiếp tục →', hint:'Mũi tên / vuốt / nút. Bắt mục tiêu sáng!', combo2:'x2 Combo!', combo3:'🔥 Bốc lửa!', combo5:'⚡ Không thể cản!' },
+    en: { ready:'Get Ready!', spell:'Spell', build:'Build', round:'Round', start:'Start ▶', cont:'Continue →', hint:'Arrows / swipe / buttons. Grab the glowing target!', combo2:'x2 Combo!', combo3:'🔥 On Fire!', combo5:'⚡ Unstoppable!', exit:'Exit', mute:'Sound' },
+    ru: { ready:'Приготовься!', spell:'Собери слово', build:'Собери фразу', round:'Раунд', start:'Старт ▶', cont:'Дальше →', hint:'Стрелки / свайп / кнопки. Хватай светящуюся цель!', combo2:'x2 Комбо!', combo3:'🔥 В огне!', combo5:'⚡ Неудержим!', exit:'Выход', mute:'Звук' },
+    de: { ready:'Fertig!', spell:'Buchstabiere', build:'Bilde', round:'Runde', start:'Start ▶', cont:'Weiter →', hint:'Pfeile / Wischen / Tasten. Schnapp das leuchtende Ziel!', combo2:'x2 Kombo!', combo3:'🔥 Brennt!', combo5:'⚡ Unaufhaltbar!', exit:'Verlassen', mute:'Ton' },
+    es: { ready:'¡Listo!', spell:'Deletrea', build:'Construye', round:'Ronda', start:'Comenzar ▶', cont:'Continuar →', hint:'Flechas / desliza / botones. ¡Atrapa el objetivo!', combo2:'¡x2 Combo!', combo3:'🔥 ¡En llamas!', combo5:'⚡ ¡Imparable!', exit:'Salir', mute:'Sonido' },
+    fr: { ready:'Prêt !', spell:'Épelle', build:'Construis', round:'Manche', start:'Commencer ▶', cont:'Continuer →', hint:'Flèches / glisse / boutons. Attrape la cible !', combo2:'x2 Combo !', combo3:'🔥 En feu !', combo5:'⚡ Inarrêtable !', exit:'Quitter', mute:'Son' },
+    hi: { ready:'तैयार!', spell:'शब्द बनाओ', build:'वाक्य बनाओ', round:'राउंड', start:'शुरू ▶', cont:'आगे →', hint:'तीर / स्वाइप / बटन। चमकते लक्ष्य को पकड़ो!', combo2:'x2 कॉम्बो!', combo3:'🔥 जोश में!', combo5:'⚡ अजेय!', exit:'बाहर जाएं', mute:'साउंड' },
+    id: { ready:'Siap!', spell:'Eja', build:'Buat', round:'Babak', start:'Mulai ▶', cont:'Lanjutkan →', hint:'Panah / gesek / tombol. Ambil target!', combo2:'x2 Kombo!', combo3:'🔥 Membara!', combo5:'⚡ Tak Terhentikan!', exit:'Keluar', mute:'Suara' },
+    pt: { ready:'Pronto!', spell:'Soletrar', build:'Construir', round:'Rodada', start:'Iniciar ▶', cont:'Continuar →', hint:'Setas / deslize / botões. Pegue o alvo!', combo2:'x2 Combo!', combo3:'🔥 Em chamas!', combo5:'⚡ Imparável!', exit:'Sair', mute:'Som' },
+    tr: { ready:'Hazır!', spell:'Yaz', build:'İnşa Et', round:'Tur', start:'Başla ▶', cont:'Devam →', hint:'Oklar / kaydır / düğmeler. Parlayan hedefi yakala!', combo2:'x2 Kombo!', combo3:'🔥 Alev aldı!', combo5:'⚡ Durdurulamaz!', exit:'Çıkış', mute:'Ses' },
+    vi: { ready:'Sẵn sàng!', spell:'Đánh vần', build:'Xây dựng', round:'Vòng', start:'Bắt đầu ▶', cont:'Tiếp tục →', hint:'Mũi tên / vuốt / nút. Bắt mục tiêu sáng!', combo2:'x2 Combo!', combo3:'🔥 Bốc lửa!', combo5:'⚡ Không thể cản!', exit:'Thoát', mute:'Âm thanh' },
   };
   function t(lang, key) { return (STR[lang] || STR.en)[key] || key; }
 
@@ -42,10 +42,13 @@
     g.gain.exponentialRampToValueAtTime(0.001, t0 + dur);
     o.start(t0); o.stop(t0 + dur + 0.04);
   }
-  const sndPop    = () => { tone(880, 0, 0.07, 'sine', 0.18); tone(1320, 0.03, 0.06, 'triangle', 0.12); };
-  const sndError  = () => { tone(200, 0, 0.14, 'sawtooth', 0.13); tone(130, 0.10, 0.18, 'sawtooth', 0.10); };
-  const sndStreak = () => { tone(1047, 0, 0.06, 'sine', 0.20); tone(1319, 0.05, 0.06, 'sine', 0.18); };
-  const sndWin    = () => [523, 659, 784, 1047].forEach((f, i) => tone(f, i * 0.12, 0.20, 'triangle', 0.16));
+  let MUTED = false;
+  try { MUTED = localStorage.getItem('kat_snake_muted') === '1'; } catch (_) {}
+  function setMuted(v) { MUTED = !!v; try { localStorage.setItem('kat_snake_muted', MUTED ? '1' : '0'); } catch (_) {} }
+  const sndPop    = () => { if (MUTED) return; tone(880, 0, 0.07, 'sine', 0.18); tone(1320, 0.03, 0.06, 'triangle', 0.12); };
+  const sndError  = () => { if (MUTED) return; tone(200, 0, 0.14, 'sawtooth', 0.13); tone(130, 0.10, 0.18, 'sawtooth', 0.10); };
+  const sndStreak = () => { if (MUTED) return; tone(1047, 0, 0.06, 'sine', 0.20); tone(1319, 0.05, 0.06, 'sine', 0.18); };
+  const sndWin    = () => { if (MUTED) return; [523, 659, 784, 1047].forEach((f, i) => tone(f, i * 0.12, 0.20, 'triangle', 0.16)); };
 
   /* ─── HAPTICS ─────────────────────────────────────────────────────── */
   const haptic = (p) => navigator.vibrate && navigator.vibrate(p);
@@ -540,6 +543,10 @@
             <span class="game-score-lbl">OOPS</span>
           </div>
         </div>
+        <div class="pf-subhud">
+          <button class="pf-icon-btn" id="sk-mute" title="${t(lang,'mute')}">${MUTED ? '🔇' : '🔊'}</button>
+          <button class="pf-icon-btn" id="sk-exit" title="${t(lang,'exit')}">✕</button>
+        </div>
         <div class="snake-progress" id="sk-progress"></div>
         <div class="snake-canvas-wrap">
           <canvas id="sk-canvas"></canvas>
@@ -560,6 +567,14 @@
       els.canvas   = container.querySelector('#sk-canvas');
       els.overlay  = container.querySelector('#sk-overlay');
       els.ctx      = els.canvas.getContext('2d');
+
+      on(container.querySelector('#sk-mute'), 'click', (e) => {
+        setMuted(!MUTED); e.currentTarget.textContent = MUTED ? '🔇' : '🔊';
+      });
+      on(container.querySelector('#sk-exit'), 'click', () => {
+        teardown();
+        if (opts.onExit) opts.onExit();
+      });
 
       // Responsive dimensions — fill container width, tall on mobile
       const avW = Math.min(container.clientWidth || window.innerWidth - 16, window.innerWidth - 16);
