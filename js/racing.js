@@ -841,6 +841,7 @@
 
       const protocol = state.won && protocolPool.length ? protocolPool[worldIdx % protocolPool.length] : null;
 
+      const hasNext = state.won && opts.totalWorlds && (worldIdx + 1) < opts.totalWorlds && worldUnlocked(age, worldIdx + 1, opts.totalWorlds);
       els.overlay.classList.remove('hidden');
       els.overlay.innerHTML = `
         <div class="snake-overlay-card">
@@ -853,10 +854,16 @@
           ${protocol ? `<p class="snake-overlay-fact" style="border-top:1px solid var(--border2);padding-top:8px;">${protocol.icon || '📋'} <strong>${protocol.title || ''}</strong><br>${protocol.text || ''}</p>` : ''}
           ${newAch.length ? `<p class="snake-overlay-fact" style="color:var(--yellow)">🏅 ${t(lang,'achUnlocked')}<br>${newAch.join('<br>')}</p>` : ''}
           <div class="action-row" style="justify-content:center;gap:8px;flex-wrap:wrap;">
-            <button class="btn-primary" id="rc-again-btn">${t(lang,'again')}</button>
+            ${hasNext ? `<button class="btn-primary" id="rc-next-btn">${t(lang,'cont')}</button>` : ''}
+            <button class="btn-primary" id="rc-again-btn"${hasNext ? ' style="background:var(--card2)"' : ''}>${t(lang,'again')}</button>
             <button class="btn-primary" id="rc-back-btn" style="background:var(--card2)">${t(lang,'back')}</button>
           </div>
         </div>`;
+      if (hasNext) {
+        els.overlay.querySelector('#rc-next-btn').addEventListener('click', () => {
+          if (!alive) return; teardown(); opts.startWorld(worldIdx + 1);
+        }, { once: true });
+      }
       els.overlay.querySelector('#rc-again-btn').addEventListener('click', () => {
         if (!alive) return; teardown(); new RaceRun(container, opts);
       }, { once: true });
@@ -1021,6 +1028,9 @@
         <div class="pf-world-grid" id="rc-world-grid"></div>
         ${unlocked ? `<div class="pf-skin-row" id="rc-skin-row"></div>` : ''}`;
       if (opts.onBack) container.querySelector('#rc-back-games').addEventListener('click', opts.onBack);
+      function startWorld(i) {
+        new RaceRun(container, { age, lang, world: worlds[i], worldIdx: i, onExit: render, quiz: opts.quiz, protocols: opts.protocols, totalWorlds: worlds.length, startWorld });
+      }
       const grid = container.querySelector('#rc-world-grid');
       worlds.forEach((w, i) => {
         const cleared = isCleared(age, i);
@@ -1042,7 +1052,7 @@
           <span class="pf-world-meta">${i === worlds.length - 1 ? t(lang,'lockedFinal') : t(lang,'locked')}</span>`;
         card.addEventListener('click', () => {
           if (!isUnlocked) return;
-          new RaceRun(container, { age, lang, world: w, worldIdx: i, onExit: render, quiz: opts.quiz, protocols: opts.protocols });
+          startWorld(i);
         });
         grid.appendChild(card);
       });
