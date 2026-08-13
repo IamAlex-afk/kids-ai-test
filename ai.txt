@@ -24,11 +24,11 @@ Languages: en, ru, de, es, fr, hi, id, pt, tr, vi
 
 Features:
   - Age-adapted AI lessons with verified facts
-  - Educational snake game (collect AI terms)
+  - Three educational games: AI Snake, Circuit Runner, Circuit Racer
   - AI knowledge quiz
-  - AI Duel bonus game
+  - KAT Companion: a persistent AI pet that grows from real learning progress
   - Unique SHA-256 verified participation card
-  - 33 protocols for living safely with AI
+  - 34 protocols for living safely with AI
   - 7-day AI awareness tracker
 
 Canonical: https://iamalex-afk.github.io/kids-ai-test/
