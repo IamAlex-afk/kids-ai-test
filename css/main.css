@@ -308,12 +308,13 @@ body {
   display: block;
 }
 .hero-badge {
-  display: inline-flex; align-items: center; gap: 6px;
+  display: inline-block;
   background: rgba(0,255,136,.08); border: 1px solid rgba(0,255,136,.3);
   color: var(--green); font-size: var(--fs-xs); font-weight: 700;
   padding: 5px 14px; border-radius: 20px;
   margin-bottom: 16px; letter-spacing: .3px;
   animation: badge-pulse 2.5s ease-in-out infinite;
+  max-width: calc(100% - 32px); white-space: normal; text-align: center;
 }
 @keyframes badge-pulse { 0%,100%{opacity:1} 50%{opacity:.5} }
 .hero-sub {
