@@ -146,6 +146,15 @@
     .faq-answer { padding:0 20px 16px 42px; color:var(--muted2); font-size:.9rem; line-height:1.7; }
     .faq-answer strong { color:var(--text); }
     .faq-answer a { color:var(--accent); }
+
+    /* Comparison table */
+    .cmp-table { width:100%; border-collapse:collapse; margin:12px 0; font-size:.85rem; }
+    .cmp-table th, .cmp-table td { padding:10px 12px; text-align:left; border-bottom:1px solid var(--border); vertical-align:top; }
+    .cmp-table thead th { color:var(--text); font-weight:700; border-bottom:2px solid var(--border); }
+    .cmp-table tbody th { color:var(--text); font-weight:600; white-space:normal; }
+    .cmp-table td { color:var(--muted2); line-height:1.5; }
+    .cmp-table tbody tr:hover { background:var(--card); }
+    @media (max-width:520px) { .cmp-table { font-size:.78rem; } .cmp-table th, .cmp-table td { padding:8px 6px; } }
   </style>
 
   <!-- Schema: WebApplication -->
@@ -786,6 +795,26 @@
           <p class="faq-answer">A type of AI trained on huge amounts of text to predict the next word — the technology behind chatbots like ChatGPT. <em>It's called "large" because it learned from an enormous amount of text and has billions of internal settings.</em></p>
         </details>
       </div>
+    </div>
+    <div class="pf-comparison">
+      <h4>📊 AI vs. Human: Who's Actually Better at What</h4>
+      <table class="cmp-table">
+        <thead>
+          <tr><th scope="col">Task</th><th scope="col">AI</th><th scope="col">Human</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Processing huge amounts of data fast</th><td>Excellent — scans millions of documents in seconds</td><td>Limited by reading speed</td></tr>
+          <tr><th scope="row">Genuine empathy and emotional understanding</th><td>None — no consciousness or feelings, only pattern prediction</td><td>Core human strength</td></tr>
+          <tr><th scope="row">Creative ideas from lived experience</th><td>Recombines patterns from training data</td><td>Draws on real experience and context</td></tr>
+          <tr><th scope="row">Ethical judgment in new situations</th><td>No true understanding of consequences</td><td>Can reason about right and wrong</td></tr>
+          <tr><th scope="row">Consistency under repetition</th><td>Excellent — never tired or distracted</td><td>Varies with fatigue and mood</td></tr>
+          <tr><th scope="row">Knowing when it doesn't know something</th><td>Poor — tends to hallucinate confidently instead of saying "I don't know"</td><td>Can recognize its own uncertainty</td></tr>
+          <tr><th scope="row">Learning from a single example</th><td>Usually needs thousands of examples</td><td>Can learn from one real experience</td></tr>
+          <tr><th scope="row">Adapting to unprecedented situations</th><td>Struggles outside its training data</td><td>Flexible, general-purpose reasoning</td></tr>
+          <tr><th scope="row">Physical dexterity in unpredictable settings</th><td>Limited — robotics is still catching up</td><td>Strong, adaptive motor control</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.78rem;color:var(--muted2);margin-top:8px;">Grounded in the same sources used across this site: MIT Media Lab, UNESCO AI in Education (2023), World Economic Forum Future of Jobs Report (2024).</p>
     </div>
     </div>
   </div>
