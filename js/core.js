@@ -526,8 +526,8 @@ function renderLesson() {
         <div class="step-num">${lesson.icon || '🤖'}</div>
         <div class="step-body">
           <h3 class="step-title">${lesson.title}</h3>
-          <p class="step-text">${lesson.text}</p>
-          ${lesson.example ? `<div class="step-example">💡 ${lesson.example}</div>` : ''}
+          <p class="step-text">${window.KAT_Glossary ? window.KAT_Glossary.linkify(lesson.text, S.lang) : lesson.text}</p>
+          ${lesson.example ? `<div class="step-example">💡 ${window.KAT_Glossary ? window.KAT_Glossary.linkify(lesson.example, S.lang) : lesson.example}</div>` : ''}
         </div>
       </div>
     </div>

@@ -1444,3 +1444,28 @@ footer a:hover { text-decoration: underline; }
   .kat-float-canvas { width: 46px; height: 46px; }
   .kat-float-bubble { max-width: 170px; bottom: 56px; font-size: 11px; }
 }
+
+/* ─── GLOSSARY TERM POPUP ────────────────────────────────────────────── */
+.kat-term {
+  color: var(--accent); text-decoration: underline dotted;
+  text-underline-offset: 3px; cursor: pointer; font-weight: 700;
+}
+.kat-term:hover, .kat-term:focus { color: var(--accent2); }
+.kat-term-modal {
+  position: fixed; inset: 0; z-index: 9998; display: flex; align-items: center; justify-content: center;
+  background: rgba(4,6,12,.82); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  padding: 16px;
+}
+.kat-term-card {
+  position: relative; width: 100%; max-width: 340px;
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--r);
+  padding: 20px; text-align: left;
+}
+.kat-term-close {
+  position: absolute; top: 8px; right: 8px;
+  background: var(--card2); border: 1px solid var(--border2); border-radius: 50%;
+  width: 28px; height: 28px; color: var(--muted); font-size: var(--fs-sm); cursor: pointer;
+}
+.kat-term-label { font-weight: 800; font-size: var(--fs-lg); color: var(--accent); margin: 0 26px 8px 0; }
+.kat-term-def { font-size: var(--fs-sm); color: var(--text); margin-bottom: 10px; line-height: 1.5; }
+.kat-term-example { font-size: var(--fs-xs); color: var(--muted2); border-top: 1px solid var(--border2); padding-top: 8px; line-height: 1.5; }
