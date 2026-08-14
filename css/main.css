@@ -1185,3 +1185,25 @@ footer a:hover { text-decoration: underline; }
 .kat-term-label { font-weight: 800; font-size: var(--fs-lg); color: var(--accent); margin: 0 26px 8px 0; }
 .kat-term-def { font-size: var(--fs-sm); color: var(--text); margin-bottom: 10px; line-height: 1.5; }
 .kat-term-example { font-size: var(--fs-xs); color: var(--muted2); border-top: 1px solid var(--border2); padding-top: 8px; line-height: 1.5; }
+
+
+/* ── FAQ / glossary section (shared across all 10 language pages) ──── */
+.faq-section { margin:16px 0; }
+.faq-item { background:var(--card); border:1px solid var(--border); border-radius:var(--r); margin-bottom:10px; }
+.faq-item summary { padding:15px 20px; cursor:pointer; list-style:none; display:flex; align-items:center; gap:10px; }
+.faq-item summary::-webkit-details-marker { display:none; }
+.faq-item summary::before { content:"▶"; color:var(--accent); transition:transform .25s; flex-shrink:0; font-size:.75rem; }
+.faq-item[open] summary::before { transform:rotate(90deg); }
+.faq-item summary h3 { margin:0; font-size:.95rem; font-weight:700; color:var(--text); line-height:1.4; }
+.faq-answer { padding:0 20px 16px 42px; color:var(--muted2); font-size:.9rem; line-height:1.7; }
+.faq-answer strong { color:var(--text); }
+.faq-answer a { color:var(--accent); }
+
+/* Comparison table */
+.cmp-table { width:100%; border-collapse:collapse; margin:12px 0; font-size:.85rem; }
+.cmp-table th, .cmp-table td { padding:10px 12px; text-align:left; border-bottom:1px solid var(--border); vertical-align:top; }
+.cmp-table thead th { color:var(--text); font-weight:700; border-bottom:2px solid var(--border); }
+.cmp-table tbody th { color:var(--text); font-weight:600; white-space:normal; }
+.cmp-table td { color:var(--muted2); line-height:1.5; }
+.cmp-table tbody tr:hover { background:var(--card); }
+@media (max-width:520px) { .cmp-table { font-size:.78rem; } .cmp-table th, .cmp-table td { padding:8px 6px; } }
