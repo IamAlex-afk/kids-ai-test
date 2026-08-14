@@ -115,6 +115,7 @@ function boot() {
 
 function afterBoot() {
   renderTopBar();
+  window.KAT_Companion?.mountFloating(S.lang);
   if (S.age) {
     restoreProgress();
   } else {
@@ -634,6 +635,9 @@ function answerMiniTest(choiceIdx, q, clickedBtn) {
   if (correct) {
     S.lesson.mt.score++;
     if (S.age === 'tiny') tinySuccess(clickedBtn);
+    window.KAT_Companion?.sayReaction('praise', S.lang);
+  } else {
+    window.KAT_Companion?.sayReaction('hint', S.lang);
   }
   lsSave();
 
@@ -713,6 +717,7 @@ function startGame() {
   lsSave();
   show('game');
   scrollTo('game');
+  window.KAT_Companion?.setFloatingVisible(false);
 
   const container = $('game-content');
   if (!container) { onGameDone(); return; }
@@ -799,6 +804,7 @@ function launchRacing(container) {
 }
 
 function onGameDone() {
+  window.KAT_Companion?.setFloatingVisible(true);
   S.game.done = true;
   lsSave();
 

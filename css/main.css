@@ -1400,3 +1400,47 @@ footer a:hover { text-decoration: underline; }
 }
 .kat-companion-list-item:hover, .kat-companion-list-item:active { border-color: var(--accent); }
 .kat-companion-list-item.known { color: var(--muted2); border-color: var(--green); }
+
+/* ─── FLOATING MASCOT + SPEECH BUBBLE ────────────────────────────────── */
+.kat-float-mascot {
+  position: fixed; right: 14px; bottom: 14px; z-index: 9000;
+  width: 56px; height: 56px;
+  cursor: pointer; touch-action: manipulation;
+  animation: kat-float-bob 3.2s ease-in-out infinite;
+  transition: opacity .25s, transform .25s;
+}
+.kat-float-mascot.kat-float-hidden { opacity: 0; transform: scale(.7); pointer-events: none; }
+.kat-float-canvas { display: block; filter: drop-shadow(0 4px 10px rgba(0,0,0,.4)); }
+@keyframes kat-float-bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+
+.kat-float-bubble {
+  position: absolute; right: 0; bottom: 66px;
+  max-width: 220px; min-width: 120px;
+  background: var(--card); border: 1px solid var(--border2);
+  border-radius: var(--r-sm); padding: 8px 12px;
+  font-size: var(--fs-xs); font-weight: 600; color: var(--text);
+  box-shadow: 0 8px 24px rgba(0,0,0,.4);
+  opacity: 0; transform: translateY(6px) scale(.94);
+  transition: opacity .22s ease, transform .22s ease;
+  pointer-events: none;
+}
+.kat-float-bubble::after {
+  content: ''; position: absolute; right: 18px; bottom: -6px;
+  width: 12px; height: 12px; background: var(--card);
+  border-right: 1px solid var(--border2); border-bottom: 1px solid var(--border2);
+  transform: rotate(45deg);
+}
+.kat-float-bubble.hidden { display: none; }
+.kat-float-bubble-show { opacity: 1; transform: translateY(0) scale(1); }
+.kat-float-bubble-praise { border-color: rgba(0,255,136,.4); }
+.kat-float-bubble-praise::after { border-color: rgba(0,255,136,.4); }
+.kat-float-bubble-hint { border-color: rgba(251,191,36,.4); }
+.kat-float-bubble-hint::after { border-color: rgba(251,191,36,.4); }
+.kat-float-bubble-intro { border-color: var(--accent); }
+.kat-float-bubble-intro::after { border-color: var(--accent); }
+
+@media (max-width: 480px) {
+  .kat-float-mascot { right: 10px; bottom: 10px; width: 46px; height: 46px; }
+  .kat-float-canvas { width: 46px; height: 46px; }
+  .kat-float-bubble { max-width: 170px; bottom: 56px; font-size: 11px; }
+}
