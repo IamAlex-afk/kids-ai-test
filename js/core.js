@@ -1053,6 +1053,15 @@ function initParent() {
             <p class="faq-answer">${item.a}</p>
           </details>`).join('')}
       </div>
+      ${['tiny','child','teen','adult'].filter(k => Array.isArray(d['faq_'+k]) && d['faq_'+k].length).map(k => `
+        <h4>${d['faq_'+k+'_h'] || ''}</h4>
+        <div class="faq-section" style="margin-bottom:16px">
+          ${d['faq_'+k].map(item => `
+            <details class="faq-item">
+              <summary><h3>${item.q}</h3></summary>
+              <p class="faq-answer">${item.a}</p>
+            </details>`).join('')}
+        </div>`).join('')}
       ${d.proto_desc ? `<p style="font-size:0.82rem;color:var(--muted2);">${d.proto_by || ''} <em>${d.proto_desc}</em></p>` : ''}
     `;
     body.appendChild(wrapEl);
