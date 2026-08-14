@@ -439,6 +439,23 @@ body {
   margin: 0 auto 12px; width: 60px; height: 60px; font-size: 1.8rem;
 }
 
+/* Bigger tap targets and text for the youngest — easier to read and tap */
+[data-age="tiny"] .ans {
+  padding: 18px 20px; font-size: var(--fs-base); border-radius: 16px;
+}
+[data-age="tiny"] .ans .ans-icon { font-size: 1.5rem; }
+[data-age="tiny"] .btn-primary, [data-age="tiny"] .btn-outline {
+  padding: 16px 32px; font-size: var(--fs-lg);
+}
+
+/* Tighter, denser UI for the oldest — matches the more technical content */
+[data-age="adult"] {
+  --r: 10px; --r-sm: 6px;
+}
+[data-age="adult"] .ans { padding: 11px 16px; }
+[data-age="adult"] .lesson-step { gap: 14px; }
+[data-age="adult"] .step-num { width: 44px; height: 44px; font-size: 1.3rem; }
+
 /* ── 15. MYTH BUSTERS (flip cards) ─────────────────────────── */
 .myths-grid {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
