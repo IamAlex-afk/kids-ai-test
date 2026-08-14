@@ -1034,6 +1034,29 @@ function initParent() {
     toggle.setAttribute('aria-expanded', open);
     body.style.display = open ? 'block' : 'none';
   });
+
+  // Sourced, long-tail Q&A (MIT Media Lab, UNESCO, EU AI Act, WEF, Ericsson
+  // 1993, ...) — written for real parent search queries and citable by
+  // search engines. This data already existed in parents-faq.js but had no
+  // reachable screen after the old gate screen was removed; surface it here
+  // instead of losing it.
+  const d = (window.PARENTS_FAQ || {})[S.lang] || (window.PARENTS_FAQ || {}).en;
+  if (d && Array.isArray(d.faq) && d.faq.length && !body.querySelector('.pf-sourced-faq')) {
+    const wrapEl = document.createElement('div');
+    wrapEl.className = 'pf-sourced-faq';
+    wrapEl.innerHTML = `
+      <h4>${d.faq_h || 'Frequently Asked Questions'}</h4>
+      <div class="faq-section" style="margin-bottom:16px">
+        ${d.faq.map(item => `
+          <details class="faq-item">
+            <summary><h3>${item.q}</h3></summary>
+            <p class="faq-answer">${item.a}</p>
+          </details>`).join('')}
+      </div>
+      ${d.proto_desc ? `<p style="font-size:0.82rem;color:var(--muted2);">${d.proto_by || ''} <em>${d.proto_desc}</em></p>` : ''}
+    `;
+    body.appendChild(wrapEl);
+  }
 }
 
 /* ─────────────────────────────────────────────
