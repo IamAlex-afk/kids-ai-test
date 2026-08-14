@@ -452,5 +452,115 @@
     renderMenu();
   }
 
-  window.KAT_Companion = { recordAccomplishment, render, setContent, getLevel: () => stageIndex(loadState().done.length) };
+
+  /* ─── PRAISE / HINT / INTRO PHRASES ──────────────────────────────────── */
+  const REACT = {
+    en: { praise: ['Nice!', 'You got it!', 'Great job!', 'Exactly right!'],
+          hint:   ['So close! Try the next one.', 'Not quite — you’ll get it!', 'Good try! Keep going.'],
+          intro:  'Hi! I’m your AI — I grow every time you learn something. Watch me level up!' },
+    ru: { praise: ['Отлично!', 'Так держать!', 'Молодец!', 'Точно в цель!'],
+          hint:   ['Почти! Дальше получится.', 'Не совсем — но ты справишься!', 'Хорошая попытка! Продолжай.'],
+          intro:  'Привет! Я твой ИИ — я расту каждый раз, когда ты учишься. Смотри, как я расту!' },
+    de: { praise: ['Super!', 'Genau richtig!', 'Klasse gemacht!', 'Stark!'],
+          hint:   ['Fast! Beim nächsten klappt’s.', 'Nicht ganz — du schaffst das!', 'Guter Versuch! Weiter so.'],
+          intro:  'Hallo! Ich bin deine KI — ich wachse jedes Mal, wenn du etwas lernst. Schau mir beim Wachsen zu!' },
+    es: { praise: ['¡Genial!', '¡Exacto!', '¡Muy bien!', '¡Lo lograste!'],
+          hint:   ['¡Casi! El siguiente te sale.', 'No exactamente — ¡tú puedes!', '¡Buen intento! Sigue así.'],
+          intro:  '¡Hola! Soy tu IA — crezco cada vez que aprendes algo. ¡Mira cómo subo de nivel!' },
+    fr: { praise: ['Génial !', 'Exactement !', 'Bien joué !', 'Super travail !'],
+          hint:   ['Presque ! Tu auras le prochain.', 'Pas tout à fait — tu vas y arriver !', 'Bel essai ! Continue.'],
+          intro:  'Salut ! Je suis ton IA — je grandis à chaque fois que tu apprends. Regarde-moi évoluer !' },
+    hi: { praise: ['शानदार!', 'बिल्कुल सही!', 'बहुत बढ़िया!', 'कमाल है!'],
+          hint:   ['बस थोड़ा सा! अगली बार सही होगा।', 'बिल्कुल नहीं — पर तुम कर लोगे!', 'अच्छी कोशिश! आगे बढ़ो।'],
+          intro:  'नमस्ते! मैं तुम्हारा एआई हूं — जब भी तुम कुछ सीखते हो, मैं बड़ा होता हूं। मुझे बढ़ते हुए देखो!' },
+    id: { praise: ['Mantap!', 'Tepat sekali!', 'Kerja bagus!', 'Hebat!'],
+          hint:   ['Hampir! Coba yang berikutnya.', 'Belum tepat — kamu pasti bisa!', 'Usaha bagus! Lanjutkan.'],
+          intro:  'Hai! Aku AI kamu — aku tumbuh setiap kali kamu belajar sesuatu. Lihat aku naik level!' },
+    pt: { praise: ['Ótimo!', 'Exatamente!', 'Muito bem!', 'Mandou bem!'],
+          hint:   ['Quase! A próxima você acerta.', 'Não foi dessa vez — você consegue!', 'Boa tentativa! Continue.'],
+          intro:  'Oi! Eu sou sua IA — eu cresço toda vez que você aprende algo. Veja-me subir de nível!' },
+    tr: { praise: ['Harika!', 'Tam isabet!', 'Aferin!', 'Süpersin!'],
+          hint:   ['Az kaldı! Bir dahakine olur.', 'Tam değil — başaracaksın!', 'Güzel deneme! Devam et.'],
+          intro:  'Selam! Ben senin yapay zekânım — bir şey öğrendiğinde büyürüm. Seviye atlamamı izle!' },
+    vi: { praise: ['Tuyệt vời!', 'Chính xác!', 'Làm tốt lắm!', 'Giỏi quá!'],
+          hint:   ['Gần đúng rồi! Câu sau sẽ được.', 'Chưa đúng — nhưng bạn sẽ làm được!', 'Cố gắng tốt! Tiếp tục nào.'],
+          intro:  'Chào bạn! Mình là AI của bạn — mình lớn lên mỗi khi bạn học được điều gì đó. Hãy xem mình lên cấp nhé!' },
+  };
+  function reactPhrase(lang, kind) {
+    const pool = (REACT[lang] || REACT.en)[kind];
+    if (!pool) return '';
+    if (Array.isArray(pool)) return pool[Math.floor(Math.random() * pool.length)];
+    return pool;
+  }
+
+  /* ─── FLOATING MASCOT + SPEECH BUBBLE ────────────────────────────────── */
+  let floatEl = null, floatCanvas = null, floatRaf = null, floatPoked = 0, floatLang = 'en';
+  let bubbleEl = null, bubbleTimer = null, bubbleQueue = [];
+
+  function mountFloating(lang) {
+    floatLang = lang || 'en';
+    if (floatEl) { updateFloatingLang(floatLang); return; }
+    if (!document.body) return;
+
+    floatEl = document.createElement('div');
+    floatEl.id = 'kat-float-mascot';
+    floatEl.className = 'kat-float-mascot';
+    floatEl.innerHTML = `
+      <div class="kat-float-bubble hidden" id="kat-float-bubble"></div>
+      <canvas class="kat-float-canvas" width="56" height="56"></canvas>`;
+    document.body.appendChild(floatEl);
+
+    floatCanvas = floatEl.querySelector('.kat-float-canvas');
+    bubbleEl = floatEl.querySelector('#kat-float-bubble');
+    const ctx = floatCanvas.getContext('2d');
+
+    floatEl.addEventListener('click', () => {
+      floatPoked = Date.now();
+      openTrainingScreen(floatLang);
+    });
+
+    function frame() {
+      const now = Date.now();
+      ctx.clearRect(0, 0, 56, 56);
+      const s = loadState();
+      drawCreature(ctx, 28, 30, stageIndex(s.done.length), now, now - floatPoked < 200);
+      floatRaf = requestAnimationFrame(frame);
+    }
+    floatRaf = requestAnimationFrame(frame);
+
+    try {
+      if (!localStorage.getItem('kat_companion_intro_seen')) {
+        localStorage.setItem('kat_companion_intro_seen', '1');
+        setTimeout(() => say(reactPhrase(floatLang, 'intro'), 'intro'), 900);
+      }
+    } catch (_) {}
+  }
+
+  function updateFloatingLang(lang) { floatLang = lang || floatLang; }
+
+  function setFloatingVisible(visible) {
+    if (!floatEl) return;
+    floatEl.classList.toggle('kat-float-hidden', !visible);
+  }
+
+  function say(text, mood) {
+    if (!text || !bubbleEl) return;
+    bubbleQueue.push({ text, mood: mood || 'praise' });
+    if (!bubbleTimer) drainBubbleQueue();
+  }
+  function drainBubbleQueue() {
+    const next = bubbleQueue.shift();
+    if (!next) { bubbleTimer = null; return; }
+    bubbleEl.textContent = next.text;
+    bubbleEl.className = 'kat-float-bubble kat-float-bubble-' + next.mood;
+    void bubbleEl.offsetWidth;
+    bubbleEl.classList.add('kat-float-bubble-show');
+    bubbleTimer = setTimeout(() => {
+      bubbleEl.classList.remove('kat-float-bubble-show');
+      bubbleTimer = setTimeout(drainBubbleQueue, 260);
+    }, next.mood === 'intro' ? 4200 : 2400);
+  }
+
+  function sayReaction(kind, lang) { say(reactPhrase(lang || floatLang, kind), kind); }
+  window.KAT_Companion = { recordAccomplishment, render, setContent, getLevel: () => stageIndex(loadState().done.length), mountFloating, say, sayReaction, setFloatingVisible, updateFloatingLang };
 })();
