@@ -11,16 +11,16 @@
   };
 
   const STR = {
-    en: { ready:'Get Ready!', spell:'Spell', build:'Build', round:'Round', start:'Start ▶', cont:'Continue →', hint:'Arrows / swipe / buttons. Grab the glowing target!', combo2:'x2 Combo!', combo3:'🔥 On Fire!', combo5:'⚡ Unstoppable!', exit:'Exit', mute:'Sound' },
-    ru: { ready:'Приготовься!', spell:'Собери слово', build:'Собери фразу', round:'Раунд', start:'Старт ▶', cont:'Дальше →', hint:'Стрелки / свайп / кнопки. Хватай светящуюся цель!', combo2:'x2 Комбо!', combo3:'🔥 В огне!', combo5:'⚡ Неудержим!', exit:'Выход', mute:'Звук' },
-    de: { ready:'Fertig!', spell:'Buchstabiere', build:'Bilde', round:'Runde', start:'Start ▶', cont:'Weiter →', hint:'Pfeile / Wischen / Tasten. Schnapp das leuchtende Ziel!', combo2:'x2 Kombo!', combo3:'🔥 Brennt!', combo5:'⚡ Unaufhaltbar!', exit:'Verlassen', mute:'Ton' },
-    es: { ready:'¡Listo!', spell:'Deletrea', build:'Construye', round:'Ronda', start:'Comenzar ▶', cont:'Continuar →', hint:'Flechas / desliza / botones. ¡Atrapa el objetivo!', combo2:'¡x2 Combo!', combo3:'🔥 ¡En llamas!', combo5:'⚡ ¡Imparable!', exit:'Salir', mute:'Sonido' },
-    fr: { ready:'Prêt !', spell:'Épelle', build:'Construis', round:'Manche', start:'Commencer ▶', cont:'Continuer →', hint:'Flèches / glisse / boutons. Attrape la cible !', combo2:'x2 Combo !', combo3:'🔥 En feu !', combo5:'⚡ Inarrêtable !', exit:'Quitter', mute:'Son' },
-    hi: { ready:'तैयार!', spell:'शब्द बनाओ', build:'वाक्य बनाओ', round:'राउंड', start:'शुरू ▶', cont:'आगे →', hint:'तीर / स्वाइप / बटन। चमकते लक्ष्य को पकड़ो!', combo2:'x2 कॉम्बो!', combo3:'🔥 जोश में!', combo5:'⚡ अजेय!', exit:'बाहर जाएं', mute:'साउंड' },
-    id: { ready:'Siap!', spell:'Eja', build:'Buat', round:'Babak', start:'Mulai ▶', cont:'Lanjutkan →', hint:'Panah / gesek / tombol. Ambil target!', combo2:'x2 Kombo!', combo3:'🔥 Membara!', combo5:'⚡ Tak Terhentikan!', exit:'Keluar', mute:'Suara' },
-    pt: { ready:'Pronto!', spell:'Soletrar', build:'Construir', round:'Rodada', start:'Iniciar ▶', cont:'Continuar →', hint:'Setas / deslize / botões. Pegue o alvo!', combo2:'x2 Combo!', combo3:'🔥 Em chamas!', combo5:'⚡ Imparável!', exit:'Sair', mute:'Som' },
-    tr: { ready:'Hazır!', spell:'Yaz', build:'İnşa Et', round:'Tur', start:'Başla ▶', cont:'Devam →', hint:'Oklar / kaydır / düğmeler. Parlayan hedefi yakala!', combo2:'x2 Kombo!', combo3:'🔥 Alev aldı!', combo5:'⚡ Durdurulamaz!', exit:'Çıkış', mute:'Ses' },
-    vi: { ready:'Sẵn sàng!', spell:'Đánh vần', build:'Xây dựng', round:'Vòng', start:'Bắt đầu ▶', cont:'Tiếp tục →', hint:'Mũi tên / vuốt / nút. Bắt mục tiêu sáng!', combo2:'x2 Combo!', combo3:'🔥 Bốc lửa!', combo5:'⚡ Không thể cản!', exit:'Thoát', mute:'Âm thanh' },
+    en: { ready:'Get Ready!', spell:'Spell', build:'Build', round:'Round', start:'Start ▶', cont:'Continue →', hint:'Arrows / swipe / buttons. Grab the glowing target!', combo2:'x2 Combo!', combo3:'🔥 On Fire!', combo5:'⚡ Unstoppable!', exit:'Exit', mute:'Sound', done:'DONE', oops:'OOPS' },
+    ru: { ready:'Приготовься!', spell:'Собери слово', build:'Собери фразу', round:'Раунд', start:'Старт ▶', cont:'Дальше →', hint:'Стрелки / свайп / кнопки. Хватай светящуюся цель!', combo2:'x2 Комбо!', combo3:'🔥 В огне!', combo5:'⚡ Неудержим!', exit:'Выход', mute:'Звук', done:'ГОТОВО', oops:'ОШИБКИ' },
+    de: { ready:'Fertig!', spell:'Buchstabiere', build:'Bilde', round:'Runde', start:'Start ▶', cont:'Weiter →', hint:'Pfeile / Wischen / Tasten. Schnapp das leuchtende Ziel!', combo2:'x2 Kombo!', combo3:'🔥 Brennt!', combo5:'⚡ Unaufhaltbar!', exit:'Verlassen', mute:'Ton', done:'FERTIG', oops:'FEHLER' },
+    es: { ready:'¡Listo!', spell:'Deletrea', build:'Construye', round:'Ronda', start:'Comenzar ▶', cont:'Continuar →', hint:'Flechas / desliza / botones. ¡Atrapa el objetivo!', combo2:'¡x2 Combo!', combo3:'🔥 ¡En llamas!', combo5:'⚡ ¡Imparable!', exit:'Salir', mute:'Sonido', done:'HECHO', oops:'ERRORES' },
+    fr: { ready:'Prêt !', spell:'Épelle', build:'Construis', round:'Manche', start:'Commencer ▶', cont:'Continuer →', hint:'Flèches / glisse / boutons. Attrape la cible !', combo2:'x2 Combo !', combo3:'🔥 En feu !', combo5:'⚡ Inarrêtable !', exit:'Quitter', mute:'Son', done:'FAIT', oops:'ERREURS' },
+    hi: { ready:'तैयार!', spell:'शब्द बनाओ', build:'वाक्य बनाओ', round:'राउंड', start:'शुरू ▶', cont:'आगे →', hint:'तीर / स्वाइप / बटन। चमकते लक्ष्य को पकड़ो!', combo2:'x2 कॉम्बो!', combo3:'🔥 जोश में!', combo5:'⚡ अजेय!', exit:'बाहर जाएं', mute:'साउंड', done:'पूरा', oops:'गलती' },
+    id: { ready:'Siap!', spell:'Eja', build:'Buat', round:'Babak', start:'Mulai ▶', cont:'Lanjutkan →', hint:'Panah / gesek / tombol. Ambil target!', combo2:'x2 Kombo!', combo3:'🔥 Membara!', combo5:'⚡ Tak Terhentikan!', exit:'Keluar', mute:'Suara', done:'SELESAI', oops:'SALAH' },
+    pt: { ready:'Pronto!', spell:'Soletrar', build:'Construir', round:'Rodada', start:'Iniciar ▶', cont:'Continuar →', hint:'Setas / deslize / botões. Pegue o alvo!', combo2:'x2 Combo!', combo3:'🔥 Em chamas!', combo5:'⚡ Imparável!', exit:'Sair', mute:'Som', done:'FEITO', oops:'ERROS' },
+    tr: { ready:'Hazır!', spell:'Yaz', build:'İnşa Et', round:'Tur', start:'Başla ▶', cont:'Devam →', hint:'Oklar / kaydır / düğmeler. Parlayan hedefi yakala!', combo2:'x2 Kombo!', combo3:'🔥 Alev aldı!', combo5:'⚡ Durdurulamaz!', exit:'Çıkış', mute:'Ses', done:'BİTTİ', oops:'HATA' },
+    vi: { ready:'Sẵn sàng!', spell:'Đánh vần', build:'Xây dựng', round:'Vòng', start:'Bắt đầu ▶', cont:'Tiếp tục →', hint:'Mũi tên / vuốt / nút. Bắt mục tiêu sáng!', combo2:'x2 Combo!', combo3:'🔥 Bốc lửa!', combo5:'⚡ Không thể cản!', exit:'Thoát', mute:'Âm thanh', done:'XONG', oops:'SAI' },
   };
   function t(lang, key) { return (STR[lang] || STR.en)[key] || key; }
 
@@ -536,12 +536,12 @@
         <div class="snake-hud">
           <div class="game-score-box">
             <span class="game-score-num" id="sk-score">0</span>
-            <span class="game-score-lbl">DONE</span>
+            <span class="game-score-lbl">${t(lang,'done')}</span>
           </div>
           <div class="game-round-info" id="sk-round"></div>
           <div class="game-score-box">
             <span class="game-score-num" id="sk-miss">0</span>
-            <span class="game-score-lbl">OOPS</span>
+            <span class="game-score-lbl">${t(lang,'oops')}</span>
           </div>
         </div>
         <div class="pf-subhud">
