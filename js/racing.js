@@ -151,7 +151,11 @@
     const pattern = WORLD_CHORDS[worldIdx % WORLD_CHORDS.length];
     function tick() {
       const freq = pattern[step % pattern.length];
-      if (!MUTED && freq) tone(freq, 0, 0.6, 'triangle', 0.022);
+      if (!MUTED && freq) {
+        const accent = step % 4 === 0;
+        tone(freq / 2, 0, 0.55, 'sine', accent ? 0.028 : 0.018);
+        tone(freq, 0.03, 0.28, 'triangle', accent ? 0.022 : 0.014);
+      }
       step++;
       timer = setTimeout(tick, 640);
     }
@@ -471,7 +475,7 @@
       roadY: 0,
       over: false, won: false, paused: true,
       everHit: false, everLostPart: false, everRespawned: false,
-      shakeUntil: 0,
+      shakeUntil: 0, slowUntil: 0,
       checkpointsHit: [], lastCheckpoint: null, pendingQuiz: null,
       lane: Math.floor(cfg.lanes / 2),
       laneVisual: Math.floor(cfg.lanes / 2),
@@ -796,6 +800,7 @@
       }
       state.hurtUntil = now + 900;
       state.shakeUntil = now + 220;
+      state.slowUntil = now + 4000;
       playHitSound(); haptic([80, 40, 80]);
       spawnBurst(particles, laneX(state.lane), state.carY, '#f87171', 14);
       if (state.parts > 0) {
@@ -889,7 +894,8 @@
       state.elapsedMs += dt;
       const progress = Math.min(1, state.elapsedMs / (cfg.rampSec * 1000));
       const boostMult = now < state.boostUntil ? 1.7 : 1;
-      state.speed = lerp(cfg.baseSpeed, cfg.maxSpeed, progress) * boostMult;
+      const slowMult = now < (state.slowUntil || 0) ? 0.45 : 1;
+      state.speed = lerp(cfg.baseSpeed, cfg.maxSpeed, progress) * boostMult * slowMult;
       state.roadY += state.speed * (dt / 16.6);
 
       // Smoothly interpolate the visual lane position toward the logical one.
