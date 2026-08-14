@@ -33,12 +33,13 @@
   }
   function tone(freq, start, dur, type, vol) {
     const ctx = ac(); if (!ctx) return;
-    const o = ctx.createOscillator(), g = ctx.createGain();
+    const o = ctx.createOscillator(), g = ctx.createGain(), f = ctx.createBiquadFilter();
     o.type = type; o.frequency.value = freq;
-    o.connect(g); g.connect(ctx.destination);
+    f.type = 'lowpass'; f.frequency.value = Math.min(4200, freq * 5 + 900); f.Q.value = 0.6;
+    o.connect(f); f.connect(g); g.connect(ctx.destination);
     const t0 = ctx.currentTime + start;
     g.gain.setValueAtTime(0.001, t0);
-    g.gain.exponentialRampToValueAtTime(vol, t0 + 0.01);
+    g.gain.exponentialRampToValueAtTime(vol, t0 + 0.015);
     g.gain.exponentialRampToValueAtTime(0.001, t0 + dur);
     o.start(t0); o.stop(t0 + dur + 0.04);
   }
