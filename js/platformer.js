@@ -122,31 +122,33 @@
   }
   function tone(freq, start, dur, type, vol) {
     const ctx = ac(); if (!ctx) return;
-    const o = ctx.createOscillator(), g = ctx.createGain();
+    const o = ctx.createOscillator(), g = ctx.createGain(), f = ctx.createBiquadFilter();
     o.type = type; o.frequency.value = freq;
-    o.connect(g); g.connect(ctx.destination);
+    f.type = 'lowpass'; f.frequency.value = Math.min(4200, freq * 5 + 900); f.Q.value = 0.6;
+    o.connect(f); f.connect(g); g.connect(ctx.destination);
     const t0 = ctx.currentTime + start;
     g.gain.setValueAtTime(0.001, t0);
-    g.gain.exponentialRampToValueAtTime(vol, t0 + 0.01);
+    g.gain.exponentialRampToValueAtTime(vol, t0 + 0.015);
     g.gain.exponentialRampToValueAtTime(0.001, t0 + dur);
     o.start(t0); o.stop(t0 + dur + 0.04);
   }
   function sweep(f0, f1, start, dur, type, vol) {
     const ctx = ac(); if (!ctx) return;
-    const o = ctx.createOscillator(), g = ctx.createGain();
-    o.type = type; o.connect(g); g.connect(ctx.destination);
+    const o = ctx.createOscillator(), g = ctx.createGain(), f = ctx.createBiquadFilter();
+    o.type = type; f.type = 'lowpass'; f.frequency.value = Math.min(4200, Math.max(f0, f1) * 4 + 900); f.Q.value = 0.6;
+    o.connect(f); f.connect(g); g.connect(ctx.destination);
     const t0 = ctx.currentTime + start;
     o.frequency.setValueAtTime(f0, t0);
     o.frequency.exponentialRampToValueAtTime(f1, t0 + dur);
     g.gain.setValueAtTime(0.001, t0);
-    g.gain.exponentialRampToValueAtTime(vol, t0 + 0.01);
+    g.gain.exponentialRampToValueAtTime(vol, t0 + 0.015);
     g.gain.exponentialRampToValueAtTime(0.001, t0 + dur);
     o.start(t0); o.stop(t0 + dur + 0.04);
   }
-  const playJumpSound   = () => sweep(200, 400, 0, 0.10, 'square', 0.10);
-  const playJump2Sound  = () => sweep(300, 620, 0, 0.11, 'square', 0.11);
+  const playJumpSound   = () => sweep(200, 400, 0, 0.10, 'triangle', 0.10);
+  const playJump2Sound  = () => sweep(300, 620, 0, 0.11, 'triangle', 0.11);
   const playCollectSound = () => { tone(800, 0, 0.16, 'sine', 0.16); tone(1200, 0.05, 0.1, 'sine', 0.1); };
-  const playCoinSound   = () => { tone(1046, 0, 0.05, 'square', 0.10); tone(1568, 0.04, 0.08, 'square', 0.10); };
+  const playCoinSound   = () => { tone(1046, 0, 0.05, 'triangle', 0.10); tone(1568, 0.04, 0.08, 'triangle', 0.10); };
   const playShieldSound = () => sweep(500, 900, 0, 0.2, 'sine', 0.14);
   const playSpringSound = () => sweep(150, 700, 0, 0.18, 'sawtooth', 0.14);
   const playHitSound    = () => tone(100, 0, 0.22, 'sawtooth', 0.16);
