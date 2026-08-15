@@ -107,6 +107,20 @@
     img.src = TREE_IMAGES[key];
   });
 
+  // Real player-car art (CC0, kenney.nl Racing Pack), one image per skin
+  // colour. Additive/fallback-safe: draw() checks isCarSpriteReady() before
+  // using it, else falls straight through to the existing procedural
+  // drawCar() unchanged.
+  const CAR_SPRITES = { cyan: 'assets/car-cyan.png', red: 'assets/car-red.png', gold: 'assets/car-gold.png' };
+  const _carImg = {}, _carReady = {};
+  Object.keys(CAR_SPRITES).forEach(key => {
+    const img = new Image();
+    img.onload = () => { _carImg[key] = img; _carReady[key] = true; };
+    img.onerror = () => { _carReady[key] = false; };
+    img.src = CAR_SPRITES[key];
+  });
+  function isCarSpriteReady(skin) { return !!_carReady[skin]; }
+
   let MUTED = !!readJSON(LS_MUTE, false);
   function setMuted(v) { MUTED = !!v; writeJSON(LS_MUTE, MUTED); }
   let _actx = null;
@@ -434,6 +448,31 @@
       ctx.beginPath(); ctx.arc(0, -2, 26 * pulse, 0, Math.PI * 2); ctx.stroke();
     }
 
+    ctx.restore(); ctx.shadowBlur = 0;
+  }
+
+  function drawCarSprite(ctx, x, y, opts) {
+    const { hurt, shielded, boosting, skin, now } = opts;
+    const img = _carImg[skin] || _carImg.cyan;
+    if (!img) return;
+    ctx.save();
+    ctx.translate(x, y);
+    if (boosting) {
+      ctx.fillStyle = 'rgba(251,191,36,0.6)';
+      ctx.beginPath(); ctx.moveTo(-5, 19); ctx.lineTo(0, 32 + Math.random() * 8); ctx.lineTo(5, 19); ctx.fill();
+    }
+    ctx.shadowColor = hurt ? '#f87171' : (SKINS[skin] || theme.accent);
+    ctx.shadowBlur = hurt ? 20 : (boosting ? 24 : 14);
+    if (hurt) ctx.globalAlpha = 0.55 + 0.45 * Math.sin(now * 0.03);
+    const w = img.width * 0.72, h = img.height * 0.72;
+    ctx.drawImage(img, -w / 2, -h / 2, w, h);
+    ctx.globalAlpha = 1;
+    if (shielded) {
+      const pulse = 0.75 + 0.25 * Math.sin(now * 0.01);
+      ctx.strokeStyle = `rgba(96,165,250,${0.5 * pulse})`;
+      ctx.lineWidth = 2; ctx.shadowBlur = 16; ctx.shadowColor = '#60a5fa';
+      ctx.beginPath(); ctx.arc(0, -2, 26 * pulse, 0, Math.PI * 2); ctx.stroke();
+    }
     ctx.restore(); ctx.shadowBlur = 0;
   }
 
@@ -1023,11 +1062,18 @@
         ctx.restore();
       });
 
-      drawCar(ctx, laneX(state.laneVisual), state.carY, {
-        partStage: state.parts, maxStage: cfg.partStages, hurt,
-        shielded: state.shield, boosting: now < state.boostUntil,
-        skinColor: SKINS[getSkin()] || theme.accent, now,
-      });
+      if (isCarSpriteReady(getSkin())) {
+        drawCarSprite(ctx, laneX(state.laneVisual), state.carY, {
+          hurt, shielded: state.shield, boosting: now < state.boostUntil,
+          skin: getSkin(), now,
+        });
+      } else {
+        drawCar(ctx, laneX(state.laneVisual), state.carY, {
+          partStage: state.parts, maxStage: cfg.partStages, hurt,
+          shielded: state.shield, boosting: now < state.boostUntil,
+          skinColor: SKINS[getSkin()] || theme.accent, now,
+        });
+      }
       drawParticles(ctx, particles);
       ctx.restore();
     }
