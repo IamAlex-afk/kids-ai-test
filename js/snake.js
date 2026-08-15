@@ -57,6 +57,11 @@
   /* ─── HELPERS ─────────────────────────────────────────────────────── */
   function lerp(a, b, tt) { return a + (b - a) * Math.min(1, Math.max(0, tt)); }
 
+  // Visual complexity tier: tiny/child get a friendlier, calmer, simpler look;
+  // teen/adult get the denser cyber/CRT look. Difficulty (speed/decoys) is
+  // already handled separately by AGE_CFG.
+  function tierFor(age) { return (age === 'teen' || age === 'adult') ? 'cyber' : 'cute'; }
+
   function rrect(ctx, x, y, w, h, r) {
     r = Math.min(r, w / 2, h / 2);
     ctx.beginPath();
@@ -123,43 +128,47 @@
   }
 
   /* ─── BACKGROUND PRE-RENDER ───────────────────────────────────────── */
-  function buildBgCanvas(W, H, cell, cols, rows) {
+  function buildBgCanvas(W, H, cell, cols, rows, tier) {
+    const isCute = tier === 'cute';
     const bc = document.createElement('canvas');
     bc.width = W; bc.height = H;
     const g = bc.getContext('2d');
-    g.fillStyle = '#07080f';
+    g.fillStyle = isCute ? '#0b0f1e' : '#07080f';
     g.fillRect(0, 0, W, H);
 
-    // Grid lines
-    g.strokeStyle = 'rgba(34,211,238,0.065)';
+    // Grid lines — softer/sparser for young kids, dense circuit-cyan for teen/adult
+    g.strokeStyle = isCute ? 'rgba(129,140,248,0.045)' : 'rgba(34,211,238,0.065)';
     g.lineWidth = 0.5;
     for (let x = 0; x <= W; x += cell) { g.beginPath(); g.moveTo(x, 0); g.lineTo(x, H); g.stroke(); }
     for (let y = 0; y <= H; y += cell) { g.beginPath(); g.moveTo(0, y); g.lineTo(W, y); g.stroke(); }
 
-    // Circuit traces (seeded)
+    // Circuit traces (seeded) — fewer & gentler for young kids
     const rng = seededRng(137);
-    for (let i = 0; i < 10; i++) {
+    const traceColor = isCute ? '129,140,248' : '34,211,238';
+    const traceCount = isCute ? 5 : 10;
+    for (let i = 0; i < traceCount; i++) {
       const gx = (Math.floor(rng() * (cols - 1)) + 0.5) * cell;
       const gy = (Math.floor(rng() * (rows - 1)) + 0.5) * cell;
       const len = (1 + Math.floor(rng() * 3)) * cell;
       const horiz = rng() > 0.5;
-      g.strokeStyle = `rgba(34,211,238,${0.10 + rng() * 0.12})`;
+      g.strokeStyle = `rgba(${traceColor},${(isCute ? 0.07 : 0.10) + rng() * 0.12})`;
       g.lineWidth = 1.5;
       g.beginPath();
       if (horiz) { g.moveTo(gx, gy); g.lineTo(gx + len, gy); }
       else       { g.moveTo(gx, gy); g.lineTo(gx, gy + len); }
       g.stroke();
       // junction dot
-      g.fillStyle = `rgba(34,211,238,${0.25 + rng() * 0.2})`;
+      g.fillStyle = `rgba(${traceColor},${0.25 + rng() * 0.2})`;
       g.beginPath(); g.arc(gx, gy, 2.5, 0, Math.PI * 2); g.fill();
       if (horiz) { g.beginPath(); g.arc(gx + len, gy, 2, 0, Math.PI * 2); g.fill(); }
       else       { g.beginPath(); g.arc(gx, gy + len, 2, 0, Math.PI * 2); g.fill(); }
     }
 
-    // Corner dots
-    g.fillStyle = 'rgba(34,211,238,0.07)';
-    for (let x = 0; x <= W; x += cell * 2)
-      for (let y = 0; y <= H; y += cell * 2) {
+    // Corner dots — sparser for young kids
+    g.fillStyle = `rgba(${traceColor},0.07)`;
+    const dotStep = isCute ? cell * 3 : cell * 2;
+    for (let x = 0; x <= W; x += dotStep)
+      for (let y = 0; y <= H; y += dotStep) {
         g.beginPath(); g.arc(x, y, 1.5, 0, Math.PI * 2); g.fill();
       }
 
@@ -167,7 +176,8 @@
   }
 
   /* ─── MONITOR HEAD RENDERER ───────────────────────────────────────── */
-  function drawMonitor(ctx, cx, cy, cell, dir, now, eating, dead) {
+  function drawMonitor(ctx, cx, cy, cell, dir, now, eating, dead, tier) {
+    const isCute = tier === 'cute';
     ctx.save();
     ctx.translate(cx, cy);
     const angle = dir.x > 0 ? 0 : dir.x < 0 ? Math.PI : dir.y > 0 ? Math.PI/2 : -Math.PI/2;
@@ -183,7 +193,7 @@
     ctx.fillStyle   = dead ? '#1a0808' : '#0a1628';
     ctx.strokeStyle = dead ? '#f87171' : eating ? '#aaffff' : '#22d3ee';
     ctx.lineWidth = 2;
-    rrect(ctx, mx, my, mw, mh, Math.min(7, s * 0.15));
+    rrect(ctx, mx, my, mw, mh, isCute ? Math.min(14, s * 0.30) : Math.min(7, s * 0.15));
     ctx.fill(); ctx.stroke();
     ctx.shadowBlur = 0;
 
@@ -236,16 +246,26 @@
         ctx.beginPath();
         ctx.ellipse(side * eyeX, eyeY, eyeR, blink ? Math.max(0.5, eyeR * 0.08) : eyeR, 0, 0, Math.PI * 2);
         ctx.fill();
+        // Friendly sparkle highlight for young kids
+        if (isCute && !blink) {
+          ctx.fillStyle = 'rgba(255,255,255,0.85)';
+          ctx.beginPath();
+          ctx.arc(side * eyeX - eyeR * 0.35, eyeY - eyeR * 0.35, eyeR * 0.28, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = eating ? '#ffff66' : '#00ffff';
+        }
       });
       ctx.shadowBlur = 0;
 
-      // Mouth
-      ctx.strokeStyle = eating ? 'rgba(255,255,80,0.85)' : 'rgba(0,255,200,0.5)';
+      // Mouth — young kids always get a gentle smile, teen/adult only smiles while eating
+      ctx.strokeStyle = eating ? 'rgba(255,255,80,0.85)' : (isCute ? 'rgba(0,255,200,0.6)' : 'rgba(0,255,200,0.5)');
       ctx.lineWidth = Math.max(1, s * 0.038);
       ctx.lineCap = 'round';
       ctx.beginPath();
       if (eating) {
         ctx.arc(0, eyeY + eyeR * 3.0, eyeR * 1.4, -Math.PI * 0.75, -Math.PI * 0.25);
+      } else if (isCute) {
+        ctx.arc(0, eyeY + eyeR * 2.6, eyeR * 1.2, 0.15, Math.PI - 0.15);
       } else {
         ctx.arc(0, eyeY + eyeR * 2.8, eyeR * 1.3, 0.25, Math.PI - 0.25);
       }
@@ -271,11 +291,12 @@
   /* ─── KEYBOARD SEGMENT RENDERER ──────────────────────────────────── */
   const KEY_LABELS = ['ESC','F1','TAB','ALT','DEL','←','→','↑','↓','SPC','CTL','F2','END','INS','F3','PgUp'];
 
-  function drawKeySegment(ctx, px, py, cell, idx, alpha) {
+  function drawKeySegment(ctx, px, py, cell, idx, alpha, tier) {
+    const isCute = tier === 'cute';
     const pad = cell * 0.10;
     const x = px + pad, y = py + pad;
     const w = cell - pad * 2, h = cell - pad * 2;
-    const r = Math.min(5, cell * 0.14);
+    const r = isCute ? Math.min(10, cell * 0.30) : Math.min(5, cell * 0.14);
 
     // Drop shadow (3D depth)
     ctx.fillStyle = `rgba(80,20,130,${alpha * 0.55})`;
@@ -316,8 +337,13 @@
     ctx.lineTo(x + 1.5, y + h - r - 1);
     ctx.stroke();
 
-    // Key label
-    if (cell >= 18) {
+    // Key label — young non-readers get a simple dot instead of illegible key names
+    if (isCute) {
+      ctx.fillStyle = `rgba(210,160,255,${alpha * 0.7})`;
+      ctx.beginPath();
+      ctx.arc(px + cell / 2, py + cell / 2, Math.max(2, cell * 0.09), 0, Math.PI * 2);
+      ctx.fill();
+    } else if (cell >= 18) {
       const label = KEY_LABELS[idx % KEY_LABELS.length];
       const fs = Math.max(5, Math.round(cell * 0.21));
       ctx.fillStyle = `rgba(195,135,255,${alpha * 0.72})`;
@@ -409,7 +435,8 @@
   }
 
   /* ─── TOKEN RENDERER ──────────────────────────────────────────────── */
-  function drawToken(ctx, tok, cell, isTarget, sizing, now) {
+  function drawToken(ctx, tok, cell, isTarget, sizing, now, tier) {
+    const isCute = tier === 'cute';
     const x = tok.x * cell, y = tok.y * cell;
     const cx2 = x + cell / 2, cy2 = y + cell / 2;
     ctx.save();
@@ -447,9 +474,9 @@
       ctx.fillStyle = color;
       ctx.shadowBlur = 14; ctx.shadowColor = color;
     } else {
-      // Decoy — red error / virus
+      // Decoy — softer amber "not it" for young kids, red error/virus for teen/adult
       const dPulse = 0.6 + 0.35 * Math.sin(now / 130 + tok.x);
-      const color  = '#f87171';
+      const color  = isCute ? '#fb923c' : '#f87171';
 
       ctx.globalAlpha = 0.38 + 0.12 * dPulse;
       ctx.shadowBlur  = 8; ctx.shadowColor = color;
@@ -488,6 +515,7 @@
   function KatSnake(container, opts) {
     const age    = AGE_CFG[opts.age] ? opts.age : 'child';
     const cfg    = AGE_CFG[age];
+    const tier   = tierFor(age);
     const lang   = opts.lang || 'en';
     const rounds = opts.rounds || [];
 
@@ -590,7 +618,7 @@
       els.canvas.style.width = '100%';
       els.canvas.style.maxWidth = (cfg.cols * cfg.cell) + 'px';
 
-      bgCanvas = buildBgCanvas(cfg.cols * cfg.cell, cfg.rows * cfg.cell, cfg.cell, cfg.cols, cfg.rows);
+      bgCanvas = buildBgCanvas(cfg.cols * cfg.cell, cfg.rows * cfg.cell, cfg.cell, cfg.cols, cfg.rows, tier);
 
       container.querySelectorAll('.sk-dbtn').forEach(btn =>
         on(btn, 'pointerdown', (e) => { e.preventDefault(); setDir(btn.dataset.dir); })
@@ -852,13 +880,13 @@
       for (let i = Math.min(n - 1, cableStart - 1); i >= 1; i--) {
         const seg = iCenters[i];
         const alpha = Math.max(0.3, 1 - (i / Math.max(1, n - 1)) * 0.55);
-        drawKeySegment(ctx, seg.x, seg.y, cell, i, alpha);
+        drawKeySegment(ctx, seg.x, seg.y, cell, i, alpha, tier);
       }
 
       // 3. Draw monitor head
       if (n > 0) {
         const head = iCenters[0];
-        drawMonitor(ctx, head.cx, head.cy, cell, dir, now, isEating, isDead);
+        drawMonitor(ctx, head.cx, head.cy, cell, dir, now, isEating, isDead, tier);
       }
 
       // Tokens
@@ -867,8 +895,8 @@
                    : unit === 'word'   ? { maxW: cell * 3.2, baseMult: 0.42, minFont: 8 }
                    :                     { maxW: cell * 2.2, baseMult: 0.50, minFont: 10 };
 
-      if (target) drawToken(ctx, target, cell, true, sizing, now);
-      (decoyList || []).forEach(d => drawToken(ctx, d, cell, false, sizing, now));
+      if (target) drawToken(ctx, target, cell, true, sizing, now, tier);
+      (decoyList || []).forEach(d => drawToken(ctx, d, cell, false, sizing, now, tier));
 
       // Particles and floats
       tickParticles(particles); drawParticles(ctx, particles);
