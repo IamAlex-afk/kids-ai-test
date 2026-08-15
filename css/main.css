@@ -1207,3 +1207,15 @@ footer a:hover { text-decoration: underline; }
 .cmp-table td { color:var(--muted2); line-height:1.5; }
 .cmp-table tbody tr:hover { background:var(--card); }
 @media (max-width:520px) { .cmp-table { font-size:.78rem; } .cmp-table th, .cmp-table td { padding:8px 6px; } }
+
+
+/* ── Age-picker background decoration (inline SVG, no extra request) ─── */
+#age-picker { position: relative; }
+#age-picker > .sec-header,
+#age-picker > .section-heading,
+#age-picker > .section-explain,
+#age-picker > .age-grid { position: relative; z-index: 1; }
+.age-decor { position: absolute; color: var(--accent); opacity: 0.09; pointer-events: none; z-index: 0; }
+.age-decor-1 { top: 30px; left: -18px; width: 84px; transform: rotate(-9deg); }
+.age-decor-2 { top: 160px; right: -14px; width: 66px; transform: rotate(7deg); }
+@media (max-width: 480px) { .age-decor-1 { width: 60px; left: -12px; } .age-decor-2 { width: 46px; right: -8px; top: 200px; } }
