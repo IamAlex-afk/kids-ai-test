@@ -91,6 +91,64 @@
     return set[worldIdx % set.length];
   }
 
+
+  /* ═══════════════════════════════════════════════════════════════════
+     ROBOT SPRITE SHEET — optional, additive. Fill in ROBOT_SPRITE.src
+     once a real asset (CC0/free-licensed) is available and drawRobot()
+     will automatically be swapped for the frame-based drawRobotSprite()
+     everywhere it's called. Until then src stays null, isSpriteReady()
+     returns false, and the game renders the current procedural robot
+     exactly as before — this block changes nothing visually by itself.
+
+     Expected sheet layout: a grid of equal-size frames, one row per
+     animation. Update frameW/frameH to the sheet's actual per-frame
+     pixel size, and each anim's `row` (0-indexed) + `frames` (frame
+     count in that row) + `fps` (playback speed) to match.
+  ═══════════════════════════════════════════════════════════════════ */
+  const ROBOT_SPRITE = {
+    src: null, // e.g. 'assets/robot-sheet.png' — set this to enable
+    frameW: 32,
+    frameH: 32,
+    anims: {
+      idle: { row: 0, frames: 4, fps: 6 },
+      run:  { row: 1, frames: 6, fps: 12 },
+      jump: { row: 2, frames: 2, fps: 8 },
+      hurt: { row: 3, frames: 2, fps: 8 },
+    },
+  };
+  let _robotImg = null, _robotImgReady = false;
+  function isSpriteReady() { return _robotImgReady; }
+  (function preloadRobotSprite() {
+    if (!ROBOT_SPRITE.src) return;
+    const img = new Image();
+    img.onload = () => { _robotImg = img; _robotImgReady = true; };
+    img.onerror = () => { _robotImgReady = false; };
+    img.src = ROBOT_SPRITE.src;
+  })();
+
+  // Picks the right animation name from the same state flags drawRobot()
+  // already receives, so callers don't need to change.
+  function pickRobotAnim(opts) {
+    if (opts.hurt) return 'hurt';
+    if (!opts.onGround) return 'jump';
+    if (opts.moving === false) return 'idle';
+    return 'run';
+  }
+
+  function drawRobotSprite(ctx, x, y, opts) {
+    const animName = pickRobotAnim(opts);
+    const anim = ROBOT_SPRITE.anims[animName] || ROBOT_SPRITE.anims.idle;
+    const frame = Math.floor((opts.now || 0) / (1000 / anim.fps)) % anim.frames;
+    const sx = frame * ROBOT_SPRITE.frameW;
+    const sy = anim.row * ROBOT_SPRITE.frameH;
+    const drawW = ROBOT_SPRITE.frameW * 1.4, drawH = ROBOT_SPRITE.frameH * 1.4;
+    ctx.save();
+    ctx.translate(x, y);
+    if (opts.hurt) { ctx.globalAlpha = 0.6 + 0.4 * Math.sin((opts.now || 0) * 0.03); }
+    ctx.drawImage(_robotImg, sx, sy, ROBOT_SPRITE.frameW, ROBOT_SPRITE.frameH, -drawW / 2, -drawH + 6, drawW, drawH);
+    ctx.restore();
+  }
+
   const SKINS = { cyan: '#22d3ee', green: '#34d399', gold: '#fbbf24' };
 
   const STR = {
@@ -1293,12 +1351,18 @@
         ctx.restore();
       });
 
-      drawRobot(ctx, player.x, player.y, {
-        partStage: state.parts, maxStage: cfg.partStages, onGround: player.onGround, now, hurt,
-        sliding: state.sliding && cfg.slide, shielded: state.shield, dashing: now < player.dashUntil,
-        jumpsUsed: player.jumpsUsed, skinColor: SKINS[getSkin()] || theme.accent,
-        firing: now < player.fireFlashUntil,
-      });
+      if (isSpriteReady()) {
+        drawRobotSprite(ctx, player.x, player.y, {
+          onGround: player.onGround, now, hurt, moving: !state.paused && !state.over,
+        });
+      } else {
+        drawRobot(ctx, player.x, player.y, {
+          partStage: state.parts, maxStage: cfg.partStages, onGround: player.onGround, now, hurt,
+          sliding: state.sliding && cfg.slide, shielded: state.shield, dashing: now < player.dashUntil,
+          jumpsUsed: player.jumpsUsed, skinColor: SKINS[getSkin()] || theme.accent,
+          firing: now < player.fireFlashUntil,
+        });
+      }
       drawParticles(ctx, particles);
       ctx.restore();
     }
