@@ -95,6 +95,18 @@
 
   /* ─── AUDIO / HAPTICS ─────────────────────────────────────────────── */
   const LS_MUTE = 'kat_race_muted';
+  // Real tree art along the road shoulders (CC0, kenney.nl Racing Pack).
+  // Additive/fallback-safe: if unloaded, the shoulders just stay empty as
+  // before — draw() checks _treeReady before drawing anything.
+  const TREE_IMAGES = { large: 'assets/tree-large.png', small: 'assets/tree-small.png' };
+  const _treeImg = {}, _treeReady = {};
+  Object.keys(TREE_IMAGES).forEach(key => {
+    const img = new Image();
+    img.onload = () => { _treeImg[key] = img; _treeReady[key] = true; };
+    img.onerror = () => { _treeReady[key] = false; };
+    img.src = TREE_IMAGES[key];
+  });
+
   let MUTED = !!readJSON(LS_MUTE, false);
   function setMuted(v) { MUTED = !!v; writeJSON(LS_MUTE, MUTED); }
   let _actx = null;
@@ -938,6 +950,22 @@
       const hurt = now < (state.hurtUntil || 0) && Math.floor(now / 90) % 2 === 0;
       if (now < (state.hurtUntil || 0)) { ctx.fillStyle = 'rgba(248,113,113,0.10)'; ctx.fillRect(0, 0, W, H); }
       if (now < state.boostUntil) { ctx.fillStyle = 'rgba(255,255,255,0.05)'; ctx.fillRect(0, 0, W, H); }
+
+      // Roadside trees — real art, tiled vertically with the same scroll
+      // as the lane dividers so they read as part of the world, not a
+      // static overlay. Alternates small/large for a less uniform tree
+      // line; drawn before the road so the road's edge line sits on top.
+      if (_treeReady.small && _treeReady.large) {
+        const spacing = 130;
+        const treeOff = state.roadY % spacing;
+        for (let y = -treeOff - spacing; y < H + spacing; y += spacing) {
+          const big = Math.floor((y + state.roadY) / spacing) % 2 === 0;
+          const img = big ? _treeImg.large : _treeImg.small;
+          const w = big ? 34 : 24, h = w * (img.height / img.width);
+          ctx.drawImage(img, state.roadX1 * 0.32 - w / 2, y - h / 2, w, h);
+          ctx.drawImage(img, state.roadX2 + (W - state.roadX2) * 0.68 - w / 2, y - h / 2, w, h);
+        }
+      }
 
       // Road
       ctx.fillStyle = theme.road;
