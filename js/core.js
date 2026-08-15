@@ -478,8 +478,16 @@ function onLessonsDone() {
 ───────────────────────────────────────────── */
 
 const GAME_PICKER_STR = {
-  en: { title: 'Choose a game', snakeName: '🐍 AI Snake', snakeDesc: 'Classic — eat the right letters', pfName: '🤖 Circuit Runner', pfDesc: 'Run, jump, dodge, build your robot', raceName: '🏎️ Circuit Racer', raceDesc: 'Switch lanes, dodge traffic, build your car' },
-  ru: { title: 'Выбери игру', snakeName: '🐍 AI Змейка', snakeDesc: 'Классика — собирай нужные буквы', pfName: '🤖 Circuit Runner', pfDesc: 'Беги, прыгай, собери робота', raceName: '🏎️ Circuit Racer', raceDesc: 'Меняй полосы, уклоняйся, собери машину' },
+  en: { title: 'Choose a game', snakeName: '🐍 AI Snake', snakeDesc: 'Classic — eat the right letters', pfName: '🤖 Circuit Runner', pfDesc: 'Run, jump, dodge, build your robot', raceName: '🏎️ Circuit Racer', raceDesc: 'Switch lanes, dodge traffic, build your car', exit: 'Exit' },
+  ru: { title: 'Выбери игру', snakeName: '🐍 AI Змейка', snakeDesc: 'Классика — собирай нужные буквы', pfName: '🤖 Circuit Runner', pfDesc: 'Беги, прыгай, собери робота', raceName: '🏎️ Circuit Racer', raceDesc: 'Меняй полосы, уклоняйся, собери машину', exit: 'Выход' },
+  de: { exit: 'Verlassen' },
+  es: { exit: 'Salir' },
+  fr: { exit: 'Quitter' },
+  hi: { exit: 'बाहर जाएं' },
+  id: { exit: 'Keluar' },
+  pt: { exit: 'Sair' },
+  tr: { exit: 'Çıkış' },
+  vi: { exit: 'Thoát' },
 };
 function gpStr(k) { const d = GAME_PICKER_STR[S.lang] || GAME_PICKER_STR.en; return d[k] || GAME_PICKER_STR.en[k]; }
 
@@ -496,7 +504,10 @@ function startGame() {
   S.game      = { idx: 0, score: 0, rounds: cfg.gameRounds, done: false };
   lsSave();
   show('game');
-  scrollTo('game');
+  // Fullscreen while actively playing — kid lands straight on the
+  // game/level picker with nothing to scroll past. Turned off in
+  // onGameDone() / exitFullscreenGame().
+  document.body.classList.add('game-fullscreen');
   window.KAT_Companion?.setFloatingVisible(false);
 
   const container = $('game-content');
@@ -508,11 +519,21 @@ function startGame() {
   else onGameDone();
 }
 
+// Bail out of the fullscreen game area back to normal browsing without
+// marking the game session as done (no "nice job" card, no quiz nudge —
+// the kid just changed their mind).
+function exitFullscreenGame() {
+  document.body.classList.remove('game-fullscreen');
+  window.KAT_Companion?.setFloatingVisible(true);
+}
+
 function renderGamePicker(container, games) {
   games = games || availableGames();
   container.innerHTML = `
+    <button class="pf-icon-btn game-picker-exit" id="gp-exit" title="${gpStr('exit')}">✕</button>
     <p class="snake-hint" style="margin-bottom:10px;font-weight:700;">${gpStr('title')}</p>
     <div class="pf-world-grid" id="gp-grid"></div>`;
+  container.querySelector('#gp-exit').addEventListener('click', exitFullscreenGame);
   const grid = container.querySelector('#gp-grid');
   games.forEach(g => {
     const card = document.createElement('button');
@@ -584,6 +605,7 @@ function launchRacing(container) {
 }
 
 function onGameDone() {
+  document.body.classList.remove('game-fullscreen');
   window.KAT_Companion?.setFloatingVisible(true);
   S.game.done = true;
   lsSave();

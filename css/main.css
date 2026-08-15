@@ -316,7 +316,11 @@ body {
   animation: badge-pulse 2.5s ease-in-out infinite;
   max-width: calc(100% - 32px); white-space: normal; text-align: center;
 }
-@keyframes badge-pulse { 0%,100%{opacity:1} 50%{opacity:.5} }
+/* Min opacity kept at .65 (not .5) so the dimmed text never drops below
+   4.5:1 contrast against the background — .5 measured ~4.15:1, an
+   intermittent WCAG AA fail depending on which animation frame gets
+   sampled. */
+@keyframes badge-pulse { 0%,100%{opacity:1} 50%{opacity:.65} }
 .hero-sub {
   color: var(--muted2); font-size: var(--fs-base);
   line-height: 1.7; max-width: 540px; margin: 0 auto;
@@ -1222,3 +1226,33 @@ footer a:hover { text-decoration: underline; }
 .age-decor-1 { top: 30px; left: -18px; width: 84px; transform: rotate(-9deg); }
 .age-decor-2 { top: 160px; right: -14px; width: 66px; transform: rotate(7deg); }
 @media (max-width: 480px) { .age-decor-1 { width: 60px; left: -12px; } .age-decor-2 { width: 46px; right: -8px; top: 200px; } }
+
+/* ── Fullscreen game mode ──────────────────────────────────────────────
+   While actively playing, #game covers the whole viewport so kids land
+   straight on the game/level picker with nothing to scroll past. Only
+   toggled on for the duration of an active session (see startGame /
+   onGameDone in core.js) — historical/resume views of #game render
+   inline as before. */
+body.game-fullscreen { overflow: hidden; }
+body.game-fullscreen #game {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: var(--bg);
+  padding: max(14px, env(safe-area-inset-top)) 16px calc(16px + env(safe-area-inset-bottom));
+}
+.game-picker-exit {
+  position: absolute; top: 0; right: 0; z-index: 2;
+}
+/* Drop the redundant "ШАГ 3" heading/blurb while fullscreen — the exit
+   button + in-game HUD already give enough context, and reclaiming this
+   space keeps the actual canvas from being pushed below the fold. */
+body.game-fullscreen #game > .sec-header,
+body.game-fullscreen #game > .section-heading,
+body.game-fullscreen #game > .section-explain {
+  display: none;
+}
