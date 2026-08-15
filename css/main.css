@@ -1210,11 +1210,14 @@ footer a:hover { text-decoration: underline; }
 
 
 /* ── Age-picker background decoration (inline SVG, no extra request) ─── */
-#age-picker { position: relative; }
+#age-picker, #game { position: relative; }
 #age-picker > .sec-header,
 #age-picker > .section-heading,
 #age-picker > .section-explain,
-#age-picker > .age-grid { position: relative; z-index: 1; }
+#age-picker > .age-grid,
+#game > .sec-header,
+#game > .section-heading,
+#game > .game-wrap { position: relative; z-index: 1; }
 .age-decor { position: absolute; color: var(--accent); opacity: 0.09; pointer-events: none; z-index: 0; }
 .age-decor-1 { top: 30px; left: -18px; width: 84px; transform: rotate(-9deg); }
 .age-decor-2 { top: 160px; right: -14px; width: 66px; transform: rotate(7deg); }
