@@ -496,6 +496,10 @@
   function RaceRun(container, opts) {
     const age = AGE_CFG[opts.age] ? opts.age : 'child';
     const cfg = AGE_CFG[age];
+    // Visual tier: tiny/child get a calmer, sparser roadside; teen/adult
+    // get a busier, denser one — matches the difficulty curve (more
+    // traffic/speed) with a matching visual read, same idea as snake.js.
+    const tier = (age === 'tiny' || age === 'child') ? 'cute' : 'cyber';
     const lang = opts.lang || 'en';
     const world = opts.world;
     const worldIdx = opts.worldIdx;
@@ -995,12 +999,16 @@
       // static overlay. Alternates small/large for a less uniform tree
       // line; drawn before the road so the road's edge line sits on top.
       if (_treeReady.small && _treeReady.large) {
-        const spacing = 150;
+        // Cute tier: fewer, bigger, more evenly-spaced trees — calm and
+        // easy to read. Cyber tier: tighter spacing reads as a busier,
+        // faster world to match the higher traffic density/speed.
+        const spacing = tier === 'cute' ? 190 : 120;
+        const bigW = tier === 'cute' ? 68 : 56, smallW = tier === 'cute' ? 46 : 38;
         const treeOff = state.roadY % spacing;
         for (let y = -treeOff - spacing; y < H + spacing; y += spacing) {
           const big = Math.floor((y + state.roadY) / spacing) % 2 === 0;
           const img = big ? _treeImg.large : _treeImg.small;
-          const w = big ? 62 : 42, h = w * (img.height / img.width);
+          const w = big ? bigW : smallW, h = w * (img.height / img.width);
           ctx.drawImage(img, state.roadX1 * 0.5 - w / 2, y - h / 2, w, h);
           ctx.drawImage(img, state.roadX2 + (W - state.roadX2) * 0.5 - w / 2, y - h / 2, w, h);
         }
@@ -1014,10 +1022,11 @@
       ctx.beginPath(); ctx.moveTo(state.roadX2, 0); ctx.lineTo(state.roadX2, H); ctx.stroke();
       ctx.globalAlpha = 1;
 
-      // Lane dividers (scrolling dashes)
+      // Lane dividers (scrolling dashes) — thicker/slower-reading dashes
+      // for young kids, thinner/tighter stripes for older ages
       const laneW = (state.roadX2 - state.roadX1) / cfg.lanes;
-      ctx.strokeStyle = 'rgba(255,255,255,0.25)'; ctx.lineWidth = 2;
-      const dash = 26, gap = 20, off = state.roadY % (dash + gap);
+      ctx.strokeStyle = 'rgba(255,255,255,0.25)'; ctx.lineWidth = tier === 'cute' ? 3 : 2;
+      const dash = tier === 'cute' ? 32 : 22, gap = tier === 'cute' ? 24 : 16, off = state.roadY % (dash + gap);
       for (let l = 1; l < cfg.lanes; l++) {
         const x = state.roadX1 + laneW * l;
         for (let y = -off; y < H; y += dash + gap) { ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, y + dash); ctx.stroke(); }
