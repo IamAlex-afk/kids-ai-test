@@ -106,14 +106,15 @@
      count in that row) + `fps` (playback speed) to match.
   ═══════════════════════════════════════════════════════════════════ */
   const ROBOT_SPRITE = {
-    src: null, // e.g. 'assets/robot-sheet.png' — set this to enable
-    frameW: 32,
-    frameH: 32,
+    src: 'assets/robot-sheet.png',
+    frameW: 64,
+    frameH: 64,
     anims: {
-      idle: { row: 0, frames: 4, fps: 6 },
-      run:  { row: 1, frames: 6, fps: 12 },
-      jump: { row: 2, frames: 2, fps: 8 },
-      hurt: { row: 3, frames: 2, fps: 8 },
+      idle:  { row: 0, frames: 1, fps: 1 },
+      run:   { row: 1, frames: 2, fps: 6 },
+      jump:  { row: 2, frames: 1, fps: 1 },
+      hurt:  { row: 3, frames: 1, fps: 1 },
+      slide: { row: 4, frames: 1, fps: 1 },
     },
   };
   let _robotImg = null, _robotImgReady = false;
@@ -130,6 +131,7 @@
   // already receives, so callers don't need to change.
   function pickRobotAnim(opts) {
     if (opts.hurt) return 'hurt';
+    if (opts.sliding) return 'slide';
     if (!opts.onGround) return 'jump';
     if (opts.moving === false) return 'idle';
     return 'run';
@@ -141,9 +143,14 @@
     const frame = Math.floor((opts.now || 0) / (1000 / anim.fps)) % anim.frames;
     const sx = frame * ROBOT_SPRITE.frameW;
     const sy = anim.row * ROBOT_SPRITE.frameH;
-    const drawW = ROBOT_SPRITE.frameW * 1.4, drawH = ROBOT_SPRITE.frameH * 1.4;
+    const drawW = ROBOT_SPRITE.frameW * 0.7, drawH = ROBOT_SPRITE.frameH * 0.7;
     ctx.save();
     ctx.translate(x, y);
+    // Dynamic neon rim glow — matches the procedural robot's existing
+    // shadowBlur convention instead of baking a fixed glow into the PNG,
+    // so it still pulses on hurt/dash the same way.
+    ctx.shadowColor = opts.hurt ? '#f87171' : (opts.glowColor || '#22d3ee');
+    ctx.shadowBlur = opts.hurt ? 22 : 16;
     if (opts.hurt) { ctx.globalAlpha = 0.6 + 0.4 * Math.sin((opts.now || 0) * 0.03); }
     ctx.drawImage(_robotImg, sx, sy, ROBOT_SPRITE.frameW, ROBOT_SPRITE.frameH, -drawW / 2, -drawH + 6, drawW, drawH);
     ctx.restore();
@@ -1354,6 +1361,7 @@
       if (isSpriteReady()) {
         drawRobotSprite(ctx, player.x, player.y, {
           onGround: player.onGround, now, hurt, moving: !state.paused && !state.over,
+          sliding: state.sliding && cfg.slide,
         });
       } else {
         drawRobot(ctx, player.x, player.y, {
