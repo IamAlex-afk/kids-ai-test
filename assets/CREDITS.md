@@ -16,5 +16,9 @@ the license but is included here as good practice.
 - `bg-stars.png` — unmodified, from "Space Shooter Remastered"
   (kenney.nl/assets/space-shooter-remastered), Backgrounds/black.png.
 
+- `tree-large.png`, `tree-small.png` — unmodified, from "Racing Pack"
+  (kenney.nl/assets/racing-pack), PNG/Objects/tree_large.png and
+  tree_small.png.
+
 Source: https://kenney.nl/assets
 License: https://creativecommons.org/publicdomain/zero/1.0/
