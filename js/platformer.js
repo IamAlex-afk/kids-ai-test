@@ -127,6 +127,20 @@
     img.src = ROBOT_SPRITE.src;
   })();
 
+  // Real tiled background art — starfield for teen/adult (space mood),
+  // clouds for tiny/child (sky mood). Same additive pattern as the robot
+  // sprite: stays null-safe, drawBackground() falls back to the existing
+  // procedural gradient + glyph stars if an image hasn't loaded yet.
+  const BG_IMAGES = { stars: 'assets/bg-stars.png', clouds: 'assets/bg-clouds.png' };
+  const _bgImg = {}, _bgReady = {};
+  Object.keys(BG_IMAGES).forEach(key => {
+    const img = new Image();
+    img.onload = () => { _bgImg[key] = img; _bgReady[key] = true; };
+    img.onerror = () => { _bgReady[key] = false; };
+    img.src = BG_IMAGES[key];
+  });
+  function bgModeFor(age) { return (age === 'tiny' || age === 'child') ? 'clouds' : 'stars'; }
+
   // Picks the right animation name from the same state flags drawRobot()
   // already receives, so callers don't need to change.
   function pickRobotAnim(opts) {
@@ -1226,10 +1240,39 @@
     }
 
     /* ─── RENDER ──────────────────────────────────────────────────── */
+    function drawTiledBg(ctx, img, W, H, offsetX, alpha) {
+      const pattern = ctx.createPattern(img, 'repeat');
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.translate(offsetX % img.width, 0);
+      ctx.fillStyle = pattern;
+      ctx.fillRect(-img.width, 0, W + img.width * 2, H);
+      ctx.restore();
+    }
+
+    function drawSun(ctx, W, H) {
+      const sx = W * 0.78, sy = H * 0.18, r = Math.min(W, H) * 0.1;
+      const glow = ctx.createRadialGradient(sx, sy, 0, sx, sy, r * 2.4);
+      glow.addColorStop(0, 'rgba(255,238,176,0.9)'); glow.addColorStop(0.45, 'rgba(255,205,110,0.45)'); glow.addColorStop(1, 'rgba(255,205,110,0)');
+      ctx.fillStyle = glow;
+      ctx.beginPath(); ctx.arc(sx, sy, r * 2.4, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = '#fff4d6'; ctx.shadowColor = '#ffe9a8'; ctx.shadowBlur = 14;
+      ctx.beginPath(); ctx.arc(sx, sy, r, 0, Math.PI * 2); ctx.fill();
+      ctx.shadowBlur = 0;
+    }
+
     function drawBackground(ctx, W, H, now) {
       const grad = ctx.createLinearGradient(0, 0, 0, H);
       grad.addColorStop(0, theme.sky[0]); grad.addColorStop(0.7, theme.sky[1]); grad.addColorStop(1, theme.sky[1]);
       ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H);
+
+      const mode = bgModeFor(age);
+      if (mode === 'clouds') {
+        drawSun(ctx, W, H);
+        if (_bgReady.clouds) drawTiledBg(ctx, _bgImg.clouds, W, H, -state.worldX * 0.12, 0.5);
+      } else if (_bgReady.stars) {
+        drawTiledBg(ctx, _bgImg.stars, W, H, -state.worldX * 0.08, 0.8);
+      }
 
       // Soft glow band along the horizon so the sky doesn't just stop dead
       // at the ground line.
