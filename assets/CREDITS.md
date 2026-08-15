@@ -20,5 +20,11 @@ the license but is included here as good practice.
   (kenney.nl/assets/racing-pack), PNG/Objects/tree_large.png and
   tree_small.png.
 
+- `car-cyan.png`, `car-red.png`, `car-gold.png` — from "Racing Pack"
+  (kenney.nl/assets/racing-pack), PNG/Cars/car_blue_1.png,
+  car_red_1.png, car_yellow_1.png. Modifications: downscaled to 30px
+  wide, saturation +25%/contrast +8% to read better with the neon glow
+  overlay.
+
 Source: https://kenney.nl/assets
 License: https://creativecommons.org/publicdomain/zero/1.0/
