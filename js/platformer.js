@@ -40,10 +40,10 @@
   // early on — so the gap range is now much tighter and only mildly
   // shrinks with progress, keeping the screen consistently active.
   const AGE_CFG = {
-    tiny:  { baseSpeed: 2.5, maxSpeed: 5.0, rampSec: 55, gravity: 0.48, jumpVel: -10.4, gapMax: 1400, gapMin: 1000, obstacleMax: 2, doubleJump: true,  slide: false, dash: false, hints: 'always', partStages: 4 },
-    child: { baseSpeed: 3.5, maxSpeed: 7.0, rampSec: 48, gravity: 0.56, jumpVel: -11.0, gapMax: 1200, gapMin: 850,  obstacleMax: 4, doubleJump: true,  slide: false, dash: false, hints: 'first3', partStages: 4 },
-    teen:  { baseSpeed: 4.5, maxSpeed: 9.0, rampSec: 42, gravity: 0.64, jumpVel: -11.6, gapMax: 1000, gapMin: 650,  obstacleMax: 6, doubleJump: true,  slide: true,  dash: true,  hints: 'never',  partStages: 4 },
-    adult: { baseSpeed: 4.8, maxSpeed: 9.5, rampSec: 38, gravity: 0.68, jumpVel: -11.9, gapMax: 900,  gapMin: 550,  obstacleMax: 6, doubleJump: true,  slide: true,  dash: true,  hints: 'never',  partStages: 4 },
+    tiny:  { baseSpeed: 2.1, maxSpeed: 4.2, rampSec: 55, gravity: 0.48, jumpVel: -10.4, gapMax: 1400, gapMin: 1000, obstacleMax: 2, doubleJump: true,  slide: false, dash: false, hints: 'always', partStages: 4, fireRate: 950, fireRange: 220 },
+    child: { baseSpeed: 3.0, maxSpeed: 6.0, rampSec: 48, gravity: 0.56, jumpVel: -11.0, gapMax: 1200, gapMin: 850,  obstacleMax: 4, doubleJump: true,  slide: false, dash: false, hints: 'first3', partStages: 4, fireRate: 800, fireRange: 230 },
+    teen:  { baseSpeed: 3.9, maxSpeed: 7.8, rampSec: 42, gravity: 0.64, jumpVel: -11.6, gapMax: 1000, gapMin: 650,  obstacleMax: 6, doubleJump: true,  slide: true,  dash: true,  hints: 'never',  partStages: 4, fireRate: 650, fireRange: 240 },
+    adult: { baseSpeed: 4.1, maxSpeed: 8.2, rampSec: 38, gravity: 0.68, jumpVel: -11.9, gapMax: 900,  gapMin: 550,  obstacleMax: 6, doubleJump: true,  slide: true,  dash: true,  hints: 'never',  partStages: 4, fireRate: 550, fireRange: 250 },
   };
 
   // Each age gets its OWN obstacle cast and colour mood — not just a speed
@@ -156,6 +156,8 @@
   const playGameOverSound = () => [400, 300, 220, 140].forEach((f, i) => tone(f, i * 0.1, 0.2, 'sawtooth', 0.13));
   const playCheckpointSound = () => { tone(660, 0, 0.08, 'triangle', 0.14); tone(880, 0.08, 0.12, 'triangle', 0.14); };
   const playDashSound   = () => sweep(400, 900, 0, 0.16, 'sawtooth', 0.12);
+  const playZapSound    = () => sweep(900, 300, 0, 0.09, 'triangle', 0.09);
+  const playZapHitSound = () => { tone(500, 0, 0.05, 'square', 0.08); tone(220, 0.03, 0.08, 'square', 0.07); };
   const haptic = (p) => navigator.vibrate && navigator.vibrate(p);
 
   /* ─── CHIPTUNE BACKGROUND LOOP (8-step, per-world, has rests) ────── */
@@ -347,7 +349,7 @@
   // first frame (stage 0) — collecting parts makes it more decorated/glowy,
   // it never starts as a half-invisible outline waiting to "materialize".
   function drawRobot(ctx, x, y, opts) {
-    const { partStage, maxStage, onGround, now, hurt, sliding, shielded, dashing, jumpsUsed, skinColor } = opts;
+    const { partStage, maxStage, onGround, now, hurt, sliding, shielded, dashing, jumpsUsed, skinColor, firing } = opts;
     ctx.save();
     ctx.translate(x, y);
     const legPhase = onGround ? Math.sin(now * 0.018) : (jumpsUsed >= 2 ? Math.sin(now * 0.05) * 0.6 : 0);
@@ -408,6 +410,24 @@
     const armLen = partStage >= 2 ? 1 : 0.45;
     ctx.beginPath(); ctx.moveTo(-11, -14 * h); ctx.lineTo(-11 - 7 * armLen, -2 * h - legPhase * 4 * armLen + armLift * armLen); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(11, -14 * h); ctx.lineTo(11 + 7 * armLen, -2 * h + legPhase * 4 * armLen + armLift * armLen); ctx.stroke();
+
+    // Slingshot — mounted on the front hand, a simple Y-fork with an
+    // elastic band that snaps back toward the hand on fire (recoil), then
+    // relaxes forward again. Visual only; actual firing is timed by the
+    // game loop's cooldown, this just reacts to the same flag.
+    {
+      const handX = 11 + 7 * armLen, handY = -2 * h + legPhase * 4 * armLen + armLift * armLen;
+      const recoil = firing ? 4 : 0;
+      ctx.strokeStyle = shadeColor(bodyFill, 55); ctx.lineWidth = 1.6;
+      ctx.beginPath(); ctx.moveTo(handX, handY); ctx.lineTo(handX + 5, handY - 8); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(handX, handY); ctx.lineTo(handX + 9, handY - 6); ctx.stroke();
+      ctx.strokeStyle = firing ? '#fde047' : (glow + '99'); ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(handX + 5, handY - 8);
+      ctx.lineTo(handX + 3 - recoil, handY - 3);
+      ctx.lineTo(handX + 9, handY - 6);
+      ctx.stroke();
+    }
 
     // Head — always a solid, complete round head with eyes from stage 0.
     // Stage 3+ adds a visor plate; max stage adds the antenna + light.
@@ -487,6 +507,8 @@
       nextSpawnAt: 250,
       nextPlatformAt: 4500,
       elapsedMs: 0,
+      projectiles: [],
+      fireCooldownUntil: 0,
       speed: cfg.baseSpeed,
       worldX: 0,
       over: false,
@@ -503,7 +525,7 @@
       pendingQuiz: null,
     };
 
-    const player = { x: 0, y: 0, prevY: 0, vy: 0, onGround: true, w: 26, h: 30, lastGroundTs: 0, jumpBuffered: 0, hurtUntil: 0, jumpsUsed: 0, dashUntil: 0, onPlatform: null };
+    const player = { x: 0, y: 0, prevY: 0, vy: 0, onGround: true, w: 26, h: 30, lastGroundTs: 0, jumpBuffered: 0, hurtUntil: 0, jumpsUsed: 0, dashUntil: 0, onPlatform: null, fireFlashUntil: 0 };
 
     let particles = [];
     const music = MusicLoop(worldIdx);
@@ -1083,6 +1105,51 @@
         }
       }
 
+      // Slingshot: auto-targets the nearest untouched ground obstacle ahead
+      // and fires a pellet at it on a cooldown. Keeps input dead simple
+      // (still just tap-to-jump) so it works for the tiny/child bands too —
+      // no separate fire button to learn. Only ever targets 'obstacle'
+      // (ground hazards), never 'overhead' (those are meant to be slid
+      // under) or pickups/letters.
+      if (now >= state.fireCooldownUntil) {
+        let nearest = null, nearestDx = Infinity;
+        for (const s of state.spawned) {
+          if (s.kind !== 'obstacle' || s._targeted) continue;
+          const ddx = s.x - player.x;
+          if (ddx > 0 && ddx < cfg.fireRange && ddx < nearestDx) { nearest = s; nearestDx = ddx; }
+        }
+        if (nearest) {
+          nearest._targeted = true;
+          state.projectiles.push({ x: player.x + 14, y: player.y - 20, target: nearest, speed: 13 });
+          state.fireCooldownUntil = now + cfg.fireRate;
+          player.fireFlashUntil = now + 150;
+          playZapSound();
+        }
+      }
+
+      // Move + collide projectiles against their locked target.
+      for (let i = state.projectiles.length - 1; i >= 0; i--) {
+        const pr = state.projectiles[i];
+        const target = pr.target;
+        if (!target || state.spawned.indexOf(target) === -1) { state.projectiles.splice(i, 1); continue; }
+        const tdx = target.x - pr.x, tdy = target.y - pr.y;
+        const dist = Math.hypot(tdx, tdy);
+        if (dist < 14) {
+          const oi = state.spawned.indexOf(target);
+          if (oi !== -1) state.spawned.splice(oi, 1);
+          spawnBurst(particles, pr.x, pr.y, '#facc15', 12);
+          playZapHitSound();
+          state.coins += 1;
+          if (els.coins) els.coins.textContent = '🪙 ' + state.coins;
+          state.projectiles.splice(i, 1);
+          continue;
+        }
+        const step = pr.speed * (dt / 16.6);
+        pr.x += (tdx / dist) * step - dx; // -dx: world scroll also carries the pellet back
+        pr.y += (tdy / dist) * step;
+        if (pr.x < -60) state.projectiles.splice(i, 1);
+      }
+
       // Move platforms with the world, drop them once fully passed
       for (let i = state.platforms.length - 1; i >= 0; i--) {
         const p = state.platforms[i];
@@ -1218,10 +1285,19 @@
         ctx.restore();
       });
 
+      state.projectiles.forEach(pr => {
+        ctx.save();
+        ctx.shadowBlur = 10; ctx.shadowColor = '#facc15';
+        ctx.fillStyle = '#fde047';
+        ctx.beginPath(); ctx.ellipse(pr.x, pr.y, 5, 3, Math.atan2((pr.target?pr.target.y:pr.y)-pr.y, (pr.target?pr.target.x:pr.x)-pr.x), 0, Math.PI * 2); ctx.fill();
+        ctx.restore();
+      });
+
       drawRobot(ctx, player.x, player.y, {
         partStage: state.parts, maxStage: cfg.partStages, onGround: player.onGround, now, hurt,
         sliding: state.sliding && cfg.slide, shielded: state.shield, dashing: now < player.dashUntil,
         jumpsUsed: player.jumpsUsed, skinColor: SKINS[getSkin()] || theme.accent,
+        firing: now < player.fireFlashUntil,
       });
       drawParticles(ctx, particles);
       ctx.restore();
