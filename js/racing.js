@@ -464,7 +464,7 @@
     ctx.shadowColor = hurt ? '#f87171' : (SKINS[skin] || theme.accent);
     ctx.shadowBlur = hurt ? 20 : (boosting ? 24 : 14);
     if (hurt) ctx.globalAlpha = 0.55 + 0.45 * Math.sin(now * 0.03);
-    const w = img.width * 0.72, h = img.height * 0.72;
+    const w = img.width, h = img.height;
     ctx.drawImage(img, -w / 2, -h / 2, w, h);
     ctx.globalAlpha = 1;
     if (shielded) {
@@ -995,14 +995,14 @@
       // static overlay. Alternates small/large for a less uniform tree
       // line; drawn before the road so the road's edge line sits on top.
       if (_treeReady.small && _treeReady.large) {
-        const spacing = 130;
+        const spacing = 150;
         const treeOff = state.roadY % spacing;
         for (let y = -treeOff - spacing; y < H + spacing; y += spacing) {
           const big = Math.floor((y + state.roadY) / spacing) % 2 === 0;
           const img = big ? _treeImg.large : _treeImg.small;
-          const w = big ? 34 : 24, h = w * (img.height / img.width);
-          ctx.drawImage(img, state.roadX1 * 0.32 - w / 2, y - h / 2, w, h);
-          ctx.drawImage(img, state.roadX2 + (W - state.roadX2) * 0.68 - w / 2, y - h / 2, w, h);
+          const w = big ? 62 : 42, h = w * (img.height / img.width);
+          ctx.drawImage(img, state.roadX1 * 0.5 - w / 2, y - h / 2, w, h);
+          ctx.drawImage(img, state.roadX2 + (W - state.roadX2) * 0.5 - w / 2, y - h / 2, w, h);
         }
       }
 
