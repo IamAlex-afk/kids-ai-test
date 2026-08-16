@@ -44,6 +44,7 @@ window.LANG_DATA = {
     result_title_1:'Kamu memahami AI lebih baik dari kebanyakan orang!',
     result_title_2:'Kamu benar-benar melek AI — bagikan!',
     btn_get_card:'Buat Kartu Saya 🃏',
+    ui_exit_title:       'Keluar',
     btn_install_app:     '📲 Instal Aplikasi',
     btn_restart_all:     'Mulai Ulang ↺',
     restart_confirm:     'Ini akan menghapus progresmu dan memulai dari awal. Lanjutkan?',

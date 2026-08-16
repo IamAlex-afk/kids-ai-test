@@ -1238,7 +1238,21 @@ function init() {
   S.lang = document.documentElement.lang || 'en';
   lsLoad();
   setupPwaInstall();
+  const exitTitle = ui('ui_exit_title');
+  const lessonsExitBtn = $('lessons-exit-btn');
+  if (lessonsExitBtn) lessonsExitBtn.title = exitTitle;
+  const quizExitBtn = $('quiz-exit-btn');
+  if (quizExitBtn) quizExitBtn.title = exitTitle;
   boot();
+}
+
+// Pause lessons/quiz and return to the top of the page without erasing
+// progress — the existing resume logic (see afterBoot) picks up exactly
+// where the learner left off if they select their age again.
+function exitToHub() {
+  hide('lessons');
+  hide('quiz');
+  requestAnimationFrame(() => window.scrollTo(0, 0));
 }
 
 /* ─────────────────────────────────────────────

@@ -44,6 +44,7 @@ window.LANG_DATA = {
     result_title_1:'¡Entiendes la IA mejor que la mayoría!',
     result_title_2:'¡Tienes verdadera alfabetización en IA — compártela!',
     btn_get_card:'Generar mi Tarjeta 🃏',
+    ui_exit_title:       'Salir',
     btn_install_app:     '📲 Instalar app',
     btn_restart_all:     'Empezar de nuevo ↺',
     restart_confirm:     'Esto borrará tu progreso y empezará de nuevo. ¿Continuar?',

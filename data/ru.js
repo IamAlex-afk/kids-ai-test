@@ -73,6 +73,7 @@ window.LANG_DATA = {
     result_tier_2:     'Эксперт ИИ',
 
     btn_get_card:    'Получить мою карточку 🃏',
+    ui_exit_title:       'Выход',
     btn_install_app:     '📲 Установить приложение',
     btn_restart_all:     'Начать заново ↺',
     restart_confirm:     'Это сотрёт твой прогресс и начнёт всё заново. Продолжить?',
