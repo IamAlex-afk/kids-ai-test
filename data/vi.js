@@ -72,6 +72,7 @@ window.LANG_DATA = {
     result_title_1:    'Bạn hiểu về AI hơn phần lớn mọi người!',
     result_title_2:    'Bạn thực sự am hiểu AI — hãy chia sẻ điều đó!',
     btn_get_card:      'Nhận thẻ của tôi 🃏',
+    ui_exit_title:       'Thoát',
     btn_install_app:     '📲 Cài đặt ứng dụng',
     btn_restart_all:     'Bắt đầu lại ↺',
     restart_confirm:     'Thao tác này sẽ xóa tiến trình của bạn và bắt đầu lại từ đầu. Tiếp tục?',
