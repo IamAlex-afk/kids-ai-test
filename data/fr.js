@@ -44,6 +44,7 @@ window.LANG_DATA = {
     result_title_1:"Tu comprends l'IA mieux que la plupart des adultes !",
     result_title_2:"Tu as une vraie compétence IA — partage-la !",
     btn_get_card:'Créer ma carte 🃏',
+    btn_install_app:     "📲 Installer l'app",
     btn_restart_all:     'Recommencer ↺',
     restart_confirm:     'Cela effacera ta progression et recommencera depuis le début. Continuer ?',
     card_score_label:'SCORE', card_issued:'Délivré', card_tier:'Rang',

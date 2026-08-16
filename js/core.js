@@ -1237,7 +1237,40 @@ window.KAT = {
 function init() {
   S.lang = document.documentElement.lang || 'en';
   lsLoad();
+  setupPwaInstall();
   boot();
+}
+
+/* ─────────────────────────────────────────────
+   PWA INSTALL PROMPT
+   Shows a real "Install App" button only when the browser confirms the
+   site is actually installable (beforeinstallprompt) — never a fake
+   button that does nothing on unsupported browsers.
+───────────────────────────────────────────── */
+function setupPwaInstall() {
+  const wrap = $('pwa-install-wrap');
+  const btn  = $('pwa-install-btn');
+  if (!wrap || !btn) return;
+  btn.textContent = ui('btn_install_app');
+
+  let deferredPrompt = null;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    wrap.style.display = '';
+  });
+  btn.addEventListener('click', () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.finally(() => {
+      deferredPrompt = null;
+      wrap.style.display = 'none';
+    });
+  });
+  window.addEventListener('appinstalled', () => {
+    deferredPrompt = null;
+    wrap.style.display = 'none';
+  });
 }
 
 document.addEventListener('DOMContentLoaded', init);

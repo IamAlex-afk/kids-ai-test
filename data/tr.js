@@ -44,6 +44,7 @@ window.LANG_DATA = {
     result_title_1:"YZ'yi çoğu insandan daha iyi anlıyorsun!",
     result_title_2:"Gerçek YZ okuryazarlığın var — paylaş!",
     btn_get_card:'Kartımı Oluştur 🃏',
+    btn_install_app:     '📲 Uygulamayı Yükle',
     btn_restart_all:     'Yeniden Başla ↺',
     restart_confirm:     'Bu, ilerlemeni silecek ve baştan başlayacak. Devam edilsin mi?',
     card_score_label:'PUAN', card_issued:'Verildi', card_tier:'Rütbe',
