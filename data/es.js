@@ -44,6 +44,8 @@ window.LANG_DATA = {
     result_title_1:'¡Entiendes la IA mejor que la mayoría!',
     result_title_2:'¡Tienes verdadera alfabetización en IA — compártela!',
     btn_get_card:'Generar mi Tarjeta 🃏',
+    btn_restart_all:     'Empezar de nuevo ↺',
+    restart_confirm:     'Esto borrará tu progreso y empezará de nuevo. ¿Continuar?',
     card_score_label:'PUNTOS', card_issued:'Emitido', card_tier:'Rango',
     card_score:'Puntuación', card_lang:'Idioma · Edad',
     card_verify:'🔍 Verificar esta tarjeta (SHA-256)',

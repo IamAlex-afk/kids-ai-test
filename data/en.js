@@ -97,6 +97,8 @@ window.LANG_DATA = {
     result_title_1:      'You understand AI better than most people!',
     result_title_2:      'You have real AI literacy — share it!',
     btn_get_card:        'Generate My Card 🃏',
+    btn_restart_all:     'Start Over ↺',
+    restart_confirm:     'This will erase your progress and start from the beginning. Continue?',
 
     // Card
     card_score_label:    'SCORE',

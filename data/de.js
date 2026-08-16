@@ -44,6 +44,8 @@ window.LANG_DATA = {
     result_title_1:'Du verstehst KI besser als die meisten Menschen!',
     result_title_2:'Du hast echte KI-Kompetenz — teile sie!',
     btn_get_card:'Meine Karte erstellen 🃏',
+    btn_restart_all:     'Neu starten ↺',
+    restart_confirm:     'Das löscht deinen Fortschritt und beginnt von vorne. Fortfahren?',
     card_score_label:'PUNKTE', card_issued:'Ausgestellt', card_tier:'Rang',
     card_score:'Punkte', card_lang:'Sprache · Alter',
     card_verify:'🔍 Diese Karte prüfen (SHA-256)',

@@ -1,0 +1,5 @@
+Contact: https://github.com/IamAlex-afk/kids-ai-test/issues
+Preferred-Languages: en, ru
+Scope: https://iamalex-afk.github.io/kids-ai-test/
+Policy: This site collects zero user data. All processing is browser-local, no registration, no ads.
+Expires: 2027-01-01T00:00:00.000Z
