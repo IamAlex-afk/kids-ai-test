@@ -73,6 +73,8 @@ window.LANG_DATA = {
     result_tier_2:     'Эксперт ИИ',
 
     btn_get_card:    'Получить мою карточку 🃏',
+    btn_restart_all:     'Начать заново ↺',
+    restart_confirm:     'Это сотрёт твой прогресс и начнёт всё заново. Продолжить?',
 
     card_score_label: 'СЧЁТ',
     card_issued:      'Выдано',

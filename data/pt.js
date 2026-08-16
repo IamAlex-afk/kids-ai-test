@@ -44,6 +44,8 @@ window.LANG_DATA = {
     result_title_1:'Você entende a IA melhor que a maioria!',
     result_title_2:'Você tem verdadeiro letramento em IA — compartilhe!',
     btn_get_card:'Gerar meu Cartão 🃏',
+    btn_restart_all:     'Começar de novo ↺',
+    restart_confirm:     'Isso vai apagar seu progresso e começar tudo de novo. Continuar?',
     card_score_label:'PONTOS', card_issued:'Emitido', card_tier:'Nível',
     card_score:'Pontuação', card_lang:'Idioma · Idade',
     card_verify:'🔍 Verificar este cartão (SHA-256)',

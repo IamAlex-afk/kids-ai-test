@@ -43,6 +43,8 @@ window.LANG_DATA = {
     result_title_1:'आप अधिकांश लोगों से बेहतर एआई समझते हैं!',
     result_title_2:'आपको सच्ची एआई समझ है — इसे साझा करें!',
     btn_get_card:'मेरा कार्ड बनाएं 🃏',
+    btn_restart_all:     'फिर से शुरू करें ↺',
+    restart_confirm:     'इससे तुम्हारी प्रगति मिट जाएगी और सब कुछ फिर से शुरू होगा। जारी रखें?',
     card_score_label:'स्कोर', card_issued:'जारी किया', card_tier:'रैंक',
     card_score:'अंक', card_lang:'भाषा · उम्र',
     card_verify:'🔍 इस कार्ड को सत्यापित करें (एसएचए-256)',

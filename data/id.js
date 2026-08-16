@@ -44,6 +44,8 @@ window.LANG_DATA = {
     result_title_1:'Kamu memahami AI lebih baik dari kebanyakan orang!',
     result_title_2:'Kamu benar-benar melek AI — bagikan!',
     btn_get_card:'Buat Kartu Saya 🃏',
+    btn_restart_all:     'Mulai Ulang ↺',
+    restart_confirm:     'Ini akan menghapus progresmu dan memulai dari awal. Lanjutkan?',
     card_score_label:'SKOR', card_issued:'Diterbitkan', card_tier:'Peringkat',
     card_score:'Poin', card_lang:'Bahasa · Usia',
     card_verify:'🔍 Verifikasi kartu ini (SHA-256)',

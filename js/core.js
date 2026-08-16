@@ -843,8 +843,17 @@ function showResult() {
         <button class="btn-outline" id="btn-see-protocols">📋 ${ui('protocols_title')}</button>
         ${S.age !== 'adult' ? `<button class="btn-share" id="btn-share-cert">🏆 Share Result</button>` : ''}
       </div>
+      <div class="action-row" style="margin-top:10px;">
+        <button class="btn-outline" id="btn-restart-all">${ui('btn_restart_all')}</button>
+      </div>
     </div>
   `;
+
+  $('btn-restart-all').addEventListener('click', () => {
+    if (!confirm(ui('restart_confirm'))) return;
+    try { localStorage.removeItem(LS_KEY); } catch (_) {}
+    location.reload();
+  });
 
   $('btn-get-card').addEventListener('click', () => {
     show('card-area');
