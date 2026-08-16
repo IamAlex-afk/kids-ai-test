@@ -196,6 +196,11 @@ function selectAge(age) {
   show('tracker');
   initTracker();
 
+  // Rebuild the parents' FAQ drawer so its age-specific section matches
+  // the newly selected age (it doesn't get touched by anything else on
+  // a mid-session age switch).
+  renderParentFaq();
+
   setTimeout(() => { show('mode-picker'); scrollTo('mode-picker'); initModePicker(); }, 400);
 }
 
@@ -1122,13 +1127,24 @@ function initParent() {
     body.style.display = open ? 'block' : 'none';
   });
 
-  // Sourced, long-tail Q&A (MIT Media Lab, UNESCO, EU AI Act, WEF, Ericsson
-  // 1993, ...) — written for real parent search queries and citable by
-  // search engines. This data already existed in parents-faq.js but had no
-  // reachable screen after the old gate screen was removed; surface it here
-  // instead of losing it.
+  renderParentFaq();
+}
+
+// Sourced, long-tail Q&A (MIT Media Lab, UNESCO, EU AI Act, WEF, Ericsson
+// 1993, ...) — written for real parent search queries and citable by
+// search engines. Only the age-specific section matching S.age is shown
+// (previously showed all four ages' Q&A stacked together regardless of
+// which age was selected). Safe to call repeatedly — e.g. from selectAge()
+// on a mid-session age switch — since it replaces its own prior output
+// rather than appending on top of it, and doesn't touch the toggle
+// listener set up once in initParent().
+function renderParentFaq() {
+  const body = $('parent-body');
+  if (!body) return;
   const d = (window.PARENTS_FAQ || {})[S.lang] || (window.PARENTS_FAQ || {}).en;
-  if (d && Array.isArray(d.faq) && d.faq.length && !body.querySelector('.pf-sourced-faq')) {
+  const existing = body.querySelector('.pf-sourced-faq');
+  if (existing) existing.remove();
+  if (d && Array.isArray(d.faq) && d.faq.length) {
     const wrapEl = document.createElement('div');
     wrapEl.className = 'pf-sourced-faq';
     wrapEl.innerHTML = `
@@ -1140,7 +1156,7 @@ function initParent() {
             <p class="faq-answer">${item.a}</p>
           </details>`).join('')}
       </div>
-      ${['tiny','child','teen','adult'].filter(k => Array.isArray(d['faq_'+k]) && d['faq_'+k].length).map(k => `
+      ${[S.age].filter(k => Array.isArray(d['faq_'+k]) && d['faq_'+k].length).map(k => `
         <h4>${d['faq_'+k+'_h'] || ''}</h4>
         <div class="faq-section" style="margin-bottom:16px">
           ${d['faq_'+k].map(item => `
