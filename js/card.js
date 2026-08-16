@@ -104,6 +104,44 @@ const AGE_THEME = {
   adult: { bg: '#1a0030', accent: '#8b5cf6', text: '#f0e6ff' },
 };
 
+// Deterministic RNG so the same card number always regenerates the same
+// pattern (re-downloading/re-sharing a card never changes its look).
+function seededRng(seed) {
+  let s = seed;
+  return () => { s = ((s * 1664525 + 1013904223) | 0) >>> 0; return s / 0xffffffff; };
+}
+
+// Faint circuit-board backdrop, seeded from the card's own number — every
+// kid's certificate gets a subtly unique pattern, echoing the "this card
+// is uniquely yours" idea behind the SHA-256 fingerprint. Same technique
+// (grid + traces + junction dots) as the in-game backgrounds, so the
+// card feels like part of the same site rather than a bolted-on extra.
+function drawCardPattern(ctx, theme, seed) {
+  ctx.save();
+  ctx.strokeStyle = theme.accent + '10';
+  ctx.lineWidth = 0.5;
+  const step = 30;
+  for (let x = 0; x <= CANVAS_W; x += step) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, CANVAS_H); ctx.stroke(); }
+  for (let y = 0; y <= CANVAS_H; y += step) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(CANVAS_W, y); ctx.stroke(); }
+
+  const rng = seededRng(seed || 1);
+  for (let i = 0; i < 14; i++) {
+    const gx = Math.floor(rng() * (CANVAS_W / step)) * step;
+    const gy = Math.floor(rng() * (CANVAS_H / step)) * step;
+    const len = (1 + Math.floor(rng() * 4)) * step;
+    const horiz = rng() > 0.5;
+    ctx.strokeStyle = theme.accent + Math.floor(18 + rng() * 18).toString(16).padStart(2, '0');
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    if (horiz) { ctx.moveTo(gx, gy); ctx.lineTo(Math.min(CANVAS_W, gx + len), gy); }
+    else       { ctx.moveTo(gx, gy); ctx.lineTo(gx, Math.min(CANVAS_H, gy + len)); }
+    ctx.stroke();
+    ctx.fillStyle = theme.accent + '38';
+    ctx.beginPath(); ctx.arc(gx, gy, 2.5, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.restore();
+}
+
 function renderCanvas(card, langData) {
   const canvas = document.getElementById('result-canvas');
   if (!canvas) return null;
@@ -118,6 +156,9 @@ function renderCanvas(card, langData) {
   // ── Background ──
   ctx.fillStyle = theme.bg;
   ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
+
+  // ── Decorative circuit pattern (unique per card number) ──
+  drawCardPattern(ctx, theme, parseInt(card.number, 10));
 
   // ── Decorative gradient strip (top) ──
   const grad = ctx.createLinearGradient(0, 0, CANVAS_W, 0);
