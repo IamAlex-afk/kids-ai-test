@@ -9,3 +9,4 @@ node_modules/
 claude-telegram.yaml
 data/.claude-telegram/
 modules/
+CLAUDE.md
