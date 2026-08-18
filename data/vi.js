@@ -73,6 +73,8 @@ window.LANG_DATA = {
     result_title_2:    'Bạn thực sự am hiểu AI — hãy chia sẻ điều đó!',
     btn_get_card:      'Nhận thẻ của tôi 🃏',
     ui_exit_title:       'Thoát',
+    ui_source_label:     "Nguồn",
+    ui_read_aloud:       "Đọc cho tôi nghe",
     btn_install_app:     '📲 Cài đặt ứng dụng',
     btn_restart_all:     'Bắt đầu lại ↺',
     restart_confirm:     'Thao tác này sẽ xóa tiến trình của bạn và bắt đầu lại từ đầu. Tiếp tục?',
@@ -240,6 +242,14 @@ window.LANG_DATA = {
       ],
 
       quiz: [
+        {
+          type:    "yesno",
+          q:       "AI có phải do con người phát minh và lập trình không? 🤖",
+          correct: 1,
+          explanation: "Đúng vậy! AI là một chương trình máy tính do con người tạo ra — nó không sống và không cảm nhận được gì cả.",
+          source:    "Stanford AI Index 2024",
+          sourceUrl: "https://aiindex.stanford.edu",
+        },
         {
           type:    'yesno',
           q:       'Robot có thể CẢM THẤY buồn không? 😢',
@@ -502,6 +512,15 @@ window.LANG_DATA = {
       ],
 
       quiz: [
+        {
+          type:    "choice",
+          q:       "Trí tuệ nhân tạo (AI) là gì?",
+          options: ["Một robot có cảm xúc và suy nghĩ thật sự 🤔", "Một chương trình máy tính tìm ra các quy luật trong dữ liệu và dự đoán câu trả lời tốt nhất 🔍", "Một sinh vật phép thuật sống trong internet ✨", "Hoàn toàn giống như bộ não con người 🧠"],
+          correct: 1,
+          explanation: "AI là một chương trình do con người tạo ra. Nó học bằng cách tìm ra các quy luật trong một lượng lớn văn bản, hình ảnh và âm thanh — nhưng nó không suy nghĩ hay cảm nhận như con người.",
+          source:    "Stanford AI Index 2024",
+          sourceUrl: "https://aiindex.stanford.edu",
+        },
         {
           type:    'choice',
           q:       'ChatGPT nhận câu hỏi của em rồi sau đó...',
@@ -822,6 +841,15 @@ window.LANG_DATA = {
       ],
 
       quiz: [
+        {
+          type:    "choice",
+          q:       "Định nghĩa nào mô tả chính xác nhất về AI hiện đại — như các chatbot bạn dùng hằng ngày?",
+          options: ["Một bộ não điện tử suy nghĩ và lập luận hệt như con người", "Một hệ thống thống kê được huấn luyện trên lượng dữ liệu khổng lồ, tìm ra quy luật và dự đoán kết quả có khả năng xảy ra nhất", "Một cơ sở dữ liệu đầy đủ chứa mọi sự thật trên thế giới", "Một chương trình đã phát triển được ý thức về bản thân"],
+          correct: 1,
+          explanation: "Các hệ thống AI hiện đại, bao gồm cả các mô hình ngôn ngữ lớn, không thực sự \"hiểu\" theo nghĩa của con người — chúng là các mô hình thống kê tìm ra quy luật trong lượng dữ liệu khổng lồ và tạo ra kết quả có khả năng xảy ra nhất. Đó là lý do chúng có thể nghe rất tự tin mà vẫn sai.",
+          source:    "Stanford AI Index 2024",
+          sourceUrl: "https://aiindex.stanford.edu",
+        },
         {
           type:    'choice',
           q:       'Một chatbot AI đưa cho bạn câu trả lời nghe rất chắc chắn. Có nên luôn tin nó không?',
@@ -1162,6 +1190,15 @@ window.LANG_DATA = {
       ],
 
       quiz: [
+        {
+          type:    "choice",
+          q:       "Định nghĩa nào phản ánh chính xác nhất cách hiểu khoa học và pháp lý hiện nay về một \"hệ thống AI\"?",
+          options: ["Một tâm trí tự chủ sở hữu ý thức, ý định và nhận thức về bản thân", "Một hệ thống phần mềm, từ một đầu vào cho trước, tạo ra kết quả — dự đoán, đề xuất hoặc quyết định — cho một tập hợp mục tiêu đã xác định", "Một cơ sở dữ liệu tĩnh chứa mọi sự thật đã được ghi lại về thế giới", "Một mô phỏng bộ não con người ở cấp độ nơ-ron"],
+          correct: 1,
+          explanation: "Điều này khớp với cách các hệ thống AI được mô tả chính thức trong hầu hết các tài liệu nghiên cứu và chính sách hiện đại: phần mềm tạo ra kết quả — dự đoán, đề xuất hoặc quyết định — từ dữ liệu, mà không sở hữu sự hiểu biết, ý thức hay ý định. \"Kiến thức\" ở đây là một đặc tính thống kê của trọng số mô hình, không phải sự thật được lưu trữ.",
+          source:    "Stanford AI Index 2024",
+          sourceUrl: "https://aiindex.stanford.edu",
+        },
         {
           type:    'choice',
           q:       'Constitutional AI (Anthropic, 2022) khác với RLHF tiêu chuẩn ở chỗ...',

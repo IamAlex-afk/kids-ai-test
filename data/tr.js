@@ -45,6 +45,8 @@ window.LANG_DATA = {
     result_title_2:"Gerçek YZ okuryazarlığın var — paylaş!",
     btn_get_card:'Kartımı Oluştur 🃏',
     ui_exit_title:       'Çıkış',
+    ui_source_label:     "Kaynak",
+    ui_read_aloud:       "Bana oku",
     btn_install_app:     '📲 Uygulamayı Yükle',
     btn_restart_all:     'Yeniden Başla ↺',
     restart_confirm:     'Bu, ilerlemeni silecek ve baştan başlayacak. Devam edilsin mi?',
@@ -140,6 +142,8 @@ window.LANG_DATA = {
           fact:"YZ gerçek görünen sahte fotoğraflar oluşturabilir. Gerçeği tanımayı öğren!" },
       ],
       quiz: [
+        { type:"yesno", q:"Yapay zekâ (AI) insanlar tarafından mı icat edildi ve programlandı? 🤖", correct:1,
+          explanation:"Evet! Yapay zekâ, insanlar tarafından yapılan bir bilgisayar programıdır — canlı değildir ve hiçbir şey hissetmez.", source:"Stanford AI Index 2024", sourceUrl:"https://aiindex.stanford.edu" },
         { type:'yesno', q:'Robot ÜZÜNTÜ hissedebilir mi? 😢', correct:0,
           explanation:"Robotlar ve YZ'nin duygusu yoktur. Bilgi işlerler, ama üzüntü, sevinç veya sevgi hissedemezler." },
         { type:'yesno', q:'Siri bir insan gibi canlı mı? 🧑', correct:0,
@@ -265,6 +269,9 @@ window.LANG_DATA = {
           fact:"Tüm YZ sistemleri kurallara uyar — kendi değerlerini veya ahlakını geliştiremez!" },
       ],
       quiz: [
+        { type:"choice", q:"Yapay Zekâ (AI) nedir?",
+          options:["Gerçek duyguları ve düşünceleri olan bir robot 🤔", "Verilerdeki örüntüleri bulan ve en iyi cevabı tahmin eden bir bilgisayar programı 🔍", "İnternette yaşayan sihirli bir yaratık ✨", "Tam olarak insan beyniyle aynı şey 🧠"],
+          correct:1, explanation:"Yapay zekâ, insanlar tarafından oluşturulan bir programdır. Devasa miktarda metin, görsel ve seste örüntüler bularak öğrenir — ama bir insan gibi düşünmez ya da hissetmez.", source:"Stanford AI Index 2024", sourceUrl:"https://aiindex.stanford.edu" },
         { type:'choice', q:'ChatGPT soruyu okur ve sonra...',
           options:["Bir veritabanında arar 🗄️","En muhtemel kelimeyi teker teker tahmin eder 🔤","Gerçek bir uzmanı arar 📞","Bir insan gibi derin düşünür 💭"],
           correct:1, explanation:"ChatGPT sonraki en muhtemel kelimeyi tahmin eder, sonra bir sonrakini — çok gelişmiş bir otomatik tamamlama gibi. Veritabanı araması yok, gerçek düşünme yok." },
@@ -397,6 +404,9 @@ window.LANG_DATA = {
           fact:"YZ ile paylaştığın her şey kaydedilebilir ve model eğitiminde kullanılabilir. Paylaşmadan önce düşün." },
       ],
       quiz: [
+        { type:"choice", q:"Her gün kullandığın sohbet botları gibi modern yapay zekâyı en doğru şekilde hangi tanım açıklar?",
+          options:["Tıpkı bir insan gibi düşünen ve akıl yürüten elektronik bir beyin", "Devasa veri kümeleri üzerinde eğitilmiş, örüntüler bulan ve en olası sonucu tahmin eden istatistiksel bir sistem", "Dünyadaki her gerçeği içeren eksiksiz bir veritabanı", "Öz farkındalık geliştirmiş bir program"],
+          correct:1, explanation:"Büyük dil modelleri de dahil olmak üzere modern yapay zekâ sistemleri, insani anlamda hiçbir şeyi \"anlamaz\" — bunlar devasa veri kümelerinde örüntüler bulan ve en olası çıktıyı üreten istatistiksel modellerdir. Bu yüzden çok kendinden emin görünüp yine de yanılabilirler.", source:"Stanford AI Index 2024", sourceUrl:"https://aiindex.stanford.edu" },
         { type:'choice', q:'Bir yapay zeka sohbet botu sana çok emin görünen bir cevap veriyor. Ona her zaman güvenmeli misin?',
           options:['Evet, emin olmak doğru olmak demektir 👍','Hayır — emin olmak ve doğru olmak aynı şey değildir 🎲','Sadece büyük kelimeler kullanıyorsa güven 📖','Sadece hafta sonları 📅'],
           correct:1, explanation:'Yapay zeka kendinden çok emin görünüp yine de tamamen yanılabilir. Kendinden eminlik kanıt değildir.' },
@@ -543,6 +553,9 @@ window.LANG_DATA = {
           fact:"GPT-4V gibi modeller görüntü ve metni birlikte işler — yeni yetenekler ve yeni riskler açar." },
       ],
       quiz: [
+        { type:"choice", q:"\"Yapay zekâ sistemi\" kavramının güncel bilimsel ve düzenleyici anlayışını en doğru şekilde hangi tanım yansıtır?",
+          options:["Bilinç, niyet ve öz farkındalığa sahip özerk bir zihin", "Belirli bir girdiden, tanımlanmış hedefler doğrultusunda tahminler, öneriler veya kararlar gibi çıktılar üreten bir yazılım sistemi", "Dünya hakkında kaydedilmiş her gerçeği içeren statik bir veritabanı", "İnsan beyninin nöron düzeyinde simülasyonu"],
+          correct:1, explanation:"Bu, yapay zekâ sistemlerinin çoğu modern araştırma ve politika belgesinde resmi olarak nasıl tanımlandığıyla örtüşür: anlayışa, bilince veya niyete sahip olmadan verilerden çıktılar — tahminler, öneriler veya kararlar — üreten yazılım. Buradaki \"bilgi\", modelin ağırlıklarının istatistiksel bir özelliğidir, saklanmış gerçekler değildir.", source:"Stanford AI Index 2024", sourceUrl:"https://aiindex.stanford.edu" },
         { type:'choice', q:'Anayasal YZ (Anthropic, 2022) standart RLHF\'den farklıdır çünkü...',
           options:["Ödül modeli olarak daha büyük modeller kullanır 🧠","Model kendi çıktılarını açıkça yazılmış bir anayasaya karşı eleştirir ve revize eder 📜","İnsan değerlendiricileri süreçten tamamen kaldırır 🚫","Yalnızca hukuki ve etik belgeler üzerinde eğitir ⚖️"],
           correct:1, explanation:"Anayasal YZ'de daha büyük bir YZ, daha küçük bir YZ'nin çıktılarını yazılı ilkelere karşı eleştirir — kapasiteyi korurken zararsızlık için insan değerlendiricilere bağımlılığı azaltır." },

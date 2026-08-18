@@ -66,6 +66,15 @@ a { color: inherit; }
   --accent-glow: rgba(244,114,182,.25);
   --accent2:     #fb923c;
   --accent2-dim: rgba(251,146,60,.12);
+
+  /* Whole type scale bumped up for 3–5 year olds — big, simple, readable on a phone */
+  --fs-xs:   1rem;
+  --fs-sm:   1.15rem;
+  --fs-base: 1.35rem;
+  --fs-lg:   1.6rem;
+  --fs-xl:   1.9rem;
+  --fs-2xl:  2.3rem;
+  --fs-3xl:  2.8rem;
 }
 [data-age="child"] {
   --accent:      #fbbf24;
@@ -419,9 +428,13 @@ body {
   display: flex; align-items: center; justify-content: center;
 }
 .step-body {}
+.step-title-row {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 10px;
+  margin-bottom: 8px;
+}
 .step-title {
   font-size: var(--fs-lg); font-weight: 700;
-  margin-bottom: 8px; color: var(--text);
+  margin-bottom: 0; color: var(--text);
 }
 .step-text {
   color: var(--muted2); font-size: var(--fs-sm); line-height: 1.65;
@@ -433,6 +446,18 @@ body {
   border-radius: 0 var(--r-sm) var(--r-sm) 0;
   font-size: var(--fs-xs); color: var(--green); line-height: 1.6;
 }
+
+/* Read-aloud button (TTS) — tiny + child ages only */
+.btn-read-aloud {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--accent-dim); border: 1px solid var(--accent);
+  color: var(--accent); font-weight: 700; font-size: var(--fs-xs);
+  padding: 6px 12px; border-radius: 20px;
+  transition: all var(--t-fast);
+  margin-bottom: 8px;
+}
+.btn-read-aloud:hover { background: var(--accent); color: var(--bg); }
+[data-age="tiny"] .btn-read-aloud { font-size: var(--fs-sm); padding: 8px 16px; }
 
 /* Tiny kids: lesson with big emoji */
 [data-age="tiny"] .lesson-step {
@@ -451,6 +476,10 @@ body {
 [data-age="tiny"] .btn-primary, [data-age="tiny"] .btn-outline {
   padding: 16px 32px; font-size: var(--fs-lg);
 }
+[data-age="tiny"] .step-text { font-size: var(--fs-base); line-height: 1.75; }
+[data-age="tiny"] .step-example { font-size: var(--fs-sm); }
+[data-age="child"] .step-text { font-size: var(--fs-base); }
+[data-age="child"] .step-example { font-size: var(--fs-sm); }
 
 /* Tighter, denser UI for the oldest — matches the more technical content */
 [data-age="adult"] {
@@ -554,6 +583,8 @@ body {
   font-size: clamp(.95rem, 2.8vw, 1.15rem);
   font-weight: 700; line-height: 1.5; margin-bottom: 20px;
 }
+[data-age="tiny"] .q-text { font-size: clamp(1.5rem, 7vw, 2rem); line-height: 1.4; }
+[data-age="child"] .q-text { font-size: clamp(1.2rem, 5vw, 1.5rem); }
 
 /* Standard answers */
 .answers { display: flex; flex-direction: column; gap: 10px; }

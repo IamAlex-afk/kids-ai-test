@@ -98,6 +98,8 @@ window.LANG_DATA = {
     result_title_2:      'You have real AI literacy — share it!',
     btn_get_card:        'Generate My Card 🃏',
     ui_exit_title:       'Exit',
+    ui_source_label:     "Source",
+    ui_read_aloud:       "Read to me",
     btn_install_app:     '📲 Install App',
     btn_restart_all:     'Start Over ↺',
     restart_confirm:     'This will erase your progress and start from the beginning. Continue?',
@@ -330,6 +332,14 @@ window.LANG_DATA = {
 
       // Final quiz — 6 yes/no questions with emoji buttons
       quiz: [
+        {
+          type:    "yesno",
+          q:       "Was AI invented and programmed by people? 🤖",
+          correct: 1,
+          explanation: "Yes! AI is a computer program made by people — it is not alive and does not feel anything.",
+          source:    "Stanford AI Index 2024",
+          sourceUrl: "https://aiindex.stanford.edu",
+        },
         {
           type:    'yesno',
           q:       'Can a robot FEEL sad? 😢',
@@ -656,6 +666,15 @@ window.LANG_DATA = {
       ],
 
       quiz: [
+        {
+          type:    "choice",
+          q:       "What is Artificial Intelligence (AI)?",
+          options: ["A robot with real feelings and thoughts 🤔", "A computer program that finds patterns in data and predicts the best answer 🔍", "A magical creature that lives inside the internet ✨", "Exactly the same as a human brain 🧠"],
+          correct: 1,
+          explanation: "AI is a program built by people. It learns by finding patterns in huge amounts of text, images, and sounds — but it doesn't think or feel like a human.",
+          source:    "Stanford AI Index 2024",
+          sourceUrl: "https://aiindex.stanford.edu",
+        },
         {
           type:    'choice',
           q:       'ChatGPT reads your question and then...',
@@ -1050,6 +1069,15 @@ window.LANG_DATA = {
       ],
 
       quiz: [
+        {
+          type:    "choice",
+          q:       "Which definition best describes modern AI — like the chatbots you use every day?",
+          options: ["An electronic brain that thinks and reasons just like a human", "A statistical system trained on huge datasets that finds patterns and predicts the most likely output", "A complete database containing every fact in the world", "A program that has become self-aware"],
+          correct: 1,
+          explanation: "Modern AI systems, including large language models, don't truly understand language the way humans do — they are statistical models that find patterns in massive datasets and generate the most probable output. That's why they can sound confident and still be wrong.",
+          source:    "Stanford AI Index 2024",
+          sourceUrl: "https://aiindex.stanford.edu",
+        },
         {
           type:    'choice',
           q:       'An AI chatbot gives you a very confident-sounding answer. Should you always trust it?',
@@ -1451,6 +1479,15 @@ window.LANG_DATA = {
       ],
 
       quiz: [
+        {
+          type:    "choice",
+          q:       "Which definition most accurately reflects the current scientific and regulatory understanding of an \"AI system\"?",
+          options: ["An autonomous mind possessing consciousness, intentions, and self-awareness", "A software system that, from a given input, generates outputs — predictions, recommendations, or decisions — for a defined set of objectives", "A static database containing every recorded fact about the world", "A neuron-level simulation of the human brain"],
+          correct: 1,
+          explanation: "This matches how AI systems are formally described in most modern research and policy documents: software that produces outputs — predictions, recommendations, or decisions — from data, without possessing understanding, consciousness, or intent. Knowledge here is a statistical property of the model's weights, not stored facts.",
+          source:    "Stanford AI Index 2024",
+          sourceUrl: "https://aiindex.stanford.edu",
+        },
         {
           type:    'choice',
           q:       'Constitutional AI (Anthropic, 2022) differs from standard RLHF by...',

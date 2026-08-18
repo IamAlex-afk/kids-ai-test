@@ -222,7 +222,7 @@ const MODE_STR = {
    WEB SPEECH API
 ───────────────────────────────────────────── */
 function speakText(text) {
-  if (!('speechSynthesis' in window) || S.age !== 'tiny') return;
+  if (!('speechSynthesis' in window)) return;
   window.speechSynthesis.cancel();
   const utt = new SpeechSynthesisUtterance(text);
   utt.lang  = { ru:'ru-RU', de:'de-DE', es:'es-ES', fr:'fr-FR', hi:'hi-IN',
@@ -230,6 +230,10 @@ function speakText(text) {
   utt.rate  = 0.82;
   utt.pitch = 1.15;
   window.speechSynthesis.speak(utt);
+}
+
+function canReadAloud() {
+  return ('speechSynthesis' in window) && (S.age === 'tiny' || S.age === 'child');
 }
 
 function initModePicker() {
@@ -310,7 +314,10 @@ function renderLesson() {
       <div class="lesson-step anim-fade-up">
         <div class="step-num">${lesson.icon || '🤖'}</div>
         <div class="step-body">
-          <h3 class="step-title">${lesson.title}</h3>
+          <div class="step-title-row">
+            <h3 class="step-title">${lesson.title}</h3>
+            ${canReadAloud() ? `<button class="btn-read-aloud" id="btn-read-lesson" type="button" aria-label="${ui('ui_read_aloud')||'Read to me'}">🔊 ${ui('ui_read_aloud')||'Read to me'}</button>` : ''}
+          </div>
           <p class="step-text">${window.KAT_Glossary ? window.KAT_Glossary.linkify(lesson.text, S.lang) : lesson.text}</p>
           ${lesson.example ? `<div class="step-example">💡 ${window.KAT_Glossary ? window.KAT_Glossary.linkify(lesson.example, S.lang) : lesson.example}</div>` : ''}
         </div>
@@ -322,6 +329,11 @@ function renderLesson() {
       </button>
     </div>
   `;
+
+  const lessonSpeech = [lesson.title, lesson.text, lesson.example].filter(Boolean).join('. ');
+  const readBtn = $('btn-read-lesson');
+  if (readBtn) readBtn.addEventListener('click', () => speakText(lessonSpeech));
+  if (S.age === 'tiny') speakText(lessonSpeech);
 
   $('btn-next-lesson').addEventListener('click', () => {
     if (hasTest) {
@@ -361,13 +373,17 @@ function renderMiniTest() {
       <div class="q-wrap">
         <span class="q-badge">${ui('check_label')}</span>
         <p class="q-text">${q.q}</p>
+        ${canReadAloud() ? `<button class="btn-read-aloud" id="btn-read-mt" type="button" aria-label="${ui('ui_read_aloud')||'Read to me'}">🔊 ${ui('ui_read_aloud')||'Read to me'}</button>` : ''}
         <div class="answers" id="mt-options"></div>
         <div id="mt-feedback" class="hidden" style="margin-top:12px;padding:12px;border-radius:10px;font-size:.9rem;line-height:1.6;"></div>
       </div>
     </div>
   `;
 
-  speakText(q.q);
+  if (S.age === 'tiny') speakText(q.q);
+
+  const readMtBtn = $('btn-read-mt');
+  if (readMtBtn) readMtBtn.addEventListener('click', () => speakText(q.q));
 
   const opts = $('mt-options');
   const isTiny = S.age === 'tiny';
@@ -711,12 +727,16 @@ function renderQuestion() {
     <div class="q-wrap anim-fade-up">
       ${q.category ? `<span class="q-badge">${q.category}</span>` : ''}
       <p class="q-text">${q.q}</p>
+      ${canReadAloud() ? `<button class="btn-read-aloud" id="btn-read-quiz" type="button" aria-label="${ui('ui_read_aloud')||'Read to me'}">🔊 ${ui('ui_read_aloud')||'Read to me'}</button>` : ''}
       ${answersHtml}
       <div id="q-feedback" class="hidden" style="margin-top:14px;padding:14px;border-radius:10px;font-size:.875rem;line-height:1.6;"></div>
     </div>
   `;
 
-  speakText(q.q);
+  if (S.age === 'tiny') speakText(q.q);
+
+  const readQuizBtn = $('btn-read-quiz');
+  if (readQuizBtn) readQuizBtn.addEventListener('click', () => speakText(q.q));
 
   $$('#q-answers button').forEach(btn => {
     btn.addEventListener('click', () => answerQuiz(Number(btn.dataset.v), q, btn));
@@ -760,13 +780,16 @@ function answerQuiz(value, q, clickedBtn) {
     fb.classList.remove('hidden');
     fb.style.background  = correct ? 'rgba(0,255,136,.07)' : 'rgba(248,113,113,.07)';
     fb.style.borderLeft  = `3px solid ${correct ? 'var(--green)' : 'var(--red)'}`;
-    fb.innerHTML = `${correct ? '✅' : '💡'} ${q.explanation}`;
+    const sourceHtml = (q.source && q.sourceUrl)
+      ? `<div style="margin-top:8px;font-size:.8em;opacity:.85">${ui('ui_source_label') || 'Source'}: <a href="${q.sourceUrl}" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">${q.source}</a></div>`
+      : '';
+    fb.innerHTML = `${correct ? '✅' : '💡'} ${q.explanation}${sourceHtml}`;
   }
 
   setTimeout(() => {
     S.quiz.idx++;
     renderQuestion();
-  }, q.explanation ? 2200 : 900);
+  }, q.explanation ? (q.source ? 5000 : 2200) : 900);
 }
 
 function onQuizDone() {
