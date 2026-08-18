@@ -115,7 +115,7 @@ window.LANG_DATA = {
         {
           icon:  '🤖',
           title: 'Robot LÀ gì?',
-          text:  'Robot là một cỗ máy làm theo quy tắc. Alexa, Siri, Google — chúng không sống. Chúng giống như một món đồ chơi rất thông minh biết nghe và nói. Nhưng chúng không thể vui hay buồn.',
+          text:       "Robot là một cỗ máy làm theo quy tắc. Alexa, Siri, Google — chúng không sống. Chúng giống như một món đồ chơi rất thông minh biết nghe và nói. Nhưng chúng không thể vui hay buồn. Nó có thể hữu ích — nhưng nó không phải là bạn thật sự.",
           example: '🎮 Trò chơi điện tử cũng làm theo quy tắc! Nếu em bấm nhảy, Mario sẽ nhảy. AI cũng vậy — nó làm theo quy tắc, nó không suy nghĩ.',
           source:    'MIT Media Lab, AI cho trẻ nhỏ',
           sourceUrl: 'https://www.media.mit.edu/',
@@ -131,7 +131,7 @@ window.LANG_DATA = {
         {
           icon:  '🧩',
           title: 'AI giống như NGƯỜI GIẢI ĐỐ',
-          text:  'AI nhìn vào hàng triệu câu đố và học ra khuôn mẫu. Khi em hỏi nó điều gì, nó tìm khuôn mẫu phù hợp nhất mà nó từng thấy. Nó KHÔNG biết mọi thứ như cách em biết.',
+          text:       "AI nhìn vào hàng triệu câu đố và học ra khuôn mẫu. Khi em hỏi nó điều gì, nó tìm khuôn mẫu phù hợp nhất mà nó từng thấy. Nó KHÔNG biết mọi thứ như cách em biết. Nó hoạt động theo những quy tắc đặc biệt mà nó được dạy — nếu không có chúng, nó chẳng làm được gì cả.",
           example: '🌈 Hãy tưởng tượng em đã xếp 1000 hộp bút màu theo màu sắc. Giờ em xếp rất nhanh! AI cũng vậy — nhưng với chữ.',
           source:    'Cách AI hoạt động — BBC Bitesize',
           sourceUrl: 'https://www.bbc.co.uk/bitesize/articles/znmsscw',
@@ -389,7 +389,7 @@ window.LANG_DATA = {
         {
           icon:  '🛡️',
           title: 'EM là người kiểm soát',
-          text:  'AI là công cụ mạnh mẽ nhất mà con người từng tạo ra. Nhưng nó vẫn chỉ là một công cụ — giống như cái búa. Cái búa có thể xây một ngôi nhà hoặc làm vỡ cửa sổ. EM quyết định cách sử dụng nó. Những người hiểu AI rõ nhất là những người luôn kiểm soát được nó.',
+          text:       "AI là công cụ mạnh mẽ nhất mà con người từng tạo ra. Nhưng nó vẫn chỉ là một công cụ — giống như cái búa. Cái búa có thể xây một ngôi nhà hoặc làm vỡ cửa sổ. EM quyết định cách sử dụng nó. Những người hiểu AI rõ nhất là những người luôn kiểm soát được nó. Và nếu một công cụ bị dùng để gây hại, người chịu trách nhiệm là con người — không phải công cụ.",
           example: '🔨 + 🧠 = 🏠. Công cụ + Con người thông minh = Kết quả tuyệt vời. AI + Tư duy phản biện = Siêu năng lực của em.',
           source:    'UNESCO "AI Competency Framework", 2022',
           sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
@@ -918,7 +918,21 @@ window.LANG_DATA = {
           source:    'Stanford Internet Observatory, 2024',
           sourceUrl: 'https://stacks.stanford.edu/file/druid:mb753jn6512/sio_annual_report_2024.pdf',
         },
-      ],
+              {
+          type:    "choice",
+          q:       "Một công cụ tạo ảnh AI được huấn luyện trên hàng triệu tác phẩm của các nghệ sĩ thật. Điều này có nghĩa là gì?",
+          options: ["Bản quyền bức ảnh mới chắc chắn thuộc về bạn — vấn đề đã rõ ràng", "Ai sở hữu bức ảnh như vậy vẫn là câu hỏi chưa có lời giải, kể cả với tòa án và các công ty", "Bức ảnh tự động thuộc về những nghệ sĩ có tác phẩm được sử dụng", "Ảnh do AI tạo ra không thể có bất kỳ bản quyền nào cả"],
+          correct: 1,
+          explanation: "Tòa án và các công ty vẫn đang tranh cãi ai sở hữu nghệ thuật AI: bạn, công ty AI, hay các nghệ sĩ có tác phẩm dùng để huấn luyện mô hình. Hiện vẫn chưa có câu trả lời thống nhất.",
+        },
+        {
+          type:    "choice",
+          q:       "Bạn đã trò chuyện lâu trong một trò chơi với một 'người chơi' luôn trực tuyến và trò chuyện rất giỏi. Bạn có nên cho rằng đó là người thật không?",
+          options: ["Có, AI không thể giao tiếp thuyết phục đến vậy", "Không — đó hoàn toàn có thể là bot AI do một công ty tạo ra với mục đích riêng", "Có, nếu tài khoản có ảnh đại diện và tên", "Không quan trọng, chẳng có gì khác biệt thật sự"],
+          correct: 1,
+          explanation: "Bot AI có thể trò chuyện, chơi game, thậm chí tranh luận một cách thuyết phục. Một số ứng dụng dùng nhân vật AI khiến ta cảm thấy như bạn thật, nhưng chúng được các công ty tạo ra vì mục đích riêng của họ.",
+        },
+],
 
       results: [
         {
@@ -1000,7 +1014,7 @@ window.LANG_DATA = {
         {
           icon:  '⚗️',
           title: '"Suy luận" và "hiểu biết" nghĩa là gì (và không là gì) ở AI',
-          text:  'GPT-4 vượt qua kỳ thi luật sư, kỳ thi cấp phép y khoa, và câu hỏi đủ điều kiện tiến sĩ. Điều này có nghĩa nó biết suy luận không? Bài kiểm tra ARC của François Chollet (2019) được thiết kế riêng cho các nhiệm vụ mà AI không thể giải chỉ bằng cách ghép khuôn mẫu — và các LLM hiện tại thất bại thảm hại với chúng. Prompt "chuỗi suy nghĩ" (chain-of-thought) tạo ra hiệu suất tốt hơn nhưng cơ chế vẫn còn tranh cãi: suy luận thật hay chỉ là khuôn mẫu văn bản giống-suy-luận đã học được?',
+          text:       "GPT-4 vượt qua kỳ thi luật sư, kỳ thi cấp phép y khoa, và câu hỏi đủ điều kiện tiến sĩ. Điều này có nghĩa nó biết suy luận không? Bài kiểm tra ARC của François Chollet (2019) được thiết kế riêng cho các nhiệm vụ mà AI không thể giải chỉ bằng cách ghép khuôn mẫu — và các LLM hiện tại thất bại thảm hại với chúng. Prompt \"chuỗi suy nghĩ\" (chain-of-thought) tạo ra hiệu suất tốt hơn nhưng cơ chế vẫn còn tranh cãi: suy luận thật hay chỉ là khuôn mẫu văn bản giống-suy-luận đã học được? Một vấn đề riêng là khả năng diễn giải (interpretability): ngay cả khi mô hình trả lời đúng, chúng ta thường không thể giải thích được nó đã đi đến câu trả lời đó như thế nào ở bên trong.",
           example: '♟️ Deep Blue đánh bại Kasparov trong cờ vua mà không "hiểu" cờ vua. Stockfish chơi giỏi hơn bất kỳ con người nào nhưng không có khái niệm về quân vua. Hiệu suất và sự hiểu biết là hai thứ tách biệt.',
           source:    'Chollet, "On the Measure of Intelligence", 2019 + Mitchell, "AI: A Guide for Thinking Humans", 2021',
           sourceUrl: 'https://arxiv.org/abs/1911.01547',
@@ -1321,7 +1335,28 @@ window.LANG_DATA = {
           source:    'EU AI Act Annex III',
           sourceUrl: 'https://artificialintelligenceact.eu/',
         },
-      ],
+              {
+          type:    "choice",
+          q:       "Theo nghiên cứu, những công việc nào có nguy cơ bị AI tự động hóa cao nhất?",
+          options: ["Công việc đòi hỏi sự khéo léo tay chân", "Công việc dựa trên nhận diện khuôn mẫu lặp đi lặp lại — nhập liệu, dịch thuật cơ bản, viết bản nháp đầu tiên", "Công việc đòi hỏi sự tin tưởng giữa người với người", "Tất cả công việc đều có nguy cơ như nhau"],
+          correct: 1,
+          explanation: "AI thường không thay thế cả một nghề — nó tự động hóa những công việc cụ thể bên trong nghề đó, nhất là những việc dựa trên nhận diện khuôn mẫu. Sự khéo léo tay chân, phán đoán phức tạp và sự tin tưởng giữa người với người có khả năng chống lại tự động hóa tốt hơn nhiều.",
+        },
+        {
+          type:    "choice",
+          q:       "Câu lệnh (prompt) nào có khả năng cho ra câu trả lời thật sự hữu ích thay vì chung chung?",
+          options: ["\"Viết về loài chó\"", "\"Kể cho tôi mọi thứ bạn biết\"", "Một câu lệnh cụ thể kèm ngữ cảnh và định dạng mong muốn — ví dụ \"so sánh tính khí của chó Labrador và Poodle trong 100 từ, dành cho người lần đầu nuôi chó\"", "Không khác gì nhau, AI trả lời giống nhau thôi"],
+          correct: 2,
+          explanation: "Sự cụ thể, ngữ cảnh, định dạng được nêu rõ, và yêu cầu suy luận từng bước đều cải thiện rõ rệt chất lượng câu trả lời — đây là hiệu ứng đã được ghi nhận về cách các mô hình này xử lý ngữ cảnh.",
+        },
+        {
+          type:    "choice",
+          q:       "Vì sao một số nhà nghiên cứu lo ngại về các ứng dụng bạn đồng hành AI?",
+          options: ["Vì chúng quá đắt", "Vì chúng không bao giờ phản đối hay đòi hỏi gì lại — khác với mối quan hệ thật — và được tạo ra vì mục tiêu giữ chân người dùng và lợi nhuận", "Vì chúng chỉ hoạt động khi ngoại tuyến", "Vì chúng bị cấm với người dưới 18 tuổi"],
+          correct: 1,
+          explanation: "Khác với các mối quan hệ giữa người với người, bạn đồng hành AI không bao giờ phản đối và không bao giờ đòi hỏi gì lại. Thoải mái không phải lúc nào cũng lành mạnh — kiểu quan hệ này có thể âm thầm thay thế một sự kết nối con người quý giá hơn.",
+        },
+],
 
       results: [
         {
