@@ -45,6 +45,8 @@ window.LANG_DATA = {
     result_title_2:'Kamu benar-benar melek AI — bagikan!',
     btn_get_card:'Buat Kartu Saya 🃏',
     ui_exit_title:       'Keluar',
+    ui_source_label:     "Sumber",
+    ui_read_aloud:       "Bacakan untuk saya",
     btn_install_app:     '📲 Instal Aplikasi',
     btn_restart_all:     'Mulai Ulang ↺',
     restart_confirm:     'Ini akan menghapus progresmu dan memulai dari awal. Lanjutkan?',
@@ -140,6 +142,8 @@ window.LANG_DATA = {
           fact:'AI bisa membuat foto palsu yang terlihat nyata. Belajarlah mengenali yang asli!' },
       ],
       quiz: [
+        { type:"yesno", q:"Apakah AI diciptakan dan diprogram oleh manusia? 🤖", correct:1,
+          explanation:"Ya! AI adalah program komputer buatan manusia — ia tidak hidup dan tidak merasakan apa pun.", source:"Stanford AI Index 2024", sourceUrl:"https://aiindex.stanford.edu" },
         { type:'yesno', q:'Bisakah robot merasakan KESEDIHAN? 😢', correct:0,
           explanation:'Robot dan AI tidak punya perasaan. Mereka memproses informasi, tapi tidak bisa merasakan sedih, senang, atau cinta.' },
         { type:'yesno', q:'Apakah Siri hidup seperti manusia? 🧑', correct:0,
@@ -265,6 +269,9 @@ window.LANG_DATA = {
           fact:'Semua sistem AI mengikuti aturan — tidak bisa mengembangkan nilai atau moral sendiri!' },
       ],
       quiz: [
+        { type:"choice", q:"Apa itu Kecerdasan Buatan (AI)?",
+          options:["Robot dengan perasaan dan pikiran sungguhan 🤔", "Program komputer yang menemukan pola dalam data dan memprediksi jawaban terbaik 🔍", "Makhluk ajaib yang tinggal di internet ✨", "Persis sama seperti otak manusia 🧠"],
+          correct:1, explanation:"AI adalah program buatan manusia. Ia belajar dengan menemukan pola dalam teks, gambar, dan suara dalam jumlah besar — tetapi ia tidak berpikir atau merasa seperti manusia.", source:"Stanford AI Index 2024", sourceUrl:"https://aiindex.stanford.edu" },
         { type:'choice', q:'ChatGPT membaca pertanyaanmu lalu...',
           options:['Mencari di database 🗄️','Memprediksi kata yang paling mungkin satu per satu 🔤','Menelepon ahli sungguhan 📞','Berpikir mendalam seperti manusia 💭'],
           correct:1, explanation:'ChatGPT memprediksi kata berikutnya yang paling mungkin, lalu berikutnya — seperti autocorrect yang sangat canggih. Tidak ada pencarian database, tidak ada pemikiran nyata.' },
@@ -397,6 +404,9 @@ window.LANG_DATA = {
           fact:'Model AI open-source dapat diperiksa dan dimodifikasi oleh siapa saja — lebih transparan, tapi juga ada risikonya.' },
       ],
       quiz: [
+        { type:"choice", q:"Definisi mana yang paling tepat menggambarkan AI modern — seperti chatbot yang kamu gunakan setiap hari?",
+          options:["Otak elektronik yang berpikir dan bernalar persis seperti manusia", "Sistem statistik yang dilatih dengan data dalam jumlah besar, yang menemukan pola dan memprediksi hasil paling mungkin", "Basis data lengkap yang berisi setiap fakta di dunia", "Program yang telah mengembangkan kesadaran diri"],
+          correct:1, explanation:"Sistem AI modern, termasuk model bahasa besar (LLM), tidak \"memahami\" dalam arti manusiawi — mereka adalah model statistik yang menemukan pola dalam data besar dan menghasilkan output paling mungkin. Itu sebabnya mereka bisa terdengar sangat yakin namun tetap salah.", source:"Stanford AI Index 2024", sourceUrl:"https://aiindex.stanford.edu" },
         { type:'choice', q:'Chatbot AI memberimu jawaban yang terdengar sangat yakin. Haruskah kamu selalu percaya?',
           options:['Ya, terdengar yakin berarti benar 👍','Tidak — terdengar yakin dan benar itu berbeda 🎲','Percaya hanya kalau dia pakai kata-kata sulit 📖','Hanya di akhir pekan 📅'],
           correct:1, explanation:'AI bisa terdengar sangat yakin dan tetap saja sepenuhnya salah. Keyakinan bukan bukti.' },
@@ -543,6 +553,9 @@ window.LANG_DATA = {
           fact:'Model seperti GPT-4V memproses gambar dan teks bersama — membuka kemampuan dan risiko baru.' },
       ],
       quiz: [
+        { type:"choice", q:"Definisi mana yang paling akurat mencerminkan pemahaman ilmiah dan regulasi saat ini tentang \"sistem AI\"?",
+          options:["Pikiran otonom yang memiliki kesadaran, niat, dan kesadaran diri", "Sistem perangkat lunak yang, dari input tertentu, menghasilkan output — prediksi, rekomendasi, atau keputusan — untuk serangkaian tujuan yang ditentukan", "Basis data statis yang berisi setiap fakta yang tercatat tentang dunia", "Simulasi otak manusia pada tingkat neuron"],
+          correct:1, explanation:"Ini sesuai dengan cara sistem AI dijelaskan secara formal dalam sebagian besar dokumen penelitian dan kebijakan modern: perangkat lunak yang menghasilkan output — prediksi, rekomendasi, atau keputusan — dari data, tanpa memiliki pemahaman, kesadaran, atau niat. \"Pengetahuan\" di sini adalah properti statistik dari bobot (weights) model, bukan fakta yang tersimpan.", source:"Stanford AI Index 2024", sourceUrl:"https://aiindex.stanford.edu" },
         { type:'choice', q:'Constitutional AI (Anthropic, 2022) berbeda dari RLHF standar dalam...',
           options:['Menggunakan model yang lebih besar sebagai model hadiah 🧠','Model mengkritik dan merevisi outputnya sendiri berdasarkan konstitusi yang ditulis secara eksplisit 📜','Sepenuhnya menghapus penilai manusia dari proses 🚫','Hanya melatih pada dokumen hukum dan etika ⚖️'],
           correct:1, explanation:'Dalam Constitutional AI, AI yang lebih besar mengkritik output AI yang lebih kecil berdasarkan prinsip-prinsip tertulis — mengurangi ketergantungan pada penilai manusia untuk ketidakbahayaan sambil mempertahankan kemampuan.' },

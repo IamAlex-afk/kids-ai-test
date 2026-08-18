@@ -45,6 +45,8 @@ window.LANG_DATA = {
     result_title_2:'¡Tienes verdadera alfabetización en IA — compártela!',
     btn_get_card:'Generar mi Tarjeta 🃏',
     ui_exit_title:       'Salir',
+    ui_source_label:     "Fuente",
+    ui_read_aloud:       "Léeme",
     btn_install_app:     '📲 Instalar app',
     btn_restart_all:     'Empezar de nuevo ↺',
     restart_confirm:     'Esto borrará tu progreso y empezará de nuevo. ¿Continuar?',
@@ -151,6 +153,8 @@ window.LANG_DATA = {
           fact:'La IA puede crear fotos falsas que parecen reales. Aprende a reconocer lo que es real!' },
       ],
       quiz: [
+        { type:"yesno", q:"¿La IA fue inventada y programada por personas? 🤖", correct:1,
+          explanation:"¡Sí! La IA es un programa de computadora hecho por personas — no está viva y no siente nada.", source:"Stanford AI Index 2024", sourceUrl:"https://aiindex.stanford.edu" },
         { type:'yesno', q:'¿Puede un robot SENTIR tristeza? 😢', correct:0,
           explanation:'Los robots y la IA no tienen sentimientos. Procesan información pero no pueden sentir tristeza, alegría ni amor.' },
         { type:'yesno', q:'¿Está Siri viva como una persona? 🧑', correct:0,
@@ -275,6 +279,9 @@ window.LANG_DATA = {
           fact:'Todos los sistemas de IA siguen reglas — no pueden desarrollar sus propios valores o moral!' },
       ],
       quiz: [
+        { type:"choice", q:"¿Qué es la Inteligencia Artificial (IA)?",
+          options:["Un robot con sentimientos y pensamientos reales 🤔", "Un programa de computadora que encuentra patrones en los datos y predice la mejor respuesta 🔍", "Una criatura mágica que vive dentro de internet ✨", "Exactamente lo mismo que un cerebro humano 🧠"],
+          correct:1, explanation:"La IA es un programa creado por personas. Aprende encontrando patrones en enormes cantidades de textos, imágenes y sonidos — pero no piensa ni siente como un humano.", source:"Stanford AI Index 2024", sourceUrl:"https://aiindex.stanford.edu" },
         { type:'choice', q:'ChatGPT lee tu pregunta y luego...',
           options:['La busca en una base de datos 🗄️','Predice la respuesta más probable palabra por palabra 🔤','Llama a un experto real 📞','Piensa profundamente como un humano 💭'],
           correct:1, explanation:'ChatGPT predice la siguiente palabra más probable, luego la siguiente — como un autocompletado súper avanzado. Sin búsquedas en bases de datos, sin pensamiento real.' },
@@ -407,6 +414,9 @@ window.LANG_DATA = {
           fact:'Los modelos de IA de codigo abierto pueden ser inspeccionados y modificados por cualquiera — mas transparencia, pero tambien riesgos.' },
       ],
       quiz: [
+        { type:"choice", q:"¿Qué definición describe mejor a la IA moderna, como los chatbots que usas todos los días?",
+          options:["Un cerebro electrónico que piensa y razona igual que un humano", "Un sistema estadístico entrenado con enormes cantidades de datos que encuentra patrones y predice el resultado más probable", "Una base de datos completa que contiene todos los hechos del mundo", "Un programa que ha desarrollado autoconciencia"],
+          correct:1, explanation:"Los sistemas de IA modernos, incluidos los grandes modelos de lenguaje, no \"entienden\" en el sentido humano — son modelos estadísticos que encuentran patrones en enormes cantidades de datos y generan el resultado más probable. Por eso pueden sonar muy seguros y aun así estar equivocados.", source:"Stanford AI Index 2024", sourceUrl:"https://aiindex.stanford.edu" },
         { type:'choice', q:'Un chatbot de IA te da una respuesta que suena muy segura. ¿Deberías confiar siempre en ella?',
           options:['Sí, sonar seguro significa tener razón 👍','No — sonar seguro y tener razón no es lo mismo 🎲','Solo si usa palabras difíciles 📖','Solo los fines de semana 📅'],
           correct:1, explanation:'La IA puede sonar muy segura de sí misma y aun así estar completamente equivocada. La seguridad no es prueba de nada.' },
@@ -552,6 +562,9 @@ window.LANG_DATA = {
           fact:'Modelos como GPT-4V procesan imagenes y texto juntos — abren nuevas capacidades y nuevos riesgos.' },
       ],
       quiz: [
+        { type:"choice", q:"¿Qué definición refleja con mayor precisión la comprensión científica y regulatoria actual de un \"sistema de IA\"?",
+          options:["Una mente autónoma que posee conciencia, intenciones y autoconciencia", "Un sistema de software que, a partir de una entrada dada, genera resultados — predicciones, recomendaciones o decisiones — para un conjunto definido de objetivos", "Una base de datos estática que contiene todos los hechos registrados sobre el mundo", "Una simulación del cerebro humano a nivel neuronal"],
+          correct:1, explanation:"Esto coincide con la forma en que los sistemas de IA se describen formalmente en la mayoría de los documentos modernos de investigación y de política: software que produce resultados — predicciones, recomendaciones o decisiones — a partir de datos, sin poseer comprensión, conciencia ni intención. El \"conocimiento\" aquí es una propiedad estadística de los pesos del modelo, no hechos almacenados.", source:"Stanford AI Index 2024", sourceUrl:"https://aiindex.stanford.edu" },
         { type:'choice', q:'La IA Constitucional (Anthropic, 2022) difiere del RLHF estándar en...',
           options:['Usar modelos más grandes como modelo de recompensa 🧠','Hacer que el modelo critique y revise sus propios resultados contra una constitución escrita explícita 📜','Eliminar completamente a los evaluadores humanos del proceso 🚫','Entrenar solo con documentos legales y éticos ⚖️'],
           correct:1, explanation:'En la IA Constitucional, una IA más grande critica los resultados de una IA más pequeña contra principios escritos — reduciendo la dependencia de evaluadores humanos para la inocuidad mientras se preserva la capacidad.' },

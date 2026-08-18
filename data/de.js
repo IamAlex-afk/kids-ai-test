@@ -45,6 +45,8 @@ window.LANG_DATA = {
     result_title_2:'Du hast echte KI-Kompetenz — teile sie!',
     btn_get_card:'Meine Karte erstellen 🃏',
     ui_exit_title:       'Verlassen',
+    ui_source_label:     "Quelle",
+    ui_read_aloud:       "Lies mir vor",
     btn_install_app:     '📲 App installieren',
     btn_restart_all:     'Neu starten ↺',
     restart_confirm:     'Das löscht deinen Fortschritt und beginnt von vorne. Fortfahren?',
@@ -139,6 +141,8 @@ window.LANG_DATA = {
           fact:'KI kann deinen Lieblingsmusiker imitieren — aber echte Musik kommt von echten Menschen!' },
       ],
       quiz: [
+        { type:"yesno", q:"Wurde KI von Menschen erfunden und programmiert? 🤖", correct:1,
+          explanation:"Ja! KI ist ein Computerprogramm, das von Menschen gemacht wurde — sie ist nicht lebendig und fühlt nichts.", source:"Stanford AI Index 2024", sourceUrl:"https://aiindex.stanford.edu" },
         { type:'yesno', q:'Kann ein Roboter TRAUER fühlen? 😢', correct:0,
           explanation:'Roboter und KI haben keine Gefühle. Sie verarbeiten Informationen, können aber keine Traurigkeit, Freude oder Liebe empfinden.' },
         { type:'yesno', q:'Ist Siri lebendig wie eine Person? 🧑', correct:0,
@@ -263,6 +267,9 @@ window.LANG_DATA = {
           fact:'Alle KI-Systeme folgen Regeln — sie können keine eigenen Werte oder Moral entwickeln!' },
       ],
       quiz: [
+        { type:"choice", q:"Was ist Künstliche Intelligenz (KI)?",
+          options:["Ein Roboter mit echten Gefühlen und Gedanken 🤔", "Ein Computerprogramm, das Muster in Daten findet und die beste Antwort vorhersagt 🔍", "Ein magisches Wesen, das im Internet lebt ✨", "Genau dasselbe wie ein menschliches Gehirn 🧠"],
+          correct:1, explanation:"KI ist ein Programm, das von Menschen gebaut wurde. Sie lernt, indem sie Muster in riesigen Mengen von Texten, Bildern und Tönen findet — aber sie denkt und fühlt nicht wie ein Mensch.", source:"Stanford AI Index 2024", sourceUrl:"https://aiindex.stanford.edu" },
         { type:'choice', q:'ChatGPT liest deine Frage und dann...',
           options:['Sucht es in einer Datenbank 🗄️','Sagt es das wahrscheinlichste Wort nach dem anderen vorher 🔤','Ruft einen echten Experten an 📞','Denkt tief nach wie ein Mensch 💭'],
           correct:1, explanation:'ChatGPT sagt das nächste wahrscheinlichste Wort vorher, dann das nächste — wie eine sehr fortgeschrittene Autokorrektur. Keine Datenbanksuchen, kein echtes Denken.' },
@@ -395,6 +402,9 @@ window.LANG_DATA = {
           fact:'Open-Source-KI-Modelle können von jedem überprüft und modifiziert werden — mehr Transparenz, aber auch Risiken.' },
       ],
       quiz: [
+        { type:"choice", q:"Welche Definition beschreibt moderne KI am besten — zum Beispiel die Chatbots, die du jeden Tag benutzt?",
+          options:["Ein elektronisches Gehirn, das genau wie ein Mensch denkt und urteilt", "Ein statistisches System, trainiert auf riesigen Datenmengen, das Muster findet und das wahrscheinlichste Ergebnis vorhersagt", "Eine vollständige Datenbank mit jeder Tatsache der Welt", "Ein Programm, das ein Selbstbewusstsein entwickelt hat"],
+          correct:1, explanation:"Moderne KI-Systeme, einschließlich großer Sprachmodelle, „verstehen\" nicht im menschlichen Sinn — es sind statistische Modelle, die Muster in riesigen Datenmengen finden und das wahrscheinlichste Ergebnis erzeugen. Deshalb können sie sehr selbstsicher klingen und trotzdem falsch liegen.", source:"Stanford AI Index 2024", sourceUrl:"https://aiindex.stanford.edu" },
         { type:'choice', q:'Ein KI-Chatbot gibt dir eine sehr selbstsichere Antwort. Solltest du ihr immer vertrauen?',
           options:['Ja, Selbstsicherheit bedeutet richtig 👍','Nein — Selbstsicherheit und Richtigkeit sind nicht dasselbe 🎲','Nur vertrauen, wenn sie große Wörter benutzt 📖','Nur am Wochenende 📅'],
           correct:1, explanation:'KI kann sich ihrer Sache sehr sicher klingen und trotzdem völlig falschliegen. Selbstsicherheit ist kein Beweis.' },
@@ -540,6 +550,9 @@ window.LANG_DATA = {
           fact:'Modelle wie GPT-4V verarbeiten Bilder und Text gemeinsam — eröffnen neue Fähigkeiten und neue Risiken.' },
       ],
       quiz: [
+        { type:"choice", q:"Welche Definition spiegelt am genauesten das aktuelle wissenschaftliche und regulatorische Verständnis eines „KI-Systems\" wider?",
+          options:["Ein autonomer Geist mit Bewusstsein, Absichten und Selbstwahrnehmung", "Ein Softwaresystem, das aus gegebenen Eingaben Ergebnisse erzeugt — Vorhersagen, Empfehlungen oder Entscheidungen — für einen festgelegten Satz von Zielen", "Eine statische Datenbank mit jeder erfassten Tatsache über die Welt", "Eine Simulation des menschlichen Gehirns auf Neuronenebene"],
+          correct:1, explanation:"Das entspricht der formalen Beschreibung von KI-Systemen in den meisten modernen Forschungs- und Politikdokumenten: Software, die aus Daten Ergebnisse erzeugt — Vorhersagen, Empfehlungen oder Entscheidungen — ohne Verständnis, Bewusstsein oder Absicht zu besitzen. „Wissen\" ist hier eine statistische Eigenschaft der Gewichte des Modells, keine gespeicherten Fakten.", source:"Stanford AI Index 2024", sourceUrl:"https://aiindex.stanford.edu" },
         { type:'choice', q:'Konstitutionelle KI (Anthropic, 2022) unterscheidet sich von Standard-RLHF durch...',
           options:['Nutzung größerer Modelle als Belohnungsmodell 🧠','Das Modell lässt seine eigenen Ausgaben gegen eine explizit geschriebene Verfassung kritisieren und überarbeiten 📜','Vollständige Entfernung menschlicher Bewerter aus dem Prozess 🚫','Training nur auf rechtlichen und ethischen Dokumenten ⚖️'],
           correct:1, explanation:'Bei Konstitutioneller KI kritisiert eine größere KI Ausgaben einer kleineren KI gegen geschriebene Prinzipien — reduziert die Abhängigkeit von menschlichen Bewertern für Harmlosigkeit, während Kapazität erhalten bleibt.' },

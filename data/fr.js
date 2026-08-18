@@ -45,6 +45,8 @@ window.LANG_DATA = {
     result_title_2:"Tu as une vraie compétence IA — partage-la !",
     btn_get_card:'Créer ma carte 🃏',
     ui_exit_title:       'Quitter',
+    ui_source_label:     "Source",
+    ui_read_aloud:       "Lis-moi",
     btn_install_app:     "📲 Installer l'app",
     btn_restart_all:     'Recommencer ↺',
     restart_confirm:     'Cela effacera ta progression et recommencera depuis le début. Continuer ?',
@@ -139,6 +141,8 @@ window.LANG_DATA = {
           fact:"L'IA peut creer de fausses photos qui semblent reelles. Apprends a reconnaitre ce qui est reel !" },
       ],
       quiz: [
+        { type:"yesno", q:"L'IA a-t-elle été inventée et programmée par des humains ? 🤖", correct:1,
+          explanation:"Oui ! L'IA est un programme informatique créé par des humains — elle n'est pas vivante et ne ressent rien.", source:"Stanford AI Index 2024", sourceUrl:"https://aiindex.stanford.edu" },
         { type:'yesno', q:'Un robot peut-il ressentir la TRISTESSE ? 😢', correct:0,
           explanation:"Les robots et l'IA n'ont pas de sentiments. Ils traitent des informations, mais ne peuvent pas ressentir la tristesse, la joie ou l'amour." },
         { type:'yesno', q:'Siri est-il vivant comme une personne ? 🧑', correct:0,
@@ -263,6 +267,9 @@ window.LANG_DATA = {
           fact:"Tous les systemes d'IA suivent des regles — ils ne peuvent pas developper leurs propres valeurs !" },
       ],
       quiz: [
+        { type:"choice", q:"Qu'est-ce que l'Intelligence Artificielle (IA) ?",
+          options:["Un robot avec de vrais sentiments et de vraies pensées 🤔", "Un programme informatique qui trouve des motifs dans les données et prédit la meilleure réponse 🔍", "Une créature magique qui vit dans internet ✨", "Exactement la même chose qu'un cerveau humain 🧠"],
+          correct:1, explanation:"L'IA est un programme créé par des humains. Elle apprend en trouvant des motifs dans d'énormes quantités de textes, d'images et de sons — mais elle ne pense pas et ne ressent rien comme un humain.", source:"Stanford AI Index 2024", sourceUrl:"https://aiindex.stanford.edu" },
         { type:'choice', q:'ChatGPT lit ta question et ensuite...',
           options:["Il cherche dans une base de données 🗄️","Il prédit le mot le plus probable un par un 🔤","Il appelle un vrai expert 📞","Il réfléchit profondément comme un humain 💭"],
           correct:1, explanation:"ChatGPT prédit le prochain mot le plus probable, puis le suivant — comme une correction automatique très avancée. Pas de recherche, pas de vraie réflexion." },
@@ -395,6 +402,9 @@ window.LANG_DATA = {
           fact:"Les modeles d'IA open source peuvent etre inspectes et modifies par n'importe qui — plus de transparence, mais aussi des risques." },
       ],
       quiz: [
+        { type:"choice", q:"Quelle définition décrit le mieux l'IA moderne, comme les chatbots que tu utilises tous les jours ?",
+          options:["Un cerveau électronique qui pense et raisonne exactement comme un humain", "Un système statistique entraîné sur d'énormes quantités de données, qui trouve des motifs et prédit le résultat le plus probable", "Une base de données complète contenant tous les faits du monde", "Un programme qui a développé une conscience de soi"],
+          correct:1, explanation:"Les systèmes d'IA modernes, y compris les grands modèles de langage, ne « comprennent » pas au sens humain — ce sont des modèles statistiques qui trouvent des motifs dans d'énormes quantités de données et génèrent le résultat le plus probable. C'est pourquoi ils peuvent sembler très sûrs d'eux tout en se trompant.", source:"Stanford AI Index 2024", sourceUrl:"https://aiindex.stanford.edu" },
         { type:'choice', q:'Un chatbot IA te donne une réponse qui semble très sûre d\'elle. Faut-il toujours lui faire confiance ?',
           options:['Oui, être sûr de soi veut dire avoir raison 👍','Non — être sûr de soi et avoir raison, ce n\'est pas pareil 🎲','Seulement si elle utilise de grands mots 📖','Seulement le week-end 📅'],
           correct:1, explanation:'L\'IA peut sembler très sûre d\'elle tout en se trompant complètement. La confiance n\'est pas une preuve.' },
@@ -540,6 +550,9 @@ window.LANG_DATA = {
           fact:"Des modeles comme GPT-4V traitent images et texte ensemble — ouvrent de nouvelles capacites et de nouveaux risques." },
       ],
       quiz: [
+        { type:"choice", q:"Quelle définition reflète le plus précisément la compréhension scientifique et réglementaire actuelle d'un « système d'IA » ?",
+          options:["Un esprit autonome possédant conscience, intentions et conscience de soi", "Un système logiciel qui, à partir d'une entrée donnée, génère des résultats — prédictions, recommandations ou décisions — pour un ensemble défini d'objectifs", "Une base de données statique contenant tous les faits enregistrés sur le monde", "Une simulation du cerveau humain au niveau neuronal"],
+          correct:1, explanation:"Cela correspond à la façon dont les systèmes d'IA sont formellement décrits dans la plupart des documents de recherche et des textes réglementaires modernes : un logiciel qui produit des résultats — prédictions, recommandations ou décisions — à partir de données, sans posséder de compréhension, de conscience ou d'intention. La « connaissance », ici, est une propriété statistique des poids du modèle, pas des faits stockés.", source:"Stanford AI Index 2024", sourceUrl:"https://aiindex.stanford.edu" },
         { type:'choice', q:"L'IA Constitutionnelle (Anthropic, 2022) diffère du RLHF standard en...",
           options:["Utilisant des modèles plus grands comme modèle de récompense 🧠","Faisant critiquer et réviser ses propres sorties contre une constitution explicitement écrite 📜","Supprimant complètement les évaluateurs humains du processus 🚫","S'entraînant uniquement sur des documents juridiques et éthiques ⚖️"],
           correct:1, explanation:"Dans l'IA Constitutionnelle, une IA plus grande critique les sorties d'une plus petite contre des principes écrits — réduit la dépendance aux évaluateurs humains pour l'inoffensivité tout en maintenant la capacité." },
