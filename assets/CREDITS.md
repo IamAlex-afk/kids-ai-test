@@ -22,12 +22,29 @@ the license but is included here as good practice.
   downscaled only (never upscaled) so they read clearly at roadside
   size in Circuit Racer.
 
-- `car-cyan.png`, `car-red.png`, `car-gold.png` (56x103 each) — from
-  "Racing Pack" (kenney.nl/assets/racing-pack), PNG/Cars/car_blue_1.png,
-  car_red_1.png, car_yellow_1.png. Modifications: saturation +25%/
-  contrast +8% to read better with the neon glow overlay, resized to
-  56px wide (originally shrunk to 30px, which was too small to read
-  on-screen — rebuilt larger from the full-resolution source).
+- `car-cyan.png`, `car-red.png`, `car-gold.png` (56x133 each) — from
+  "Free Top Down Car Sprites" by UnLucky Studio (unluckystudio.com),
+  Car.png (256x256, originally solid orange). CC0 — "free to use in
+  personal or commercial projects, credit not necessary but
+  appreciated." Modifications: cropped to the car's bounding box,
+  hue-shifted to cyan/red/gold via HSV rotation (only saturated pixels
+  re-hued, so tires/glass/shadows keep their original tone), downscaled
+  to 56px wide. Replaces an earlier version sourced from Kenney's
+  "Racing Pack" (kenney.nl/assets/racing-pack) — that pack's cars read
+  as an indistinct blob at in-game size, even rebuilt from its
+  full-resolution source; this pack's cleaner shape and clearer
+  windshield/wheel-well detail hold up much better that small.
+
+Source: https://opengameart.org/content/free-top-down-car-sprites-by-unlucky-studio
+License: CC0 (public domain), see the pack's included Read Me.txt
+
+---
+
+- `tree-large.png` (76x75), `tree-small.png` (52x52) — from "Racing
+  Pack" (kenney.nl/assets/racing-pack), PNG/Objects/tree_large.png and
+  tree_small.png (originals 214x212 / 141x141). Modifications:
+  downscaled only (never upscaled) so they read clearly at roadside
+  size in Circuit Racer.
 
 Source: https://kenney.nl/assets
 License: https://creativecommons.org/publicdomain/zero/1.0/
