@@ -151,7 +151,7 @@ window.LANG_DATA = {
         {
           icon:  '🤖',
           title: 'What IS a robot?',
-          text:  'A robot is a machine that follows rules. Alexa, Siri, and Google — they are not alive. They are like a very smart toy that listens and talks. But they can\'t feel happy or sad.',
+          text:       "A robot is a machine that follows rules. Alexa, Siri, and Google — they are not alive. They are like a very smart toy that listens and talks. But they can't feel happy or sad. She can be helpful — but she isn't a real friend.",
           example: '🎮 A video game follows rules too! If you press jump, Mario jumps. AI is the same — it follows rules, it doesn\'t think.',
           source:    'MIT Media Lab, Early Childhood AI',
           sourceUrl: 'https://www.media.mit.edu/',
@@ -167,7 +167,7 @@ window.LANG_DATA = {
         {
           icon:  '🧩',
           title: 'AI is like a PUZZLE SOLVER',
-          text:  'AI looks at millions of puzzles and learns the pattern. When you ask it something, it finds the best pattern it saw before. It does NOT know things like you know things.',
+          text:       "AI looks at millions of puzzles and learns the pattern. When you ask it something, it finds the best pattern it saw before. It does NOT know things like you know things. It follows special rules it was taught — without them, it can't do anything.",
           example: '🌈 Imagine you sorted 1000 boxes of crayons by colour. Now you\'re really fast at sorting! AI is like that — but with words.',
           source:    'How AI works — BBC Bitesize',
           sourceUrl: 'https://www.bbc.co.uk/bitesize/articles/znmsscw',
@@ -481,7 +481,7 @@ window.LANG_DATA = {
         {
           icon:  '🛡️',
           title: 'YOU are in control',
-          text:  'AI is the most powerful tool humans have ever built. But it\'s still a tool — like a hammer. A hammer can build a house or break a window. YOU decide how to use it. The people who understand AI best are the ones who stay in control of it.',
+          text:       "AI is the most powerful tool humans have ever built. But it's still a tool — like a hammer. A hammer can build a house or break a window. YOU decide how to use it. The people who understand AI best are the ones who stay in control of it. And if a tool is used to cause harm, the person is responsible — not the tool.",
           example: '🔨 + 🧠 = 🏠. Tool + Smart Human = Amazing Result. AI + Critical Thinking = Your Superpower.',
           source:    'UNESCO "AI Competency Framework", 2022',
           sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
@@ -1146,7 +1146,21 @@ window.LANG_DATA = {
           source:    'Stanford Internet Observatory, 2024',
           sourceUrl: 'https://stacks.stanford.edu/file/druid:mb753jn6512/sio_annual_report_2024.pdf',
         },
-      ],
+              {
+          type:    "choice",
+          q:       "An AI image generator was trained on millions of real artists' works. What does this mean?",
+          options: ["The rights to the new image definitely belong to you — it's settled", "Who owns an image like this is still an open question, even for courts and companies", "The image automatically belongs to the artists whose work was used", "AI images can't have any rights at all"],
+          correct: 1,
+          explanation: "Courts and companies are still debating who owns AI art: you, the AI company, or the artists whose work trained the model. There's no single settled answer yet.",
+        },
+        {
+          type:    "choice",
+          q:       "You've been chatting in a game with a 'player' who's always online and great at conversation. Should you assume it's a real person?",
+          options: ["Yes, AI can't communicate that convincingly", "No — it could easily be an AI bot built by a company with its own goals", "Yes, if the account has an avatar and a name", "It doesn't matter, there's no real difference"],
+          correct: 1,
+          explanation: "AI bots can chat, play, and even argue convincingly. Some apps use AI characters that feel like real friends but are built by companies with their own goals.",
+        },
+],
 
       results: [
         {
@@ -1230,7 +1244,7 @@ window.LANG_DATA = {
         {
           icon:  '⚗️',
           title: 'What "reasoning" and "understanding" mean (and don\'t) in AI',
-          text:  'GPT-4 passes bar exams, medical licensing tests, and PhD qualifier questions. Does this mean it reasons? François Chollet\'s ARC benchmark (2019) specifically designed tasks AI cannot solve through pattern matching alone — and current LLMs fail catastrophically on them. Chain-of-thought prompting elicits better performance but the mechanism is debated: genuine reasoning or learned patterns of reasoning-like text?',
+          text:       "GPT-4 passes bar exams, medical licensing tests, and PhD qualifier questions. Does this mean it reasons? François Chollet's ARC benchmark (2019) specifically designed tasks AI cannot solve through pattern matching alone — and current LLMs fail catastrophically on them. Chain-of-thought prompting elicits better performance but the mechanism is debated: genuine reasoning or learned patterns of reasoning-like text? A separate problem is interpretability: even when a model answers correctly, we often can't explain how it arrived at that answer internally.",
           example: '♟️ Deep Blue beat Kasparov at chess without "understanding" chess. Stockfish plays better than any human but has no concept of a king. Performance and understanding are separable.',
           source:    'Chollet, "On the Measure of Intelligence", 2019 + Mitchell, "AI: A Guide for Thinking Humans", 2021',
           sourceUrl: 'https://arxiv.org/abs/1911.01547',
@@ -1666,7 +1680,28 @@ window.LANG_DATA = {
           explanation: 'The goal of AI literacy. You don\'t need to build AI to evaluate AI claims critically — you need to understand what AI actually does and doesn\'t do, and to identify when claims exceed the evidence.',
           source:    null,
         },
-      ],
+              {
+          type:    "choice",
+          q:       "According to research, which tasks are most at risk of AI automation?",
+          options: ["Tasks requiring physical dexterity", "Tasks built on repetitive pattern recognition — data entry, basic translation, first drafts", "Tasks requiring interpersonal trust", "All tasks equally"],
+          correct: 1,
+          explanation: "AI usually doesn't replace whole professions — it automates specific tasks within them, especially ones built on pattern recognition. Physical dexterity, complex judgment, and interpersonal trust are far more resistant to automation.",
+        },
+        {
+          type:    "choice",
+          q:       "Which prompt is more likely to produce a genuinely useful answer instead of a generic one?",
+          options: ["\"Write about dogs\"", "\"Tell me everything you know\"", "A specific prompt with context and a target format — e.g. \"compare Labrador and Poodle temperament in 100 words for a first-time dog owner\"", "It makes no difference, AI answers the same either way"],
+          correct: 2,
+          explanation: "Specificity, context, a stated format, and asking the model to reason step by step measurably improve output quality — this is a documented effect of how these models process context.",
+        },
+        {
+          type:    "choice",
+          q:       "Why are some researchers concerned about AI companion apps?",
+          options: ["Because they're too expensive", "Because they never push back or ask anything in return — unlike real relationships — and are built for engagement and profit", "Because they only work offline", "Because they're banned for anyone under 18"],
+          correct: 1,
+          explanation: "Unlike human relationships, AI companions never push back and never ask for anything in return. Comfortable isn't always healthy — this kind of relationship can quietly crowd out more valuable human connection.",
+        },
+],
 
       results: [
         {

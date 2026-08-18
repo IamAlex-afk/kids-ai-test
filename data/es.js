@@ -76,7 +76,7 @@ window.LANG_DATA = {
         {
           icon: '🤖',
           title: '¿Qué ES un robot?',
-          text: 'Un robot es una máquina que sigue reglas. Alexa, Siri y el Asistente de Google no están vivos. Son como un juguete muy inteligente que escucha y habla. Pero no pueden sentir alegría ni tristeza.',
+          text:       "Un robot es una máquina que sigue reglas. Alexa, Siri y el Asistente de Google no están vivos. Son como un juguete muy inteligente que escucha y habla. Pero no pueden sentir alegría ni tristeza. Puede ser útil — pero no es una amiga de verdad.",
           example: '🎮 ¡Un videojuego también sigue reglas! Si presionas saltar, el personaje salta. La IA hace lo mismo — sigue reglas, no piensa.',
           miniTest: [{
             q: '¿Está Alexa viva como un perro?',
@@ -88,7 +88,7 @@ window.LANG_DATA = {
         {
           icon: '🧩',
           title: 'La IA es como un ROMPECABEZAS',
-          text: 'La IA mira millones de rompecabezas y aprende el patrón. Cuando le preguntas algo, busca el mejor patrón que vio antes. NO sabe las cosas como tú las sabes.',
+          text:       "La IA mira millones de rompecabezas y aprende el patrón. Cuando le preguntas algo, busca el mejor patrón que vio antes. NO sabe las cosas como tú las sabes. Sigue reglas especiales que le enseñaron — sin ellas, no puede hacer nada.",
           example: '🌈 Imagina que ordenaste 1000 cajas de crayones por color. ¡Ahora eres muy rápido ordenando! La IA es así — pero con palabras.',
           miniTest: [{
             q: '¿Puede la IA sentir HAMBRE?',
@@ -220,7 +220,7 @@ window.LANG_DATA = {
         {
           icon:'🛡️',
           title:'TÚ tienes el control',
-          text:'La IA es la herramienta más poderosa que los humanos han construido. Pero sigue siendo una herramienta — como un martillo. Un martillo puede construir una casa o romper una ventana. TÚ decides cómo usarlo. Las personas que mejor entienden la IA son las que mantienen el control.',
+          text:       "La IA es la herramienta más poderosa que los humanos han construido. Pero sigue siendo una herramienta — como un martillo. Un martillo puede construir una casa o romper una ventana. TÚ decides cómo usarlo. Las personas que mejor entienden la IA son las que mantienen el control. Y si una herramienta se usa para hacer daño, el responsable es la persona, no la herramienta.",
           example:'🔨 + 🧠 = 🏠. Herramienta + Humano inteligente = Resultado increíble. IA + Pensamiento crítico = Tu superpoder.',
           miniTest: [{ q:'¿Cuál es la mejor forma de usar la IA?',
             options:['Confiar en todo lo que dice 👍','Nunca usarla — es peligrosa 🚫','Usarla como herramienta y siempre pensar críticamente 🧠','Dejar que la IA tome todas tus decisiones 🤷'],
@@ -300,7 +300,13 @@ window.LANG_DATA = {
         { type:'choice', q:'Pides a la IA ayuda con tu tarea. Te da una respuesta perfecta. ¿Qué debes hacer?',
           options:['Entregarlo directamente 📤','Leerlo, entenderlo y luego escribirlo con tus propias palabras ✍️','Confiar en él y no cuestionarlo 👍','Compartirlo con amigos para que ellos también lo usen 📤'],
           correct:1, explanation:'Usar el resultado de la IA sin entenderlo significa que TÚ no aprendes nada. La IA es un ayudante, no un sustituto de tu pensamiento.' },
-      ],
+              { type:"choice", q:"Una empresa dice: «Nuestra IA entiende tus emociones». ¿Qué significa esto en realidad?",
+          options:["La IA realmente siente empatía 💛", "La IA reconoce patrones relacionados con emociones en el texto o la voz 📊", "La IA está programada para ser amable 🤗", "Es imposible — la IA no puede hacer eso 🚫"],
+          correct:1, explanation:"La IA emocional reconoce patrones (por ejemplo, un tono de voz tenso) — pero no SIENTE ni entiende las emociones.", source:"MIT Media Lab, Computación Afectiva", sourceUrl:"https://affect.media.mit.edu/" },
+        { type:"choice", q:"¿Quién es responsable de lo que hace la IA?",
+          options:["La propia IA 🤖", "Nadie — es solo una computadora 💻", "Las personas que la crean, entrenan y usan 👤", "El gobierno 🏛️"],
+          correct:2, explanation:"Los responsables son las personas. Los creadores eligen los datos; la empresa la lanza; el usuario la aplica. La IA no tiene responsabilidad moral.", source:"Ley de IA de la UE, 2024", sourceUrl:"https://artificialintelligenceact.eu/" },
+],
       results: [
         { title:'IA Curioso 🌱', description:'Estás empezando a entender qué es la IA realmente. Sigue haciendo preguntas — la curiosidad es la mejor herramienta para entender la tecnología.' },
         { title:'IA Consciente 🔍', description:'Entiendes que la IA aprende de datos, puede equivocarse y necesita pensamiento crítico. ¡Eso ya es más de lo que saben la mayoría de adultos!' },
@@ -440,7 +446,13 @@ window.LANG_DATA = {
         { type:'choice', q:'¿Cuál es el mayor peligro de las noticias y artículos falsos generados por IA?',
           options:['Usan demasiados datos de internet 📡','Se pueden producir mucho más rápido de lo que los humanos pueden verificar 📣','Siempre están mal escritos 📉','Nadie los lee nunca 🤷'],
           correct:1, explanation:'La IA puede generar enormes cantidades de desinformación convincente muy rápido — es la escala lo que la hace peligrosa.' },
-      ],
+              { type:"choice", q:"Un generador de imágenes de IA fue entrenado con millones de obras de artistas reales. ¿Qué significa esto?",
+          options:["Los derechos de la nueva imagen son definitivamente tuyos — el tema está resuelto", "A quién pertenece una imagen así todavía es una pregunta abierta, incluso para tribunales y empresas", "La imagen pertenece automáticamente a los artistas cuyas obras se usaron", "Las imágenes de IA no pueden tener ningún derecho"],
+          correct:1, explanation:"Los tribunales y las empresas todavía debaten a quién pertenece el arte de IA: a ti, a la empresa de IA o a los artistas cuyas obras entrenaron el modelo. Todavía no hay una respuesta única." },
+        { type:"choice", q:"Llevas tiempo chateando en un juego con un 'jugador' que siempre está conectado y es genial conversando. ¿Deberías asumir que es una persona real?",
+          options:["Sí, la IA no puede comunicarse de forma tan convincente", "No — fácilmente podría ser un bot de IA creado por una empresa con sus propios objetivos", "Sí, si la cuenta tiene avatar y nombre", "No importa, no hay ninguna diferencia real"],
+          correct:1, explanation:"Los bots de IA pueden chatear, jugar e incluso discutir de forma convincente. Algunas apps usan personajes de IA que se sienten como amigos reales, pero fueron creados por empresas con sus propios objetivos." },
+],
       results: [
         { title:'Curioso con la IA 🔎', description:'Estás haciendo las preguntas correctas sobre la IA. Sigue notando cuando algo pueda ser falso o suene demasiado bueno para ser verdad — ese instinto es justo lo que importa.' },
         { title:'Consciente de la IA 🧪', description:'Entiendes que la IA predice en vez de saber, cómo se diseñan los feeds para engancharte, y por qué importa verificar los datos. Eso ya te pone por delante de la mayoría de la gente en internet.' },
@@ -483,7 +495,7 @@ window.LANG_DATA = {
         {
           icon:'⚗️',
           title:'Qué significan (y no significan) el "razonamiento" y la "comprensión" en IA',
-          text:'GPT-4 aprueba exámenes de abogacía, pruebas de licencia médica y preguntas de calificadores de doctorado. ¿Significa esto que razona? El benchmark ARC de François Chollet (2019) diseñó específicamente tareas que la IA no puede resolver mediante reconocimiento de patrones — y los LLMs actuales fallan catastróficamente en ellos.',
+          text:       "GPT-4 aprueba exámenes de abogacía, pruebas de licencia médica y preguntas de calificadores de doctorado. ¿Significa esto que razona? El benchmark ARC de François Chollet (2019) diseñó específicamente tareas que la IA no puede resolver mediante reconocimiento de patrones — y los LLMs actuales fallan catastróficamente en ellos. Un problema aparte es la interpretabilidad: incluso cuando un modelo responde correctamente, muchas veces no podemos explicar cómo llegó internamente a esa respuesta.",
           example:'♟️ Deep Blue venció a Kasparov en ajedrez sin "entender" el ajedrez. El rendimiento y la comprensión son separables.',
           miniTest: [{ q:'El prompting de cadena de pensamiento (pedir a la IA que "piense paso a paso") funciona porque...',
             options:['Activa el módulo de razonamiento de la IA 🧠','Elicita patrones estadísticos de texto similar al razonamiento que correlacionan con resultados más precisos 📊','Da a la IA más tiempo para calcular 🕐','Obliga a la IA a acceder a diferentes datos de entrenamiento 📚'],
@@ -581,7 +593,16 @@ window.LANG_DATA = {
           correct:2, explanation:'La moderación de contenido a escala es genuinamente no resuelta. El red-teaming, el RLHF y la IA constitucional todos reducen resultados dañinos — pero ninguno los elimina.' },
         { type:'likert', q:'"Las empresas deberían estar legalmente obligadas a publicar qué datos se usaron para entrenar sus modelos de IA."', ideal:5,
           explanation:'La transparencia de los datos de entrenamiento es requerida bajo la Ley de IA de la UE para sistemas de IA de alto riesgo y de propósito general. Permite la auditoría de sesgos, la responsabilidad de derechos de autor y el debate público informado.' },
-      ],
+              { type:"choice", q:"Según las investigaciones, ¿qué tareas están más en riesgo de automatización por IA?",
+          options:["Tareas que requieren destreza física", "Tareas basadas en reconocimiento repetitivo de patrones — entrada de datos, traducción básica, primeros borradores", "Tareas que requieren confianza interpersonal", "Todas las tareas por igual"],
+          correct:1, explanation:"La IA normalmente no reemplaza profesiones enteras — automatiza tareas específicas dentro de ellas, sobre todo las basadas en reconocimiento de patrones. La destreza física, el juicio complejo y la confianza interpersonal son mucho más resistentes a la automatización." },
+        { type:"choice", q:"¿Qué instrucción tiene más probabilidades de producir una respuesta realmente útil en vez de una genérica?",
+          options:["«Escribe sobre perros»", "«Cuéntame todo lo que sabes»", "Una instrucción específica con contexto y formato deseado — por ejemplo, «compara el temperamento del labrador y el caniche en 100 palabras para alguien que tiene su primer perro»", "No hay diferencia, la IA responde igual de todos modos"],
+          correct:2, explanation:"La especificidad, el contexto, indicar un formato y pedir que razone paso a paso mejoran de forma medible la calidad de la respuesta — es un efecto documentado de cómo estos modelos procesan el contexto." },
+        { type:"choice", q:"¿Por qué algunos investigadores están preocupados por las apps de compañía con IA?",
+          options:["Porque son demasiado caras", "Porque nunca contradicen ni piden nada a cambio —a diferencia de las relaciones reales— y están diseñadas para maximizar el uso y las ganancias", "Porque solo funcionan sin conexión", "Porque están prohibidas para menores de 18 años"],
+          correct:1, explanation:"A diferencia de las relaciones humanas, los compañeros de IA nunca contradicen ni piden nada a cambio. Lo cómodo no siempre es sano — este tipo de relación puede desplazar silenciosamente una conexión humana más valiosa." },
+],
       results: [
         { title:'IA Curioso 🔎', description:'Tienes una base para construir. Enfócate en fuentes primarias — los papers académicos y los documentos regulatorios oficiales recompensan la lectura cuidadosa. El panorama cambia rápido pero los fundamentos son estables.' },
         { title:'IA Consciente 🧪', description:'Entiendes los mecanismos reales y puedes distinguir el hype de la sustancia. Estás posicionado para pensar claramente sobre política de IA, carrera y preguntas cívicas.' },
