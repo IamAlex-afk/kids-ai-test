@@ -1356,6 +1356,36 @@ window.LANG_DATA = {
           correct: 1,
           explanation: "Khác với các mối quan hệ giữa người với người, bạn đồng hành AI không bao giờ phản đối và không bao giờ đòi hỏi gì lại. Thoải mái không phải lúc nào cũng lành mạnh — kiểu quan hệ này có thể âm thầm thay thế một sự kết nối con người quý giá hơn.",
         },
+        {
+          type:    "choice",
+          q:       "Một thuật toán được huấn luyện trên dữ liệu tuyển dụng lịch sử của một công ty từng có sự phân biệt giới tính...",
+          options: ["Sẽ tự động sửa thiên kiến — thuật toán vốn khách quan 🤖", "Nhiều khả năng sẽ tái tạo và khuếch đại thiên kiến lịch sử đó 📊", "Chỉ thể hiện thiên kiến trên các bộ dữ liệu rất lớn 📈", "Chỉ thể hiện thiên kiến nếu được lập trình rõ ràng để làm vậy 💻"],
+          correct: 1,
+          explanation: "Thuật toán học từ dữ liệu — nếu dữ liệu phản ánh sự phân biệt đối xử, thuật toán sẽ tái tạo lại điều đó. Amazon đã ngừng công cụ AI tuyển dụng của mình vào năm 2018 chính vì lý do này.",
+          source:    "Buolamwini và Gebru, \"Gender Shades\", MIT Media Lab 2018",
+          sourceUrl: "http://proceedings.mlr.press/v81/buolamwini18a.html",
+        },
+        {
+          type:    "likert",
+          q:       "\"Tôi hiểu đủ rõ sự khác biệt giữa nhận diện khuôn mẫu của AI và lý luận của con người để có thể giải thích điều đó cho người khác.\"",
+          ideal:   4,
+          explanation: "Khả năng giải thích được sự khác biệt này là một phần cốt lõi của hiểu biết về AI.",
+        },
+        {
+          type:    "choice",
+          q:       "Điều gì khiến một hệ thống AI trở nên \"có thể diễn giải được\" (interpretable) — hoặc không?",
+          options: ["Mã nguồn mở 🔓", "Khả năng con người hiểu được vì sao mô hình đưa ra một kết quả cụ thể 💡", "Được huấn luyện trên dữ liệu mở 📚", "Giao diện thân thiện với người dùng 🖥️"],
+          correct: 1,
+          explanation: "Khả năng diễn giải nghĩa là: chúng ta có thể hiểu được quá trình ra quyết định của mô hình không? Các mạng nơ-ron lớn là những \"hộp đen\" — đây là một vấn đề cốt lõi về an toàn AI.",
+          source:    "Nghiên cứu về khả năng diễn giải của Anthropic",
+          sourceUrl: "https://www.anthropic.com/research/interpretability",
+        },
+        {
+          type:    "likert",
+          q:       "\"Tôi cảm thấy mình có khả năng đánh giá một cách phê phán những tuyên bố về AI mà tôi gặp trên tin tức, tại nơi làm việc, hoặc từ các công ty.\"",
+          ideal:   4,
+          explanation: "Đó chính là mục tiêu của hiểu biết về AI. Bạn không cần biết xây dựng AI để có thể đánh giá phê phán những tuyên bố về nó.",
+        },
 ],
 
       results: [
