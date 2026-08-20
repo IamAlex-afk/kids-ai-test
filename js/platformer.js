@@ -1354,9 +1354,9 @@
 
       // Pick a background variant per world so worlds don't all show the
       // identical image — cycles through the 4 real variants, then tints
-      // the repeat with this world's theme accent (worldIdx 4/5 for
-      // teen/adult, which have 5-6 worlds) so even a repeated photo still
-      // reads as a different place.
+      // the repeat with this world's theme accent (worlds past the 4th —
+      // up to 9 for adult) so even a repeated photo still reads as a
+      // different place.
       const mode = bgModeFor(age);
       const variants = BG_IMAGES[mode] || [];
       const vi = variants.length ? worldIdx % variants.length : 0;

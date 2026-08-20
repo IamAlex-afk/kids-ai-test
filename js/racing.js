@@ -2,10 +2,10 @@
 
 /* ═══════════════════════════════════════════════════════════════════
    KAT RACING — "Circuit Racer"
-   Top-down, vertically-scrolling lane racer: the player's car sits near
-   the bottom of the screen and switches lanes; traffic and hazards
-   scroll DOWN toward it (mirror image of platformer.js's auto-runner,
-   which scrolls entities left toward a fixed player).
+   Top-down, vertically-scrolling lane racer: the player's runner-bot
+   sits near the bottom of the screen and switches lanes; hazards (spam,
+   scams, phishing) scroll DOWN toward it (mirror image of platformer.js's
+   auto-runner, which scrolls entities left toward a fixed player).
 
    Same content model as the other two games: worlds = lessons
    (data.lessons[i]), letters = data.snake rounds, reused as-is across
@@ -36,8 +36,7 @@
     adult: { lanes: 3, baseSpeed: 4.6, maxSpeed: 9.2, rampSec: 38, gapMax: 850,  gapMin: 520,  obstacleMax: 6, boost: true,  hints: 'never',  partStages: 4 },
   };
 
-  // Oncoming traffic colour per age (drawn as real car shapes via
-  // drawTrafficCar, not emoji) — softer/warmer for the youngest, harsher
+  // Hazard badge colour per age — softer/warmer for the youngest, harsher
   // reds for the oldest, same "own identity per age" principle as before.
   const AGE_HAZARD_COLORS = {
     tiny:  ['#fb923c', '#fbbf24'],
@@ -356,16 +355,6 @@
   function skinsUnlocked() { return !!readJSON(LS_SKIN_UNLOCKED, false); }
   function unlockSkins() { writeJSON(LS_SKIN_UNLOCKED, true); }
 
-  /* ─── CAR RENDERER ────────────────────────────────────────────────── */
-  // Same principle as the platformer robot: a complete, solid, clearly
-  // visible car from stage 0 — collected parts add decoration (spoiler,
-  // stripe, headlight glow, exhaust flames) instead of the body
-  // "materializing" out of a near-invisible outline.
-  // A natural-looking top-down car silhouette shared by the player's car
-  // and oncoming traffic: tapered nose, visible wheels poking out past the
-  // body (the single biggest visual cue that reads as "a real car" from
-  // above), windshield + rear window. Traffic cars call this directly with
-  // fixed styling; the player's car layers stage-based extras on top.
   // Lighten (positive) or darken (negative) a '#rrggbb' colour by percent.
   function shadeColor(hex, percent) {
     const num = parseInt(hex.replace('#', ''), 16);
