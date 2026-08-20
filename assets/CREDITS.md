@@ -18,25 +18,20 @@
 - `bg-clouds-hills.png`, `bg-clouds-trees.png`, `bg-clouds-desert.png` —
   unmodified, from Kenney's "New Platformer Pack", Sprites/Backgrounds/
   Default/background_fade_{hills,trees,desert}.png. Same pack as
-  bg-clouds.png, used so the platformer's worlds (per age, up to 6) don't
+  bg-clouds.png, used so the platformer's worlds (per age, up to 9) don't
   all show the identical sky. License: CC0 1.0.
 - `bg-stars-blue.png`, `bg-stars-purple.png`, `bg-stars-darkpurple.png` —
   unmodified, from Kenney's "Space Shooter Remastered", Backgrounds/
   {blue,purple,darkPurple}.png. Same pack as bg-stars.png, same purpose.
   License: CC0 1.0.
 
-- `car-cyan.png`, `car-red.png`, `car-gold.png` (56x133 each) — from
-  "Free Top Down Car Sprites" by UnLucky Studio (unluckystudio.com),
-  Car.png (256x256, originally solid orange). Modifications: cropped to
-  the car's bounding box, hue-shifted to cyan/red/gold via HSV rotation
-  (only saturated pixels re-hued, so tires/glass/shadows keep their
-  original tone), downscaled to 56px wide.
-  Source: https://opengameart.org/content/free-top-down-car-sprites-by-unlucky-studio
-  License: CC0 (public domain), see the pack's included Read Me.txt
-
-Circuit Racer's roadside trees and lamp posts, and the traffic/player
-fallback car, are drawn procedurally in `js/racing.js` (no image assets)
-— see that file's `drawTree`/`drawPole`/`carBody` functions.
+Circuit Racer's roadside trees/lamp posts and the player character are
+drawn procedurally in `js/racing.js` (no image assets) — see that file's
+`drawTree`/`drawPole`/`robotBody`/`drawRunnerBot` functions. The player
+is a running/hovering bot, not a car (matches the site's AI/robot theme,
+same as the snake's monitor-head and the platformer's robot) — the
+`car-cyan/red/gold.png` sprites and the procedural car renderer this
+replaced have been removed as unused.
 
 - `sfx/round-complete.ogg` — from Kenney's "Music Jingles" pack
   (kenney.nl/assets/music-jingles), 8-Bit jingles/jingles_NES05.ogg.
