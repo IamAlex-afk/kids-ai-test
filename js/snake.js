@@ -46,10 +46,37 @@
   let MUTED = false;
   try { MUTED = localStorage.getItem('kat_snake_muted') === '1'; } catch (_) {}
   function setMuted(v) { MUTED = !!v; try { localStorage.setItem('kat_snake_muted', MUTED ? '1' : '0'); } catch (_) {} }
+
+  // Real CC0 sample (Kenney "Music Jingles", 8-Bit set) layered on top of
+  // the synth chime for the one moment worth a proper jingle — round
+  // complete. Everything else stays pure Web Audio: those fire rapidly
+  // (per token eaten) and the tiny synth blips already read fine there.
+  const _sampleCache = {};
+  function loadSample(url) {
+    if (_sampleCache[url]) return _sampleCache[url];
+    const ctx = ac(); if (!ctx) return null;
+    const p = fetch(url).then(r => r.arrayBuffer()).then(buf => ctx.decodeAudioData(buf)).catch(() => null);
+    _sampleCache[url] = p;
+    return p;
+  }
+  function playSample(url, vol) {
+    if (MUTED) return;
+    const ctx = ac(); if (!ctx) return;
+    const p = loadSample(url);
+    if (p) p.then(buffer => {
+      if (!buffer || MUTED) return;
+      const src = ctx.createBufferSource(), g = ctx.createGain();
+      g.gain.value = vol == null ? 1 : vol;
+      src.buffer = buffer; src.connect(g); g.connect(ctx.destination);
+      src.start();
+    });
+  }
+  loadSample('assets/sfx/round-complete.ogg'); // warm the cache early
+
   const sndPop    = () => { if (MUTED) return; tone(880, 0, 0.07, 'sine', 0.18); tone(1320, 0.03, 0.06, 'triangle', 0.12); };
   const sndError  = () => { if (MUTED) return; tone(200, 0, 0.14, 'sawtooth', 0.13); tone(130, 0.10, 0.18, 'sawtooth', 0.10); };
   const sndStreak = () => { if (MUTED) return; tone(1047, 0, 0.06, 'sine', 0.20); tone(1319, 0.05, 0.06, 'sine', 0.18); };
-  const sndWin    = () => { if (MUTED) return; [523, 659, 784, 1047].forEach((f, i) => tone(f, i * 0.12, 0.20, 'triangle', 0.16)); };
+  const sndWin    = () => { if (MUTED) return; [523, 659, 784, 1047].forEach((f, i) => tone(f, i * 0.12, 0.20, 'triangle', 0.16)); playSample('assets/sfx/round-complete.ogg', 0.55); };
 
   /* ─── HAPTICS ─────────────────────────────────────────────────────── */
   const haptic = (p) => navigator.vibrate && navigator.vibrate(p);

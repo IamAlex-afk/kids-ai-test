@@ -27,3 +27,16 @@
 Circuit Racer's roadside trees and lamp posts, and the traffic/player
 fallback car, are drawn procedurally in `js/racing.js` (no image assets)
 — see that file's `drawTree`/`drawPole`/`carBody` functions.
+
+- `sfx/round-complete.ogg` — from Kenney's "Music Jingles" pack
+  (kenney.nl/assets/music-jingles), 8-Bit jingles/jingles_NES05.ogg.
+  Unmodified. License: CC0 1.0.
+- `sfx/pickup.ogg`, `sfx/jump.ogg` — from Kenney's "Digital Audio" pack
+  (kenney.nl/assets/digital-audio), powerUp5.ogg and phaseJump1.ogg.
+  Unmodified. License: CC0 1.0.
+- `sfx/miss.ogg`, `sfx/click.ogg` — from Kenney's "Interface Sounds" pack
+  (kenney.nl/assets/interface-sounds), error_001.ogg and click_001.ogg.
+  Unmodified. License: CC0 1.0.
+  (`jump.ogg`, `miss.ogg`, `click.ogg` are downloaded and credited for
+  upcoming use in racing.js/platformer.js — only `round-complete.ogg` is
+  wired into a game so far, in js/snake.js's sndWin().)
