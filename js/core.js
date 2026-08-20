@@ -545,7 +545,7 @@ function availableGames() {
   const games = [];
   if (window.KAT_Snake) games.push({ icon: '🐍', name: gpStr('snakeName'), desc: gpStr('snakeDesc'), launch: launchSnake });
   if (window.KAT_Platformer) games.push({ icon: '🤖', name: gpStr('pfName'), desc: gpStr('pfDesc'), launch: launchPlatformer });
-  if (window.KAT_Racing) games.push({ icon: '🏎️', name: gpStr('raceName'), desc: gpStr('raceDesc'), launch: launchRacing });
+  if (window.KAT_Racing) games.push({ icon: '🚀', name: gpStr('raceName'), desc: gpStr('raceDesc'), launch: launchRacing });
   return games;
 }
 
