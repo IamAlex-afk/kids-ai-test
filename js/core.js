@@ -221,15 +221,44 @@ const MODE_STR = {
 /* ─────────────────────────────────────────────
    WEB SPEECH API
 ───────────────────────────────────────────── */
+const SPEECH_LANG = { ru:'ru-RU', de:'de-DE', es:'es-ES', fr:'fr-FR', hi:'hi-IN',
+                       id:'id-ID', pt:'pt-BR', tr:'tr-TR', vi:'vi-VN' };
+function speechLangTag() { return SPEECH_LANG[S.lang] || 'en-US'; }
+
+// Chrome/Edge populate speechSynthesis.getVoices() asynchronously — on a
+// fresh page load the list can still be empty the first time it's read,
+// so setting utt.lang alone isn't enough: some browsers silently fall
+// back to whatever default voice is already loaded (often English)
+// instead of waiting for the matching one to arrive. Explicitly picking
+// a matching voice object — and waiting one 'voiceschanged' tick if the
+// list isn't ready yet — makes the requested language actually stick.
+function pickVoice(langTag, cb) {
+  const prefix = langTag.split('-')[0];
+  const find = () => {
+    const voices = window.speechSynthesis.getVoices();
+    return voices.find(v => v.lang === langTag) || voices.find(v => v.lang.startsWith(prefix)) || null;
+  };
+  const existing = find();
+  if (existing) { cb(existing); return; }
+  if (window.speechSynthesis.getVoices().length > 0) { cb(null); return; }
+  let done = false;
+  const finish = (v) => { if (done) return; done = true; window.speechSynthesis.onvoiceschanged = null; cb(v); };
+  window.speechSynthesis.onvoiceschanged = () => finish(find());
+  setTimeout(() => finish(find()), 400); // safety net if the event never fires
+}
+
 function speakText(text) {
   if (!('speechSynthesis' in window)) return;
   window.speechSynthesis.cancel();
-  const utt = new SpeechSynthesisUtterance(text);
-  utt.lang  = { ru:'ru-RU', de:'de-DE', es:'es-ES', fr:'fr-FR', hi:'hi-IN',
-                id:'id-ID', pt:'pt-BR', tr:'tr-TR', vi:'vi-VN' }[S.lang] || 'en-US';
-  utt.rate  = 0.82;
-  utt.pitch = 1.15;
-  window.speechSynthesis.speak(utt);
+  const langTag = speechLangTag();
+  pickVoice(langTag, (voice) => {
+    const utt = new SpeechSynthesisUtterance(text);
+    utt.lang  = langTag;
+    if (voice) utt.voice = voice;
+    utt.rate  = 0.82;
+    utt.pitch = 1.15;
+    window.speechSynthesis.speak(utt);
+  });
 }
 
 function canReadAloud() {

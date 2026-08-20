@@ -268,14 +268,39 @@
     g.gain.exponentialRampToValueAtTime(0.001, t0 + dur);
     o.start(t0); o.stop(t0 + dur + 0.04);
   }
-  const playJumpSound   = () => sweep(200, 400, 0, 0.10, 'triangle', 0.10);
+  // Real CC0 samples (same Kenney packs as js/snake.js) layered on top of
+  // the synth for the two moments worth a proper sound — landing a jump
+  // and clearing a world — everything else stays pure Web Audio since it
+  // fires rapidly (coins/hits) and the tiny synth blips read fine there.
+  const _sampleCache = {};
+  function loadSample(url) {
+    if (_sampleCache[url]) return _sampleCache[url];
+    const ctx = ac(); if (!ctx) return null;
+    const p = fetch(url).then(r => r.arrayBuffer()).then(buf => ctx.decodeAudioData(buf)).catch(() => null);
+    _sampleCache[url] = p;
+    return p;
+  }
+  function playSample(url, vol) {
+    if (MUTED) return;
+    const ctx = ac(); if (!ctx) return;
+    const p = loadSample(url);
+    if (p) p.then(buffer => {
+      if (!buffer || MUTED) return;
+      const src = ctx.createBufferSource(), g = ctx.createGain();
+      g.gain.value = vol == null ? 1 : vol;
+      src.buffer = buffer; src.connect(g); g.connect(ctx.destination);
+      src.start();
+    });
+  }
+
+  const playJumpSound   = () => { sweep(200, 400, 0, 0.10, 'triangle', 0.10); playSample('assets/sfx/jump.ogg', 0.35); };
   const playJump2Sound  = () => sweep(300, 620, 0, 0.11, 'triangle', 0.11);
   const playCollectSound = () => { tone(800, 0, 0.16, 'sine', 0.16); tone(1200, 0.05, 0.1, 'sine', 0.1); };
   const playCoinSound   = () => { tone(1046, 0, 0.05, 'triangle', 0.10); tone(1568, 0.04, 0.08, 'triangle', 0.10); };
   const playShieldSound = () => sweep(500, 900, 0, 0.2, 'sine', 0.14);
   const playSpringSound = () => sweep(150, 700, 0, 0.18, 'sawtooth', 0.14);
   const playHitSound    = () => tone(100, 0, 0.22, 'sawtooth', 0.16);
-  const playWinSound    = () => [523, 659, 784, 1047].forEach((f, i) => tone(f, i * 0.12, 0.22, 'triangle', 0.16));
+  const playWinSound    = () => { [523, 659, 784, 1047].forEach((f, i) => tone(f, i * 0.12, 0.22, 'triangle', 0.16)); playSample('assets/sfx/round-complete.ogg', 0.5); };
   const playGameOverSound = () => [400, 300, 220, 140].forEach((f, i) => tone(f, i * 0.1, 0.2, 'sawtooth', 0.13));
   const playCheckpointSound = () => { tone(660, 0, 0.08, 'triangle', 0.14); tone(880, 0.08, 0.12, 'triangle', 0.14); };
   const playDashSound   = () => sweep(400, 900, 0, 0.16, 'sawtooth', 0.12);
@@ -292,6 +317,11 @@
     [196.0, 0, 293.7, 0, 246.9, 0, 293.7, 349.2],   // jungle
     [233.1, 0, 349.2, 0, 277.2, 0, 349.2, 415.3],   // city
     [261.6, 0, 392.0, 0, 329.6, 0, 392.0, 466.2],   // lab
+    [174.6, 0, 261.5, 0, 207.6, 0, 261.5, 311.1],   // snow/ocean/toxic/void
+    [185.0, 0, 277.1, 0, 233.1, 0, 277.1, 329.7],   // garden/volcano/ember/crimson
+    [207.7, 0, 311.1, 0, 246.9, 0, 311.1, 370.0],   // meadow/aurora/plasma/abyss
+    [138.6, 0, 207.6, 0, 174.6, 0, 207.6, 247.0],   // coral/magma/rust/ash
+    [155.6, 0, 233.0, 0, 185.0, 0, 233.0, 277.2],   // sky/frost/glacier/nebula
   ];
   function MusicLoop(worldIdx) {
     let timer = null, step = 0;

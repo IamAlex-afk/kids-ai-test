@@ -71,7 +71,9 @@
       src.start();
     });
   }
-  loadSample('assets/sfx/round-complete.ogg'); // warm the cache early
+  // loadSample() is called from playSample() on first actual use — no
+  // eager fetch here, so pages that never touch the game don't pay for
+  // network+decode of a jingle they'll never hear.
 
   const sndPop    = () => { if (MUTED) return; tone(880, 0, 0.07, 'sine', 0.18); tone(1320, 0.03, 0.06, 'triangle', 0.12); };
   const sndError  = () => { if (MUTED) return; tone(200, 0, 0.14, 'sawtooth', 0.13); tone(130, 0.10, 0.18, 'sawtooth', 0.10); };

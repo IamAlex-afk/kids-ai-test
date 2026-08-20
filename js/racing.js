@@ -45,6 +45,15 @@
     teen:  ['#ef4444', '#dc2626'],
     adult: ['#dc2626', '#991b1b'],
   };
+  // What the hazards actually are — spam/scam/phishing, matching the
+  // site's AI-literacy theme, not generic road traffic. Same
+  // gentler-for-younger tiering as js/platformer.js's AGE_OBSTACLES.
+  const AGE_RACE_HAZARDS = {
+    tiny:  ['🔔', '🗑️', '💤', '🎭'],   // nag notification / junk / boring spam / fake mask — nothing scary
+    child: ['📧', '🎣', '🐛', '⚠️'],   // spam email / phishing hook / bug / warning
+    teen:  ['💸', '🎣', '🚫', '🔻'],   // scam money / phishing / blocked / corrupted
+    adult: ['🕵️', '🎣', '🔓', '💀'],   // fraud / phishing / breach / malware
+  };
   const WORLD_THEMES_BY_AGE = {
     tiny: [
       { name: 'day',   sky: ['#1a1035', '#2d1b54'], accent: '#93c5fd', road: '#2a2050' },
@@ -99,17 +108,17 @@
   const SKINS = { cyan: '#22d3ee', red: '#f87171', gold: '#fbbf24' };
 
   const STR = {
-    en: { ready: 'Get Ready!', start: 'Start ▶', cont: 'Continue →', hint: 'Tap left/right (or ←/→) to change lanes.', worlds: 'Choose a track', cleared: 'CLEARED', best: 'Best', worldClear: 'Track Clear!', gameOver: 'Run ended', record: 'New record!', back: '← Tracks', backGames: '← Games', again: 'Run Again', letters: 'Letters', score: 'Score', part: 'Car', checkpoint: 'Checkpoint!', shieldOn: 'Shield up!', boostOn: 'Boost!', skin: 'Car colour', exit: 'Exit', mute: 'Sound', left: '◀', right: '▶', boost: 'BOOST', achUnlocked: 'Achievement unlocked!', fakeHit: 'That letter was fake!', locked: 'Needs 2★ in the previous track', streak: 'day streak', streakBonus: 'Streak bonus', achTrack1: 'First track cleared', achTrack5: '5 tracks cleared', achFlawless: 'Flawless run', yes: 'Yes', no: 'No', quizKicker: 'Pit stop!', lockedFinal: 'Needs 3★ on every earlier track', skipQuiz: 'Skip to quiz' },
-    ru: { ready: 'Приготовься!', start: 'Старт ▶', cont: 'Дальше →', hint: 'Тап влево/вправо (или ←/→) — смена полосы.', worlds: 'Выбери трассу', cleared: 'ПРОЙДЕНО', best: 'Рекорд', worldClear: 'Трасса пройдена!', gameOver: 'Заезд окончен', record: 'Новый рекорд!', back: '← Трассы', backGames: '← Игры', again: 'Ещё раз', letters: 'Буквы', score: 'Очки', part: 'Машина', checkpoint: 'Чекпоинт!', shieldOn: 'Щит поднят!', boostOn: 'Ускорение!', skin: 'Цвет машины', exit: 'Выход', mute: 'Звук', left: '◀', right: '▶', boost: 'УСКОРЕНИЕ', achUnlocked: 'Новое достижение!', fakeHit: 'Это была подделка!', locked: 'Нужно 2★ на предыдущей трассе', streak: 'дней подряд', streakBonus: 'Бонус за серию', achTrack1: 'Первая трасса пройдена', achTrack5: '5 трасс пройдено', achFlawless: 'Идеальный заезд', yes: 'Да', no: 'Нет', quizKicker: 'Пит-стоп!', lockedFinal: 'Нужно 3★ на всех предыдущих трассах', skipQuiz: 'Пропустить к квизу' },
-    de: { ready: 'Bereit machen!', start: 'Start ▶', cont: 'Weiter →', hint: 'Tippe links/rechts (oder ←/→) zum Spurwechsel.', worlds: 'Strecke wählen', cleared: 'GESCHAFFT', best: 'Bestwert', worldClear: 'Strecke geschafft!', gameOver: 'Lauf beendet', record: 'Neuer Rekord!', back: '← Strecken', backGames: '← Spiele', again: 'Nochmal', letters: 'Buchstaben', score: 'Punkte', part: 'Auto', checkpoint: 'Kontrollpunkt!', shieldOn: 'Schild aktiv!', boostOn: 'Boost!', skin: 'Autofarbe', exit: 'Verlassen', mute: 'Ton', left: '◀', right: '▶', boost: 'BOOST', achUnlocked: 'Erfolg freigeschaltet!', fakeHit: 'Dieser Buchstabe war falsch!', locked: 'Braucht 2★ auf der vorherigen Strecke', streak: 'Tage in Folge', streakBonus: 'Serien-Bonus', achTrack1: 'Erste Strecke geschafft', achTrack5: '5 Strecken geschafft', achFlawless: 'Perfekter Lauf', yes: 'Ja', no: 'Nein', quizKicker: 'Boxenstopp!', lockedFinal: 'Braucht 3★ auf jeder vorherigen Strecke', skipQuiz: 'Zum Quiz springen' },
-    es: { ready: '¡Prepárate!', start: 'Empezar ▶', cont: 'Continuar →', hint: 'Toca izquierda/derecha (o ←/→) para cambiar de carril.', worlds: 'Elige una pista', cleared: 'SUPERADO', best: 'Mejor', worldClear: '¡Pista superada!', gameOver: 'Carrera terminada', record: '¡Nuevo récord!', back: '← Pistas', backGames: '← Juegos', again: 'Otra vez', letters: 'Letras', score: 'Puntos', part: 'Coche', checkpoint: '¡Punto de control!', shieldOn: '¡Escudo activado!', boostOn: '¡Impulso!', skin: 'Color del coche', exit: 'Salir', mute: 'Sonido', left: '◀', right: '▶', boost: 'IMPULSO', achUnlocked: '¡Logro desbloqueado!', fakeHit: '¡Esa letra era falsa!', locked: 'Necesita 2★ en la pista anterior', streak: 'días seguidos', streakBonus: 'Bono de racha', achTrack1: 'Primera pista superada', achTrack5: '5 pistas superadas', achFlawless: 'Carrera perfecta', yes: 'Sí', no: 'No', quizKicker: '¡Parada en boxes!', lockedFinal: 'Necesita 3★ en todas las pistas anteriores', skipQuiz: 'Saltar al cuestionario' },
-    fr: { ready: 'Prépare-toi !', start: 'Départ ▶', cont: 'Continuer →', hint: 'Touchez gauche/droite (ou ←/→) pour changer de voie.', worlds: 'Choisir un circuit', cleared: 'RÉUSSI', best: 'Meilleur', worldClear: 'Circuit réussi !', gameOver: 'Course terminée', record: 'Nouveau record !', back: '← Circuits', backGames: '← Jeux', again: 'Rejouer', letters: 'Lettres', score: 'Score', part: 'Voiture', checkpoint: 'Point de contrôle !', shieldOn: 'Bouclier activé !', boostOn: 'Boost !', skin: 'Couleur de la voiture', exit: 'Quitter', mute: 'Son', left: '◀', right: '▶', boost: 'BOOST', achUnlocked: 'Succès débloqué !', fakeHit: 'Cette lettre était fausse !', locked: 'Nécessite 2★ sur le circuit précédent', streak: 'jours de suite', streakBonus: 'Bonus de série', achTrack1: 'Premier circuit réussi', achTrack5: '5 circuits réussis', achFlawless: 'Course parfaite', yes: 'Oui', no: 'Non', quizKicker: 'Arrêt au stand !', lockedFinal: 'Nécessite 3★ sur tous les circuits précédents', skipQuiz: 'Passer au quiz' },
-    hi: { ready: 'तैयार हो जाओ!', start: 'शुरू करें ▶', cont: 'आगे →', hint: 'लेन बदलने के लिए लेफ्ट/राइट (या ←/→) टैप करें।', worlds: 'ट्रैक चुनें', cleared: 'पूरा हुआ', best: 'बेस्ट', worldClear: 'ट्रैक पूरा!', gameOver: 'रन खत्म', record: 'नया रिकॉर्ड!', back: '← ट्रैक्स', backGames: '← गेम्स', again: 'फिर से', letters: 'लेटर्स', score: 'स्कोर', part: 'कार', checkpoint: 'चेकपॉइंट!', shieldOn: 'शील्ड ऑन!', boostOn: 'बूस्ट!', skin: 'कार का रंग', exit: 'बाहर जाएं', mute: 'साउंड', left: '◀', right: '▶', boost: 'बूस्ट', achUnlocked: 'अचीवमेंट अनलॉक!', fakeHit: 'यह लेटर नकली था!', locked: 'पिछले ट्रैक में 2★ चाहिए', streak: 'दिन लगातार', streakBonus: 'स्ट्रीक बोनस', achTrack1: 'पहला ट्रैक पूरा', achTrack5: '5 ट्रैक पूरे', achFlawless: 'परफेक्ट रन', yes: 'हां', no: 'नहीं', quizKicker: 'पिट स्टॉप!', lockedFinal: 'हर पिछले ट्रैक में 3★ चाहिए', skipQuiz: 'क्विज़ पर जाएं' },
-    id: { ready: 'Bersiap!', start: 'Mulai ▶', cont: 'Lanjut →', hint: 'Ketuk kiri/kanan (atau ←/→) untuk pindah jalur.', worlds: 'Pilih trek', cleared: 'SELESAI', best: 'Terbaik', worldClear: 'Trek selesai!', gameOver: 'Balapan berakhir', record: 'Rekor baru!', back: '← Trek', backGames: '← Game', again: 'Ulangi', letters: 'Huruf', score: 'Skor', part: 'Mobil', checkpoint: 'Checkpoint!', shieldOn: 'Perisai aktif!', boostOn: 'Boost!', skin: 'Warna mobil', exit: 'Keluar', mute: 'Suara', left: '◀', right: '▶', boost: 'BOOST', achUnlocked: 'Pencapaian terbuka!', fakeHit: 'Huruf itu palsu!', locked: 'Butuh 2★ di trek sebelumnya', streak: 'hari beruntun', streakBonus: 'Bonus beruntun', achTrack1: 'Trek pertama selesai', achTrack5: '5 trek selesai', achFlawless: 'Balapan sempurna', yes: 'Ya', no: 'Tidak', quizKicker: 'Pit stop!', lockedFinal: 'Butuh 3★ di semua trek sebelumnya', skipQuiz: 'Lewati ke kuis' },
-    it: { ready: 'Preparati!', start: 'Inizia ▶', cont: 'Continua →', hint: 'Tocca sinistra/destra (o ←/→) per cambiare corsia.', worlds: 'Scegli un circuito', cleared: 'COMPLETATO', best: 'Record', worldClear: 'Circuito completato!', gameOver: 'Corsa terminata', record: 'Nuovo record!', back: '← Circuiti', backGames: '← Giochi', again: 'Ancora', letters: 'Lettere', score: 'Punteggio', part: 'Auto', checkpoint: 'Checkpoint!', shieldOn: 'Scudo attivo!', boostOn: 'Boost!', skin: 'Colore auto', exit: 'Esci', mute: 'Audio', left: '◀', right: '▶', boost: 'BOOST', achUnlocked: 'Obiettivo sbloccato!', fakeHit: 'Quella lettera era falsa!', locked: 'Serve 2★ nel circuito precedente', streak: 'giorni di fila', streakBonus: 'Bonus serie', achTrack1: 'Primo circuito completato', achTrack5: '5 circuiti completati', achFlawless: 'Corsa perfetta', yes: 'Sì', no: 'No', quizKicker: 'Pit stop!', lockedFinal: 'Serve 3★ in tutti i circuiti precedenti', skipQuiz: 'Salta al quiz' },
-    pt: { ready: 'Prepare-se!', start: 'Começar ▶', cont: 'Continuar →', hint: 'Toque esquerda/direita (ou ←/→) para mudar de faixa.', worlds: 'Escolha uma pista', cleared: 'CONCLUÍDO', best: 'Melhor', worldClear: 'Pista concluída!', gameOver: 'Corrida encerrada', record: 'Novo recorde!', back: '← Pistas', backGames: '← Jogos', again: 'De novo', letters: 'Letras', score: 'Pontos', part: 'Carro', checkpoint: 'Checkpoint!', shieldOn: 'Escudo ativado!', boostOn: 'Turbo!', skin: 'Cor do carro', exit: 'Sair', mute: 'Som', left: '◀', right: '▶', boost: 'TURBO', achUnlocked: 'Conquista desbloqueada!', fakeHit: 'Essa letra era falsa!', locked: 'Precisa de 2★ na pista anterior', streak: 'dias seguidos', streakBonus: 'Bônus de sequência', achTrack1: 'Primeira pista concluída', achTrack5: '5 pistas concluídas', achFlawless: 'Corrida perfeita', yes: 'Sim', no: 'Não', quizKicker: 'Pit stop!', lockedFinal: 'Precisa de 3★ em todas as pistas anteriores', skipQuiz: 'Pular para o quiz' },
-    tr: { ready: 'Hazır ol!', start: 'Başla ▶', cont: 'Devam →', hint: 'Şerit değiştirmek için sol/sağa (veya ←/→) dokun.', worlds: 'Pist seç', cleared: 'TAMAMLANDI', best: 'En iyi', worldClear: 'Pist tamamlandı!', gameOver: 'Yarış bitti', record: 'Yeni rekor!', back: '← Pistler', backGames: '← Oyunlar', again: 'Tekrar', letters: 'Harfler', score: 'Skor', part: 'Araba', checkpoint: 'Kontrol noktası!', shieldOn: 'Kalkan aktif!', boostOn: 'Turbo!', skin: 'Araba rengi', exit: 'Çıkış', mute: 'Ses', left: '◀', right: '▶', boost: 'TURBO', achUnlocked: 'Başarı açıldı!', fakeHit: 'O harf sahteydi!', locked: 'Önceki pistte 2★ gerekiyor', streak: 'gün üst üste', streakBonus: 'Seri bonusu', achTrack1: 'İlk pist tamamlandı', achTrack5: '5 pist tamamlandı', achFlawless: 'Kusursuz yarış', yes: 'Evet', no: 'Hayır', quizKicker: 'Pit stop!', lockedFinal: 'Önceki tüm pistlerde 3★ gerekiyor', skipQuiz: 'Quize geç' },
-    vi: { ready: 'Chuẩn bị!', start: 'Bắt đầu ▶', cont: 'Tiếp tục →', hint: 'Chạm trái/phải (hoặc ←/→) để đổi làn.', worlds: 'Chọn đường đua', cleared: 'HOÀN THÀNH', best: 'Tốt nhất', worldClear: 'Hoàn thành đường đua!', gameOver: 'Kết thúc lượt chạy', record: 'Kỷ lục mới!', back: '← Đường đua', backGames: '← Trò chơi', again: 'Chơi lại', letters: 'Chữ cái', score: 'Điểm', part: 'Xe', checkpoint: 'Trạm kiểm soát!', shieldOn: 'Khiên bật!', boostOn: 'Tăng tốc!', skin: 'Màu xe', exit: 'Thoát', mute: 'Âm thanh', left: '◀', right: '▶', boost: 'TĂNG TỐC', achUnlocked: 'Mở khóa thành tích!', fakeHit: 'Chữ cái đó là giả!', locked: 'Cần 2★ ở đường đua trước', streak: 'ngày liên tiếp', streakBonus: 'Thưởng chuỗi', achTrack1: 'Hoàn thành đường đua đầu tiên', achTrack5: 'Hoàn thành 5 đường đua', achFlawless: 'Lượt chạy hoàn hảo', yes: 'Có', no: 'Không', quizKicker: 'Trạm dừng!', lockedFinal: 'Cần 3★ ở mọi đường đua trước', skipQuiz: 'Bỏ qua đến câu đố' },
+    en: { ready: 'Get Ready!', start: 'Start ▶', cont: 'Continue →', hint: 'Tap left/right (or ←/→) to change lanes.', worlds: 'Choose a track', cleared: 'CLEARED', best: 'Best', worldClear: 'Track Clear!', gameOver: 'Run ended', record: 'New record!', back: '← Tracks', backGames: '← Games', again: 'Run Again', letters: 'Letters', score: 'Score', part: 'Robot', checkpoint: 'Checkpoint!', shieldOn: 'Shield up!', boostOn: 'Boost!', skin: 'Robot colour', exit: 'Exit', mute: 'Sound', left: '◀', right: '▶', boost: 'BOOST', achUnlocked: 'Achievement unlocked!', fakeHit: 'That letter was fake!', locked: 'Needs 2★ in the previous track', streak: 'day streak', streakBonus: 'Streak bonus', achTrack1: 'First track cleared', achTrack5: '5 tracks cleared', achFlawless: 'Flawless run', yes: 'Yes', no: 'No', quizKicker: 'Pit stop!', lockedFinal: 'Needs 3★ on every earlier track', skipQuiz: 'Skip to quiz' },
+    ru: { ready: 'Приготовься!', start: 'Старт ▶', cont: 'Дальше →', hint: 'Тап влево/вправо (или ←/→) — смена полосы.', worlds: 'Выбери трассу', cleared: 'ПРОЙДЕНО', best: 'Рекорд', worldClear: 'Трасса пройдена!', gameOver: 'Заезд окончен', record: 'Новый рекорд!', back: '← Трассы', backGames: '← Игры', again: 'Ещё раз', letters: 'Буквы', score: 'Очки', part: 'Робот', checkpoint: 'Чекпоинт!', shieldOn: 'Щит поднят!', boostOn: 'Ускорение!', skin: 'Цвет робота', exit: 'Выход', mute: 'Звук', left: '◀', right: '▶', boost: 'УСКОРЕНИЕ', achUnlocked: 'Новое достижение!', fakeHit: 'Это была подделка!', locked: 'Нужно 2★ на предыдущей трассе', streak: 'дней подряд', streakBonus: 'Бонус за серию', achTrack1: 'Первая трасса пройдена', achTrack5: '5 трасс пройдено', achFlawless: 'Идеальный заезд', yes: 'Да', no: 'Нет', quizKicker: 'Пит-стоп!', lockedFinal: 'Нужно 3★ на всех предыдущих трассах', skipQuiz: 'Пропустить к квизу' },
+    de: { ready: 'Bereit machen!', start: 'Start ▶', cont: 'Weiter →', hint: 'Tippe links/rechts (oder ←/→) zum Spurwechsel.', worlds: 'Strecke wählen', cleared: 'GESCHAFFT', best: 'Bestwert', worldClear: 'Strecke geschafft!', gameOver: 'Lauf beendet', record: 'Neuer Rekord!', back: '← Strecken', backGames: '← Spiele', again: 'Nochmal', letters: 'Buchstaben', score: 'Punkte', part: 'Roboter', checkpoint: 'Kontrollpunkt!', shieldOn: 'Schild aktiv!', boostOn: 'Boost!', skin: 'Roboterfarbe', exit: 'Verlassen', mute: 'Ton', left: '◀', right: '▶', boost: 'BOOST', achUnlocked: 'Erfolg freigeschaltet!', fakeHit: 'Dieser Buchstabe war falsch!', locked: 'Braucht 2★ auf der vorherigen Strecke', streak: 'Tage in Folge', streakBonus: 'Serien-Bonus', achTrack1: 'Erste Strecke geschafft', achTrack5: '5 Strecken geschafft', achFlawless: 'Perfekter Lauf', yes: 'Ja', no: 'Nein', quizKicker: 'Boxenstopp!', lockedFinal: 'Braucht 3★ auf jeder vorherigen Strecke', skipQuiz: 'Zum Quiz springen' },
+    es: { ready: '¡Prepárate!', start: 'Empezar ▶', cont: 'Continuar →', hint: 'Toca izquierda/derecha (o ←/→) para cambiar de carril.', worlds: 'Elige una pista', cleared: 'SUPERADO', best: 'Mejor', worldClear: '¡Pista superada!', gameOver: 'Carrera terminada', record: '¡Nuevo récord!', back: '← Pistas', backGames: '← Juegos', again: 'Otra vez', letters: 'Letras', score: 'Puntos', part: 'Robot', checkpoint: '¡Punto de control!', shieldOn: '¡Escudo activado!', boostOn: '¡Impulso!', skin: 'Color del robot', exit: 'Salir', mute: 'Sonido', left: '◀', right: '▶', boost: 'IMPULSO', achUnlocked: '¡Logro desbloqueado!', fakeHit: '¡Esa letra era falsa!', locked: 'Necesita 2★ en la pista anterior', streak: 'días seguidos', streakBonus: 'Bono de racha', achTrack1: 'Primera pista superada', achTrack5: '5 pistas superadas', achFlawless: 'Carrera perfecta', yes: 'Sí', no: 'No', quizKicker: '¡Parada en boxes!', lockedFinal: 'Necesita 3★ en todas las pistas anteriores', skipQuiz: 'Saltar al cuestionario' },
+    fr: { ready: 'Prépare-toi !', start: 'Départ ▶', cont: 'Continuer →', hint: 'Touchez gauche/droite (ou ←/→) pour changer de voie.', worlds: 'Choisir un circuit', cleared: 'RÉUSSI', best: 'Meilleur', worldClear: 'Circuit réussi !', gameOver: 'Course terminée', record: 'Nouveau record !', back: '← Circuits', backGames: '← Jeux', again: 'Rejouer', letters: 'Lettres', score: 'Score', part: 'Robot', checkpoint: 'Point de contrôle !', shieldOn: 'Bouclier activé !', boostOn: 'Boost !', skin: 'Couleur du robot', exit: 'Quitter', mute: 'Son', left: '◀', right: '▶', boost: 'BOOST', achUnlocked: 'Succès débloqué !', fakeHit: 'Cette lettre était fausse !', locked: 'Nécessite 2★ sur le circuit précédent', streak: 'jours de suite', streakBonus: 'Bonus de série', achTrack1: 'Premier circuit réussi', achTrack5: '5 circuits réussis', achFlawless: 'Course parfaite', yes: 'Oui', no: 'Non', quizKicker: 'Arrêt au stand !', lockedFinal: 'Nécessite 3★ sur tous les circuits précédents', skipQuiz: 'Passer au quiz' },
+    hi: { ready: 'तैयार हो जाओ!', start: 'शुरू करें ▶', cont: 'आगे →', hint: 'लेन बदलने के लिए लेफ्ट/राइट (या ←/→) टैप करें।', worlds: 'ट्रैक चुनें', cleared: 'पूरा हुआ', best: 'बेस्ट', worldClear: 'ट्रैक पूरा!', gameOver: 'रन खत्म', record: 'नया रिकॉर्ड!', back: '← ट्रैक्स', backGames: '← गेम्स', again: 'फिर से', letters: 'लेटर्स', score: 'स्कोर', part: 'रोबोट', checkpoint: 'चेकपॉइंट!', shieldOn: 'शील्ड ऑन!', boostOn: 'बूस्ट!', skin: 'रोबोट का रंग', exit: 'बाहर जाएं', mute: 'साउंड', left: '◀', right: '▶', boost: 'बूस्ट', achUnlocked: 'अचीवमेंट अनलॉक!', fakeHit: 'यह लेटर नकली था!', locked: 'पिछले ट्रैक में 2★ चाहिए', streak: 'दिन लगातार', streakBonus: 'स्ट्रीक बोनस', achTrack1: 'पहला ट्रैक पूरा', achTrack5: '5 ट्रैक पूरे', achFlawless: 'परफेक्ट रन', yes: 'हां', no: 'नहीं', quizKicker: 'पिट स्टॉप!', lockedFinal: 'हर पिछले ट्रैक में 3★ चाहिए', skipQuiz: 'क्विज़ पर जाएं' },
+    id: { ready: 'Bersiap!', start: 'Mulai ▶', cont: 'Lanjut →', hint: 'Ketuk kiri/kanan (atau ←/→) untuk pindah jalur.', worlds: 'Pilih trek', cleared: 'SELESAI', best: 'Terbaik', worldClear: 'Trek selesai!', gameOver: 'Balapan berakhir', record: 'Rekor baru!', back: '← Trek', backGames: '← Game', again: 'Ulangi', letters: 'Huruf', score: 'Skor', part: 'Robot', checkpoint: 'Checkpoint!', shieldOn: 'Perisai aktif!', boostOn: 'Boost!', skin: 'Warna robot', exit: 'Keluar', mute: 'Suara', left: '◀', right: '▶', boost: 'BOOST', achUnlocked: 'Pencapaian terbuka!', fakeHit: 'Huruf itu palsu!', locked: 'Butuh 2★ di trek sebelumnya', streak: 'hari beruntun', streakBonus: 'Bonus beruntun', achTrack1: 'Trek pertama selesai', achTrack5: '5 trek selesai', achFlawless: 'Balapan sempurna', yes: 'Ya', no: 'Tidak', quizKicker: 'Pit stop!', lockedFinal: 'Butuh 3★ di semua trek sebelumnya', skipQuiz: 'Lewati ke kuis' },
+    it: { ready: 'Preparati!', start: 'Inizia ▶', cont: 'Continua →', hint: 'Tocca sinistra/destra (o ←/→) per cambiare corsia.', worlds: 'Scegli un circuito', cleared: 'COMPLETATO', best: 'Record', worldClear: 'Circuito completato!', gameOver: 'Corsa terminata', record: 'Nuovo record!', back: '← Circuiti', backGames: '← Giochi', again: 'Ancora', letters: 'Lettere', score: 'Punteggio', part: 'Robot', checkpoint: 'Checkpoint!', shieldOn: 'Scudo attivo!', boostOn: 'Boost!', skin: 'Colore robot', exit: 'Esci', mute: 'Audio', left: '◀', right: '▶', boost: 'BOOST', achUnlocked: 'Obiettivo sbloccato!', fakeHit: 'Quella lettera era falsa!', locked: 'Serve 2★ nel circuito precedente', streak: 'giorni di fila', streakBonus: 'Bonus serie', achTrack1: 'Primo circuito completato', achTrack5: '5 circuiti completati', achFlawless: 'Corsa perfetta', yes: 'Sì', no: 'No', quizKicker: 'Pit stop!', lockedFinal: 'Serve 3★ in tutti i circuiti precedenti', skipQuiz: 'Salta al quiz' },
+    pt: { ready: 'Prepare-se!', start: 'Começar ▶', cont: 'Continuar →', hint: 'Toque esquerda/direita (ou ←/→) para mudar de faixa.', worlds: 'Escolha uma pista', cleared: 'CONCLUÍDO', best: 'Melhor', worldClear: 'Pista concluída!', gameOver: 'Corrida encerrada', record: 'Novo recorde!', back: '← Pistas', backGames: '← Jogos', again: 'De novo', letters: 'Letras', score: 'Pontos', part: 'Robô', checkpoint: 'Checkpoint!', shieldOn: 'Escudo ativado!', boostOn: 'Turbo!', skin: 'Cor do robô', exit: 'Sair', mute: 'Som', left: '◀', right: '▶', boost: 'TURBO', achUnlocked: 'Conquista desbloqueada!', fakeHit: 'Essa letra era falsa!', locked: 'Precisa de 2★ na pista anterior', streak: 'dias seguidos', streakBonus: 'Bônus de sequência', achTrack1: 'Primeira pista concluída', achTrack5: '5 pistas concluídas', achFlawless: 'Corrida perfeita', yes: 'Sim', no: 'Não', quizKicker: 'Pit stop!', lockedFinal: 'Precisa de 3★ em todas as pistas anteriores', skipQuiz: 'Pular para o quiz' },
+    tr: { ready: 'Hazır ol!', start: 'Başla ▶', cont: 'Devam →', hint: 'Şerit değiştirmek için sol/sağa (veya ←/→) dokun.', worlds: 'Pist seç', cleared: 'TAMAMLANDI', best: 'En iyi', worldClear: 'Pist tamamlandı!', gameOver: 'Yarış bitti', record: 'Yeni rekor!', back: '← Pistler', backGames: '← Oyunlar', again: 'Tekrar', letters: 'Harfler', score: 'Skor', part: 'Robot', checkpoint: 'Kontrol noktası!', shieldOn: 'Kalkan aktif!', boostOn: 'Turbo!', skin: 'Robot rengi', exit: 'Çıkış', mute: 'Ses', left: '◀', right: '▶', boost: 'TURBO', achUnlocked: 'Başarı açıldı!', fakeHit: 'O harf sahteydi!', locked: 'Önceki pistte 2★ gerekiyor', streak: 'gün üst üste', streakBonus: 'Seri bonusu', achTrack1: 'İlk pist tamamlandı', achTrack5: '5 pist tamamlandı', achFlawless: 'Kusursuz yarış', yes: 'Evet', no: 'Hayır', quizKicker: 'Pit stop!', lockedFinal: 'Önceki tüm pistlerde 3★ gerekiyor', skipQuiz: 'Quize geç' },
+    vi: { ready: 'Chuẩn bị!', start: 'Bắt đầu ▶', cont: 'Tiếp tục →', hint: 'Chạm trái/phải (hoặc ←/→) để đổi làn.', worlds: 'Chọn đường đua', cleared: 'HOÀN THÀNH', best: 'Tốt nhất', worldClear: 'Hoàn thành đường đua!', gameOver: 'Kết thúc lượt chạy', record: 'Kỷ lục mới!', back: '← Đường đua', backGames: '← Trò chơi', again: 'Chơi lại', letters: 'Chữ cái', score: 'Điểm', part: 'Robot', checkpoint: 'Trạm kiểm soát!', shieldOn: 'Khiên bật!', boostOn: 'Tăng tốc!', skin: 'Màu robot', exit: 'Thoát', mute: 'Âm thanh', left: '◀', right: '▶', boost: 'TĂNG TỐC', achUnlocked: 'Mở khóa thành tích!', fakeHit: 'Chữ cái đó là giả!', locked: 'Cần 2★ ở đường đua trước', streak: 'ngày liên tiếp', streakBonus: 'Thưởng chuỗi', achTrack1: 'Hoàn thành đường đua đầu tiên', achTrack5: 'Hoàn thành 5 đường đua', achFlawless: 'Lượt chạy hoàn hảo', yes: 'Có', no: 'Không', quizKicker: 'Trạm dừng!', lockedFinal: 'Cần 3★ ở mọi đường đua trước', skipQuiz: 'Bỏ qua đến câu đố' },
   };
   function t(lang, key) { const d = STR[lang] || STR.en; return d[key] || STR.en[key] || key; }
 
@@ -117,21 +126,8 @@
   const LS_MUTE = 'kat_race_muted';
   // Roadside trees/lamp posts are drawn procedurally (see drawTree/drawPole)
   // instead of from sprite art — see assets/CREDITS.md for why the old
-  // sprite-based trees were replaced.
-
-  // Real player-car art (CC0, kenney.nl Racing Pack), one image per skin
-  // colour. Additive/fallback-safe: draw() checks isCarSpriteReady() before
-  // using it, else falls straight through to the existing procedural
-  // drawCar() unchanged.
-  const CAR_SPRITES = { cyan: 'assets/car-cyan.png', red: 'assets/car-red.png', gold: 'assets/car-gold.png' };
-  const _carImg = {}, _carReady = {};
-  Object.keys(CAR_SPRITES).forEach(key => {
-    const img = new Image();
-    img.onload = () => { _carImg[key] = img; _carReady[key] = true; };
-    img.onerror = () => { _carReady[key] = false; };
-    img.src = CAR_SPRITES[key];
-  });
-  function isCarSpriteReady(skin) { return !!_carReady[skin]; }
+  // sprite-based trees were replaced. The player is drawn the same way,
+  // by drawRunnerBot() further down — no image assets to preload here.
 
   let MUTED = !!readJSON(LS_MUTE, false);
   function setMuted(v) { MUTED = !!v; writeJSON(LS_MUTE, MUTED); }
@@ -167,13 +163,36 @@
     g.gain.exponentialRampToValueAtTime(0.001, t0 + dur);
     o.start(t0); o.stop(t0 + dur + 0.04);
   }
+  // Real CC0 sample (same Kenney pack as js/snake.js and js/platformer.js)
+  // layered onto the one moment worth a proper sound — clearing a world.
+  const _sampleCache = {};
+  function loadSample(url) {
+    if (_sampleCache[url]) return _sampleCache[url];
+    const ctx = ac(); if (!ctx) return null;
+    const p = fetch(url).then(r => r.arrayBuffer()).then(buf => ctx.decodeAudioData(buf)).catch(() => null);
+    _sampleCache[url] = p;
+    return p;
+  }
+  function playSample(url, vol) {
+    if (MUTED) return;
+    const ctx = ac(); if (!ctx) return;
+    const p = loadSample(url);
+    if (p) p.then(buffer => {
+      if (!buffer || MUTED) return;
+      const src = ctx.createBufferSource(), g = ctx.createGain();
+      g.gain.value = vol == null ? 1 : vol;
+      src.buffer = buffer; src.connect(g); g.connect(ctx.destination);
+      src.start();
+    });
+  }
+
   const playSwerveSound = () => sweep(300, 500, 0, 0.08, 'triangle', 0.09);
   const playCollectSound = () => { tone(800, 0, 0.16, 'sine', 0.16); tone(1200, 0.05, 0.1, 'sine', 0.1); };
   const playCoinSound = () => { tone(1046, 0, 0.05, 'triangle', 0.10); tone(1568, 0.04, 0.08, 'triangle', 0.10); };
   const playShieldSound = () => sweep(500, 900, 0, 0.2, 'sine', 0.14);
   const playBoostSound = () => sweep(200, 900, 0, 0.22, 'sawtooth', 0.13);
   const playHitSound = () => tone(90, 0, 0.24, 'sawtooth', 0.17);
-  const playWinSound = () => [523, 659, 784, 1047].forEach((f, i) => tone(f, i * 0.12, 0.22, 'triangle', 0.16));
+  const playWinSound = () => { [523, 659, 784, 1047].forEach((f, i) => tone(f, i * 0.12, 0.22, 'triangle', 0.16)); playSample('assets/sfx/round-complete.ogg', 0.5); };
   const playGameOverSound = () => [400, 300, 220, 140].forEach((f, i) => tone(f, i * 0.1, 0.2, 'sawtooth', 0.13));
   const playCheckpointSound = () => { tone(660, 0, 0.08, 'triangle', 0.14); tone(880, 0.08, 0.12, 'triangle', 0.14); };
   const haptic = (p) => navigator.vibrate && navigator.vibrate(p);
@@ -183,6 +202,11 @@
     [196.0, 0, 293.7, 0, 246.9, 0, 293.7, 349.2],
     [233.1, 0, 349.2, 0, 277.2, 0, 349.2, 415.3],
     [261.6, 0, 392.0, 0, 329.6, 0, 392.0, 466.2],
+    [174.6, 0, 261.5, 0, 207.6, 0, 261.5, 311.1],
+    [185.0, 0, 277.1, 0, 233.1, 0, 277.1, 329.7],
+    [207.7, 0, 311.1, 0, 246.9, 0, 311.1, 370.0],
+    [138.6, 0, 207.6, 0, 174.6, 0, 207.6, 247.0],
+    [155.6, 0, 233.0, 0, 185.0, 0, 233.0, 277.2],
   ];
   function MusicLoop(worldIdx) {
     let timer = null, step = 0;
@@ -351,61 +375,59 @@
     return `rgb(${r},${g},${b})`;
   }
 
-  function carBody(ctx, bodyFill, edgeColor) {
-    // Soft contact shadow grounds the car instead of it floating over the
-    // road — drawn first, underneath everything.
-    const shadowGrad = ctx.createRadialGradient(0, 23, 0, 0, 23, 15);
+  // Top-down runner-bot chassis — the site's theme is AI/robots, so the
+  // player is a running/hovering bot on the data-highway, not a car. Same
+  // gradient-body + contact-shadow + specular-highlight technique as
+  // carBody() so it reads consistently with the rest of the site (and
+  // with the traffic bots below), just a different silhouette: a compact
+  // diamond chassis with a visor "head" up front and two shoulder pods.
+  function robotBody(ctx, bodyFill, edgeColor) {
+    const shadowGrad = ctx.createRadialGradient(0, 21, 0, 0, 21, 15);
     shadowGrad.addColorStop(0, 'rgba(0,0,0,0.4)');
     shadowGrad.addColorStop(1, 'rgba(0,0,0,0)');
     ctx.fillStyle = shadowGrad;
-    ctx.beginPath(); ctx.ellipse(0, 23, 13, 5, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(0, 21, 12, 5, 0, 0, Math.PI * 2); ctx.fill();
 
-    // Body: a hexagon-ish tapered shape instead of a plain rounded rect —
-    // narrower nose, wider cabin, slightly tapered tail. Filled with a
-    // light-to-dark diagonal gradient (single light source, upper-left)
-    // instead of a flat colour, so it reads as a rounded painted surface.
-    const bodyGrad = ctx.createLinearGradient(-10, -19, 10, 19);
+    // Shoulder pods — small side nubs, drawn under the chassis so its
+    // edge overlaps them slightly.
+    const podGrad = ctx.createLinearGradient(-16, -4, -16, 8);
+    podGrad.addColorStop(0, shadeColor(bodyFill, 22)); podGrad.addColorStop(1, shadeColor(bodyFill, -22));
+    [-15, 15].forEach(px => {
+      ctx.fillStyle = podGrad; ctx.strokeStyle = edgeColor; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.ellipse(px, 2, 4.5, 7, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    });
+
+    // Chassis — tapered diamond (narrow visor-head, wide shoulders, tapered
+    // leg/thruster skirt), diagonal light-to-dark gradient (upper-left light).
+    const bodyGrad = ctx.createLinearGradient(-9, -19, 9, 19);
     bodyGrad.addColorStop(0, shadeColor(bodyFill, 32));
     bodyGrad.addColorStop(0.5, bodyFill);
     bodyGrad.addColorStop(1, shadeColor(bodyFill, -28));
     ctx.fillStyle = bodyGrad; ctx.strokeStyle = edgeColor; ctx.lineWidth = 2.2;
     ctx.beginPath();
     ctx.moveTo(0, -19);
-    ctx.quadraticCurveTo(9, -17, 10, -6);
-    ctx.lineTo(10, 10);
-    ctx.quadraticCurveTo(10, 17, 5, 19);
-    ctx.lineTo(-5, 19);
-    ctx.quadraticCurveTo(-10, 17, -10, 10);
-    ctx.lineTo(-10, -6);
-    ctx.quadraticCurveTo(-9, -17, 0, -19);
+    ctx.quadraticCurveTo(8, -15, 9, -4);
+    ctx.lineTo(9, 6);
+    ctx.quadraticCurveTo(8, 15, 3, 19);
+    ctx.lineTo(-3, 19);
+    ctx.quadraticCurveTo(-8, 15, -9, 6);
+    ctx.lineTo(-9, -4);
+    ctx.quadraticCurveTo(-8, -15, 0, -19);
     ctx.closePath();
     ctx.fill(); ctx.stroke();
 
-    // Wheels — dark rectangles poking out past the body on both axles,
-    // with a faint rim highlight so they don't read as flat black blocks.
-    [-12, 12].forEach(wx => {
-      [-13, 5].forEach(wy => {
-        ctx.fillStyle = '#0d0e12'; ctx.fillRect(wx - 2, wy, 4, 9);
-        ctx.fillStyle = 'rgba(255,255,255,0.12)'; ctx.fillRect(wx - 2, wy, 4, 1.5);
-      });
-    });
+    // Visor band across the "head" — a dark glass strip the eyes sit in.
+    const visor = ctx.createLinearGradient(0, -17, 0, -10);
+    visor.addColorStop(0, 'rgba(190,230,255,0.5)'); visor.addColorStop(1, 'rgba(140,210,255,0.22)');
+    ctx.fillStyle = visor;
+    rrect(ctx, -6, -17, 12, 7, 3); ctx.fill();
 
-    // Windshield (front) + rear window, with a roof strip between them —
-    // a subtle gradient instead of a flat tint for a glassy feel.
-    const glass = ctx.createLinearGradient(0, -14, 0, -5);
-    glass.addColorStop(0, 'rgba(190,230,255,0.55)'); glass.addColorStop(1, 'rgba(140,210,255,0.25)');
-    ctx.fillStyle = glass;
-    rrect(ctx, -7, -14, 14, 9, 3); ctx.fill();
-    ctx.fillStyle = 'rgba(140,210,255,0.22)';
-    rrect(ctx, -6, 8, 12, 7, 3); ctx.fill();
-
-    // Specular highlight — soft bright streak on the hood, the single
-    // biggest cue that reads as "glossy painted surface" vs flat colour.
-    const hl = ctx.createRadialGradient(-3, -11, 0, -3, -11, 7);
-    hl.addColorStop(0, 'rgba(255,255,255,0.4)');
+    // Specular highlight on the chest.
+    const hl = ctx.createRadialGradient(-2, -2, 0, -2, -2, 7);
+    hl.addColorStop(0, 'rgba(255,255,255,0.35)');
     hl.addColorStop(1, 'rgba(255,255,255,0)');
     ctx.fillStyle = hl;
-    ctx.beginPath(); ctx.ellipse(-3, -11, 5, 8, -0.3, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(-2, -2, 5, 8, -0.3, 0, Math.PI * 2); ctx.fill();
   }
 
   // Roadside tree — procedural instead of a flat sprite, drawn with the same
@@ -497,7 +519,13 @@
     ctx.restore();
   }
 
-  function drawCar(ctx, x, y, opts) {
+  // The player character: a running/hovering bot, not a car — matches the
+  // site's AI/robot theme (and the monitor-head snake, the platformer
+  // robot) instead of an out-of-theme vehicle. Progressive build-up beats
+  // map onto the same partStage the old car used: visor lights up (was
+  // headlights), spine energy stripe (unchanged), stabilizer fins (was
+  // spoiler), pulsing antenna beacon at max stage (was the top light).
+  function drawRunnerBot(ctx, x, y, opts) {
     const { partStage, maxStage, hurt, shielded, boosting, skinColor, now } = opts;
     ctx.save();
     ctx.translate(x, y);
@@ -510,35 +538,47 @@
       ctx.beginPath(); ctx.moveTo(-5, 19); ctx.lineTo(0, 32 + Math.random() * 8); ctx.lineTo(5, 19); ctx.fill();
     }
 
-    carBody(ctx, bodyFill, glow);
+    robotBody(ctx, bodyFill, glow);
 
-    // Headlights (brighter once stage 1+) + taillights.
-    ctx.fillStyle = partStage >= 1 ? '#fef08a' : 'rgba(254,240,138,0.4)';
-    ctx.shadowBlur = partStage >= 1 ? 8 : 0; ctx.shadowColor = '#fef08a';
-    ctx.beginPath(); ctx.arc(-6, -17, 1.8, 0, Math.PI * 2); ctx.fill();
-    ctx.beginPath(); ctx.arc(6, -17, 1.8, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = '#f87171'; ctx.shadowBlur = 0;
-    ctx.beginPath(); ctx.arc(-6, 17, 1.4, 0, Math.PI * 2); ctx.fill();
-    ctx.beginPath(); ctx.arc(6, 17, 1.4, 0, Math.PI * 2); ctx.fill();
+    // Visor eyes (brighter once stage 1+) — the LED-eyes motif already
+    // used for the snake's monitor head and the platformer robot.
+    ctx.fillStyle = partStage >= 1 ? '#7dd3fc' : 'rgba(125,211,252,0.4)';
+    ctx.shadowBlur = partStage >= 1 ? 8 : 0; ctx.shadowColor = '#7dd3fc';
+    ctx.beginPath(); ctx.arc(-3, -14, 1.6, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(3, -14, 1.6, 0, Math.PI * 2); ctx.fill();
     ctx.shadowColor = glow; ctx.shadowBlur = hurt ? 20 : (boosting ? 24 : 14);
 
-    // Racing stripe (stage 2+)
+    // Running "feet" — two small glow blurs peeking past the leg skirt,
+    // alternating so the bot reads as striding instead of gliding static.
+    const stride = Math.sin(now * 0.02);
+    ctx.fillStyle = '#f87171'; ctx.shadowBlur = 0; ctx.globalAlpha = 0.75;
+    ctx.beginPath(); ctx.ellipse(-5, 17 + stride * 1.5, 2.2, 1.6, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(5, 17 - stride * 1.5, 2.2, 1.6, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.globalAlpha = 1;
+
+    // Spine energy stripe (stage 2+)
     if (partStage >= 2) {
       ctx.strokeStyle = `${glow}cc`; ctx.lineWidth = 3;
-      ctx.beginPath(); ctx.moveTo(0, -16); ctx.lineTo(0, 16); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(0, -10); ctx.lineTo(0, 14); ctx.stroke();
     }
 
-    // Spoiler (stage 3+)
+    // Stabilizer fins (stage 3+)
     if (partStage >= 3) {
       ctx.fillStyle = bodyFill; ctx.strokeStyle = glow; ctx.lineWidth = 1.5;
-      rrect(ctx, -9, 15, 18, 4, 2); ctx.fill(); ctx.stroke();
+      [-11, 11].forEach(fx => {
+        ctx.beginPath();
+        ctx.moveTo(fx, 8); ctx.lineTo(fx * 1.5, 16); ctx.lineTo(fx, 15);
+        ctx.closePath(); ctx.fill(); ctx.stroke();
+      });
     }
 
-    // Max-stage: pulsing top light
+    // Max-stage: pulsing antenna beacon
     if (partStage >= maxStage) {
       const pulse = 0.7 + 0.3 * Math.sin(now * 0.01);
-      ctx.globalAlpha = pulse; ctx.fillStyle = '#ffe066'; ctx.shadowBlur = 12;
-      ctx.beginPath(); ctx.arc(0, -21, 2.4, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = glow; ctx.lineWidth = 1.5; ctx.globalAlpha = pulse;
+      ctx.beginPath(); ctx.moveTo(0, -19); ctx.lineTo(0, -24); ctx.stroke();
+      ctx.fillStyle = '#ffe066'; ctx.shadowBlur = 12;
+      ctx.beginPath(); ctx.arc(0, -25, 2.2, 0, Math.PI * 2); ctx.fill();
       ctx.globalAlpha = 1;
     }
 
@@ -552,42 +592,22 @@
     ctx.restore(); ctx.shadowBlur = 0;
   }
 
-  function drawCarSprite(ctx, x, y, opts) {
-    const { hurt, shielded, boosting, skin, now } = opts;
-    const img = _carImg[skin] || _carImg.cyan;
-    if (!img) return;
+  // Hazards on the data-highway: spam, scams, phishing, malware — not
+  // traffic. Matches the "glowing badge" treatment js/platformer.js
+  // already uses for its obstacles, so a pulsing warning-coloured disc
+  // with the danger glyph on it, not a car silhouette.
+  function drawHazardBadge(ctx, x, y, color, glyph, now) {
     ctx.save();
     ctx.translate(x, y);
-    if (boosting) {
-      ctx.fillStyle = 'rgba(251,191,36,0.6)';
-      ctx.beginPath(); ctx.moveTo(-5, 19); ctx.lineTo(0, 32 + Math.random() * 8); ctx.lineTo(5, 19); ctx.fill();
-    }
-    ctx.shadowColor = hurt ? '#f87171' : (SKINS[skin] || theme.accent);
-    ctx.shadowBlur = hurt ? 20 : (boosting ? 24 : 14);
-    if (hurt) ctx.globalAlpha = 0.55 + 0.45 * Math.sin(now * 0.03);
-    const w = img.width, h = img.height;
-    ctx.drawImage(img, -w / 2, -h / 2, w, h);
-    ctx.globalAlpha = 1;
-    if (shielded) {
-      const pulse = 0.75 + 0.25 * Math.sin(now * 0.01);
-      ctx.strokeStyle = `rgba(96,165,250,${0.5 * pulse})`;
-      ctx.lineWidth = 2; ctx.shadowBlur = 16; ctx.shadowColor = '#60a5fa';
-      ctx.beginPath(); ctx.arc(0, -2, 26 * pulse, 0, Math.PI * 2); ctx.stroke();
-    }
-    ctx.restore(); ctx.shadowBlur = 0;
-  }
-
-  // Oncoming traffic — same natural car silhouette, fixed simple styling
-  // (no stage upgrades, no shield ring), just recoloured per age.
-  function drawTrafficCar(ctx, x, y, color) {
-    ctx.save();
-    ctx.translate(x, y);
-    ctx.shadowColor = color; ctx.shadowBlur = 10;
-    carBody(ctx, color, 'rgba(0,0,0,0.35)');
-    ctx.shadowBlur = 0;
-    ctx.fillStyle = '#fef08a';
-    ctx.beginPath(); ctx.arc(-6, -17, 1.6, 0, Math.PI * 2); ctx.fill();
-    ctx.beginPath(); ctx.arc(6, -17, 1.6, 0, Math.PI * 2); ctx.fill();
+    const pulse = 0.85 + 0.15 * Math.sin(now * 0.008 + x);
+    ctx.shadowBlur = 12 * pulse; ctx.shadowColor = color;
+    ctx.fillStyle = color + '29';
+    ctx.beginPath(); ctx.arc(0, 0, 15 * pulse, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = color; ctx.lineWidth = 1.5; ctx.globalAlpha = 0.8;
+    ctx.beginPath(); ctx.arc(0, 0, 15 * pulse, 0, Math.PI * 2); ctx.stroke();
+    ctx.globalAlpha = 1; ctx.shadowBlur = 0;
+    ctx.font = '17px system-ui, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(glyph, 0, 1);
     ctx.restore();
   }
 
@@ -606,6 +626,7 @@
     const worldIdx = opts.worldIdx;
     const theme = themeFor(age, worldIdx);
     const hazardColors = AGE_HAZARD_COLORS[age] || AGE_HAZARD_COLORS.child;
+    const hazardGlyphs = AGE_RACE_HAZARDS[age] || AGE_RACE_HAZARDS.child;
     const protocolPool = opts.protocols || [];
     const quizQueue = (opts.quiz || []).slice();
     for (let i = quizQueue.length - 1; i > 0; i--) {
@@ -855,7 +876,10 @@
         }
         const wantExtra = Math.random() < (cfg.obstacleMax - 2) * 0.15 ? 2 : 1;
         const count = Math.min(wantExtra, freeLanes.length - 1);
-        freeLanes.slice(0, count).forEach(l => state.spawned.push({ kind: 'hazard', lane: l, y: -30, color: hazardColors[Math.floor(Math.random() * hazardColors.length)] }));
+        freeLanes.slice(0, count).forEach(l => {
+          const ci = Math.floor(Math.random() * hazardColors.length);
+          state.spawned.push({ kind: 'hazard', lane: l, y: -30, color: hazardColors[ci], glyph: hazardGlyphs[ci % hazardGlyphs.length] });
+        });
       }
     }
 
@@ -1187,23 +1211,16 @@
           ctx.globalAlpha = 0.6; ctx.fillStyle = '#1e293b';
           ctx.beginPath(); ctx.ellipse(0, 0, 14, 7, 0, 0, Math.PI * 2); ctx.fill();
         } else if (s.kind === 'hazard') {
-          drawTrafficCar(ctx, 0, 0, s.color);
+          drawHazardBadge(ctx, 0, 0, s.color, s.glyph, now);
         }
         ctx.restore();
       });
 
-      if (isCarSpriteReady(getSkin())) {
-        drawCarSprite(ctx, laneX(state.laneVisual), state.carY, {
-          hurt, shielded: state.shield, boosting: now < state.boostUntil,
-          skin: getSkin(), now,
-        });
-      } else {
-        drawCar(ctx, laneX(state.laneVisual), state.carY, {
-          partStage: state.parts, maxStage: cfg.partStages, hurt,
-          shielded: state.shield, boosting: now < state.boostUntil,
-          skinColor: SKINS[getSkin()] || theme.accent, now,
-        });
-      }
+      drawRunnerBot(ctx, laneX(state.laneVisual), state.carY, {
+        partStage: state.parts, maxStage: cfg.partStages, hurt,
+        shielded: state.shield, boosting: now < state.boostUntil,
+        skinColor: SKINS[getSkin()] || theme.accent, now,
+      });
       drawParticles(ctx, particles);
       ctx.restore();
     }
