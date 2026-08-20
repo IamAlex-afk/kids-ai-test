@@ -15,6 +15,16 @@
   (kenney.nl/assets/space-shooter-remastered), Backgrounds/black.png.
   License: CC0 1.0, https://creativecommons.org/publicdomain/zero/1.0/
 
+- `bg-clouds-hills.png`, `bg-clouds-trees.png`, `bg-clouds-desert.png` —
+  unmodified, from Kenney's "New Platformer Pack", Sprites/Backgrounds/
+  Default/background_fade_{hills,trees,desert}.png. Same pack as
+  bg-clouds.png, used so the platformer's worlds (per age, up to 6) don't
+  all show the identical sky. License: CC0 1.0.
+- `bg-stars-blue.png`, `bg-stars-purple.png`, `bg-stars-darkpurple.png` —
+  unmodified, from Kenney's "Space Shooter Remastered", Backgrounds/
+  {blue,purple,darkPurple}.png. Same pack as bg-stars.png, same purpose.
+  License: CC0 1.0.
+
 - `car-cyan.png`, `car-red.png`, `car-gold.png` (56x133 each) — from
   "Free Top Down Car Sprites" by UnLucky Studio (unluckystudio.com),
   Car.png (256x256, originally solid orange). Modifications: cropped to

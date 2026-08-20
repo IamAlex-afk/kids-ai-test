@@ -155,7 +155,12 @@
   }
 
   /* ─── BACKGROUND PRE-RENDER ───────────────────────────────────────── */
-  function buildBgCanvas(W, H, cell, cols, rows, tier) {
+  // Per-round accent so consecutive rounds don't all show the identical
+  // circuit-board background — cycles through a small on-brand palette,
+  // keeping the cute/cyber base tone but rotating the trace/grid colour.
+  const BG_ACCENTS_CUTE  = ['129,140,248', '244,114,182', '52,211,153', '251,191,36'];
+  const BG_ACCENTS_CYBER = ['34,211,238', '167,139,250', '52,211,153', '248,113,113'];
+  function buildBgCanvas(W, H, cell, cols, rows, tier, roundIdx) {
     const isCute = tier === 'cute';
     const bc = document.createElement('canvas');
     bc.width = W; bc.height = H;
@@ -163,15 +168,17 @@
     g.fillStyle = isCute ? '#0b0f1e' : '#07080f';
     g.fillRect(0, 0, W, H);
 
+    const palette = isCute ? BG_ACCENTS_CUTE : BG_ACCENTS_CYBER;
+    const traceColor = palette[(roundIdx || 0) % palette.length];
+
     // Grid lines — softer/sparser for young kids, dense circuit-cyan for teen/adult
-    g.strokeStyle = isCute ? 'rgba(129,140,248,0.045)' : 'rgba(34,211,238,0.065)';
+    g.strokeStyle = `rgba(${traceColor},${isCute ? 0.045 : 0.065})`;
     g.lineWidth = 0.5;
     for (let x = 0; x <= W; x += cell) { g.beginPath(); g.moveTo(x, 0); g.lineTo(x, H); g.stroke(); }
     for (let y = 0; y <= H; y += cell) { g.beginPath(); g.moveTo(0, y); g.lineTo(W, y); g.stroke(); }
 
-    // Circuit traces (seeded) — fewer & gentler for young kids
-    const rng = seededRng(137);
-    const traceColor = isCute ? '129,140,248' : '34,211,238';
+    // Circuit traces (seeded per round) — fewer & gentler for young kids
+    const rng = seededRng(137 + (roundIdx || 0) * 977);
     const traceCount = isCute ? 5 : 10;
     for (let i = 0; i < traceCount; i++) {
       const gx = (Math.floor(rng() * (cols - 1)) + 0.5) * cell;
@@ -652,7 +659,7 @@
       els.canvas.style.width = '100%';
       els.canvas.style.maxWidth = (cfg.cols * cfg.cell) + 'px';
 
-      bgCanvas = buildBgCanvas(cfg.cols * cfg.cell, cfg.rows * cfg.cell, cfg.cell, cfg.cols, cfg.rows, tier);
+      bgCanvas = buildBgCanvas(cfg.cols * cfg.cell, cfg.rows * cfg.cell, cfg.cell, cfg.cols, cfg.rows, tier, 0);
 
       container.querySelectorAll('.sk-dbtn').forEach(btn =>
         on(btn, 'pointerdown', (e) => { e.preventDefault(); setDir(btn.dataset.dir); })
@@ -686,6 +693,9 @@
       roundIdx = idx;
       const round = rounds[idx];
       if (!round) { finishAll(); return; }
+      // Fresh background per round — keeps the board from looking
+      // identical for the whole session.
+      bgCanvas = buildBgCanvas(cfg.cols * cfg.cell, cfg.rows * cfg.cell, cfg.cell, cfg.cols, cfg.rows, tier, idx);
       els.roundLbl.textContent = `${t(lang, 'round')} ${idx + 1} / ${rounds.length}`;
       renderProgress(round, 0);
       showIntro(round, () => runRound(round));
