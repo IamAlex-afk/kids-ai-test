@@ -605,9 +605,16 @@
         if (opts.onExit) opts.onExit();
       });
 
-      // Responsive dimensions — fill container width, tall on mobile
+      // Responsive dimensions — fill container width, and measure the
+      // real leftover viewport height (minus every other HUD block)
+      // instead of a fixed cap, so fullscreen mode actually uses the
+      // full screen on tall phones instead of leaving dead space below.
+      const wrap = container.querySelector('.snake-canvas-wrap');
+      const chromeH = Array.from(container.children)
+        .filter(el => el !== wrap)
+        .reduce((sum, el) => sum + el.getBoundingClientRect().height, 0);
       const avW = Math.min(container.clientWidth || window.innerWidth - 16, window.innerWidth - 16);
-      const avH = Math.min(window.innerHeight - 160, 580);
+      const avH = Math.max(280, Math.min(window.innerHeight - chromeH - 32, 900));
       const targetCols = Math.max(9, Math.min(14, Math.floor(avW / cfg.cell)));
       cfg.cell = Math.floor(avW / targetCols);
       cfg.cols = Math.max(9, Math.floor(avW / cfg.cell));
@@ -812,6 +819,12 @@
         if (!alive) return;
         els.overlay.classList.add('hidden'); playRound(roundIdx + 1);
       }, { once: true });
+
+      // Read the learned word/phrase + fact aloud — the youngest players
+      // can't read yet, and this fact is the whole point of the round.
+      if ((age === 'tiny' || age === 'child') && window.speakText) {
+        window.speakText(`${wordDisplay}. ${round.fact || ''}`);
+      }
     }
 
     function finishAll() { teardown(); if (opts.onAllDone) opts.onAllDone(); }

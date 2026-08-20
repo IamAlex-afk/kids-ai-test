@@ -119,6 +119,9 @@
   };
   let _robotImg = null, _robotImgReady = false;
   function isSpriteReady() { return _robotImgReady; }
+  // Set true only once a sharper, more detailed sheet replaces the
+  // current low-res Kenney recolor — see the drawRobot() call site.
+  const FORCE_SPRITE_ROBOT = false;
   (function preloadRobotSprite() {
     if (!ROBOT_SPRITE.src) return;
     const img = new Image();
@@ -157,9 +160,21 @@
     const frame = Math.floor((opts.now || 0) / (1000 / anim.fps)) % anim.frames;
     const sx = frame * ROBOT_SPRITE.frameW;
     const sy = anim.row * ROBOT_SPRITE.frameH;
-    const drawW = ROBOT_SPRITE.frameW * 0.7, drawH = ROBOT_SPRITE.frameH * 0.7;
+    // 0.85 (was 0.7) — the smaller size read as a pale, half-sized
+    // afterthought next to the site's other neon-glow characters.
+    const drawW = ROBOT_SPRITE.frameW * 0.85, drawH = ROBOT_SPRITE.frameH * 0.85;
     ctx.save();
     ctx.translate(x, y);
+
+    // Soft contact shadow — same trick as the procedural fallback's
+    // drawRobot(): without it the sprite reads as floating/pasted-on
+    // rather than standing on the ground.
+    const shadowGrad = ctx.createRadialGradient(0, 4, 0, 0, 4, 15);
+    shadowGrad.addColorStop(0, 'rgba(0,0,0,0.4)');
+    shadowGrad.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = shadowGrad;
+    ctx.beginPath(); ctx.ellipse(0, 4, 14, 4.5, 0, 0, Math.PI * 2); ctx.fill();
+
     // Dynamic neon rim glow — matches the procedural robot's existing
     // shadowBlur convention instead of baking a fixed glow into the PNG,
     // so it still pulses on hurt/dash the same way.
@@ -661,8 +676,14 @@
       els.coins   = container.querySelector('#pf-coins');
       els.shieldI = container.querySelector('#pf-shield');
 
+      // Measure the real leftover viewport height instead of a fixed
+      // cap, so fullscreen mode fills the whole screen on mobile.
+      const wrap = container.querySelector('.snake-canvas-wrap');
+      const chromeH = Array.from(container.children)
+        .filter(el => el !== wrap)
+        .reduce((sum, el) => sum + el.getBoundingClientRect().height, 0);
       const avW = Math.min(container.clientWidth || window.innerWidth - 16, window.innerWidth - 16, 680);
-      const avH = Math.min(window.innerHeight - 320, 320);
+      const avH = Math.max(280, Math.min(window.innerHeight - chromeH - 32, 760));
       els.canvas.width  = Math.max(280, avW);
       els.canvas.height = Math.max(200, avH);
       els.canvas.style.width = '100%';
@@ -777,6 +798,12 @@
         if (!alive) return;
         els.overlay.classList.add('hidden'); state.paused = false;
       }, { once: true });
+
+      // Read the learned word/phrase + fact aloud — the youngest players
+      // can't read yet, and this fact is the whole point of the round.
+      if ((age === 'tiny' || age === 'child') && window.speakText) {
+        window.speakText(`${wordDisplay}. ${round.fact || ''}`);
+      }
     }
 
     function toast(msg) {
@@ -1401,7 +1428,12 @@
         ctx.restore();
       });
 
-      if (isSpriteReady()) {
+      // The procedural robot (custom neon glow + shading, matching the
+      // site's Snake/Racing art) reads far stronger than the flat,
+      // desaturated Kenney sprite sheet at this size — verified side by
+      // side, so it's the default now. isSpriteReady() is left wired up
+      // for a future higher-detail sheet.
+      if (isSpriteReady() && FORCE_SPRITE_ROBOT) {
         drawRobotSprite(ctx, player.x, player.y, {
           onGround: player.onGround, now, hurt, moving: !state.paused && !state.over,
           sliding: state.sliding && cfg.slide,
