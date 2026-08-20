@@ -66,24 +66,44 @@
       { name: 'jungle', sky: ['#0f2818', '#1a4028'], accent: '#86efac', ground: '#1c4028', deco: '🌿' },
       { name: 'city',   sky: ['#2a0f2e', '#3d1a42'], accent: '#f9a8d4', ground: '#3a1f3d', deco: '▢' },
       { name: 'lab',    sky: ['#241505', '#3a2408'], accent: '#fde68a', ground: '#2e2410', deco: '○' },
+      { name: 'snow',   sky: ['#101d35', '#1b2f54'], accent: '#c7f9ff', ground: '#20304f', deco: '❄' },
+      { name: 'garden', sky: ['#152a10', '#254a1e'], accent: '#d9f99d', ground: '#20401b', deco: '✿' },
+      { name: 'meadow', sky: ['#1b2f10', '#2c4a1c'], accent: '#bef264', ground: '#25401a', deco: '❀' },
+      { name: 'coral',  sky: ['#3a1420', '#54203a'], accent: '#fda4af', ground: '#401f30', deco: '✦' },
+      { name: 'sky',    sky: ['#0d2540', '#153a5c'], accent: '#bae6fd', ground: '#173049', deco: '☁' },
     ],
     child: [  // the original neon set
       { name: 'space',  sky: ['#05060f', '#0b1030'], accent: '#22d3ee', ground: '#161c3a', deco: '★' },
       { name: 'jungle', sky: ['#02120a', '#08281a'], accent: '#34d399', ground: '#123320', deco: '🌿' },
       { name: 'city',   sky: ['#0a0510', '#1d0f30'], accent: '#f472b6', ground: '#2a1b3d', deco: '▢' },
       { name: 'lab',    sky: ['#050b0f', '#0a1e22'], accent: '#fbbf24', ground: '#1c2b2f', deco: '○' },
+      { name: 'ocean',  sky: ['#020a12', '#06192e'], accent: '#38bdf8', ground: '#0e2338', deco: '≈' },
+      { name: 'volcano',sky: ['#160505', '#2e0a08'], accent: '#fb923c', ground: '#3a1408', deco: '▲' },
+      { name: 'aurora', sky: ['#021814', '#04302a'], accent: '#2dd4bf', ground: '#0a3a30', deco: '❀' },
+      { name: 'magma',  sky: ['#1c0602', '#3a0e04'], accent: '#f97316', ground: '#411206', deco: '✦' },
+      { name: 'frost',  sky: ['#031621', '#06283d'], accent: '#67e8f9', ground: '#0c3550', deco: '❄' },
     ],
     teen: [   // cooler, harder-edged neon
       { name: 'space',  sky: ['#030308', '#0a0a2a'], accent: '#818cf8', ground: '#12122e', deco: '★' },
       { name: 'jungle', sky: ['#010c08', '#052018'], accent: '#2dd4bf', ground: '#0a2820', deco: '🌿' },
       { name: 'city',   sky: ['#08030c', '#170a24'], accent: '#e879f9', ground: '#20122e', deco: '▢' },
       { name: 'lab',    sky: ['#030608', '#071418'], accent: '#facc15', ground: '#141f22', deco: '○' },
+      { name: 'toxic',  sky: ['#040c04', '#0a1c0a'], accent: '#84cc16', ground: '#0f2210', deco: '☣' },
+      { name: 'ember',  sky: ['#0c0402', '#1e0a04'], accent: '#f87171', ground: '#26100a', deco: '▲' },
+      { name: 'plasma', sky: ['#0c0418', '#1c0830'], accent: '#d946ef', ground: '#240a3d', deco: '✦' },
+      { name: 'rust',   sky: ['#150802', '#2c1204'], accent: '#ea580c', ground: '#331608', deco: '▲' },
+      { name: 'glacier',sky: ['#020e14', '#052030'], accent: '#5eead4', ground: '#0a2c3d', deco: '❄' },
     ],
     adult: [  // darkest, most technical / muted
       { name: 'space',  sky: ['#020204', '#06061a'], accent: '#6366f1', ground: '#0c0c1e', deco: '★' },
       { name: 'jungle', sky: ['#000806', '#031810'], accent: '#14b8a6', ground: '#061e18', deco: '🌿' },
       { name: 'city',   sky: ['#050208', '#100618'], accent: '#c026d3', ground: '#160c1e', deco: '▢' },
       { name: 'lab',    sky: ['#020404', '#0a1214'], accent: '#ca8a04', ground: '#0f1719', deco: '○' },
+      { name: 'void',   sky: ['#010103', '#050512'], accent: '#7c3aed', ground: '#0a0a18', deco: '◆' },
+      { name: 'crimson',sky: ['#060102', '#160408'], accent: '#dc2626', ground: '#1c0808', deco: '▲' },
+      { name: 'abyss',  sky: ['#000103', '#02040c'], accent: '#1e3a8a', ground: '#04081c', deco: '◆' },
+      { name: 'ash',    sky: ['#0a0505', '#1a0e0e'], accent: '#9f1239', ground: '#201010', deco: '▲' },
+      { name: 'nebula', sky: ['#040108', '#0e0320'], accent: '#a21caf', ground: '#150626', deco: '★' },
     ],
   };
   function themeFor(age, worldIdx) {
@@ -134,13 +154,22 @@
   // clouds for tiny/child (sky mood). Same additive pattern as the robot
   // sprite: stays null-safe, drawBackground() falls back to the existing
   // procedural gradient + glyph stars if an image hasn't loaded yet.
-  const BG_IMAGES = { stars: 'assets/bg-stars.png', clouds: 'assets/bg-clouds.png' };
+  // Four colour variants per mood (all from the same Kenney source packs
+  // as the originals, so they match in style) so the 4 worlds per age
+  // don't all show the exact same background image.
+  const BG_IMAGES = {
+    clouds: ['assets/bg-clouds.png', 'assets/bg-clouds-hills.png', 'assets/bg-clouds-trees.png', 'assets/bg-clouds-desert.png'],
+    stars:  ['assets/bg-stars.png', 'assets/bg-stars-blue.png', 'assets/bg-stars-purple.png', 'assets/bg-stars-darkpurple.png'],
+  };
   const _bgImg = {}, _bgReady = {};
-  Object.keys(BG_IMAGES).forEach(key => {
-    const img = new Image();
-    img.onload = () => { _bgImg[key] = img; _bgReady[key] = true; };
-    img.onerror = () => { _bgReady[key] = false; };
-    img.src = BG_IMAGES[key];
+  Object.keys(BG_IMAGES).forEach(mood => {
+    _bgImg[mood] = []; _bgReady[mood] = [];
+    BG_IMAGES[mood].forEach((src, i) => {
+      const img = new Image();
+      img.onload = () => { _bgImg[mood][i] = img; _bgReady[mood][i] = true; };
+      img.onerror = () => { _bgReady[mood][i] = false; };
+      img.src = src;
+    });
   });
   function bgModeFor(age) { return (age === 'tiny' || age === 'child') ? 'clouds' : 'stars'; }
 
@@ -1293,12 +1322,27 @@
       grad.addColorStop(0, theme.sky[0]); grad.addColorStop(0.7, theme.sky[1]); grad.addColorStop(1, theme.sky[1]);
       ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H);
 
+      // Pick a background variant per world so worlds don't all show the
+      // identical image — cycles through the 4 real variants, then tints
+      // the repeat with this world's theme accent (worldIdx 4/5 for
+      // teen/adult, which have 5-6 worlds) so even a repeated photo still
+      // reads as a different place.
       const mode = bgModeFor(age);
+      const variants = BG_IMAGES[mode] || [];
+      const vi = variants.length ? worldIdx % variants.length : 0;
+      const isRepeat = variants.length > 0 && worldIdx >= variants.length;
       if (mode === 'clouds') {
         drawSun(ctx, W, H);
-        if (_bgReady.clouds) drawTiledBg(ctx, _bgImg.clouds, W, H, -state.worldX * 0.12, 0.5);
-      } else if (_bgReady.stars) {
-        drawTiledBg(ctx, _bgImg.stars, W, H, -state.worldX * 0.08, 0.8);
+        if (_bgReady.clouds[vi]) drawTiledBg(ctx, _bgImg.clouds[vi], W, H, -state.worldX * 0.12, 0.5);
+      } else if (_bgReady.stars[vi]) {
+        drawTiledBg(ctx, _bgImg.stars[vi], W, H, -state.worldX * 0.08, 0.8);
+      }
+      if (isRepeat) {
+        ctx.save();
+        ctx.globalCompositeOperation = 'overlay';
+        ctx.fillStyle = theme.accent; ctx.globalAlpha = 0.28;
+        ctx.fillRect(0, 0, W, H);
+        ctx.restore();
       }
 
       // Soft glow band along the horizon so the sky doesn't just stop dead
