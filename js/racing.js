@@ -673,8 +673,14 @@
       els.coins = container.querySelector('#rc-coins');
       els.shieldI = container.querySelector('#rc-shield');
 
+      // Measure the real leftover viewport height instead of a fixed
+      // cap, so fullscreen mode fills the whole screen on mobile.
+      const wrap = container.querySelector('.snake-canvas-wrap');
+      const chromeH = Array.from(container.children)
+        .filter(el => el !== wrap)
+        .reduce((sum, el) => sum + el.getBoundingClientRect().height, 0);
       const avW = Math.min(container.clientWidth || window.innerWidth - 16, window.innerWidth - 16, 680);
-      const avH = Math.min(window.innerHeight - 320, 360);
+      const avH = Math.max(280, Math.min(window.innerHeight - chromeH - 32, 760));
       els.canvas.width = Math.max(280, avW);
       els.canvas.height = Math.max(240, avH);
       els.canvas.style.width = '100%';
@@ -770,6 +776,12 @@
         if (!alive) return;
         els.overlay.classList.add('hidden'); state.paused = false;
       }, { once: true });
+
+      // Read the learned word/phrase + fact aloud — the youngest players
+      // can't read yet, and this fact is the whole point of the round.
+      if ((age === 'tiny' || age === 'child') && window.speakText) {
+        window.speakText(`${wordDisplay}. ${round.fact || ''}`);
+      }
     }
 
     function toast(msg) {
