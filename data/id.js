@@ -622,6 +622,11 @@ window.LANG_DATA = {
           correct:1, explanation:"Interpretabilitas = bisakah kita memahami proses pengambilan keputusan model? Jaringan saraf besar adalah \"kotak hitam\" — ini masalah kunci dalam keamanan AI.", source:"Penelitian interpretabilitas Anthropic", sourceUrl:"https://www.anthropic.com/research/interpretability" },
         { type:"likert", q:"\"Saya merasa mampu menilai secara kritis klaim tentang AI yang saya temui di berita, di tempat kerja, atau dari perusahaan.\"", ideal:4,
           explanation:"Itulah tujuan literasi AI. Kamu tidak perlu bisa membangun AI untuk bisa menilai klaim tentangnya secara kritis." },
+        { type:"choice", q:"Pernyataan mana tentang disinformasi buatan AI yang paling akurat?",
+          options:["Disinformasi AI mudah dideteksi karena terdengar seperti robot 🤖","Bahaya utamanya adalah kualitas; AI menulis misinformasi lebih baik daripada manusia 📝","Bahaya utamanya adalah skala; AI bisa membuat dan menyebarkan konten palsu lebih cepat daripada yang bisa diverifikasi 📣","Disinformasi AI hanya berhasil pada audiens yang tidak paham teknologi 👥"],
+          correct:2, explanation:"Skala adalah bahaya utamanya. Pengecekan fakta itu lambat dan dilakukan manusia; pembuatan konten AI itu cepat dan otomatis. Bahkan jika setiap bagian bisa dideteksi, volumenya membuat kapasitas verifikasi kewalahan.", source:"Stanford Internet Observatory, 2024", sourceUrl:"https://stacks.stanford.edu/file/druid:mb753jn6512/sio_annual_report_2024.pdf" },
+        { type:"likert", q:"\"Sistem AI harus diaudit oleh pihak ketiga independen sebelum digunakan dalam keputusan berdampak besar (perekrutan, kredit, peradilan pidana).\"", ideal:5,
+          explanation:"Audit independen adalah tuntutan utama para pendukung akuntabilitas AI dan diwajibkan dalam UU AI Uni Eropa untuk sistem berisiko tinggi. Ini hampir jadi konsensus di kalangan peneliti etika AI.", source:"UU AI Uni Eropa Pasal 43-44", sourceUrl:"https://artificialintelligenceact.eu/" },
 ],
       results: [
         { title:'Penasaran AI 🔎', description:'Kamu punya fondasi untuk dibangun. Fokus pada sumber utama — makalah akademis dan dokumen regulasi resmi memberikan imbalan bagi pembaca yang cermat. Lanskap berubah cepat, tapi fundamentalnya stabil.' },

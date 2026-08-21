@@ -619,6 +619,11 @@ window.LANG_DATA = {
           correct:1, explanation:"Interpretierbarkeit = können wir den Entscheidungsprozess des Modells verstehen? Große neuronale Netze sind „Blackboxes\" — das ist ein zentrales Problem der KI-Sicherheit.", source:"Anthropic-Forschung zur Interpretierbarkeit", sourceUrl:"https://www.anthropic.com/research/interpretability" },
         { type:"likert", q:"„Ich fühle mich in der Lage, Aussagen über KI, denen ich in den Nachrichten, bei der Arbeit oder von Unternehmen begegne, kritisch zu bewerten.\"", ideal:4,
           explanation:"Das ist das Ziel von KI-Kompetenz. Man muss keine KI bauen können, um Behauptungen darüber kritisch zu bewerten." },
+        { type:"choice", q:"Welche Aussage über KI-generierte Desinformation ist am zutreffendsten?",
+          options:["KI-Desinformation ist leicht zu erkennen, weil sie robotisch klingt 🤖","Die Hauptgefahr ist die Qualität; KI schreibt bessere Fehlinformationen als Menschen 📝","Die Hauptgefahr ist der Umfang; KI kann falsche Inhalte schneller erzeugen und verbreiten, als sie überprüft werden können 📣","KI-Desinformation wirkt nur bei technisch unversierten Zielgruppen 👥"],
+          correct:2, explanation:"Umfang ist die zentrale Gefahr. Faktenchecks sind langsam und menschlich; KI-Inhaltserzeugung ist schnell und automatisiert. Selbst wenn jedes einzelne Stück erkennbar ist, überfordert die Menge die Überprüfungskapazität.", source:"Stanford Internet Observatory, 2024", sourceUrl:"https://stacks.stanford.edu/file/druid:mb753jn6512/sio_annual_report_2024.pdf" },
+        { type:"likert", q:"„KI-Systeme sollten von unabhängigen Dritten geprüft werden, bevor sie in folgenreichen Entscheidungen eingesetzt werden (Einstellung, Kredit, Strafjustiz).\"", ideal:5,
+          explanation:"Unabhängige Prüfung ist eine zentrale Forderung von KI-Rechenschaftspflicht-Befürwortern und im EU AI Act für Hochrisikosysteme vorgeschrieben. Das ist nahezu Konsens unter KI-Ethik-Forschern.", source:"EU AI Act Art. 43-44", sourceUrl:"https://artificialintelligenceact.eu/" },
 ],
       results: [
         { title:'KI-Neugierig 🔎', description:'Du hast eine Grundlage zum Aufbauen. Konzentriere dich auf primäre Quellen — akademische Papers und offizielle Regulierungsdokumente belohnen sorgfältiges Lesen. Die Landschaft ändert sich schnell, aber die Grundlagen sind stabil.' },

@@ -622,6 +622,11 @@ window.LANG_DATA = {
           correct:1, explanation:"Yorumlanabilirlik = modelin karar verme sürecini anlayabiliyor muyuz? Büyük sinir ağları \"kara kutu\"dur — bu, yapay zekâ güvenliğinde temel bir sorundur.", source:"Anthropic yorumlanabilirlik araştırması", sourceUrl:"https://www.anthropic.com/research/interpretability" },
         { type:"likert", q:"\"Haberlerde, işte ya da şirketlerden karşılaştığım yapay zekâ iddialarını eleştirel şekilde değerlendirebildiğimi hissediyorum.\"", ideal:4,
           explanation:"Bu, yapay zekâ okuryazarlığının hedefidir. Bir iddiayı eleştirel şekilde değerlendirmek için yapay zekâ inşa etmeyi bilmene gerek yok." },
+        { type:"choice", q:"Yapay zekâ tarafından üretilen dezenformasyon hakkında hangi ifade en doğrudur?",
+          options:["Yapay zekâ dezenformasyonu robotik ses çıkardığı için kolayca tespit edilir 🤖","Asıl tehlike kalitedir; yapay zekâ insanlardan daha iyi yanlış bilgi yazar 📝","Asıl tehlike ölçektir; yapay zekâ, doğrulanabildiğinden daha hızlı sahte içerik üretip yayabilir 📣","Yapay zekâ dezenformasyonu yalnızca teknolojik açıdan bilgisiz kitlelerde işe yarar 👥"],
+          correct:2, explanation:"Asıl tehlike ölçektir. Doğrulama yavaş ve insan eliyledir; yapay zekâ içerik üretimi hızlı ve otomatiktir. Her parça tespit edilebilir olsa bile, hacim doğrulama kapasitesini aşar.", source:"Stanford Internet Observatory, 2024", sourceUrl:"https://stacks.stanford.edu/file/druid:mb753jn6512/sio_annual_report_2024.pdf" },
+        { type:"likert", q:"\"Yapay zekâ sistemleri, yüksek riskli kararlarda (işe alım, kredi, ceza adaleti) kullanılmadan önce bağımsız üçüncü taraflarca denetlenmelidir.\"", ideal:5,
+          explanation:"Bağımsız denetim, yapay zekâ hesap verebilirliği savunucularının merkezi talebidir ve AB Yapay Zekâ Yasası'nda yüksek riskli sistemler için zorunludur. Bu, yapay zekâ etiği araştırmacıları arasında neredeyse fikir birliğidir.", source:"AB Yapay Zekâ Yasası, Madde 43-44", sourceUrl:"https://artificialintelligenceact.eu/" },
 ],
       results: [
         { title:'YZ Meraklısı 🔎', description:"İnşa edecek bir temelsin var. Birincil kaynaklara odaklan — akademik makaleler ve resmi düzenleyici belgeler dikkatli okuyanlara ödülünü veriyor. Manzara hızlı değişiyor, ama temeller istikrarlı." },
