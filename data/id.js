@@ -408,6 +408,12 @@ window.LANG_DATA = {
           fact:'Apa yang kamu bagikan ke AI bisa direkam dan digunakan untuk pelatihan model. Pikirkan sebelum berbagi.' },
         { unit:'word', targets:['MODEL','TERBUKA','MEMUNGKINKAN','KONTROL'], decoys:['MENYEMBUNYIKAN','MEMBLOKIR'], icon:'🔓',
           fact:'Model AI open-source dapat diperiksa dan dimodifikasi oleh siapa saja — lebih transparan, tapi juga ada risikonya.' },
+        { unit:'word', targets:['ALGORITMA','BISA','BIKIN','KECANDUAN'], decoys:['MEMBOSANKAN','ACAK'], icon:'⏳',
+          fact:'Feed rekomendasi dibuat supaya kamu terus menonton. Sadari saat sebuah feed dirancang untuk membuatmu kecanduan, bukan memberi informasi.' },
+        { unit:'word', targets:['BIAS','DALAM DATA','MENCIPTAKAN','AI YANG BIAS'], decoys:['ACAK','NETRAL'], icon:'⚖️',
+          fact:'Jika data pelatihan kurang mewakili kelompok tertentu, AI belajar untuk berlaku diskriminatif — bahkan tanpa diprogram untuk itu.', source:'Bender dkk., "Stochastic Parrots", 2021', sourceUrl:'https://dl.acm.org/doi/10.1145/3442188.3445922' },
+        { unit:'word', targets:['PERSETUJUAN','PENTING','BAHKAN','UNTUK SISTEM AI'], decoys:['OPSIONAL','OTOMATIS'], icon:'📋',
+          fact:'UU AI Uni Eropa dan GDPR mewajibkan persetujuan yang diinformasikan untuk sistem AI yang mengumpulkan, memproses, atau membuat profil data pribadi.', source:'UU AI Uni Eropa 2024', sourceUrl:'https://artificialintelligenceact.eu/' },
       ],
       quiz: [
         { type:"choice", q:"Definisi mana yang paling tepat menggambarkan AI modern — seperti chatbot yang kamu gunakan setiap hari?",
@@ -563,6 +569,10 @@ window.LANG_DATA = {
           fact:'Data pelatihan yang dibuat AI dapat melengkapi data nyata — tapi juga memperkuat bias jika tidak dikontrol.' },
         { unit:'phrase', targets:['MODEL MULTIMODAL','MEMPROSES','TEKS GAMBAR DAN AUDIO','BERSAMA'], decoys:['HANYA TEKS','HANYA GAMBAR'], icon:'🎭',
           fact:'Model seperti GPT-4V memproses gambar dan teks bersama — membuka kemampuan dan risiko baru.' },
+        { unit:'phrase', targets:['PERACUNAN DATA','MENYUNTIKKAN CONTOH','BERBAHAYA','KE DATA PELATIHAN'], decoys:['HANYA TEORITIS','SELALU BISA TERDETEKSI'], icon:'☣️',
+          fact:'Data berbahaya yang disuntikkan ke dalam data pelatihan bisa menciptakan pintu belakang tersembunyi — dipicu oleh input tertentu saat AI digunakan.' },
+        { unit:'phrase', targets:['PENGAWASAN SKALABEL','MEMAKAI BANTUAN AI','UNTUK MENGAWASI','AI DI LUAR KEMAMPUAN MANUSIA'], decoys:['SEPENUHNYA OTOMATIS','TIDAK BUTUH MANUSIA'], icon:'🔭',
+          fact:'Saat sistem AI menjadi super-manusia di bidang tertentu, manusia tak lagi bisa memverifikasi langsung pekerjaannya — menjadikan pengawasan skalabel masalah utama yang belum terpecahkan.', source:'OpenAI, "Weak-to-Strong Generalization", 2023', sourceUrl:'https://arxiv.org/abs/2312.09390' },
       ],
       quiz: [
         { type:"choice", q:"Definisi mana yang paling akurat mencerminkan pemahaman ilmiah dan regulasi saat ini tentang \"sistem AI\"?",

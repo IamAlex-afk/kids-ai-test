@@ -406,6 +406,12 @@ window.LANG_DATA = {
           fact:"Beaucoup de modeles d'IA ont ete entraines sur des donnees sans consentement explicite. C'est un debat juridique actif." },
         { unit:'word', targets:["LES","MODELES","OUVERTS","PERMETTENT","LE","CONTROLE"], decoys:["CACHER","BLOQUER"], icon:'🔓',
           fact:"Les modeles d'IA open source peuvent etre inspectes et modifies par n'importe qui — plus de transparence, mais aussi des risques." },
+        { unit:'word', targets:["LE BIAIS","DANS LES DONNEES","CREE","UNE IA BIAISEE"], decoys:["ALEATOIRE","NEUTRE"], icon:'⚖️',
+          fact:"Si les donnees d'entrainement sous-representent certains groupes, l'IA apprend a discriminer — meme sans etre programmee pour cela.", source:"Bender et al., « Stochastic Parrots », 2021", sourceUrl:"https://dl.acm.org/doi/10.1145/3442188.3445922" },
+        { unit:'word', targets:["TON EMPREINTE","NUMERIQUE","ENTRAINE","LES FUTURES IA"], decoys:["DISPARAIT","RESTE PRIVEE"], icon:'👣',
+          fact:"Tout ce que tu publies, recherches ou cliques en ligne peut devenir des donnees d'entrainement pour de futurs systemes d'IA." },
+        { unit:'word', targets:["LE CONSENTEMENT","COMPTE","MEME AVEC","LES SYSTEMES D'IA"], decoys:["OPTIONNEL","AUTOMATIQUE"], icon:'📋',
+          fact:"Le reglement europeen sur l'IA et le RGPD exigent un consentement eclaire pour les systemes d'IA qui collectent, traitent ou profilent des donnees personnelles.", source:"Reglement europeen sur l'IA 2024", sourceUrl:"https://artificialintelligenceact.eu/" },
       ],
       quiz: [
         { type:"choice", q:"Quelle définition décrit le mieux l'IA moderne, comme les chatbots que tu utilises tous les jours ?",
@@ -560,6 +566,10 @@ window.LANG_DATA = {
           fact:"Les donnees d'entrainement generees par l'IA peuvent completer les vraies donnees — mais aussi amplifier les biais si non controlees." },
         { unit:'phrase', targets:["MODELES MULTIMODAUX","TRAITENT","TEXTE IMAGE ET AUDIO","ENSEMBLE"], decoys:["TEXTE SEUL","IMAGES SEULES"], icon:'🎭',
           fact:"Des modeles comme GPT-4V traitent images et texte ensemble — ouvrent de nouvelles capacites et de nouveaux risques." },
+        { unit:'phrase', targets:["L'EMPOISONNEMENT DE DONNEES","INJECTE DES EXEMPLES","MALVEILLANTS","DANS LES DONNEES D'ENTRAINEMENT"], decoys:["EST PUREMENT THEORIQUE","EST TOUJOURS DETECTABLE"], icon:'☣️',
+          fact:"Des donnees adverses injectees dans les ensembles d'entrainement peuvent creer des portes derobees cachees — declenchees par des entrees specifiques lors de l'inference." },
+        { unit:'phrase', targets:["LA SUPERVISION EVOLUTIVE","UTILISE L'ASSISTANCE DE L'IA","POUR SUPERVISER","UNE IA AU-DELA DES CAPACITES HUMAINES"], decoys:["EST ENTIEREMENT AUTOMATISEE","NE NECESSITE AUCUN HUMAIN"], icon:'🔭',
+          fact:"A mesure que les systemes d'IA deviennent surhumains dans des domaines specifiques, les humains ne peuvent plus verifier directement leur travail — faisant de la supervision evolutive un probleme central non resolu.", source:"OpenAI, « Weak-to-Strong Generalization », 2023", sourceUrl:"https://arxiv.org/abs/2312.09390" },
       ],
       quiz: [
         { type:"choice", q:"Quelle définition reflète le plus précisément la compréhension scientifique et réglementaire actuelle d'un « système d'IA » ?",

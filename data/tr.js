@@ -408,6 +408,12 @@ window.LANG_DATA = {
           fact:"Açık kaynaklı YZ modelleri herkes tarafından incelenebilir ve değiştirilebilir — daha fazla şeffaflık ama riskler de var." },
         { unit:'word', targets:['DIJITAL','AYAK','IZI','ONLINE','KALIR'], decoys:['SILINIR','GIZLI'], icon:'👣',
           fact:"YZ ile paylaştığın her şey kaydedilebilir ve model eğitiminde kullanılabilir. Paylaşmadan önce düşün." },
+        { unit:'word', targets:['ALGORITMALAR','BAGIMLILIK','YAPABILIR'], decoys:['SIKICI','RASTGELE'], icon:'⏳',
+          fact:"Öneri akışları seni ekrana bağlı tutmak için tasarlanır. Bir akışın seni bilgilendirmek yerine bağımlı kılmak için tasarlandığını fark et." },
+        { unit:'word', targets:['VERIDEKI','ONYARGI','YANLI','YZ','YARATIR'], decoys:['RASTGELE','TARAFSIZ'], icon:'⚖️',
+          fact:"Eğitim verisi belirli grupları yeterince temsil etmezse, YZ programlanmadan bile ayrımcılık yapmayı öğrenir.", source:"Bender ve ark., \"Stochastic Parrots\", 2021", sourceUrl:"https://dl.acm.org/doi/10.1145/3442188.3445922" },
+        { unit:'word', targets:['ONAY','YZ','SISTEMLERINDE','BILE','ONEMLIDIR'], decoys:['OPSIYONEL','OTOMATIK'], icon:'📋',
+          fact:"AB YZ Yasası ve GDPR, kişisel verileri toplayan, işleyen veya profilleyen YZ sistemleri için bilgilendirilmiş onay şartı getirir.", source:"AB YZ Yasası 2024", sourceUrl:"https://artificialintelligenceact.eu/" },
       ],
       quiz: [
         { type:"choice", q:"Her gün kullandığın sohbet botları gibi modern yapay zekâyı en doğru şekilde hangi tanım açıklar?",
@@ -563,6 +569,10 @@ window.LANG_DATA = {
           fact:"YZ tarafından üretilen eğitim verileri gerçek verileri tamamlayabilir — ama kontrol edilmezse önyargıları da artırabilir." },
         { unit:'phrase', targets:['COKLU','MODAL','MODELLER','METIN','GORUNTU','VE','SESI','BIRLIKTE','ISLER'], decoys:['SADECE METIN','SADECE GORUNTU'], icon:'🎭',
           fact:"GPT-4V gibi modeller görüntü ve metni birlikte işler — yeni yetenekler ve yeni riskler açar." },
+        { unit:'phrase', targets:['VERI','ZEHIRLEME','EGITIM','VERISINE','ZARARLI','ORNEKLER','ENJEKTE','EDER'], decoys:['SADECE TEORIKTIR','HER ZAMAN TESPIT EDILIR'], icon:'☣️',
+          fact:"Eğitim verisine enjekte edilen kötü niyetli veriler gizli arka kapılar oluşturabilir — çıkarım sırasında belirli girdilerle tetiklenir." },
+        { unit:'phrase', targets:['OLCEKLENEBILIR','GOZETIM','YZ','YARDIMI','KULLANIR','INSAN','YETENEGININ','OTESINDEKI','YZYI','DENETLEMEK','ICIN'], decoys:['TAMAMEN OTOMATIKTIR','INSAN GEREKTIRMEZ'], icon:'🔭',
+          fact:"YZ sistemleri belirli alanlarda insanüstü hale geldikçe, insanlar artık çalışmalarını doğrudan doğrulayamaz — bu da ölçeklenebilir gözetimi çözülmemiş temel bir sorun haline getirir.", source:"OpenAI, \"Weak-to-Strong Generalization\", 2023", sourceUrl:"https://arxiv.org/abs/2312.09390" },
       ],
       quiz: [
         { type:"choice", q:"\"Yapay zekâ sistemi\" kavramının güncel bilimsel ve düzenleyici anlayışını en doğru şekilde hangi tanım yansıtır?",
