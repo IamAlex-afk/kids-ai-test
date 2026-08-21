@@ -418,6 +418,12 @@ window.LANG_DATA = {
           fact:'Muchos modelos de IA se entrenaron con datos sin consentimiento explicito. Es un debate legal activo.' },
         { unit:'word', targets:['LOS','MODELOS','ABIERTOS','PERMITEN','CONTROL'], decoys:['OCULTAR','BLOQUEAR'], icon:'🔓',
           fact:'Los modelos de IA de codigo abierto pueden ser inspeccionados y modificados por cualquiera — mas transparencia, pero tambien riesgos.' },
+        { unit:'word', targets:['EL SESGO','EN LOS DATOS','CREA','IA SESGADA'], decoys:['ALEATORIO','NEUTRAL'], icon:'⚖️',
+          fact:'Si los datos de entrenamiento subrepresentan a ciertos grupos, la IA aprende a discriminar — incluso sin estar programada para ello.', source:'Bender et al., «Stochastic Parrots», 2021', sourceUrl:'https://dl.acm.org/doi/10.1145/3442188.3445922' },
+        { unit:'word', targets:['TU HUELLA','DIGITAL','ENTRENA','FUTURA IA'], decoys:['DESAPARECE','SIGUE PRIVADA'], icon:'👣',
+          fact:'Todo lo que publicas, buscas o haces clic en linea puede convertirse en datos de entrenamiento para futuros sistemas de IA.' },
+        { unit:'word', targets:['EL CONSENTIMIENTO','IMPORTA','INCLUSO CON','SISTEMAS DE IA'], decoys:['OPCIONAL','AUTOMATICO'], icon:'📋',
+          fact:'La Ley de IA de la UE y el RGPD exigen consentimiento informado para sistemas de IA que recopilan, procesan o perfilan datos personales.', source:'Ley de IA de la UE 2024', sourceUrl:'https://artificialintelligenceact.eu/' },
       ],
       quiz: [
         { type:"choice", q:"¿Qué definición describe mejor a la IA moderna, como los chatbots que usas todos los días?",
@@ -572,6 +578,10 @@ window.LANG_DATA = {
           fact:'Los datos de entrenamiento generados por IA pueden complementar datos reales — pero tambien amplificar sesgos si no se controlan.' },
         { unit:'phrase', targets:['MODELOS MULTIMODALES','PROCESAN','TEXTO IMAGEN Y AUDIO','JUNTOS'], decoys:['SOLO TEXTO','SOLO IMAGENES'], icon:'🎭',
           fact:'Modelos como GPT-4V procesan imagenes y texto juntos — abren nuevas capacidades y nuevos riesgos.' },
+        { unit:'phrase', targets:['EL ENVENENAMIENTO DE DATOS','INYECTA EJEMPLOS','MALICIOSOS','EN LOS DATOS DE ENTRENAMIENTO'], decoys:['ES SOLO TEORICO','SIEMPRE ES DETECTABLE'], icon:'☣️',
+          fact:'Los datos adversarios inyectados en los conjuntos de entrenamiento pueden crear puertas traseras ocultas — activadas por entradas especificas durante la inferencia.' },
+        { unit:'phrase', targets:['LA SUPERVISION ESCALABLE','USA ASISTENCIA DE IA','PARA SUPERVISAR','IA MAS ALLA DE LA CAPACIDAD HUMANA'], decoys:['ES TOTALMENTE AUTOMATICA','NO REQUIERE HUMANOS'], icon:'🔭',
+          fact:'A medida que los sistemas de IA se vuelven sobrehumanos en dominios especificos, los humanos ya no pueden verificar directamente su trabajo — lo que convierte a la supervision escalable en un problema central sin resolver.', source:'OpenAI, «Weak-to-Strong Generalization», 2023', sourceUrl:'https://arxiv.org/abs/2312.09390' },
       ],
       quiz: [
         { type:"choice", q:"¿Qué definición refleja con mayor precisión la comprensión científica y regulatoria actual de un \"sistema de IA\"?",

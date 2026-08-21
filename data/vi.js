@@ -838,6 +838,12 @@ window.LANG_DATA = {
           fact: 'Nhiều mô hình AI được huấn luyện trên dữ liệu không có sự đồng ý rõ ràng. Đây là cuộc tranh luận pháp lý đang diễn ra.' },
         { unit: 'word', targets: ['MÔ', 'HÌNH', 'MỞ', 'CHO', 'PHÉP', 'KIỂM', 'SOÁT'], decoys: ['CHE GIẤU', 'CHẶN'], icon: '🔓',
           fact: 'Các mô hình AI mã nguồn mở có thể được kiểm tra bởi bất kỳ ai — minh bạch hơn, nhưng cũng có rủi ro.' },
+        { unit: 'word', targets: ['THIÊN', 'LỆCH', 'TRONG', 'DỮ', 'LIỆU', 'TẠO', 'RA', 'AI', 'THIÊN', 'LỆCH'], decoys: ['NGẪU NHIÊN', 'TRUNG LẬP'], icon: '⚖️',
+          fact: 'Nếu dữ liệu huấn luyện thiếu đại diện cho một số nhóm, AI sẽ học cách phân biệt đối xử — ngay cả khi không được lập trình để làm vậy.', source: 'Bender và cộng sự, "Stochastic Parrots", 2021', sourceUrl: 'https://dl.acm.org/doi/10.1145/3442188.3445922' },
+        { unit: 'word', targets: ['DẤU', 'CHÂN', 'SỐ', 'CỦA', 'BẠN', 'HUẤN', 'LUYỆN', 'AI', 'TƯƠNG', 'LAI'], decoys: ['BIẾN MẤT', 'VẪN RIÊNG TƯ'], icon: '👣',
+          fact: 'Mọi thứ bạn đăng, tìm kiếm hoặc nhấp vào trên mạng đều có thể trở thành dữ liệu huấn luyện cho các hệ thống AI tương lai.' },
+        { unit: 'word', targets: ['SỰ', 'ĐỒNG', 'Ý', 'QUAN', 'TRỌNG', 'VỚI', 'CẢ', 'HỆ', 'THỐNG', 'AI'], decoys: ['TÙY CHỌN', 'TỰ ĐỘNG'], icon: '📋',
+          fact: 'Đạo luật AI của EU và GDPR yêu cầu sự đồng ý có hiểu biết đối với các hệ thống AI thu thập, xử lý hoặc lập hồ sơ dữ liệu cá nhân.', source: 'Đạo luật AI của EU 2024', sourceUrl: 'https://artificialintelligenceact.eu/' },
       ],
 
       quiz: [
@@ -1201,6 +1207,10 @@ window.LANG_DATA = {
           fact: 'Dữ liệu huấn luyện do AI tạo ra có thể bổ sung dữ liệu thật — nhưng cũng có thể khuếch đại sai lệch nếu không kiểm soát.' },
         { unit: 'phrase', targets: ['MÔ', 'HÌNH', 'ĐA', 'PHƯƠNG', 'THỨC', 'XỬ', 'LÝ', 'VĂN', 'BẢN', 'HÌNH', 'VÀ', 'ÂM', 'THANH'], decoys: ['CHỈ VĂN BẢN', 'CHỈ HÌNH ẢNH'], icon: '🎭',
           fact: 'Các mô hình như GPT-4V xử lý hình ảnh và văn bản cùng nhau — mở ra khả năng mới và rủi ro mới.' },
+        { unit: 'phrase', targets: ['ĐẦU', 'ĐỘC', 'DỮ', 'LIỆU', 'CHÈN', 'VÍ', 'DỤ', 'ĐỘC', 'HẠI', 'VÀO', 'DỮ', 'LIỆU', 'HUẤN', 'LUYỆN'], decoys: ['CHỈ LÀ LÝ THUYẾT', 'LUÔN PHÁT HIỆN ĐƯỢC'], icon: '☣️',
+          fact: 'Dữ liệu độc hại được chèn vào tập huấn luyện có thể tạo ra cửa hậu ẩn — được kích hoạt bởi đầu vào cụ thể khi vận hành.' },
+        { unit: 'phrase', targets: ['GIÁM', 'SÁT', 'QUY', 'MÔ', 'LỚN', 'DÙNG', 'AI', 'HỖ', 'TRỢ', 'ĐỂ', 'GIÁM', 'SÁT', 'AI', 'VƯỢT', 'KHẢ', 'NĂNG', 'CON', 'NGƯỜI'], decoys: ['HOÀN TOÀN TỰ ĐỘNG', 'KHÔNG CẦN CON NGƯỜI'], icon: '🔭',
+          fact: 'Khi hệ thống AI trở nên siêu phàm trong các lĩnh vực cụ thể, con người không còn có thể trực tiếp xác minh công việc của chúng — khiến giám sát quy mô lớn trở thành vấn đề trung tâm chưa có lời giải.', source: 'OpenAI, "Weak-to-Strong Generalization", 2023', sourceUrl: 'https://arxiv.org/abs/2312.09390' },
       ],
 
       quiz: [

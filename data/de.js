@@ -406,6 +406,12 @@ window.LANG_DATA = {
           fact:'Viele KI-Modelle wurden auf Daten ohne ausdrückliche Einwilligung trainiert. Das ist eine aktive rechtliche Debatte.' },
         { unit:'word', targets:['OFFENE','KI-MODELLE','ERMÖGLICHEN','KONTROLLE'], decoys:['GEHEIMHALTEN','BLOCKIEREN'], icon:'🔓',
           fact:'Open-Source-KI-Modelle können von jedem überprüft und modifiziert werden — mehr Transparenz, aber auch Risiken.' },
+        { unit:'word', targets:['VERZERRUNG','IN DATEN','ERZEUGT','VERZERRTE KI'], decoys:['ZUFÄLLIG','NEUTRAL'], icon:'⚖️',
+          fact:'Wenn Trainingsdaten bestimmte Gruppen unterrepräsentieren, lernt die KI zu diskriminieren — auch ohne dafür programmiert zu sein.', source:'Bender et al., „Stochastic Parrots", 2021', sourceUrl:'https://dl.acm.org/doi/10.1145/3442188.3445922' },
+        { unit:'word', targets:['DEIN DIGITALER','FUSSABDRUCK','TRAINIERT','KÜNFTIGE KI'], decoys:['VERSCHWINDET','BLEIBT PRIVAT'], icon:'👣',
+          fact:'Alles, was du online postest, suchst oder anklickst, kann zu Trainingsdaten für künftige KI-Systeme werden.' },
+        { unit:'word', targets:['EINWILLIGUNG','ZÄHLT','AUCH BEI','KI-SYSTEMEN'], decoys:['OPTIONAL','AUTOMATISCH'], icon:'📋',
+          fact:'Der EU AI Act und die DSGVO verlangen eine informierte Einwilligung für KI-Systeme, die personenbezogene Daten sammeln, verarbeiten oder profilieren.', source:'EU AI Act 2024', sourceUrl:'https://artificialintelligenceact.eu/' },
       ],
       quiz: [
         { type:"choice", q:"Welche Definition beschreibt moderne KI am besten — zum Beispiel die Chatbots, die du jeden Tag benutzt?",
@@ -560,6 +566,10 @@ window.LANG_DATA = {
           fact:'KI-generierte Trainingsdaten können echte Daten ergänzen — aber auch vorhandene Vorurteile verstärken, wenn unkontrolliert.' },
         { unit:'phrase', targets:['MULTIMODALE MODELLE','VERARBEITEN','TEXT BILD UND TON','ZUSAMMEN'], decoys:['NUR TEXT','NUR BILDER'], icon:'🎭',
           fact:'Modelle wie GPT-4V verarbeiten Bilder und Text gemeinsam — eröffnen neue Fähigkeiten und neue Risiken.' },
+        { unit:'phrase', targets:['DATENVERGIFTUNG','SCHLEUST','BÖSARTIGE BEISPIELE','IN TRAININGSDATEN EIN'], decoys:['IST NUR THEORETISCH','IST IMMER ERKENNBAR'], icon:'☣️',
+          fact:'In Trainingsdaten eingeschleuste feindliche Daten können versteckte Hintertüren schaffen — ausgelöst durch bestimmte Eingaben zur Laufzeit.' },
+        { unit:'phrase', targets:['SKALIERBARE AUFSICHT','NUTZT KI-UNTERSTÜTZUNG','UM KI ZU ÜBERWACHEN','JENSEITS MENSCHLICHER FÄHIGKEIT'], decoys:['IST VOLL AUTOMATISIERT','BRAUCHT KEINE MENSCHEN'], icon:'🔭',
+          fact:'Wenn KI-Systeme in bestimmten Bereichen übermenschlich werden, können Menschen ihre Arbeit nicht mehr direkt überprüfen — skalierbare Aufsicht bleibt ein zentrales ungelöstes Problem.', source:'OpenAI, „Weak-to-Strong Generalization", 2023', sourceUrl:'https://arxiv.org/abs/2312.09390' },
       ],
       quiz: [
         { type:"choice", q:"Welche Definition spiegelt am genauesten das aktuelle wissenschaftliche und regulatorische Verständnis eines „KI-Systems\" wider?",
