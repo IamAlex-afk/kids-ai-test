@@ -619,6 +619,11 @@ window.LANG_DATA = {
           correct:1, explanation:"Interpretabilidade = conseguimos entender o processo de decisão do modelo? Grandes redes neurais são \"caixas-pretas\" — esse é um problema central de segurança em IA.", source:"Pesquisa de interpretabilidade da Anthropic", sourceUrl:"https://www.anthropic.com/research/interpretability" },
         { type:"likert", q:"\"Sinto que sou capaz de avaliar criticamente afirmações sobre IA que encontro em notícias, no trabalho ou vindas de empresas.\"", ideal:4,
           explanation:"Esse é o objetivo da alfabetização em IA. Você não precisa saber construir uma IA para avaliar criticamente as afirmações sobre ela." },
+        { type:"choice", q:"Qual afirmação sobre desinformação gerada por IA é mais precisa?",
+          options:["A desinformação de IA é fácil de detectar porque soa robótica 🤖","O principal perigo é a qualidade; a IA escreve desinformação melhor que humanos 📝","O principal perigo é a escala; a IA pode produzir e distribuir conteúdo falso mais rápido do que pode ser verificado 📣","A desinformação de IA só funciona em públicos tecnologicamente pouco sofisticados 👥"],
+          correct:2, explanation:"A escala é o perigo principal. A checagem de fatos é lenta e humana; a geração de conteúdo por IA é rápida e automatizada. Mesmo que cada peça seja detectável, o volume sobrecarrega a capacidade de verificação.", source:"Stanford Internet Observatory, 2024", sourceUrl:"https://stacks.stanford.edu/file/druid:mb753jn6512/sio_annual_report_2024.pdf" },
+        { type:"likert", q:"\"Sistemas de IA deveriam ser auditados por terceiros independentes antes de serem usados em decisões de alto impacto (contratação, crédito, justiça criminal).\"", ideal:5,
+          explanation:"A auditoria independente é uma exigência central dos defensores da responsabilização em IA e é exigida pela Lei de IA da UE para sistemas de alto risco. Isso é quase um consenso entre pesquisadores de ética em IA.", source:"Lei de IA da UE Art. 43-44", sourceUrl:"https://artificialintelligenceact.eu/" },
 ],
       results: [
         { title:'IA Curioso 🔎', description:'Você tem uma base para construir. Foque em fontes primárias — papers acadêmicos e documentos regulatórios oficiais recompensam leitura cuidadosa. O panorama muda rápido mas os fundamentos são estáveis.' },

@@ -1396,6 +1396,15 @@ window.LANG_DATA = {
           ideal:   4,
           explanation: "Đó chính là mục tiêu của hiểu biết về AI. Bạn không cần biết xây dựng AI để có thể đánh giá phê phán những tuyên bố về nó.",
         },
+        {
+          type: "choice",
+          q: "Điều nào sau đây là một vấn đề thực sự chưa có lời giải trong nghiên cứu AI?",
+          options: ["Khiến AI tạo ra câu đúng ngữ pháp ✍️","Huấn luyện AI trên các bộ dữ liệu lớn 📚","Ngăn chặn một cách đáng tin cậy việc AI tạo ra nội dung có hại trên quy mô lớn 🛡️","Khiến AI chạy nhanh hơn ⚡"],
+          correct: 2,
+          explanation: "Kiểm duyệt nội dung ở quy mô lớn thực sự chưa có lời giải. Red-teaming, RLHF và constitutional AI đều giảm được các đầu ra có hại — nhưng không loại bỏ hoàn toàn. Các prompt đối kháng luôn tìm ra cách khai thác mới.",
+          source: "Perez và cộng sự, \"Red Teaming Language Models with Language Models\", 2022",
+          sourceUrl: "https://arxiv.org/abs/2202.03286",
+        },
 ],
 
       results: [
