@@ -28,7 +28,7 @@ Features:
   - AI knowledge quiz
   - KAT Companion: a persistent AI pet that grows from real learning progress
   - Unique SHA-256 verified participation card
-  - 34 protocols for living safely with AI
+  - 33 protocols for living safely with AI
   - 7-day AI awareness tracker
 
 Canonical: https://iamalex-afk.github.io/kids-ai-test/
