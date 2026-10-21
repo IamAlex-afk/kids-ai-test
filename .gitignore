@@ -3,11 +3,11 @@ Thumbs.db
 *.log
 node_modules/
 
-# claude-telegram bot workspace — contains a live bot token and session
-# data; must never be committed or published via GitHub Pages deploy
-# (the pages.yml workflow uploads the entire repo root as-is).
+# Local files: never committed or published (the deploy uploads the whole repo root)
 claude-telegram.yaml
 data/.claude-telegram/
 modules/
 CLAUDE.md
 memory.md
+ROADMAP.md
+test_harness*.js
