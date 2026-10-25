@@ -18,6 +18,8 @@ was used; all work below is on the current GitHub code.
 | Security docs | SECURITY.md: private reporting via GitHub Security Advisories, no secrets/children's data in reports, no guaranteed response time, no absolute claims; notes that meta CSP cannot set `frame-ancestors`. security.txt: RFC 9116 fields, scoped to the project subpath. |
 | Projects | Mind-OS removed from author/provider metadata, footer © and humans.txt (authorship = Aleksei Sergeevich Bitkin, as in LICENSE). |
 | Translations | English fallbacks in the static mode picker of 7 pages (de, es, fr, hi, id, pt, tr) replaced with existing translations from `MODE_STR`. Share button text localized for all 10 languages (was 5). |
+| Back button | One history entry per opened lesson/game/quiz; browser Back closes it (games via their own exit button), never re-pushes (no loops); in-app ✕ removes the entry. Not yet browser-tested. |
+| Code scanning | `.github/workflows/codeql.yml` (JS, pinned SHA, `security-events: write` only in that job) and `.github/dependabot.yml` (monthly updates of pinned actions). No `npm audit fix --force`: the site has no npm dependencies. |
 | Tests | `tests/storage.test.mjs`, `tests/sw.test.mjs`, `tests/static.test.mjs` (`node --test tests/`, no dependencies). |
 
 ## Checked
