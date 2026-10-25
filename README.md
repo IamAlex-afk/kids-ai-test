@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="og.png" alt="Kids AI Test — free AI literacy for children ages 3–17" width="640">
+  <img src="og.png" alt="Kids AI Test — free AI literacy for children ages 5–17" width="640">
 </p>
 
 <h1 align="center">Kids AI Test</h1>
@@ -19,13 +19,13 @@
 
 ## What it is
 
-A free, installable PWA that teaches children ages 3–17 how AI actually works, through:
+A free, installable PWA that teaches children ages 5–17 how AI actually works, through:
 
-- **Age-adapted lessons** — four tiers (3–5, 6–9, 10–13, 14+), each with its own vocabulary, pacing, and depth
-- **A sourced quiz** — every answer cites a real primary source (Stanford AI Index, the EU AI Act, peer-reviewed papers), not made-up "facts"
+- **Age-adapted lessons** — four tiers (5–7 with an adult, 8–10, 11–13, 14+), each with its own vocabulary, pacing, and depth. For children under 5 there is guidance for parents, not a separate course.
+- **A sourced quiz** — answers link to the sources they are based on (Stanford AI Index, the EU AI Act, peer-reviewed papers). Source coverage is not yet equal across languages.
 - **Three mini-games** — Snake, a platformer, and a racing game, all reinforcing the same concepts through play
-- **A unique result card** — SHA-256-verified, rendered client-side, downloadable as an image
-- **Text-to-speech** — lessons are read aloud for children who can't read yet
+- **A keepsake result card** — rendered client-side, downloadable as an image. Its SHA-256 code is a fingerprint of the card's own fields, not a signature: it does not prove identity, uniqueness, or course completion.
+- **Text-to-speech** — lessons can be read aloud for children who can't read yet
 
 ## Why this exists
 
@@ -33,15 +33,15 @@ Most "AI for kids" content is either a marketing pitch for an AI product, or vag
 
 ## Features
 
-- ✅ **10 languages**, each independently adapted (not machine-translated): en, ru, de, es, fr, hi, id, pt, tr, vi
-- ✅ **Zero tracking, zero accounts, zero ads** — everything runs client-side; progress lives only in the browser's own `localStorage`
-- ✅ **Installable PWA** — works fully offline after first load
-- ✅ **WCAG-conscious** — Lighthouse Accessibility 100
-- ✅ **No build step** — plain HTML/CSS/JS, open any file and read it
+- ✅ **10 language versions**: en, ru, de, es, fr, hi, id, pt, tr, vi. Depth and source coverage differ by language; native-speaker review is not complete.
+- ✅ **No tracking, no accounts, no ads** — everything runs client-side. Progress stays in the browser tab by default; saving on the device only after an explicit choice (💾), with a delete button.
+- ✅ **Installable PWA** — works offline after the first full load
+- ✅ **Accessibility-conscious** — automated checks are not a full accessibility audit
+- ✅ **Plain HTML/CSS/JS** — no framework, no bundler
 
 ## Tech stack
 
-Vanilla JavaScript, HTML, CSS. No frameworks, no bundler, no `node_modules`. What you see in the repo is exactly what ships.
+Vanilla JavaScript, HTML, CSS. No frameworks, no bundler. A small copy step (`tools/build.mjs`) puts only the public site files into `dist/`, which is what GitHub Pages publishes.
 
 ## Structure
 
@@ -49,7 +49,8 @@ Vanilla JavaScript, HTML, CSS. No frameworks, no bundler, no `node_modules`. Wha
 index.html, {lang}.html     10 languages: en, ru, de, es, fr, hi, id, pt, tr, vi
 js/core.js                  app logic — age selection, lessons, quiz, results
 js/snake.js, platformer.js, racing.js   the three mini-games
-js/card.js                  SHA-256 verified result card generator
+js/card.js                  keepsake result card (local SHA-256 fingerprint, not a signature)
+js/storage.js, storage-ui.js  tab-memory storage + explicit "save on this device" choice
 js/companion.js, glossary.js, leaderboard.js, names.js, parents-faq.js
 data/{lang}.js              per-language lesson/quiz content, with sources
 css/main.css                all styling, age-based theming via [data-age]
@@ -61,16 +62,15 @@ manifest.json, sw.js        installable PWA with offline support
 
 ## Run locally
 
-No build step — just serve the directory:
-
 ```bash
-python -m http.server 8080
+node tools/build.mjs          # copies the public site into dist/
+python -m http.server 8080 --directory dist
 # open http://localhost:8080
 ```
 
 ## Privacy
 
-No accounts, no ads, no analytics, no cookies. Everything runs client-side.
+No accounts, no ads, no analytics, no cookies, and answers are not sent anywhere. Like any website, the host (GitHub Pages) receives ordinary page requests.
 
 ## License
 
