@@ -37,11 +37,19 @@ was used; all work below is on the current GitHub code.
 
 Nothing from this branch is published yet. Live site = `main` (`f32e618`).
 
+## Architecture
+
+See `docs/ARCHITECTURE-DECISIONS.md`: shared github.io origin (storage not
+isolated from sibling projects; separate origin recommended — owner decision),
+measured build size (≈2.86 MB total, ≈0.86 MB first load; plan to lazy-load games
+and per-language parents' FAQ), no WebMCP, search policy.
+
 ## Open questions for the owner
 
 1. Footer link to `human-os-patch-33-protocols` and the 14+ book recommendation (Amazon/Litres) link to other projects/products — keep, or remove from the kids' site?
 2. Enable **Private vulnerability reporting** in repo Settings → Code security (needs admin; SECURITY.md already points there).
 3. Search Console: submit `sitemap.xml` (only the owner can; the subpath robots.txt is not read by Google).
+4. Separate origin for the kids' site: own GitHub organisation (`<name>.github.io`, free) or a subdomain of an owned domain? Nothing is migrated until decided.
 
 ## Remaining work (next steps, in order)
 
