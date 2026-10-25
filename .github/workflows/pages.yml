@@ -30,7 +30,8 @@ jobs:
       - name: Build dist/ and check local links
         run: node tools/build.mjs --check
       - name: Tests
-        run: node --test tests/
+        # Quoted glob: Node expands it itself; a bare directory is run as a file
+        run: node --test "tests/**/*.test.mjs"
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         if: github.event_name != 'pull_request'
         with:

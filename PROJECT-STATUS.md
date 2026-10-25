@@ -20,7 +20,7 @@ was used; all work below is on the current GitHub code.
 | Translations | English fallbacks in the static mode picker of 7 pages (de, es, fr, hi, id, pt, tr) replaced with existing translations from `MODE_STR`. Share button text localized for all 10 languages (was 5). |
 | Back button | One history entry per opened lesson/game/quiz; browser Back closes it (games via their own exit button), never re-pushes (no loops); in-app ✕ removes the entry. Not yet browser-tested. |
 | Code scanning | `.github/workflows/codeql.yml` (JS, pinned SHA, `security-events: write` only in that job) and `.github/dependabot.yml` (monthly updates of pinned actions). No `npm audit fix --force`: the site has no npm dependencies. |
-| Tests | `tests/storage.test.mjs`, `tests/sw.test.mjs`, `tests/static.test.mjs` (`node --test tests/`, no dependencies). |
+| Tests | `tests/storage.test.mjs`, `tests/sw.test.mjs`, `tests/static.test.mjs` (`node --test "tests/**/*.test.mjs"`, no dependencies). |
 
 ## Checked
 
@@ -29,7 +29,7 @@ was used; all work below is on the current GitHub code.
 
 ## NOT yet checked (environment blocked `node`, `npm`, `curl`, `python` without interactive approval)
 
-- `node tools/build.mjs --check` and `node --test tests/` — not run locally. They run in CI on the PR.
+- `node tools/build.mjs --check` and `node --test "tests/**/*.test.mjs"` — run locally on Node 24: build OK, links OK, 23/23 tests pass. They also run in CI on the PR.
 - Browser run (entries, four ages, lessons, games, keyboard, print, back button, offline, SW update from the old version), Lighthouse, live headers/CSP of the published site.
 - `og.png` still shows "Ages 3 – 17" (raster; needs re-rendering from `og.svg`).
 
