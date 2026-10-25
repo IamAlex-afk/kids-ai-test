@@ -341,6 +341,7 @@ function startLessons() {
   S.lesson = { idx: 0, phase: 'lesson', mt: { idx: 0, score: 0 } };
   lsSave();
   show('lessons');
+  markSectionEntry();
   scrollTo('lessons');
   renderLesson();
 }
@@ -583,6 +584,7 @@ function startGame() {
   S.game      = { idx: 0, score: 0, rounds: cfg.gameRounds, done: false };
   lsSave();
   show('game');
+  markSectionEntry();
   // Fullscreen while actively playing — kid lands straight on the
   // game/level picker with nothing to scroll past. Turned off in
   // onGameDone() / exitFullscreenGame().
@@ -604,6 +606,7 @@ function startGame() {
 function exitFullscreenGame() {
   document.body.classList.remove('game-fullscreen');
   window.KAT_Companion?.setFloatingVisible(true);
+  leaveSection();
 }
 
 function renderGamePicker(container, games) {
@@ -686,6 +689,7 @@ function launchRacing(container) {
 function onGameDone() {
   document.body.classList.remove('game-fullscreen');
   window.KAT_Companion?.setFloatingVisible(true);
+  leaveSection();
   S.game.done = true;
   lsSave();
 
@@ -719,6 +723,7 @@ function startQuiz() {
   S.quiz = { idx: 0, score: 0, done: false };
   lsSave();
   show('quiz');
+  markSectionEntry();
   scrollTo('quiz');
   renderQuestion();
 }
@@ -1361,8 +1366,42 @@ function init() {
 function exitToHub() {
   hide('lessons');
   hide('quiz');
+  leaveSection();
   requestAnimationFrame(() => window.scrollTo(0, 0));
 }
+
+/* ─────────────────────────────────────────────
+   BROWSER BACK
+   Opening lessons, a game or the quiz adds ONE history entry; browser
+   Back then closes that section (games through their own exit button,
+   so their loops stop) instead of leaving the site mid-activity.
+   Never pushes on Back → no loops; a second Back leaves the site as usual.
+   Closing a section with ✕ removes the entry, so no Back press is wasted.
+───────────────────────────────────────────── */
+const BACK_EXITS = ['#sk-exit', '#pf-exit', '#rc-exit', '#pf-back-btn', '#rc-back-btn', '#pf-back-games', '#rc-back-games', '#gp-exit'];
+let sectionEntry = false, ignoreNextPop = false;
+function markSectionEntry() {
+  if (sectionEntry) return;
+  try { history.pushState({ katSection: true }, ''); sectionEntry = true; } catch (_) {}
+}
+function leaveSection() {
+  if (!sectionEntry) return;
+  sectionEntry = false;
+  ignoreNextPop = true;
+  try { history.back(); } catch (_) { ignoreNextPop = false; }
+}
+window.addEventListener('popstate', () => {
+  if (ignoreNextPop) { ignoreNextPop = false; return; }
+  if (!sectionEntry) return;
+  sectionEntry = false;
+  if (document.body.classList.contains('game-fullscreen')) {
+    const btn = BACK_EXITS.map(s => document.querySelector(s)).find(b => b && b.offsetParent !== null);
+    if (btn) btn.click();
+    if (document.body.classList.contains('game-fullscreen')) exitFullscreenGame();
+    return;
+  }
+  exitToHub();
+});
 
 /* ─────────────────────────────────────────────
    PWA INSTALL PROMPT
