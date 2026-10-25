@@ -9,11 +9,9 @@
 (function () {
   const LS_KEY = 'kat_leaderboard_v1';
 
-  function readJSON(key, fallback) {
-    try { const v = localStorage.getItem(key); return v === null ? fallback : JSON.parse(v); }
-    catch (_) { return fallback; }
-  }
-  function writeJSON(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch (_) {} }
+  // Via KAT_Store (js/storage.js): tab memory unless device saving is switched on.
+  function readJSON(key, fallback) { return window.KAT_Store ? window.KAT_Store.readJSON(key, fallback) : fallback; }
+  function writeJSON(key, val) { if (window.KAT_Store) window.KAT_Store.writeJSON(key, val); }
   function key(ageGroup, difficulty) { return ageGroup + '_' + difficulty; }
 
   /**
@@ -45,7 +43,8 @@
 
   function getBest(ageGroup, difficulty) {
     const list = getTopScores(ageGroup, difficulty, 1);
-    return list.length ? list[0].score : 0;
+    const n = list.length ? Number(list[0].score) : 0;   // stored data may be tampered: numbers only
+    return Number.isFinite(n) ? n : 0;
   }
 
   window.KAT_Leaderboard = { saveScore, getTopScores, getBest };

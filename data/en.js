@@ -43,11 +43,11 @@ window.LANG_DATA = {
     // Age picker
     age_title:       'How old are you?',
     age_subtitle:    'We adapt the experience to your age',
-    age_tiny:        '3 – 5',
+    age_tiny:        '5 – 7',
     age_tiny_desc:   'Little Explorer',
-    age_child:       '6 – 9',
+    age_child:       '8 – 10',
     age_child_desc:  'Junior Investigator',
-    age_teen:        '10 – 13',
+    age_teen:        '11 – 13',
     age_teen_desc:   'AI Detective',
     age_adult:       '14 +',
     age_adult_desc:  'AI Analyst',
@@ -94,7 +94,7 @@ window.LANG_DATA = {
     result_tier_1:       'AI Aware',
     result_tier_2:       'AI Literate',
     result_title_0:      'You\'re starting your AI journey!',
-    result_title_1:      'You understand AI better than most people!',
+    result_title_1:      'You already understand a lot about how AI works!',
     result_title_2:      'You have real AI literacy — share it!',
     btn_get_card:        'Generate My Card 🃏',
     ui_exit_title:       'Exit',
@@ -110,8 +110,8 @@ window.LANG_DATA = {
     card_tier:           'Rank',
     card_score:          'Score',
     card_lang:           'Language · Age',
-    card_verify:         '🔍 Verify this card (SHA-256)',
-    card_hash_note:      'This fingerprint is mathematically tied to your card number, name, score, language, and timestamp. It cannot be faked without matching all fields.',
+    card_verify:         '🔍 Card fingerprint (SHA-256)',
+    card_hash_note:      'This code is calculated on your device from the card\'s number, name, score, language and time. Anyone can calculate the same code from the same fields, so it is not a signature: it doesn\'t prove who you are or that you finished the course.',
     card_ready:          'Card ready!',
 
     // Share
@@ -755,7 +755,7 @@ window.LANG_DATA = {
         },
         {
           title:       'AI Aware 🔍',
-          description: 'You understand that AI learns from data, can be wrong, and needs critical thinking. That\'s already more than most adults know!',
+          description: 'You understand that AI learns from data, can be wrong, and needs critical thinking. Keep checking answers and asking questions!',
         },
         {
           title:       'AI Literate 🏆',
@@ -1169,7 +1169,7 @@ window.LANG_DATA = {
         },
         {
           title:       'AI Aware 🧪',
-          description: 'You understand how AI predicts instead of knowing, how feeds are built to hook you, and why fact-checking matters. That already puts you ahead of most people online.',
+          description: 'You understand how AI predicts instead of knowing, how feeds are built to hook you, and why fact-checking matters. Use that every time something online surprises you.',
         },
         {
           title:       'AI Literate 🏆',

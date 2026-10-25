@@ -19,11 +19,9 @@
 
 (function () {
 
-  function readJSON(key, fallback) {
-    try { const v = localStorage.getItem(key); return v === null ? fallback : JSON.parse(v); }
-    catch (_) { return fallback; }
-  }
-  function writeJSON(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch (_) {} }
+  // Via KAT_Store (js/storage.js): tab memory unless device saving is switched on.
+  function readJSON(key, fallback) { return window.KAT_Store ? window.KAT_Store.readJSON(key, fallback) : fallback; }
+  function writeJSON(key, val) { if (window.KAT_Store) window.KAT_Store.writeJSON(key, val); }
 
   /* ─── AGE CONFIG ─────────────────────────────────────────────────── */
   const AGE_CFG = {

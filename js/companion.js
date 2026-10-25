@@ -24,11 +24,9 @@
 ═══════════════════════════════════════════════════════════════════ */
 
 (function () {
-  function readJSON(key, fallback) {
-    try { const v = localStorage.getItem(key); return v === null ? fallback : JSON.parse(v); }
-    catch (_) { return fallback; }
-  }
-  function writeJSON(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch (_) {} }
+  // Via KAT_Store (js/storage.js): tab memory unless device saving is switched on.
+  function readJSON(key, fallback) { return window.KAT_Store ? window.KAT_Store.readJSON(key, fallback) : fallback; }
+  function writeJSON(key, val) { if (window.KAT_Store) window.KAT_Store.writeJSON(key, val); }
 
   const LS_KEY = 'kat_companion_v2';
   function loadState() { return readJSON(LS_KEY, { done: [], notifiedStage: 0 }); }
@@ -528,12 +526,10 @@
     }
     floatRaf = requestAnimationFrame(frame);
 
-    try {
-      if (!localStorage.getItem('kat_companion_intro_seen')) {
-        localStorage.setItem('kat_companion_intro_seen', '1');
-        setTimeout(() => say(reactPhrase(floatLang, 'intro'), 'intro'), 900);
-      }
-    } catch (_) {}
+    if (!readJSON('kat_companion_intro_seen', false)) {
+      writeJSON('kat_companion_intro_seen', 1);
+      setTimeout(() => say(reactPhrase(floatLang, 'intro'), 'intro'), 900);
+    }
   }
 
   function updateFloatingLang(lang) { floatLang = lang || floatLang; }

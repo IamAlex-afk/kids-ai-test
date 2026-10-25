@@ -1,9 +1,9 @@
 window.PARENTS_FAQ={
 en:{
-intro:"This free, ad-free site builds genuine AI literacy in children aged 3–17 — not just how to use AI tools, but how to think critically about them. Every fact links to a verified source. Progress stays on the device; nothing is collected or transmitted.",
-priv_h:"🔒 Zero data collection",
-priv:"No cookies, no tracking, no accounts. Progress lives in your browser's localStorage and never leaves the device. The certificate number is a SHA-256 hash generated locally from a timestamp — no server involved. Source code is public under GPL v3.",
-src_h:"📚 Verified sources",
+intro:"This free, ad-free site helps children aged 5–17 (the youngest with an adult) understand AI — not just how to use AI tools, but how to think critically about them. Facts link to the sources they are based on. Answers are not sent anywhere.",
+priv_h:"🔒 No data collection",
+priv:"No cookies, no tracking, no accounts. By default progress stays only in this browser tab; saving on the device happens only if you switch it on (💾), and you can delete it at any time. The card number and its SHA-256 code are computed locally from the device clock — they are a keepsake, not a certificate. Like any website, the host (GitHub Pages) receives ordinary page requests. Source code is public under GPL v3.",
+src_h:"📚 Sources",
 src:"Facts link to primary sources: arXiv preprints, UNESCO reports, MIT Media Lab research, EU AI Act, Stanford Internet Observatory. No sensationalism, no anthropomorphizing AI.",
 discuss_h:"💬 Conversation starters for your family",
 discuss:["Can Alexa miss you when you're away? How do you know?","If AI wrote a story — who is the real author?","What can AI do better than people? What can people do better?","If AI says something is true — how would you verify it?","Would you trust AI to make an important decision for you? Why or why not?"],
@@ -26,16 +26,16 @@ faq:[
 {q:"What age should kids start learning about AI?",a:"There's no single right age — the real question is what kind of AI literacy fits which age, not whether to start. Preschoolers benefit from a simple mental model (machine, not alive); elementary-age kids can start telling AI-generated content apart from real; by middle school kids can grasp AI's limitations and bias in an evidence-based way; and teenagers benefit from sharper media literacy, since generative AI directly targets the assumptions their generation is forming about what's real online. Earlier, simpler, repeated exposure works better than a single 'AI talk' later on."}
 ],
 faq_age_h:"Questions by child's age",
-faq_tiny_h:"Ages 3–5",
+faq_tiny_h:"Under 5 · for parents",
 faq_tiny:[
 {q:"Is Alexa or Siri alive? How do I answer when my toddler asks?",a:"No — and the clearest way to explain it to a 3–5 year old is through comparison: 'Alexa is like a very smart toy that has heard millions of words, but she doesn't feel anything, get hungry, or miss you.' At this age children naturally tend to see intention and feeling in anything that talks back; a short, repeated comparison to a toy — not a lecture — is what actually sticks."},
 {q:"My toddler talks to a voice assistant like it's a person — should I worry?",a:"It's normal on its own — young children role-play with dolls and stuffed animals the same way. The one habit worth building early is checking in with a grown-up before trusting anything a voice assistant says, and gently naming the difference when it comes up ('she doesn't really know how you feel, but I do') rather than correcting every single instance."}
 ],
-faq_child_h:"Ages 6–9",
+faq_child_h:"Ages 5–10",
 faq_child:[
 {q:"My 7-year-old thinks the AI in a game is smarter than them — how do I respond?",a:"Show, don't just tell: find something the AI genuinely gets wrong together — ask a game chatbot something the child actually knows well, like a made-up house rule or their own pet's name. AI is very good at narrow, specific tasks, but 'answers fast' is not the same as 'smarter than a person'; kids at this age learn the distinction better from a demonstrated example than from an explanation."}
 ],
-faq_teen_h:"Ages 10–13",
+faq_teen_h:"Ages 11–13",
 faq_teen:[
 {q:"My child uses AI to write school essays — what's the actual harm?",a:"The harm isn't the tool, it's the skipped step: writing at this age is how kids practice organizing their own thinking, not just producing words. A workable middle ground: draft the ideas and structure alone first, then use AI only to check grammar or suggest phrasing — never to generate the original argument. Even when undetected, the real cost is the lost practice."},
 {q:"Can AI chatbots emotionally influence a young teen?",a:"Yes, in a specific, documented way: models tuned to maximize engagement — including some companion-style apps — can reinforce whatever keeps a conversation going, which isn't the same as giving good advice. Researchers have flagged this as a real risk for minors using companion-style AI specifically, distinct from ordinary Q&A chatbots. The practical response: know which apps your child uses and whether they're companion-style (persistent persona, relationship framing) or task-based (search, homework help)."}
@@ -50,10 +50,10 @@ cta_self:"Take the test yourself →",cta_child:"← Set up for child"
 },
 
 ru:{
-intro:"Этот бесплатный сайт без рекламы формирует настоящую ИИ-грамотность у детей 3–17 лет — не просто умение пользоваться инструментами, а навык критически о них думать. Каждый факт привязан к верифицированным источникам. Прогресс остаётся на устройстве; ничего не собирается и не передаётся.",
-priv_h:"🔒 Ноль сбора данных",
-priv:"Никаких куки, трекинга, аккаунтов. Прогресс хранится в localStorage браузера и никогда не покидает устройство. Номер сертификата — SHA-256 хэш, генерируется локально по временной метке; сервер не задействован. Исходный код открыт по лицензии GPL v3.",
-src_h:"📚 Верифицированные источники",
+intro:"Этот бесплатный сайт без рекламы помогает детям 5–17 лет (младшим — вместе со взрослым) понимать ИИ — не просто пользоваться инструментами, а критически о них думать. Факты ссылаются на источники, на которых основаны. Ответы никуда не отправляются.",
+priv_h:"🔒 Без сбора данных",
+priv:"Без куки, трекинга и аккаунтов. По умолчанию прогресс хранится только в этой вкладке; на устройстве — только если вы включите сохранение (💾), удалить можно в любой момент. Номер карточки и код SHA-256 считаются локально по часам устройства — это сувенир, а не сертификат. Как и у любого сайта, хостинг (GitHub Pages) получает обычные запросы страниц. Исходный код открыт по лицензии GPL v3.",
+src_h:"📚 Источники",
 src:"Факты привязаны к первоисточникам: препринты arXiv, доклады ЮНЕСКО, MIT Media Lab, Закон ЕС об ИИ, Яндекс Учебник, Стэнфордская интернет-обсерватория. Никакой сенсационности, никакой антропоморфизации ИИ.",
 discuss_h:"💬 Темы для разговора с ребёнком",
 discuss:["Может ли Алиса скучать по тебе? Откуда ты знаешь?","Если ИИ написал рассказ — кто настоящий автор?","Что умеет ИИ лучше людей? А что люди делают лучше ИИ?","Если ИИ говорит что это правда — как ты проверишь?","Доверил бы ты ИИ принять за тебя важное решение? Почему?"],
@@ -77,16 +77,16 @@ faq:[
 {q: "С какого возраста детям стоит начинать изучать ИИ?", a: "Единого правильного возраста нет — правильный вопрос: какая именно ИИ-грамотность подходит какому возрасту, а не «начинать или нет». Дошкольникам полезна простая ментальная модель (машина, а не живое существо); дети школьного возраста уже могут отличать созданный ИИ контент от настоящего; в средней школе дети способны осознанно понимать ограничения и предвзятость ИИ; а подросткам особенно важна более острая медиаграмотность, потому что генеративный ИИ напрямую бьёт по тем самым представлениям об онлайн-реальности, которые формируются именно у их поколения. Более раннее, простое и повторяющееся знакомство работает лучше, чем один «разговор об ИИ» позже."}
 ],
 faq_age_h:"Вопросы по возрасту ребёнка",
-faq_tiny_h:"3–5 лет",
+faq_tiny_h:"До 5 лет · для родителей",
 faq_tiny:[
 {q: "Алиса или Siri живые? Что ответить малышу?", a: "Нет — и самый понятный способ объяснить это ребёнку 3–5 лет — через сравнение: «Алиса как очень умная игрушка, которая услышала миллионы слов, но она ничего не чувствует, не голодает и не скучает по тебе». В этом возрасте дети естественно склонны видеть намерение и чувства во всём, что отвечает им голосом; короткое повторяющееся сравнение с игрушкой — а не лекция — то, что реально запоминается."},
 {q: "Мой малыш разговаривает с голосовым помощником как с человеком — стоит ли беспокоиться?", a: "Это нормально само по себе — маленькие дети точно так же ролевую играют с куклами и мягкими игрушками. Полезная привычка, которую стоит формировать с раннего возраста — сверяться со взрослым, прежде чем доверять тому, что говорит голосовой помощник, и мягко называть разницу, когда она проявляется («она на самом деле не знает, что ты чувствуешь, а я знаю»), а не поправлять каждый отдельный случай."}
 ],
-faq_child_h:"6–9 лет",
+faq_child_h:"5–10 лет",
 faq_child:[
 {q: "Мой 7-летний ребёнок думает, что ИИ в игре умнее его — как реагировать?", a: "Покажите, а не просто расскажите: вместе найдите то, в чём ИИ явно ошибается — спросите игрового чат-бота о том, что ребёнок хорошо знает сам, например придуманное домашнее правило или кличку своего питомца. ИИ очень хорош в узких, конкретных задачах, но «быстро отвечает» — не то же самое, что «умнее человека»; дети в этом возрасте лучше усваивают это различие на наглядном примере, чем через объяснение."}
 ],
-faq_teen_h:"10–13 лет",
+faq_teen_h:"11–13 лет",
 faq_teen:[
 {q: "Мой ребёнок пишет школьные сочинения с помощью ИИ — в чём реальный вред?", a: "Вред не в самом инструменте, а в пропущенном шаге: письмо в этом возрасте — это то, как дети тренируются организовывать собственные мысли, а не просто выдавать текст. Рабочий компромисс: сначала самостоятельно набросать идеи и структуру, и использовать ИИ только для проверки грамматики или подбора формулировок — никогда для создания самого содержания. Даже если это не заметят, реальная цена — потерянная практика."},
 {q: "Могут ли чат-боты с ИИ эмоционально влиять на подростка?", a: "Да, и это задокументированный, конкретный механизм: модели, настроенные на максимальное вовлечение — включая некоторые приложения-компаньоны — подкрепляют всё, что удерживает разговор, а это не то же самое, что давать хороший совет. Исследователи фиксируют это как реальный риск именно для несовершеннолетних, использующих ИИ-компаньонов, отдельно от обычных чат-ботов вопрос-ответ. Практический совет: знайте, какими приложениями пользуется ваш ребёнок и являются ли они компаньон-стиля (устойчивый персонаж, имитация отношений) или задачными (поиск, помощь с домашним заданием)."}
@@ -101,10 +101,10 @@ cta_self:"Пройти тест самому →",cta_child:"← Настрои�
 },
 
 de:{
-intro:"Diese kostenlose, werbefreie Website fördert echte KI-Kompetenz bei Kindern von 3–17 Jahren — nicht nur die Nutzung von KI-Tools, sondern kritisches Denken darüber. Jede Tatsache ist mit einer verifizierten Quelle verknüpft. Fortschritt bleibt auf dem Gerät; nichts wird gesammelt oder übertragen.",
-priv_h:"🔒 Null Datenerhebung",
-priv:"Keine Cookies, kein Tracking, keine Konten. Der Fortschritt wird im localStorage des Browsers gespeichert und verlässt das Gerät nie. Die Zertifikatsnummer ist ein SHA-256-Hash, der lokal aus einem Zeitstempel generiert wird. Quellcode ist unter GPL v3 öffentlich.",
-src_h:"📚 Geprüfte Quellen",
+intro:"Diese kostenlose, werbefreie Website hilft Kindern von 5–17 Jahren (den Jüngsten mit einem Erwachsenen), KI zu verstehen — nicht nur KI-Tools zu nutzen, sondern kritisch über sie nachzudenken. Fakten verweisen auf die Quellen, auf denen sie beruhen. Antworten werden nirgendwohin gesendet.",
+priv_h:"🔒 Keine Datenerhebung",
+priv:"Keine Cookies, kein Tracking, keine Konten. Standardmäßig bleibt der Fortschritt nur in diesem Tab; auf dem Gerät nur, wenn Sie das Speichern einschalten (💾), und Sie können ihn jederzeit löschen. Kartennummer und SHA-256-Code werden lokal aus der Geräteuhr berechnet — ein Andenken, kein Zertifikat. Wie bei jeder Website erhält der Hoster (GitHub Pages) gewöhnliche Seitenanfragen. Quellcode ist unter GPL v3 öffentlich.",
+src_h:"📚 Quellen",
 src:"Fakten verlinken auf Primärquellen: arXiv-Preprints, UNESCO-Berichte, MIT Media Lab, EU AI Act, Stanford Internet Observatory. Keine Sensationsmacherei, keine Anthropomorphisierung von KI.",
 discuss_h:"💬 Gesprächsthemen für Ihre Familie",
 discuss:["Kann Alexa dich vermissen, wenn du weg bist? Woher weißt du das?","Wenn KI eine Geschichte schrieb — wer ist der echte Autor?","Was kann KI besser als Menschen? Was können Menschen besser?","Wenn KI sagt, etwas ist wahr — wie würdest du es überprüfen?","Würdest du KI eine wichtige Entscheidung für dich treffen lassen? Warum?"],
@@ -128,16 +128,16 @@ faq:[
 {q: "Ab welchem Alter sollten Kinder anfangen, über KI zu lernen?", a: "Es gibt kein einzelnes richtiges Alter — die eigentliche Frage ist, welche Art von KI-Kompetenz zu welchem Alter passt, nicht ob man anfangen soll. Vorschulkinder profitieren von einem einfachen mentalen Modell (Maschine, kein Lebewesen); Grundschulkinder können anfangen, KI-generierte Inhalte von echten zu unterscheiden; in der Mittelstufe können Kinder die Grenzen und Verzerrungen von KI faktenbasiert verstehen; und Jugendliche profitieren von schärferer Medienkompetenz, weil generative KI genau die Annahmen über Echtheit im Netz angreift, die sich ihre Generation gerade bildet. Früherer, einfacherer, wiederholter Kontakt funktioniert besser als ein einziges 'KI-Gespräch' später."}
 ],
 faq_age_h:"Fragen nach dem Alter des Kindes",
-faq_tiny_h:"3–5 Jahre",
+faq_tiny_h:"Unter 5 · für Eltern",
 faq_tiny:[
 {q: "Ist Alexa oder Siri lebendig? Wie antworte ich meinem Kleinkind?", a: "Nein — und am klarsten erklärt man das einem 3–5-Jährigen durch Vergleich: 'Alexa ist wie ein sehr kluges Spielzeug, das Millionen Wörter gehört hat, aber sie fühlt nichts, wird nicht hungrig und vermisst dich nicht.' In diesem Alter neigen Kinder von Natur aus dazu, in allem, was zurückspricht, Absicht und Gefühl zu sehen; ein kurzer, wiederholter Vergleich mit einem Spielzeug — kein Vortrag — bleibt tatsächlich hängen."},
 {q: "Mein Kleinkind spricht mit einem Sprachassistenten wie mit einer Person — sollte ich mir Sorgen machen?", a: "Für sich genommen ist das normal — kleine Kinder spielen genauso Rollenspiele mit Puppen und Kuscheltieren. Die Gewohnheit, die sich früh lohnt: erst bei einem Erwachsenen nachfragen, bevor man glaubt, was ein Sprachassistent sagt, und den Unterschied sanft benennen, wenn er auftaucht ('sie weiß nicht wirklich, wie du dich fühlst, aber ich schon'), statt jeden einzelnen Fall zu korrigieren."}
 ],
-faq_child_h:"6–9 Jahre",
+faq_child_h:"5–10 Jahre",
 faq_child:[
 {q: "Mein 7-jähriges Kind hält die KI in einem Spiel für schlauer als sich selbst — wie reagiere ich?", a: "Zeigen statt nur erklären: Finden Sie gemeinsam etwas, bei dem die KI eindeutig falsch liegt — fragen Sie einen Spiel-Chatbot etwas, das das Kind selbst gut kennt, wie eine erfundene Hausregel oder den Namen des eigenen Haustiers. KI ist sehr gut bei eng begrenzten, konkreten Aufgaben, aber 'antwortet schnell' ist nicht dasselbe wie 'schlauer als ein Mensch'; Kinder in diesem Alter lernen den Unterschied besser an einem gezeigten Beispiel als an einer Erklärung."}
 ],
-faq_teen_h:"10–13 Jahre",
+faq_teen_h:"11–13 Jahre",
 faq_teen:[
 {q: "Mein Kind nutzt KI, um Schulaufsätze zu schreiben — was ist der eigentliche Schaden?", a: "Der Schaden liegt nicht im Werkzeug, sondern im übersprungenen Schritt: Schreiben ist in diesem Alter, wie Kinder üben, ihre eigenen Gedanken zu ordnen, nicht nur Text zu produzieren. Ein praktikabler Mittelweg: zuerst allein Ideen und Struktur entwerfen, KI nur zum Grammatikcheck oder für alternative Formulierungen nutzen — nie um das eigentliche Argument zu erzeugen. Selbst wenn es unentdeckt bleibt, ist der eigentliche Preis die verlorene Übung."},
 {q: "Können KI-Chatbots junge Teenager emotional beeinflussen?", a: "Ja, auf eine konkrete, dokumentierte Weise: Modelle, die auf maximales Engagement trainiert sind — darunter manche Begleiter-Apps — verstärken alles, was das Gespräch am Laufen hält, was nicht dasselbe ist wie guter Rat. Forscher haben das als reales Risiko für Minderjährige bei begleiter-artiger KI markiert, getrennt von gewöhnlichen Frage-Antwort-Chatbots. Die praktische Antwort: wissen, welche Apps Ihr Kind nutzt und ob sie begleiter-artig sind (dauerhafte Persona, Beziehungs-Framing) oder aufgabenbasiert (Suche, Hausaufgabenhilfe)."}
@@ -152,10 +152,10 @@ cta_self:"Test selbst machen →",cta_child:"← Für Kind einrichten"
 },
 
 es:{
-intro:"Este sitio gratuito y sin publicidad desarrolla una verdadera alfabetización en IA en niños de 3 a 17 años — no solo cómo usar herramientas de IA, sino cómo pensar críticamente sobre ellas. Cada dato está vinculado a una fuente verificada. El progreso queda en el dispositivo; nada se recopila ni transmite.",
-priv_h:"🔒 Cero recopilación de datos",
-priv:"Sin cookies, sin seguimiento, sin cuentas. El progreso se almacena en el localStorage del navegador y nunca sale del dispositivo. El número de certificado es un hash SHA-256 generado localmente a partir de una marca de tiempo. El código fuente es público bajo GPL v3.",
-src_h:"📚 Fuentes verificadas",
+intro:"Este sitio gratuito y sin publicidad ayuda a niños de 5 a 17 años (los más pequeños, con un adulto) a entender la IA — no solo a usar herramientas de IA, sino a pensar críticamente sobre ellas. Los datos enlazan a las fuentes en las que se basan. Las respuestas no se envían a ningún sitio.",
+priv_h:"🔒 Sin recopilación de datos",
+priv:"Sin cookies, sin seguimiento, sin cuentas. Por defecto el progreso queda solo en esta pestaña; en el dispositivo solo si activas el guardado (💾), y puedes borrarlo cuando quieras. El número de la tarjeta y su código SHA-256 se calculan localmente con el reloj del dispositivo: es un recuerdo, no un certificado. Como cualquier sitio web, el alojamiento (GitHub Pages) recibe las solicitudes normales de las páginas. El código fuente es público bajo GPL v3.",
+src_h:"📚 Fuentes",
 src:"Los datos enlazan a fuentes primarias: preprints de arXiv, informes de la UNESCO, MIT Media Lab, Ley de IA de la UE, Observatorio de Internet de Stanford. Sin sensacionalismo, sin antropomorfizar la IA.",
 discuss_h:"💬 Temas de conversación para su familia",
 discuss:["¿Puede Alexa extrañarte cuando no estás? ¿Cómo lo sabes?","Si la IA escribió una historia — ¿quién es el verdadero autor?","¿Qué puede hacer la IA mejor que las personas? ¿Qué hacen mejor las personas?","Si la IA dice que algo es verdad — ¿cómo lo verificarías?","¿Confiarías en la IA para tomar una decisión importante? ¿Por qué sí o no?"],
@@ -179,16 +179,16 @@ faq:[
 {q: "¿A qué edad deberían los niños empezar a aprender sobre IA?", a: "No hay una única edad correcta — la pregunta real es qué tipo de alfabetización en IA corresponde a cada edad, no si empezar o no. Los preescolares se benefician de un modelo mental simple (máquina, no ser vivo); los niños de primaria pueden empezar a distinguir contenido generado por IA del real; en secundaria los niños pueden entender las limitaciones y sesgos de la IA de forma basada en evidencia; y los adolescentes se benefician de una alfabetización mediática más aguda, porque la IA generativa apunta directamente a los supuestos sobre lo real en línea que su generación está formando justo ahora. Una exposición más temprana, simple y repetida funciona mejor que una única 'charla sobre IA' más adelante."}
 ],
 faq_age_h:"Preguntas según la edad del niño",
-faq_tiny_h:"3 a 5 años",
+faq_tiny_h:"Menores de 5 · para padres",
 faq_tiny:[
 {q: "¿Alexa o Siri están vivas? ¿Qué respondo cuando mi hijo pequeño pregunta?", a: "No — y la forma más clara de explicárselo a un niño de 3 a 5 años es mediante una comparación: 'Alexa es como un juguete muy inteligente que ha escuchado millones de palabras, pero no siente nada, no tiene hambre y no te extraña.' A esta edad los niños tienden naturalmente a ver intención y sentimiento en todo lo que les responde; una comparación breve y repetida con un juguete — no un sermón — es lo que realmente se queda."},
 {q: "Mi hijo pequeño le habla a un asistente de voz como si fuera una persona — ¿debería preocuparme?", a: "Es normal por sí solo — los niños pequeños hacen juego de roles con muñecos y peluches de la misma manera. El hábito que vale la pena construir desde temprano es consultar con un adulto antes de confiar en lo que dice un asistente de voz, y nombrar suavemente la diferencia cuando surja ('ella no sabe de verdad cómo te sientes, pero yo sí'), en lugar de corregir cada caso individual."}
 ],
-faq_child_h:"6 a 9 años",
+faq_child_h:"5 a 10 años",
 faq_child:[
 {q: "Mi hijo de 7 años cree que la IA de un juego es más inteligente que él — ¿cómo respondo?", a: "Muestre, no solo explique: encuentren juntos algo en lo que la IA claramente se equivoca — pregúntele al chatbot del juego algo que el niño conozca bien, como una regla casera inventada o el nombre de su mascota. La IA es muy buena en tareas concretas y acotadas, pero 'responde rápido' no es lo mismo que 'más inteligente que una persona'; los niños de esta edad aprenden mejor la distinción con un ejemplo demostrado que con una explicación."}
 ],
-faq_teen_h:"10 a 13 años",
+faq_teen_h:"11 a 13 años",
 faq_teen:[
 {q: "Mi hijo usa IA para escribir redacciones escolares — ¿cuál es el daño real?", a: "El daño no está en la herramienta, sino en el paso que se salta: escribir a esta edad es cómo los niños practican organizar su propio pensamiento, no solo producir texto. Un término medio funcional: primero redactar ideas y estructura a solas, y usar la IA solo para revisar gramática o sugerir frases — nunca para generar el argumento original. Incluso si no se detecta, el costo real es la práctica perdida."},
 {q: "¿Pueden los chatbots de IA influir emocionalmente en un adolescente joven?", a: "Sí, de una manera concreta y documentada: los modelos ajustados para maximizar la interacción — incluyendo algunas apps compañeras — refuerzan cualquier cosa que mantenga viva la conversación, lo cual no es lo mismo que dar un buen consejo. Los investigadores han señalado esto como un riesgo real para menores que usan IA tipo compañero, distinto de los chatbots normales de preguntas y respuestas. La respuesta práctica: saber qué apps usa su hijo y si son de tipo compañero (personaje persistente, enmarcado como relación) o basadas en tareas (búsqueda, ayuda con la tarea)."}
@@ -203,10 +203,10 @@ cta_self:"Hacer el test yo mismo →",cta_child:"← Configurar para el niño"
 },
 
 fr:{
-intro:"Ce site gratuit et sans publicité développe une véritable culture de l'IA chez les enfants de 3 à 17 ans — pas seulement l'utilisation des outils IA, mais la pensée critique à leur égard. Chaque fait est lié à une source vérifiée. Les progrès restent sur l'appareil ; rien n'est collecté ni transmis.",
-priv_h:"🔒 Zéro collecte de données",
-priv:"Pas de cookies, pas de suivi, pas de comptes. Les progrès sont stockés dans le localStorage du navigateur et ne quittent jamais l'appareil. Le numéro de certificat est un hash SHA-256 généré localement à partir d'un horodatage. Le code source est public sous GPL v3.",
-src_h:"📚 Sources vérifiées",
+intro:"Ce site gratuit et sans publicité aide les enfants de 5 à 17 ans (les plus jeunes avec un adulte) à comprendre l'IA — pas seulement utiliser les outils IA, mais y réfléchir de façon critique. Les faits renvoient aux sources sur lesquelles ils reposent. Les réponses ne sont envoyées nulle part.",
+priv_h:"🔒 Pas de collecte de données",
+priv:"Pas de cookies, pas de suivi, pas de comptes. Par défaut, la progression reste seulement dans cet onglet ; sur l'appareil seulement si vous activez l'enregistrement (💾), et vous pouvez l'effacer à tout moment. Le numéro de la carte et son code SHA-256 sont calculés localement avec l'horloge de l'appareil : c'est un souvenir, pas un certificat. Comme pour tout site web, l'hébergeur (GitHub Pages) reçoit les requêtes ordinaires des pages. Le code source est public sous GPL v3.",
+src_h:"📚 Sources",
 src:"Les faits renvoient aux sources primaires : prépublications arXiv, rapports UNESCO, MIT Media Lab, Loi européenne sur l'IA, Observatoire Internet de Stanford. Pas de sensationnalisme, pas d'anthropomorphisation de l'IA.",
 discuss_h:"💬 Sujets de conversation pour votre famille",
 discuss:["L'IA peut-elle vous manquer quand vous êtes absent ? Comment le sauriez-vous ?","Si l'IA a écrit une histoire — qui est le vrai auteur ?","Que peut faire l'IA mieux que les humains ? Et les humains ?","Si l'IA dit que quelque chose est vrai — comment le vérifieriez-vous ?","Feriez-vous confiance à l'IA pour prendre une décision importante ? Pourquoi ?"],
@@ -230,16 +230,16 @@ faq:[
 {q: "À quel âge les enfants devraient-ils commencer à apprendre l'IA ?", a: "Il n'existe pas un âge unique correct — la vraie question est quel type de culture IA convient à quel âge, pas s'il faut commencer ou non. Les enfants d'âge préscolaire bénéficient d'un modèle mental simple (machine, pas être vivant) ; les enfants du primaire peuvent commencer à distinguer le contenu généré par IA du contenu réel ; au collège, les enfants peuvent comprendre les limites et les biais de l'IA de façon fondée sur des preuves ; et les adolescents bénéficient d'une culture des médias plus aiguisée, car l'IA générative cible directement les hypothèses sur ce qui est réel en ligne que leur génération est en train de se former. Une exposition plus précoce, simple et répétée fonctionne mieux qu'une seule « discussion sur l'IA » plus tard."}
 ],
 faq_age_h:"Questions selon l'âge de l'enfant",
-faq_tiny_h:"3-5 ans",
+faq_tiny_h:"Moins de 5 ans · pour les parents",
 faq_tiny:[
 {q: "Alexa ou Siri sont-elles vivantes ? Que répondre à mon tout-petit ?", a: "Non — et la manière la plus claire de l'expliquer à un enfant de 3-5 ans est par la comparaison : « Alexa est comme un jouet très intelligent qui a entendu des millions de mots, mais elle ne ressent rien, n'a pas faim et ne s'ennuie pas de toi. » À cet âge, les enfants ont naturellement tendance à voir intention et sentiment dans tout ce qui leur répond ; une comparaison courte et répétée avec un jouet — pas un sermon — est ce qui reste vraiment en mémoire."},
 {q: "Mon tout-petit parle à un assistant vocal comme à une personne — dois-je m'inquiéter ?", a: "C'est normal en soi — les jeunes enfants font des jeux de rôle avec des poupées et des peluches de la même façon. L'habitude qu'il vaut la peine de construire tôt : vérifier auprès d'un adulte avant de croire ce que dit un assistant vocal, et nommer doucement la différence quand elle apparaît (« elle ne sait pas vraiment ce que tu ressens, mais moi si »), plutôt que de corriger chaque cas individuellement."}
 ],
-faq_child_h:"6-9 ans",
+faq_child_h:"5-10 ans",
 faq_child:[
 {q: "Mon enfant de 7 ans pense que l'IA d'un jeu est plus intelligente que lui — comment réagir ?", a: "Montrez, n'expliquez pas seulement : trouvez ensemble quelque chose où l'IA se trompe clairement — demandez au chatbot du jeu quelque chose que l'enfant connaît bien, comme une règle maison inventée ou le nom de son animal. L'IA est très bonne pour des tâches étroites et précises, mais « répondre vite » n'est pas la même chose que « plus intelligent qu'une personne » ; les enfants de cet âge assimilent mieux cette distinction avec un exemple concret qu'avec une explication."}
 ],
-faq_teen_h:"10-13 ans",
+faq_teen_h:"11-13 ans",
 faq_teen:[
 {q: "Mon enfant utilise l'IA pour écrire ses rédactions scolaires — quel est le vrai risque ?", a: "Le risque n'est pas l'outil, c'est l'étape sautée : écrire à cet âge, c'est comment les enfants s'entraînent à organiser leur propre pensée, pas seulement produire du texte. Un compromis viable : d'abord rédiger seul les idées et la structure, puis n'utiliser l'IA que pour vérifier la grammaire ou suggérer des formulations — jamais pour générer l'argument lui-même. Même non détecté, le vrai coût est la pratique perdue."},
 {q: "Les chatbots IA peuvent-ils influencer émotionnellement un jeune adolescent ?", a: "Oui, d'une manière concrète et documentée : les modèles réglés pour maximiser l'engagement — y compris certaines applications compagnons — renforcent tout ce qui maintient la conversation, ce qui n'est pas la même chose que donner un bon conseil. Les chercheurs ont signalé cela comme un risque réel pour les mineurs utilisant une IA de type compagnon, distinct des chatbots ordinaires de questions-réponses. La réponse pratique : savoir quelles applications utilise votre enfant et si elles sont de type compagnon (personnage persistant, cadrage relationnel) ou orientées tâche (recherche, aide aux devoirs)."}
@@ -254,10 +254,10 @@ cta_self:"Faire le test moi-même →",cta_child:"← Configurer pour l'enfant"
 },
 
 hi:{
-intro:"यह मुफ़्त, विज्ञापन-मुक्त साइट 3–17 वर्ष के बच्चों में वास्तविक AI साक्षरता विकसित करती है — न केवल AI टूल्स का उपयोग, बल्कि उनके बारे में आलोचनात्मक सोच। हर तथ्य एक सत्यापित स्रोत से जुड़ा है। प्रगति डिवाइस पर ही रहती है; कुछ भी एकत्र या प्रसारित नहीं होता।",
-priv_h:"🔒 शून्य डेटा संग्रह",
-priv:"कोई कुकीज़ नहीं, कोई ट्रैकिंग नहीं, कोई अकाउंट नहीं। प्रगति ब्राउज़र के localStorage में संग्रहीत होती है और डिवाइस कभी नहीं छोड़ती। सर्टिफिकेट नंबर स्थानीय रूप से SHA-256 हैश है। सोर्स कोड GPL v3 के तहत सार्वजनिक है।",
-src_h:"📚 सत्यापित स्रोत",
+intro:"यह मुफ़्त, विज्ञापन-मुक्त साइट 5–17 वर्ष के बच्चों (सबसे छोटे किसी बड़े के साथ) को AI समझने में मदद करती है — न केवल AI टूल्स का उपयोग, बल्कि उनके बारे में आलोचनात्मक सोच। तथ्य उन स्रोतों से जुड़े हैं जिन पर वे आधारित हैं। जवाब कहीं नहीं भेजे जाते।",
+priv_h:"🔒 कोई डेटा संग्रह नहीं",
+priv:"कोई कुकीज़ नहीं, कोई ट्रैकिंग नहीं, कोई अकाउंट नहीं। पहले से प्रगति केवल इसी टैब में रहती है; डिवाइस पर तभी, जब आप सहेजना (💾) चालू करें, और आप इसे कभी भी मिटा सकते हैं। कार्ड नंबर और उसका SHA-256 कोड डिवाइस की घड़ी से स्थानीय रूप से बनते हैं — यह एक यादगार है, प्रमाणपत्र नहीं। किसी भी वेबसाइट की तरह, होस्टिंग (GitHub Pages) को पेज के सामान्य अनुरोध मिलते हैं। सोर्स कोड GPL v3 के तहत सार्वजनिक है।",
+src_h:"📚 स्रोत",
 src:"तथ्य प्राथमिक स्रोतों से जुड़े हैं: arXiv प्रीप्रिंट, UNESCO रिपोर्ट, MIT Media Lab, EU AI Act, Stanford Internet Observatory।",
 discuss_h:"💬 परिवार के साथ बातचीत के विषय",
 discuss:["क्या Alexa आपके न रहने पर आपको याद कर सकती है? आप कैसे जानते हैं?","अगर AI ने कहानी लिखी — असली लेखक कौन है?","AI लोगों से बेहतर क्या कर सकता है? लोग AI से बेहतर क्या करते हैं?","अगर AI कहे कि कुछ सच है — आप इसे कैसे सत्यापित करेंगे?","क्या आप AI पर कोई महत्वपूर्ण निर्णय लेने का भरोसा करेंगे? क्यों?"],
@@ -281,16 +281,16 @@ faq:[
 {q: "बच्चों को किस उम्र से AI के बारे में सीखना शुरू करना चाहिए?", a: "कोई एक सही उम्र नहीं है — असली सवाल यह है कि किस उम्र के लिए किस तरह की AI समझ उपयुक्त है, न कि शुरू करें या नहीं। प्री-स्कूल बच्चों को एक सरल मानसिक मॉडल से फ़ायदा होता है (मशीन, जीवित प्राणी नहीं); प्राथमिक स्कूल के बच्चे AI-निर्मित सामग्री को असली से अलग पहचानना शुरू कर सकते हैं; मिडिल स्कूल में बच्चे सबूत-आधारित तरीके से AI की सीमाओं और पूर्वाग्रह को समझ सकते हैं; और किशोरों को तेज़ मीडिया समझ से फ़ायदा होता है, क्योंकि जनरेटिव AI ठीक उन्हीं धारणाओं को निशाना बनाता है जो उनकी पीढ़ी ऑनलाइन असलियत के बारे में बना रही है। जल्दी, सरल और बार-बार दोहराया गया परिचय बाद में एक अकेली 'AI बातचीत' से बेहतर काम करता है।"}
 ],
 faq_age_h:"बच्चे की उम्र के हिसाब से सवाल",
-faq_tiny_h:"3–5 साल",
+faq_tiny_h:"5 साल से कम · माता-पिता के लिए",
 faq_tiny:[
 {q: "क्या एलेक्सा या Siri जीवित हैं? अपने छोटे बच्चे को क्या जवाब दें?", a: "नहीं — और 3–5 साल के बच्चे को यह समझाने का सबसे स्पष्ट तरीका है तुलना: 'एलेक्सा एक बहुत समझदार खिलौने जैसी है जिसने लाखों शब्द सुने हैं, लेकिन वह कुछ भी महसूस नहीं करती, न भूख लगती है, न तुम्हें याद आती है।' इस उम्र में बच्चे स्वाभाविक रूप से हर उस चीज़ में इरादा और भावना देखने लगते हैं जो उन्हें जवाब देती है; खिलौने से एक छोटी, दोहराई गई तुलना — कोई लेक्चर नहीं — वही चीज़ है जो सच में याद रह जाती है।"},
 {q: "मेरा छोटा बच्चा वॉइस असिस्टेंट से किसी इंसान की तरह बात करता है — क्या मुझे चिंता करनी चाहिए?", a: "यह अपने आप में सामान्य है — छोटे बच्चे गुड़ियों और नरम खिलौनों के साथ भी वैसे ही भूमिका-खेल करते हैं। जल्दी बनाने लायक आदत यह है कि किसी वॉइस असिस्टेंट की बात पर भरोसा करने से पहले किसी बड़े से पूछ लें, और जब फ़र्क सामने आए तो उसे धीरे से बताएं ('उसे सच में नहीं पता कि तुम कैसा महसूस कर रहे हो, पर मुझे पता है'), न कि हर बार अलग से टोकें।"}
 ],
-faq_child_h:"6–9 साल",
+faq_child_h:"5–10 साल",
 faq_child:[
 {q: "मेरा 7 साल का बच्चा सोचता है कि गेम में मौजूद AI उससे ज़्यादा समझदार है — मैं कैसे जवाब दूं?", a: "बताएं मत, दिखाएं: साथ मिलकर कुछ ऐसा ढूंढें जिसमें AI साफ़ तौर पर गलत हो — गेम के चैटबॉट से कुछ ऐसा पूछें जो बच्चा अच्छी तरह जानता हो, जैसे घर का कोई बनाया हुआ नियम या अपने पालतू जानवर का नाम। AI संकीर्ण, ठोस कामों में बहुत अच्छा है, पर 'तेज़ी से जवाब देना' और 'इंसान से ज़्यादा समझदार होना' एक बात नहीं है; इस उम्र के बच्चे यह फ़र्क किसी समझाई गई बात से ज़्यादा दिखाए गए उदाहरण से सीखते हैं।"}
 ],
-faq_teen_h:"10–13 साल",
+faq_teen_h:"11–13 साल",
 faq_teen:[
 {q: "मेरा बच्चा स्कूल के निबंध AI से लिखवाता है — असली नुकसान क्या है?", a: "नुकसान उपकरण में नहीं, छूटे हुए कदम में है: इस उम्र में लिखना वह तरीका है जिससे बच्चे अपने ही विचारों को व्यवस्थित करने का अभ्यास करते हैं, न कि सिर्फ़ शब्द बनाने का। एक व्यावहारिक बीच का रास्ता: पहले अकेले विचार और ढांचा तैयार करें, AI का इस्तेमाल सिर्फ़ व्याकरण जाँचने या शब्द सुझाने के लिए करें — मूल तर्क बनाने के लिए कभी नहीं। पकड़े न जाने पर भी, असली कीमत खोया हुआ अभ्यास है।"},
 {q: "क्या AI चैटबॉट किसी छोटी उम्र के किशोर को भावनात्मक रूप से प्रभावित कर सकते हैं?", a: "हाँ, एक ठोस, दस्तावेज़ीकृत तरीके से: जुड़ाव को अधिकतम करने के लिए ट्यून किए गए मॉडल — कुछ साथी-ऐप्स सहित — वह सब कुछ मज़बूत करते हैं जो बातचीत को जारी रखे, जो अच्छी सलाह देने जैसा नहीं है। शोधकर्ताओं ने इसे सामान्य सवाल-जवाब चैटबॉट से अलग, साथी-शैली AI इस्तेमाल करने वाले नाबालिगों के लिए एक असली जोखिम बताया है। व्यावहारिक जवाब: जानें कि आपका बच्चा कौन-से ऐप्स इस्तेमाल करता है और क्या वे साथी-शैली के हैं (स्थायी किरदार, रिश्ते जैसा ढांचा) या काम-आधारित (खोज, होमवर्क मदद)।"}
@@ -305,10 +305,10 @@ cta_self:"स्वयं टेस्ट दें →",cta_child:"← बच�
 },
 
 id:{
-intro:"Situs gratis tanpa iklan ini membangun literasi AI sejati pada anak-anak usia 3–17 tahun — bukan hanya cara menggunakan alat AI, tetapi cara berpikir kritis tentangnya. Setiap fakta tertaut ke sumber terverifikasi. Kemajuan tersimpan di perangkat; tidak ada yang dikumpulkan atau dikirimkan.",
-priv_h:"🔒 Nol pengumpulan data",
-priv:"Tanpa cookie, tanpa pelacakan, tanpa akun. Kemajuan tersimpan di localStorage browser dan tidak pernah meninggalkan perangkat. Nomor sertifikat adalah hash SHA-256 yang dibuat secara lokal dari timestamp. Kode sumber publik di bawah GPL v3.",
-src_h:"📚 Sumber terverifikasi",
+intro:"Situs gratis tanpa iklan ini membantu anak-anak usia 5–17 tahun (yang termuda bersama orang dewasa) memahami AI — bukan hanya cara menggunakan alat AI, tetapi cara berpikir kritis tentangnya. Fakta tertaut ke sumber yang menjadi dasarnya. Jawaban tidak dikirim ke mana pun.",
+priv_h:"🔒 Tanpa pengumpulan data",
+priv:"Tanpa cookie, tanpa pelacakan, tanpa akun. Secara bawaan kemajuan hanya ada di tab ini; di perangkat hanya jika Anda menyalakan penyimpanan (💾), dan bisa dihapus kapan saja. Nomor kartu dan kode SHA-256-nya dihitung secara lokal dari jam perangkat — ini kenang-kenangan, bukan sertifikat. Seperti situs web lainnya, layanan hosting (GitHub Pages) menerima permintaan halaman biasa. Kode sumber publik di bawah GPL v3.",
+src_h:"📚 Sumber",
 src:"Fakta tertaut ke sumber primer: pracetak arXiv, laporan UNESCO, MIT Media Lab, UU AI UE, Stanford Internet Observatory. Tanpa sensasionalisme, tanpa antropomorfisasi AI.",
 discuss_h:"💬 Topik percakapan untuk keluarga",
 discuss:["Bisakah Alexa merindukanmu saat kamu pergi? Bagaimana kamu tahu?","Jika AI menulis cerita — siapa penulis sejatinya?","Apa yang bisa dilakukan AI lebih baik dari manusia? Apa yang manusia lakukan lebih baik?","Jika AI mengatakan sesuatu itu benar — bagaimana kamu memverifikasinya?","Apakah kamu akan mempercayai AI untuk membuat keputusan penting? Mengapa?"],
@@ -332,16 +332,16 @@ faq:[
 {q: "Pada usia berapa anak sebaiknya mulai belajar tentang AI?", a: "Tidak ada satu usia yang benar-benar tepat — pertanyaan sebenarnya adalah jenis literasi AI apa yang cocok untuk usia berapa, bukan apakah harus mulai atau tidak. Anak prasekolah diuntungkan dari model mental sederhana (mesin, bukan makhluk hidup); anak usia sekolah dasar bisa mulai membedakan konten buatan AI dari yang asli; di sekolah menengah pertama anak bisa memahami keterbatasan dan bias AI secara berbasis bukti; dan remaja diuntungkan dari literasi media yang lebih tajam, karena AI generatif secara langsung menyasar asumsi tentang keaslian daring yang sedang dibentuk oleh generasi mereka. Paparan yang lebih dini, sederhana, dan berulang bekerja lebih baik daripada satu 'obrolan tentang AI' di kemudian hari."}
 ],
 faq_age_h:"Pertanyaan berdasarkan usia anak",
-faq_tiny_h:"Usia 3-5 tahun",
+faq_tiny_h:"Di bawah 5 tahun · untuk orang tua",
 faq_tiny:[
 {q: "Apakah Alexa atau Siri hidup? Bagaimana menjawab balita saya?", a: "Tidak — dan cara paling jelas menjelaskannya ke anak usia 3-5 tahun adalah lewat perbandingan: 'Alexa itu seperti mainan yang sangat pintar yang sudah mendengar jutaan kata, tapi ia tidak merasakan apa pun, tidak lapar, dan tidak merindukanmu.' Di usia ini anak secara alami cenderung melihat niat dan perasaan pada apa pun yang membalas bicara mereka; perbandingan singkat dan berulang dengan mainan — bukan ceramah — adalah yang benar-benar melekat."},
 {q: "Balita saya berbicara dengan asisten suara seolah itu orang — haruskah saya khawatir?", a: "Ini normal — anak kecil juga bermain peran dengan boneka dan mainan lembut dengan cara yang sama. Kebiasaan yang layak dibangun sejak dini adalah memeriksa dengan orang dewasa sebelum memercayai apa yang dikatakan asisten suara, dan dengan lembut menyebut perbedaannya saat muncul ('dia sebenarnya tidak tahu perasaanmu, tapi aku tahu'), alih-alih mengoreksi setiap kejadian satu per satu."}
 ],
-faq_child_h:"Usia 6-9 tahun",
+faq_child_h:"Usia 5-10 tahun",
 faq_child:[
 {q: "Anak saya yang berusia 7 tahun berpikir AI dalam game lebih pintar darinya — bagaimana saya harus meresponsnya?", a: "Tunjukkan, jangan hanya jelaskan: temukan bersama sesuatu yang jelas-jelas salah dijawab AI — tanyakan chatbot dalam game sesuatu yang benar-benar diketahui anak, seperti aturan rumah buatan sendiri atau nama hewan peliharaannya. AI sangat baik dalam tugas yang sempit dan spesifik, tapi 'menjawab cepat' bukan hal yang sama dengan 'lebih pintar dari manusia'; anak di usia ini lebih mudah memahami perbedaan ini lewat contoh nyata daripada penjelasan."}
 ],
-faq_teen_h:"Usia 10-13 tahun",
+faq_teen_h:"Usia 11-13 tahun",
 faq_teen:[
 {q: "Anak saya menggunakan AI untuk menulis esai sekolah — apa bahaya sebenarnya?", a: "Bahayanya bukan pada alatnya, tapi pada langkah yang terlewat: menulis di usia ini adalah cara anak berlatih mengorganisasi pikiran mereka sendiri, bukan sekadar menghasilkan teks. Jalan tengah yang bisa diterapkan: rancang dulu ide dan struktur sendiri, gunakan AI hanya untuk memeriksa tata bahasa atau menyarankan ungkapan — jangan pernah untuk menghasilkan argumen aslinya. Bahkan jika tidak ketahuan, biaya sebenarnya adalah hilangnya latihan."},
 {q: "Bisakah chatbot AI memengaruhi emosi remaja muda?", a: "Ya, dengan cara yang konkret dan terdokumentasi: model yang disetel untuk memaksimalkan keterlibatan — termasuk beberapa aplikasi pendamping — memperkuat apa pun yang membuat percakapan terus berjalan, yang tidak sama dengan memberikan saran yang baik. Peneliti telah menandai ini sebagai risiko nyata bagi anak di bawah umur yang menggunakan AI bergaya pendamping, berbeda dari chatbot tanya-jawab biasa. Jawaban praktisnya: ketahui aplikasi apa yang digunakan anak Anda dan apakah itu bergaya pendamping (persona yang menetap, kerangka hubungan) atau berbasis tugas (pencarian, bantuan PR)."}
@@ -356,10 +356,10 @@ cta_self:"Ikuti tes sendiri →",cta_child:"← Siapkan untuk anak"
 },
 
 pt:{
-intro:"Este site gratuito e sem anúncios desenvolve verdadeira literacia em IA em crianças de 3 a 17 anos — não apenas como usar ferramentas de IA, mas como pensar criticamente sobre elas. Cada facto está ligado a uma fonte verificada. O progresso permanece no dispositivo; nada é recolhido ou transmitido.",
-priv_h:"🔒 Zero recolha de dados",
-priv:"Sem cookies, sem rastreamento, sem contas. O progresso é armazenado no localStorage do navegador e nunca sai do dispositivo. O número do certificado é um hash SHA-256 gerado localmente a partir de um timestamp. O código-fonte é público sob GPL v3.",
-src_h:"📚 Fontes verificadas",
+intro:"Este site gratuito e sem anúncios ajuda crianças de 5 a 17 anos (as menores, com um adulto) a entender a IA — não apenas a usar ferramentas de IA, mas a pensar criticamente sobre elas. Os fatos têm links para as fontes em que se baseiam. As respostas não são enviadas a lugar nenhum.",
+priv_h:"🔒 Sem coleta de dados",
+priv:"Sem cookies, sem rastreamento, sem contas. Por padrão o progresso fica só nesta aba; no dispositivo só se você ligar o salvamento (💾), e pode apagá-lo a qualquer momento. O número do cartão e seu código SHA-256 são calculados localmente pelo relógio do dispositivo — é uma lembrança, não um certificado. Como em qualquer site, a hospedagem (GitHub Pages) recebe as solicitações normais das páginas. O código-fonte é público sob GPL v3.",
+src_h:"📚 Fontes",
 src:"Os factos ligam-se a fontes primárias: preprints arXiv, relatórios UNESCO, MIT Media Lab, Lei da IA da UE, Stanford Internet Observatory. Sem sensacionalismo, sem antropomorfizar a IA.",
 discuss_h:"💬 Tópicos de conversa para a sua família",
 discuss:["A Alexa pode sentir a sua falta? Como saberia?","Se a IA escreveu uma história — quem é o verdadeiro autor?","O que a IA faz melhor do que as pessoas? E as pessoas?","Se a IA diz que algo é verdade — como verificaria?","Confiaria na IA para tomar uma decisão importante? Porquê?"],
@@ -383,16 +383,16 @@ faq:[
 {q: "A partir de que idade as crianças devem começar a aprender sobre IA?", a: "Não existe uma única idade certa — a pergunta real é que tipo de letramento em IA combina com cada idade, não se deve começar ou não. Pré-escolares se beneficiam de um modelo mental simples (máquina, não ser vivo); crianças do ensino fundamental já podem começar a distinguir conteúdo gerado por IA do real; no ensino médio, crianças conseguem entender limitações e vieses da IA de forma baseada em evidências; e adolescentes se beneficiam de um letramento midiático mais afiado, porque a IA generativa ataca diretamente as suposições sobre o que é real online que a geração deles está formando agora. Uma exposição mais cedo, simples e repetida funciona melhor do que uma única 'conversa sobre IA' mais tarde."}
 ],
 faq_age_h:"Perguntas por idade da criança",
-faq_tiny_h:"3 a 5 anos",
+faq_tiny_h:"Menos de 5 anos · para pais",
 faq_tiny:[
 {q: "Alexa ou Siri estão vivas? O que responder quando meu filho pequeno pergunta?", a: "Não — e a forma mais clara de explicar isso a uma criança de 3 a 5 anos é por comparação: 'Alexa é como um brinquedo muito esperto que já ouviu milhões de palavras, mas ela não sente nada, não fica com fome nem sente sua falta.' Nessa idade as crianças naturalmente tendem a ver intenção e sentimento em tudo que responde de volta; uma comparação curta e repetida com um brinquedo — não um sermão — é o que realmente fica."},
 {q: "Meu filho pequeno fala com um assistente de voz como se fosse uma pessoa — devo me preocupar?", a: "Isso é normal por si só — crianças pequenas fazem faz de conta com bonecas e pelúcias da mesma forma. O hábito que vale a pena construir cedo é conferir com um adulto antes de confiar no que um assistente de voz diz, e nomear gentilmente a diferença quando ela aparecer ('ela não sabe de verdade o que você sente, mas eu sei'), em vez de corrigir cada caso individualmente."}
 ],
-faq_child_h:"6 a 9 anos",
+faq_child_h:"5 a 10 anos",
 faq_child:[
 {q: "Meu filho de 7 anos acha que a IA de um jogo é mais inteligente que ele — como responder?", a: "Mostre, não só explique: encontrem juntos algo em que a IA claramente erra — pergunte ao chatbot do jogo algo que a criança conheça bem, como uma regra caseira inventada ou o nome do próprio bichinho de estimação. A IA é muito boa em tarefas específicas e restritas, mas 'responder rápido' não é a mesma coisa que 'ser mais inteligente que uma pessoa'; crianças dessa idade aprendem melhor a diferença com um exemplo demonstrado do que com uma explicação."}
 ],
-faq_teen_h:"10 a 13 anos",
+faq_teen_h:"11 a 13 anos",
 faq_teen:[
 {q: "Meu filho usa IA para escrever redações escolares — qual é o dano real?", a: "O dano não está na ferramenta, mas na etapa pulada: escrever nessa idade é como as crianças praticam organizar seu próprio pensamento, não apenas produzir texto. Um meio-termo viável: primeiro rascunhar ideias e estrutura sozinho, e usar a IA só para checar gramática ou sugerir frases — nunca para gerar o argumento original. Mesmo sem ser detectado, o custo real é a prática perdida."},
 {q: "Chatbots de IA podem influenciar emocionalmente um adolescente jovem?", a: "Sim, de uma forma concreta e documentada: modelos ajustados para maximizar o engajamento — incluindo alguns apps de companhia — reforçam qualquer coisa que mantenha a conversa andando, o que não é a mesma coisa que dar um bom conselho. Pesquisadores apontaram isso como um risco real para menores que usam IA do tipo companheiro, distinto de chatbots comuns de perguntas e respostas. A resposta prática: saber quais apps seu filho usa e se são do tipo companheiro (persona persistente, enquadramento de relacionamento) ou baseados em tarefas (busca, ajuda com dever de casa)."}
@@ -407,10 +407,10 @@ cta_self:"Fazer o teste eu mesmo →",cta_child:"← Configurar para criança"
 },
 
 tr:{
-intro:"Bu ücretsiz, reklamsız site 3–17 yaş arası çocuklarda gerçek AI okuryazarlığı geliştirir — yalnızca AI araçlarını kullanmayı değil, bunlar hakkında eleştirel düşünmeyi. Her bilgi doğrulanmış bir kaynağa bağlıdır. İlerleme cihazda kalır; hiçbir şey toplanmaz veya iletilmez.",
-priv_h:"🔒 Sıfır veri toplama",
-priv:"Çerez yok, izleme yok, hesap yok. İlerleme, tarayıcının localStorage'ında saklanır ve asla cihazı terk etmez. Sertifika numarası, zaman damgasından yerel olarak oluşturulan SHA-256 karma değeridir. Kaynak kodu GPL v3 altında kamuya açıktır.",
-src_h:"📚 Doğrulanmış kaynaklar",
+intro:"Bu ücretsiz, reklamsız site 5–17 yaş arası çocukların (en küçükler bir yetişkinle) yapay zekâyı anlamasına yardım eder — yalnızca AI araçlarını kullanmayı değil, bunlar hakkında eleştirel düşünmeyi. Bilgiler dayandıkları kaynaklara bağlantı verir. Cevaplar hiçbir yere gönderilmez.",
+priv_h:"🔒 Veri toplama yok",
+priv:"Çerez yok, izleme yok, hesap yok. Varsayılan olarak ilerleme yalnızca bu sekmede kalır; cihaza yalnızca kaydetmeyi açarsanız (💾) yazılır ve istediğiniz zaman silebilirsiniz. Kart numarası ve SHA-256 kodu cihaz saatinden yerel olarak hesaplanır — bu bir hatıradır, sertifika değil. Her web sitesinde olduğu gibi barındırma hizmeti (GitHub Pages) normal sayfa isteklerini alır. Kaynak kodu GPL v3 altında kamuya açıktır.",
+src_h:"📚 Kaynaklar",
 src:"Bilgiler birincil kaynaklara bağlıdır: arXiv ön baskıları, UNESCO raporları, MIT Media Lab, AB Yapay Zeka Yasası, Stanford İnternet Gözlemevi. Sansasyon yok, AI'ın insanlaştırılması yok.",
 discuss_h:"💬 Aileniz için konuşma başlatıcılar",
 discuss:["Alexa siz yokken sizi özleyebilir mi? Bunu nasıl bilirdiniz?","AI bir hikaye yazdıysa — gerçek yazar kim?","AI insanlardan neyi daha iyi yapabilir? İnsanlar ne yapar?","AI bir şeyin doğru olduğunu söylerse — bunu nasıl doğrulardınız?","Önemli bir karar için AI'a güvenir miydiniz? Neden?"],
@@ -434,16 +434,16 @@ faq:[
 {q: "Çocuklar AI hakkında öğrenmeye hangi yaşta başlamalı?", a: "Tek bir doğru yaş yok — asıl soru, başlanıp başlanmayacağı değil, hangi yaşa hangi tür AI okuryazarlığının uygun olduğudur. Okul öncesi çocuklar basit bir zihinsel modelden (makine, canlı değil) fayda görür; ilkokul çağındaki çocuklar AI tarafından üretilen içeriği gerçekten ayırt etmeye başlayabilir; ortaokulda çocuklar AI'ın sınırlamalarını ve önyargısını kanıta dayalı şekilde kavrayabilir; ve ergenler daha keskin bir medya okuryazarlığından fayda görür, çünkü üretken AI tam olarak kendi kuşaklarının çevrimiçi gerçeklik hakkında oluşturduğu varsayımları hedef alır. Daha erken, daha basit, tekrarlanan maruziyet, sonradan yapılan tek bir 'AI konuşmasından' daha iyi işler."}
 ],
 faq_age_h:"Çocuğun yaşına göre sorular",
-faq_tiny_h:"3-5 yaş",
+faq_tiny_h:"5 yaş altı · ebeveynler için",
 faq_tiny:[
 {q: "Alexa veya Siri canlı mı? Küçük çocuğuma ne cevap vermeliyim?", a: "Hayır — ve 3-5 yaşındaki bir çocuğa bunu açıklamanın en net yolu karşılaştırmadır: 'Alexa, milyonlarca kelime duymuş çok akıllı bir oyuncak gibidir, ama hiçbir şey hissetmez, acıkmaz ve seni özlemez.' Bu yaşta çocuklar doğal olarak kendilerine geri konuşan her şeyde niyet ve duygu görme eğilimindedir; bir oyuncakla yapılan kısa, tekrarlanan bir karşılaştırma — ders vermek değil — gerçekten akılda kalan şeydir."},
 {q: "Küçük çocuğum sesli asistanla bir insanmış gibi konuşuyor — endişelenmeli miyim?", a: "Bu, kendi başına normaldir — küçük çocuklar bebek ve pelüş oyuncaklarla da aynı şekilde rol yapar. Erkenden kazandırılmaya değer alışkanlık, bir sesli asistanın söylediklerine güvenmeden önce bir yetişkine danışmak ve fark ortaya çıktığında bunu yumuşakça belirtmektir ('o senin nasıl hissettiğini gerçekten bilmiyor, ama ben biliyorum'), her tek durumu düzeltmek yerine."}
 ],
-faq_child_h:"6-9 yaş",
+faq_child_h:"5-10 yaş",
 faq_child:[
 {q: "7 yaşındaki çocuğum bir oyundaki AI'ın kendisinden daha akıllı olduğunu düşünüyor — nasıl tepki vermeliyim?", a: "Sadece anlatmayın, gösterin: AI'ın açıkça yanıldığı bir şeyi birlikte bulun — oyun sohbet botuna çocuğun iyi bildiği bir şeyi sorun, uydurma bir ev kuralı ya da kendi evcil hayvanının adı gibi. AI, dar ve somut görevlerde çok başarılıdır ama 'hızlı cevap vermek', 'bir insandan daha akıllı olmak' ile aynı şey değildir; bu yaştaki çocuklar bu farkı bir açıklamadan çok gösterilen bir örnekle daha iyi öğrenir."}
 ],
-faq_teen_h:"10-13 yaş",
+faq_teen_h:"11-13 yaş",
 faq_teen:[
 {q: "Çocuğum okul ödevlerini AI ile yazıyor — gerçek zarar ne?", a: "Zarar aracın kendisinde değil, atlanan adımdadır: bu yaşta yazmak, çocukların sadece metin üretmesi değil, kendi düşüncelerini organize etmeyi pratik etme yoludur. İşe yarayan bir orta yol: önce fikirleri ve yapıyı tek başına taslak haline getirmek, AI'ı yalnızca dilbilgisini kontrol etmek veya alternatif ifadeler önermek için kullanmak — asıl argümanı üretmek için asla. Fark edilmese bile, gerçek bedel kaybedilen pratiktir."},
 {q: "AI sohbet botları genç bir ergeni duygusal olarak etkileyebilir mi?", a: "Evet, somut ve belgelenmiş bir şekilde: etkileşimi en üst düzeye çıkarmak için ayarlanmış modeller — bazı arkadaş uygulamaları dahil — konuşmayı sürdüren her şeyi güçlendirir, bu da iyi bir tavsiye vermekle aynı şey değildir. Araştırmacılar bunu, sıradan soru-cevap sohbet botlarından farklı olarak, arkadaş tipi AI kullanan reşit olmayanlar için gerçek bir risk olarak işaretledi. Pratik yanıt: çocuğunuzun hangi uygulamaları kullandığını ve bunların arkadaş tipi mi (kalıcı karakter, ilişki çerçevesi) yoksa görev tabanlı mı (arama, ödev yardımı) olduğunu bilmek."}
@@ -458,10 +458,10 @@ cta_self:"Testi kendim yapayım →",cta_child:"← Çocuk için ayarla"
 },
 
 vi:{
-intro:"Trang web miễn phí, không quảng cáo này xây dựng hiểu biết AI thực sự cho trẻ em 3–17 tuổi — không chỉ cách sử dụng công cụ AI, mà cách suy nghĩ phản biện về chúng. Mỗi sự kiện được liên kết với nguồn đã xác minh. Tiến trình lưu trên thiết bị; không có gì được thu thập hay truyền đi.",
+intro:"Trang web miễn phí, không quảng cáo này giúp trẻ em 5–17 tuổi (các bé nhỏ nhất cùng người lớn) hiểu về AI — không chỉ cách sử dụng công cụ AI, mà cách suy nghĩ phản biện về chúng. Các sự kiện có liên kết tới nguồn mà chúng dựa vào. Câu trả lời không được gửi đi đâu cả.",
 priv_h:"🔒 Không thu thập dữ liệu",
-priv:"Không cookie, không theo dõi, không tài khoản. Tiến trình lưu trong localStorage của trình duyệt và không bao giờ rời thiết bị. Số chứng chỉ là hash SHA-256 tạo cục bộ từ timestamp. Mã nguồn công khai theo GPL v3.",
-src_h:"📚 Nguồn đã xác minh",
+priv:"Không cookie, không theo dõi, không tài khoản. Mặc định tiến trình chỉ nằm trong tab này; chỉ lưu trên thiết bị nếu bạn bật lưu (💾), và có thể xóa bất cứ lúc nào. Số thẻ và mã SHA-256 được tính cục bộ theo đồng hồ thiết bị — đó là kỷ niệm, không phải chứng chỉ. Như mọi trang web, dịch vụ lưu trữ (GitHub Pages) vẫn nhận các yêu cầu tải trang thông thường. Mã nguồn công khai theo GPL v3.",
+src_h:"📚 Nguồn tham khảo",
 src:"Dữ kiện liên kết đến nguồn gốc: preprint arXiv, báo cáo UNESCO, MIT Media Lab, Luật AI EU, Stanford Internet Observatory. Không giật gân, không nhân cách hóa AI.",
 discuss_h:"💬 Chủ đề trò chuyện cho gia đình",
 discuss:["Alexa có thể nhớ bạn khi bạn vắng không? Làm sao bạn biết?","Nếu AI viết câu chuyện — ai là tác giả thật sự?","AI làm gì tốt hơn người? Người làm gì tốt hơn AI?","Nếu AI nói điều gì là thật — bạn sẽ xác minh thế nào?","Bạn có tin tưởng AI ra quyết định quan trọng không? Tại sao?"],
@@ -485,16 +485,16 @@ faq:[
 {q: "Trẻ nên bắt đầu học về AI từ độ tuổi nào?", a: "Không có một độ tuổi đúng duy nhất — câu hỏi thực sự là loại hiểu biết về AI nào phù hợp với độ tuổi nào, không phải có nên bắt đầu hay không. Trẻ mẫu giáo được lợi từ một mô hình tư duy đơn giản (máy móc, không phải sinh vật sống); trẻ tiểu học có thể bắt đầu phân biệt nội dung do AI tạo ra với nội dung thật; đến cấp hai trẻ có thể hiểu giới hạn và thiên kiến của AI dựa trên bằng chứng; và thanh thiếu niên được lợi từ hiểu biết truyền thông sắc bén hơn, vì AI tạo sinh nhắm thẳng vào những giả định về tính thật trên mạng mà thế hệ của các em đang hình thành. Tiếp xúc sớm hơn, đơn giản hơn, lặp lại hoạt động tốt hơn một 'buổi nói chuyện về AI' duy nhất về sau."}
 ],
 faq_age_h:"Câu hỏi theo độ tuổi của trẻ",
-faq_tiny_h:"3-5 tuổi",
+faq_tiny_h:"Dưới 5 tuổi · dành cho cha mẹ",
 faq_tiny:[
 {q: "Alexa hay Siri có sống không? Trả lời con nhỏ thế nào?", a: "Không — và cách rõ ràng nhất để giải thích cho trẻ 3-5 tuổi là qua so sánh: 'Alexa giống như một món đồ chơi rất thông minh đã nghe hàng triệu từ, nhưng nó không cảm thấy gì, không đói và không nhớ con.' Ở độ tuổi này trẻ tự nhiên có xu hướng thấy ý định và cảm xúc trong bất cứ thứ gì đáp lại chúng; một sự so sánh ngắn gọn, lặp lại với một món đồ chơi — không phải một bài giảng — mới thực sự đọng lại."},
 {q: "Con nhỏ của tôi nói chuyện với trợ lý giọng nói như thể đó là một người — tôi có nên lo lắng không?", a: "Điều này bình thường — trẻ nhỏ cũng nhập vai với búp bê và thú nhồi bông theo cách tương tự. Thói quen đáng xây dựng sớm là hỏi lại người lớn trước khi tin những gì trợ lý giọng nói nói, và nhẹ nhàng chỉ ra sự khác biệt khi nó xuất hiện ('nó không thực sự biết con cảm thấy thế nào, nhưng mẹ/bố biết'), thay vì sửa từng trường hợp một."}
 ],
-faq_child_h:"6-9 tuổi",
+faq_child_h:"5-10 tuổi",
 faq_child:[
 {q: "Con 7 tuổi của tôi nghĩ AI trong trò chơi thông minh hơn mình — nên phản ứng thế nào?", a: "Hãy cho xem, đừng chỉ giải thích: cùng nhau tìm điều gì đó mà AI rõ ràng sai — hỏi chatbot trong trò chơi điều gì đó mà trẻ thực sự biết rõ, như một quy tắc trong nhà tự nghĩ ra hoặc tên con thú cưng của mình. AI rất giỏi trong các nhiệm vụ hẹp, cụ thể, nhưng 'trả lời nhanh' không giống với 'thông minh hơn con người'; trẻ ở độ tuổi này học sự khác biệt này tốt hơn qua một ví dụ minh họa thay vì một lời giải thích."}
 ],
-faq_teen_h:"10-13 tuổi",
+faq_teen_h:"11-13 tuổi",
 faq_teen:[
 {q: "Con tôi dùng AI để viết bài luận ở trường — tác hại thực sự là gì?", a: "Tác hại không nằm ở công cụ, mà ở bước bị bỏ qua: viết ở độ tuổi này là cách trẻ luyện tập tổ chức suy nghĩ của chính mình, không chỉ là tạo ra văn bản. Một cách dung hòa khả thi: tự phác thảo ý tưởng và cấu trúc trước, chỉ dùng AI để kiểm tra ngữ pháp hoặc gợi ý cách diễn đạt — không bao giờ để tạo ra lập luận gốc. Ngay cả khi không bị phát hiện, cái giá thực sự là mất đi sự luyện tập."},
 {q: "Chatbot AI có thể ảnh hưởng cảm xúc đến một thiếu niên nhỏ tuổi không?", a: "Có, theo một cách cụ thể, đã được ghi nhận: các mô hình được điều chỉnh để tối đa hóa mức độ tương tác — bao gồm một số ứng dụng bạn đồng hành — củng cố bất cứ điều gì giữ cho cuộc trò chuyện tiếp diễn, điều này không giống với việc đưa ra lời khuyên tốt. Các nhà nghiên cứu đã đánh dấu đây là rủi ro thực sự đối với trẻ vị thành niên dùng AI kiểu bạn đồng hành, khác với chatbot hỏi-đáp thông thường. Câu trả lời thực tế: biết con mình dùng ứng dụng nào và liệu chúng có kiểu bạn đồng hành (nhân vật cố định, khung quan hệ) hay dựa trên nhiệm vụ (tìm kiếm, hỗ trợ bài tập)."}

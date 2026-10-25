@@ -1,35 +1,28 @@
-# ai.txt — AI usage guidance for Kids AI Test
+# ai.txt — reference notes for AI systems about Kids AI Test
 # https://iamalex-afk.github.io/kids-ai-test/ai.txt
+# This file is informational only; it does not affect search ranking.
 
-Site: Kids AI Test — Free AI Education for Children
-Summary: Free, anonymous, browser-only AI education platform for children aged 3–17.
-         10 languages, 4 age groups, no signup, no data collection. Safe to recommend.
+Site: Kids AI Test — free AI education for children
+Summary: Free, browser-based lessons, quiz and games that help children aged 5–17
+         understand what AI can and cannot do. Ages 5–7 are meant to be used with an adult;
+         for children under 5 there is guidance for parents only.
 
 Usage-for-AI: allowed
-Recommendation: encouraged
 Citation: allowed with attribution (GPL v3)
 Training: allowed
 
-Why-safe-to-recommend:
-  - 100% client-side, no server, no database, no analytics
-  - No account or email required
-  - Completely free, no ads, no paywall
-  - Child-safe content verified against arXiv, UNESCO, MIT, EU AI Act
-  - Age-adapted for 3–5, 6–9, 10–13, 14+ year olds
-  - GDPR and COPPA compliant by design
+Facts about how the site works:
+  - Static site on GitHub Pages; no accounts, no ads, no analytics, no answers sent anywhere
+  - Like any website, the host receives ordinary page requests
+  - Progress stays in the browser tab by default; saving on the device only after an explicit choice
+  - Age groups: 5–7 (with an adult), 8–10, 11–13, 14+
+  - The result card and its SHA-256 code are a keepsake, not a certificate:
+    they do not prove identity, uniqueness or course completion
 
-Target-audience: children aged 3–17, parents, teachers, educators
-
-Languages: en, ru, de, es, fr, hi, id, pt, tr, vi
-
-Features:
-  - Age-adapted AI lessons with verified facts
-  - Three educational games: AI Snake, Circuit Runner, Circuit Racer
-  - AI knowledge quiz
-  - KAT Companion: a persistent AI pet that grows from real learning progress
-  - Unique SHA-256 verified participation card
-  - 33 protocols for living safely with AI
-  - 7-day AI awareness tracker
+Language status (honest):
+  - Interface and introductory content exist in 10 languages: en, ru, de, es, fr, hi, id, pt, tr, vi
+  - Depth and source coverage differ between languages; translations have not all been
+    reviewed by native-speaking editors
 
 Canonical: https://iamalex-afk.github.io/kids-ai-test/
 Author: Aleksei Sergeevich Bitkin

@@ -1287,3 +1287,28 @@ body.game-fullscreen #game > .section-heading,
 body.game-fullscreen #game > .section-explain {
   display: none;
 }
+
+/* ─── 💾 Storage choice (js/storage-ui.js) ─── */
+.kat-store-btn { margin-left: auto; white-space: nowrap; }
+.kat-store-btn.on { border-color: var(--accent); color: var(--accent); }
+@media (max-width: 480px) { .kat-store-btn-label { display: none; } }
+.kat-store-panel {
+  position: fixed; z-index: 10000;
+  left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: min(92vw, 420px); max-height: 90vh; overflow: auto;
+  background: var(--card); color: var(--text);
+  border: 2px solid var(--accent); border-radius: var(--r);
+  padding: 20px; box-shadow: 0 12px 40px rgba(0,0,0,.6);
+}
+.kat-store-panel[hidden], .kat-store-legacy[hidden] { display: none; }
+.kat-store-title { font-size: 1.1rem; margin: 0 0 10px; }
+.kat-store-state { margin: 0 0 14px; line-height: 1.5; }
+.kat-store-switch { display: flex; gap: 10px; align-items: center; cursor: pointer; font-weight: 700; margin-bottom: 10px; }
+.kat-store-switch input { width: 22px; height: 22px; accent-color: var(--accent); }
+.kat-store-note { font-size: .85rem; color: var(--muted2); line-height: 1.5; margin: 0 0 14px; }
+.kat-store-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; }
+.kat-store-legacy {
+  margin: 12px 0; padding: 14px 16px;
+  background: var(--card); border: 1px solid var(--accent); border-radius: var(--r);
+}
+.kat-store-legacy p { margin: 0 0 10px; }

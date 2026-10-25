@@ -70,19 +70,48 @@ const Q_LABEL = { en:'Question', ru:'Вопрос', de:'Frage', es:'Pregunta', f
 function qLabel()   { return Q_LABEL[S.lang] || Q_LABEL.en; }
 
 /* ─────────────────────────────────────────────
-   LOCALSTORAGE
+   STORAGE — via KAT_Store (js/storage.js): tab memory by default,
+   this device only after an explicit choice in the 💾 panel.
 ───────────────────────────────────────────── */
+const Store = window.KAT_Store || {
+  readJSON: (k, f) => f, writeJSON: () => {}, remove: () => {},
+};
 function lsSave() {
-  try { localStorage.setItem(LS_KEY, JSON.stringify(S)); } catch (_) {}
+  Store.writeJSON(LS_KEY, S);
 }
 function lsLoad() {
-  try {
-    const raw = localStorage.getItem(LS_KEY);
-    if (raw) {
-      const saved = JSON.parse(raw);
-      if (saved.lang === S.lang) S = { ...S, ...saved };
-    }
-  } catch (_) {}
+  const saved = Store.readJSON(LS_KEY, null);
+  if (saved && typeof saved === 'object' && saved.lang === S.lang) S = sanitizeState({ ...S, ...saved });
+}
+// Saved state is re-rendered through innerHTML, and the github.io origin is
+// shared with other sites — so only known shapes and plain numbers get in.
+function sanitizeState(st) {
+  const num = (v, max = 1e6) => { const n = Number(v); return Number.isFinite(n) ? Math.max(0, Math.min(max, Math.round(n))) : 0; };
+  const obj = (v) => (v && typeof v === 'object' && !Array.isArray(v) ? v : {});
+  const fresh = { lang: S.lang, age: null,
+    lesson: { idx: 0, phase: 'lesson', mt: { idx: 0, score: 0 } },
+    game: { idx: 0, score: 0, rounds: 5, done: false }, quiz: { idx: 0, score: 0, done: false },
+    tracker: { history: [], loggedToday: false },
+    result: { ready: false, tier: null, score: 0 },
+    card: { generated: false, number: null, name: null, hash: null } };
+  const lesson = obj(st.lesson), mt = obj(lesson.mt), game = obj(st.game), quiz = obj(st.quiz), result = obj(st.result);
+  return {
+    ...fresh,
+    age: Object.prototype.hasOwnProperty.call(AGE_CFG, st.age) ? st.age : null,
+    lesson: { idx: num(lesson.idx, 50), phase: lesson.phase === 'check' ? 'check' : 'lesson', mt: { idx: num(mt.idx, 50), score: num(mt.score, 50) } },
+    game: { idx: num(game.idx, 100), score: num(game.score, 100), rounds: num(game.rounds, 100) || 5, done: !!game.done },
+    quiz: { idx: num(quiz.idx, 100), score: num(quiz.score, 100), done: !!quiz.done },
+    result: { ready: !!result.ready, tier: result.tier == null ? null : num(result.tier, 2), score: num(result.score, 100) },
+    card: (() => {
+      const c = obj(st.card);
+      return {
+        generated: !!c.generated,
+        number: /^\d{1,12}$/.test(c.number) ? c.number : null,
+        name: typeof c.name === 'string' ? c.name.slice(0, 40) : null,   // shown via textContent only
+        hash: /^[0-9a-f]{64}$/.test(c.hash) ? c.hash : null,
+      };
+    })(),
+  };
 }
 
 /* ─────────────────────────────────────────────
@@ -205,8 +234,8 @@ function selectAge(age) {
 }
 
 const MODE_STR = {
-  en: { step:'STEP 2', q:'What do you want to do?', lb:'LEARN + TEST', lt:'Lessons & Quiz', ld:'3–6 lessons → quiz → earn your unique card', pb:'GAMES', pt:'Play & Learn', pd:'AI Snake — learn while playing' },
-  ru: { step:'ШАГ 2', q:'Что хочешь делать?', lb:'УРОКИ + ТЕСТ', lt:'Учиться и пройти тест', ld:'3–6 уроков → финальный тест → твоя уникальная карточка', pb:'ИГРЫ', pt:'Играть и учиться', pd:'AI Змейка — учись в игре' },
+  en: { step:'STEP 2', q:'What do you want to do?', lb:'LEARN + TEST', lt:'Lessons & Quiz', ld:'3–6 lessons → quiz → your personal card', pb:'GAMES', pt:'Play & Learn', pd:'AI Snake — learn while playing' },
+  ru: { step:'ШАГ 2', q:'Что хочешь делать?', lb:'УРОКИ + ТЕСТ', lt:'Учиться и пройти тест', ld:'3–6 уроков → финальный тест → твоя личная карточка', pb:'ИГРЫ', pt:'Играть и учиться', pd:'AI Змейка — учись в игре' },
   de: { step:'SCHRITT 2', q:'Was möchtest du tun?', lb:'LERNEN + TEST', lt:'Lektionen & Quiz', ld:'3–6 Lektionen → Quiz → verdiene deine einzigartige Karte', pb:'SPIELE', pt:'Spielen & Lernen', pd:'KI-Schlange — lerne beim Spielen' },
   es: { step:'PASO 2', q:'¿Qué quieres hacer?', lb:'APRENDER + TEST', lt:'Lecciones & Quiz', ld:'3–6 lecciones → quiz → gana tu tarjeta única', pb:'JUEGOS', pt:'Jugar & Aprender', pd:'IA Snake — aprende jugando' },
   fr: { step:'ÉTAPE 2', q:'Que veux-tu faire ?', lb:'APPRENDRE + TEST', lt:'Leçons & Quiz', ld:'3–6 leçons → quiz → gagne ta carte unique', pb:'JEUX', pt:'Jouer & Apprendre', pd:'IA Serpent — apprends en jouant' },
@@ -898,7 +927,7 @@ function showResult() {
       <div class="action-row" style="margin-top:24px;">
         <button class="btn-primary" id="btn-get-card">${ui('btn_get_card')}</button>
         <button class="btn-outline" id="btn-see-protocols">📋 ${ui('protocols_title')}</button>
-        ${S.age !== 'adult' ? `<button class="btn-share" id="btn-share-cert">🏆 Share Result</button>` : ''}
+        ${S.age !== 'adult' ? `<button class="btn-share" id="btn-share-cert">${shareBtnText(0)}</button>` : ''}
       </div>
       <div class="action-row" style="margin-top:10px;">
         <button class="btn-outline" id="btn-restart-all">${ui('btn_restart_all')}</button>
@@ -908,7 +937,7 @@ function showResult() {
 
   $('btn-restart-all').addEventListener('click', () => {
     if (!confirm(ui('restart_confirm'))) return;
-    try { localStorage.removeItem(LS_KEY); } catch (_) {}
+    Store.remove(LS_KEY);
     location.reload();
   });
 
@@ -930,18 +959,33 @@ function showResult() {
   if (S.age === 'adult') renderBookRec(container);
 }
 
+// No comparisons with other people: there is no data behind any such claim.
 const SHARE_MSG = {
-  en: (s) => `🏆 My child just scored ${s}% on the AI Test and beat 90% of adults! How smart is YOUR kid? Try now (free, no signup):`,
-  ru: (s) => `🏆 Мой ребёнок прошёл AI Тест с результатом ${s}% и обошёл 90% взрослых! А ваш? Проверьте (бесплатно, без регистрации):`,
-  de: (s) => `🏆 Mein Kind hat den KI-Test mit ${s}% bestanden und 90% der Erwachsenen übertroffen! Wie ist es bei Ihrem? Jetzt testen (kostenlos):`,
-  es: (s) => `🏆 Mi hijo pasó el Test de IA con ${s}% y superó al 90% de adultos! ¿Y el tuyo? Pruébalo (gratis, sin registro):`,
-  fr: (s) => `🏆 Mon enfant a réussi le Test IA avec ${s}% et a battu 90% des adultes ! Et le vôtre ? Essayez maintenant (gratuit) :`,
+  en: (s) => `🤖 We tried the free Kids AI Test — lessons and games about how AI really works. Quiz score: ${s}%. Try it (free, no signup):`,
+  ru: (s) => `🤖 Мы прошли бесплатный Kids AI Test — уроки и игры о том, как на самом деле работает ИИ. Результат теста: ${s}%. Попробуйте (бесплатно, без регистрации):`,
+  de: (s) => `🤖 Wir haben den kostenlosen Kids AI Test gemacht – Lektionen und Spiele darüber, wie KI wirklich funktioniert. Quiz-Ergebnis: ${s}%. Probiert es aus (kostenlos, ohne Anmeldung):`,
+  es: (s) => `🤖 Hicimos el Kids AI Test gratuito: lecciones y juegos sobre cómo funciona de verdad la IA. Resultado del quiz: ${s}%. Pruébalo (gratis, sin registro):`,
+  fr: (s) => `🤖 Nous avons fait le Kids AI Test gratuit : des leçons et des jeux sur le vrai fonctionnement de l'IA. Score au quiz : ${s} %. Essayez (gratuit, sans inscription) :`,
+  hi: (s) => `🤖 हमने मुफ़्त Kids AI Test किया — AI असल में कैसे काम करता है, इस पर पाठ और खेल। क्विज़ स्कोर: ${s}%। आप भी आज़माएँ (मुफ़्त, बिना पंजीकरण):`,
+  id: (s) => `🤖 Kami mencoba Kids AI Test gratis — pelajaran dan game tentang cara AI sebenarnya bekerja. Skor kuis: ${s}%. Coba juga (gratis, tanpa daftar):`,
+  pt: (s) => `🤖 Fizemos o Kids AI Test gratuito — lições e jogos sobre como a IA realmente funciona. Resultado do quiz: ${s}%. Experimente (grátis, sem cadastro):`,
+  tr: (s) => `🤖 Ücretsiz Kids AI Test'i yaptık — yapay zekânın gerçekte nasıl çalıştığına dair dersler ve oyunlar. Quiz puanı: %${s}. Siz de deneyin (ücretsiz, kayıt yok):`,
+  vi: (s) => `🤖 Chúng tôi đã làm Kids AI Test miễn phí — bài học và trò chơi về cách AI thật sự hoạt động. Điểm quiz: ${s}%. Hãy thử nhé (miễn phí, không cần đăng ký):`,
 };
+const SHARE_BTN = {
+  en: ['🏆 Share Result', '✅ Copied!'],          ru: ['🏆 Поделиться', '✅ Скопировано!'],
+  de: ['🏆 Ergebnis teilen', '✅ Kopiert!'],      es: ['🏆 Compartir', '✅ ¡Copiado!'],
+  fr: ['🏆 Partager', '✅ Copié !'],              hi: ['🏆 शेयर करें', '✅ कॉपी हो गया!'],
+  id: ['🏆 Bagikan', '✅ Disalin!'],              pt: ['🏆 Compartilhar', '✅ Copiado!'],
+  tr: ['🏆 Paylaş', '✅ Kopyalandı!'],            vi: ['🏆 Chia sẻ', '✅ Đã sao chép!'],
+};
+const shareBtnText = (i) => (SHARE_BTN[S.lang] || SHARE_BTN.en)[i];
+const PAGE_URL = (lang) => 'https://iamalex-afk.github.io/kids-ai-test/' + (lang && lang !== 'en' ? lang + '.html' : '');
 
 function shareResult() {
   const score = S.result.score;
   const lang = S.lang;
-  const url  = 'https://iamalex-afk.github.io/kids-ai-test/';
+  const url  = PAGE_URL(lang);
   const msg  = (SHARE_MSG[lang] || SHARE_MSG.en)(score);
   const text = `${msg}\n${url}`;
   if (navigator.share) {
@@ -949,8 +993,8 @@ function shareResult() {
   } else {
     navigator.clipboard?.writeText(text).then(() => {
       const btn = $('btn-share-cert');
-      if (btn) { btn.textContent = '✅ Copied!'; setTimeout(() => { btn.textContent = '🏆 Share Result'; }, 2500); }
-    }).catch(() => { window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(msg)}`, '_blank'); });
+      if (btn) { btn.textContent = shareBtnText(1); setTimeout(() => { btn.textContent = shareBtnText(0); }, 2500); }
+    }).catch(() => { window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(msg)}`, '_blank', 'noopener'); });
   }
   collectStats();
 }
@@ -965,11 +1009,10 @@ function collectStats() {
     gameRounds: S.game.rounds,
     lessonsDone: S.lesson.idx,
   };
-  try {
-    const hist = JSON.parse(localStorage.getItem('kat_stats') || '[]');
-    hist.push(stats);
-    localStorage.setItem('kat_stats', JSON.stringify(hist.slice(-30)));
-  } catch (_) {}
+  const hist = Store.readJSON('kat_stats', []);
+  const list = Array.isArray(hist) ? hist : [];
+  list.push(stats);
+  Store.writeJSON('kat_stats', list.slice(-30));
 }
 
 // Was hardcoded English + an Amazon.it link regardless of site language —
@@ -1110,10 +1153,8 @@ function initTracker() {
 }
 
 function loadTrackerHistory() {
-  try {
-    const raw = localStorage.getItem(LS_KEY + '_tracker');
-    if (raw) S.tracker = JSON.parse(raw);
-  } catch (_) {}
+  const saved = Store.readJSON(LS_KEY + '_tracker', null);
+  if (saved && Array.isArray(saved.history)) S.tracker = saved;
   const today = todayStr();
   S.tracker.loggedToday = S.tracker.history?.some(h => h.date === today) || false;
 }
@@ -1125,7 +1166,7 @@ function logTrackerValue(value) {
   S.tracker.history.sort((a, b) => a.date.localeCompare(b.date));
   if (S.tracker.history.length > 7) S.tracker.history = S.tracker.history.slice(-7);
   S.tracker.loggedToday = true;
-  try { localStorage.setItem(LS_KEY + '_tracker', JSON.stringify(S.tracker)); } catch (_) {}
+  Store.writeJSON(LS_KEY + '_tracker', S.tracker);
   renderTracker();
   const logArea = $('tracker-log-area');
   if (logArea) logArea.style.opacity = '.4';
