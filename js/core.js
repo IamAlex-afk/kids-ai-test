@@ -22,8 +22,6 @@ const AGE_CFG = {
   adult: { lessons: 6, gameRounds: 15 },
 };
 
-const MASCOTS = { tiny: '🧸', child: '🎮', teen: '📱', adult: '🧠' };
-
 /* ─────────────────────────────────────────────
    STATE
 ───────────────────────────────────────────── */
@@ -70,56 +68,61 @@ const Q_LABEL = { en:'Question', ru:'Вопрос', de:'Frage', es:'Pregunta', f
 function qLabel()   { return Q_LABEL[S.lang] || Q_LABEL.en; }
 
 /* ─────────────────────────────────────────────
-   LOCALSTORAGE
+   STORAGE — via KAT_Store (js/storage.js): tab memory by default,
+   this device only after an explicit choice in the 💾 panel.
 ───────────────────────────────────────────── */
+const Store = window.KAT_Store || {
+  readJSON: (k, f) => f, writeJSON: () => {}, remove: () => {},
+};
 function lsSave() {
-  try { localStorage.setItem(LS_KEY, JSON.stringify(S)); } catch (_) {}
+  Store.writeJSON(LS_KEY, S);
 }
 function lsLoad() {
-  try {
-    const raw = localStorage.getItem(LS_KEY);
-    if (raw) {
-      const saved = JSON.parse(raw);
-      if (saved.lang === S.lang) S = { ...S, ...saved };
-    }
-  } catch (_) {}
+  const saved = Store.readJSON(LS_KEY, null);
+  if (saved && typeof saved === 'object' && saved.lang === S.lang) S = sanitizeState({ ...S, ...saved });
+}
+// Saved state is re-rendered through innerHTML, and the github.io origin is
+// shared with other sites — so only known shapes and plain numbers get in.
+function sanitizeState(st) {
+  const num = (v, max = 1e6) => { const n = Number(v); return Number.isFinite(n) ? Math.max(0, Math.min(max, Math.round(n))) : 0; };
+  const obj = (v) => (v && typeof v === 'object' && !Array.isArray(v) ? v : {});
+  const fresh = { lang: S.lang, age: null,
+    lesson: { idx: 0, phase: 'lesson', mt: { idx: 0, score: 0 } },
+    game: { idx: 0, score: 0, rounds: 5, done: false }, quiz: { idx: 0, score: 0, done: false },
+    tracker: { history: [], loggedToday: false },
+    result: { ready: false, tier: null, score: 0 },
+    card: { generated: false, number: null, name: null, hash: null } };
+  const lesson = obj(st.lesson), mt = obj(lesson.mt), game = obj(st.game), quiz = obj(st.quiz), result = obj(st.result);
+  return {
+    ...fresh,
+    age: Object.prototype.hasOwnProperty.call(AGE_CFG, st.age) ? st.age : null,
+    lesson: { idx: num(lesson.idx, 50), phase: lesson.phase === 'check' ? 'check' : 'lesson', mt: { idx: num(mt.idx, 50), score: num(mt.score, 50) } },
+    game: { idx: num(game.idx, 100), score: num(game.score, 100), rounds: num(game.rounds, 100) || 5, done: !!game.done },
+    quiz: { idx: num(quiz.idx, 100), score: num(quiz.score, 100), done: !!quiz.done },
+    result: { ready: !!result.ready, tier: result.tier == null ? null : num(result.tier, 2), score: num(result.score, 100) },
+    card: (() => {
+      const c = obj(st.card);
+      return {
+        generated: !!c.generated,
+        number: /^\d{1,12}$/.test(c.number) ? c.number : null,
+        name: typeof c.name === 'string' ? c.name.slice(0, 40) : null,   // shown via textContent only
+        hash: /^[0-9a-f]{64}$/.test(c.hash) ? c.hash : null,
+      };
+    })(),
+  };
 }
 
 /* ─────────────────────────────────────────────
-   BOOT
+   START
+   The page opens on the entry screens (js/entry.js); there is no
+   boot overlay any more.
 ───────────────────────────────────────────── */
-function boot() {
-  const bootEl = $('boot');
-  if (!bootEl) { afterBoot(); return; }
-
-  const fill   = $('boot-fill');
-  const access = $('boot-access');
-
-  // Animate progress bar
-  if (fill) setTimeout(() => { fill.style.width = '100%'; }, 300);
-
-  // "ACCESS GRANTED" fade-in
-  if (access) setTimeout(() => {
-    access.style.transition = 'opacity 0.5s ease';
-    access.style.opacity    = '1';
-  }, 1700);
-
-  // Fade out boot screen — kept short: the boot overlay blocks all clicks
-  // (z-index 9999, opaque), so a long wait here reads as "the site is
-  // broken / buttons don't work" rather than "still loading".
-  setTimeout(() => {
-    bootEl.classList.add('hide');
-    setTimeout(() => { bootEl.hidden = true; afterBoot(); }, 500);
-  }, 2600);
-}
-
 function afterBoot() {
   renderTopBar();
   window.KAT_Companion?.mountFloating(S.lang);
   if (S.age) {
     restoreProgress();
   } else {
-    initAgePicker();
     initParent();
     initFlipCards();
   }
@@ -138,38 +141,22 @@ function renderTopBar() {
       const open = dropdown.classList.toggle('open');
       globe.setAttribute('aria-expanded', open);
     });
-    document.addEventListener('click', () => {
+    const close = () => {
       dropdown.classList.remove('open');
       globe.setAttribute('aria-expanded', 'false');
-    }, { passive: true });
+    };
+    document.addEventListener('click', close, { passive: true });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && dropdown.classList.contains('open')) { close(); globe.focus(); }
+    });
   }
-
-  // Legacy lang-switch buttons (fallback if still present)
-  $$('[data-lang-switch]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const lang = btn.dataset.langSwitch;
-      lsSave();
-      window.location.href = lang === 'en' ? 'index.html' : `${lang}.html`;
-    });
-  });
-
-  // Quick-age buttons in top bar
-  $$('[data-age-quick]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      selectAge(btn.dataset.ageQuick);
-    });
-  });
 }
 
 /* ─────────────────────────────────────────────
-   AGE PICKER
+   AGE
+   Chosen on the entry screens (js/entry.js), which then opens the
+   activities (openModePicker) or the parents' corner (openParents).
 ───────────────────────────────────────────── */
-function initAgePicker() {
-  $$('.age-card').forEach(btn => {
-    btn.addEventListener('click', () => selectAge(btn.dataset.age));
-  });
-}
-
 function selectAge(age) {
   if (!AGE_CFG[age]) return;
   S.age = age;
@@ -177,20 +164,6 @@ function selectAge(age) {
 
   // Apply theme
   document.body.setAttribute('data-age', age);
-
-  // Update mascot emoji
-  const mascotEl = $('hero-mascot-emoji');
-  if (mascotEl) mascotEl.textContent = MASCOTS[age] || '🤖';
-
-  // Highlight age card
-  $$('.age-card').forEach(c => c.classList.remove('active'));
-  const card = document.querySelector(`.age-card[data-age="${age}"]`);
-  if (card) card.classList.add('active');
-
-  // Highlight quick-age button in top bar
-  $$('[data-age-quick]').forEach(b => b.classList.remove('age-active'));
-  const qb = document.querySelector(`[data-age-quick="${age}"]`);
-  if (qb) qb.classList.add('age-active');
 
   // Show tracker now that we know age
   show('tracker');
@@ -200,13 +173,48 @@ function selectAge(age) {
   // the newly selected age (it doesn't get touched by anything else on
   // a mid-session age switch).
   renderParentFaq();
+}
 
-  setTimeout(() => { show('mode-picker'); scrollTo('mode-picker'); initModePicker(); }, 400);
+function focusHeading(el) {
+  if (!el) return;
+  if (!el.matches('button, a[href]')) el.tabIndex = -1;
+  el.focus({ preventScroll: true });
+}
+
+function openModePicker() {
+  setParentsOpen(false);
+  show('mode-picker');
+  initModePicker();
+  window.scrollTo(0, 0);
+  focusHeading(document.querySelector('#mode-picker .section-heading'));
+}
+
+// Parents' path: the parents' corner, opened, with the FAQ section for
+// faqAge (the child's age, or 'tiny' from "Child not 5 yet?").
+function openParents(faqAge) {
+  hide('mode-picker');
+  hide('tracker');
+  show('parent');
+  setParentsOpen(true);
+  renderParentFaq(faqAge || S.age);
+  const wrap = $('parent');
+  if (wrap) wrap.scrollIntoView({ block: 'start' });
+  focusHeading($('parent-toggle'));
+}
+
+function setParentsOpen(open) {
+  const toggle = $('parent-toggle');
+  const body   = $('parent-body');
+  const wrap   = document.querySelector('.parent-wrap');
+  if (!toggle || !body || !wrap) return;
+  wrap.classList.toggle('open', open);
+  toggle.setAttribute('aria-expanded', open);
+  body.style.display = open ? 'block' : 'none';
 }
 
 const MODE_STR = {
-  en: { step:'STEP 2', q:'What do you want to do?', lb:'LEARN + TEST', lt:'Lessons & Quiz', ld:'3–6 lessons → quiz → earn your unique card', pb:'GAMES', pt:'Play & Learn', pd:'AI Snake — learn while playing' },
-  ru: { step:'ШАГ 2', q:'Что хочешь делать?', lb:'УРОКИ + ТЕСТ', lt:'Учиться и пройти тест', ld:'3–6 уроков → финальный тест → твоя уникальная карточка', pb:'ИГРЫ', pt:'Играть и учиться', pd:'AI Змейка — учись в игре' },
+  en: { step:'STEP 2', q:'What do you want to do?', lb:'LEARN + TEST', lt:'Lessons & Quiz', ld:'3–6 lessons → quiz → your personal card', pb:'GAMES', pt:'Play & Learn', pd:'AI Snake — learn while playing' },
+  ru: { step:'ШАГ 2', q:'Что хочешь делать?', lb:'УРОКИ + ТЕСТ', lt:'Учиться и пройти тест', ld:'3–6 уроков → финальный тест → твоя личная карточка', pb:'ИГРЫ', pt:'Играть и учиться', pd:'AI Змейка — учись в игре' },
   de: { step:'SCHRITT 2', q:'Was möchtest du tun?', lb:'LERNEN + TEST', lt:'Lektionen & Quiz', ld:'3–6 Lektionen → Quiz → verdiene deine einzigartige Karte', pb:'SPIELE', pt:'Spielen & Lernen', pd:'KI-Schlange — lerne beim Spielen' },
   es: { step:'PASO 2', q:'¿Qué quieres hacer?', lb:'APRENDER + TEST', lt:'Lecciones & Quiz', ld:'3–6 lecciones → quiz → gana tu tarjeta única', pb:'JUEGOS', pt:'Jugar & Aprender', pd:'IA Snake — aprende jugando' },
   fr: { step:'ÉTAPE 2', q:'Que veux-tu faire ?', lb:'APPRENDRE + TEST', lt:'Leçons & Quiz', ld:'3–6 leçons → quiz → gagne ta carte unique', pb:'JEUX', pt:'Jouer & Apprendre', pd:'IA Serpent — apprends en jouant' },
@@ -312,6 +320,7 @@ function startLessons() {
   S.lesson = { idx: 0, phase: 'lesson', mt: { idx: 0, score: 0 } };
   lsSave();
   show('lessons');
+  markSectionEntry();
   scrollTo('lessons');
   renderLesson();
 }
@@ -554,6 +563,7 @@ function startGame() {
   S.game      = { idx: 0, score: 0, rounds: cfg.gameRounds, done: false };
   lsSave();
   show('game');
+  markSectionEntry();
   // Fullscreen while actively playing — kid lands straight on the
   // game/level picker with nothing to scroll past. Turned off in
   // onGameDone() / exitFullscreenGame().
@@ -575,6 +585,7 @@ function startGame() {
 function exitFullscreenGame() {
   document.body.classList.remove('game-fullscreen');
   window.KAT_Companion?.setFloatingVisible(true);
+  leaveSection();
 }
 
 function renderGamePicker(container, games) {
@@ -657,6 +668,7 @@ function launchRacing(container) {
 function onGameDone() {
   document.body.classList.remove('game-fullscreen');
   window.KAT_Companion?.setFloatingVisible(true);
+  leaveSection();
   S.game.done = true;
   lsSave();
 
@@ -690,6 +702,7 @@ function startQuiz() {
   S.quiz = { idx: 0, score: 0, done: false };
   lsSave();
   show('quiz');
+  markSectionEntry();
   scrollTo('quiz');
   renderQuestion();
 }
@@ -898,7 +911,7 @@ function showResult() {
       <div class="action-row" style="margin-top:24px;">
         <button class="btn-primary" id="btn-get-card">${ui('btn_get_card')}</button>
         <button class="btn-outline" id="btn-see-protocols">📋 ${ui('protocols_title')}</button>
-        ${S.age !== 'adult' ? `<button class="btn-share" id="btn-share-cert">🏆 Share Result</button>` : ''}
+        ${S.age !== 'adult' ? `<button class="btn-share" id="btn-share-cert">${shareBtnText(0)}</button>` : ''}
       </div>
       <div class="action-row" style="margin-top:10px;">
         <button class="btn-outline" id="btn-restart-all">${ui('btn_restart_all')}</button>
@@ -908,7 +921,7 @@ function showResult() {
 
   $('btn-restart-all').addEventListener('click', () => {
     if (!confirm(ui('restart_confirm'))) return;
-    try { localStorage.removeItem(LS_KEY); } catch (_) {}
+    Store.remove(LS_KEY);
     location.reload();
   });
 
@@ -930,18 +943,33 @@ function showResult() {
   if (S.age === 'adult') renderBookRec(container);
 }
 
+// No comparisons with other people: there is no data behind any such claim.
 const SHARE_MSG = {
-  en: (s) => `🏆 My child just scored ${s}% on the AI Test and beat 90% of adults! How smart is YOUR kid? Try now (free, no signup):`,
-  ru: (s) => `🏆 Мой ребёнок прошёл AI Тест с результатом ${s}% и обошёл 90% взрослых! А ваш? Проверьте (бесплатно, без регистрации):`,
-  de: (s) => `🏆 Mein Kind hat den KI-Test mit ${s}% bestanden und 90% der Erwachsenen übertroffen! Wie ist es bei Ihrem? Jetzt testen (kostenlos):`,
-  es: (s) => `🏆 Mi hijo pasó el Test de IA con ${s}% y superó al 90% de adultos! ¿Y el tuyo? Pruébalo (gratis, sin registro):`,
-  fr: (s) => `🏆 Mon enfant a réussi le Test IA avec ${s}% et a battu 90% des adultes ! Et le vôtre ? Essayez maintenant (gratuit) :`,
+  en: (s) => `🤖 We tried the free Kids AI Test — lessons and games about how AI really works. Quiz score: ${s}%. Try it (free, no signup):`,
+  ru: (s) => `🤖 Мы прошли бесплатный Kids AI Test — уроки и игры о том, как на самом деле работает ИИ. Результат теста: ${s}%. Попробуйте (бесплатно, без регистрации):`,
+  de: (s) => `🤖 Wir haben den kostenlosen Kids AI Test gemacht – Lektionen und Spiele darüber, wie KI wirklich funktioniert. Quiz-Ergebnis: ${s}%. Probiert es aus (kostenlos, ohne Anmeldung):`,
+  es: (s) => `🤖 Hicimos el Kids AI Test gratuito: lecciones y juegos sobre cómo funciona de verdad la IA. Resultado del quiz: ${s}%. Pruébalo (gratis, sin registro):`,
+  fr: (s) => `🤖 Nous avons fait le Kids AI Test gratuit : des leçons et des jeux sur le vrai fonctionnement de l'IA. Score au quiz : ${s} %. Essayez (gratuit, sans inscription) :`,
+  hi: (s) => `🤖 हमने मुफ़्त Kids AI Test किया — AI असल में कैसे काम करता है, इस पर पाठ और खेल। क्विज़ स्कोर: ${s}%। आप भी आज़माएँ (मुफ़्त, बिना पंजीकरण):`,
+  id: (s) => `🤖 Kami mencoba Kids AI Test gratis — pelajaran dan game tentang cara AI sebenarnya bekerja. Skor kuis: ${s}%. Coba juga (gratis, tanpa daftar):`,
+  pt: (s) => `🤖 Fizemos o Kids AI Test gratuito — lições e jogos sobre como a IA realmente funciona. Resultado do quiz: ${s}%. Experimente (grátis, sem cadastro):`,
+  tr: (s) => `🤖 Ücretsiz Kids AI Test'i yaptık — yapay zekânın gerçekte nasıl çalıştığına dair dersler ve oyunlar. Quiz puanı: %${s}. Siz de deneyin (ücretsiz, kayıt yok):`,
+  vi: (s) => `🤖 Chúng tôi đã làm Kids AI Test miễn phí — bài học và trò chơi về cách AI thật sự hoạt động. Điểm quiz: ${s}%. Hãy thử nhé (miễn phí, không cần đăng ký):`,
 };
+const SHARE_BTN = {
+  en: ['🏆 Share Result', '✅ Copied!'],          ru: ['🏆 Поделиться', '✅ Скопировано!'],
+  de: ['🏆 Ergebnis teilen', '✅ Kopiert!'],      es: ['🏆 Compartir', '✅ ¡Copiado!'],
+  fr: ['🏆 Partager', '✅ Copié !'],              hi: ['🏆 शेयर करें', '✅ कॉपी हो गया!'],
+  id: ['🏆 Bagikan', '✅ Disalin!'],              pt: ['🏆 Compartilhar', '✅ Copiado!'],
+  tr: ['🏆 Paylaş', '✅ Kopyalandı!'],            vi: ['🏆 Chia sẻ', '✅ Đã sao chép!'],
+};
+const shareBtnText = (i) => (SHARE_BTN[S.lang] || SHARE_BTN.en)[i];
+const PAGE_URL = (lang) => 'https://iamalex-afk.github.io/kids-ai-test/' + (lang && lang !== 'en' ? lang + '.html' : '');
 
 function shareResult() {
   const score = S.result.score;
   const lang = S.lang;
-  const url  = 'https://iamalex-afk.github.io/kids-ai-test/';
+  const url  = PAGE_URL(lang);
   const msg  = (SHARE_MSG[lang] || SHARE_MSG.en)(score);
   const text = `${msg}\n${url}`;
   if (navigator.share) {
@@ -949,8 +977,8 @@ function shareResult() {
   } else {
     navigator.clipboard?.writeText(text).then(() => {
       const btn = $('btn-share-cert');
-      if (btn) { btn.textContent = '✅ Copied!'; setTimeout(() => { btn.textContent = '🏆 Share Result'; }, 2500); }
-    }).catch(() => { window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(msg)}`, '_blank'); });
+      if (btn) { btn.textContent = shareBtnText(1); setTimeout(() => { btn.textContent = shareBtnText(0); }, 2500); }
+    }).catch(() => { window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(msg)}`, '_blank', 'noopener'); });
   }
   collectStats();
 }
@@ -965,11 +993,10 @@ function collectStats() {
     gameRounds: S.game.rounds,
     lessonsDone: S.lesson.idx,
   };
-  try {
-    const hist = JSON.parse(localStorage.getItem('kat_stats') || '[]');
-    hist.push(stats);
-    localStorage.setItem('kat_stats', JSON.stringify(hist.slice(-30)));
-  } catch (_) {}
+  const hist = Store.readJSON('kat_stats', []);
+  const list = Array.isArray(hist) ? hist : [];
+  list.push(stats);
+  Store.writeJSON('kat_stats', list.slice(-30));
 }
 
 // Was hardcoded English + an Amazon.it link regardless of site language —
@@ -1110,10 +1137,8 @@ function initTracker() {
 }
 
 function loadTrackerHistory() {
-  try {
-    const raw = localStorage.getItem(LS_KEY + '_tracker');
-    if (raw) S.tracker = JSON.parse(raw);
-  } catch (_) {}
+  const saved = Store.readJSON(LS_KEY + '_tracker', null);
+  if (saved && Array.isArray(saved.history)) S.tracker = saved;
   const today = todayStr();
   S.tracker.loggedToday = S.tracker.history?.some(h => h.date === today) || false;
 }
@@ -1125,7 +1150,7 @@ function logTrackerValue(value) {
   S.tracker.history.sort((a, b) => a.date.localeCompare(b.date));
   if (S.tracker.history.length > 7) S.tracker.history = S.tracker.history.slice(-7);
   S.tracker.loggedToday = true;
-  try { localStorage.setItem(LS_KEY + '_tracker', JSON.stringify(S.tracker)); } catch (_) {}
+  Store.writeJSON(LS_KEY + '_tracker', S.tracker);
   renderTracker();
   const logArea = $('tracker-log-area');
   if (logArea) logArea.style.opacity = '.4';
@@ -1189,8 +1214,9 @@ function initParent() {
 // which age was selected). Safe to call repeatedly — e.g. from selectAge()
 // on a mid-session age switch — since it replaces its own prior output
 // rather than appending on top of it, and doesn't touch the toggle
-// listener set up once in initParent().
-function renderParentFaq() {
+// listener set up once in initParent(). ageKey = the age section to show
+// (the parents' path passes 'tiny' from "Child not 5 yet?").
+function renderParentFaq(ageKey = S.age) {
   const body = $('parent-body');
   if (!body) return;
   const d = (window.PARENTS_FAQ || {})[S.lang] || (window.PARENTS_FAQ || {}).en;
@@ -1208,7 +1234,7 @@ function renderParentFaq() {
             <p class="faq-answer">${item.a}</p>
           </details>`).join('')}
       </div>
-      ${[S.age].filter(k => Array.isArray(d['faq_'+k]) && d['faq_'+k].length).map(k => `
+      ${[ageKey].filter(k => Array.isArray(d['faq_'+k]) && d['faq_'+k].length).map(k => `
         <h4>${d['faq_'+k+'_h'] || ''}</h4>
         <div class="faq-section" style="margin-bottom:16px">
           ${d['faq_'+k].map(item => `
@@ -1237,7 +1263,6 @@ function initFlipCards() {
    RESTORE PROGRESS
 ───────────────────────────────────────────── */
 function restoreProgress() {
-  initAgePicker();
   initParent();
   initFlipCards();
 
@@ -1245,17 +1270,15 @@ function restoreProgress() {
 
   // Re-apply theme
   document.body.setAttribute('data-age', S.age);
-  $$('.age-card').forEach(c => c.classList.remove('active'));
-  const ac = document.querySelector(`.age-card[data-age="${S.age}"]`);
-  if (ac) ac.classList.add('active');
-  $$('[data-age-quick]').forEach(b => b.classList.remove('age-active'));
-  const qb = document.querySelector(`[data-age-quick="${S.age}"]`);
-  if (qb) qb.classList.add('age-active');
-  const mascotEl = $('hero-mascot-emoji');
-  if (mascotEl) mascotEl.textContent = MASCOTS[S.age] || '🤖';
 
   show('tracker');
   initTracker();
+
+  // Saved progress is shown instead of the entry screens. Without progress
+  // the visitor starts on the entry screens like any first visit (no
+  // automatic start of lessons or games).
+  const resume = S.card.generated || S.quiz.done || S.game.done || S.lesson.idx > 0;
+  if (resume) window.KAT_Entry?.resume();
 
   if (S.card.generated) {
     show('result');
@@ -1270,9 +1293,6 @@ function restoreProgress() {
   if (S.quiz.done)    { show('lessons'); show('game'); show('quiz'); show('result'); computeResult(); return; }
   if (S.game.done)    { show('lessons'); show('game'); show('quiz'); startQuiz();    return; }
   if (S.lesson.idx>0) { show('lessons'); renderLesson(); return; }
-
-  // Fresh start with this age — begin lessons
-  setTimeout(() => startLessons(), 300);
 }
 
 /* ─────────────────────────────────────────────
@@ -1297,6 +1317,12 @@ window.KAT = {
     scrollTo('protocols');
   },
   get state() { return S; },
+  // js/entry.js
+  selectAge,
+  openModePicker,
+  openParents,
+  exitToHub,
+  inSection: () => sectionEntry,
 };
 
 /* ─────────────────────────────────────────────
@@ -1311,17 +1337,52 @@ function init() {
   if (lessonsExitBtn) lessonsExitBtn.title = exitTitle;
   const quizExitBtn = $('quiz-exit-btn');
   if (quizExitBtn) quizExitBtn.title = exitTitle;
-  boot();
+  afterBoot();
 }
 
-// Pause lessons/quiz and return to the top of the page without erasing
+// Pause lessons/quiz and return to the activities choice without erasing
 // progress — the existing resume logic (see afterBoot) picks up exactly
-// where the learner left off if they select their age again.
+// where the learner left off.
 function exitToHub() {
   hide('lessons');
   hide('quiz');
+  leaveSection();
+  window.KAT_Entry?.showHub();
   requestAnimationFrame(() => window.scrollTo(0, 0));
 }
+
+/* ─────────────────────────────────────────────
+   BROWSER BACK
+   Opening lessons, a game or the quiz adds ONE history entry; browser
+   Back then closes that section (games through their own exit button,
+   so their loops stop) instead of leaving the site mid-activity.
+   Never pushes on Back → no loops; a second Back leaves the site as usual.
+   Closing a section with ✕ removes the entry, so no Back press is wasted.
+───────────────────────────────────────────── */
+const BACK_EXITS = ['#sk-exit', '#pf-exit', '#rc-exit', '#pf-back-btn', '#rc-back-btn', '#pf-back-games', '#rc-back-games', '#gp-exit'];
+let sectionEntry = false, ignoreNextPop = false;
+function markSectionEntry() {
+  if (sectionEntry) return;
+  try { history.pushState({ katSection: true }, ''); sectionEntry = true; } catch (_) {}
+}
+function leaveSection() {
+  if (!sectionEntry) return;
+  sectionEntry = false;
+  ignoreNextPop = true;
+  try { history.back(); } catch (_) { ignoreNextPop = false; }
+}
+window.addEventListener('popstate', () => {
+  if (ignoreNextPop) { ignoreNextPop = false; return; }
+  if (!sectionEntry) return;
+  sectionEntry = false;
+  if (document.body.classList.contains('game-fullscreen')) {
+    const btn = BACK_EXITS.map(s => document.querySelector(s)).find(b => b && b.offsetParent !== null);
+    if (btn) btn.click();
+    if (document.body.classList.contains('game-fullscreen')) exitFullscreenGame();
+    return;
+  }
+  exitToHub();
+});
 
 /* ─────────────────────────────────────────────
    PWA INSTALL PROMPT

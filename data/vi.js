@@ -27,11 +27,11 @@ window.LANG_DATA = {
 
     age_title:      'Bạn bao nhiêu tuổi?',
     age_subtitle:   'Chúng tôi điều chỉnh trải nghiệm theo độ tuổi của bạn',
-    age_tiny:       '3 – 5',
+    age_tiny:       '5 – 7',
     age_tiny_desc:  'Nhà thám hiểm nhỏ',
-    age_child:      '6 – 9',
+    age_child:      '8 – 10',
     age_child_desc: 'Thám tử nhí',
-    age_teen:       '10 – 13',
+    age_teen:       '11 – 13',
     age_teen_desc:  'Thám tử AI',
     age_adult:      '14 +',
     age_adult_desc: 'Nhà phân tích AI',
@@ -69,7 +69,7 @@ window.LANG_DATA = {
     result_tier_1:     'Hiểu biết về AI',
     result_tier_2:     'Am hiểu AI',
     result_title_0:    'Bạn đang bắt đầu hành trình khám phá AI!',
-    result_title_1:    'Bạn hiểu về AI hơn phần lớn mọi người!',
+    result_title_1:    'Bạn đã hiểu khá nhiều về cách AI hoạt động!',
     result_title_2:    'Bạn thực sự am hiểu AI — hãy chia sẻ điều đó!',
     btn_get_card:      'Nhận thẻ của tôi 🃏',
     ui_exit_title:       'Thoát',
@@ -84,8 +84,8 @@ window.LANG_DATA = {
     card_tier:        'Hạng',
     card_score:       'Điểm',
     card_lang:        'Ngôn ngữ · Tuổi',
-    card_verify:      '🔍 Xác minh thẻ này (SHA-256)',
-    card_hash_note:   'Dấu vân tay này gắn liền về mặt toán học với số thẻ, tên, điểm số, ngôn ngữ và thời gian của bạn. Không thể làm giả nếu không khớp tất cả các trường.',
+    card_verify:      '🔍 Dấu vân tay của thẻ (SHA-256)',
+    card_hash_note:   'Mã này được tính trên thiết bị của bạn từ số, tên, điểm, ngôn ngữ và thời gian của thẻ. Bất kỳ ai cũng có thể tính ra cùng một mã từ cùng dữ liệu, nên đây không phải là chữ ký: nó không chứng minh bạn là ai hay bạn đã hoàn thành khóa học.',
     card_ready:       'Thẻ đã sẵn sàng!',
 
     share_btn:          'Chia sẻ',
@@ -601,7 +601,7 @@ window.LANG_DATA = {
         },
         {
           title:       'Hiểu biết về AI 🔍',
-          description: 'Em hiểu rằng AI học từ dữ liệu, có thể sai, và cần tư duy phản biện. Điều đó đã nhiều hơn phần lớn người lớn biết!',
+          description: 'Em hiểu rằng AI học từ dữ liệu, có thể sai, và cần tư duy phản biện. Hãy tiếp tục kiểm tra câu trả lời và đặt câu hỏi nhé!',
         },
         {
           title:       'Am hiểu AI 🏆',
@@ -947,7 +947,7 @@ window.LANG_DATA = {
         },
         {
           title:       'Am hiểu về AI 🧪',
-          description: 'Bạn hiểu rằng AI dự đoán chứ không biết, cách các trang chủ được thiết kế để thu hút bạn, và tại sao việc kiểm chứng lại quan trọng. Điều đó đã giúp bạn vượt trội hơn hầu hết mọi người trên mạng.',
+          description: 'Bạn hiểu rằng AI dự đoán chứ không biết, cách các trang chủ được thiết kế để thu hút bạn, và tại sao việc kiểm chứng lại quan trọng. Hãy dùng điều đó mỗi khi thấy điều gì bất ngờ trên mạng.',
         },
         {
           title:       'Thông thạo về AI 🏆',

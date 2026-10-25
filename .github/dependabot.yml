@@ -1,0 +1,9 @@
+# Proposes PRs when the pinned GitHub Actions get new releases (the SHA pins
+# in workflows are updated together with their version comments).
+# The site itself has no npm dependencies.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly

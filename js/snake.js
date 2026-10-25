@@ -44,8 +44,9 @@
     o.start(t0); o.stop(t0 + dur + 0.04);
   }
   let MUTED = false;
-  try { MUTED = localStorage.getItem('kat_snake_muted') === '1'; } catch (_) {}
-  function setMuted(v) { MUTED = !!v; try { localStorage.setItem('kat_snake_muted', MUTED ? '1' : '0'); } catch (_) {} }
+  // Via KAT_Store (js/storage.js): tab memory unless device saving is switched on.
+  MUTED = !!(window.KAT_Store && window.KAT_Store.get('kat_snake_muted') === '1');
+  function setMuted(v) { MUTED = !!v; if (window.KAT_Store) window.KAT_Store.set('kat_snake_muted', MUTED ? '1' : '0'); }
 
   // Real CC0 sample (Kenney "Music Jingles", 8-Bit set) layered on top of
   // the synth chime for the one moment worth a proper jingle — round

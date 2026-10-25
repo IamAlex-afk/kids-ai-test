@@ -1,29 +1,25 @@
 /* ═══════════════════════════════════════════════════════════════════
    KIDS AI TEST  ·  card.js  ·  v1.0.0
-   Generates the unique, unforgeable participant card.
+   Generates the decorative participant card — a keepsake, not a
+   certificate. Everything happens in the browser; nothing is sent.
 
    Algorithm:
-   1. Get trusted timestamp from worldtimeapi.org (falls back to Date.now)
+   1. Time = this device's clock (Date.now)
    2. Compute card number = seconds since PROJECT_START_MS
    3. Pick random AI name from window.KAT_NAMES
    4. Compute SHA-256 fingerprint over all fields + SALT
    5. Render to Canvas → PNG download button
-   6. Optional: QR code pointing to verification page
-   7. Notify core.js via window.KAT.onCardGenerated()
+   6. Notify core.js via window.KAT.onCardGenerated()
 
-   Verification (anyone can check):
+   What the fingerprint is NOT: the salt and the formula are public, so
+   anyone can compute the same hash for any fields. It is not a digital
+   signature and proves neither identity, nor that the card is one of a
+   kind, nor that the course was completed.
    hash = SHA-256( lang + "#" + number + "#" + timestamp + "#" + age
                  + "#" + score + "#" + name + "#" + SALT )
-   Published in README and Zenodo DOI snapshot.
 ═══════════════════════════════════════════════════════════════════ */
 
 'use strict';
-
-/* ─────────────────────────────────────────────
-   CONFIGURATION
-───────────────────────────────────────────── */
-
-const TIME_API = 'https://worldtimeapi.org/api/timezone/UTC';
 
 /* ─────────────────────────────────────────────
    SHA-256 via WebCrypto (no library needed)
@@ -36,25 +32,6 @@ async function sha256(message) {
   return Array.from(new Uint8Array(buf))
     .map(b => b.toString(16).padStart(2, '0'))
     .join('');
-}
-
-/* ─────────────────────────────────────────────
-   TRUSTED TIME
-   Tries worldtimeapi.org first; falls back to
-   server-time via Date (user can't easily fake)
-───────────────────────────────────────────── */
-
-async function getTrustedTimestamp() {
-  try {
-    const res  = await fetch(TIME_API, { cache: 'no-store' });
-    if (!res.ok) throw new Error('time api fail');
-    const json = await res.json();
-    // Returns ISO string like "2025-07-01T12:34:56.789000+00:00"
-    return new Date(json.datetime).getTime();
-  } catch (_) {
-    // Fallback: browser clock (still valid, just slightly less trusted)
-    return Date.now();
-  }
 }
 
 /* ─────────────────────────────────────────────
@@ -111,9 +88,8 @@ function seededRng(seed) {
   return () => { s = ((s * 1664525 + 1013904223) | 0) >>> 0; return s / 0xffffffff; };
 }
 
-// Faint circuit-board backdrop, seeded from the card's own number — every
-// kid's certificate gets a subtly unique pattern, echoing the "this card
-// is uniquely yours" idea behind the SHA-256 fingerprint. Same technique
+// Faint circuit-board backdrop, seeded from the card's own number, so the
+// same card always redraws the same pattern. Same technique
 // (grid + traces + junction dots) as the in-game backgrounds, so the
 // card feels like part of the same site rather than a bolted-on extra.
 function drawCardPattern(ctx, theme, seed) {
@@ -223,7 +199,7 @@ function renderCanvas(card, langData) {
   const shortHash = card.hash.slice(0, 8) + '…' + card.hash.slice(-8);
   ctx.fillText(`SHA-256: ${shortHash}`, 40, CANVAS_H - 60);
 
-  // ── Domain (verification anchor) ──
+  // ── Domain ──
   ctx.font = 'bold 13px monospace';
   ctx.fillStyle = theme.accent;
   ctx.fillText('iamalex-afk.github.io/kids-ai-test/', 40, CANVAS_H - 35);
@@ -233,27 +209,6 @@ function renderCanvas(card, langData) {
   ctx.fillRect(0, CANVAS_H - 8, CANVAS_W, 8);
 
   return canvas;
-}
-
-/* ─────────────────────────────────────────────
-   QR CODE
-   Uses qrcode-generator (tiny MIT lib) if loaded.
-   Renders into #card-qr div.
-───────────────────────────────────────────── */
-
-function renderQR(verifyUrl) {
-  const container = document.getElementById('card-qr');
-  if (!container) return;
-
-  if (typeof qrcode === 'function') {
-    const qr = qrcode(0, 'M');
-    qr.addData(verifyUrl);
-    qr.make();
-    container.innerHTML = qr.createSvgTag({ scalable: true });
-  } else {
-    // Fallback: link only
-    container.innerHTML = `<a href="${verifyUrl}" target="_blank" rel="noopener">${verifyUrl}</a>`;
-  }
 }
 
 /* ─────────────────────────────────────────────
@@ -282,7 +237,9 @@ function enableShare(card, langData) {
   if (!btn) return;
 
   const ui   = (k) => langData?.ui?.[k] || k;
-  const url  = `https://iamalex-afk.github.io/kids-ai-test/verify.html?n=${card.number}&h=${card.hash.slice(0, 16)}&l=${card.lang}`;
+  // Points to the site itself: there is no verification page, and the
+  // card is not something a page could verify.
+  const url  = 'https://iamalex-afk.github.io/kids-ai-test/' + (card.lang && card.lang !== 'en' ? card.lang + '.html' : '');
   const text = `${ui('share_card_text')} #${card.number} — ${card.name}`;
 
   btn.hidden = false;
@@ -311,8 +268,8 @@ async function generate(state, salt, projectStartMs) {
   if (cardArea) cardArea.hidden = false;
 
   try {
-    // 1. Get trusted time
-    const timestampMs = await getTrustedTimestamp();
+    // 1. Device clock — no network request
+    const timestampMs = Date.now();
 
     // 2. Card number (seconds since launch)
     const number = computeCardNumber(timestampMs, projectStartMs);
@@ -335,19 +292,14 @@ async function generate(state, salt, projectStartMs) {
     // 5. Render canvas
     const canvas = renderCanvas(card, langData);
 
-    // 6. QR code
-    const verifyBase = 'https://iamalex-afk.github.io/kids-ai-test/verify.html';
-    const verifyUrl  = `${verifyBase}?n=${number}&h=${hash.slice(0, 16)}&l=${lang}`;
-    renderQR(verifyUrl);
-
-    // 7. Buttons
+    // 6. Buttons
     enableDownload(canvas, card);
     enableShare(card, langData);
 
-    // 8. Show the card HTML overlay
+    // 7. Show the card HTML overlay
     renderCardHTML(card, langData);
 
-    // 9. Notify core.js
+    // 8. Notify core.js
     if (window.KAT?.onCardGenerated) window.KAT.onCardGenerated(card);
 
     if (btn) { btn.disabled = false; btn.textContent = '✅ ' + (langData?.ui?.card_ready || 'Card ready!'); }

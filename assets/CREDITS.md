@@ -45,3 +45,9 @@ replaced have been removed as unused.
   (`jump.ogg`, `miss.ogg`, `click.ogg` are downloaded and credited for
   upcoming use in racing.js/platformer.js — only `round-complete.ogg` is
   wired into a game so far, in js/snake.js's sndWin().)
+
+- `workshop/hero.webp`, `workshop/hero-small.webp` — the floating-island
+  illustration of the project's own earlier "workshop" version
+  (kids-ai-test-lab.vonychkalesha.chatgpt.site/assets/workshop/), reused
+  unmodified by the project owner. Downloaded 2026-10-26; verified as real
+  WebP files (RIFF/WEBP VP8), 1200×800 and 660×440.

@@ -1,0 +1,154 @@
+/* ═══════════════════════════════════════════════════════════════
+   KIDS AI TEST — workshop.css
+   Theme + shared components of docs/VISUAL-SPEC.md:
+   palette, light tokens, header (brand, language menu, 💾), skip link,
+   route bar. Entry screens: css/entry.css.
+
+   The light tokens apply while the entry screens are shown
+   (body.wk-home, toggled by js/entry.js). Lessons, games and the parents'
+   corner keep the current theme until their own stage of the spec.
+═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --ink: #202941;
+  --quiet: #596278;
+  --violet: #5843c4;
+  --paper: #f7f7fb;
+  --line: #e2e4ef;
+  --mint: #d6f3de;
+  --peach: #ffe4d3;
+  --lavender: #e8e2ff;
+  --sky: #d8effa;
+  --butter: #fff0bd;
+  --rose: #f9dfe9;
+  --wk-radius: 26px;
+  --wk-max: 1232px;
+  --wk-gutter: 32px;
+}
+@media (max-width: 640px) { :root { --wk-gutter: 16px; } }
+
+/* Light theme: the shared tokens of main.css, re-pointed to the palette */
+body.wk-home {
+  color-scheme: light;
+  --bg: var(--paper);  --bg2: #fff;
+  --card: #fff;        --card2: #fff;
+  --border: var(--line); --border2: #cfd3e3;
+  --text: var(--ink);  --muted: var(--quiet); --muted2: var(--quiet);
+  --accent: var(--violet); --accent-dim: rgba(88, 67, 196, .10); --accent-glow: rgba(88, 67, 196, .22);
+  --accent2: var(--violet); --accent2-dim: rgba(88, 67, 196, .10);
+  font-size: 16px;
+  line-height: 1.55;
+}
+body.wk-home .stars { display: none; }
+body.wk-home .page { max-width: var(--wk-max); padding: 0 var(--wk-gutter) 64px; }
+body.wk-home :focus-visible { outline: 3px solid #4b43b0; outline-offset: 4px; }
+/* Home: the interactive sections open only after a choice. Static material
+   (answers to children's questions, the parents' corner) stays visible below
+   the entry screens, so a visitor from search sees it without choosing. */
+body.wk-home #mode-picker, body.wk-home #lessons, body.wk-home #game, body.wk-home #quiz,
+body.wk-home #result, body.wk-home #protocols, body.wk-home #tracker { display: none; }
+
+/* ── Skip link ── */
+.wk-skip {
+  position: absolute; left: 16px; top: -100px; z-index: 1000;
+  background: var(--card); color: var(--text);
+  border: 2px solid var(--accent); border-radius: 12px;
+  padding: 10px 16px; font-weight: 700; text-decoration: none;
+}
+.wk-skip:focus { top: 12px; }
+
+/* ── Header ── */
+.wk-header {
+  position: relative; z-index: 20;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.wk-header-in {
+  max-width: var(--wk-max); margin: 0 auto;
+  padding: 0 var(--wk-gutter); min-height: 82px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+@media (max-width: 640px) { .wk-header-in { min-height: 68px; } }
+
+.wk-brand {
+  display: flex; align-items: center; gap: 12px; min-width: 0;
+  color: var(--text); text-decoration: none; border-radius: 12px;
+}
+.wk-mark { display: grid; grid-template-columns: repeat(2, 14px); gap: 3px; flex: none; }
+.wk-mark i { display: block; width: 14px; height: 14px; border-radius: 4px; }
+.wk-mark i:nth-child(1) { background: #8a76ea; }
+.wk-mark i:nth-child(2) { background: #acd96c; }
+.wk-mark i:nth-child(3) { background: #ffa480; }
+.wk-mark i:nth-child(4) { background: #7dbddd; }
+.wk-brand-txt { display: flex; flex-direction: column; min-width: 0; line-height: 1.25; }
+.wk-brand-name { font-size: 1.125rem; font-weight: 800; letter-spacing: -.01em; }
+.wk-brand-sub { font-size: .8125rem; color: var(--muted); }
+
+.wk-actions { display: flex; align-items: center; gap: 8px; flex: none; }
+
+/* Header buttons: 💾 storage (js/storage-ui.js) and the language globe */
+.top-btn,
+.lang-globe {
+  display: inline-flex; align-items: center; gap: 8px;
+  min-height: 44px; padding: 0 14px;
+  background: var(--card); color: var(--text);
+  border: 1px solid var(--border); border-radius: 999px;
+  font-size: .9375rem; font-weight: 600; white-space: nowrap;
+  transition: border-color var(--t-fast), color var(--t-fast);
+}
+.top-btn:hover, .lang-globe:hover,
+.top-btn.active, .lang-globe[aria-expanded="true"] { border-color: var(--accent); color: var(--accent); }
+
+/* ── Language menu ── */
+.lang-switcher { position: relative; }
+.wk-globe { flex: none; }
+.lang-short { display: none; }
+@media (max-width: 520px) { .lang-full { display: none; } .lang-short { display: inline; } }
+.lang-arrow { font-size: .7rem; transition: transform var(--t-base); }
+.lang-globe[aria-expanded="true"] .lang-arrow { transform: rotate(180deg); }
+
+.lang-dropdown {
+  position: absolute; top: calc(100% + 8px); right: 0; z-index: 100;
+  min-width: 220px; padding: 8px;
+  display: grid; gap: 2px;
+  background: var(--card); border: 1px solid var(--border); border-radius: 18px;
+  box-shadow: 0 12px 32px rgba(32, 41, 65, .16);
+  /* hidden, not just transparent: closed links must not take keyboard focus */
+  visibility: hidden; opacity: 0; transform: translateY(-6px);
+  transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
+}
+.lang-dropdown.open {
+  visibility: visible; opacity: 1; transform: none;
+  transition: opacity .18s ease, transform .18s ease;
+}
+.lang-opt {
+  display: flex; align-items: center; min-height: 44px; padding: 0 12px;
+  border-radius: 12px; color: var(--text); text-decoration: none;
+  font-size: .9375rem; white-space: nowrap;
+}
+.lang-opt:hover { background: var(--accent-dim); }
+.lang-opt.active { background: var(--accent-dim); color: var(--accent); font-weight: 700; }
+
+/* ── Route bar (after the age choice): change age · home ── */
+.wk-hubbar {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 10px 16px;
+  margin: 20px 0 0;
+}
+.wk-hubbar[hidden] { display: none; }
+.wk-back {
+  display: inline-flex; align-items: center; min-height: 48px; padding: 0 18px;
+  background: var(--card); color: var(--text);
+  border: 1px solid var(--border); border-radius: 999px;
+  font: inherit; font-weight: 600;
+}
+.wk-back:hover { border-color: var(--accent); color: var(--accent); }
+.wk-hub-age { color: var(--muted); }
+.wk-hub-age b { color: var(--text); }
+.wk-home-link {
+  display: inline-flex; align-items: center; min-height: 48px; margin-left: auto;
+  color: var(--accent); font-weight: 600; text-underline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lang-dropdown, .lang-arrow, .top-btn, .lang-globe { transition: none; }
+}
