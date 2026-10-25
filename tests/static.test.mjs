@@ -75,7 +75,7 @@ test('canonical + hreflang: every page lists all 10 languages and x-default', ()
     const html = read(page(l));
     const canon = html.match(/rel="canonical" href="([^"]+)"/)[1];
     assert.equal(canon, 'https://iamalex-afk.github.io/kids-ai-test/' + (l === 'en' ? '' : page(l)));
-    const langs = [...html.matchAll(/hreflang="([^"]+)"/g)].map(m => m[1]).sort();
+    const langs = [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)"/g)].map(m => m[1]).sort();
     assert.deepEqual(langs, [...LANGS, 'x-default'].sort(), page(l));
     assert.match(html, new RegExp(`<html lang="${l === 'pt' ? 'pt-BR' : l}"`), page(l));
   }
@@ -85,4 +85,54 @@ test('sitemap lists every language URL; Google verification file kept', () => {
   const sm = read('sitemap.xml');
   for (const l of LANGS) assert.ok(sm.includes('<loc>https://iamalex-afk.github.io/kids-ai-test/' + (l === 'en' ? '' : page(l)) + '</loc>'), l);
   assert.match(read('googled8a35f2a8c073799.html'), /google-site-verification: googled8a35f2a8c073799\.html/);
+});
+
+test('entry screens: pages match tools/gen-entry.mjs, every language is translated', async () => {
+  const { render } = await import(new URL('tools/gen-entry.mjs', root));
+  const { T } = await import(new URL('tools/entry-i18n.mjs', root));
+  const keys = Object.keys(T.en);
+  for (const l of LANGS) {
+    const html = read(page(l));
+    assert.equal(render(l, html), html, `${page(l)} is out of date: run node tools/gen-entry.mjs`);
+    assert.deepEqual(Object.keys(T[l]), keys, `entry-i18n ${l}: same keys as en`);
+    for (const k of ['steps', 'facts', 'ages']) assert.equal(T[l][k].length, T.en[k].length, `${l}.${k}`);
+    assert.ok(T[l].h1b.includes(T[l].hl), `${l}: highlighted word is in the title`);
+  }
+});
+
+test('entry screens: styles and entry.js are wired, no boot overlay', () => {
+  for (const l of LANGS) {
+    const html = read(page(l));
+    assert.match(html, /<body data-age="" class="wk-home">/, page(l));
+    for (const css of ['css/main.css', 'css/workshop.css', 'css/entry.css'])
+      assert.ok(html.includes(`<link rel="stylesheet" href="${css}">`), `${page(l)} links ${css}`);
+    const at = (s) => html.indexOf(`<script src="${s}"></script>`);
+    assert.ok(at('js/entry.js') > -1 && at('js/entry.js') < at('js/core.js'), `${page(l)}: entry.js before core.js`);
+    assert.doesNotMatch(html, /id="boot"|ACCESS GRANTED|class="top-bar"/, page(l));
+    assert.equal((html.match(/<h1[\s>]/g) || []).length, 1, `${page(l)}: one h1`);
+    for (const x of LANGS) assert.ok(html.includes(`class="lang-opt${x === l ? ' active' : ''}" href="${page(x)}"`), `${page(l)} → ${x}`);
+  }
+});
+
+test('sitemap: only canonical, indexable published pages; honest lastmod', () => {
+  const sm = read('sitemap.xml');
+  const SITE = 'https://iamalex-afk.github.io/kids-ai-test/';
+  const urls = [...sm.matchAll(/<url>([\s\S]*?)<\/url>/g)].map(m => m[1]);
+  assert.equal(urls.length, LANGS.length, 'one <url> per language page');
+  const today = new Date().toISOString().slice(0, 10);
+  for (const u of urls) {
+    const loc = u.match(/<loc>([^<]+)<\/loc>/)[1];
+    const file = loc === SITE ? 'index.html' : loc.slice(SITE.length);
+    assert.ok(LANGS.map(page).includes(file), `${loc}: a language page (no 404, verification or service files)`);
+    const html = read(file);
+    assert.equal(html.match(/rel="canonical" href="([^"]+)"/)[1], loc, `${file}: canonical = sitemap URL`);
+    assert.doesNotMatch(html, /<meta name="robots" content="[^"]*noindex/i, `${file}: indexable`);
+    const lastmod = (u.match(/<lastmod>([^<]+)<\/lastmod>/) || [])[1];
+    if (lastmod) {
+      assert.match(lastmod, /^\d{4}-\d{2}-\d{2}$/, `${file}: lastmod format`);
+      assert.ok(lastmod <= today, `${file}: lastmod ${lastmod} is not in the future`);
+    }
+  }
+  // Pages that must never be indexed say so themselves
+  assert.match(read('404.html'), /<meta name="robots" content="noindex">/);
 });

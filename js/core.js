@@ -22,8 +22,6 @@ const AGE_CFG = {
   adult: { lessons: 6, gameRounds: 15 },
 };
 
-const MASCOTS = { tiny: '🧸', child: '🎮', teen: '📱', adult: '🧠' };
-
 /* ─────────────────────────────────────────────
    STATE
 ───────────────────────────────────────────── */
@@ -115,40 +113,16 @@ function sanitizeState(st) {
 }
 
 /* ─────────────────────────────────────────────
-   BOOT
+   START
+   The page opens on the entry screens (js/entry.js); there is no
+   boot overlay any more.
 ───────────────────────────────────────────── */
-function boot() {
-  const bootEl = $('boot');
-  if (!bootEl) { afterBoot(); return; }
-
-  const fill   = $('boot-fill');
-  const access = $('boot-access');
-
-  // Animate progress bar
-  if (fill) setTimeout(() => { fill.style.width = '100%'; }, 300);
-
-  // "ACCESS GRANTED" fade-in
-  if (access) setTimeout(() => {
-    access.style.transition = 'opacity 0.5s ease';
-    access.style.opacity    = '1';
-  }, 1700);
-
-  // Fade out boot screen — kept short: the boot overlay blocks all clicks
-  // (z-index 9999, opaque), so a long wait here reads as "the site is
-  // broken / buttons don't work" rather than "still loading".
-  setTimeout(() => {
-    bootEl.classList.add('hide');
-    setTimeout(() => { bootEl.hidden = true; afterBoot(); }, 500);
-  }, 2600);
-}
-
 function afterBoot() {
   renderTopBar();
   window.KAT_Companion?.mountFloating(S.lang);
   if (S.age) {
     restoreProgress();
   } else {
-    initAgePicker();
     initParent();
     initFlipCards();
   }
@@ -167,38 +141,22 @@ function renderTopBar() {
       const open = dropdown.classList.toggle('open');
       globe.setAttribute('aria-expanded', open);
     });
-    document.addEventListener('click', () => {
+    const close = () => {
       dropdown.classList.remove('open');
       globe.setAttribute('aria-expanded', 'false');
-    }, { passive: true });
+    };
+    document.addEventListener('click', close, { passive: true });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && dropdown.classList.contains('open')) { close(); globe.focus(); }
+    });
   }
-
-  // Legacy lang-switch buttons (fallback if still present)
-  $$('[data-lang-switch]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const lang = btn.dataset.langSwitch;
-      lsSave();
-      window.location.href = lang === 'en' ? 'index.html' : `${lang}.html`;
-    });
-  });
-
-  // Quick-age buttons in top bar
-  $$('[data-age-quick]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      selectAge(btn.dataset.ageQuick);
-    });
-  });
 }
 
 /* ─────────────────────────────────────────────
-   AGE PICKER
+   AGE
+   Chosen on the entry screens (js/entry.js), which then opens the
+   activities (openModePicker) or the parents' corner (openParents).
 ───────────────────────────────────────────── */
-function initAgePicker() {
-  $$('.age-card').forEach(btn => {
-    btn.addEventListener('click', () => selectAge(btn.dataset.age));
-  });
-}
-
 function selectAge(age) {
   if (!AGE_CFG[age]) return;
   S.age = age;
@@ -206,20 +164,6 @@ function selectAge(age) {
 
   // Apply theme
   document.body.setAttribute('data-age', age);
-
-  // Update mascot emoji
-  const mascotEl = $('hero-mascot-emoji');
-  if (mascotEl) mascotEl.textContent = MASCOTS[age] || '🤖';
-
-  // Highlight age card
-  $$('.age-card').forEach(c => c.classList.remove('active'));
-  const card = document.querySelector(`.age-card[data-age="${age}"]`);
-  if (card) card.classList.add('active');
-
-  // Highlight quick-age button in top bar
-  $$('[data-age-quick]').forEach(b => b.classList.remove('age-active'));
-  const qb = document.querySelector(`[data-age-quick="${age}"]`);
-  if (qb) qb.classList.add('age-active');
 
   // Show tracker now that we know age
   show('tracker');
@@ -229,8 +173,43 @@ function selectAge(age) {
   // the newly selected age (it doesn't get touched by anything else on
   // a mid-session age switch).
   renderParentFaq();
+}
 
-  setTimeout(() => { show('mode-picker'); scrollTo('mode-picker'); initModePicker(); }, 400);
+function focusHeading(el) {
+  if (!el) return;
+  if (!el.matches('button, a[href]')) el.tabIndex = -1;
+  el.focus({ preventScroll: true });
+}
+
+function openModePicker() {
+  setParentsOpen(false);
+  show('mode-picker');
+  initModePicker();
+  window.scrollTo(0, 0);
+  focusHeading(document.querySelector('#mode-picker .section-heading'));
+}
+
+// Parents' path: the parents' corner, opened, with the FAQ section for
+// faqAge (the child's age, or 'tiny' from "Child not 5 yet?").
+function openParents(faqAge) {
+  hide('mode-picker');
+  hide('tracker');
+  show('parent');
+  setParentsOpen(true);
+  renderParentFaq(faqAge || S.age);
+  const wrap = $('parent');
+  if (wrap) wrap.scrollIntoView({ block: 'start' });
+  focusHeading($('parent-toggle'));
+}
+
+function setParentsOpen(open) {
+  const toggle = $('parent-toggle');
+  const body   = $('parent-body');
+  const wrap   = document.querySelector('.parent-wrap');
+  if (!toggle || !body || !wrap) return;
+  wrap.classList.toggle('open', open);
+  toggle.setAttribute('aria-expanded', open);
+  body.style.display = open ? 'block' : 'none';
 }
 
 const MODE_STR = {
@@ -1235,8 +1214,9 @@ function initParent() {
 // which age was selected). Safe to call repeatedly — e.g. from selectAge()
 // on a mid-session age switch — since it replaces its own prior output
 // rather than appending on top of it, and doesn't touch the toggle
-// listener set up once in initParent().
-function renderParentFaq() {
+// listener set up once in initParent(). ageKey = the age section to show
+// (the parents' path passes 'tiny' from "Child not 5 yet?").
+function renderParentFaq(ageKey = S.age) {
   const body = $('parent-body');
   if (!body) return;
   const d = (window.PARENTS_FAQ || {})[S.lang] || (window.PARENTS_FAQ || {}).en;
@@ -1254,7 +1234,7 @@ function renderParentFaq() {
             <p class="faq-answer">${item.a}</p>
           </details>`).join('')}
       </div>
-      ${[S.age].filter(k => Array.isArray(d['faq_'+k]) && d['faq_'+k].length).map(k => `
+      ${[ageKey].filter(k => Array.isArray(d['faq_'+k]) && d['faq_'+k].length).map(k => `
         <h4>${d['faq_'+k+'_h'] || ''}</h4>
         <div class="faq-section" style="margin-bottom:16px">
           ${d['faq_'+k].map(item => `
@@ -1283,7 +1263,6 @@ function initFlipCards() {
    RESTORE PROGRESS
 ───────────────────────────────────────────── */
 function restoreProgress() {
-  initAgePicker();
   initParent();
   initFlipCards();
 
@@ -1291,17 +1270,15 @@ function restoreProgress() {
 
   // Re-apply theme
   document.body.setAttribute('data-age', S.age);
-  $$('.age-card').forEach(c => c.classList.remove('active'));
-  const ac = document.querySelector(`.age-card[data-age="${S.age}"]`);
-  if (ac) ac.classList.add('active');
-  $$('[data-age-quick]').forEach(b => b.classList.remove('age-active'));
-  const qb = document.querySelector(`[data-age-quick="${S.age}"]`);
-  if (qb) qb.classList.add('age-active');
-  const mascotEl = $('hero-mascot-emoji');
-  if (mascotEl) mascotEl.textContent = MASCOTS[S.age] || '🤖';
 
   show('tracker');
   initTracker();
+
+  // Saved progress is shown instead of the entry screens. Without progress
+  // the visitor starts on the entry screens like any first visit (no
+  // automatic start of lessons or games).
+  const resume = S.card.generated || S.quiz.done || S.game.done || S.lesson.idx > 0;
+  if (resume) window.KAT_Entry?.resume();
 
   if (S.card.generated) {
     show('result');
@@ -1316,9 +1293,6 @@ function restoreProgress() {
   if (S.quiz.done)    { show('lessons'); show('game'); show('quiz'); show('result'); computeResult(); return; }
   if (S.game.done)    { show('lessons'); show('game'); show('quiz'); startQuiz();    return; }
   if (S.lesson.idx>0) { show('lessons'); renderLesson(); return; }
-
-  // Fresh start with this age — begin lessons
-  setTimeout(() => startLessons(), 300);
 }
 
 /* ─────────────────────────────────────────────
@@ -1343,6 +1317,12 @@ window.KAT = {
     scrollTo('protocols');
   },
   get state() { return S; },
+  // js/entry.js
+  selectAge,
+  openModePicker,
+  openParents,
+  exitToHub,
+  inSection: () => sectionEntry,
 };
 
 /* ─────────────────────────────────────────────
@@ -1357,16 +1337,17 @@ function init() {
   if (lessonsExitBtn) lessonsExitBtn.title = exitTitle;
   const quizExitBtn = $('quiz-exit-btn');
   if (quizExitBtn) quizExitBtn.title = exitTitle;
-  boot();
+  afterBoot();
 }
 
-// Pause lessons/quiz and return to the top of the page without erasing
+// Pause lessons/quiz and return to the activities choice without erasing
 // progress — the existing resume logic (see afterBoot) picks up exactly
-// where the learner left off if they select their age again.
+// where the learner left off.
 function exitToHub() {
   hide('lessons');
   hide('quiz');
   leaveSection();
+  window.KAT_Entry?.showHub();
   requestAnimationFrame(() => window.scrollTo(0, 0));
 }
 

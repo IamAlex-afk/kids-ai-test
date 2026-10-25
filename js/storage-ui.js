@@ -136,7 +136,7 @@
   }
 
   function build() {
-    const bar = document.querySelector('.top-bar');
+    const bar = document.querySelector('.wk-actions');
     if (!bar) return;
 
     btn = el('button', { type: 'button', class: 'top-btn kat-store-btn', 'aria-haspopup': 'dialog',

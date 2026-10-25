@@ -35,6 +35,7 @@ const DIRS = [
   { dir: 'data', ext: ['.js'] },
   { dir: 'assets', ext: ['.png', '.ogg', '.md'] },
   { dir: 'assets/sfx', ext: ['.ogg'] },
+  { dir: 'assets/workshop', ext: ['.webp'] },
 ];
 // Not cached offline: SW itself, verification/legal/info files.
 const NO_PRECACHE = new Set(['sw.js', '404.html', 'googled8a35f2a8c073799.html', 'LICENSE',

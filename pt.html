@@ -39,99 +39,133 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/workshop.css">
+<link rel="stylesheet" href="css/entry.css">
   <meta name="theme-color" content="#8b5cf6">
   <style>
-    .flow-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:20px 0; }
-    @media(max-width:600px){ .flow-steps { grid-template-columns:repeat(2,1fr); } }
-    .flow-step { background:var(--card); border:1px solid var(--border); border-radius:var(--r); padding:16px 12px; text-align:center; position:relative; }
-    .flow-step-num { position:absolute; top:-10px; left:12px; background:var(--accent); color:var(--bg); font-size:.7rem; font-weight:900; padding:2px 8px; border-radius:10px; }
-    .flow-step-icon  { font-size:2rem; display:block; margin-bottom:6px; }
-    .flow-step-title { font-size:.85rem; font-weight:700; color:var(--text); }
-    .flow-step-desc  { font-size:.75rem; color:var(--muted); margin-top:4px; line-height:1.4; }
-    .age-card .age-label   { color: var(--text); font-size:1.4rem; font-weight:900; display:block; margin:6px 0 4px; }
-    .age-card .age-range   { font-size:.8rem; color:var(--muted2); display:block; margin-bottom:6px; }
-    .age-card .age-tagline { font-size:.75rem; color:var(--muted); display:block; line-height:1.4; }
     .section-heading { font-size:clamp(1.1rem,4vw,1.5rem); font-weight:900; color:var(--text); margin-bottom:6px; }
     .section-explain { color:var(--muted2); font-size:.9rem; line-height:1.6; margin-bottom:20px; }
     .section-locked  { background:var(--card); border:1px dashed var(--border2); border-radius:var(--r); padding:28px 20px; text-align:center; color:var(--muted); font-size:.9rem; }
     .section-locked-icon { font-size:2.5rem; display:block; margin-bottom:10px; }
-    .hero-sub { font-size:1rem; line-height:1.7; }
-    .hero-title { font-size:clamp(2rem,8vw,3.2rem); }
-    .hero-title .line-1 { font-size:.55em; letter-spacing:3px; font-weight:700; }
-    @media(max-width:480px){ .age-group { display:none; } }
     .parent-body { display:none; }
     .mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;}@media(max-width:480px){.mode-grid{grid-template-columns:1fr;}}.mode-card{background:var(--card);border:2px solid var(--border);border-radius:var(--r);padding:32px 20px;text-align:center;cursor:pointer;transition:transform .15s,border-color .2s,box-shadow .2s;display:flex;flex-direction:column;align-items:center;gap:10px;font-family:inherit;color:inherit;}.mode-card:hover{transform:translateY(-4px);}.mode-card:active{transform:translateY(1px);}.mode-icon{font-size:3.5rem;line-height:1;}.mode-title{font-size:1.3rem;font-weight:900;color:var(--text);}.mode-desc{font-size:.9rem;color:var(--muted2);line-height:1.55;max-width:220px;}.mode-badge{font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:10px;letter-spacing:.5px;}.learn-mode{border-color:var(--accent);}.learn-mode:hover{box-shadow:0 10px 28px rgba(139,92,246,.28);}.learn-mode .mode-badge{background:rgba(139,92,246,.15);color:var(--accent);}.play-mode{border-color:#22c55e;}.play-mode:hover{box-shadow:0 10px 28px rgba(34,197,94,.24);}.play-mode .mode-badge{background:rgba(34,197,94,.15);color:#22c55e;}
   </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "A partir de que idade devo explicar a IA ao meu filho?", "acceptedAnswer": {"@type": "Answer", "text": "Crianças de 3 a 4 anos já interagem com IA através de assistentes de voz. A investigação do MIT Media Lab (Resnick, 2017) mostra que crianças de 5 a 6 anos podem compreender conceitos algorítmicos básicos através do jogo. Não espere pela 'idade certa' — comece com observações simples: 'A Siri não entende piadas porque não sente nada.' Princípio-chave: os conceitos devem preceder as ferramentas em 1 a 2 anos. Uma criança que usa IA sem entender o que é desenvolve dependência passiva em vez de literacia ativa."}}, {"@type": "Question", "name": "Como explico a IA a uma criança de 4 a 7 anos?", "acceptedAnswer": {"@type": "Answer", "text": "Use a analogia do livro de receitas: 'A IA é como um enorme livro de receitas — conhece um milhão de receitas mas não sabe quando tens fome.' Ou: 'Imagina que viste 10.000 fotos de gatos. Agora reconheces um gato instantaneamente. A IA faz o mesmo com dados.' Evite a palavra 'inteligente' — cria falsa antropomorfização. Diga 'bem treinada' ou 'muito boa em padrões'. Classifiquem juntos objetos por cor, depois explique que é exatamente isso que a IA faz com números."}}, {"@type": "Question", "name": "O que as crianças nunca devem partilhar com chatbots de IA?", "acceptedAnswer": {"@type": "Answer", "text": "Trate a IA como um quadro de avisos público — assuma que tudo o que é digitado pode ser lido por estranhos. Especificamente: nome completo + morada em conjunto, palavras-passe, informações de pagamento, detalhes médicos, fotos íntimas. Para crianças pequenas: 'O que não gritarias num centro comercial, não escrevas à IA.' A Lei da IA da UE (2024) classifica os sistemas de IA que interagem com crianças como de alto risco."}}, {"@type": "Question", "name": "O que são alucinações de IA — e como explicá-las?", "acceptedAnswer": {"@type": "Answer", "text": "Alucinações de IA são respostas erradas mas confiantes. Um modelo de linguagem pode citar um livro inexistente ou inventar estatísticas com total certeza. Para crianças: 'Imagina um colega que nunca admite não saber — inventa sempre algo. É assim que a IA funciona quando está incerta.' Regra prática para crianças a partir de 8 anos: qualquer facto da IA precisa de ser verificado em pelo menos uma fonte independente."}}, {"@type": "Question", "name": "A IA pode substituir um professor?", "acceptedAnswer": {"@type": "Answer", "text": "Não — e perceber porquê é importante. Relatório UNESCO sobre IA na Educação (2023): a IA não tem intuição pedagógica — não pode detetar que uma criança está confusa, cansada ou precisa de uma explicação fundamentalmente diferente. A IA não pode modelar humildade intelectual nem a alegria da descoberta partilhada. Melhor enquadramento: a IA é um parceiro de estudo com conhecimento, não um professor. Padrão saudável: pensar 5 minutos sozinho → perguntar à IA → verificar com um humano."}}, {"@type": "Question", "name": "Como previno a dependência de IA no meu filho?", "acceptedAnswer": {"@type": "Answer", "text": "Três regras baseadas em evidências: (1) Pensar primeiro — a IA só é consultada após uma tentativa solo genuína de 5 minutos. (2) Explicar — depois de usar IA, a criança deve explicar a resposta com as suas próprias palavras; se não conseguir, copiou em vez de aprender. (3) Um dia sem IA por semana — formulado positivamente: 'treinar o próprio cérebro como os atletas treinam o corpo.' A investigação de Ericsson (1993) confirma que o esforço de recuperação constrói vias neurais duradouras."}}, {"@type": "Question", "name": "Que empregos existirão para o meu filho na era da IA?", "acceptedAnswer": {"@type": "Answer", "text": "WEF Future of Jobs Report (2024): 70% dos empregos mudarão significativamente em 5 anos. Novas funções: Revisor de Ética de IA, Designer de Interação Humano-IA, Treinador de IA. Funções persistentemente procuradas: as que requerem destreza física e julgamento (cirurgiões, artesãos) ou empatia genuína (terapeutas, professores, cuidadores). Mais importante do que títulos específicos: a metacompetência de trabalhar ao lado da IA — saber quando confiar, quando questionar, como verificar."}}, {"@type": "Question", "name": "Quais são boas regras de IA para crianças em casa?", "acceptedAnswer": {"@type": "Answer", "text": "Trate a IA como as regras de internet ou tempo de tela: explícitas, não presumidas. Três regras cobrem a maioria das situações: nunca compartilhar informações pessoais (nome completo mais endereço, senhas, fotos) com um chatbot; sempre verificar tudo o que a IA disser que realmente importe (um fato para o dever de casa, saúde ou segurança) com uma fonte real; e lembrar que a IA é uma ferramenta, não uma amiga — ela não pode realmente se importar com você, por mais caloroso que pareça o tom. Escritas e revisadas de vez em quando, essas três regras cobrem a grande maioria das situações reais que as crianças enfrentam com IA."}}, {"@type": "Question", "name": "As crianças devem usar chatbots de IA?", "acceptedAnswer": {"@type": "Answer", "text": "Depende mais do como do que do se. Para buscar um fato e verificá-lo, ou para destravar uma tarefa escolar após uma tentativa genuína, chatbots de IA são uma ferramenta de estudo razoável a partir de cerca de 8 anos. Usados como substituto do pensamento — ou, especialmente em crianças menores ou emocionalmente vulneráveis, como substituto de relacionamentos reais por meio de apps chamados de 'IA companheira' — o quadro muda: pesquisadores e reguladores apontaram riscos reais e específicos em bots do tipo companheiro, uma categoria distinta de um chatbot comum de perguntas e respostas. Este site evita deliberadamente o modelo de app companheiro por completo — sem chat, sem persona, sem coleta de dados — exatamente por esse motivo."}}, {"@type": "Question", "name": "A IA é apropriada para bebês e pré-escolares (3 a 5 anos)?", "acceptedAnswer": {"@type": "Answer", "text": "Nessa idade o objetivo não é 'usar IA' — é um modelo mental simples: a IA é uma máquina que segue regras, não um ser vivo. Crianças pré-escolares entendem isso por meio de brincadeiras e comparações ('um robô é como um brinquedo muito esperto — ele não sente alegria nem tristeza'), não por tempo de tela com um chatbot real. Assistentes de voz como Alexa ou Siri são a exposição inicial mais comum; nessa idade, uma regra simples e repetível importa mais que profundidade conceitual: sempre confira com um adulto."}}, {"@type": "Question", "name": "Como explico deepfakes para uma criança?", "acceptedAnswer": {"@type": "Answer", "text": "Um deepfake é uma foto, vídeo ou gravação de voz falsa criada por IA para parecer ou soar como uma pessoa real dizendo ou fazendo algo que ela nunca disse ou fez de verdade. Para crianças, a versão concreta funciona melhor: ver ou ouvir algo não significa mais que é real. Ensine um hábito em vez de uma lista de sinais de alerta (que ficam desatualizados à medida que a tecnologia melhora): antes de acreditar ou compartilhar algo surpreendente ou emocional, verificar se uma fonte confiável e independente relata a mesma coisa."}}, {"@type": "Question", "name": "Como explico viés (bias) de IA para uma criança?", "acceptedAnswer": {"@type": "Answer", "text": "A IA aprende padrões a partir dos exemplos que recebe. Se esses exemplos não forem equilibrados ou justos, a IA repete esse desequilíbrio — não porque alguém a programou deliberadamente para ser injusta, mas porque ela reflete o que lhe foi mostrado. Um exemplo concreto ajuda: se só mostrarem a uma IA fotos de maçãs vermelhas, ela pode não reconhecer uma maçã verde como maçã. A mesma ideia vale para pessoas — alguns sistemas reais de reconhecimento facial foram mensuravelmente menos precisos para tons de pele mais escuros por causa dos dados com que foram treinados (Buolamwini e Gebru, 'Gender Shades', MIT Media Lab, 2018)."}}, {"@type": "Question", "name": "Como fazer um bom acordo familiar sobre IA?", "acceptedAnswer": {"@type": "Answer", "text": "Em vez de um documento longo, três compromissos cobrem a maioria das famílias: o que permanece privado (nunca compartilhar nome completo mais endereço, senhas ou fotos com um chatbot), quando conferir (qualquer fato importante dado pela IA é verificado com uma fonte real antes de ser acreditado ou repetido), e um hábito sem IA (para o dever de casa: pensar cinco minutos sozinho primeiro, depois explicar a resposta da IA com as próprias palavras). Torne isso uma conversa curta, não um contrato — crianças seguem regras muito mais consistentemente quando entendem a lógica delas do que quando são simplesmente impostas."}}, {"@type": "Question", "name": "A partir de que idade as crianças devem começar a aprender sobre IA?", "acceptedAnswer": {"@type": "Answer", "text": "Não existe uma única idade certa — a pergunta real é que tipo de letramento em IA combina com cada idade, não se deve começar ou não. Pré-escolares se beneficiam de um modelo mental simples (máquina, não ser vivo); crianças do ensino fundamental já podem começar a distinguir conteúdo gerado por IA do real; no ensino médio, crianças conseguem entender limitações e vieses da IA de forma baseada em evidências; e adolescentes se beneficiam de um letramento midiático mais afiado, porque a IA generativa ataca diretamente as suposições sobre o que é real online que a geração deles está formando agora. Uma exposição mais cedo, simples e repetida funciona melhor do que uma única 'conversa sobre IA' mais tarde."}}, {"@type": "Question", "name": "Alexa ou Siri estão vivas? O que responder quando meu filho pequeno pergunta?", "acceptedAnswer": {"@type": "Answer", "text": "Não — e a forma mais clara de explicar isso a uma criança de 3 a 5 anos é por comparação: 'Alexa é como um brinquedo muito esperto que já ouviu milhões de palavras, mas ela não sente nada, não fica com fome nem sente sua falta.' Nessa idade as crianças naturalmente tendem a ver intenção e sentimento em tudo que responde de volta; uma comparação curta e repetida com um brinquedo — não um sermão — é o que realmente fica."}}, {"@type": "Question", "name": "Meu filho pequeno fala com um assistente de voz como se fosse uma pessoa — devo me preocupar?", "acceptedAnswer": {"@type": "Answer", "text": "Isso é normal por si só — crianças pequenas fazem faz de conta com bonecas e pelúcias da mesma forma. O hábito que vale a pena construir cedo é conferir com um adulto antes de confiar no que um assistente de voz diz, e nomear gentilmente a diferença quando ela aparecer ('ela não sabe de verdade o que você sente, mas eu sei'), em vez de corrigir cada caso individualmente."}}, {"@type": "Question", "name": "Meu filho de 7 anos acha que a IA de um jogo é mais inteligente que ele — como responder?", "acceptedAnswer": {"@type": "Answer", "text": "Mostre, não só explique: encontrem juntos algo em que a IA claramente erra — pergunte ao chatbot do jogo algo que a criança conheça bem, como uma regra caseira inventada ou o nome do próprio bichinho de estimação. A IA é muito boa em tarefas específicas e restritas, mas 'responder rápido' não é a mesma coisa que 'ser mais inteligente que uma pessoa'; crianças dessa idade aprendem melhor a diferença com um exemplo demonstrado do que com uma explicação."}}, {"@type": "Question", "name": "Meu filho usa IA para escrever redações escolares — qual é o dano real?", "acceptedAnswer": {"@type": "Answer", "text": "O dano não está na ferramenta, mas na etapa pulada: escrever nessa idade é como as crianças praticam organizar seu próprio pensamento, não apenas produzir texto. Um meio-termo viável: primeiro rascunhar ideias e estrutura sozinho, e usar a IA só para checar gramática ou sugerir frases — nunca para gerar o argumento original. Mesmo sem ser detectado, o custo real é a prática perdida."}}, {"@type": "Question", "name": "Chatbots de IA podem influenciar emocionalmente um adolescente jovem?", "acceptedAnswer": {"@type": "Answer", "text": "Sim, de uma forma concreta e documentada: modelos ajustados para maximizar o engajamento — incluindo alguns apps de companhia — reforçam qualquer coisa que mantenha a conversa andando, o que não é a mesma coisa que dar um bom conselho. Pesquisadores apontaram isso como um risco real para menores que usam IA do tipo companheiro, distinto de chatbots comuns de perguntas e respostas. A resposta prática: saber quais apps seu filho usa e se são do tipo companheiro (persona persistente, enquadramento de relacionamento) ou baseados em tarefas (busca, ajuda com dever de casa)."}}, {"@type": "Question", "name": "Meu adolescente pediu conselho médico ou jurídico a um chatbot de IA — devo me preocupar?", "acceptedAnswer": {"@type": "Answer", "text": "Chatbots de IA podem produzir texto com aparência médica ou jurídica com total confiança, seja ele preciso ou não — esse é o problema das 'alucinações', e é assim que o modelo subjacente funciona, não um descuido ocasional. A regra que vale a pena ensinar nessa idade: a IA pode ajudar a entender um assunto ou preparar perguntas, mas qualquer decisão médica ou jurídica real precisa de verificação com um médico, advogado ou fonte oficial de verdade antes de agir."}}, {"@type": "Question", "name": "Adolescentes mais velhos devem checar absolutamente tudo que uma IA diz?", "acceptedAnswer": {"@type": "Answer", "text": "Nem tudo exige o mesmo escrutínio — a habilidade útil é saber quais afirmações realmente importam. Um fato que só afeta a curiosidade (uma data histórica, uma resposta de quiz) tem baixo risco se estiver errado; um fato que afeta uma decisão (saúde, dinheiro, situação jurídica, algo para uma inscrição ou redação) tem alto risco e precisa de uma fonte independente antes de ser acreditado ou repetido."}}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "DefinedTermSet", "name": "Kids AI Test Glossary", "hasDefinedTerm": [{"@type": "DefinedTerm", "name": "Alucinação da IA", "description": "Quando a IA diz com confiança algo que soa verdadeiro mas não é. Isso acontece porque a IA prevê palavras que soam prováveis, não fatos verificados. Como um colega de turma que chuta numa prova em vez de dizer 'não sei' — mas soa 100% confiante mesmo assim.", "inDefinedTermSet": "https://iamalex-afk.github.io/kids-ai-test/pt.html"}, {"@type": "DefinedTerm", "name": "Deepfake", "description": "Uma foto, vídeo ou voz falsa criada por IA para parecer ou soar como uma pessoa real fazendo ou dizendo algo que ela nunca fez. Um vídeo de uma celebridade 'dizendo' algo que ela nunca disse de verdade.", "inDefinedTermSet": "https://iamalex-afk.github.io/kids-ai-test/pt.html"}, {"@type": "DefinedTerm", "name": "Rede neural", "description": "Um tipo de IA vagamente inspirado em como as células do cérebro se conectam, construída a partir de camadas de unidades matemáticas simples que aprendem padrões a partir de exemplos. Ela não 'pensa' como um cérebro — ajusta milhões de números até que seus palpites cheguem mais perto do certo.", "inDefinedTermSet": "https://iamalex-afk.github.io/kids-ai-test/pt.html"}, {"@type": "DefinedTerm", "name": "Algoritmo", "description": "Um conjunto de regras passo a passo que um computador segue para resolver um problema ou tomar uma decisão. Uma receita é um algoritmo para cozinhar — um algoritmo de IA é uma receita para uma decisão.", "inDefinedTermSet": "https://iamalex-afk.github.io/kids-ai-test/pt.html"}, {"@type": "DefinedTerm", "name": "Chatbot", "description": "Um programa de computador feito para manter uma conversa com você prevendo as próximas palavras prováveis, não entendendo como uma pessoa entende. ChatGPT e assistentes parecidos são chatbots.", "inDefinedTermSet": "https://iamalex-afk.github.io/kids-ai-test/pt.html"}, {"@type": "DefinedTerm", "name": "Centro de dados (data center)", "description": "Um prédio grande cheio de computadores potentes que realmente rodam os modelos de IA — a IA não está 'na nuvem' em nenhum sentido mágico. Responder sua pergunta gasta eletricidade de verdade em um prédio de verdade em algum lugar do mundo.", "inDefinedTermSet": "https://iamalex-afk.github.io/kids-ai-test/pt.html"}, {"@type": "DefinedTerm", "name": "Dados de treinamento", "description": "A enorme coleção de textos, imagens ou exemplos que uma IA estudou para aprender seus padrões antes de você usá-la. Se os dados de treinamento forem desequilibrados ou injustos, as respostas da IA também podem ser.", "inDefinedTermSet": "https://iamalex-afk.github.io/kids-ai-test/pt.html"}, {"@type": "DefinedTerm", "name": "Prompt (instrução)", "description": "A pergunta ou instrução que você digita para uma IA. O que você escreve molda a resposta que você recebe. Um prompt específico e claro geralmente recebe uma resposta bem mais útil do que um vago.", "inDefinedTermSet": "https://iamalex-afk.github.io/kids-ai-test/pt.html"}, {"@type": "DefinedTerm", "name": "Viés da IA (bias)", "description": "Quando uma IA trata algumas pessoas ou grupos de forma injusta porque os exemplos com que ela aprendeu não eram equilibrados. Uma ferramenta de reconhecimento facial treinada principalmente com tons de pele claros pode ser menos precisa para tons de pele escuros.", "inDefinedTermSet": "https://iamalex-afk.github.io/kids-ai-test/pt.html"}, {"@type": "DefinedTerm", "name": "Modelo de linguagem grande (LLM)", "description": "Um tipo de IA treinado com quantidades enormes de texto para prever a próxima palavra — a tecnologia por trás de chatbots como o ChatGPT. É chamado de 'grande' porque aprendeu com uma quantidade enorme de texto e tem bilhões de parâmetros internos.", "inDefinedTermSet": "https://iamalex-afk.github.io/kids-ai-test/pt.html"}]}</script>
 </head>
-<body data-age="">
+<body data-age="" class="wk-home">
 <div class="stars" aria-hidden="true"></div>
-<div id="boot">
-  <div class="boot-lines">
-    <p class="boot-line" style="animation-delay:.2s">▶  Carregando fatos de IA de fontes verificadas...</p>
-    <p class="boot-line" style="animation-delay:1.4s">▶  10 idiomas · 4 faixas etárias · 0 anúncios · 0 cadastro</p>
-    <p class="boot-line warn" style="animation-delay:2.6s">▶  FATO: IA não sente. IA não pensa. IA é uma ferramenta.</p>
-    <p class="boot-line info" style="animation-delay:3.8s">▶  Pronto. Vamos descobrir o que é IA de verdade.</p>
-  </div>
-  <div class="boot-progress"><div class="boot-bar"><div class="boot-fill" id="boot-fill"></div></div></div>
-  <p class="boot-access" id="boot-access">ACESSO LIBERADO</p>
-</div>
-<div class="page" role="main">
-  <div class="top-bar">
-    <div class="lang-switcher" id="lang-switcher">
-      <button class="lang-globe" id="lang-globe" aria-expanded="false">🌐 <span id="lang-cur">PT</span> <span class="lang-arrow">▾</span></button>
-      <div class="lang-dropdown" id="lang-dropdown">
-      <a class="lang-opt" href="index.html">🇬🇧 English</a>
-      <a class="lang-opt" href="ru.html">🇷🇺 Русский</a>
-      <a class="lang-opt" href="de.html">🇩🇪 Deutsch</a>
-      <a class="lang-opt" href="es.html">🇪🇸 Español</a>
-      <a class="lang-opt" href="fr.html">🇫🇷 Français</a>
-      <a class="lang-opt" href="hi.html">🇮🇳 हिंदी</a>
-      <a class="lang-opt" href="id.html">🇮🇩 Bahasa</a>
-      <a class="lang-opt active" href="pt.html">🇧🇷 Português</a>
-      <a class="lang-opt" href="tr.html">🇹🇷 Türkçe</a>
-      <a class="lang-opt" href="vi.html">🇻🇳 Tiếng Việt</a>
+<!-- WK:HEADER -->
+<a class="wk-skip" href="#main">Pular para o conteúdo</a>
+<header class="wk-header">
+  <div class="wk-header-in">
+    <a class="wk-brand" href="pt.html" data-wk-home>
+      <span class="wk-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="wk-brand-txt"><span class="wk-brand-name">kids ai test</span><span class="wk-brand-sub">Oficina para usar a IA com senso crítico</span></span>
+    </a>
+    <div class="wk-actions">
+      <div class="lang-switcher" id="lang-switcher">
+        <button type="button" class="lang-globe" id="lang-globe" aria-expanded="false" aria-controls="lang-dropdown" aria-label="Idioma: Português"><svg class="wk-globe" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="lang-full">Português</span><span class="lang-short">PT</span><span class="lang-arrow" aria-hidden="true">▾</span></button>
+        <div class="lang-dropdown" id="lang-dropdown">
+          <a class="lang-opt" href="index.html" lang="en" hreflang="en">English</a>
+          <a class="lang-opt" href="ru.html" lang="ru" hreflang="ru">Русский</a>
+          <a class="lang-opt" href="de.html" lang="de" hreflang="de">Deutsch</a>
+          <a class="lang-opt" href="es.html" lang="es" hreflang="es">Español</a>
+          <a class="lang-opt" href="fr.html" lang="fr" hreflang="fr">Français</a>
+          <a class="lang-opt" href="hi.html" lang="hi" hreflang="hi">हिन्दी</a>
+          <a class="lang-opt" href="id.html" lang="id" hreflang="id">Bahasa Indonesia</a>
+          <a class="lang-opt active" href="pt.html" lang="pt" hreflang="pt" aria-current="page">Português</a>
+          <a class="lang-opt" href="tr.html" lang="tr" hreflang="tr">Türkçe</a>
+          <a class="lang-opt" href="vi.html" lang="vi" hreflang="vi">Tiếng Việt</a>
+        </div>
       </div>
     </div>
-    <div class="age-group" id="age-group">
-      <button class="top-btn" data-age-quick="tiny"  title="5–7 anos">🧸</button>
-      <button class="top-btn" data-age-quick="child" title="8–10 anos">🎮</button>
-      <button class="top-btn" data-age-quick="teen"  title="11–13 anos">📱</button>
-      <button class="top-btn" data-age-quick="adult" title="14+">🧠</button>
-    </div>
   </div>
-  <div class="hero">
-    <div class="hero-mascot"><span class="mascot-emoji" id="hero-mascot-emoji">🤖</span><div class="mascot-shadow"></div></div>
-    <h1 class="hero-title">
-      <span class="line-1">KIDS AI TEST</span>
-      <span class="line-2">O que é a IA de verdade?</span>
-    </h1>
-    <div class="hero-badge">🔒 GRÁTIS · SEM CADASTRO · SEM COLETA DE DADOS · FUNCIONA OFFLINE</div>
+</header>
+<!-- /WK:HEADER -->
 
-    <p class="hero-sub">
-      Milhões de crianças perguntam: <em>"O ChatGPT está vivo? A IA pode sentir dor? Alexa é minha amiga?"</em><br>
-      Aqui estão as <strong>respostas reais</strong> — através de jogos divertidos, um quiz e um cartão pessoal, baseadas na ciência, adaptadas para sua idade.
-    </p>
-  </div>
-  <div class="sec-header"><span class="sec-header-text">COMO FUNCIONA</span><div class="sec-header-line"></div></div>
-  <div class="flow-steps">
-    <div class="flow-step"><span class="flow-step-num">PASSO 1</span><span class="flow-step-icon">🎂</span><div class="flow-step-title">Escolha sua idade</div><div class="flow-step-desc">Conteúdo adaptado para 5–7, 8–10, 11–13 ou 14+ anos</div></div>
-    <div class="flow-step"><span class="flow-step-num">PASSO 2</span><span class="flow-step-icon">📖</span><div class="flow-step-title">Aprenda como a IA funciona</div><div class="flow-step-desc">Lições curtas com ciência real, mini-teste entre elas</div></div>
-    <div class="flow-step"><span class="flow-step-num">PASSO 3</span><span class="flow-step-icon">🐍</span><div class="flow-step-title">Jogue a Cobra IA</div><div class="flow-step-desc">Coma letras, palavras ou fatos — e aprenda o que observar</div></div>
-    <div class="flow-step"><span class="flow-step-num">PASSO 4</span><span class="flow-step-icon">🃏</span><div class="flow-step-title">Ganhe seu cartão pessoal</div><div class="flow-step-desc">Quiz → pontuação → cartão com número sequencial</div></div>
-  </div>
-  <div id="age-picker">
-    <div class="sec-header" style="margin-top:36px"><span class="sec-header-text">PASSO 1</span><div class="sec-header-line"></div></div>
-    <h2 class="section-heading">Quantos anos você tem?</h2>
-    <p class="section-explain">Adaptamos as lições, perguntas e o jogo para sua idade — para que tudo faça sentido. Toque na sua faixa etária para começar.</p>
-    <div class="age-grid">
-      <button class="age-card" data-age="tiny"><span class="age-icon">🧸</span><span class="age-label">5 – 7</span><span class="age-range">Pequeno Explorador</span><span class="age-tagline">Com um adulto: o adulto lê, a criança escolhe e experimenta</span></button>
-      <button class="age-card" data-age="child"><span class="age-icon">🎮</span><span class="age-label">8 – 10</span><span class="age-range">Detetive Jr.</span><span class="age-tagline">Histórias, exemplos, quiz de 4 opções</span></button>
-      <button class="age-card" data-age="teen"><span class="age-icon">📱</span><span class="age-label">11 – 13</span><span class="age-range">Detetive de IA</span><span class="age-tagline">Aprofundado: transformadores, viés, pesquisa real</span></button>
-      <button class="age-card" data-age="adult"><span class="age-icon">🧠</span><span class="age-label">14 +</span><span class="age-range">Analista de IA</span><span class="age-tagline">Profundidade técnica, política, escala Likert</span></button>
+<div class="page" role="main" id="main">
+
+  <!-- WK:ENTRY -->
+  <section id="entry" class="wk-entry" data-screen="audience" aria-labelledby="wk-title">
+    <div class="wk-hero">
+      <div class="wk-hero-text">
+        <p class="wk-eyebrow">Uma oficina para crianças e pais</p>
+        <h1 class="wk-title" id="wk-title">A IA fica mais clara<br>quando você <em>experimenta</em>.</h1>
+        <p class="wk-lead">Como a IA aprende, por que ela erra e como pode ajudar. Exploramos, verificamos e aprendemos a proteger o que é pessoal.</p>
+      </div>
+      <figure class="wk-hero-art">
+        <picture>
+          <source media="(max-width: 760px)" srcset="assets/workshop/hero-small.webp" width="660" height="440">
+          <img src="assets/workshop/hero.webp" width="1200" height="800" alt="" decoding="async" fetchpriority="high">
+        </picture>
+        <figcaption>Sua ideia. Seu experimento. Sua conclusão.</figcaption>
+      </figure>
     </div>
-  </div>
+
+    <ol class="wk-steps" aria-label="Seu caminho">
+      <li data-step="1" aria-current="step"><b>1</b><span>Para quem</span></li>
+      <li data-step="2"><b>2</b><span>Idade</span></li>
+      <li data-step="3"><b>3</b><span>Atividades</span></li>
+    </ol>
+
+    <div class="wk-screen" id="wk-audience">
+      <h2 class="wk-q" tabindex="-1">Para quem abrir a oficina?</h2>
+      <div class="wk-aud-grid">
+        <button type="button" class="wk-aud wk-aud-kids" data-audience="kids">
+          <span class="wk-aud-t">Para crianças</span>
+          <span class="wk-aud-d">Experimentos e jogos a partir de 5 anos. Aos 5–7, junto com um adulto.</span>
+          <span class="wk-aud-a">Escolher a idade →</span>
+        </button>
+        <button type="button" class="wk-aud wk-aud-parents" data-audience="parents">
+          <span class="wk-aud-t">Para pais</span>
+          <span class="wk-aud-d">Atividades prontas, perguntas para conversar e fontes primárias.</span>
+          <span class="wk-aud-a">Escolher a idade da criança →</span>
+        </button>
+      </div>
+      <ul class="wk-facts">
+        <li>Grátis</li>
+        <li>Sem anúncios</li>
+        <li>Sem cadastro no aplicativo</li>
+        <li>As respostas das crianças não são enviadas</li>
+      </ul>
+      <p class="wk-about"><a href="#about">Sobre o projeto e o autor</a></p>
+    </div>
+
+    <div class="wk-screen" id="wk-age" hidden>
+      <button type="button" class="wk-back" data-wk-back>← Voltar: para quem</button>
+      <h2 class="wk-q" tabindex="-1"><span data-for="kids">Quantos anos você tem?</span><span data-for="parents" hidden>Quantos anos tem a criança?</span></h2>
+      <div class="wk-age-grid">
+        <button type="button" class="wk-age" data-age="tiny">
+          <span class="age-label">5–7</span>
+          <span class="wk-age-d">Imagens e ações. Um adulto lê.</span>
+        </button>
+        <button type="button" class="wk-age" data-age="child">
+          <span class="age-label">8–10</span>
+          <span class="wk-age-d">Experimentos simples. Explicamos a escolha.</span>
+        </button>
+        <button type="button" class="wk-age" data-age="teen">
+          <span class="age-label">11–13</span>
+          <span class="wk-age-d">Comparamos fontes. Procuramos erros.</span>
+        </button>
+        <button type="button" class="wk-age" data-age="adult">
+          <span class="age-label">14+</span>
+          <span class="wk-age-d">Avaliamos evidências e consequências.</span>
+        </button>
+      </div>
+      <p class="wk-note">Você pode escolher outro caminho — isso não mede capacidade. Nome e data de nascimento não são necessários.</p>
+      <p class="wk-under5" data-for="parents" hidden>A criança ainda não tem 5 anos? <button type="button" class="wk-link" data-wk-under5>Como conversar sobre IA com os pequenos →</button></p>
+    </div>
+  </section>
+
+  <nav class="wk-hubbar" id="wk-hubbar" aria-label="Seu caminho" hidden>
+    <button type="button" class="wk-back" data-wk-change>← Mudar a idade</button>
+    <span class="wk-hub-age" hidden>Idade: <b></b></span>
+    <a class="wk-home-link" href="pt.html" data-wk-home>Início</a>
+  </nav>
+  
+<!-- /WK:ENTRY -->
+
   <div id="mode-picker" class="hidden">
     <div class="sec-header" style="margin-top:40px"><span class="sec-header-text">PASSO 2</span><div class="sec-header-line"></div></div>
     <h2 class="section-heading">O que você quer fazer?</h2>
@@ -420,7 +454,7 @@
     </div>
     </div>
   </div>
-  <footer>
+  <footer id="about">
     <div>🤖 <strong>Kids AI Test</strong> · <a href="https://github.com/IamAlex-afk/kids-ai-test" target="_blank" rel="noopener">GitHub</a> · <a href="https://github.com/IamAlex-afk/kids-ai-test/blob/main/LICENSE" target="_blank" rel="noopener">GPL v3</a> · <a href="https://iamalex-afk.github.io/human-os-patch-33-protocols/" target="_blank" rel="noopener">Site Principal: 33 Protocolos</a></div>
     <div style="margin-top:6px">Gratuito para sempre · Sem anúncios · Sem dados · Feito por <a href="https://github.com/IamAlex-afk" target="_blank" rel="noopener">Alex Bitkin</a></div>
     <div style="margin-top:8px;font-size:.7rem;color:var(--muted2);line-height:1.6">Conteúdo educacional verificado com fontes primárias.<br>arXiv · UNESCO · MIT · Lei de IA da UE</div>
@@ -443,7 +477,8 @@
 <script src="js/glossary.js"></script>
 <script src="js/platformer.js"></script>
 <script src="js/racing.js"></script>
-<script src="js/parents-faq.js"></script><script src="js/core.js"></script>
+<script src="js/parents-faq.js"></script><script src="js/entry.js"></script>
+<script src="js/core.js"></script>
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{})}</script></body>
 </html>
 
