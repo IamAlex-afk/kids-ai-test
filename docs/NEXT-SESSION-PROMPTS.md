@@ -17,3 +17,22 @@ fixed, test output, and a commit — no push until the last stage passes.
 > unopened lessons/ru/8-10-3.html shows the Russian "not saved offline" page on
 > that same URL with a link to ru.html; an already opened lesson opens.
 > Report exact results; commit fixes.
+
+## Stage 2 — series registry, engine, lesson A "sorter" (commit "Workshop series…")
+
+> Branch release/three-lessons. Run `node tools/gen-series.mjs` (writes
+> workshop/ru|en/ and the WORKSHOP block of sitemap.xml), then
+> `node tools/gen-series.mjs --check`, `node tools/gen-lessons.mjs --check`,
+> `node tools/build.mjs --check`, `node --test "tests/**/*.test.mjs"`.
+> Fix failures in code/content, not by weakening tests. Then headless Chrome
+> (fresh profile, dist/ at /kids-ai-test/), for workshop/ru/sorter.html and
+> workshop/en/sorter.html, each with ?age=5-7, 8-10, 11-13, 14-plus: walk every
+> step; guess → sorter says "square" (wrong); add only a repeat card → rule
+> stays "background" with the explanation; add a pattern-breaking card → rule
+> "shape", check cards all ✓; new example: wrong pick → explanation + retry,
+> right pick → done; final links keep ?age=. Also: keyboard only (Tab/Enter,
+> visible focus, focus moves to the step heading), 360px width, 200% zoom, no
+> JS (goal, explanation, adult block, print task, sources visible), print
+> preview (task + answers, no app), console free of errors. Screenshot and look
+> at 5–7 and 14+. Report exact results; commit fixes. Generated files are
+> committed together with the generator.

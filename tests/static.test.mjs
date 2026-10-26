@@ -116,12 +116,14 @@ test('entry screens: styles and entry.js are wired, no boot overlay', () => {
 
 test('sitemap: only canonical, indexable published pages; honest lastmod', async () => {
   const { renderAll } = await import(new URL('tools/gen-lessons.mjs', root));
+  const { renderAll: renderSeries } = await import(new URL('tools/gen-series.mjs', root));
   const lessonFiles = [...renderAll().keys()];
+  const seriesFiles = [...renderSeries().keys()];
   const sm = read('sitemap.xml');
   const SITE = 'https://iamalex-afk.github.io/kids-ai-test/';
   const urls = [...sm.matchAll(/<url>([\s\S]*?)<\/url>/g)].map(m => m[1]);
-  assert.equal(urls.length, LANGS.length + lessonFiles.length, 'language pages + lesson catalogs + lesson pages');
-  const allowed = new Set([...LANGS.map(page), ...lessonFiles]);
+  assert.equal(urls.length, LANGS.length + lessonFiles.length + seriesFiles.length, 'language pages + lessons + workshop pages');
+  const allowed = new Set([...LANGS.map(page), ...lessonFiles, ...seriesFiles]);
   const today = new Date().toISOString().slice(0, 10);
   const seen = new Set();
   for (const u of urls) {
