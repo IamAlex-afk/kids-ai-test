@@ -20,9 +20,16 @@ const COL = {
 const std = (color, o = {}) => new THREE.MeshStandardMaterial({ color, roughness: 0.85, metalness: 0, ...o });
 const shadowy = (m, cast = true, receive = true) => { m.castShadow = cast; m.receiveShadow = receive; return m; };
 
-// Leaf colour from the model's hue feature: 0 teal … 1 orange.
+// Leaf colour from the model's hue feature (0 teal … 1 orange). The two
+// kinds must read at a glance, so the mapping is not a straight blend
+// (that made teal leaves look grey-green): below 0.42 clear teal, above
+// 0.58 clear orange, in between an olive mix (the borderline plant).
+const TEAL = new THREE.Color(0x14b8a6), ORANGE = new THREE.Color(0xf2851c), OLIVE = new THREE.Color(0x9aa83a);
 export function leafColor(hue) {
-  return new THREE.Color(COL.teal).lerp(new THREE.Color(COL.orange), hue);
+  if (hue <= 0.42) return TEAL.clone().offsetHSL(0, 0, (0.3 - hue) * 0.3);
+  if (hue >= 0.58) return ORANGE.clone().offsetHSL(0, 0, (hue - 0.7) * 0.3);
+  const t = (hue - 0.42) / 0.16;
+  return t < 0.5 ? TEAL.clone().lerp(OLIVE, t * 2) : OLIVE.clone().lerp(ORANGE, (t - 0.5) * 2);
 }
 
 function sky(scene) {
@@ -136,7 +143,10 @@ export function plantMesh(p) {
   const pot = shadowy(new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.22, 0.3, 14), std(0xd8cdb8)));
   pot.position.y = 0.15;
   g.add(pot);
-  g.userData.top = h + 0.25;
+  // shown 1.35× life size next to the robot so height and leaf colour read
+  // clearly; relative heights (the model's feature) are unchanged
+  g.scale.setScalar(1.35);
+  g.userData.top = (h + 0.25) * 1.35;
   return g;
 }
 

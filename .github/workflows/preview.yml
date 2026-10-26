@@ -49,6 +49,7 @@ jobs:
             shot "desktop-ru-$s" "$B?lang=ru&age=8-10&shot=$s" 1280 800
           done
           shot "phone-en-gate" "$B?lang=en&age=8-10&shot=gate" 390 844
+          shot "phone-ru-garden" "$B?lang=ru&age=5-7&shot=garden" 390 844
           shot "desktop-en-tiny-finale" "$B?lang=en&age=5-7&shot=finale" 1280 800
           shot "desktop-de-adult-finale" "$B?lang=de&age=14-plus&shot=finale" 1280 800
           shot "text-version-ru" "$B?lang=ru&age=11-13&mode=text" 1280 900

@@ -72,6 +72,7 @@ body {
   position: fixed; z-index: 3; right: max(16px, env(safe-area-inset-right)); bottom: max(20px, env(safe-area-inset-bottom));
   width: 92px; height: 92px; border-radius: 50%; border: 4px solid #fff; background: var(--violet); color: #fff;
   font: inherit; font-weight: 800; box-shadow: 0 8px 22px rgba(40,30,120,.3); cursor: pointer; padding: 6px; line-height: 1.15;
+  font-size: .82rem; overflow-wrap: anywhere; hyphens: auto;
 }
 .isl-act:disabled { background: #9aa3b5; box-shadow: none; cursor: default; }
 @media (hover: hover) and (pointer: fine) { .isl-pad { opacity: .85; } }
@@ -106,10 +107,18 @@ body.isl-textmode .isl-hud { position: static; width: min(760px, calc(100% - 24p
 .isl-plant:disabled { opacity: .55; cursor: default; }
 
 @media (max-width: 640px) {
-  .isl-hud { top: 112px; }
-  .isl-goal { font-size: 1rem; }
-  .isl-say { max-height: 26vh; }
+  /* phones: one menu button (Pause opens a menu with every option), so the
+     top bar stays on one line and never covers the goal */
+  #isl-settings, #isl-text, #isl-exit { display: none; }
+  .isl-top { flex-wrap: nowrap; }
+  .isl-brand { padding: 6px 12px; font-size: .9rem; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .isl-hud { top: 62px; gap: 6px; }
+  .isl-goal { font-size: .95rem; padding: 8px 12px; }
+  .isl-count { padding: 6px 12px; font-size: .9rem; }
+  .isl-say { max-height: 22vh; font-size: .9rem; padding: 8px 12px; }
+  .isl-near { font-size: .9rem; padding: 8px 12px; }
   .isl-note { display: none; }
+  body.isl-textmode #isl-text { display: inline-flex; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 .isl-noscript { position: fixed; inset: 0; z-index: 9; background: #fff; padding: 24px; overflow: auto; }

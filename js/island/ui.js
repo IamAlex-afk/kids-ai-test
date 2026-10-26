@@ -11,9 +11,9 @@ import { LEVEL } from './model.js';
 export function createUI(o) {
   const { T, fill, game, settings, ageKey, lang, describe, needText, countKinds } = o;
   const $ = (id) => document.getElementById(id);
-  const el = (tag, attrs = {}, ...kids) => {
+  const el = (tag, attrs, ...kids) => {
     const e = document.createElement(tag);
-    for (const [k, v] of Object.entries(attrs)) {
+    for (const [k, v] of Object.entries(attrs || {})) {
       if (v == null || v === false) continue;
       if (k === 'text') e.textContent = v; else if (k === 'class') e.className = v;
       else if (k.startsWith('on')) e.addEventListener(k.slice(2), v); else e.setAttribute(k, v === true ? '' : v);
@@ -137,8 +137,11 @@ export function createUI(o) {
     $('isl-goal').textContent = T.goal.done;
   }
   function paused(p) {
+    // On phones this is the only menu (the top bar keeps just "Pause"),
+    // so every option is reachable from here.
     if (p) open(T.paused, el('p', { text: T.controlsHelp }), [btn(T.resume, close), btn(T.restart, () => o.onRestart()),
-      btn(T.settings, () => { close(); openSettings(); }), el('a', { class: 'isl-btn', href: backHref(), text: T.exit })], () => o.onPause(false));
+      btn(T.settings, () => { close(); openSettings(); }), btn(T.textMode, () => { close(); o.onText(); }),
+      el('a', { class: 'isl-btn', href: backHref(), text: T.exit })], () => o.onPause(false));
   }
   function openSettings() {
     const box = (key, label) => {
