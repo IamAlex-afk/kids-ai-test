@@ -61,3 +61,24 @@ fixed, test output, and a commit — no push until the last stage passes.
 > still work; "Change age" → age screen; browser Back from route → age? →
 > home without loops; parents path unchanged (parents' corner). Keyboard:
 > focus lands on the route heading. Report exact results; commit fixes.
+
+## Stage 5 — sources, then publish
+
+> Open every source URL in tools/series/{sorter,check,share}.mjs (WebFetch or
+> curl). For each: does the page exist, is the title right, does it support
+> the "supports" sentence? Fix or remove any that do not — never invent a
+> replacement. Then: `git diff --stat main...HEAD`, list new files, update
+> PROJECT-STATUS.md (done / checked / limits), push release/three-lessons,
+> open a PR, wait for CI (build + tests + CodeQL), merge with the existing
+> process, wait for the Pages run incl. the `verify` job, open
+> /kids-ai-test/version.json and the three workshop pages live (ru/en). Report
+> commit, Actions results, URLs and the checks actually done.
+
+## One-shot version (if you prefer a single prompt)
+
+> Branch release/three-lessons (written without running node). Do stages 1–5
+> of docs/NEXT-SESSION-PROMPTS.md in order: generate (gen-entry, gen-lessons,
+> gen-series), build --check, all tests, fix the code (not the tests), browser
+> walk-through of the three workshop activities RU/EN × 4 ages + route +
+> speech/offline, verify sources, then PR → CI → merge → confirm the live
+> version. One commit per fix. Report only what was actually run.
