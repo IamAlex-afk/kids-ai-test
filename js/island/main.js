@@ -372,6 +372,7 @@ function restart() { dispose(); location.reload(); }
 
 function startText() {
   dispose();
+  if (game.stage === 'arrive') game.stage = 'collect';   // nothing to walk to in the text version
   ui.textVersion({ game, toggleExample, testGate, runCheck, enough, finish: () => { if (finishGame(game)) saveDone(); } });
 }
 
