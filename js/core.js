@@ -371,7 +371,6 @@ function renderLesson() {
   const lessonSpeech = [lesson.title, lesson.text, lesson.example].filter(Boolean).join('. ');
   const readBtn = $('btn-read-lesson');
   if (readBtn) readBtn.addEventListener('click', () => speakText(lessonSpeech));
-  if (S.age === 'tiny') speakText(lessonSpeech);
 
   $('btn-next-lesson').addEventListener('click', () => {
     if (hasTest) {
@@ -418,8 +417,6 @@ function renderMiniTest() {
     </div>
   `;
 
-  if (S.age === 'tiny') speakText(q.q);
-
   const readMtBtn = $('btn-read-mt');
   if (readMtBtn) readMtBtn.addEventListener('click', () => speakText(q.q));
 
@@ -451,7 +448,7 @@ function renderMiniTest() {
 function answerMiniTest(choiceIdx, q, clickedBtn) {
   const correct = choiceIdx === q.correct;
 
-  $$('#mt-options .ans').forEach((b, i) => {
+  $$('#mt-options button').forEach((b, i) => {   // .ans and the big .ans-tiny
     b.disabled = true;
     if (i === q.correct) {
       b.style.borderColor = 'var(--green)';
@@ -480,12 +477,25 @@ function answerMiniTest(choiceIdx, q, clickedBtn) {
   }
   lsSave();
 
-  setTimeout(() => {
+  addNextButton(fb || $('mt-options'), () => {
     S.lesson.mt.idx++;
     const qs = ageData()?.lessons[S.lesson.idx]?.miniTest || [];
     if (S.lesson.mt.idx < qs.length) renderMiniTest();
     else advanceLesson();
-  }, S.age === 'tiny' ? 1600 : 1800);
+  });
+}
+
+// Sound and moving on happen only when the child acts (docs/VISUAL-SPEC.md
+// §8): after an answer the explanation stays on screen until "Next".
+function addNextButton(after, onNext) {
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'btn-primary btn-after-answer';
+  btn.textContent = ui('lesson_next_btn') || 'Next →';
+  btn.addEventListener('click', onNext, { once: true });
+  after.after(btn);
+  btn.focus({ preventScroll: true });
+  btn.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
 }
 
 function tinySuccess(btn) {
@@ -775,8 +785,6 @@ function renderQuestion() {
     </div>
   `;
 
-  if (S.age === 'tiny') speakText(q.q);
-
   const readQuizBtn = $('btn-read-quiz');
   if (readQuizBtn) readQuizBtn.addEventListener('click', () => speakText(q.q));
 
@@ -828,10 +836,10 @@ function answerQuiz(value, q, clickedBtn) {
     fb.innerHTML = `${correct ? '✅' : '💡'} ${q.explanation}${sourceHtml}`;
   }
 
-  setTimeout(() => {
+  addNextButton(fb && q.explanation ? fb : $('q-answers'), () => {
     S.quiz.idx++;
     renderQuestion();
-  }, q.explanation ? (q.source ? 5000 : 2200) : 900);
+  });
 }
 
 function onQuizDone() {

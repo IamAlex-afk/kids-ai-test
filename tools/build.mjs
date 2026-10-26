@@ -36,11 +36,16 @@ const DIRS = [
   { dir: 'assets', ext: ['.png', '.ogg', '.md'] },
   { dir: 'assets/sfx', ext: ['.ogg'] },
   { dir: 'assets/workshop', ext: ['.webp'] },
+  // Lesson pages (tools/gen-lessons.mjs), one folder per language
+  ...LANGS.map((l) => ({ dir: `lessons/${l}`, ext: ['.html'] })),
 ];
 // Not cached offline: SW itself, verification/legal/info files.
 const NO_PRECACHE = new Set(['sw.js', '404.html', 'googled8a35f2a8c073799.html', 'LICENSE',
   'SECURITY.md', 'humans.txt', 'llms.txt', 'ai.txt', '.nojekyll', '.well-known/security.txt',
   'robots.txt', 'sitemap.xml', 'og.svg', 'assets/CREDITS.md']);
+// Lesson pages are not preloaded (290 pages): the worker keeps the ones a
+// visitor has opened; lesson.css and lesson.js are in the offline set.
+const precached = (f) => !NO_PRECACHE.has(f) && !f.startsWith('lessons/');
 
 function listFiles() {
   const out = [...FILES];
@@ -79,7 +84,7 @@ function build() {
   const version = hash.digest('hex').slice(0, 12);
 
   // Service worker: content-hashed cache name + full precache list.
-  const precache = ['./', ...files.filter(f => !NO_PRECACHE.has(f)).map(f => './' + f)];
+  const precache = ['./', ...files.filter(precached).map(f => './' + f)];
   let sw = fs.readFileSync(path.join(DIST, 'sw.js'), 'utf8');
   const before = sw;
   sw = sw.replace(/const CACHE = OWN_PREFIX \+ '[^']*';/, `const CACHE = OWN_PREFIX + '${version}';`);
@@ -92,18 +97,29 @@ function build() {
   return { files, info, precache };
 }
 
-// Every local src/href in the published HTML must exist in dist/.
+// Every local src/href in the published HTML must exist in dist/
+// (relative references resolve against the page's own folder).
+function htmlPages(dir = DIST, rel = '') {
+  return fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
+    const r = rel ? `${rel}/${e.name}` : e.name;
+    if (e.isDirectory()) return htmlPages(path.join(dir, e.name), r);
+    return e.name.endsWith('.html') ? [r] : [];
+  });
+}
 function checkLinks() {
   const problems = [];
-  for (const page of fs.readdirSync(DIST).filter(f => f.endsWith('.html'))) {
+  for (const page of htmlPages()) {
     const html = fs.readFileSync(path.join(DIST, page), 'utf8');
-    for (const m of html.matchAll(/\b(?:src|href)="([^"#?]+)[^"]*"/g)) {
+    for (const m of html.matchAll(/\b(?:src|href)="([^"#?]*)[^"]*"/g)) {
       const ref = m[1];
+      if (!ref) continue;                                   // "#…" or "?…": the same page
       if (/^(https?:|mailto:|tel:|data:|javascript:|\/\/)/.test(ref)) continue;
-      const local = ref.replace(/^\/kids-ai-test\//, '').replace(/^\.?\//, '');
       if (ref.startsWith('/') && !ref.startsWith('/kids-ai-test/')) { problems.push(`${page} → ${ref} (outside the project path)`); continue; }
-      const target = path.join(DIST, local);
-      if (!fs.existsSync(target)) problems.push(`${page} → ${ref}`);
+      const target = ref.startsWith('/kids-ai-test/')
+        ? path.join(DIST, ref.slice('/kids-ai-test/'.length))
+        : path.join(DIST, path.dirname(page), ref);
+      if (!path.resolve(target).startsWith(DIST)) { problems.push(`${page} → ${ref} (outside dist/)`); continue; }
+      if (!fs.existsSync(ref.endsWith('/') ? path.join(target, 'index.html') : target)) problems.push(`${page} → ${ref}`);
     }
   }
   return problems;
