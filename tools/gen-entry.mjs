@@ -131,7 +131,8 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   let stale = [];
   for (const l of LANGS) {
     const file = path.join(ROOT, pageOf(l));
-    const html = fs.readFileSync(file, 'utf8');
+    // CRLF from a Windows checkout (core.autocrlf) is not a difference
+    const html = fs.readFileSync(file, 'utf8').replace(/\r\n/g, '\n');
     const out = render(l, html);
     if (out === html) continue;
     if (check) stale.push(pageOf(l)); else fs.writeFileSync(file, out);

@@ -426,7 +426,7 @@ function renderMiniTest() {
 
   if (isTiny) {
     opts.className = 'tiny-answers';
-    const tinyIcons = ['🟢', '🔴'];
+    const tinyIcons = ['⭐', '🌙'];   // neutral: a colour must not hint at the answer
     displayOpts.forEach((opt, i) => {
       const btn = document.createElement('button');
       btn.className = 'ans-tiny';
