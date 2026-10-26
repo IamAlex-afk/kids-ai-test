@@ -13,6 +13,14 @@
 import { sorter } from './series/sorter.mjs';
 import { ru as sorterRu } from './series/sorter-ru.mjs';
 import { en as sorterEn } from './series/sorter-en.mjs';
+import { check } from './series/check.mjs';
+import { ru as checkRu } from './series/check-ru.mjs';
+import { en as checkEn } from './series/check-en.mjs';
+import { share } from './series/share.mjs';
+import { ru as shareRu } from './series/share-ru.mjs';
+import { en as shareEn } from './series/share-en.mjs';
+
+const SCENARIO = { scripts: ['workshop.js', 'workshop-scenario.js'], staticKeys: ['explain1', 'explain2', 'explain3', 'doneText'] };
 
 // Date the series pages last changed in substance. Set by hand.
 export const SERIES_LASTMOD = '2026-10-26';
@@ -26,6 +34,8 @@ export const SERIES = [
     staticKeys: ['how', 'wrongWhy', 'tieNote', 'fixedWhy', 'sameWhy', 'doneText'],
     sample: false,
   }),
+  withText(check, { ru: checkRu, en: checkEn }, SCENARIO),
+  withText(share, { ru: shareRu, en: shareEn }, SCENARIO),
 ];
 
 // Self-check of the registry (also run by tests): every listed language has

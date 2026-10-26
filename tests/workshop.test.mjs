@@ -94,6 +94,47 @@ test('registry: complete for every listed language, no review claims', () => {
   assert.deepEqual(SERIES_LANGS, ['ru', 'en']);
 });
 
+// Scenario lessons: every question has a valid answer and explanations;
+// "cannot be decided" exists in B; C's breakdown explains every piece and
+// keeps the task; the new example differs from the worked one.
+const scenarioSteps = (s, l, age) => s.text[l][age].steps || [];
+test('lesson B: scripted, checkable on the page, "cannot be decided" allowed', () => {
+  const s = SERIES.find((x) => x.id === 'check');
+  assert.equal(s.sample, true, 'marked as a teaching example');
+  for (const l of s.langs) for (const age of ['tiny', 'child', 'teen', 'adult']) {
+    const steps = scenarioSteps(s, l, age);
+    assert.ok(steps.length >= 3, `${l}/${age}: steps`);
+    for (const st of steps) for (const q of st.questions || []) {
+      assert.ok(q.correct >= 0 && q.correct < q.options.length, `${l}/${age}: ${q.q}`);
+      assert.ok(q.ok && (q.noAll || q.no), `${l}/${age}: explanations for ${q.q}`);
+      for (let k = 0; k < q.options.length; k++) if (k !== q.correct) assert.ok((q.no && q.no[k]) || q.noAll, `${l}/${age}: wrong option ${k} explained`);
+    }
+    const all = steps.flatMap((st) => st.questions || []);
+    assert.ok(all.some((q) => /нельзя установить|не знаем|cannot be decided|Not yet/i.test(q.options[q.correct])), `${l}/${age}: an "unknown" answer is the right one somewhere`);
+    if (age === 'teen' || age === 'adult') assert.ok(steps.some((st) => st.sources && st.sources.length === 2), `${l}/${age}: two sources compared`);
+  }
+});
+
+test('lesson C: demo data only, every piece explained, the task is always kept', () => {
+  const s = SERIES.find((x) => x.id === 'share');
+  for (const l of s.langs) for (const age of ['tiny', 'child', 'teen', 'adult']) {
+    const steps = scenarioSteps(s, l, age);
+    const reds = steps.filter((st) => st.redact).map((st) => st.redact);
+    assert.ok(reds.length >= 1, `${l}/${age}: has a redaction task`);
+    for (const r of reds) {
+      assert.ok(r.pieces.some((p) => p.needed), `${l}/${age}: something must be kept`);
+      assert.ok(r.pieces.some((p) => !p.needed), `${l}/${age}: something must be removed`);
+      for (const p of r.pieces) assert.ok(p.why && p.why.length > 10, `${l}/${age}: "${p.text}" explained`);
+    }
+    // the new example is a different request from the worked one
+    if (reds.length >= 2) assert.notDeepEqual(reds[0].pieces.map((p) => p.text), reds[reds.length - 1].pieces.map((p) => p.text), `${l}/${age}: new example differs`);
+    for (const st of steps) if (st.intro || st.bubble) assert.ok(/вымышлен|made-up/i.test(JSON.stringify(steps)), `${l}/${age}: says the data is made up`);
+  }
+  // no real-looking phone numbers: demo numbers are all zeros
+  const txt = JSON.stringify(s.text);
+  for (const m of txt.matchAll(/\d{3}-\d{2,3}-\d{2,4}/g)) assert.match(m[0], /^[0-]+$/, `demo phone ${m[0]}`);
+});
+
 test('workshop pages: match tools/gen-series.mjs, private, linked only to existing equivalents', async () => {
   const { renderAll } = await import(new URL('tools/gen-series.mjs', root));
   const SITE = 'https://iamalex-afk.github.io/kids-ai-test/';
@@ -113,7 +154,7 @@ test('workshop pages: match tools/gen-series.mjs, private, linked only to existi
       for (const k of ['wk-goalbox', 'wk-adult', 'wk-print', 'wk-sources', 'wk-explain-all']) assert.ok(html.includes(k), `${rel}: ${k} without JS`);
     }
   }
-  for (const f of ['js/workshop.js', 'js/workshop-sorter.js', 'js/sorter-model.js']) {
+  for (const f of ['js/workshop.js', 'js/workshop-sorter.js', 'js/sorter-model.js', 'js/workshop-scenario.js']) {
     assert.doesNotMatch(read(f), /fetch\(|sendBeacon|XMLHttpRequest|localStorage|sessionStorage|speechSynthesis/, `${f}: sends and stores nothing`);
     assert.doesNotMatch(read(f), /\.innerHTML\s*=/, `${f}: text via textContent only`);
   }

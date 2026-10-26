@@ -36,3 +36,16 @@ fixed, test output, and a commit — no push until the last stage passes.
 > preview (task + answers, no app), console free of errors. Screenshot and look
 > at 5–7 and 14+. Report exact results; commit fixes. Generated files are
 > committed together with the generator.
+
+## Stage 3 — lessons B "check" and C "share" (commit "Workshop lessons B and C…")
+
+> Branch release/three-lessons. `node tools/gen-series.mjs`, then the same
+> checks as stage 2. In headless Chrome walk workshop/{ru,en}/check.html and
+> share.html at all four ?age= values: B — "Teaching example" note visible;
+> wrong sentence → explanation + retry; "cannot be decided" is accepted with
+> its explanation; 11–13/14+ show two sources and the "many websites" question.
+> C — tapping pieces toggles aria-pressed (keyboard: Enter/Space); "Check" with
+> a wrong selection lists ✓/✗ for EVERY piece with its reason and does not
+> finish; a right selection finishes and (Ella) shows the safe request; 5–7
+> big buttons; nothing typed by the user anywhere. Screen reader text: the
+> feedback is in a role=status region. Report exact results; commit fixes.
