@@ -13,7 +13,8 @@ import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import { T, LANG_NAMES } from './entry-i18n.mjs';
-import { SERIES } from './series.mjs';
+import { SERIES, SERIES_LANGS } from './series.mjs';
+import { UI as SERIES_UI } from './series/ui.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const LANGS = ['en', 'ru', 'de', 'es', 'fr', 'hi', 'id', 'pt', 'tr', 'vi'];
@@ -147,7 +148,7 @@ ${steps}
       <ul class="wk-facts">
 ${t.facts.map((f) => `        <li>${esc(f)}</li>`).join('\n')}
       </ul>
-      <p class="wk-about"><a href="lessons/${l}/">${esc(t.allLessons)}</a><a href="#about">${esc(t.about)}</a></p>
+      <p class="wk-about">${SERIES_LANGS.includes(l) ? `<a href="workshop/${l}/">${esc(SERIES_UI[l].catalog)}</a>` : ''}<a href="lessons/${l}/">${esc(t.allLessons)}</a><a href="#about">${esc(t.about)}</a></p>
     </div>
 
     <div class="wk-screen" id="wk-age" hidden>
