@@ -1,0 +1,61 @@
+name: Game preview screenshots
+
+# Renders the 3D level in headless Chrome (software WebGL via SwiftShader —
+# no GPU on the runner, so frame rate here says nothing about real devices)
+# and uploads screenshots + console output as an artifact. Read-only; never
+# deploys; no secrets.
+on:
+  pull_request:
+    paths: ['island/**', 'js/island/**', 'css/island.css', 'js/vendor/**', '.github/workflows/preview.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  shots:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - name: Build dist/
+        run: node tools/build.mjs --check
+      - name: Serve dist/ at /kids-ai-test/
+        run: |
+          mkdir -p site && ln -s "$PWD/dist" site/kids-ai-test
+          (cd site && python3 -m http.server 8765 >/dev/null 2>&1 &)
+          sleep 2
+          curl -sf http://localhost:8765/kids-ai-test/island/ -o /dev/null
+      - name: Screenshots
+        run: |
+          mkdir -p shots
+          CHROME=$(command -v google-chrome || command -v chromium || command -v chromium-browser)
+          "$CHROME" --version | tee shots/chrome-version.txt
+          shot () {  # name url width height
+            "$CHROME" --headless=new --no-sandbox --disable-gpu-sandbox \
+              --use-angle=swiftshader --enable-unsafe-swiftshader --ignore-gpu-blocklist \
+              --hide-scrollbars --window-size="$3,$4" --virtual-time-budget=9000 \
+              --enable-logging=stderr --v=0 \
+              --screenshot="shots/$1.png" "$2" 2> "shots/$1.log" || true
+            grep -E "CONSOLE|Uncaught|ERROR:.*(js|module)" "shots/$1.log" | grep -v -E "dbus|gcm|Fontconfig|viz|gpu_init|sandbox" > "shots/$1.console.txt" || true
+          }
+          B=http://localhost:8765/kids-ai-test/island/
+          for s in start garden gate bridge finale; do
+            shot "desktop-ru-$s" "$B?lang=ru&age=8-10&shot=$s" 1280 800
+          done
+          shot "phone-en-gate" "$B?lang=en&age=8-10&shot=gate" 390 844
+          shot "phone-ru-garden" "$B?lang=ru&age=5-7&shot=garden" 390 844
+          shot "desktop-en-tiny-finale" "$B?lang=en&age=5-7&shot=finale" 1280 800
+          shot "desktop-de-adult-finale" "$B?lang=de&age=14-plus&shot=finale" 1280 800
+          shot "text-version-ru" "$B?lang=ru&age=11-13&mode=text" 1280 900
+          ls -la shots
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: island-screenshots
+          path: shots/
+          retention-days: 14

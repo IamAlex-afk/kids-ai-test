@@ -1,0 +1,2 @@
+# Vendored libraries: keep bytes exactly as released (hashes in their README)
+js/vendor/** -text

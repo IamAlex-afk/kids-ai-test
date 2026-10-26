@@ -27,6 +27,7 @@ const FILES = [
   'googled8a35f2a8c073799.html',          // Search Console ownership file — keep its URL
   'LICENSE', 'SECURITY.md', 'humans.txt', 'llms.txt', 'ai.txt', '.nojekyll',
   '.well-known/security.txt',
+  'js/vendor/three/LICENSE',              // three.js MIT licence travels with the library
 ];
 // Directories copied with an extension filter (no dotfiles, no subfolders not listed).
 const DIRS = [
@@ -38,6 +39,11 @@ const DIRS = [
   { dir: 'assets/workshop', ext: ['.webp'] },
   // Lesson pages (tools/gen-lessons.mjs), one folder per language
   ...LANGS.map((l) => ({ dir: `lessons/${l}`, ext: ['.html'] })),
+  // 3D level "Island of Examples": page, its modules, texts, and three.js
+  { dir: 'island', ext: ['.html'] },
+  { dir: 'js/island', ext: ['.js'] },
+  { dir: 'js/island/lang', ext: ['.js'] },
+  { dir: 'js/vendor/three', ext: ['.js', '.md'] },
 ];
 // Not cached offline: SW itself, verification/legal/info files.
 const NO_PRECACHE = new Set(['sw.js', '404.html', 'googled8a35f2a8c073799.html', 'LICENSE',
@@ -45,7 +51,10 @@ const NO_PRECACHE = new Set(['sw.js', '404.html', 'googled8a35f2a8c073799.html',
   'robots.txt', 'sitemap.xml', 'og.svg', 'assets/CREDITS.md']);
 // Lesson pages are not preloaded (290 pages): the worker keeps the ones a
 // visitor has opened; lesson.css and lesson.js are in the offline set.
-const precached = (f) => !NO_PRECACHE.has(f) && !f.startsWith('lessons/');
+// The 3D level (page, modules, texts, three.js ~0.7 MB) loads only when the
+// game is opened; the worker keeps it after that. Not in the first-visit set.
+const ON_DEMAND = /^(lessons\/|island\/|js\/island\/|js\/vendor\/|css\/island\.css$)/;
+const precached = (f) => !NO_PRECACHE.has(f) && !ON_DEMAND.test(f);
 
 function listFiles() {
   const out = [...FILES];
