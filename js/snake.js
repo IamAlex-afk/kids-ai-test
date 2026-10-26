@@ -860,10 +860,16 @@
         els.overlay.classList.add('hidden'); playRound(roundIdx + 1);
       }, { once: true });
 
-      // Read the learned word/phrase + fact aloud — the youngest players
-      // can't read yet, and this fact is the whole point of the round.
-      if ((age === 'tiny' || age === 'child') && window.speakText) {
-        window.speakText(`${wordDisplay}. ${round.fact || ''}`);
+      // The youngest players can't read yet: a "Read to me" button reads the
+      // word + fact aloud. Only on a tap (docs/VISUAL-SPEC.md §8), never by itself.
+      if ((age === 'tiny' || age === 'child') && window.speakText && window.speechSynthesis) {
+        const read = document.createElement('button');
+        read.type = 'button';
+        read.className = 'btn-read-aloud';
+        read.textContent = '🔊 ' + (window.LANG_DATA?.ui?.ui_read_aloud || 'Read to me');
+        read.addEventListener('click', () => window.speakText(`${wordDisplay}. ${round.fact || ''}`));
+        const card = els.overlay.querySelector('.snake-overlay-card');
+        card.insertBefore(read, card.querySelector('.btn-primary'));
       }
     }
 
