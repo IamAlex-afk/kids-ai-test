@@ -547,16 +547,16 @@ function onLessonsDone() {
 ───────────────────────────────────────────── */
 
 const GAME_PICKER_STR = {
-  en: { title: 'Choose a game', snakeName: '🐍 AI Snake', snakeDesc: 'Classic — eat the right letters', pfName: '🤖 Circuit Runner', pfDesc: 'Run, jump, dodge, build your robot', raceName: '🚀 Circuit Racer', raceDesc: 'Switch lanes, dodge spam & scams, build your robot', exit: 'Exit' },
-  ru: { title: 'Выбери игру', snakeName: '🐍 AI Змейка', snakeDesc: 'Классика — собирай нужные буквы', pfName: '🤖 Circuit Runner', pfDesc: 'Беги, прыгай, собери робота', raceName: '🚀 Circuit Racer', raceDesc: 'Меняй полосы, уклоняйся от спама и скама, собери робота', exit: 'Выход' },
-  de: { title: 'Spiel wählen', snakeName: '🐍 KI-Schlange', snakeDesc: 'Klassiker — sammle die richtigen Buchstaben', pfName: '🤖 Circuit Runner', pfDesc: 'Rennen, springen, ausweichen, Roboter bauen', raceName: '🚀 Circuit Racer', raceDesc: 'Spur wechseln, Spam & Betrug ausweichen, Roboter bauen', exit: 'Verlassen' },
-  es: { title: 'Elige un juego', snakeName: '🐍 Serpiente IA', snakeDesc: 'Clásico — come las letras correctas', pfName: '🤖 Circuit Runner', pfDesc: 'Corre, salta, esquiva, construye tu robot', raceName: '🚀 Circuit Racer', raceDesc: 'Cambia de carril, esquiva spam y estafas, construye tu robot', exit: 'Salir' },
-  fr: { title: 'Choisis un jeu', snakeName: '🐍 Serpent IA', snakeDesc: 'Classique — mange les bonnes lettres', pfName: '🤖 Circuit Runner', pfDesc: 'Cours, saute, esquive, construis ton robot', raceName: '🚀 Circuit Racer', raceDesc: 'Change de voie, évite spam et arnaques, construis ton robot', exit: 'Quitter' },
-  hi: { title: 'गेम चुनें', snakeName: '🐍 AI साँप', snakeDesc: 'क्लासिक — सही अक्षर खाओ', pfName: '🤖 Circuit Runner', pfDesc: 'दौड़ो, कूदो, बचो, अपना रोबोट बनाओ', raceName: '🚀 Circuit Racer', raceDesc: 'लेन बदलो, स्पैम और स्कैम से बचो, अपना रोबोट बनाओ', exit: 'बाहर जाएं' },
-  id: { title: 'Pilih game', snakeName: '🐍 Ular AI', snakeDesc: 'Klasik — makan huruf yang benar', pfName: '🤖 Circuit Runner', pfDesc: 'Lari, lompat, hindari, bangun robotmu', raceName: '🚀 Circuit Racer', raceDesc: 'Pindah jalur, hindari spam & penipuan, bangun robotmu', exit: 'Keluar' },
-  pt: { title: 'Escolha um jogo', snakeName: '🐍 Cobra IA', snakeDesc: 'Clássico — coma as letras certas', pfName: '🤖 Circuit Runner', pfDesc: 'Corra, pule, desvie, construa seu robô', raceName: '🚀 Circuit Racer', raceDesc: 'Mude de faixa, desvie de spam e golpes, construa seu robô', exit: 'Sair' },
-  tr: { title: 'Oyun seç', snakeName: '🐍 AI Yılanı', snakeDesc: 'Klasik — doğru harfleri ye', pfName: '🤖 Circuit Runner', pfDesc: 'Koş, zıpla, kaç, robotunu inşa et', raceName: '🚀 Circuit Racer', raceDesc: 'Şerit değiştir, spam ve dolandırıcılıktan kaç, robotunu inşa et', exit: 'Çıkış' },
-  vi: { title: 'Chọn trò chơi', snakeName: '🐍 Rắn AI', snakeDesc: 'Cổ điển — ăn đúng chữ cái', pfName: '🤖 Circuit Runner', pfDesc: 'Chạy, nhảy, né tránh, xây dựng robot của bạn', raceName: '🚀 Circuit Racer', raceDesc: 'Đổi làn, né tránh spam và lừa đảo, xây dựng robot của bạn', exit: 'Thoát' },
+  en: { title: 'Choose a game', snakeName: '🐍 AI Snake', snakeDesc: 'Classic — eat the right letters', pfName: '🤖 Circuit Runner', pfDesc: 'Run, jump, dodge, build your robot', raceName: '🚀 Circuit Racer', raceDesc: 'Switch lanes, dodge spam & scams, build your robot', islandName: '🏝️ Island of Examples (3D, beta)', islandDesc: 'Teach a sorter with examples, find its mistake and fix it', exit: 'Exit' },
+  ru: { title: 'Выбери игру', snakeName: '🐍 AI Змейка', snakeDesc: 'Классика — собирай нужные буквы', pfName: '🤖 Circuit Runner', pfDesc: 'Беги, прыгай, собери робота', raceName: '🚀 Circuit Racer', raceDesc: 'Меняй полосы, уклоняйся от спама и скама, собери робота', islandName: '🏝️ Остров примеров (3D, бета)', islandDesc: 'Научи сортировщика на примерах, найди его ошибку и исправь', exit: 'Выход' },
+  de: { title: 'Spiel wählen', snakeName: '🐍 KI-Schlange', snakeDesc: 'Klassiker — sammle die richtigen Buchstaben', pfName: '🤖 Circuit Runner', pfDesc: 'Rennen, springen, ausweichen, Roboter bauen', raceName: '🚀 Circuit Racer', raceDesc: 'Spur wechseln, Spam & Betrug ausweichen, Roboter bauen', islandName: '🏝️ Insel der Beispiele (3D, Beta)', islandDesc: 'Bring einem Sortierer mit Beispielen etwas bei, finde seinen Fehler und behebe ihn', exit: 'Verlassen' },
+  es: { title: 'Elige un juego', snakeName: '🐍 Serpiente IA', snakeDesc: 'Clásico — come las letras correctas', pfName: '🤖 Circuit Runner', pfDesc: 'Corre, salta, esquiva, construye tu robot', raceName: '🚀 Circuit Racer', raceDesc: 'Cambia de carril, esquiva spam y estafas, construye tu robot', islandName: '🏝️ Isla de los Ejemplos (3D, beta)', islandDesc: 'Enseña a un clasificador con ejemplos, encuentra su error y corrígelo', exit: 'Salir' },
+  fr: { title: 'Choisis un jeu', snakeName: '🐍 Serpent IA', snakeDesc: 'Classique — mange les bonnes lettres', pfName: '🤖 Circuit Runner', pfDesc: 'Cours, saute, esquive, construis ton robot', raceName: '🚀 Circuit Racer', raceDesc: 'Change de voie, évite spam et arnaques, construis ton robot', islandName: '🏝️ L’île des exemples (3D, bêta)', islandDesc: 'Apprends à un trieur avec des exemples, trouve son erreur et corrige-la', exit: 'Quitter' },
+  hi: { title: 'गेम चुनें', snakeName: '🐍 AI साँप', snakeDesc: 'क्लासिक — सही अक्षर खाओ', pfName: '🤖 Circuit Runner', pfDesc: 'दौड़ो, कूदो, बचो, अपना रोबोट बनाओ', raceName: '🚀 Circuit Racer', raceDesc: 'लेन बदलो, स्पैम और स्कैम से बचो, अपना रोबोट बनाओ', islandName: '🏝️ उदाहरणों का द्वीप (3D, बीटा)', islandDesc: 'उदाहरणों से छाँटने वाले प्रोग्राम को सिखाओ, उसकी गलती ढूँढो और ठीक करो', exit: 'बाहर जाएं' },
+  id: { title: 'Pilih game', snakeName: '🐍 Ular AI', snakeDesc: 'Klasik — makan huruf yang benar', pfName: '🤖 Circuit Runner', pfDesc: 'Lari, lompat, hindari, bangun robotmu', raceName: '🚀 Circuit Racer', raceDesc: 'Pindah jalur, hindari spam & penipuan, bangun robotmu', islandName: '🏝️ Pulau Contoh (3D, beta)', islandDesc: 'Ajari penyortir dengan contoh, temukan kesalahannya, lalu perbaiki', exit: 'Keluar' },
+  pt: { title: 'Escolha um jogo', snakeName: '🐍 Cobra IA', snakeDesc: 'Clássico — coma as letras certas', pfName: '🤖 Circuit Runner', pfDesc: 'Corra, pule, desvie, construa seu robô', raceName: '🚀 Circuit Racer', raceDesc: 'Mude de faixa, desvie de spam e golpes, construa seu robô', islandName: '🏝️ Ilha dos Exemplos (3D, beta)', islandDesc: 'Ensine um classificador com exemplos, encontre o erro dele e corrija', exit: 'Sair' },
+  tr: { title: 'Oyun seç', snakeName: '🐍 AI Yılanı', snakeDesc: 'Klasik — doğru harfleri ye', pfName: '🤖 Circuit Runner', pfDesc: 'Koş, zıpla, kaç, robotunu inşa et', raceName: '🚀 Circuit Racer', raceDesc: 'Şerit değiştir, spam ve dolandırıcılıktan kaç, robotunu inşa et', islandName: '🏝️ Örnekler Adası (3D, beta)', islandDesc: 'Bir ayırıcıya örneklerle öğret, hatasını bul ve düzelt', exit: 'Çıkış' },
+  vi: { title: 'Chọn trò chơi', snakeName: '🐍 Rắn AI', snakeDesc: 'Cổ điển — ăn đúng chữ cái', pfName: '🤖 Circuit Runner', pfDesc: 'Chạy, nhảy, né tránh, xây dựng robot của bạn', raceName: '🚀 Circuit Racer', raceDesc: 'Đổi làn, né tránh spam và lừa đảo, xây dựng robot của bạn', islandName: '🏝️ Đảo Ví Dụ (3D, beta)', islandDesc: 'Dạy máy phân loại bằng ví dụ, tìm lỗi của nó và sửa lại', exit: 'Thoát' },
 };
 function gpStr(k) { const d = GAME_PICKER_STR[S.lang] || GAME_PICKER_STR.en; return d[k] || GAME_PICKER_STR.en[k]; }
 
@@ -565,6 +565,8 @@ function availableGames() {
   if (window.KAT_Snake) games.push({ icon: '🐍', name: gpStr('snakeName'), desc: gpStr('snakeDesc'), launch: launchSnake });
   if (window.KAT_Platformer) games.push({ icon: '🤖', name: gpStr('pfName'), desc: gpStr('pfDesc'), launch: launchPlatformer });
   if (window.KAT_Racing) games.push({ icon: '🚀', name: gpStr('raceName'), desc: gpStr('raceDesc'), launch: launchRacing });
+  // 3D level: a separate page, so three.js is loaded only when it is chosen
+  games.push({ icon: '🏝️', name: gpStr('islandName'), desc: gpStr('islandDesc'), launch: launchIsland });
   return games;
 }
 
@@ -616,6 +618,12 @@ function renderGamePicker(container, games) {
     card.addEventListener('click', () => g.launch(container));
     grid.appendChild(card);
   });
+}
+
+function launchIsland() {
+  const slug = { tiny: '5-7', child: '8-10', teen: '11-13', adult: '14-plus' }[S.age] || '8-10';
+  try { window.speechSynthesis?.cancel(); } catch (_) {}
+  location.href = `island/?lang=${encodeURIComponent(S.lang)}&age=${slug}`;
 }
 
 function launchSnake(container) {

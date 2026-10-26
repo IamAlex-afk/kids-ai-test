@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none';">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <title>Island of Examples — Kids AI Test</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/island.css">
+</head>
+<body>
+  <div id="island-stage" class="isl-stage"></div>
+
+  <header class="isl-top">
+    <div class="isl-brand"><b id="isl-title">Island of Examples</b> <span id="isl-sub"></span></div>
+    <nav class="isl-menu" aria-label="Game">
+      <button type="button" class="isl-btn" id="isl-pause"></button>
+      <button type="button" class="isl-btn" id="isl-settings"></button>
+      <button type="button" class="isl-btn" id="isl-text"></button>
+      <button type="button" class="isl-btn" id="isl-exit"></button>
+    </nav>
+  </header>
+
+  <main class="isl-hud" id="main">
+    <p class="isl-goal" id="isl-goal" role="status" aria-live="polite"></p>
+    <p class="isl-count" id="isl-count"></p>
+    <p class="isl-say" id="isl-say" role="status" aria-live="polite" hidden></p>
+    <p class="isl-near" id="isl-near" hidden></p>
+    <div class="isl-textroot" id="isl-textroot" hidden></div>
+    <p class="isl-note"><span id="isl-placeholder"></span> <span id="isl-privacy"></span> <span id="isl-fps" class="isl-fps"></span></p>
+  </main>
+
+  <div class="isl-pad" aria-label="Controls">
+    <button type="button" class="isl-dir isl-up" id="isl-up">▲</button>
+    <button type="button" class="isl-dir isl-left" id="isl-left">◀</button>
+    <button type="button" class="isl-dir isl-right" id="isl-right">▶</button>
+    <button type="button" class="isl-dir isl-down" id="isl-down">▼</button>
+  </div>
+  <button type="button" class="isl-act" id="isl-act" disabled><span id="isl-act-label"></span></button>
+
+  <p class="isl-loading" id="isl-loading">…</p>
+
+  <div class="isl-dialog" id="isl-dialog" role="dialog" aria-modal="true" aria-labelledby="isl-dialog-title" hidden>
+    <div class="isl-dialog-in">
+      <h2 id="isl-dialog-title" tabindex="-1"></h2>
+      <div id="isl-dialog-body"></div>
+      <div class="isl-dialog-actions" id="isl-dialog-actions"></div>
+    </div>
+  </div>
+
+  <noscript>
+    <div class="isl-noscript">
+      <p lang="en">This game needs JavaScript. <a href="../lessons/en/">AI lessons</a></p>
+      <p lang="ru">Для игры нужен JavaScript. <a href="../lessons/ru/">Уроки об ИИ</a></p>
+      <p lang="de">Für das Spiel wird JavaScript benötigt. <a href="../lessons/de/">KI-Lektionen</a></p>
+      <p lang="es">Este juego necesita JavaScript. <a href="../lessons/es/">Lecciones de IA</a></p>
+      <p lang="fr">Ce jeu a besoin de JavaScript. <a href="../lessons/fr/">Leçons sur l’IA</a></p>
+      <p lang="hi">इस खेल के लिए JavaScript चाहिए। <a href="../lessons/hi/">AI के पाठ</a></p>
+      <p lang="id">Game ini memerlukan JavaScript. <a href="../lessons/id/">Pelajaran AI</a></p>
+      <p lang="pt-BR">Este jogo precisa de JavaScript. <a href="../lessons/pt/">Lições sobre IA</a></p>
+      <p lang="tr">Bu oyun için JavaScript gerekir. <a href="../lessons/tr/">Yapay zekâ dersleri</a></p>
+      <p lang="vi">Trò chơi này cần JavaScript. <a href="../lessons/vi/">Bài học về AI</a></p>
+    </div>
+  </noscript>
+
+  <script src="../js/storage.js"></script>
+  <script type="module" src="../js/island/main.js"></script>
+</body>
+</html>
