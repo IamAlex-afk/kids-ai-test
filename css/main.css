@@ -1067,6 +1067,9 @@ body.game-fullscreen #game > .section-explain {
   display: none;
 }
 
+/* Read-aloud without an installed voice: text alternative (js/core.js) */
+.kat-novoice { margin: 8px 0 0; font-size: .9rem; color: var(--muted2); line-height: 1.5; }
+
 /* ─── 💾 Storage choice (js/storage-ui.js) ─── */
 .kat-store-btn { margin-left: auto; white-space: nowrap; }
 .kat-store-btn.on { border-color: var(--accent); color: var(--accent); }

@@ -863,7 +863,7 @@
         read.type = 'button';
         read.className = 'btn-read-aloud';
         read.textContent = '🔊 ' + (window.LANG_DATA?.ui?.ui_read_aloud || 'Read to me');
-        read.addEventListener('click', () => window.speakText(`${wordDisplay}. ${round.fact || ''}`));
+        read.addEventListener('click', () => window.speakText(`${wordDisplay}. ${round.fact || ''}`, read));
         const card = els.overlay.querySelector('.snake-overlay-card');
         card.insertBefore(read, card.querySelector('.btn-primary'));
       }

@@ -184,5 +184,19 @@ test('lesson pages: CSP, language, canonical/hreflang, one h1, no stored or sent
   }
   const js = read('js/lesson.js');
   assert.doesNotMatch(js, /fetch\(|sendBeacon|XMLHttpRequest|localStorage|sessionStorage|setTimeout\([^)]*(location|href)/, 'lesson.js stores and sends nothing');
-  assert.match(js, /localService !== false/, 'lesson.js: installed voices only');
+  assert.match(js, /localService === true/, 'lesson.js: installed voices only');
+});
+
+test('speech: same rule on the old route — installed voices only, no fallback voice, stops on exit', () => {
+  const core = read('js/core.js');
+  assert.match(core, /filter\(v => v\.localService === true\)/, 'core.js filters installed voices');
+  assert.doesNotMatch(core, /if \(voice\) utt\.voice = voice/, 'no speaking without a chosen installed voice');
+  for (const fn of ['exitToHub', 'exitFullscreenGame', 'onGameDone'])
+    assert.match(core, new RegExp(`function ${fn}\\(\\) \\{\\s*stopSpeech\\(\\);`), `${fn} stops the voice`);
+  assert.match(core, /addEventListener\('pagehide', stopSpeech\)/);
+  // never spoken without a tap: every speakText call sits inside a click handler
+  for (const f of ['js/core.js', 'js/snake.js', 'js/platformer.js', 'js/racing.js']) {
+    for (const line of read(f).split('\n').filter(s => /speakText\(/.test(s) && !/function speakText/.test(s)))
+      assert.match(line, /addEventListener\('click'/, `${f}: ${line.trim()}`);
+  }
 });
