@@ -137,6 +137,26 @@ and per-language parents' FAQ), no WebMCP, search policy.
 3. Search Console: submit `sitemap.xml` (only the owner can; the subpath robots.txt is not read by Google).
 4. Separate origin for the kids' site: own GitHub organisation (`<name>.github.io`, free) or a subdomain of an owned domain? Nothing is migrated until decided.
 
+## Next release: three new lessons (brief received 2026-10-26) — NOT STARTED
+
+Brief: unified route (audience → age → one recommended "Start" lesson), lessons
+A "Why did the sorter get it wrong?", B "Check a confident answer", C "What is OK
+to share?", RU/EN × 4 difficulty levels, adult block + print, registry of the new
+series driving pages/navigation/sitemap, speech (tap only, `localService` voices,
+old and new route) and offline (unsaved page → clear message, not the home page)
+fixes, behaviour tests, browser run, PR → merge → live check.
+
+Status: **no code written, nothing changed, nothing published.** In the session that
+received the brief, every `node`/`npm`/`curl`/`python`/WebFetch call returned
+"requires approval" (the owner works via Telegram and cannot see the prompt), so the
+generators, build, tests and browser could not run. Branch `release/three-lessons`
+(from `af9160a`) holds only this note.
+
+Next concrete step (in a session where `node` runs): `node tools/build.mjs --check`
+and `node --test "tests/**/*.test.mjs"` on `af9160a`, then read `docs/VISUAL-SPEC.md`,
+`tools/gen-lessons.mjs`, `tools/lesson-i18n.mjs`, `js/lesson.js`, and start with the
+speech/offline fixes (one commit), then the series registry + lesson A.
+
 ## Remaining work (next steps, in order)
 
 1. Visual spec: personal route (§6) and the light lesson screen inside the main page (§7–8) — see above.
