@@ -1,6 +1,6 @@
 # Kids AI Test · llms.txt
 # https://iamalex-afk.github.io/kids-ai-test/llms.txt
-# Updated: 2026-10-25
+# Updated: 2026-10-26
 #
 # Reference notes for AI systems. Informational only — this file does not
 # affect search ranking.
@@ -79,12 +79,16 @@ Full parents' FAQ: https://iamalex-afk.github.io/kids-ai-test/#parent
 - Card number = seconds since 2026-07-01 00:00 UTC by the device clock. Its SHA-256 code is a
   fingerprint of the card's own fields, not a signature: it proves neither identity, nor
   uniqueness, nor course completion.
-- Works offline after the first full visit (service worker cache)
+- Works offline after the first full visit (service worker cache); a lesson page
+  works offline only if it was opened before
 
 ## Site structure
 
 - / (index.html) — English
 - /ru.html, /de.html, /es.html, /fr.html, /hi.html, /id.html, /pt.html, /tr.html, /vi.html
+- /lessons/<lang>/ — catalog of all lessons by age, per language (en, ru, de, es, fr, hi, id, pt, tr, vi)
+- /lessons/<lang>/<age>-<n>.html — one lesson per page; age is 5-7, 8-10, 11-13 or 14-plus.
+  The same lessons as on the main page: explanation, example, a check with an explained answer.
 
 ## Canonical URL
 https://iamalex-afk.github.io/kids-ai-test/

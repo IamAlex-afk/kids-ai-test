@@ -54,3 +54,21 @@ test('live: page resources, sitemap and robots load', opts, async () => {
   const sm = await (await get('sitemap.xml')).text();
   for (const l of LANGS) assert.ok(sm.includes(`<loc>${new URL(page(l), BASE).href}</loc>`), `sitemap: ${l}`);
 });
+
+test('live: lesson catalogs and lesson pages open directly, indexable and canonical', opts, async () => {
+  const sm = await (await get('sitemap.xml')).text();
+  for (const l of LANGS) {
+    for (const p of [`lessons/${l}/`, `lessons/${l}/8-10-1.html`, `lessons/${l}/14-plus-9.html`]) {
+      const url = new URL(p, BASE).href;
+      const r = await get(p);
+      assert.equal(r.status, 200, url);
+      const html = await r.text();
+      assert.doesNotMatch(html, /<meta name="robots" content="[^"]*noindex/i, url);
+      assert.equal(html.match(/rel="canonical" href="([^"]+)"/)?.[1], url, `${url}: canonical`);
+      assert.match(html, new RegExp(`<html lang="${l === 'pt' ? 'pt-BR' : l}"`), `${url}: lang`);
+      assert.ok(sm.includes(`<loc>${url}</loc>`), `sitemap: ${url}`);
+    }
+  }
+  for (const p of ['css/lesson.css', 'js/lesson.js']) assert.equal((await get(p)).status, 200, p);
+  assert.equal((await get('lessons/ru/8-10-99.html')).status, 404, 'a lesson that does not exist is a 404');
+});

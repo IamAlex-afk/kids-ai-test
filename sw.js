@@ -10,8 +10,8 @@ const LEGACY = ['kat-2026-07', 'kat-2026-08b', 'kat-2026-08c', 'kat-2026-08d', '
 const PRECACHE = [
   './', './index.html', './ru.html', './de.html', './es.html',
   './fr.html', './hi.html', './id.html', './pt.html', './tr.html', './vi.html',
-  './css/main.css', './css/workshop.css', './css/entry.css',
-  './js/storage.js', './js/storage-ui.js', './js/entry.js',
+  './css/main.css', './css/workshop.css', './css/entry.css', './css/lesson.css',
+  './js/storage.js', './js/storage-ui.js', './js/entry.js', './js/lesson.js',
   './js/core.js', './js/card.js', './js/snake.js', './js/platformer.js', './js/racing.js', './js/leaderboard.js', './js/companion.js', './js/glossary.js', './js/names.js', './js/parents-faq.js',
   './data/en.js', './data/ru.js', './data/de.js', './data/es.js',
   './data/fr.js', './data/hi.js', './data/id.js', './data/pt.js',

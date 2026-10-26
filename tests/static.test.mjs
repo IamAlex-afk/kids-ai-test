@@ -114,16 +114,22 @@ test('entry screens: styles and entry.js are wired, no boot overlay', () => {
   }
 });
 
-test('sitemap: only canonical, indexable published pages; honest lastmod', () => {
+test('sitemap: only canonical, indexable published pages; honest lastmod', async () => {
+  const { renderAll } = await import(new URL('tools/gen-lessons.mjs', root));
+  const lessonFiles = [...renderAll().keys()];
   const sm = read('sitemap.xml');
   const SITE = 'https://iamalex-afk.github.io/kids-ai-test/';
   const urls = [...sm.matchAll(/<url>([\s\S]*?)<\/url>/g)].map(m => m[1]);
-  assert.equal(urls.length, LANGS.length, 'one <url> per language page');
+  assert.equal(urls.length, LANGS.length + lessonFiles.length, 'language pages + lesson catalogs + lesson pages');
+  const allowed = new Set([...LANGS.map(page), ...lessonFiles]);
   const today = new Date().toISOString().slice(0, 10);
+  const seen = new Set();
   for (const u of urls) {
     const loc = u.match(/<loc>([^<]+)<\/loc>/)[1];
-    const file = loc === SITE ? 'index.html' : loc.slice(SITE.length);
-    assert.ok(LANGS.map(page).includes(file), `${loc}: a language page (no 404, verification or service files)`);
+    assert.ok(!seen.has(loc), `${loc}: listed once`); seen.add(loc);
+    let file = loc === SITE ? 'index.html' : loc.slice(SITE.length);
+    if (file.endsWith('/')) file += 'index.html';
+    assert.ok(allowed.has(file), `${loc}: a language or lesson page (no 404, verification or service files)`);
     const html = read(file);
     assert.equal(html.match(/rel="canonical" href="([^"]+)"/)[1], loc, `${file}: canonical = sitemap URL`);
     assert.doesNotMatch(html, /<meta name="robots" content="[^"]*noindex/i, `${file}: indexable`);
@@ -135,4 +141,48 @@ test('sitemap: only canonical, indexable published pages; honest lastmod', () =>
   }
   // Pages that must never be indexed say so themselves
   assert.match(read('404.html'), /<meta name="robots" content="noindex">/);
+});
+
+test('lesson pages: match tools/gen-lessons.mjs, one page per lesson in every language', async () => {
+  const { renderAll, loadData, AGES, lessonFile } = await import(new URL('tools/gen-lessons.mjs', root));
+  const { L } = await import(new URL('tools/lesson-i18n.mjs', root));
+  const files = renderAll();
+  for (const [rel, body] of files) assert.equal(read(rel).replace(/\r\n/g, '\n'), body, `${rel} is out of date: run node tools/gen-lessons.mjs`);
+  const keys = Object.keys(L.en);
+  const en = loadData('en');
+  for (const l of LANGS) {
+    assert.deepEqual(Object.keys(L[l]), keys, `lesson-i18n ${l}: same keys as en`);
+    assert.equal(L[l].ages.length, 4, `lesson-i18n ${l}.ages`);
+    const data = loadData(l);
+    for (const { key, slug } of AGES) {
+      // hreflang links the same lesson across languages, so the lists must line up
+      assert.equal(data.ages[key].lessons.length, en.ages[key].lessons.length, `${l} ${key}: as many lessons as en`);
+      data.ages[key].lessons.forEach((x, i) => assert.ok(files.has(`lessons/${l}/${lessonFile(slug, i + 1)}`), `${l} ${key} ${i + 1}`));
+    }
+    // the main page links to its catalog
+    assert.ok(read(page(l)).includes(`href="lessons/${l}/"`), `${page(l)} links to lessons/${l}/`);
+  }
+});
+
+test('lesson pages: CSP, language, canonical/hreflang, one h1, no stored or sent answers', async () => {
+  const { renderAll } = await import(new URL('tools/gen-lessons.mjs', root));
+  const SITE = 'https://iamalex-afk.github.io/kids-ai-test/';
+  for (const [rel, html] of renderAll()) {
+    const l = rel.split('/')[1];
+    const csp = html.match(/http-equiv="Content-Security-Policy" content="([^"]+)"/)[1];
+    assert.match(csp, /connect-src 'self';/, rel);
+    assert.match(html, new RegExp(`<html lang="${l === 'pt' ? 'pt-BR' : l}"`), rel);
+    const self = SITE + rel.replace(/index\.html$/, '');
+    assert.equal(html.match(/rel="canonical" href="([^"]+)"/)[1], self, `${rel}: self canonical`);
+    const langs = [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g)];
+    assert.deepEqual(langs.map(m => m[1]).sort(), [...LANGS, 'x-default'].sort(), `${rel}: hreflang`);
+    assert.equal(langs.find(m => m[1] === l)[2], self, `${rel}: hreflang to itself`);
+    assert.equal((html.match(/<h1[\s>]/g) || []).length, 1, `${rel}: one h1`);
+    assert.doesNotMatch(html, /\son[a-z]+="/, `${rel}: no inline handlers`);
+    assert.ok(html.includes('<script src="../../js/lesson.js"></script>'), `${rel}: lesson.js`);
+    assert.doesNotMatch(html, /js\/storage\.js|js\/core\.js/, `${rel}: no progress storage`);
+  }
+  const js = read('js/lesson.js');
+  assert.doesNotMatch(js, /fetch\(|sendBeacon|XMLHttpRequest|localStorage|sessionStorage|setTimeout\([^)]*(location|href)/, 'lesson.js stores and sends nothing');
+  assert.match(js, /localService !== false/, 'lesson.js: installed voices only');
 });

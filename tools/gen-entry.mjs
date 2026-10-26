@@ -15,20 +15,22 @@ import { T, LANG_NAMES } from './entry-i18n.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const LANGS = ['en', 'ru', 'de', 'es', 'fr', 'hi', 'id', 'pt', 'tr', 'vi'];
-const pageOf = (l) => (l === 'en' ? 'index.html' : `${l}.html`);
+export const pageOf = (l) => (l === 'en' ? 'index.html' : `${l}.html`);
 const AGES = [['tiny', '5–7'], ['child', '8–10'], ['teen', '11–13'], ['adult', '14+']];
 
-const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 const GLOBE = '<svg class="wk-globe" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
 
-function header(l) {
+// home: the brand link; langHref(x): where the language menu leads (the same
+// page in language x). Lesson pages (tools/gen-lessons.mjs) pass their own.
+export function header(l, { home = pageOf(l), langHref = pageOf } = {}) {
   const t = T[l];
-  const opts = LANGS.map((x) => `          <a class="lang-opt${x === l ? ' active' : ''}" href="${pageOf(x)}" lang="${x}" hreflang="${x}"${x === l ? ' aria-current="page"' : ''}>${esc(LANG_NAMES[x])}</a>`).join('\n');
+  const opts = LANGS.map((x) => `          <a class="lang-opt${x === l ? ' active' : ''}" href="${langHref(x)}" lang="${x}" hreflang="${x}"${x === l ? ' aria-current="page"' : ''}>${esc(LANG_NAMES[x])}</a>`).join('\n');
   return `<a class="wk-skip" href="#main">${esc(t.skip)}</a>
 <header class="wk-header">
   <div class="wk-header-in">
-    <a class="wk-brand" href="${pageOf(l)}" data-wk-home>
+    <a class="wk-brand" href="${home}" data-wk-home>
       <span class="wk-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
       <span class="wk-brand-txt"><span class="wk-brand-name">kids ai test</span><span class="wk-brand-sub">${esc(t.brandSub)}</span></span>
     </a>
@@ -91,7 +93,7 @@ ${steps}
       <ul class="wk-facts">
 ${t.facts.map((f) => `        <li>${esc(f)}</li>`).join('\n')}
       </ul>
-      <p class="wk-about"><a href="#about">${esc(t.about)}</a></p>
+      <p class="wk-about"><a href="lessons/${l}/">${esc(t.allLessons)}</a><a href="#about">${esc(t.about)}</a></p>
     </div>
 
     <div class="wk-screen" id="wk-age" hidden>

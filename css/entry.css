@@ -109,7 +109,7 @@
   font-size: .9375rem; font-weight: 600; color: var(--quiet);
 }
 .wk-facts li::before { content: '✓ '; color: #2f7a52; }
-.wk-about { margin: 16px 0 0; }
+.wk-about { margin: 16px 0 0; display: flex; flex-wrap: wrap; gap: 0 24px; }
 .wk-about a { display: inline-flex; align-items: center; min-height: 44px; color: var(--violet); font-weight: 600; text-underline-offset: 3px; }
 
 .wk-entry .wk-back { margin: 18px 0 4px; }
