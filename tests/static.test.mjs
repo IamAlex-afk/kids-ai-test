@@ -92,7 +92,7 @@ test('entry screens: pages match tools/gen-entry.mjs, every language is translat
   const { T } = await import(new URL('tools/entry-i18n.mjs', root));
   const keys = Object.keys(T.en);
   for (const l of LANGS) {
-    const html = read(page(l));
+    const html = read(page(l)).replace(/\r\n/g, '\n');
     assert.equal(render(l, html), html, `${page(l)} is out of date: run node tools/gen-entry.mjs`);
     assert.deepEqual(Object.keys(T[l]), keys, `entry-i18n ${l}: same keys as en`);
     for (const k of ['steps', 'facts', 'ages']) assert.equal(T[l][k].length, T.en[k].length, `${l}.${k}`);
