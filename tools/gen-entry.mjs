@@ -10,8 +10,10 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import { T, LANG_NAMES } from './entry-i18n.mjs';
+import { SERIES } from './series.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const LANGS = ['en', 'ru', 'de', 'es', 'fr', 'hi', 'id', 'pt', 'tr', 'vi'];
@@ -44,6 +46,58 @@ ${opts}
     </div>
   </div>
 </header>`;
+}
+
+const SLUGS = { tiny: '5-7', child: '8-10', teen: '11-13', adult: '14-plus' };
+function lessonData(l) {
+  const ctx = { window: {} };
+  vm.createContext(ctx);
+  vm.runInContext(fs.readFileSync(path.join(ROOT, 'data', `${l}.js`), 'utf8'), ctx);
+  return ctx.window.LANG_DATA;
+}
+
+// Third screen (kids): ONE recommended activity per age with "Start", then
+// the other activities, all lessons of the age and the older lessons-with-
+// quiz route (core.js). The recommendation comes from the Workshop registry
+// where the language has the series, else the first existing lesson.
+function route(l) {
+  const t = T[l];
+  const series = SERIES.filter((s) => s.langs.includes(l));
+  const data = series.length ? null : lessonData(l);
+  const blocks = AGES.map(([k], i) => {
+    const slug = SLUGS[k];
+    let title, goal, href;
+    if (series.length) {
+      const s = series[0], tx = s.text[l];
+      title = tx.common.title; goal = (tx[k] && tx[k].goal) || tx.common.goal;
+      href = `workshop/${l}/${s.file}?age=${slug}`;
+    } else {
+      const x = data.ages[k].lessons[0];
+      title = x.title; goal = t.ages[i];
+      href = `lessons/${l}/${slug}-1.html`;
+    }
+    const more = series.slice(1).map((s) => `            <li><a href="workshop/${l}/${s.file}?age=${slug}">${esc(s.text[l].common.title)}</a></li>`);
+    more.push(`            <li><a href="lessons/${l}/#age-${slug}">${esc(t.ageLessons)}</a></li>`);
+    return `      <div class="wk-route-age" data-route-for="${k}" hidden>
+        <div class="wk-start">
+          <p class="wk-start-badge">${esc(t.startBadge)}</p>
+          <h3 class="wk-start-t">${esc(title)}</h3>
+          <p class="wk-start-d">${esc(goal)}</p>
+          <a class="wk-start-go" href="${href}">${esc(t.startBtn)} →</a>
+        </div>
+        <h3 class="wk-route-h">${esc(t.otherH)}</h3>
+        <ul class="wk-route-list">
+${more.join('\n')}
+        </ul>
+      </div>`;
+  }).join('\n');
+  return `    <div class="wk-screen" id="wk-route" hidden>
+      <button type="button" class="wk-back" data-wk-change>${esc(t.change)}</button>
+      <h2 class="wk-q" tabindex="-1">${esc(t.routeQ)}</h2>
+      <p class="wk-route-now">${esc(t.ageNow)}: <b data-route-label></b></p>
+${blocks}
+      <p class="wk-route-old"><button type="button" class="wk-link" data-wk-old>${esc(t.oldRoute)} →</button></p>
+${t.seriesNote ? `      <p class="wk-note">${esc(t.seriesNote)}</p>\n` : ''}    </div>`;
 }
 
 function entry(l) {
@@ -105,6 +159,8 @@ ${ages}
       <p class="wk-note">${esc(t.note)}</p>
       <p class="wk-under5" data-for="parents" hidden>${esc(t.u5q)} <button type="button" class="wk-link" data-wk-under5>${esc(t.u5a)}</button></p>
     </div>
+
+${route(l)}
   </section>
 
   <nav class="wk-hubbar" id="wk-hubbar" aria-label="${esc(t.path)}" hidden>

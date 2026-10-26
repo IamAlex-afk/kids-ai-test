@@ -135,6 +135,25 @@ test('lesson C: demo data only, every piece explained, the task is always kept',
   for (const m of txt.matchAll(/\d{3}-\d{2,3}-\d{2,4}/g)) assert.match(m[0], /^[0-]+$/, `demo phone ${m[0]}`);
 });
 
+test('route after the age: one "Start" per age, real targets, the older route stays reachable', () => {
+  const LANGS = ['en', 'ru', 'de', 'es', 'fr', 'hi', 'id', 'pt', 'tr', 'vi'];
+  const page = (l) => (l === 'en' ? 'index.html' : `${l}.html`);
+  for (const l of LANGS) {
+    const html = read(page(l));
+    const route = html.slice(html.indexOf('id="wk-route"'), html.indexOf('</section>', html.indexOf('id="wk-route"')));
+    assert.ok(route.length > 0, `${page(l)}: route screen`);
+    for (const age of ['tiny', 'child', 'teen', 'adult']) assert.ok(route.includes(`data-route-for="${age}"`), `${page(l)}: ${age}`);
+    const starts = [...route.matchAll(/class="wk-start-go" href="([^"]+)"/g)].map((m) => m[1]);
+    assert.equal(starts.length, 4, `${page(l)}: exactly one Start per age`);
+    for (const href of starts) {
+      if (SERIES_LANGS.includes(l)) assert.match(href, new RegExp(`^workshop/${l}/sorter\\.html\\?age=(5-7|8-10|11-13|14-plus)$`), `${page(l)}: ${href}`);
+      else assert.match(href, new RegExp(`^lessons/${l}/(5-7|8-10|11-13|14-plus)-1\\.html$`), `${page(l)}: ${href}`);
+      assert.ok(fs.existsSync(new URL(href.split('?')[0], root)), `${page(l)}: ${href} exists`);
+    }
+    assert.match(route, /data-wk-old/, `${page(l)}: lessons with quiz, card and games still reachable`);
+  }
+});
+
 test('workshop pages: match tools/gen-series.mjs, private, linked only to existing equivalents', async () => {
   const { renderAll } = await import(new URL('tools/gen-series.mjs', root));
   const SITE = 'https://iamalex-afk.github.io/kids-ai-test/';

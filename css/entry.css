@@ -133,3 +133,23 @@
   .wk-hero-art, .wk-steps, .wk-aud-a { display: none; }
   .wk-aud, .wk-age { box-shadow: none; }
 }
+
+/* ── Third screen (kids): route — one recommended activity, then the rest (§6) ── */
+.wk-route-now { margin: 0 0 14px; color: var(--quiet); }
+.wk-start {
+  display: grid; gap: 6px; padding: 24px 26px; border-radius: var(--wk-radius);
+  background: #f1eaff; border: 1.5px solid #d2c9ef; max-width: 44em;
+}
+.wk-start-badge { margin: 0; font-size: .875rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: var(--violet); }
+.wk-start-t { margin: 0; font-size: 1.5rem; font-weight: 800; line-height: 1.25; }
+.wk-start-d { margin: 0; color: var(--ink); line-height: 1.55; }
+.wk-start-go {
+  justify-self: start; display: inline-flex; align-items: center; min-height: 52px; margin-top: 8px; padding: 0 26px;
+  border-radius: 999px; background: var(--violet); color: #fff; font-weight: 800; text-decoration: none;
+}
+.wk-start-go:hover { filter: brightness(1.1); }
+.wk-route-h { margin: 22px 0 6px; font-size: 1.125rem; }
+.wk-route-list { margin: 0; padding-left: 1.2em; display: grid; gap: 2px; }
+.wk-route-list a { display: inline-flex; align-items: center; min-height: 44px; color: var(--violet); font-weight: 600; text-underline-offset: 3px; }
+.wk-route-old { margin: 18px 0 0; }
+@media (max-width: 640px) { .wk-start { padding: 20px 18px; } .wk-start-go { justify-self: stretch; justify-content: center; } }

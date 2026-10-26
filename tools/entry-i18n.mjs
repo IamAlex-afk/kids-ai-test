@@ -31,6 +31,8 @@ export const T = {
     note: 'You can pick another route — this is not a measure of ability. No name or date of birth needed.',
     u5q: 'Child not 5 yet?', u5a: 'How to talk about AI with little ones →',
     change: '← Change age', ageNow: 'Age',
+    routeQ: 'Your route', startBadge: 'Start here', startBtn: 'Start', otherH: 'Other activities',
+    ageLessons: 'All lessons for this age', oldRoute: 'Lessons with a quiz, a card and games', seriesNote: '',
   },
   ru: {
     skip: 'Перейти к содержанию', langLabel: 'Язык', home: 'На главную',
@@ -52,6 +54,8 @@ export const T = {
     note: 'Можно выбрать другой маршрут — это не оценка способностей. Имя и дата рождения не нужны.',
     u5q: 'Ребёнку ещё нет 5 лет?', u5a: 'Как говорить об ИИ с малышом →',
     change: '← Изменить возраст', ageNow: 'Возраст',
+    routeQ: 'Твой маршрут', startBadge: 'Начни отсюда', startBtn: 'Начать', otherH: 'Другие занятия',
+    ageLessons: 'Все уроки для этого возраста', oldRoute: 'Уроки с тестом, карточкой и играми', seriesNote: '',
   },
   de: {
     skip: 'Zum Inhalt springen', langLabel: 'Sprache', home: 'Startseite',
@@ -73,6 +77,8 @@ export const T = {
     note: 'Du kannst auch einen anderen Weg wählen – das ist keine Bewertung der Fähigkeiten. Name und Geburtsdatum werden nicht gebraucht.',
     u5q: 'Ihr Kind ist noch keine 5?', u5a: 'Wie man mit Kleinkindern über KI spricht →',
     change: '← Alter ändern', ageNow: 'Alter',
+    routeQ: 'Dein Weg', startBadge: 'Fang hier an', startBtn: 'Starten', otherH: 'Weitere Aktivitäten',
+    ageLessons: 'Alle Lektionen für dieses Alter', oldRoute: 'Lektionen mit Quiz, Karte und Spielen', seriesNote: 'Die neuen Mitmach-Aktivitäten gibt es bisher nur auf Russisch und Englisch.',
   },
   es: {
     skip: 'Saltar al contenido', langLabel: 'Idioma', home: 'Inicio',
@@ -94,6 +100,8 @@ export const T = {
     note: 'Puedes elegir otra ruta: no es una medida de capacidad. No hace falta nombre ni fecha de nacimiento.',
     u5q: '¿Tu hijo aún no tiene 5 años?', u5a: 'Cómo hablar de la IA con los más pequeños →',
     change: '← Cambiar edad', ageNow: 'Edad',
+    routeQ: 'Tu ruta', startBadge: 'Empieza aquí', startBtn: 'Empezar', otherH: 'Otras actividades',
+    ageLessons: 'Todas las lecciones para esta edad', oldRoute: 'Lecciones con quiz, tarjeta y juegos', seriesNote: 'Las nuevas actividades prácticas por ahora solo están en ruso e inglés.',
   },
   fr: {
     skip: 'Aller au contenu', langLabel: 'Langue', home: 'Accueil',
@@ -115,6 +123,8 @@ export const T = {
     note: 'Tu peux choisir un autre parcours : ce n’est pas une mesure des capacités. Ni nom ni date de naissance.',
     u5q: 'Votre enfant n’a pas encore 5 ans ?', u5a: 'Comment parler d’IA avec les tout-petits →',
     change: '← Changer d’âge', ageNow: 'Âge',
+    routeQ: 'Ton parcours', startBadge: 'Commence ici', startBtn: 'Commencer', otherH: 'Autres activités',
+    ageLessons: 'Toutes les leçons pour cet âge', oldRoute: 'Leçons avec quiz, carte et jeux', seriesNote: 'Les nouvelles activités pratiques n’existent pour l’instant qu’en russe et en anglais.',
   },
   hi: {
     skip: 'सामग्री पर जाएँ', langLabel: 'भाषा', home: 'मुख्य पृष्ठ',
@@ -136,6 +146,8 @@ export const T = {
     note: 'तुम कोई दूसरा रास्ता भी चुन सकते हो — यह क्षमता का आकलन नहीं है। नाम या जन्मतिथि की ज़रूरत नहीं।',
     u5q: 'बच्चा अभी 5 साल का नहीं हुआ?', u5a: 'छोटे बच्चों से AI के बारे में कैसे बात करें →',
     change: '← उम्र बदलें', ageNow: 'उम्र',
+    routeQ: 'तुम्हारा रास्ता', startBadge: 'यहाँ से शुरू करो', startBtn: 'शुरू करें', otherH: 'दूसरी गतिविधियाँ',
+    ageLessons: 'इस उम्र के सभी पाठ', oldRoute: 'क्विज़, कार्ड और खेलों वाले पाठ', seriesNote: 'नई करके-सीखो गतिविधियाँ अभी केवल रूसी और अंग्रेज़ी में हैं।',
   },
   id: {
     skip: 'Lewati ke konten', langLabel: 'Bahasa', home: 'Beranda',
@@ -157,6 +169,8 @@ export const T = {
     note: 'Kamu boleh memilih rute lain — ini bukan penilaian kemampuan. Tidak perlu nama atau tanggal lahir.',
     u5q: 'Anak belum berusia 5 tahun?', u5a: 'Cara membicarakan AI dengan anak kecil →',
     change: '← Ubah usia', ageNow: 'Usia',
+    routeQ: 'Rutemu', startBadge: 'Mulai dari sini', startBtn: 'Mulai', otherH: 'Kegiatan lain',
+    ageLessons: 'Semua pelajaran untuk usia ini', oldRoute: 'Pelajaran dengan kuis, kartu, dan game', seriesNote: 'Kegiatan praktik yang baru sejauh ini hanya tersedia dalam bahasa Rusia dan Inggris.',
   },
   pt: {
     skip: 'Pular para o conteúdo', langLabel: 'Idioma', home: 'Início',
@@ -178,6 +192,8 @@ export const T = {
     note: 'Você pode escolher outro caminho — isso não mede capacidade. Nome e data de nascimento não são necessários.',
     u5q: 'A criança ainda não tem 5 anos?', u5a: 'Como conversar sobre IA com os pequenos →',
     change: '← Mudar a idade', ageNow: 'Idade',
+    routeQ: 'Seu caminho', startBadge: 'Comece aqui', startBtn: 'Começar', otherH: 'Outras atividades',
+    ageLessons: 'Todas as lições para esta idade', oldRoute: 'Lições com quiz, cartão e jogos', seriesNote: 'As novas atividades práticas por enquanto só existem em russo e inglês.',
   },
   tr: {
     skip: 'İçeriğe geç', langLabel: 'Dil', home: 'Ana sayfa',
@@ -199,6 +215,8 @@ export const T = {
     note: 'Başka bir yol da seçebilirsin — bu bir yetenek ölçümü değil. Ad ya da doğum tarihi gerekmez.',
     u5q: 'Çocuğunuz henüz 5 yaşında değil mi?', u5a: 'Küçük çocuklarla yapay zekâ hakkında nasıl konuşulur →',
     change: '← Yaşı değiştir', ageNow: 'Yaş',
+    routeQ: 'Yolun', startBadge: 'Buradan başla', startBtn: 'Başla', otherH: 'Diğer etkinlikler',
+    ageLessons: 'Bu yaş için tüm dersler', oldRoute: 'Quiz, kart ve oyunlu dersler', seriesNote: 'Yeni uygulamalı etkinlikler şimdilik yalnızca Rusça ve İngilizce.',
   },
   vi: {
     skip: 'Chuyển đến nội dung', langLabel: 'Ngôn ngữ', home: 'Trang chủ',
@@ -220,5 +238,7 @@ export const T = {
     note: 'Bạn có thể chọn lộ trình khác — đây không phải là đánh giá năng lực. Không cần tên hay ngày sinh.',
     u5q: 'Con chưa đủ 5 tuổi?', u5a: 'Cách nói chuyện về AI với trẻ nhỏ →',
     change: '← Đổi độ tuổi', ageNow: 'Độ tuổi',
+    routeQ: 'Lộ trình của bạn', startBadge: 'Bắt đầu từ đây', startBtn: 'Bắt đầu', otherH: 'Hoạt động khác',
+    ageLessons: 'Tất cả bài học cho độ tuổi này', oldRoute: 'Bài học có câu hỏi, thẻ và trò chơi', seriesNote: 'Các hoạt động thực hành mới hiện chỉ có bằng tiếng Nga và tiếng Anh.',
   },
 };

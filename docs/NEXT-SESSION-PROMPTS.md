@@ -49,3 +49,15 @@ fixed, test output, and a commit — no push until the last stage passes.
 > finish; a right selection finishes and (Ella) shows the safe request; 5–7
 > big buttons; nothing typed by the user anywhere. Screen reader text: the
 > feedback is in a role=status region. Report exact results; commit fixes.
+
+## Stage 4 — route "age → Start" (commit "Route after the age…")
+
+> Branch release/three-lessons. `node tools/gen-entry.mjs` (pages get the
+> route screen), `node tools/gen-series.mjs`, then all checks. In headless
+> Chrome on ru.html, index.html and de.html: For kids → age 8–10 → route
+> screen with "Age: 8–10", ONE Start card (ru/en → workshop sorter with
+> ?age=8-10; de → lessons/de/8-10-1.html), other activities, "Lessons with a
+> quiz, a card and games" opens the old mode picker and the quiz/card/games
+> still work; "Change age" → age screen; browser Back from route → age? →
+> home without loops; parents path unchanged (parents' corner). Keyboard:
+> focus lands on the route heading. Report exact results; commit fixes.
