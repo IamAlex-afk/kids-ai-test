@@ -134,15 +134,21 @@
   });
 
   const KINDS = {};
-  window.KAT_Workshop = { register: (k, fn) => { KINDS[k] = fn; }, el, say, fill, question, runSteps, withAge };
-
+  let started = false;
   function start() {
     const kind = KINDS[D.kind];
-    if (!kind) return;
+    if (!kind || started) return;
+    started = true;
     document.documentElement.classList.add('wk-js');
-    kind({ D, T, U, age, el, say, fill, question, runSteps });
+    // .wk-wait (set in <head>) keeps the parts below hidden until now, so
+    // filling the activity does not visibly push them down (CLS).
+    try { kind({ D, T, U, age, el, say, fill, question, runSteps }); }
+    finally { document.documentElement.classList.remove('wk-wait'); }
   }
-  // Activity modules register themselves below this file; start after them.
+  // Activity modules register themselves below this file. The page's own
+  // module starts the activity at once (still while the page is parsed), so
+  // the first paint already has it and nothing below jumps down (CLS).
+  window.KAT_Workshop = { register: (k, fn) => { KINDS[k] = fn; if (k === D.kind) start(); }, el, say, fill, question, runSteps, withAge };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
   else setTimeout(start, 0);
 })();
