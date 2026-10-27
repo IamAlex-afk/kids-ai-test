@@ -11,7 +11,7 @@ export const share = {
   sample: true,
   data: {},
   sources: [
-    { url: 'https://www.unicef.org/innocenti/reports/policy-guidance-ai-children', title: 'UNICEF Innocenti, Policy guidance on AI for children',
+    { url: 'https://www.unicef.org/innocenti/reports/policy-guidance-ai-children', title: 'UNICEF Innocenti, Guidance on AI and children',
       supports: { ru: 'Защита данных и приватности детей — одно из требований к системам ИИ, с которыми взаимодействуют дети.', en: 'Protecting children’s data and privacy is one of the requirements for AI systems that children interact with.' } },
     { url: 'https://dataprivacylab.org/projects/identifiability/paper1.pdf', title: 'Sweeney, "Simple Demographics Often Identify People Uniquely", Carnegie Mellon University, 2000',
       supports: { ru: 'Сочетание нескольких обычных сведений (почтовый индекс, пол, дата рождения) позволяло узнать большинство людей в исследованных данных.', en: 'A combination of a few ordinary details (ZIP code, sex, date of birth) was enough to single out most people in the data studied.' } },
