@@ -1234,20 +1234,20 @@ function renderParentFaq(ageKey = S.age) {
     const wrapEl = document.createElement('div');
     wrapEl.className = 'pf-sourced-faq';
     wrapEl.innerHTML = `
-      <h4>${d.faq_h || 'Frequently Asked Questions'}</h4>
+      <h3>${d.faq_h || 'Frequently Asked Questions'}</h3>
       <div class="faq-section" style="margin-bottom:16px">
         ${d.faq.map(item => `
           <details class="faq-item">
-            <summary><h3>${item.q}</h3></summary>
+            <summary><h4>${item.q}</h4></summary>
             <p class="faq-answer">${item.a}</p>
           </details>`).join('')}
       </div>
       ${[ageKey].filter(k => Array.isArray(d['faq_'+k]) && d['faq_'+k].length).map(k => `
-        <h4>${d['faq_'+k+'_h'] || ''}</h4>
+        <h3>${d['faq_'+k+'_h'] || ''}</h3>
         <div class="faq-section" style="margin-bottom:16px">
           ${d['faq_'+k].map(item => `
             <details class="faq-item">
-              <summary><h3>${item.q}</h3></summary>
+              <summary><h4>${item.q}</h4></summary>
               <p class="faq-answer">${item.a}</p>
             </details>`).join('')}
         </div>`).join('')}

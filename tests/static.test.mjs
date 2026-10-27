@@ -197,3 +197,26 @@ test('lesson pages: CSP, language, canonical/hreflang, one h1, no stored or sent
   assert.doesNotMatch(js, /fetch\(|sendBeacon|XMLHttpRequest|localStorage|sessionStorage|setTimeout\([^)]*(location|href)/, 'lesson.js stores and sends nothing');
   assert.match(js, /localService !== false/, 'lesson.js: installed voices only');
 });
+
+test('every page: one h1, heading levels never skip on the way down', () => {
+  const skip = new Set(['.git', 'node_modules', 'dist', 'docs', '.github']);
+  const walk = (dir) => fs.readdirSync(new URL(dir, root), { withFileTypes: true }).flatMap((e) =>
+    e.isDirectory() ? (skip.has(e.name) ? [] : walk(`${dir}${e.name}/`)) : e.name.endsWith('.html') ? [`${dir}${e.name}`] : []);
+  const pages = walk('');
+  assert.ok(pages.length >= 10, 'pages found');
+  for (const p of pages) {
+    // comments are matched too (and skipped), so a heading inside one does not count
+    const levels = [...read(p).matchAll(/<!--[\s\S]*?-->|<h([1-6])\b/g)].filter((m) => m[1]).map((m) => +m[1]);
+    if (!levels.length) continue;
+    assert.equal(levels.filter((n) => n === 1).length, 1, `${p}: exactly one h1`);
+    assert.equal(levels[0], 1, `${p}: h1 comes first`);
+    levels.reduce((prev, n) => { assert.ok(n <= prev + 1, `${p}: h${prev} followed by h${n}`); return n; });
+  }
+  // the parents' block has its own h2, so its h3 sections do not land under the last FAQ question
+  for (const l of LANGS) {
+    const src = read(page(l));
+    const block = src.slice(src.indexOf('<div class="parent-wrap"'), src.indexOf('<footer'));
+    assert.match(block, /^<div class="parent-wrap"[^>]*>\s*<h2 class="parent-h"><button class="parent-toggle"/, `${page(l)}: parents' block starts with its h2`);
+    assert.doesNotMatch(block, /<summary><h3>/, `${page(l)}: questions inside the parents' block are h4`);
+  }
+});
