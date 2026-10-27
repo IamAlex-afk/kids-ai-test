@@ -1253,9 +1253,9 @@ function initParent() {
   renderParentFaq();
 }
 
-// Sourced, long-tail Q&A (MIT Media Lab, UNESCO, EU AI Act, WEF, Ericsson
-// 1993, ...) — written for real parent search queries and citable by
-// search engines. Only the age-specific section matching S.age is shown
+// Parents' Q&A (js/parents-faq.js). Claims that cite a study or a law must
+// match the document named (corrected 2026-10: EU AI Act, WEF, memory
+// research; an unverifiable "Resnick 2017" removed). Only the age-specific section matching S.age is shown
 // (previously showed all four ages' Q&A stacked together regardless of
 // which age was selected). Safe to call repeatedly — e.g. from selectAge()
 // on a mid-session age switch — since it replaces its own prior output
