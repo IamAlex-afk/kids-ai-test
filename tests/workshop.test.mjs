@@ -97,8 +97,9 @@ test('registry: complete for every listed language, no review claims', () => {
 
 // Per-language words the checks below look for: the "cannot be decided"
 // answer in B, and the "made-up data" note in C.
-const UNKNOWN = { ru: /нельзя установить|не знаем/i, en: /cannot be decided|Not yet/i, vi: /chưa thể xác định|chưa biết/i };
-const MADE_UP = { ru: /вымышлен/i, en: /made-up/i, vi: /hư cấu/i };
+const UNKNOWN = { ru: /нельзя установить|не знаем/i, en: /cannot be decided|Not yet/i, vi: /chưa thể xác định|chưa biết/i,
+  id: /belum bisa dipastikan|belum tahu/i };
+const MADE_UP = { ru: /вымышлен/i, en: /made-up/i, vi: /hư cấu/i, id: /rekaan/i };
 
 // Scenario lessons: every question has a valid answer and explanations;
 // "cannot be decided" exists in B; C's breakdown explains every piece and

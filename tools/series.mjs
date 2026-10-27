@@ -11,35 +11,30 @@
 // a language is listed in `langs` only when its text is complete.
 
 import { sorter } from './series/sorter.mjs';
-import { ru as sorterRu } from './series/sorter-ru.mjs';
-import { en as sorterEn } from './series/sorter-en.mjs';
-import { vi as sorterVi } from './series/sorter-vi.mjs';
 import { check } from './series/check.mjs';
-import { ru as checkRu } from './series/check-ru.mjs';
-import { en as checkEn } from './series/check-en.mjs';
-import { vi as checkVi } from './series/check-vi.mjs';
 import { share } from './series/share.mjs';
-import { ru as shareRu } from './series/share-ru.mjs';
-import { en as shareEn } from './series/share-en.mjs';
-import { vi as shareVi } from './series/share-vi.mjs';
 
 const SCENARIO = { scripts: ['workshop.js', 'workshop-scenario.js'], staticKeys: ['explain1', 'explain2', 'explain3', 'doneText'] };
 
 // Date the series pages last changed in substance. Set by hand.
-export const SERIES_LASTMOD = '2026-10-26';
-export const SERIES_LANGS = ['ru', 'en', 'vi'];
+export const SERIES_LASTMOD = '2026-10-27';
+// Languages of the series. Each needs tools/series/<lesson>-<lang>.mjs for
+// every lesson (exporting the language code) and a block in series/ui.mjs.
+export const SERIES_LANGS = ['ru', 'en', 'vi', 'id'];
 
-const withText = (entry, text, extra) => ({ ...entry, text, ...extra });
+const texts = async (lesson) => Object.fromEntries(await Promise.all(SERIES_LANGS.map(async (l) =>
+  [l, (await import(`./series/${lesson}-${l}.mjs`))[l]])));
+const withText = async (entry, extra) => ({ ...entry, text: await texts(entry.id), ...extra });
 
-export const SERIES = [
-  withText(sorter, { ru: sorterRu, en: sorterEn, vi: sorterVi }, {
+export const SERIES = await Promise.all([
+  withText(sorter, {
     scripts: ['sorter-model.js', 'workshop.js', 'workshop-sorter.js'],
     staticKeys: ['how', 'wrongWhy', 'tieNote', 'fixedWhy', 'sameWhy', 'doneText'],
     sample: false,
   }),
-  withText(check, { ru: checkRu, en: checkEn, vi: checkVi }, SCENARIO),
-  withText(share, { ru: shareRu, en: shareEn, vi: shareVi }, SCENARIO),
-];
+  withText(check, SCENARIO),
+  withText(share, SCENARIO),
+]);
 
 // Self-check of the registry (also run by tests): every listed language has
 // every field the pages and the engine need, for every age.
