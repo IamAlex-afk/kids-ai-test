@@ -7,11 +7,11 @@ const P = (text, needed, why) => ({ text, needed, why });
 
 const TASK = P('Help me think of a name for our robotics team.', true, 'this is the task itself — without it the assistant will not know what is needed');
 const ROBOT = P('We are building a robot that sorts rubbish.', true, 'helps to find a fitting name and says nothing about who you are');
-const NAME = P("I'm Tim Baker,", false, 'your first and last name are not needed to name a team');
-const SCHOOL = P('I go to Park Lane Primary on Garden Street,', false, 'your school and street show where to find you and are not needed for the task');
-const PHONE = P('my phone is 000-000-0000,', false, 'a phone number is never needed to think of a name');
-const CLUB = P('every Saturday at 10 I go to the chess club by the park,', false, 'your timetable and place show where and when you can be found');
-const TEAM = P('There are four of us in the team.', true, 'the number of members reveals nothing and may help with the name');
+const NAME = P("I'm Tim Baker.", false, 'your first and last name are not needed to name a team');
+const SCHOOL = P('I go to Park Lane Primary on Garden Street.', false, 'your school and street show where to find you and are not needed for the task');
+const PHONE = P('My phone is 000-000-0000.', false, 'a phone number is never needed to think of a name');
+const CLUB = P('Every Saturday at 10 I go to the chess club by the park.', false, 'your timetable and place show where and when you can be found');
+const TEAM = P('There are four of us in the team.', null, 'the number of members reveals nothing and may help with the name');
 
 const redact = (pieces, extra = {}) => ({
   q: 'Tap the pieces that should be removed or replaced. The task must stay clear.',
@@ -63,7 +63,7 @@ export const en = {
     goal: "Let's find out what we can tell an assistant and what is better to keep to ourselves.",
     steps: [
       { title: 'What is not needed?', intro: 'An adult reads aloud. ' + DEMO, bubble: { who: 'Tim writes to the assistant', text: "I'm Tim Baker. Help me think of a name for my robot team. I go to Park Lane Primary." },
-        redact: redact([NAME, P('Help me think of a name for my robot team.', true, 'this is the task'), P('I go to Park Lane Primary.', false, 'the school is not needed for a name')]) },
+        redact: redact([{ ...NAME, text: NAME.text.replace(/,$/, '.') }, P('Help me think of a name for my robot team.', true, 'this is the task'), P('I go to Park Lane Primary.', false, 'the school is not needed for a name')]) },
       { title: 'Not sure — what do you do?', questions: [{ q: 'You are not sure whether you can write something. What do you do?', options: ['Ask an adult', 'Write everything I know'], correct: 0, ok: 'Yes! When in doubt, ask an adult.', noAll: 'Better to ask first. Who could you ask?' }] },
       { title: 'New example', intro: DEMO, questions: [{ q: 'Ella wants the assistant to make up a little poem. What does she NOT need to write?', options: ['Her address', 'What the poem is about'], correct: 0, ok: 'Right: a poem does not need an address.', noAll: 'What the poem is about is the task itself. So what is not needed?' }] },
     ],

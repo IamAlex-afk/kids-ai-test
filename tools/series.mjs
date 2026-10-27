@@ -29,7 +29,10 @@ const withText = async (entry, extra) => ({ ...entry, text: await texts(entry.id
 export const SERIES = await Promise.all([
   withText(sorter, {
     scripts: ['sorter-model.js', 'workshop.js', 'workshop-sorter.js'],
-    staticKeys: ['how', 'wrongWhy', 'tieNote', 'fixedWhy', 'sameWhy', 'doneText'],
+    // The explanation shown on the page (and without JS): how it works, why it
+    // picks the background, the conclusion. Not the step feedback texts —
+    // out of context they read as contradictory and give the answers away.
+    staticKeys: ['how', 'tieNote', 'doneText'],
     sample: false,
   }),
   withText(check, SCENARIO),

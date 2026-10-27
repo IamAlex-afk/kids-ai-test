@@ -34,7 +34,7 @@ const fixStep = {
   questions: [
     { q: '¿Qué es lo correcto?', options: ['La clase de robots es el lunes a las 15:00.', 'La clase de robots es el miércoles a las 16:30.', 'La clase de robots es el sábado a las 11:00.'], correct: 0,
       ok: 'Correcto: eso dice el horario.', noAll: 'Mira la fila "Robots" del horario.' },
-    { q: '¿Por qué estás seguro de tu corrección?', options: ['Está escrito en el documento original: el horario del taller', 'El asistente respondió con mucha seguridad', 'Suena más correcto'], correct: 0,
+    { q: '¿En qué se apoya tu corrección?', options: ['Está escrito en el documento original: el horario del taller', 'El asistente respondió con mucha seguridad', 'Suena más correcto'], correct: 0,
       ok: 'Sí. La razón es el documento del que trata la pregunta. Un tono seguro no prueba nada.',
       noAll: 'Un tono seguro y "suena bien" no son pruebas. ¿En qué te puedes apoyar?' },
   ],

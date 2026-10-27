@@ -12,6 +12,7 @@ const require = createRequire(import.meta.url);
 const M = require('../js/sorter-model.js');
 const { sorter } = await import(new URL('tools/series/sorter.mjs', root));
 const { SERIES, SERIES_LANGS, validate } = await import(new URL('tools/series.mjs', root));
+const { UI } = await import(new URL('tools/series/ui.mjs', root));
 
 const AGES = sorter.data.ages, CATS = sorter.data.categories;
 const byId = (list, id) => list.find((c) => c.id === id);
@@ -132,8 +133,9 @@ test('lesson C: demo data only, every piece explained, the task is always kept',
     const reds = steps.filter((st) => st.redact).map((st) => st.redact);
     assert.ok(reds.length >= 1, `${l}/${age}: has a redaction task`);
     for (const r of reds) {
-      assert.ok(r.pieces.some((p) => p.needed), `${l}/${age}: something must be kept`);
-      assert.ok(r.pieces.some((p) => !p.needed), `${l}/${age}: something must be removed`);
+      assert.ok(r.pieces.some((p) => p.needed === true), `${l}/${age}: something must be kept`);
+      assert.ok(r.pieces.some((p) => p.needed === false), `${l}/${age}: something must be removed`);
+      for (const p of r.pieces) assert.ok([true, false, null].includes(p.needed), `${l}/${age}: "${p.text}" needed is true/false/null`);
       for (const p of r.pieces) assert.ok(p.why && p.why.length > 10, `${l}/${age}: "${p.text}" explained`);
     }
     // the new example is a different request from the worked one
@@ -143,6 +145,40 @@ test('lesson C: demo data only, every piece explained, the task is always kept',
   // no real-looking phone numbers: demo numbers are all zeros
   const txt = JSON.stringify(s.text);
   for (const m of txt.matchAll(/\d{3}-\d{2,3}-\d{2,4}/g)) assert.match(m[0], /^[0-]+$/, `demo phone ${m[0]}`);
+});
+
+test('lesson texts read as sentences; the sorter judges the guess; the page explanation gives no answers away', () => {
+  // A character's message is glued from pieces. The task always starts a new
+  // sentence, so the piece before it must end one (not "…, Help me").
+  // (Other capitals after a comma can be names: "Bahçe Sokak", "Wohnung 12".)
+  for (const s of SERIES) for (const l of s.langs) for (const age of ['tiny', 'child', 'teen', 'adult']) {
+    for (const st of scenarioSteps(s, l, age)) if (st.redact && st.bubble) {
+      const ps = st.redact.pieces;
+      if (st.bubble.text !== ps.map((p) => p.text).join(' ')) continue;   // written as one text, not glued
+      const t = ps.findIndex((p) => p.needed === true);
+      if (t > 0) assert.doesNotMatch(ps[t - 1].text, /,$/, `${s.id}/${l}/${age}: "${ps[t - 1].text} ${ps[t].text}"`);
+    }
+  }
+  const sorterS = SERIES.find((x) => x.id === 'sorter');
+  for (const l of sorterS.langs) {
+    const T = sorterS.text[l];
+    for (const age of ['tiny', 'child', 'teen', 'adult']) {
+      const t = { ...T.common, ...(T[age] || {}) };
+      assert.ok(t.guessRight && t.guessWrong && t.guessRight !== t.guessWrong, `${l}/${age}: the child's guess is judged`);
+      // the sentence about the mistake names who made it (it follows "your guess came true")
+      const who = (t.modelSaid || UI[l].modelSaid).toLocaleLowerCase(l);
+      assert.ok(t.wrongWhy.toLocaleLowerCase(l).includes(who), `${l}/${age}: wrongWhy says that the ${who} is wrong`);
+    }
+  }
+  for (const k of ['wrongWhy', 'fixedWhy', 'sameWhy']) assert.ok(!sorterS.staticKeys.includes(k), `step feedback "${k}" is not in the page explanation`);
+  // 5–7 is a story with everyday words in every language, with the same keys as the reference (ru)
+  const tinyKeys = Object.keys(sorterS.text.ru.tiny).sort();
+  for (const l of sorterS.langs) {
+    const tiny = sorterS.text[l].tiny;
+    assert.deepEqual(Object.keys(tiny).sort(), tinyKeys, `${l}: 5–7 story has the same parts as ru`);
+    assert.deepEqual(Object.keys(tiny.words).sort(), Object.keys(sorterS.text[l].common.words).sort(), `${l}: 5–7 words cover every card value`);
+    assert.notEqual(tiny.words.circle, sorterS.text[l].common.words.circle, `${l}: 5–7 calls the circle a toy, not a geometric figure`);
+  }
 });
 
 test('route after the age: one "Start" per age, real targets, the older route stays reachable', () => {

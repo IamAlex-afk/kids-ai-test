@@ -34,14 +34,14 @@ const fixStep = {
   questions: [
     { q: 'O que está certo?', options: ['A turma de robôs é na segunda-feira às 15h.', 'A turma de robôs é na quarta-feira às 16h30.', 'A turma de robôs é no sábado às 11h.'], correct: 0,
       ok: 'Certo: é isso que dizem os horários.', noAll: 'Olhe a linha "Robôs" dos horários.' },
-    { q: 'Por que você tem certeza da sua correção?', options: ['Está escrito no documento original — os horários da oficina', 'O assistente respondeu com muita confiança', 'Parece mais certo'], correct: 0,
+    { q: 'Em que se apoia a sua correção?', options: ['Está escrito no documento original — os horários da oficina', 'O assistente respondeu com muita confiança', 'Parece mais certo'], correct: 0,
       ok: 'Isso. O motivo é o documento sobre o qual é a pergunta. Um tom confiante não prova nada.',
       noAll: 'Tom confiante e "parece certo" não são provas. Em que você pode se apoiar?' },
   ],
 };
 
 const unknownStep = {
-  title: 'Exemplo novo — resolva sozinho',
+  title: 'Exemplo novo — sua vez',
   intro: 'Você perguntou de novo: quanto custa a visita?',
   doc: SCHEDULE2,
   bubble: { who: WHO, text: 'A visita à oficina no sábado às 12h custa R$ 20.' },

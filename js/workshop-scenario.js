@@ -55,7 +55,8 @@
     runSteps(steps);
 
     // Keep / remove pieces of a request. ok only when every piece that is not
-    // needed for the task is removed AND every needed piece is kept.
+    // needed for the task is removed AND every needed piece is kept; optional
+    // pieces (needed: null) may go either way.
     function redact(box, R, done) {
       box.append(el('p', { class: 'wk-check-q', text: R.q }));
       const state = R.pieces.map(() => false);          // true = removed / replaced
@@ -63,9 +64,11 @@
         onclick: (e) => { state[i] = !state[i]; e.currentTarget.setAttribute('aria-pressed', String(state[i])); } }, p.text));
       const fb = el('div', { class: 'wk-fb', role: 'status', 'aria-live': 'polite' });
       const check = el('button', { type: 'button', class: 'wk-btn wk-btn-main', text: R.checkBtn, onclick: () => {
+        // needed: true = keep, false = remove, null = either is fine (harmless
+        // but not required — a child who removes it is not wrong).
         const rows = R.pieces.map((p, i) => {
-          const fine = state[i] === !p.needed;              // removed iff not needed
-          return { fine, line: `${fine ? '✓' : '✗'} ${U.qL}${p.text}${U.qR} — ${p.why}` };
+          const fine = p.needed === null || state[i] === !p.needed;
+          return { fine, line: `${p.needed === null ? '•' : fine ? '✓' : '✗'} ${U.qL}${p.text}${U.qR} — ${p.why}` };
         });
         const ok = rows.every((r) => r.fine);
         fb.className = 'wk-fb ' + (ok ? 'fb-right' : 'fb-wrong');

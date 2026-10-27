@@ -10,9 +10,9 @@ const TASK = P('Bantu aku cari nama untuk tim robotik kami.', true, 'inilah tuga
 const ROBOT = P('Kami sedang membuat robot pemilah sampah.', true, 'membantu mencari nama yang cocok dan tidak mengatakan apa pun tentang siapa kamu');
 const NAME = P('Aku Bima Pratama,', false, 'nama lengkap tidak diperlukan untuk memberi nama tim');
 const SCHOOL = P('sekolah di SD Cahaya Pagi di Jalan Melati,', false, 'sekolah dan nama jalan menunjukkan di mana kamu bisa ditemukan, dan tidak diperlukan untuk tugasnya');
-const PHONE = P('nomor HP-ku 0000-0000-0000,', false, 'nomor telepon tidak pernah diperlukan untuk mencari nama');
-const CLUB = P('setiap Sabtu pukul 10 aku ikut klub catur dekat taman,', false, 'jadwal dan tempat menunjukkan kapan dan di mana kamu bisa ditemui');
-const TEAM = P('Tim kami ada empat orang.', true, 'jumlah anggota tidak mengungkap apa pun dan bisa membantu mencari nama');
+const PHONE = P('nomor HP-ku 0000-0000-0000.', false, 'nomor telepon tidak pernah diperlukan untuk mencari nama');
+const CLUB = P('setiap Sabtu pukul 10 aku ikut klub catur dekat taman.', false, 'jadwal dan tempat menunjukkan kapan dan di mana kamu bisa ditemui');
+const TEAM = P('Tim kami ada empat orang.', null, 'jumlah anggota tidak mengungkap apa pun dan bisa membantu mencari nama');
 
 const redact = (pieces, extra = {}) => ({
   q: 'Ketuk bagian yang perlu dihapus atau diganti. Tugasnya harus tetap jelas.',
@@ -64,7 +64,7 @@ export const id = {
     goal: 'Yuk, cari tahu apa yang boleh diceritakan kepada asisten dan apa yang sebaiknya kita simpan sendiri.',
     steps: [
       { title: 'Mana yang tidak perlu?', intro: 'Orang dewasa membacakan dengan suara keras. ' + DEMO, bubble: { who: 'Bima menulis kepada asisten', text: 'Aku Bima Pratama. Bantu aku cari nama untuk tim robotku. Aku sekolah di SD Cahaya Pagi.' },
-        redact: redact([NAME, P('Bantu aku cari nama untuk tim robotku.', true, 'inilah tugasnya — tanpa ini asisten tidak tahu apa yang dibutuhkan'), P('Aku sekolah di SD Cahaya Pagi.', false, 'nama sekolah tidak diperlukan untuk memberi nama tim')]) },
+        redact: redact([{ ...NAME, text: NAME.text.replace(/,$/, '.') }, P('Bantu aku cari nama untuk tim robotku.', true, 'inilah tugasnya — tanpa ini asisten tidak tahu apa yang dibutuhkan'), P('Aku sekolah di SD Cahaya Pagi.', false, 'nama sekolah tidak diperlukan untuk memberi nama tim')]) },
       { title: 'Kalau ragu, harus bagaimana?', questions: [{ q: 'Kamu tidak yakin boleh menulis sesuatu atau tidak. Apa yang kamu lakukan?', options: ['Tanya orang dewasa', 'Tulis semua yang aku tahu'], correct: 0, ok: 'Ya! Kalau ragu, tanya orang dewasa.', noAll: 'Lebih baik bertanya dulu. Kepada siapa?' }] },
       { title: 'Contoh baru', intro: DEMO, questions: [{ q: 'Nadia ingin asisten membuat puisi pendek. Apa yang TIDAK perlu ia tulis?', options: ['Alamat rumahnya', 'Puisinya tentang apa'], correct: 0, ok: 'Benar: puisi tidak memerlukan alamat.', noAll: 'Puisinya tentang apa itulah tugasnya. Jadi apa yang tidak perlu?' }] },
     ],
