@@ -205,7 +205,8 @@ test('every page: one h1, heading levels never skip on the way down', () => {
   const pages = walk('');
   assert.ok(pages.length >= 10, 'pages found');
   for (const p of pages) {
-    const levels = [...read(p).replace(/<!--[\s\S]*?-->/g, '').matchAll(/<h([1-6])\b/g)].map((m) => +m[1]);
+    // comments are matched too (and skipped), so a heading inside one does not count
+    const levels = [...read(p).matchAll(/<!--[\s\S]*?-->|<h([1-6])\b/g)].filter((m) => m[1]).map((m) => +m[1]);
     if (!levels.length) continue;
     assert.equal(levels.filter((n) => n === 1).length, 1, `${p}: exactly one h1`);
     assert.equal(levels[0], 1, `${p}: h1 comes first`);
