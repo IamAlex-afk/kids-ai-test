@@ -147,9 +147,74 @@ body[data-age="tiny"] .wk-opt { min-height: 72px; font-size: 1.25rem; }
 .wk-foot p { margin: 6px 0; }
 .wk-foot a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; }
 
+/* ── Workshop activities (tools/gen-series.mjs, js/workshop*.js) ──
+   Same tokens, buttons and options as the lessons above. */
+.wk-workshop .wk-card + .wk-card { margin-top: 18px; }
+.wk-ageswitch { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: 0 0 16px; }
+.wk-ageswitch p { margin: 0; font-weight: 700; color: var(--quiet); }
+.wk-ageswitch ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.wk-ageswitch a {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 999px;
+  border: 1.5px solid var(--age-line); background: #fff; color: var(--ink); font-weight: 600; text-decoration: none;
+}
+.wk-ageswitch a[aria-current] { background: var(--age-ink); border-color: var(--age-ink); color: #fff; }
+.wk-sample { margin: 0 0 14px; padding: 10px 14px; border-radius: 14px; border: 1.5px dashed var(--age-ink); font-weight: 600; }
+.wk-goalbox { margin: 0 0 18px; padding: 14px 18px; border-radius: 18px; background: var(--age-soft); }
+.wk-goalbox h2 { margin: 0 0 4px; font-size: 1rem; text-transform: uppercase; letter-spacing: .06em; color: var(--age-ink); }
+.wk-goalbox p, .wk-goal { margin: 0; font-size: 1.0625rem; line-height: 1.6; }
+.wk-app:empty { display: none; }
+.wk-app { margin: 0 0 18px; padding-top: 16px; border-top: 1px solid var(--line); }
+.wk-stepno { justify-content: flex-start; }
+.wk-step-title { margin: 0 0 12px; font-size: 1.375rem; line-height: 1.3; }
+.wk-step-body h3 { margin: 16px 0 8px; font-size: 1.0625rem; }
+.wk-step-body > div > p { line-height: 1.6; }
+.wk-step-nav { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin-top: 22px; }
+.wk-btn-main { background: var(--age-ink); border-color: var(--age-ink); color: #fff; }
+.wk-btn-main:hover:not(:disabled) { color: #fff; filter: brightness(1.1); }
+.wk-step-body .wk-btn { margin-top: 12px; }
+.wk-opts-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 4px; }
+.wk-opts-row .wk-opt { width: auto; min-width: 9em; }
+.wk-opt[aria-pressed="true"], .wk-pick[aria-pressed="true"] { border-color: var(--age-ink); background: var(--age-soft); box-shadow: inset 0 0 0 2px var(--age-ink); }
+.wk-opt[aria-pressed="true"]::after, .wk-pick[aria-pressed="true"]::after { content: '✓'; margin-left: auto; font-weight: 800; color: var(--age-ink); }
+.wk-cards { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 12px; }
+.wk-card-pic { margin: 0; display: grid; justify-items: center; gap: 4px; width: 112px; text-align: center; font-size: .875rem; line-height: 1.3; }
+body[data-age="tiny"] .wk-card-pic { width: 136px; font-size: 1rem; }
+body[data-age="tiny"] .wk-card-pic svg { width: 104px; height: 104px; }
+.wk-pick { display: flex; align-items: center; gap: 6px; padding: 8px; border: 1.5px solid var(--line); border-radius: 18px; background: #fff; color: var(--ink); }
+.wk-pick:hover:not(:disabled) { border-color: var(--age-ink); }
+.wk-pick:disabled:not([aria-pressed="true"]) { opacity: .7; cursor: default; }
+.wk-errors { margin: 12px 0 0; padding: 10px 14px; border-radius: 14px; background: var(--paper); font-variant-numeric: tabular-nums; }
+.wk-results { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 8px; }
+.wk-results li { display: flex; align-items: center; gap: 12px; padding: 6px 12px; border-radius: 16px; border: 1.5px solid; }
+.wk-results li.is-right { border-color: #2f7a52; background: #e2f3eb; }
+.wk-results li.is-wrong { border-color: #b4553a; background: #fdece6; }
+.wk-results .wk-card-pic { width: 80px; font-size: .75rem; }
+.wk-score { font-weight: 700; }
+.wk-limits { line-height: 1.6; }
+.wk-choices { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.wk-choices .wk-pg { width: 100%; }
+.wk-explain-all summary, .wk-print-answers summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; font-weight: 700; color: var(--age-ink); }
+.wk-explain-all p { line-height: 1.6; }
+.wk-adult h2, .wk-print h2, .wk-sources h2 { margin: 0 0 8px; font-size: 1.375rem; }
+.wk-adult h3 { margin: 14px 0 4px; font-size: 1rem; color: var(--age-ink); }
+.wk-adult p, .wk-adult li, .wk-print p { line-height: 1.6; }
+.wk-sources ol { padding-left: 1.4em; display: grid; gap: 10px; overflow-wrap: anywhere; }
+.wk-supports, .wk-review { color: var(--quiet); font-size: .9375rem; }
+.wk-cat-item { display: grid; gap: 2px; padding: 6px 0; }
+/* the tag / ok of a shared-text block (lesson C) */
+.wk-chip { display: inline-flex; align-items: center; min-height: 44px; padding: 6px 14px; margin: 4px; border-radius: 999px; border: 1.5px solid var(--age-line); background: #fff; color: var(--ink); font-weight: 600; text-align: left; }
+.wk-chip[aria-pressed="true"] { background: var(--age-soft); border-color: var(--age-ink); text-decoration: line-through; }
+.wk-doc { margin: 0 0 14px; padding: 14px 18px; border-radius: 16px; border: 1px solid var(--line); background: var(--paper); }
+.wk-doc table { border-collapse: collapse; width: 100%; }
+.wk-doc th, .wk-doc td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); }
+.wk-bubble { margin: 0 0 14px; padding: 14px 18px; border-radius: 18px 18px 18px 4px; background: var(--age-soft); border: 1px solid var(--age-line); }
+.wk-bubble b { display: block; margin-bottom: 4px; color: var(--age-ink); }
+
 @media (prefers-reduced-motion: reduce) { .wk-page * { transition: none !important; } }
 @media print {
   .wk-header, .wk-voice, .wk-novoice, .wk-pager, .wk-foot, .wk-crumbs, .wk-retry, .wk-prog { display: none !important; }
+  .wk-app, .wk-ageswitch, [data-print], .wk-explain-all { display: none !important; }
+  .wk-print { break-before: page; }
   body.wk-page { background: #fff; }
   .wk-card { border: 0; box-shadow: none; padding: 0; }
   .wk-page .wk-reveal[hidden] { display: block !important; }   /* the answer stays on paper */

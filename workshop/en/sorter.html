@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none';">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why did the sorter get it wrong? — Workshop: AI activities | Kids AI Test</title>
+  <meta name="description" content="A teaching sorter learns from cards and makes a mistake because of a false pattern. The child adds examples, the model recalculates its rule, and the result is checked on separate cards.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://iamalex-afk.github.io/kids-ai-test/workshop/en/sorter.html">
+  <link rel="alternate" hreflang="ru" href="https://iamalex-afk.github.io/kids-ai-test/workshop/ru/sorter.html">
+  <link rel="alternate" hreflang="en" href="https://iamalex-afk.github.io/kids-ai-test/workshop/en/sorter.html">
+  <link rel="alternate" hreflang="vi" href="https://iamalex-afk.github.io/kids-ai-test/workshop/vi/sorter.html">
+  <link rel="alternate" hreflang="id" href="https://iamalex-afk.github.io/kids-ai-test/workshop/id/sorter.html">
+  <link rel="alternate" hreflang="pt" href="https://iamalex-afk.github.io/kids-ai-test/workshop/pt/sorter.html">
+  <link rel="alternate" hreflang="es" href="https://iamalex-afk.github.io/kids-ai-test/workshop/es/sorter.html">
+  <link rel="alternate" hreflang="fr" href="https://iamalex-afk.github.io/kids-ai-test/workshop/fr/sorter.html">
+  <link rel="alternate" hreflang="de" href="https://iamalex-afk.github.io/kids-ai-test/workshop/de/sorter.html">
+  <link rel="alternate" hreflang="tr" href="https://iamalex-afk.github.io/kids-ai-test/workshop/tr/sorter.html">
+  <link rel="alternate" hreflang="hi" href="https://iamalex-afk.github.io/kids-ai-test/workshop/hi/sorter.html">
+  <link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/workshop/en/sorter.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Why did the sorter get it wrong? — Workshop: AI activities | Kids AI Test">
+  <meta property="og:description" content="A teaching sorter learns from cards and makes a mistake because of a false pattern. The child adds examples, the model recalculates its rule, and the result is checked on separate cards.">
+  <meta property="og:url" content="https://iamalex-afk.github.io/kids-ai-test/workshop/en/sorter.html">
+  <meta property="og:image" content="https://iamalex-afk.github.io/kids-ai-test/og.png">
+  <link rel="icon" href="../../favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../css/workshop.css">
+  <link rel="stylesheet" href="../../css/lesson.css">
+</head>
+<body class="wk-home wk-page wk-workshop" data-age="child">
+<a class="wk-skip" href="#main">Skip to content</a>
+<header class="wk-header">
+  <div class="wk-header-in">
+    <a class="wk-brand" href="../../index.html" data-wk-home>
+      <span class="wk-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="wk-brand-txt"><span class="wk-brand-name">kids ai test</span><span class="wk-brand-sub">A workshop for using AI mindfully</span></span>
+    </a>
+    <div class="wk-actions">
+      <div class="lang-switcher" id="lang-switcher">
+        <button type="button" class="lang-globe" id="lang-globe" aria-expanded="false" aria-controls="lang-dropdown" aria-label="Language: English"><svg class="wk-globe" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="lang-full">English</span><span class="lang-short">EN</span><span class="lang-arrow" aria-hidden="true">▾</span></button>
+        <div class="lang-dropdown" id="lang-dropdown">
+          <a class="lang-opt active" href="../en/sorter.html" lang="en" hreflang="en" aria-current="page">English</a>
+          <a class="lang-opt" href="../ru/sorter.html" lang="ru" hreflang="ru">Русский</a>
+          <a class="lang-opt" href="../de/sorter.html" lang="de" hreflang="de">Deutsch</a>
+          <a class="lang-opt" href="../es/sorter.html" lang="es" hreflang="es">Español</a>
+          <a class="lang-opt" href="../fr/sorter.html" lang="fr" hreflang="fr">Français</a>
+          <a class="lang-opt" href="../hi/sorter.html" lang="hi" hreflang="hi">हिन्दी</a>
+          <a class="lang-opt" href="../id/sorter.html" lang="id" hreflang="id">Bahasa Indonesia</a>
+          <a class="lang-opt" href="../pt/sorter.html" lang="pt" hreflang="pt">Português</a>
+          <a class="lang-opt" href="../tr/sorter.html" lang="tr" hreflang="tr">Türkçe</a>
+          <a class="lang-opt" href="../vi/sorter.html" lang="vi" hreflang="vi">Tiếng Việt</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<main id="main" class="wk-lesson">
+    <nav class="wk-crumbs" aria-label="You are here">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="./">All Workshop activities</a></li>
+        <li><a href="sorter.html">Why did the sorter get it wrong?</a></li>
+      </ol>
+    </nav>
+  <article class="wk-card" aria-labelledby="wk-act-title">
+    <h1 class="wk-lesson-title" id="wk-act-title">Why did the sorter get it wrong?</h1>
+    <nav class="wk-ageswitch" aria-label="Difficulty">
+      <p>Difficulty:</p>
+      <ol>
+      <li><a href="sorter.html?age=5-7" data-slug="5-7">5–7, with an adult</a></li>
+      <li><a href="sorter.html?age=8-10" data-slug="8-10" aria-current="true">8–10</a></li>
+      <li><a href="sorter.html?age=11-13" data-slug="11-13">11–13</a></li>
+      <li><a href="sorter.html?age=14-plus" data-slug="14-plus">14+</a></li>
+      </ol>
+    </nav>
+    <section class="wk-goalbox" aria-labelledby="wk-goal-h">
+      <h2 id="wk-goal-h">Goal</h2>
+      <p>Find what made the sorter wrong and fix it with examples. Compare &quot;before&quot; and &quot;after&quot;.</p>
+    </section>
+    <noscript><p class="wk-novoice">The activity itself needs JavaScript. Without it, the goal, the explanation and a printable task are below.</p></noscript>
+    <section class="wk-app" id="wk-app" aria-live="off"></section>
+    <details class="wk-explain-all">
+      <summary>Explanation</summary>
+      <p>This is a teaching model, not a neural network. It does not &quot;see&quot; the picture: every card already comes with two ready-made features — shape and background. The model tries a rule by shape and a rule by background and keeps the one that makes fewer mistakes on the training cards.</p>
+      <p>Wrong! It is a circle. In training, every circle was on a blue background and every square on a yellow one. So the rule &quot;yellow background → square&quot; fitted the training cards just as well as the rule by shape.</p>
+      <p>When two rules fit equally well, our sorter picks the background — that is how this demo is set up, so that the mistake becomes visible.</p>
+      <p>It worked: the training cards now have circles and squares on different backgrounds. The background rule now makes mistakes, the shape rule does not.</p>
+      <p>Nothing changed: the cards you added repeat the old pattern (circles on blue, squares on yellow). More of the same does not help — you need examples that break the pattern. Go back and pick others.</p>
+      <p>The sorter was wrong not because it is &quot;stupid&quot;, but because the training examples had a false hint in them — the background.</p>
+    </details>
+  </article>
+
+  <section class="wk-card wk-adult" aria-labelledby="wk-adult-h">
+    <h2 id="wk-adult-h">For the adult</h2>
+    <h3>Goal</h3>
+    <p>The child sees that a model learns from examples and can latch onto an accidental hint (the background), and that this is fixed with examples that contradict the hint.</p>
+    <h3>Questions to talk about</h3>
+        <ul>
+          <li>Why did the sorter call the circle a square?</li>
+          <li>Which cards helped and which did not? Why?</li>
+          <li>Where in real life could a &quot;trap hint&quot; like this appear?</li>
+        </ul>
+    <h3>Common misconception</h3>
+    <p>More data is always better. Not so: ten identical examples teach nothing new; what matters is that examples differ where it matters.</p>
+    <h3>Signs of understanding</h3>
+        <ul>
+          <li>Explains the mistake as &quot;in the examples all the circles were on blue&quot;.</li>
+          <li>Picks a card that breaks the false pattern — and does it again in the new example.</li>
+          <li>Does not assume the model &quot;sees&quot; the picture the way a person does.</li>
+        </ul>
+    <h3>How the activity works</h3>
+    <p>For the adult: the model is a one-feature rule. At first both features fit the training cards equally well (0 mistakes); on a tie this demo picks the background — that is our rule, not a property of machine learning. The model receives ready-made features, not pixels.</p>
+  </section>
+
+  <section class="wk-card wk-print" aria-labelledby="wk-print-h">
+    <h2 id="wk-print-h">Printable task</h2>
+    <p>Draw 4 cards: 2 circles on blue and 2 squares on yellow. Cover the shapes and ask: what else could someone &quot;guess&quot; by? Add one card that breaks the &quot;background&quot; hint.</p>
+    <button type="button" class="wk-btn" data-print hidden>Print the task</button>
+    <details class="wk-print-answers" open>
+      <summary>Answers and explanation (for the adult)</summary>
+      <p>The trap hint is the background colour: in the examples it always matches the shape. A circle on yellow or a square on blue breaks it.</p>
+    </details>
+  </section>
+
+  <section class="wk-card wk-sources" aria-labelledby="wk-src-h">
+    <h2 id="wk-src-h">Sources</h2>
+    <ol>
+        <li><a href="https://arxiv.org/abs/2004.07780" rel="noopener" target="_blank">Geirhos et al., &quot;Shortcut learning in deep neural networks&quot;, Nature Machine Intelligence, 2020</a><br><span class="wk-supports">What it supports: Machine-learning models can rely on an accidental cue in the training data (such as the background) instead of the intended feature.</span></li>
+        <li><a href="https://doi.org/10.1023/A:1022631118932" rel="noopener" target="_blank">Holte, &quot;Very Simple Classification Rules Perform Well on Most Commonly Used Datasets&quot;, Machine Learning, 1993</a><br><span class="wk-supports">What it supports: A one-feature rule chosen by the fewest mistakes is a known simple classification method; our sorter is a teaching version of it.</span></li>
+    </ol>
+    <p class="wk-review">Status: author’s draft. Not reviewed by a native-speaking editor or a teacher; the activity has not been tried with children.</p>
+  </section>
+
+  <nav class="wk-pager" aria-label="Other activities">
+    <a class="wk-pg" href="./">All Workshop activities</a>
+    <a class="wk-pg wk-pg-next" href="check.html">Check a confident answer →</a>
+  </nav>
+</main>
+<footer class="wk-foot">
+  <div class="wk-foot-in">
+    <p>The activity runs in your browser: answers are not saved or sent. Like any website, the host receives ordinary page requests.</p>
+    <p><a href="../../lessons/en/">All lessons by age</a></p>
+  </div>
+</footer>
+<script type="application/json" id="wk-data">{"kind":"sorter","defaultAge":"child","data":{"ages":{"tiny":{"start":[{"id":"a1","shape":"circle","bg":"blue","label":"circle"},{"id":"a2","shape":"circle","bg":"blue","label":"circle"},{"id":"a3","shape":"square","bg":"yellow","label":"square"},{"id":"a4","shape":"square","bg":"yellow","label":"square"}],"probe":{"id":"p1","shape":"circle","bg":"yellow","label":"circle"},"extras":[{"id":"x1","shape":"circle","bg":"yellow","label":"circle"},{"id":"x3","shape":"circle","bg":"blue","label":"circle"}],"pick":1,"test":[{"id":"t1","shape":"circle","bg":"yellow","label":"circle"},{"id":"t2","shape":"square","bg":"blue","label":"square"}]},"child":{"start":[{"id":"a1","shape":"circle","bg":"blue","label":"circle"},{"id":"a2","shape":"circle","bg":"blue","label":"circle"},{"id":"a5","shape":"circle","bg":"blue","label":"circle"},{"id":"a3","shape":"square","bg":"yellow","label":"square"},{"id":"a4","shape":"square","bg":"yellow","label":"square"},{"id":"a6","shape":"square","bg":"yellow","label":"square"}],"probe":{"id":"p1","shape":"circle","bg":"yellow","label":"circle"},"extras":[{"id":"x1","shape":"circle","bg":"yellow","label":"circle"},{"id":"x2","shape":"square","bg":"blue","label":"square"},{"id":"x3","shape":"circle","bg":"blue","label":"circle"},{"id":"x4","shape":"square","bg":"yellow","label":"square"}],"pick":2,"test":[{"id":"t1","shape":"circle","bg":"yellow","label":"circle"},{"id":"t2","shape":"square","bg":"blue","label":"square"},{"id":"t3","shape":"circle","bg":"blue","label":"circle"},{"id":"t4","shape":"square","bg":"yellow","label":"square"}]},"teen":{"start":[{"id":"a1","shape":"circle","bg":"blue","label":"circle"},{"id":"a2","shape":"circle","bg":"blue","label":"circle"},{"id":"a5","shape":"circle","bg":"blue","label":"circle"},{"id":"a3","shape":"square","bg":"yellow","label":"square"},{"id":"a4","shape":"square","bg":"yellow","label":"square"},{"id":"a6","shape":"square","bg":"yellow","label":"square"}],"probe":{"id":"p1","shape":"circle","bg":"yellow","label":"circle"},"extras":[{"id":"x1","shape":"circle","bg":"yellow","label":"circle"},{"id":"x2","shape":"square","bg":"blue","label":"square"},{"id":"x3","shape":"circle","bg":"blue","label":"circle"},{"id":"x4","shape":"square","bg":"yellow","label":"square"}],"pick":2,"test":[{"id":"t1","shape":"circle","bg":"yellow","label":"circle"},{"id":"t2","shape":"square","bg":"blue","label":"square"},{"id":"t3","shape":"circle","bg":"blue","label":"circle"},{"id":"t4","shape":"square","bg":"yellow","label":"square"}]},"adult":{"start":[{"id":"a1","shape":"circle","bg":"blue","label":"circle"},{"id":"a2","shape":"circle","bg":"blue","label":"circle"},{"id":"a5","shape":"circle","bg":"blue","label":"circle"},{"id":"a3","shape":"square","bg":"yellow","label":"square"},{"id":"a4","shape":"square","bg":"yellow","label":"square"},{"id":"a6","shape":"square","bg":"yellow","label":"square"}],"probe":{"id":"p1","shape":"circle","bg":"yellow","label":"circle"},"extras":[{"id":"x1","shape":"circle","bg":"yellow","label":"circle"},{"id":"x2","shape":"square","bg":"blue","label":"square"},{"id":"x3","shape":"circle","bg":"blue","label":"circle"},{"id":"x4","shape":"square","bg":"yellow","label":"square"}],"pick":3,"test":[{"id":"t1","shape":"circle","bg":"yellow","label":"circle"},{"id":"t2","shape":"square","bg":"blue","label":"square"},{"id":"t3","shape":"circle","bg":"blue","label":"circle"},{"id":"t4","shape":"square","bg":"yellow","label":"square"}]}},"transfer":{"start":[{"id":"n1","shape":"triangle","bg":"green","label":"triangle"},{"id":"n2","shape":"triangle","bg":"green","label":"triangle"},{"id":"n3","shape":"triangle","bg":"green","label":"triangle"},{"id":"n4","shape":"star","bg":"purple","label":"star"},{"id":"n5","shape":"star","bg":"purple","label":"star"},{"id":"n6","shape":"star","bg":"purple","label":"star"}],"probe":{"id":"np","shape":"star","bg":"green","label":"star"},"fixes":[{"id":"f1","shape":"star","bg":"green","label":"star"},{"id":"f2","shape":"triangle","bg":"green","label":"triangle"},{"id":"f3","shape":"star","bg":"purple","label":"star"}]},"categories":{"main":["circle","square"],"transfer":["triangle","star"]}},"ui":{"series":"Workshop: AI activities","seriesLead":"Short hands-on activities: guess, try, see the result, understand it and solve a new example. No sign-up; answers are not saved or sent anywhere.","ageLabel":"Difficulty","ages":{"tiny":"5–7, with an adult","child":"8–10","teen":"11–13","adult":"14+"},"stepOf":"Step {n} of {m}","next":"Next →","back":"← Back","retry":"Try again","before":"before","after":"after","modelSaid":"sorter","limit":"You can choose at most {pick}. Unselect another card first.","qL":"“","qR":"”","srcOrigin":"Where from: ","srcDate":"Date: ","goalH":"Goal","explainH":"Explanation","sampleNote":"Teaching example: the assistant’s texts were written in advance; this is not a live chat and not a request to a neural network.","adultH":"For the adult","adultGoal":"Goal","adultQuestions":"Questions to talk about","adultMis":"Common misconception","adultSigns":"Signs of understanding","adultMethod":"How the activity works","printH":"Printable task","printAnswers":"Answers and explanation (for the adult)","printBtn":"Print the task","sourcesH":"Sources","supports":"What it supports","review":"Status: author’s draft. Not reviewed by a native-speaking editor or a teacher; the activity has not been tried with children.","catalog":"All Workshop activities","lessons":"All lessons by age","home":"Home","other":"Other activities","crumbs":"You are here","privacy":"The activity runs in your browser: answers are not saved or sent. Like any website, the host receives ordinary page requests."},"next":[{"href":"sorter.html"},{"href":"check.html"},{"href":"../../lessons/en/"}],"text":{"common":{"title":"Why did the sorter get it wrong?","desc":"A teaching sorter learns from cards and makes a mistake because of a false pattern. The child adds examples, the model recalculates its rule, and the result is checked on separate cards.","words":{"shape":"shape","bg":"background","circle":"circle","square":"square","blue":"blue background","yellow":"yellow background","triangle":"triangle","star":"star","green":"green background","purple":"purple background","unknown":"don't know"},"howH":"How the sorter works","how":"This is a teaching model, not a neural network. It does not \"see\" the picture: every card already comes with two ready-made features — shape and background. The model tries a rule by shape and a rule by background and keeps the one that makes fewer mistakes on the training cards.","trainH":"Training cards","predictH":"Your guess","predictQ":"The sorter learned from these cards. What will it say about the new card?","runBtn":"Ask the sorter","said":"The sorter says: \"{guess}\".","wrongWhy":"Wrong! It is a circle. In training, every circle was on a blue background and every square on a yellow one. So the rule \"yellow background → square\" fitted the training cards just as well as the rule by shape.","tieNote":"When two rules fit equally well, our sorter picks the background — that is how this demo is set up, so that the mistake becomes visible.","addH":"Add training cards","addQ":"Choose up to {pick} cards. Think: which ones will show the sorter that the background is not what matters?","retrainBtn":"Train again","needPick":"Choose at least one card first.","nowRule":"Now the sorter chose the rule by: {feature}.","fixedWhy":"It worked: the training cards now have circles and squares on different backgrounds. The background rule now makes mistakes, the shape rule does not.","sameWhy":"Nothing changed: the cards you added repeat the old pattern (circles on blue, squares on yellow). More of the same does not help — you need examples that break the pattern. Go back and pick others.","backToAdd":"Choose other cards","testH":"Check on separate cards","testNote":"The sorter did not see these cards during training.","testScore":"Correct: {right} of {total}.","newH":"New example — solve it yourself","newIntro":"Another sorter learned from triangles and stars. Its right category is the shape too.","newQ1":"What will it say about a star on a green background?","newQ2":"Which ONE card would you add so it stops making this mistake?","newCheckBtn":"Check my choice","newOk":"Yes! With this card the sorter picks the rule by shape and calls the star a star.","newNo":"The sorter still gets it wrong: this card repeats the old pattern. Try another one.","q1ok":"Right: it will be wrong and say \"triangle\" — in training, every triangle was on green.","q1no":"Look at the training cards: what background did all the triangles have?","doneH":"What next?","doneText":"The sorter was wrong not because it is \"stupid\", but because the training examples had a false hint in them — the background.","choices":["Do this activity again","Next activity: \"Check a confident answer\"","All lessons"],"noJs":"The activity itself needs JavaScript. Without it, the goal, the explanation and a printable task are below.","adult":{"goal":"The child sees that a model learns from examples and can latch onto an accidental hint (the background), and that this is fixed with examples that contradict the hint.","questions":["Why did the sorter call the circle a square?","Which cards helped and which did not? Why?","Where in real life could a \"trap hint\" like this appear?"],"misconception":"More data is always better. Not so: ten identical examples teach nothing new; what matters is that examples differ where it matters.","signs":["Explains the mistake as \"in the examples all the circles were on blue\".","Picks a card that breaks the false pattern — and does it again in the new example.","Does not assume the model \"sees\" the picture the way a person does."],"method":"For the adult: the model is a one-feature rule. At first both features fit the training cards equally well (0 mistakes); on a tie this demo picks the background — that is our rule, not a property of machine learning. The model receives ready-made features, not pixels.","print":{"task":"Draw 4 cards: 2 circles on blue and 2 squares on yellow. Cover the shapes and ask: what else could someone \"guess\" by? Add one card that breaks the \"background\" hint.","answers":"The trap hint is the background colour: in the examples it always matches the shape. A circle on yellow or a square on blue breaks it."}}},"tiny":{"goal":"Let's find out why a machine can make a mistake — and help it.","addQ":"Choose one card and show it to the sorter.","adultSay":"An adult reads aloud. The child points or says the answer — no writing needed."},"child":{"goal":"Find what made the sorter wrong and fix it with examples. Compare \"before\" and \"after\".","errorsH":"Mistakes of each rule on the training cards","errorsRow":"by shape: {shape} · by background: {bg}"},"teen":{"goal":"Understand the cause of the mistake, tell training from checking, fix the data and check the result.","errorsH":"Mistakes of each rule on the training cards","errorsRow":"by shape: {shape} · by background: {bg}","whyTestQ":"Why must the check cards not be added to training?","whyTestOpts":["Then the check would show how well the model remembers familiar cards, not how it handles new ones","Because there are too many of them","It makes no difference"],"whyTestOk":"Right. A check is fair only if the model has not seen those cards.","whyTestNo":"Not quite. What do we want to learn from a check — how the model remembers old cards, or how it works on new ones?"},"adult":{"goal":"Look at the limits of the method: quality and variety of data, the tie rule, keeping training and checking apart, and the consequences of a mistake.","errorsH":"Mistakes of each rule on the training cards","errorsRow":"by shape: {shape} · by background: {bg}","whyTestQ":"Why must the check cards not be added to training?","whyTestOpts":["Then the check would show how well the model remembers familiar cards, not how it handles new ones","Because there are too many of them","It makes no difference"],"whyTestOk":"Right. A check is fair only if the model has not seen those cards.","whyTestNo":"Not quite. What does a check measure — memory of the familiar, or work on the new?","limitsH":"Limits of the method","limits":["The model picks one feature; real models use many features and can also find false hints.","The tie rule (background first) is a choice of this demo. A different rule would give a different answer on the same data.","If you only fix what shows up in the check, you can quietly tune the model to the check cards."],"stakesQ":"A sorter decides which emails are spam using a false hint. Why is that a problem?","stakesOpts":["Important emails can disappear, and people may trust the mistake because \"the machine decided\"","It is not, machines do not make mistakes","Only because it is slow"],"stakesOk":"Yes. The consequences of a mistake depend on where the model is used — that is why people check its decisions.","stakesNo":"Think about who gets hurt if the model is wrong without anyone noticing."}}}</script>
+<script src="../../js/lesson.js"></script>
+<script src="../../js/sorter-model.js"></script>
+<script src="../../js/workshop.js"></script>
+<script src="../../js/workshop-sorter.js"></script>
+</body>
+</html>

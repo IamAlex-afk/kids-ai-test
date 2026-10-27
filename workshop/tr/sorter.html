@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none';">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayırıcı neden yanıldı? — Atölye: yapay zekâ etkinlikleri | Kids AI Test</title>
+  <meta name="description" content="Bir alıştırma ayırıcısı kartlardan öğrenir ve sahte bir örüntü yüzünden yanılır. Çocuk örnek ekler, model kuralını yeniden hesaplar ve sonuç ayrı kartlarla kontrol edilir.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://iamalex-afk.github.io/kids-ai-test/workshop/tr/sorter.html">
+  <link rel="alternate" hreflang="ru" href="https://iamalex-afk.github.io/kids-ai-test/workshop/ru/sorter.html">
+  <link rel="alternate" hreflang="en" href="https://iamalex-afk.github.io/kids-ai-test/workshop/en/sorter.html">
+  <link rel="alternate" hreflang="vi" href="https://iamalex-afk.github.io/kids-ai-test/workshop/vi/sorter.html">
+  <link rel="alternate" hreflang="id" href="https://iamalex-afk.github.io/kids-ai-test/workshop/id/sorter.html">
+  <link rel="alternate" hreflang="pt" href="https://iamalex-afk.github.io/kids-ai-test/workshop/pt/sorter.html">
+  <link rel="alternate" hreflang="es" href="https://iamalex-afk.github.io/kids-ai-test/workshop/es/sorter.html">
+  <link rel="alternate" hreflang="fr" href="https://iamalex-afk.github.io/kids-ai-test/workshop/fr/sorter.html">
+  <link rel="alternate" hreflang="de" href="https://iamalex-afk.github.io/kids-ai-test/workshop/de/sorter.html">
+  <link rel="alternate" hreflang="tr" href="https://iamalex-afk.github.io/kids-ai-test/workshop/tr/sorter.html">
+  <link rel="alternate" hreflang="hi" href="https://iamalex-afk.github.io/kids-ai-test/workshop/hi/sorter.html">
+  <link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/workshop/en/sorter.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Ayırıcı neden yanıldı? — Atölye: yapay zekâ etkinlikleri | Kids AI Test">
+  <meta property="og:description" content="Bir alıştırma ayırıcısı kartlardan öğrenir ve sahte bir örüntü yüzünden yanılır. Çocuk örnek ekler, model kuralını yeniden hesaplar ve sonuç ayrı kartlarla kontrol edilir.">
+  <meta property="og:url" content="https://iamalex-afk.github.io/kids-ai-test/workshop/tr/sorter.html">
+  <meta property="og:image" content="https://iamalex-afk.github.io/kids-ai-test/og.png">
+  <link rel="icon" href="../../favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../css/workshop.css">
+  <link rel="stylesheet" href="../../css/lesson.css">
+</head>
+<body class="wk-home wk-page wk-workshop" data-age="child">
+<a class="wk-skip" href="#main">İçeriğe geç</a>
+<header class="wk-header">
+  <div class="wk-header-in">
+    <a class="wk-brand" href="../../tr.html" data-wk-home>
+      <span class="wk-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="wk-brand-txt"><span class="wk-brand-name">kids ai test</span><span class="wk-brand-sub">Yapay zekâyı bilinçli kullanma atölyesi</span></span>
+    </a>
+    <div class="wk-actions">
+      <div class="lang-switcher" id="lang-switcher">
+        <button type="button" class="lang-globe" id="lang-globe" aria-expanded="false" aria-controls="lang-dropdown" aria-label="Dil: Türkçe"><svg class="wk-globe" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="lang-full">Türkçe</span><span class="lang-short">TR</span><span class="lang-arrow" aria-hidden="true">▾</span></button>
+        <div class="lang-dropdown" id="lang-dropdown">
+          <a class="lang-opt" href="../en/sorter.html" lang="en" hreflang="en">English</a>
+          <a class="lang-opt" href="../ru/sorter.html" lang="ru" hreflang="ru">Русский</a>
+          <a class="lang-opt" href="../de/sorter.html" lang="de" hreflang="de">Deutsch</a>
+          <a class="lang-opt" href="../es/sorter.html" lang="es" hreflang="es">Español</a>
+          <a class="lang-opt" href="../fr/sorter.html" lang="fr" hreflang="fr">Français</a>
+          <a class="lang-opt" href="../hi/sorter.html" lang="hi" hreflang="hi">हिन्दी</a>
+          <a class="lang-opt" href="../id/sorter.html" lang="id" hreflang="id">Bahasa Indonesia</a>
+          <a class="lang-opt" href="../pt/sorter.html" lang="pt" hreflang="pt">Português</a>
+          <a class="lang-opt active" href="../tr/sorter.html" lang="tr" hreflang="tr" aria-current="page">Türkçe</a>
+          <a class="lang-opt" href="../vi/sorter.html" lang="vi" hreflang="vi">Tiếng Việt</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<main id="main" class="wk-lesson">
+    <nav class="wk-crumbs" aria-label="Buradasınız">
+      <ol>
+        <li><a href="../../tr.html">Ana sayfa</a></li>
+        <li><a href="./">Atölyenin tüm etkinlikleri</a></li>
+        <li><a href="sorter.html">Ayırıcı neden yanıldı?</a></li>
+      </ol>
+    </nav>
+  <article class="wk-card" aria-labelledby="wk-act-title">
+    <h1 class="wk-lesson-title" id="wk-act-title">Ayırıcı neden yanıldı?</h1>
+    <nav class="wk-ageswitch" aria-label="Zorluk">
+      <p>Zorluk:</p>
+      <ol>
+      <li><a href="sorter.html?age=5-7" data-slug="5-7">5–7 yaş, bir yetişkinle</a></li>
+      <li><a href="sorter.html?age=8-10" data-slug="8-10" aria-current="true">8–10 yaş</a></li>
+      <li><a href="sorter.html?age=11-13" data-slug="11-13">11–13 yaş</a></li>
+      <li><a href="sorter.html?age=14-plus" data-slug="14-plus">14 yaş ve üstü</a></li>
+      </ol>
+    </nav>
+    <section class="wk-goalbox" aria-labelledby="wk-goal-h">
+      <h2 id="wk-goal-h">Amaç</h2>
+      <p>Ayırıcının neden yanıldığını bul ve örneklerle düzelt. “Önce” ve “sonra”yı karşılaştır.</p>
+    </section>
+    <noscript><p class="wk-novoice">Etkinliğin kendisi JavaScript gerektirir. JavaScript olmadan da aşağıda amaç, açıklama ve yazdırılabilir bir görev var.</p></noscript>
+    <section class="wk-app" id="wk-app" aria-live="off"></section>
+    <details class="wk-explain-all">
+      <summary>Açıklama</summary>
+      <p>Bu bir alıştırma modeli, yapay sinir ağı değil. Resmi “görmez”: her kartın zaten iki hazır özelliği vardır — şekil ve arka plan. Model şekle göre bir kural, arka plana göre bir kural dener ve eğitim kartlarında daha az hata yapanı seçer.</p>
+      <p>Yanlış! Bu bir daire. Eğitimde bütün daireler mavi, bütün kareler sarı arka plandaydı. Bu yüzden “sarı arka plan → kare” kuralı, eğitim kartlarına şekle göre kural kadar iyi uyuyordu.</p>
+      <p>İki kural eşit derecede uyduğunda bizim ayırıcı arka planı seçer — hata görünsün diye bu gösteri böyle kuruldu.</p>
+      <p>Oldu: eğitim kartlarında artık farklı arka planlarda daireler ve kareler var. Arka plana göre kural hata yapmaya başladı, şekle göre kural yapmıyor.</p>
+      <p>Hiçbir şey değişmedi: eklediğin kartlar eski örüntüyü tekrarlıyor (daireler mavide, kareler sarıda). Aynısından daha fazlası işe yaramaz — örüntüyü bozan örnekler gerekir. Geri dön ve başka kartlar seç.</p>
+      <p>Ayırıcı “aptal” olduğu için değil, eğitim örneklerinde sahte bir ipucu — arka plan — olduğu için yanıldı.</p>
+    </details>
+  </article>
+
+  <section class="wk-card wk-adult" aria-labelledby="wk-adult-h">
+    <h2 id="wk-adult-h">Yetişkin için</h2>
+    <h3>Amaç</h3>
+    <p>Çocuk, bir modelin örneklerden öğrendiğini ve tesadüfi bir ipucuna (arka plan) takılabileceğini, bunun da o ipucuyla çelişen örneklerle düzeltildiğini görür.</p>
+    <h3>Konuşmak için sorular</h3>
+        <ul>
+          <li>Ayırıcı daireye neden kare dedi?</li>
+          <li>Hangi kartlar işe yaradı, hangileri yaramadı? Neden?</li>
+          <li>Gerçek hayatta böyle bir “tuzak ipucu” nerede karşımıza çıkabilir?</li>
+        </ul>
+    <h3>Sık görülen yanılgı</h3>
+    <p>Daha çok veri her zaman daha iyidir. Öyle değil: birbirinin aynısı on örnek yeni bir şey öğretmez; önemli olan, örneklerin önemli olan yerde farklı olmasıdır.</p>
+    <h3>Anladığını gösteren işaretler</h3>
+        <ul>
+          <li>Hatayı “örneklerde bütün daireler mavideydi” diye açıklar.</li>
+          <li>Sahte örüntüyü bozan bir kart seçer — yeni örnekte de bunu yapar.</li>
+          <li>Modelin resmi bir insan gibi “gördüğünü” varsaymaz.</li>
+        </ul>
+    <h3>Etkinlik nasıl işler</h3>
+    <p>Yetişkin için: model tek bir özelliğe dayanan bir kuraldır. Başta iki özellik de eğitim kartlarına eşit derecede uyar (0 hata); eşitlikte bu gösteri arka planı seçer — bu bizim kuralımızdır, makine öğrenmesinin bir özelliği değildir. Model piksel değil, hazır özellikler alır.</p>
+  </section>
+
+  <section class="wk-card wk-print" aria-labelledby="wk-print-h">
+    <h2 id="wk-print-h">Yazdırılabilir görev</h2>
+    <p>4 kart çiz: mavi üzerinde 2 daire ve sarı üzerinde 2 kare. Şekilleri kapat ve sor: başka neye göre “tahmin” edilebilir? “Arka plan” ipucunu bozan bir kart daha çiz.</p>
+    <button type="button" class="wk-btn" data-print hidden>Görevi yazdır</button>
+    <details class="wk-print-answers" open>
+      <summary>Cevaplar ve açıklama (yetişkin için)</summary>
+      <p>Tuzak ipucu arka plan rengidir: örneklerde her zaman şekille eşleşiyor. Sarı üzerinde bir daire ya da mavi üzerinde bir kare onu bozar.</p>
+    </details>
+  </section>
+
+  <section class="wk-card wk-sources" aria-labelledby="wk-src-h">
+    <h2 id="wk-src-h">Kaynaklar</h2>
+    <ol>
+        <li><a href="https://arxiv.org/abs/2004.07780" rel="noopener" target="_blank">Geirhos et al., &quot;Shortcut learning in deep neural networks&quot;, Nature Machine Intelligence, 2020</a><br><span class="wk-supports">Kaynağın desteklediği: Makine öğrenmesi modelleri, amaçlanan özellik yerine eğitim verisindeki tesadüfi bir ipucuna (örneğin arka plana) dayanabilir.</span></li>
+        <li><a href="https://doi.org/10.1023/A:1022631118932" rel="noopener" target="_blank">Holte, &quot;Very Simple Classification Rules Perform Well on Most Commonly Used Datasets&quot;, Machine Learning, 1993</a><br><span class="wk-supports">Kaynağın desteklediği: En az hatayla seçilen tek özellikli bir kural, bilinen basit bir sınıflandırma yöntemidir; bizim ayırıcımız onun öğretici bir sürümüdür.</span></li>
+    </ol>
+    <p class="wk-review">Durum: yazarın taslağı. Anadili bu dil olan bir editör ya da bir öğretmen tarafından kontrol edilmedi; etkinlik henüz çocuklarla denenmedi.</p>
+  </section>
+
+  <nav class="wk-pager" aria-label="Diğer etkinlikler">
+    <a class="wk-pg" href="./">Atölyenin tüm etkinlikleri</a>
+    <a class="wk-pg wk-pg-next" href="check.html">Kendinden emin bir cevabı kontrol et →</a>
+  </nav>
+</main>
+<footer class="wk-foot">
+  <div class="wk-foot-in">
+    <p>Etkinlik tarayıcınızda çalışır: cevaplar kaydedilmez ve gönderilmez. Her web sitesinde olduğu gibi barındırma hizmeti olağan sayfa isteklerini alır.</p>
+    <p><a href="../../lessons/tr/">Yaşa göre tüm dersler</a></p>
+  </div>
+</footer>
+<script type="application/json" id="wk-data">{"kind":"sorter","defaultAge":"child","data":{"ages":{"tiny":{"start":[{"id":"a1","shape":"circle","bg":"blue","label":"circle"},{"id":"a2","shape":"circle","bg":"blue","label":"circle"},{"id":"a3","shape":"square","bg":"yellow","label":"square"},{"id":"a4","shape":"square","bg":"yellow","label":"square"}],"probe":{"id":"p1","shape":"circle","bg":"yellow","label":"circle"},"extras":[{"id":"x1","shape":"circle","bg":"yellow","label":"circle"},{"id":"x3","shape":"circle","bg":"blue","label":"circle"}],"pick":1,"test":[{"id":"t1","shape":"circle","bg":"yellow","label":"circle"},{"id":"t2","shape":"square","bg":"blue","label":"square"}]},"child":{"start":[{"id":"a1","shape":"circle","bg":"blue","label":"circle"},{"id":"a2","shape":"circle","bg":"blue","label":"circle"},{"id":"a5","shape":"circle","bg":"blue","label":"circle"},{"id":"a3","shape":"square","bg":"yellow","label":"square"},{"id":"a4","shape":"square","bg":"yellow","label":"square"},{"id":"a6","shape":"square","bg":"yellow","label":"square"}],"probe":{"id":"p1","shape":"circle","bg":"yellow","label":"circle"},"extras":[{"id":"x1","shape":"circle","bg":"yellow","label":"circle"},{"id":"x2","shape":"square","bg":"blue","label":"square"},{"id":"x3","shape":"circle","bg":"blue","label":"circle"},{"id":"x4","shape":"square","bg":"yellow","label":"square"}],"pick":2,"test":[{"id":"t1","shape":"circle","bg":"yellow","label":"circle"},{"id":"t2","shape":"square","bg":"blue","label":"square"},{"id":"t3","shape":"circle","bg":"blue","label":"circle"},{"id":"t4","shape":"square","bg":"yellow","label":"square"}]},"teen":{"start":[{"id":"a1","shape":"circle","bg":"blue","label":"circle"},{"id":"a2","shape":"circle","bg":"blue","label":"circle"},{"id":"a5","shape":"circle","bg":"blue","label":"circle"},{"id":"a3","shape":"square","bg":"yellow","label":"square"},{"id":"a4","shape":"square","bg":"yellow","label":"square"},{"id":"a6","shape":"square","bg":"yellow","label":"square"}],"probe":{"id":"p1","shape":"circle","bg":"yellow","label":"circle"},"extras":[{"id":"x1","shape":"circle","bg":"yellow","label":"circle"},{"id":"x2","shape":"square","bg":"blue","label":"square"},{"id":"x3","shape":"circle","bg":"blue","label":"circle"},{"id":"x4","shape":"square","bg":"yellow","label":"square"}],"pick":2,"test":[{"id":"t1","shape":"circle","bg":"yellow","label":"circle"},{"id":"t2","shape":"square","bg":"blue","label":"square"},{"id":"t3","shape":"circle","bg":"blue","label":"circle"},{"id":"t4","shape":"square","bg":"yellow","label":"square"}]},"adult":{"start":[{"id":"a1","shape":"circle","bg":"blue","label":"circle"},{"id":"a2","shape":"circle","bg":"blue","label":"circle"},{"id":"a5","shape":"circle","bg":"blue","label":"circle"},{"id":"a3","shape":"square","bg":"yellow","label":"square"},{"id":"a4","shape":"square","bg":"yellow","label":"square"},{"id":"a6","shape":"square","bg":"yellow","label":"square"}],"probe":{"id":"p1","shape":"circle","bg":"yellow","label":"circle"},"extras":[{"id":"x1","shape":"circle","bg":"yellow","label":"circle"},{"id":"x2","shape":"square","bg":"blue","label":"square"},{"id":"x3","shape":"circle","bg":"blue","label":"circle"},{"id":"x4","shape":"square","bg":"yellow","label":"square"}],"pick":3,"test":[{"id":"t1","shape":"circle","bg":"yellow","label":"circle"},{"id":"t2","shape":"square","bg":"blue","label":"square"},{"id":"t3","shape":"circle","bg":"blue","label":"circle"},{"id":"t4","shape":"square","bg":"yellow","label":"square"}]}},"transfer":{"start":[{"id":"n1","shape":"triangle","bg":"green","label":"triangle"},{"id":"n2","shape":"triangle","bg":"green","label":"triangle"},{"id":"n3","shape":"triangle","bg":"green","label":"triangle"},{"id":"n4","shape":"star","bg":"purple","label":"star"},{"id":"n5","shape":"star","bg":"purple","label":"star"},{"id":"n6","shape":"star","bg":"purple","label":"star"}],"probe":{"id":"np","shape":"star","bg":"green","label":"star"},"fixes":[{"id":"f1","shape":"star","bg":"green","label":"star"},{"id":"f2","shape":"triangle","bg":"green","label":"triangle"},{"id":"f3","shape":"star","bg":"purple","label":"star"}]},"categories":{"main":["circle","square"],"transfer":["triangle","star"]}},"ui":{"series":"Atölye: yapay zekâ etkinlikleri","seriesLead":"Kendin deneyeceğin kısa etkinlikler: tahmin et, dene, sonucu gör, anla ve yeni bir örneği çöz. Kayıt yok; cevaplar kaydedilmez ve hiçbir yere gönderilmez.","ageLabel":"Zorluk","ages":{"tiny":"5–7 yaş, bir yetişkinle","child":"8–10 yaş","teen":"11–13 yaş","adult":"14 yaş ve üstü"},"stepOf":"Adım {n} / {m}","next":"İleri →","back":"← Geri","retry":"Tekrar dene","before":"önce","after":"sonra","modelSaid":"ayırıcı","limit":"En fazla {pick} kart seçebilirsin. Önce başka bir kartın seçimini kaldır.","qL":"“","qR":"”","srcOrigin":"Köken: ","srcDate":"Tarih: ","goalH":"Amaç","explainH":"Açıklama","sampleNote":"Alıştırma örneği: asistanın metinleri önceden yazıldı; bu canlı bir sohbet de, bir yapay sinir ağına gönderilen istek de değil.","adultH":"Yetişkin için","adultGoal":"Amaç","adultQuestions":"Konuşmak için sorular","adultMis":"Sık görülen yanılgı","adultSigns":"Anladığını gösteren işaretler","adultMethod":"Etkinlik nasıl işler","printH":"Yazdırılabilir görev","printAnswers":"Cevaplar ve açıklama (yetişkin için)","printBtn":"Görevi yazdır","sourcesH":"Kaynaklar","supports":"Kaynağın desteklediği","review":"Durum: yazarın taslağı. Anadili bu dil olan bir editör ya da bir öğretmen tarafından kontrol edilmedi; etkinlik henüz çocuklarla denenmedi.","catalog":"Atölyenin tüm etkinlikleri","lessons":"Yaşa göre tüm dersler","home":"Ana sayfa","other":"Diğer etkinlikler","crumbs":"Buradasınız","privacy":"Etkinlik tarayıcınızda çalışır: cevaplar kaydedilmez ve gönderilmez. Her web sitesinde olduğu gibi barındırma hizmeti olağan sayfa isteklerini alır."},"next":[{"href":"sorter.html"},{"href":"check.html"},{"href":"../../lessons/tr/"}],"text":{"common":{"title":"Ayırıcı neden yanıldı?","desc":"Bir alıştırma ayırıcısı kartlardan öğrenir ve sahte bir örüntü yüzünden yanılır. Çocuk örnek ekler, model kuralını yeniden hesaplar ve sonuç ayrı kartlarla kontrol edilir.","words":{"shape":"şekil","bg":"arka plan","circle":"daire","square":"kare","blue":"mavi arka plan","yellow":"sarı arka plan","triangle":"üçgen","star":"yıldız","green":"yeşil arka plan","purple":"mor arka plan","unknown":"bilmiyorum"},"howH":"Ayırıcı nasıl çalışır","how":"Bu bir alıştırma modeli, yapay sinir ağı değil. Resmi “görmez”: her kartın zaten iki hazır özelliği vardır — şekil ve arka plan. Model şekle göre bir kural, arka plana göre bir kural dener ve eğitim kartlarında daha az hata yapanı seçer.","trainH":"Eğitim kartları","predictH":"Senin tahminin","predictQ":"Ayırıcı bu kartlarla öğrendi. Yeni kart için ne diyecek?","runBtn":"Ayırıcıya sor","said":"Ayırıcı diyor ki: “{guess}”.","wrongWhy":"Yanlış! Bu bir daire. Eğitimde bütün daireler mavi, bütün kareler sarı arka plandaydı. Bu yüzden “sarı arka plan → kare” kuralı, eğitim kartlarına şekle göre kural kadar iyi uyuyordu.","tieNote":"İki kural eşit derecede uyduğunda bizim ayırıcı arka planı seçer — hata görünsün diye bu gösteri böyle kuruldu.","addH":"Eğitim kartı ekle","addQ":"En fazla {pick} kart seç. Düşün: hangileri ayırıcıya önemli olanın arka plan olmadığını gösterir?","retrainBtn":"Yeniden eğit","needPick":"Önce en az bir kart seç.","nowRule":"Ayırıcı artık şu özelliğe göre kural seçti: {feature}.","fixedWhy":"Oldu: eğitim kartlarında artık farklı arka planlarda daireler ve kareler var. Arka plana göre kural hata yapmaya başladı, şekle göre kural yapmıyor.","sameWhy":"Hiçbir şey değişmedi: eklediğin kartlar eski örüntüyü tekrarlıyor (daireler mavide, kareler sarıda). Aynısından daha fazlası işe yaramaz — örüntüyü bozan örnekler gerekir. Geri dön ve başka kartlar seç.","backToAdd":"Başka kartlar seç","testH":"Ayrı kartlarla kontrol et","testNote":"Ayırıcı bu kartları eğitim sırasında görmedi.","testScore":"Doğru: {total} kartın {right} tanesi.","newH":"Yeni örnek — kendin çöz","newIntro":"Başka bir ayırıcı üçgenlerle ve yıldızlarla öğrendi. Onun doğru grubu da şekle göre belirleniyor.","newQ1":"Yeşil arka plandaki bir yıldız için ne diyecek?","newQ2":"Yanılmayı bıraksın diye hangi TEK kartı eklerdin?","newCheckBtn":"Seçimimi kontrol et","newOk":"Evet! Bu kartla ayırıcı şekle göre kuralı seçiyor ve yıldıza yıldız diyor.","newNo":"Ayırıcı hâlâ yanılıyor: bu kart eski örüntüyü tekrarlıyor. Başka bir kart dene.","q1ok":"Doğru: yanılacak ve “üçgen” diyecek — eğitimde bütün üçgenler yeşil arka plandaydı.","q1no":"Eğitim kartlarına bak: bütün üçgenlerin arka planı ne renkti?","doneH":"Sırada ne var?","doneText":"Ayırıcı “aptal” olduğu için değil, eğitim örneklerinde sahte bir ipucu — arka plan — olduğu için yanıldı.","choices":["Bu etkinliği tekrar yap","Sonraki etkinlik: “Kendinden emin bir cevabı kontrol et”","Tüm dersler"],"noJs":"Etkinliğin kendisi JavaScript gerektirir. JavaScript olmadan da aşağıda amaç, açıklama ve yazdırılabilir bir görev var.","adult":{"goal":"Çocuk, bir modelin örneklerden öğrendiğini ve tesadüfi bir ipucuna (arka plan) takılabileceğini, bunun da o ipucuyla çelişen örneklerle düzeltildiğini görür.","questions":["Ayırıcı daireye neden kare dedi?","Hangi kartlar işe yaradı, hangileri yaramadı? Neden?","Gerçek hayatta böyle bir “tuzak ipucu” nerede karşımıza çıkabilir?"],"misconception":"Daha çok veri her zaman daha iyidir. Öyle değil: birbirinin aynısı on örnek yeni bir şey öğretmez; önemli olan, örneklerin önemli olan yerde farklı olmasıdır.","signs":["Hatayı “örneklerde bütün daireler mavideydi” diye açıklar.","Sahte örüntüyü bozan bir kart seçer — yeni örnekte de bunu yapar.","Modelin resmi bir insan gibi “gördüğünü” varsaymaz."],"method":"Yetişkin için: model tek bir özelliğe dayanan bir kuraldır. Başta iki özellik de eğitim kartlarına eşit derecede uyar (0 hata); eşitlikte bu gösteri arka planı seçer — bu bizim kuralımızdır, makine öğrenmesinin bir özelliği değildir. Model piksel değil, hazır özellikler alır.","print":{"task":"4 kart çiz: mavi üzerinde 2 daire ve sarı üzerinde 2 kare. Şekilleri kapat ve sor: başka neye göre “tahmin” edilebilir? “Arka plan” ipucunu bozan bir kart daha çiz.","answers":"Tuzak ipucu arka plan rengidir: örneklerde her zaman şekille eşleşiyor. Sarı üzerinde bir daire ya da mavi üzerinde bir kare onu bozar."}}},"tiny":{"goal":"Hadi, bir makinenin neden yanılabileceğini bulalım — ve ona yardım edelim.","addQ":"Bir kart seç ve ayırıcıya göster.","adultSay":"Bir yetişkin sesli okur. Çocuk gösterir ya da cevabı söyler — yazmaya gerek yok."},"child":{"goal":"Ayırıcının neden yanıldığını bul ve örneklerle düzelt. “Önce” ve “sonra”yı karşılaştır.","errorsH":"Her kuralın eğitim kartlarındaki hataları","errorsRow":"şekle göre: {shape} · arka plana göre: {bg}"},"teen":{"goal":"Hatanın nedenini anla, eğitimi kontrolden ayır, veriyi düzelt ve sonucu kontrol et.","errorsH":"Her kuralın eğitim kartlarındaki hataları","errorsRow":"şekle göre: {shape} · arka plana göre: {bg}","whyTestQ":"Kontrol kartları neden eğitime eklenmemeli?","whyTestOpts":["O zaman kontrol, modelin yeni kartlarla nasıl başa çıktığını değil, tanıdık kartları ne kadar iyi hatırladığını gösterir","Çünkü çok fazlalar","Hiç fark etmez"],"whyTestOk":"Doğru. Kontrol ancak model o kartları hiç görmediyse adil olur.","whyTestNo":"Tam değil. Kontrolle neyi öğrenmek istiyoruz — modelin eski kartları nasıl hatırladığını mı, yeni kartlarla nasıl çalıştığını mı?"},"adult":{"goal":"Yöntemin sınırlarına bak: verinin kalitesi ve çeşitliliği, eşitlik kuralı, eğitimle kontrolün ayrılması ve bir hatanın sonuçları.","errorsH":"Her kuralın eğitim kartlarındaki hataları","errorsRow":"şekle göre: {shape} · arka plana göre: {bg}","whyTestQ":"Kontrol kartları neden eğitime eklenmemeli?","whyTestOpts":["O zaman kontrol, modelin yeni kartlarla nasıl başa çıktığını değil, tanıdık kartları ne kadar iyi hatırladığını gösterir","Çünkü çok fazlalar","Hiç fark etmez"],"whyTestOk":"Doğru. Kontrol ancak model o kartları hiç görmediyse adil olur.","whyTestNo":"Tam değil. Kontrol neyi ölçer — tanıdık olanı hatırlamayı mı, yeni olanla çalışmayı mı?","limitsH":"Yöntemin sınırları","limits":["Model tek bir özellik seçer; gerçek modeller birçok özellik kullanır ve onlar da sahte ipuçları bulabilir.","Eşitlik kuralı (önce arka plan) bu gösterinin bir tercihidir. Başka bir kural, aynı veride başka bir cevap verirdi.","Yalnızca kontrolde ortaya çıkanı düzeltirsen, farkında olmadan modeli kontrol kartlarının kendisine göre ayarlayabilirsin."],"stakesQ":"Bir ayırıcı, hangi e-postaların spam olduğuna sahte bir ipucuyla karar veriyor. Bu neden bir sorun?","stakesOpts":["Önemli e-postalar kaybolabilir ve insanlar “makine karar verdi” diye hataya güvenebilir","Sorun değil, makineler yanılmaz","Sadece yavaş olduğu için"],"stakesOk":"Evet. Bir hatanın sonuçları modelin nerede kullanıldığına bağlıdır — bu yüzden insanlar onun kararlarını kontrol eder.","stakesNo":"Model kimse fark etmeden yanılırsa kimin zarar göreceğini düşün."}}}</script>
+<script src="../../js/lesson.js"></script>
+<script src="../../js/sorter-model.js"></script>
+<script src="../../js/workshop.js"></script>
+<script src="../../js/workshop-sorter.js"></script>
+</body>
+</html>

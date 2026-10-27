@@ -13,6 +13,7 @@ import { execSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { SERIES_LANGS } from './series.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
@@ -38,6 +39,8 @@ const DIRS = [
   { dir: 'assets/workshop', ext: ['.webp'] },
   // Lesson pages (tools/gen-lessons.mjs), one folder per language
   ...LANGS.map((l) => ({ dir: `lessons/${l}`, ext: ['.html'] })),
+  // Workshop activities (tools/gen-series.mjs) — only the languages of the series
+  ...SERIES_LANGS.map((l) => ({ dir: `workshop/${l}`, ext: ['.html'] })),
 ];
 // Not cached offline: SW itself, verification/legal/info files.
 const NO_PRECACHE = new Set(['sw.js', '404.html', 'googled8a35f2a8c073799.html', 'LICENSE',
@@ -45,7 +48,10 @@ const NO_PRECACHE = new Set(['sw.js', '404.html', 'googled8a35f2a8c073799.html',
   'robots.txt', 'sitemap.xml', 'og.svg', 'assets/CREDITS.md']);
 // Lesson pages are not preloaded (290 pages): the worker keeps the ones a
 // visitor has opened; lesson.css and lesson.js are in the offline set.
-const precached = (f) => !NO_PRECACHE.has(f) && !f.startsWith('lessons/');
+// Workshop pages and their scripts load only when an activity is opened
+// (then the worker keeps them); they are not part of the first-visit set.
+const ON_DEMAND = /^(lessons\/|workshop\/|js\/workshop|js\/sorter-model\.js$)/;
+const precached = (f) => !NO_PRECACHE.has(f) && !ON_DEMAND.test(f);
 
 function listFiles() {
   const out = [...FILES];

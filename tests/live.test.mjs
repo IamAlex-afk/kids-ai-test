@@ -4,6 +4,7 @@
 // EXPECT_COMMIT, first waits until the new version is actually being served.
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { SERIES_LANGS } from '../tools/series.mjs';
 
 const BASE = process.env.LIVE_URL;
 const EXPECT = process.env.EXPECT_COMMIT;
@@ -71,4 +72,24 @@ test('live: lesson catalogs and lesson pages open directly, indexable and canoni
   }
   for (const p of ['css/lesson.css', 'js/lesson.js']) assert.equal((await get(p)).status, 200, p);
   assert.equal((await get('lessons/ru/8-10-99.html')).status, 404, 'a lesson that does not exist is a 404');
+});
+
+test('live: workshop activities open directly (also with ?age=), indexable, canonical, series languages only', opts, async () => {
+  const sm = await (await get('sitemap.xml')).text();
+  for (const l of SERIES_LANGS) {
+    for (const p of [`workshop/${l}/`, `workshop/${l}/sorter.html`, `workshop/${l}/check.html`, `workshop/${l}/share.html`]) {
+      const url = new URL(p, BASE).href;
+      const r = await get(p);
+      assert.equal(r.status, 200, url);
+      const html = await r.text();
+      assert.doesNotMatch(html, /<meta name="robots" content="[^"]*noindex/i, url);
+      assert.equal(html.match(/rel="canonical" href="([^"]+)"/)?.[1], url, `${url}: canonical`);
+      assert.match(html, new RegExp(`<html lang="${l}"`), `${url}: lang`);
+      assert.ok(sm.includes(`<loc>${url}</loc>`), `sitemap: ${url}`);
+    }
+    assert.equal((await get(`workshop/${l}/sorter.html?age=5-7`)).status, 200, 'direct link with an age');
+  }
+  for (const p of ['js/workshop.js', 'js/workshop-sorter.js', 'js/workshop-scenario.js', 'js/sorter-model.js']) assert.equal((await get(p)).status, 200, p);
+  const missing = LANGS.find((l) => !SERIES_LANGS.includes(l));
+  if (missing) assert.equal((await get(`workshop/${missing}/sorter.html`)).status, 404, 'no empty translation pages');
 });

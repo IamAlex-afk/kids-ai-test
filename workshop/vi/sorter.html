@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none';">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vì sao máy phân loại đoán sai? — Góc học: hoạt động về AI | Kids AI Test</title>
+  <meta name="description" content="Một máy phân loại tập học từ các thẻ hình và đoán sai vì một quy luật giả. Trẻ thêm ví dụ, máy tính lại quy tắc của mình, và kết quả được kiểm tra trên những thẻ riêng.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://iamalex-afk.github.io/kids-ai-test/workshop/vi/sorter.html">
+  <link rel="alternate" hreflang="ru" href="https://iamalex-afk.github.io/kids-ai-test/workshop/ru/sorter.html">
+  <link rel="alternate" hreflang="en" href="https://iamalex-afk.github.io/kids-ai-test/workshop/en/sorter.html">
+  <link rel="alternate" hreflang="vi" href="https://iamalex-afk.github.io/kids-ai-test/workshop/vi/sorter.html">
+  <link rel="alternate" hreflang="id" href="https://iamalex-afk.github.io/kids-ai-test/workshop/id/sorter.html">
+  <link rel="alternate" hreflang="pt" href="https://iamalex-afk.github.io/kids-ai-test/workshop/pt/sorter.html">
+  <link rel="alternate" hreflang="es" href="https://iamalex-afk.github.io/kids-ai-test/workshop/es/sorter.html">
+  <link rel="alternate" hreflang="fr" href="https://iamalex-afk.github.io/kids-ai-test/workshop/fr/sorter.html">
+  <link rel="alternate" hreflang="de" href="https://iamalex-afk.github.io/kids-ai-test/workshop/de/sorter.html">
+  <link rel="alternate" hreflang="tr" href="https://iamalex-afk.github.io/kids-ai-test/workshop/tr/sorter.html">
+  <link rel="alternate" hreflang="hi" href="https://iamalex-afk.github.io/kids-ai-test/workshop/hi/sorter.html">
+  <link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/workshop/en/sorter.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Vì sao máy phân loại đoán sai? — Góc học: hoạt động về AI | Kids AI Test">
+  <meta property="og:description" content="Một máy phân loại tập học từ các thẻ hình và đoán sai vì một quy luật giả. Trẻ thêm ví dụ, máy tính lại quy tắc của mình, và kết quả được kiểm tra trên những thẻ riêng.">
+  <meta property="og:url" content="https://iamalex-afk.github.io/kids-ai-test/workshop/vi/sorter.html">
+  <meta property="og:image" content="https://iamalex-afk.github.io/kids-ai-test/og.png">
+  <link rel="icon" href="../../favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../css/workshop.css">
+  <link rel="stylesheet" href="../../css/lesson.css">
+</head>
+<body class="wk-home wk-page wk-workshop" data-age="child">
+<a class="wk-skip" href="#main">Chuyển đến nội dung</a>
+<header class="wk-header">
+  <div class="wk-header-in">
+    <a class="wk-brand" href="../../vi.html" data-wk-home>
+      <span class="wk-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="wk-brand-txt"><span class="wk-brand-name">kids ai test</span><span class="wk-brand-sub">Góc học dùng AI một cách tỉnh táo</span></span>
+    </a>
+    <div class="wk-actions">
+      <div class="lang-switcher" id="lang-switcher">
+        <button type="button" class="lang-globe" id="lang-globe" aria-expanded="false" aria-controls="lang-dropdown" aria-label="Ngôn ngữ: Tiếng Việt"><svg class="wk-globe" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="lang-full">Tiếng Việt</span><span class="lang-short">VI</span><span class="lang-arrow" aria-hidden="true">▾</span></button>
+        <div class="lang-dropdown" id="lang-dropdown">
+          <a class="lang-opt" href="../en/sorter.html" lang="en" hreflang="en">English</a>
+          <a class="lang-opt" href="../ru/sorter.html" lang="ru" hreflang="ru">Русский</a>
+          <a class="lang-opt" href="../de/sorter.html" lang="de" hreflang="de">Deutsch</a>
+          <a class="lang-opt" href="../es/sorter.html" lang="es" hreflang="es">Español</a>
+          <a class="lang-opt" href="../fr/sorter.html" lang="fr" hreflang="fr">Français</a>
+          <a class="lang-opt" href="../hi/sorter.html" lang="hi" hreflang="hi">हिन्दी</a>
+          <a class="lang-opt" href="../id/sorter.html" lang="id" hreflang="id">Bahasa Indonesia</a>
+          <a class="lang-opt" href="../pt/sorter.html" lang="pt" hreflang="pt">Português</a>
+          <a class="lang-opt" href="../tr/sorter.html" lang="tr" hreflang="tr">Türkçe</a>
+          <a class="lang-opt active" href="../vi/sorter.html" lang="vi" hreflang="vi" aria-current="page">Tiếng Việt</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<main id="main" class="wk-lesson">
+    <nav class="wk-crumbs" aria-label="Bạn đang ở đây">
+      <ol>
+        <li><a href="../../vi.html">Trang chủ</a></li>
+        <li><a href="./">Tất cả hoạt động của Góc học</a></li>
+        <li><a href="sorter.html">Vì sao máy phân loại đoán sai?</a></li>
+      </ol>
+    </nav>
+  <article class="wk-card" aria-labelledby="wk-act-title">
+    <h1 class="wk-lesson-title" id="wk-act-title">Vì sao máy phân loại đoán sai?</h1>
+    <nav class="wk-ageswitch" aria-label="Độ khó">
+      <p>Độ khó:</p>
+      <ol>
+      <li><a href="sorter.html?age=5-7" data-slug="5-7">5–7 tuổi, cùng người lớn</a></li>
+      <li><a href="sorter.html?age=8-10" data-slug="8-10" aria-current="true">8–10 tuổi</a></li>
+      <li><a href="sorter.html?age=11-13" data-slug="11-13">11–13 tuổi</a></li>
+      <li><a href="sorter.html?age=14-plus" data-slug="14-plus">Từ 14 tuổi</a></li>
+      </ol>
+    </nav>
+    <section class="wk-goalbox" aria-labelledby="wk-goal-h">
+      <h2 id="wk-goal-h">Mục tiêu</h2>
+      <p>Tìm ra điều khiến máy phân loại đoán sai và sửa bằng ví dụ. So sánh &quot;trước&quot; và &quot;sau&quot;.</p>
+    </section>
+    <noscript><p class="wk-novoice">Phần bài tập cần JavaScript. Nếu không có, bên dưới vẫn có mục tiêu, lời giải thích và bài tập để in.</p></noscript>
+    <section class="wk-app" id="wk-app" aria-live="off"></section>
+    <details class="wk-explain-all">
+      <summary>Giải thích</summary>
+      <p>Đây là một mô hình tập học, không phải mạng nơ-ron. Nó không &quot;nhìn&quot; thấy hình: mỗi thẻ đã có sẵn hai đặc điểm — hình dạng và màu nền. Máy thử một quy tắc theo hình dạng và một quy tắc theo màu nền, rồi giữ quy tắc nào sai ít hơn trên các thẻ học.</p>
+      <p>Sai rồi! Đây là hình tròn. Trong các thẻ học, hình tròn nào cũng nằm trên nền xanh dương, còn hình vuông nào cũng nằm trên nền vàng. Vì vậy quy tắc &quot;nền vàng → hình vuông&quot; khớp với thẻ học y hệt quy tắc theo hình dạng.</p>
+      <p>Khi hai quy tắc khớp như nhau, máy phân loại của chúng ta chọn màu nền — bài này được làm như vậy để lỗi hiện ra rõ.</p>
+      <p>Thành công: giờ trong thẻ học có hình tròn và hình vuông trên nhiều màu nền khác nhau. Quy tắc theo màu nền bắt đầu sai, còn quy tắc theo hình dạng thì không.</p>
+      <p>Không có gì thay đổi: các thẻ em thêm lặp lại quy luật cũ (tròn trên nền xanh dương, vuông trên nền vàng). Thêm nhiều thẻ giống nhau không giúp được — cần những ví dụ phá vỡ quy luật. Quay lại và chọn thẻ khác nhé.</p>
+      <p>Máy phân loại đoán sai không phải vì nó &quot;ngốc&quot;, mà vì trong các ví dụ học có một gợi ý giả — màu nền.</p>
+    </details>
+  </article>
+
+  <section class="wk-card wk-adult" aria-labelledby="wk-adult-h">
+    <h2 id="wk-adult-h">Dành cho người lớn</h2>
+    <h3>Mục tiêu</h3>
+    <p>Trẻ thấy rằng mô hình học từ ví dụ và có thể bám vào một gợi ý tình cờ (màu nền), và lỗi này được sửa bằng những ví dụ đi ngược gợi ý đó.</p>
+    <h3>Câu hỏi để trò chuyện</h3>
+        <ul>
+          <li>Vì sao máy phân loại gọi hình tròn là hình vuông?</li>
+          <li>Thẻ nào đã giúp được, thẻ nào không? Vì sao?</li>
+          <li>Trong cuộc sống, &quot;gợi ý bẫy&quot; như thế có thể xuất hiện ở đâu?</li>
+        </ul>
+    <h3>Hiểu lầm thường gặp</h3>
+    <p>Càng nhiều dữ liệu càng tốt. Không hẳn: mười ví dụ giống hệt nhau không dạy thêm điều gì mới; điều quan trọng là ví dụ phải khác nhau ở chỗ cần khác.</p>
+    <h3>Dấu hiệu trẻ đã hiểu</h3>
+        <ul>
+          <li>Giải thích lỗi bằng câu như &quot;trong ví dụ, hình tròn nào cũng nằm trên nền xanh&quot;.</li>
+          <li>Chọn được thẻ phá vỡ quy luật giả — và làm lại được ở ví dụ mới.</li>
+          <li>Không cho rằng mô hình &quot;nhìn&quot; thấy hình như con người.</li>
+        </ul>
+    <h3>Bài tập được làm thế nào</h3>
+    <p>Dành cho người lớn: mô hình là một quy tắc dựa trên một đặc điểm. Lúc đầu cả hai đặc điểm đều khớp hoàn toàn với thẻ học (0 lỗi); khi bằng nhau, bài này chọn màu nền — đó là quy tắc của chúng tôi, không phải tính chất của học máy. Mô hình nhận các đặc điểm có sẵn, không nhận điểm ảnh.</p>
+  </section>
+
+  <section class="wk-card wk-print" aria-labelledby="wk-print-h">
+    <h2 id="wk-print-h">Bài tập để in</h2>
+    <p>Vẽ 4 thẻ: 2 hình tròn trên nền xanh dương và 2 hình vuông trên nền vàng. Che các hình lại và hỏi: còn có thể &quot;đoán&quot; dựa vào điều gì nữa? Vẽ thêm một thẻ phá vỡ gợi ý &quot;màu nền&quot;.</p>
+    <button type="button" class="wk-btn" data-print hidden>In bài tập</button>
+    <details class="wk-print-answers" open>
+      <summary>Đáp án và giải thích (dành cho người lớn)</summary>
+      <p>Gợi ý bẫy là màu nền: trong các ví dụ, màu nền luôn đi cùng hình dạng. Một hình tròn trên nền vàng hoặc một hình vuông trên nền xanh dương sẽ phá vỡ nó.</p>
+    </details>
+  </section>
+
+  <section class="wk-card wk-sources" aria-labelledby="wk-src-h">
+    <h2 id="wk-src-h">Nguồn</h2>
+    <ol>
+        <li><a href="https://arxiv.org/abs/2004.07780" rel="noopener" target="_blank">Geirhos et al., &quot;Shortcut learning in deep neural networks&quot;, Nature Machine Intelligence, 2020</a><br><span class="wk-supports">Nguồn này xác nhận điều gì: Mô hình học máy có thể dựa vào một gợi ý tình cờ trong dữ liệu học (ví dụ màu nền) thay vì đặc điểm cần thiết.</span></li>
+        <li><a href="https://doi.org/10.1023/A:1022631118932" rel="noopener" target="_blank">Holte, &quot;Very Simple Classification Rules Perform Well on Most Commonly Used Datasets&quot;, Machine Learning, 1993</a><br><span class="wk-supports">Nguồn này xác nhận điều gì: Quy tắc dựa trên một đặc điểm, được chọn theo số lỗi ít nhất, là một phương pháp phân loại đơn giản đã được biết đến; máy phân loại của chúng tôi là phiên bản tập học của nó.</span></li>
+    </ol>
+    <p class="wk-review">Trạng thái: bản nháp của tác giả. Chưa được biên tập viên bản ngữ và giáo viên kiểm tra; hoạt động chưa được thử với trẻ em.</p>
+  </section>
+
+  <nav class="wk-pager" aria-label="Hoạt động khác">
+    <a class="wk-pg" href="./">Tất cả hoạt động của Góc học</a>
+    <a class="wk-pg wk-pg-next" href="check.html">Kiểm tra một câu trả lời tự tin →</a>
+  </nav>
+</main>
+<footer class="wk-foot">
+  <div class="wk-foot-in">
+    <p>Hoạt động chạy trong trình duyệt của bạn: câu trả lời không được lưu và không gửi đi. Như mọi trang web, máy chủ chỉ nhận các yêu cầu tải trang thông thường.</p>
+    <p><a href="../../lessons/vi/">Tất cả bài học theo độ tuổi</a></p>
+  </div>
+</footer>
+<script type="application/json" id="wk-data">{"kind":"sorter","defaultAge":"child","data":{"ages":{"tiny":{"start":[{"id":"a1","shape":"circle","bg":"blue","label":"circle"},{"id":"a2","shape":"circle","bg":"blue","label":"circle"},{"id":"a3","shape":"square","bg":"yellow","label":"square"},{"id":"a4","shape":"square","bg":"yellow","label":"square"}],"probe":{"id":"p1","shape":"circle","bg":"yellow","label":"circle"},"extras":[{"id":"x1","shape":"circle","bg":"yellow","label":"circle"},{"id":"x3","shape":"circle","bg":"blue","label":"circle"}],"pick":1,"test":[{"id":"t1","shape":"circle","bg":"yellow","label":"circle"},{"id":"t2","shape":"square","bg":"blue","label":"square"}]},"child":{"start":[{"id":"a1","shape":"circle","bg":"blue","label":"circle"},{"id":"a2","shape":"circle","bg":"blue","label":"circle"},{"id":"a5","shape":"circle","bg":"blue","label":"circle"},{"id":"a3","shape":"square","bg":"yellow","label":"square"},{"id":"a4","shape":"square","bg":"yellow","label":"square"},{"id":"a6","shape":"square","bg":"yellow","label":"square"}],"probe":{"id":"p1","shape":"circle","bg":"yellow","label":"circle"},"extras":[{"id":"x1","shape":"circle","bg":"yellow","label":"circle"},{"id":"x2","shape":"square","bg":"blue","label":"square"},{"id":"x3","shape":"circle","bg":"blue","label":"circle"},{"id":"x4","shape":"square","bg":"yellow","label":"square"}],"pick":2,"test":[{"id":"t1","shape":"circle","bg":"yellow","label":"circle"},{"id":"t2","shape":"square","bg":"blue","label":"square"},{"id":"t3","shape":"circle","bg":"blue","label":"circle"},{"id":"t4","shape":"square","bg":"yellow","label":"square"}]},"teen":{"start":[{"id":"a1","shape":"circle","bg":"blue","label":"circle"},{"id":"a2","shape":"circle","bg":"blue","label":"circle"},{"id":"a5","shape":"circle","bg":"blue","label":"circle"},{"id":"a3","shape":"square","bg":"yellow","label":"square"},{"id":"a4","shape":"square","bg":"yellow","label":"square"},{"id":"a6","shape":"square","bg":"yellow","label":"square"}],"probe":{"id":"p1","shape":"circle","bg":"yellow","label":"circle"},"extras":[{"id":"x1","shape":"circle","bg":"yellow","label":"circle"},{"id":"x2","shape":"square","bg":"blue","label":"square"},{"id":"x3","shape":"circle","bg":"blue","label":"circle"},{"id":"x4","shape":"square","bg":"yellow","label":"square"}],"pick":2,"test":[{"id":"t1","shape":"circle","bg":"yellow","label":"circle"},{"id":"t2","shape":"square","bg":"blue","label":"square"},{"id":"t3","shape":"circle","bg":"blue","label":"circle"},{"id":"t4","shape":"square","bg":"yellow","label":"square"}]},"adult":{"start":[{"id":"a1","shape":"circle","bg":"blue","label":"circle"},{"id":"a2","shape":"circle","bg":"blue","label":"circle"},{"id":"a5","shape":"circle","bg":"blue","label":"circle"},{"id":"a3","shape":"square","bg":"yellow","label":"square"},{"id":"a4","shape":"square","bg":"yellow","label":"square"},{"id":"a6","shape":"square","bg":"yellow","label":"square"}],"probe":{"id":"p1","shape":"circle","bg":"yellow","label":"circle"},"extras":[{"id":"x1","shape":"circle","bg":"yellow","label":"circle"},{"id":"x2","shape":"square","bg":"blue","label":"square"},{"id":"x3","shape":"circle","bg":"blue","label":"circle"},{"id":"x4","shape":"square","bg":"yellow","label":"square"}],"pick":3,"test":[{"id":"t1","shape":"circle","bg":"yellow","label":"circle"},{"id":"t2","shape":"square","bg":"blue","label":"square"},{"id":"t3","shape":"circle","bg":"blue","label":"circle"},{"id":"t4","shape":"square","bg":"yellow","label":"square"}]}},"transfer":{"start":[{"id":"n1","shape":"triangle","bg":"green","label":"triangle"},{"id":"n2","shape":"triangle","bg":"green","label":"triangle"},{"id":"n3","shape":"triangle","bg":"green","label":"triangle"},{"id":"n4","shape":"star","bg":"purple","label":"star"},{"id":"n5","shape":"star","bg":"purple","label":"star"},{"id":"n6","shape":"star","bg":"purple","label":"star"}],"probe":{"id":"np","shape":"star","bg":"green","label":"star"},"fixes":[{"id":"f1","shape":"star","bg":"green","label":"star"},{"id":"f2","shape":"triangle","bg":"green","label":"triangle"},{"id":"f3","shape":"star","bg":"purple","label":"star"}]},"categories":{"main":["circle","square"],"transfer":["triangle","star"]}},"ui":{"series":"Góc học: hoạt động về AI","seriesLead":"Những hoạt động ngắn để tự tay thử: đoán, thử, xem kết quả, hiểu vì sao và tự giải một ví dụ mới. Không cần đăng ký; câu trả lời không được lưu và không gửi đi đâu.","ageLabel":"Độ khó","ages":{"tiny":"5–7 tuổi, cùng người lớn","child":"8–10 tuổi","teen":"11–13 tuổi","adult":"Từ 14 tuổi"},"stepOf":"Bước {n} / {m}","next":"Tiếp →","back":"← Quay lại","retry":"Thử lại","before":"trước","after":"sau","modelSaid":"máy phân loại","limit":"Em chỉ được chọn tối đa {pick} thẻ. Hãy bỏ chọn một thẻ khác trước.","qL":"“","qR":"”","srcOrigin":"Nguồn gốc: ","srcDate":"Ngày: ","goalH":"Mục tiêu","explainH":"Giải thích","sampleNote":"Ví dụ tập học: các câu của trợ lý được viết sẵn; đây không phải trò chuyện trực tiếp và không phải yêu cầu gửi tới mạng nơ-ron.","adultH":"Dành cho người lớn","adultGoal":"Mục tiêu","adultQuestions":"Câu hỏi để trò chuyện","adultMis":"Hiểu lầm thường gặp","adultSigns":"Dấu hiệu trẻ đã hiểu","adultMethod":"Bài tập được làm thế nào","printH":"Bài tập để in","printAnswers":"Đáp án và giải thích (dành cho người lớn)","printBtn":"In bài tập","sourcesH":"Nguồn","supports":"Nguồn này xác nhận điều gì","review":"Trạng thái: bản nháp của tác giả. Chưa được biên tập viên bản ngữ và giáo viên kiểm tra; hoạt động chưa được thử với trẻ em.","catalog":"Tất cả hoạt động của Góc học","lessons":"Tất cả bài học theo độ tuổi","home":"Trang chủ","other":"Hoạt động khác","crumbs":"Bạn đang ở đây","privacy":"Hoạt động chạy trong trình duyệt của bạn: câu trả lời không được lưu và không gửi đi. Như mọi trang web, máy chủ chỉ nhận các yêu cầu tải trang thông thường."},"next":[{"href":"sorter.html"},{"href":"check.html"},{"href":"../../lessons/vi/"}],"text":{"common":{"title":"Vì sao máy phân loại đoán sai?","desc":"Một máy phân loại tập học từ các thẻ hình và đoán sai vì một quy luật giả. Trẻ thêm ví dụ, máy tính lại quy tắc của mình, và kết quả được kiểm tra trên những thẻ riêng.","words":{"shape":"hình dạng","bg":"màu nền","circle":"hình tròn","square":"hình vuông","blue":"nền xanh dương","yellow":"nền vàng","triangle":"hình tam giác","star":"ngôi sao","green":"nền xanh lá","purple":"nền tím","unknown":"không biết"},"howH":"Máy phân loại hoạt động thế nào","how":"Đây là một mô hình tập học, không phải mạng nơ-ron. Nó không \"nhìn\" thấy hình: mỗi thẻ đã có sẵn hai đặc điểm — hình dạng và màu nền. Máy thử một quy tắc theo hình dạng và một quy tắc theo màu nền, rồi giữ quy tắc nào sai ít hơn trên các thẻ học.","trainH":"Thẻ học","predictH":"Em đoán thử","predictQ":"Máy phân loại đã học từ những thẻ này. Nó sẽ nói gì về thẻ mới?","runBtn":"Hỏi máy phân loại","said":"Máy phân loại nói: \"{guess}\".","wrongWhy":"Sai rồi! Đây là hình tròn. Trong các thẻ học, hình tròn nào cũng nằm trên nền xanh dương, còn hình vuông nào cũng nằm trên nền vàng. Vì vậy quy tắc \"nền vàng → hình vuông\" khớp với thẻ học y hệt quy tắc theo hình dạng.","tieNote":"Khi hai quy tắc khớp như nhau, máy phân loại của chúng ta chọn màu nền — bài này được làm như vậy để lỗi hiện ra rõ.","addH":"Thêm thẻ học","addQ":"Chọn tối đa {pick} thẻ. Hãy nghĩ xem: thẻ nào sẽ cho máy thấy rằng màu nền không phải là điều quan trọng?","retrainBtn":"Cho máy học lại","needPick":"Hãy chọn ít nhất một thẻ trước.","nowRule":"Bây giờ máy phân loại chọn quy tắc theo: {feature}.","fixedWhy":"Thành công: giờ trong thẻ học có hình tròn và hình vuông trên nhiều màu nền khác nhau. Quy tắc theo màu nền bắt đầu sai, còn quy tắc theo hình dạng thì không.","sameWhy":"Không có gì thay đổi: các thẻ em thêm lặp lại quy luật cũ (tròn trên nền xanh dương, vuông trên nền vàng). Thêm nhiều thẻ giống nhau không giúp được — cần những ví dụ phá vỡ quy luật. Quay lại và chọn thẻ khác nhé.","backToAdd":"Chọn thẻ khác","testH":"Kiểm tra trên thẻ riêng","testNote":"Máy phân loại không được thấy những thẻ này khi học.","testScore":"Đúng: {right} trên {total}.","newH":"Ví dụ mới — em tự giải","newIntro":"Một máy phân loại khác học từ hình tam giác và ngôi sao. Nhóm đúng của nó cũng dựa vào hình dạng.","newQ1":"Nó sẽ nói gì về một ngôi sao trên nền xanh lá?","newQ2":"Em sẽ thêm MỘT thẻ nào để nó hết đoán sai?","newCheckBtn":"Kiểm tra lựa chọn của em","newOk":"Đúng vậy! Có thẻ này, máy phân loại chọn quy tắc theo hình dạng và gọi ngôi sao là ngôi sao.","newNo":"Máy phân loại vẫn đoán sai: thẻ này lặp lại quy luật cũ. Thử thẻ khác nhé.","q1ok":"Đúng: nó sẽ đoán sai và nói \"hình tam giác\" — trong thẻ học, hình tam giác nào cũng nằm trên nền xanh lá.","q1no":"Hãy nhìn lại các thẻ học: tất cả hình tam giác có màu nền gì?","doneH":"Tiếp theo là gì?","doneText":"Máy phân loại đoán sai không phải vì nó \"ngốc\", mà vì trong các ví dụ học có một gợi ý giả — màu nền.","choices":["Làm lại bài này","Bài tiếp theo: \"Kiểm tra một câu trả lời tự tin\"","Tất cả bài học"],"noJs":"Phần bài tập cần JavaScript. Nếu không có, bên dưới vẫn có mục tiêu, lời giải thích và bài tập để in.","adult":{"goal":"Trẻ thấy rằng mô hình học từ ví dụ và có thể bám vào một gợi ý tình cờ (màu nền), và lỗi này được sửa bằng những ví dụ đi ngược gợi ý đó.","questions":["Vì sao máy phân loại gọi hình tròn là hình vuông?","Thẻ nào đã giúp được, thẻ nào không? Vì sao?","Trong cuộc sống, \"gợi ý bẫy\" như thế có thể xuất hiện ở đâu?"],"misconception":"Càng nhiều dữ liệu càng tốt. Không hẳn: mười ví dụ giống hệt nhau không dạy thêm điều gì mới; điều quan trọng là ví dụ phải khác nhau ở chỗ cần khác.","signs":["Giải thích lỗi bằng câu như \"trong ví dụ, hình tròn nào cũng nằm trên nền xanh\".","Chọn được thẻ phá vỡ quy luật giả — và làm lại được ở ví dụ mới.","Không cho rằng mô hình \"nhìn\" thấy hình như con người."],"method":"Dành cho người lớn: mô hình là một quy tắc dựa trên một đặc điểm. Lúc đầu cả hai đặc điểm đều khớp hoàn toàn với thẻ học (0 lỗi); khi bằng nhau, bài này chọn màu nền — đó là quy tắc của chúng tôi, không phải tính chất của học máy. Mô hình nhận các đặc điểm có sẵn, không nhận điểm ảnh.","print":{"task":"Vẽ 4 thẻ: 2 hình tròn trên nền xanh dương và 2 hình vuông trên nền vàng. Che các hình lại và hỏi: còn có thể \"đoán\" dựa vào điều gì nữa? Vẽ thêm một thẻ phá vỡ gợi ý \"màu nền\".","answers":"Gợi ý bẫy là màu nền: trong các ví dụ, màu nền luôn đi cùng hình dạng. Một hình tròn trên nền vàng hoặc một hình vuông trên nền xanh dương sẽ phá vỡ nó."}}},"tiny":{"goal":"Cùng tìm hiểu vì sao máy móc có thể nhầm — và giúp nó nhé.","addQ":"Chọn một thẻ và đưa cho máy phân loại xem.","adultSay":"Người lớn đọc to. Trẻ chỉ tay hoặc nói câu trả lời — không cần viết."},"child":{"goal":"Tìm ra điều khiến máy phân loại đoán sai và sửa bằng ví dụ. So sánh \"trước\" và \"sau\".","errorsH":"Số lỗi của mỗi quy tắc trên thẻ học","errorsRow":"theo hình dạng: {shape} · theo màu nền: {bg}"},"teen":{"goal":"Hiểu nguyên nhân của lỗi, phân biệt học và kiểm tra, sửa dữ liệu và kiểm tra kết quả.","errorsH":"Số lỗi của mỗi quy tắc trên thẻ học","errorsRow":"theo hình dạng: {shape} · theo màu nền: {bg}","whyTestQ":"Vì sao không được đưa thẻ kiểm tra vào phần học?","whyTestOpts":["Khi đó bài kiểm tra chỉ cho thấy mô hình nhớ thẻ quen tốt thế nào, chứ không cho thấy nó xử lý thẻ mới ra sao","Vì có quá nhiều thẻ","Chẳng khác gì cả"],"whyTestOk":"Đúng. Bài kiểm tra chỉ công bằng khi mô hình chưa từng thấy những thẻ đó.","whyTestNo":"Chưa đúng. Ta muốn biết gì từ bài kiểm tra — mô hình nhớ thẻ cũ thế nào, hay nó làm việc với thẻ mới ra sao?"},"adult":{"goal":"Xem xét giới hạn của phương pháp: chất lượng và sự đa dạng của dữ liệu, quy tắc khi bằng nhau, tách riêng học và kiểm tra, và hậu quả của lỗi.","errorsH":"Số lỗi của mỗi quy tắc trên thẻ học","errorsRow":"theo hình dạng: {shape} · theo màu nền: {bg}","whyTestQ":"Vì sao không được đưa thẻ kiểm tra vào phần học?","whyTestOpts":["Khi đó bài kiểm tra chỉ cho thấy mô hình nhớ thẻ quen tốt thế nào, chứ không cho thấy nó xử lý thẻ mới ra sao","Vì có quá nhiều thẻ","Chẳng khác gì cả"],"whyTestOk":"Đúng. Bài kiểm tra chỉ công bằng khi mô hình chưa từng thấy những thẻ đó.","whyTestNo":"Chưa đúng. Bài kiểm tra đo điều gì — trí nhớ về cái quen, hay cách làm việc với cái mới?","limitsH":"Giới hạn của phương pháp","limits":["Mô hình chỉ chọn một đặc điểm; mô hình thật dùng rất nhiều đặc điểm và cũng có thể tìm ra gợi ý giả.","Quy tắc khi bằng nhau (ưu tiên màu nền) là lựa chọn của bài này. Một quy tắc khác sẽ cho câu trả lời khác trên cùng dữ liệu.","Nếu chỉ sửa những gì lộ ra ở bài kiểm tra, ta có thể vô tình \"chỉnh\" mô hình cho vừa với chính các thẻ kiểm tra."],"stakesQ":"Một máy phân loại quyết định email nào là thư rác dựa trên một gợi ý giả. Vì sao đó là vấn đề?","stakesOpts":["Email quan trọng có thể biến mất, và người ta có thể tin vào lỗi vì \"máy đã quyết định\"","Không sao cả, máy không bao giờ sai","Chỉ vì nó chạy chậm"],"stakesOk":"Đúng vậy. Hậu quả của lỗi phụ thuộc vào nơi mô hình được dùng — vì thế con người cần kiểm tra quyết định của nó.","stakesNo":"Hãy nghĩ xem ai sẽ bị ảnh hưởng nếu mô hình sai mà không ai nhận ra."}}}</script>
+<script src="../../js/lesson.js"></script>
+<script src="../../js/sorter-model.js"></script>
+<script src="../../js/workshop.js"></script>
+<script src="../../js/workshop-sorter.js"></script>
+</body>
+</html>

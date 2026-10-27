@@ -240,11 +240,15 @@ function speechLangTag() { return SPEECH_LANG[S.lang] || 'en-US'; }
 // instead of waiting for the matching one to arrive. Explicitly picking
 // a matching voice object — and waiting one 'voiceschanged' tick if the
 // list isn't ready yet — makes the requested language actually stick.
+//
+// Same rule as the lesson pages (js/lesson.js): only voices installed on the
+// device (localService === true). Without one we do NOT fall back to the
+// browser default — it may be an online service — and show text instead.
 function pickVoice(langTag, cb) {
   const prefix = langTag.split('-')[0];
   const find = () => {
-    const voices = window.speechSynthesis.getVoices();
-    return voices.find(v => v.lang === langTag) || voices.find(v => v.lang.startsWith(prefix)) || null;
+    const voices = window.speechSynthesis.getVoices().filter(v => v.localService === true);
+    return voices.find(v => v.lang === langTag) || voices.find(v => v.lang.replace('_', '-').startsWith(prefix)) || null;
   };
   const existing = find();
   if (existing) { cb(existing); return; }
@@ -255,19 +259,51 @@ function pickVoice(langTag, cb) {
   setTimeout(() => finish(find()), 400); // safety net if the event never fires
 }
 
-function speakText(text) {
-  if (!('speechSynthesis' in window)) return;
-  window.speechSynthesis.cancel();
+const NO_VOICE = {
+  en: 'No voice on this device — ask an adult to read it aloud.',
+  ru: 'На этом устройстве нет голоса — попросите взрослого прочитать.',
+  de: 'Auf diesem Gerät gibt es keine Stimme — bitte einen Erwachsenen vorlesen lassen.',
+  es: 'No hay voz en este dispositivo: pide a un adulto que lo lea en voz alta.',
+  fr: 'Pas de voix sur cet appareil : demande à un adulte de le lire à voix haute.',
+  hi: 'इस डिवाइस पर कोई आवाज़ नहीं है — किसी बड़े से पढ़कर सुनाने को कहो।',
+  id: 'Tidak ada suara di perangkat ini — minta orang dewasa membacakannya.',
+  pt: 'Não há voz neste dispositivo — peça a um adulto para ler em voz alta.',
+  tr: 'Bu cihazda ses yok — bir yetişkinden sesli okumasını iste.',
+  vi: 'Thiết bị này không có giọng đọc — hãy nhờ người lớn đọc to.',
+};
+
+// Only ever called from a tap. A second tap while speaking stops the voice.
+// `btn` (optional): the button that was tapped — gets the text alternative
+// when no installed voice exists.
+function speakText(text, btn) {
+  if (!('speechSynthesis' in window) || typeof SpeechSynthesisUtterance === 'undefined') { noVoice(btn); return; }
+  const synth = window.speechSynthesis;
+  if (synth.speaking || synth.pending) { synth.cancel(); return; }
   const langTag = speechLangTag();
   pickVoice(langTag, (voice) => {
+    if (!voice) { noVoice(btn); return; }
     const utt = new SpeechSynthesisUtterance(text);
-    utt.lang  = langTag;
-    if (voice) utt.voice = voice;
+    utt.voice = voice;
+    utt.lang  = voice.lang;
     utt.rate  = 0.82;
     utt.pitch = 1.15;
-    window.speechSynthesis.speak(utt);
+    synth.speak(utt);
   });
 }
+function noVoice(btn) {
+  const t = NO_VOICE[S.lang] || NO_VOICE.en;
+  if (btn && btn.parentNode && !btn.parentNode.querySelector('.kat-novoice')) {
+    const p = document.createElement('p');
+    p.className = 'kat-novoice';
+    p.setAttribute('role', 'status');
+    p.textContent = t;
+    btn.insertAdjacentElement('afterend', p);
+  }
+}
+function stopSpeech() {
+  try { if ('speechSynthesis' in window) window.speechSynthesis.cancel(); } catch (_) {}
+}
+window.addEventListener('pagehide', stopSpeech);
 
 function canReadAloud() {
   return ('speechSynthesis' in window) && (S.age === 'tiny' || S.age === 'child');
@@ -370,7 +406,7 @@ function renderLesson() {
 
   const lessonSpeech = [lesson.title, lesson.text, lesson.example].filter(Boolean).join('. ');
   const readBtn = $('btn-read-lesson');
-  if (readBtn) readBtn.addEventListener('click', () => speakText(lessonSpeech));
+  if (readBtn) readBtn.addEventListener('click', () => speakText(lessonSpeech, readBtn));
 
   $('btn-next-lesson').addEventListener('click', () => {
     if (hasTest) {
@@ -418,7 +454,7 @@ function renderMiniTest() {
   `;
 
   const readMtBtn = $('btn-read-mt');
-  if (readMtBtn) readMtBtn.addEventListener('click', () => speakText(q.q));
+  if (readMtBtn) readMtBtn.addEventListener('click', () => speakText(q.q, readMtBtn));
 
   const opts = $('mt-options');
   const isTiny = S.age === 'tiny';
@@ -593,6 +629,7 @@ function startGame() {
 // marking the game session as done (no "nice job" card, no quiz nudge —
 // the kid just changed their mind).
 function exitFullscreenGame() {
+  stopSpeech();
   document.body.classList.remove('game-fullscreen');
   window.KAT_Companion?.setFloatingVisible(true);
   leaveSection();
@@ -676,6 +713,7 @@ function launchRacing(container) {
 }
 
 function onGameDone() {
+  stopSpeech();
   document.body.classList.remove('game-fullscreen');
   window.KAT_Companion?.setFloatingVisible(true);
   leaveSection();
@@ -786,7 +824,7 @@ function renderQuestion() {
   `;
 
   const readQuizBtn = $('btn-read-quiz');
-  if (readQuizBtn) readQuizBtn.addEventListener('click', () => speakText(q.q));
+  if (readQuizBtn) readQuizBtn.addEventListener('click', () => speakText(q.q, readQuizBtn));
 
   $$('#q-answers button').forEach(btn => {
     btn.addEventListener('click', () => answerQuiz(Number(btn.dataset.v), q, btn));
@@ -1352,6 +1390,7 @@ function init() {
 // progress — the existing resume logic (see afterBoot) picks up exactly
 // where the learner left off.
 function exitToHub() {
+  stopSpeech();
   hide('lessons');
   hide('quiz');
   leaveSection();

@@ -69,9 +69,10 @@
   const want = tag.includes('-') ? tag : (TAGS[tag] || tag);
   const prefix = want.split('-')[0];
 
-  // Installed voices only: localService === false means an online service.
+  // Installed voices only (localService === true); a voice that does not say
+  // it is local may be an online service. Same rule as js/core.js.
   const findVoice = () => {
-    const vs = synth.getVoices().filter((v) => v.localService !== false);
+    const vs = synth.getVoices().filter((v) => v.localService === true);
     return vs.find((v) => v.lang === want) || vs.find((v) => v.lang.replace('_', '-').startsWith(prefix)) || null;
   };
   const decide = (voice) => {
