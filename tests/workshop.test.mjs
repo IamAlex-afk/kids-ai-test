@@ -99,8 +99,8 @@ test('registry: complete for every listed language, no review claims', () => {
 // answer in B, and the "made-up data" note in C.
 const UNKNOWN = { ru: /нельзя установить|не знаем/i, en: /cannot be decided|Not yet/i, vi: /chưa thể xác định|chưa biết/i,
   id: /belum bisa dipastikan|belum tahu/i, pt: /ainda não dá para saber|ainda não/i,
-  es: /todavía no se puede saber|todavía no/i };
-const MADE_UP = { ru: /вымышлен/i, en: /made-up/i, vi: /hư cấu/i, id: /rekaan/i, pt: /fictíci/i, es: /inventad/i };
+  es: /todavía no se puede saber|todavía no/i, fr: /on ne peut pas encore savoir|pas encore/i };
+const MADE_UP = { ru: /вымышлен/i, en: /made-up/i, vi: /hư cấu/i, id: /rekaan/i, pt: /fictíci/i, es: /inventad/i, fr: /inventé/i };
 
 // Scenario lessons: every question has a valid answer and explanations;
 // "cannot be decided" exists in B; C's breakdown explains every piece and

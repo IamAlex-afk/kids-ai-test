@@ -20,7 +20,7 @@ const SCENARIO = { scripts: ['workshop.js', 'workshop-scenario.js'], staticKeys:
 export const SERIES_LASTMOD = '2026-10-27';
 // Languages of the series. Each needs tools/series/<lesson>-<lang>.mjs for
 // every lesson (exporting the language code) and a block in series/ui.mjs.
-export const SERIES_LANGS = ['ru', 'en', 'vi', 'id', 'pt', 'es'];
+export const SERIES_LANGS = ['ru', 'en', 'vi', 'id', 'pt', 'es', 'fr'];
 
 const texts = async (lesson) => Object.fromEntries(await Promise.all(SERIES_LANGS.map(async (l) =>
   [l, (await import(`./series/${lesson}-${l}.mjs`))[l]])));
