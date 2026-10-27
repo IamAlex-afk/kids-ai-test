@@ -137,60 +137,40 @@ and per-language parents' FAQ), no WebMCP, search policy.
 3. Search Console: submit `sitemap.xml` (only the owner can; the subpath robots.txt is not read by Google).
 4. Separate origin for the kids' site: own GitHub organisation (`<name>.github.io`, free) or a subdomain of an owned domain? Nothing is migrated until decided.
 
-## Next release: three new lessons — CODE WRITTEN, NOT YET RUN (2026-10-26)
+## Next release: three new lessons — RUN AND CHECKED, NOT PUBLISHED (2026-10-27)
 
-Branch `release/three-lessons`, local commits after `8ef4a3e`:
-`71a659e` speech/offline · `1d20474` registry + engine + lesson A · `c101c2c`
-lessons B and C · `15b8faf` route "age → Start" · `b766cb8` catalog link + live test.
+Branch `release/three-lessons` (pushed). Lessons A "Why did the sorter get it
+wrong?", B "Check a confident answer", C "What is OK to share?", 4 difficulty
+levels each, adult block + print task + sources, in **all 10 site languages**.
 
 | What | Where |
 |---|---|
 | Speech | old route (core.js) = lesson pages: tap only, `localService === true`, no default-voice fallback, text alternative, stop on second tap / exit / pagehide |
 | Offline | unsaved page → clear message on its own URL (10 languages, 503), not the start page; cache errors don't hide network answers |
-| Registry | `tools/series.mjs` (+ `tools/series/*`): id, skill, langs ru/en, review flags (all false), sources with "what it supports", texts per age incl. goal, new example, adult block; `validate()` |
-| Pages | `tools/gen-series.mjs` → `workshop/{ru,en}/{index,sorter,check,share}.html` (NOT GENERATED YET); `?age=` sets difficulty; goal, explanation, adult block, print task, sources work without JS |
+| Registry | `tools/series.mjs`: `SERIES_LANGS` (10) drives everything — texts load from `tools/series/<lesson>-<lang>.mjs`, UI from `tools/series/ui.mjs`, review flags (all false), sources with "what it supports" per language; `validate()` |
+| Pages | `tools/gen-series.mjs` → `workshop/<lang>/{index,sorter,check,share}.html` (40 pages), hreflang between all 10, sitemap block; `?age=` sets difficulty; goal, explanation, adult block, print task, sources work without JS |
 | Lesson A | `js/sorter-model.js` one-feature rule learner on ready-made features; tie → background (stated demo rule); recomputed from real training cards; check cards can't train |
 | Lessons B, C | `js/workshop-scenario.js`, scripted (marked teaching example); B: find/compare/fix/reason, "cannot be decided", two sources (11+); C: remove/replace pieces, every piece explained, re-identification (11+) |
-| Route | third entry screen for kids (gen-entry + entry.js): one "Start", other activities, old quiz/card/games route kept |
-| Tests | `tests/workshop.test.mjs`, updated `sw`, `static`, `live` tests |
+| Route | third entry screen for kids (gen-entry + entry.js): one "Start" per age → the Workshop in every language, other activities, old quiz/card/games route kept |
+| Tests | `tests/workshop.test.mjs` (language markers per language), updated `sw`, `static`, `live` tests; build and live checks read `SERIES_LANGS` |
 
-Checks: **none run** (node/browser blocked in the writing session). Next step:
-`docs/NEXT-SESSION-PROMPTS.md`, stages 1→5, in a session where `node` runs.
-Source links in `tools/series/{sorter,check,share}.mjs` were written from
-memory and must be opened and confirmed before publishing.
+Translations are adapted, not word for word: local names, currency and time
+format per country (₫/Rp/R$/pesos/€/TL/₹), "du"/"Sie" in de, "tu" in fr/es,
+French no-break spaces, „…“ in de; series named as each page header names the
+workshop. **Not reviewed by native speakers or teachers; not tried with children.**
 
-### (previous note) brief received
+Checked 2026-10-27 (really run, Node 24 + headless Chrome, local):
+- generators `gen-entry`, `gen-series`, `gen-lessons` up to date; `build --check` OK, local links OK;
+- `node --test`: 43 pass, 0 fail, 6 skipped (live checks, run after deploy);
+- every language: catalog + 3 lessons × 4 ages rendered in headless Chrome with no `undefined`/empty placeholders; screenshots looked at for ru, vi, hi;
+- sources: all 6 URLs open and lead to the cited work (Holte 1993: metadata via Crossref only, full text behind Springer login); UNICEF page title updated to "Guidance on AI and children";
+- merged with `fix/headings` (PR #6) in a scratch worktree: no conflicts, 44 pass.
 
-Brief: unified route (audience → age → one recommended "Start" lesson), lessons
-A "Why did the sorter get it wrong?", B "Check a confident answer", C "What is OK
-to share?", RU/EN × 4 difficulty levels, adult block + print, registry of the new
-series driving pages/navigation/sitemap, speech (tap only, `localService` voices,
-old and new route) and offline (unsaved page → clear message, not the home page)
-fixes, behaviour tests, browser run, PR → merge → live check.
+Found and fixed by the first real run: goal box showed `undefined` on the sorter
+page; two too-short explanations in lesson C (ru).
 
-Status (2026-10-26): **code written and committed locally, NOT run, NOT generated,
-NOT published.** The session that wrote it could not run `node`/`curl`/browser
-("requires approval" never reached the owner). Branch `release/three-lessons` from
-`af9160a`, local commits:
-
-| Commit | Stage |
-|---|---|
-| `71a659e` | Speech: `localService === true` voices only on the old route too, no fallback voice, text alternative, second tap stops, stops on exit/pagehide. Offline: unsaved page → clear "not saved offline" page (10 languages) on its own URL, not the start page; cache errors no longer hide a working network answer. Tests. |
-| `1d20474` | Registry `tools/series.mjs` (+ `validate()`), generator `tools/gen-series.mjs` (`workshop/<ru|en>/…`, sitemap block), step engine `js/workshop.js`, lesson A "sorter" (`js/sorter-model.js`: one-feature rule learner on ready-made features, stated tie rule, check cards can never train it), 4 age variants, adult block, print, sources. Tests. |
-| `c101c2c` | Lessons B "check" and C "share" (`js/workshop-scenario.js`), RU/EN × 4 ages, scripted examples marked as such, demo data only. Tests. |
-| `15b8faf` | Route after the age (kids): one "Start" per age (ru/en → Workshop; other languages → first existing lesson + honest "ru/en only" note), other activities, old lessons-with-quiz route kept. 10 languages. Test. |
-| `b766cb8` | Main pages ru/en link the Workshop catalog; live check covers workshop pages. |
-
-Not generated yet (needs node): `workshop/ru|en/*.html`, the WORKSHOP block of
-`sitemap.xml`, the route screen inside the 10 language pages. Until then
-`build --check` and the tests fail by design (pages missing / out of date).
-
-Honest limits of this release: texts are an author's draft — not reviewed by a
-native-speaking editor or a teacher, not tried with children; source links (Geirhos
-2020, Holte 1993, Ji 2023, Wineburg & McGrew 2019, UNICEF, Sweeney 2000) were written
-from memory and must be opened and checked; no accessibility audit; WCAG conformance
-not claimed. Step-by-step prompts for the session that can run node:
-`docs/NEXT-SESSION-PROMPTS.md`.
+Not checked: real phones, touch, screen reader, zoom 200%, reduced motion,
+Lighthouse; native-speaker review of the 8 new languages.
 
 ## Remaining work (next steps, in order)
 
