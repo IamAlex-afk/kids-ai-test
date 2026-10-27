@@ -1,5 +1,5 @@
 // Interface text shared by all workshop activities (tools/gen-series.mjs,
-// js/workshop.js). ru/en only: the new series exists in these two languages.
+// js/workshop.js). One block per language in SERIES_LANGS (tools/series.mjs).
 export const UI = {
   ru: {
     series: 'Мастерская: занятия об ИИ',
@@ -46,5 +46,28 @@ export const UI = {
     other: 'Other activities',
     crumbs: 'You are here',
     privacy: 'The activity runs in your browser: answers are not saved or sent. Like any website, the host receives ordinary page requests.',
+  },
+  vi: {
+    series: 'Xưởng thực hành: hoạt động về AI',
+    seriesLead: 'Những hoạt động ngắn để tự tay thử: đoán, thử, xem kết quả, hiểu vì sao và tự giải một ví dụ mới. Không cần đăng ký; câu trả lời không được lưu và không gửi đi đâu.',
+    ageLabel: 'Độ khó',
+    ages: { tiny: '5–7 tuổi, cùng người lớn', child: '8–10 tuổi', teen: '11–13 tuổi', adult: 'Từ 14 tuổi' },
+    stepOf: 'Bước {n} / {m}',
+    next: 'Tiếp →', back: '← Quay lại', retry: 'Thử lại',
+    before: 'trước', after: 'sau', modelSaid: 'máy phân loại', limit: 'Em chỉ được chọn tối đa {pick} thẻ. Hãy bỏ chọn một thẻ khác trước.',
+    qL: '“', qR: '”', srcOrigin: 'Nguồn gốc: ', srcDate: 'Ngày: ',
+    goalH: 'Mục tiêu',
+    explainH: 'Giải thích',
+    sampleNote: 'Ví dụ tập học: các câu của trợ lý được viết sẵn; đây không phải trò chuyện trực tiếp và không phải yêu cầu gửi tới mạng nơ-ron.',
+    adultH: 'Dành cho người lớn',
+    adultGoal: 'Mục tiêu', adultQuestions: 'Câu hỏi để trò chuyện', adultMis: 'Hiểu lầm thường gặp',
+    adultSigns: 'Dấu hiệu trẻ đã hiểu', adultMethod: 'Bài tập được làm thế nào',
+    printH: 'Bài tập để in', printAnswers: 'Đáp án và giải thích (dành cho người lớn)', printBtn: 'In bài tập',
+    sourcesH: 'Nguồn', supports: 'Nguồn này xác nhận điều gì',
+    review: 'Trạng thái: bản nháp của tác giả. Chưa được biên tập viên bản ngữ và giáo viên kiểm tra; hoạt động chưa được thử với trẻ em.',
+    catalog: 'Tất cả hoạt động của Xưởng', lessons: 'Tất cả bài học theo độ tuổi', home: 'Trang chủ',
+    other: 'Hoạt động khác',
+    crumbs: 'Bạn đang ở đây',
+    privacy: 'Hoạt động chạy trong trình duyệt của bạn: câu trả lời không được lưu và không gửi đi. Như mọi trang web, máy chủ chỉ nhận các yêu cầu tải trang thông thường.',
   },
 };

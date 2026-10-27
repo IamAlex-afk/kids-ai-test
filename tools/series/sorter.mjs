@@ -1,5 +1,5 @@
 // Lesson A — "Why did the sorter get it wrong?" (registry entry + content).
-// Cards are language-independent; texts are per language (ru, en).
+// Cards are language-independent; texts are per language (tools/series/sorter-<lang>.mjs).
 // Engine: js/workshop.js (kind 'sorter'), model: js/sorter-model.js.
 
 const card = (id, shape, bg) => ({ id, shape, bg, label: shape });
@@ -38,15 +38,15 @@ export const sorter = {
   file: 'sorter.html',
   kind: 'sorter',
   skill: 'training-data',                     // a false pattern in training data, fixed by better data
-  langs: ['ru', 'en'],
+  langs: ['ru', 'en', 'vi'],
   // Editorial status. Honest: nothing has been reviewed by a native speaker,
   // a teacher, or tested with children.
   review: { editorial: 'draft (author)', native: false, teacher: false, children: false, checked: '2026-10-26' },
   data: { ages: AGES, transfer: TRANSFER, categories: { main: ['circle', 'square'], transfer: ['triangle', 'star'] } },
   sources: [
     { url: 'https://arxiv.org/abs/2004.07780', title: 'Geirhos et al., "Shortcut learning in deep neural networks", Nature Machine Intelligence, 2020',
-      supports: { ru: 'Модели машинного обучения могут опираться на случайную подсказку в обучающих данных (например, фон) вместо нужного признака.', en: 'Machine-learning models can rely on an accidental cue in the training data (such as the background) instead of the intended feature.' } },
+      supports: { ru: 'Модели машинного обучения могут опираться на случайную подсказку в обучающих данных (например, фон) вместо нужного признака.', en: 'Machine-learning models can rely on an accidental cue in the training data (such as the background) instead of the intended feature.', vi: 'Mô hình học máy có thể dựa vào một gợi ý tình cờ trong dữ liệu học (ví dụ màu nền) thay vì đặc điểm cần thiết.' } },
     { url: 'https://doi.org/10.1023/A:1022631118932', title: 'Holte, "Very Simple Classification Rules Perform Well on Most Commonly Used Datasets", Machine Learning, 1993',
-      supports: { ru: 'Правило по одному признаку, выбранное по наименьшему числу ошибок, — известный простой метод классификации; наш сортировщик — его учебная версия.', en: 'A one-feature rule chosen by the fewest mistakes is a known simple classification method; our sorter is a teaching version of it.' } },
+      supports: { ru: 'Правило по одному признаку, выбранное по наименьшему числу ошибок, — известный простой метод классификации; наш сортировщик — его учебная версия.', en: 'A one-feature rule chosen by the fewest mistakes is a known simple classification method; our sorter is a teaching version of it.', vi: 'Quy tắc dựa trên một đặc điểm, được chọn theo số lỗi ít nhất, là một phương pháp phân loại đơn giản đã được biết đến; máy phân loại của chúng tôi là phiên bản tập học của nó.' } },
   ],
 };

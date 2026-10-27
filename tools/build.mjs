@@ -13,6 +13,7 @@ import { execSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { SERIES_LANGS } from './series.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
@@ -39,7 +40,7 @@ const DIRS = [
   // Lesson pages (tools/gen-lessons.mjs), one folder per language
   ...LANGS.map((l) => ({ dir: `lessons/${l}`, ext: ['.html'] })),
   // Workshop activities (tools/gen-series.mjs) — only the languages of the series
-  ...['ru', 'en'].map((l) => ({ dir: `workshop/${l}`, ext: ['.html'] })),
+  ...SERIES_LANGS.map((l) => ({ dir: `workshop/${l}`, ext: ['.html'] })),
 ];
 // Not cached offline: SW itself, verification/legal/info files.
 const NO_PRECACHE = new Set(['sw.js', '404.html', 'googled8a35f2a8c073799.html', 'LICENSE',

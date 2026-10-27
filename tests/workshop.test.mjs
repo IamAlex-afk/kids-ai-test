@@ -91,8 +91,14 @@ test('registry: complete for every listed language, no review claims', () => {
       assert.deepEqual(keysL, keysRu, `${s.id}/${l}: same text keys as ru`);
     }
   }
-  assert.deepEqual(SERIES_LANGS, ['ru', 'en']);
+  for (const s of SERIES) assert.deepEqual(s.langs, SERIES_LANGS, `${s.id}: every lesson in every series language`);
+  for (const l of SERIES_LANGS) assert.ok(UNKNOWN[l] && MADE_UP[l], `${l}: test markers below`);
 });
+
+// Per-language words the checks below look for: the "cannot be decided"
+// answer in B, and the "made-up data" note in C.
+const UNKNOWN = { ru: /нельзя установить|не знаем/i, en: /cannot be decided|Not yet/i, vi: /chưa thể xác định|chưa biết/i };
+const MADE_UP = { ru: /вымышлен/i, en: /made-up/i, vi: /hư cấu/i };
 
 // Scenario lessons: every question has a valid answer and explanations;
 // "cannot be decided" exists in B; C's breakdown explains every piece and
@@ -110,7 +116,7 @@ test('lesson B: scripted, checkable on the page, "cannot be decided" allowed', (
       for (let k = 0; k < q.options.length; k++) if (k !== q.correct) assert.ok((q.no && q.no[k]) || q.noAll, `${l}/${age}: wrong option ${k} explained`);
     }
     const all = steps.flatMap((st) => st.questions || []);
-    assert.ok(all.some((q) => /нельзя установить|не знаем|cannot be decided|Not yet/i.test(q.options[q.correct])), `${l}/${age}: an "unknown" answer is the right one somewhere`);
+    assert.ok(all.some((q) => UNKNOWN[l].test(q.options[q.correct])), `${l}/${age}: an "unknown" answer is the right one somewhere`);
     if (age === 'teen' || age === 'adult') assert.ok(steps.some((st) => st.sources && st.sources.length === 2), `${l}/${age}: two sources compared`);
   }
 });
@@ -128,7 +134,7 @@ test('lesson C: demo data only, every piece explained, the task is always kept',
     }
     // the new example is a different request from the worked one
     if (reds.length >= 2) assert.notDeepEqual(reds[0].pieces.map((p) => p.text), reds[reds.length - 1].pieces.map((p) => p.text), `${l}/${age}: new example differs`);
-    for (const st of steps) if (st.intro || st.bubble) assert.ok(/вымышлен|made-up/i.test(JSON.stringify(steps)), `${l}/${age}: says the data is made up`);
+    for (const st of steps) if (st.intro || st.bubble) assert.ok(MADE_UP[l].test(JSON.stringify(steps)), `${l}/${age}: says the data is made up`);
   }
   // no real-looking phone numbers: demo numbers are all zeros
   const txt = JSON.stringify(s.text);
@@ -164,7 +170,7 @@ test('workshop pages: match tools/gen-series.mjs, private, linked only to existi
     assert.doesNotMatch(html, /js\/storage\.js|js\/core\.js/, `${rel}: stores nothing`);
     assert.doesNotMatch(html, /\son[a-z]+="/, `${rel}: no inline handlers`);
     const hl = [...html.matchAll(/hreflang="([^"]+)" href="([^"]+)"/g)];
-    assert.deepEqual(hl.map((m) => m[1]).sort(), ['en', 'ru', 'x-default'], `${rel}: hreflang only between existing pages`);
+    assert.deepEqual(hl.map((m) => m[1]).sort(), [...SERIES_LANGS, 'x-default'].sort(), `${rel}: hreflang only between existing pages`);
     for (const [, , href] of hl) assert.ok(href.startsWith(SITE + 'workshop/'), `${rel}: no alternate pointing to the home page`);
     if (!rel.endsWith('index.html')) {
       const data = JSON.parse(html.match(/<script type="application\/json" id="wk-data">([\s\S]*?)<\/script>/)[1]);
