@@ -98,7 +98,7 @@ ${ages}
     </nav>
 ${s.sample ? `    <p class="wk-sample">${esc(u.sampleNote)}</p>\n` : ''}    <section class="wk-goalbox" aria-labelledby="wk-goal-h">
       <h2 id="wk-goal-h">${esc(u.goalH)}</h2>
-      <p>${esc(t.goal)}</p>
+      <p>${esc(t.goal || s.text[l].child.goal)}</p>
     </section>
     <noscript><p class="wk-novoice">${esc(t.noJs)}</p></noscript>
     <section class="wk-app" id="wk-app" aria-live="off"></section>

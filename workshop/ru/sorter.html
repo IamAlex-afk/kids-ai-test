@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none';">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Почему сортировщик ошибся? — Мастерская: занятия об ИИ | Kids AI Test</title>
+  <meta name="description" content="Учебный сортировщик учится на карточках и ошибается из-за ложной закономерности. Ребёнок добавляет примеры, модель пересчитывает правило, результат проверяется на отдельных карточках.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://iamalex-afk.github.io/kids-ai-test/workshop/ru/sorter.html">
+  <link rel="alternate" hreflang="ru" href="https://iamalex-afk.github.io/kids-ai-test/workshop/ru/sorter.html">
+  <link rel="alternate" hreflang="en" href="https://iamalex-afk.github.io/kids-ai-test/workshop/en/sorter.html">
+  <link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/workshop/en/sorter.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Почему сортировщик ошибся? — Мастерская: занятия об ИИ | Kids AI Test">
+  <meta property="og:description" content="Учебный сортировщик учится на карточках и ошибается из-за ложной закономерности. Ребёнок добавляет примеры, модель пересчитывает правило, результат проверяется на отдельных карточках.">
+  <meta property="og:url" content="https://iamalex-afk.github.io/kids-ai-test/workshop/ru/sorter.html">
+  <meta property="og:image" content="https://iamalex-afk.github.io/kids-ai-test/og.png">
+  <link rel="icon" href="../../favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../css/workshop.css">
+  <link rel="stylesheet" href="../../css/lesson.css">
+</head>
+<body class="wk-home wk-page wk-workshop" data-age="child">
+<a class="wk-skip" href="#main">Перейти к содержанию</a>
+<header class="wk-header">
+  <div class="wk-header-in">
+    <a class="wk-brand" href="../../ru.html" data-wk-home>
+      <span class="wk-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="wk-brand-txt"><span class="wk-brand-name">kids ai test</span><span class="wk-brand-sub">Мастерская осознанного ИИ</span></span>
+    </a>
+    <div class="wk-actions">
+      <div class="lang-switcher" id="lang-switcher">
+        <button type="button" class="lang-globe" id="lang-globe" aria-expanded="false" aria-controls="lang-dropdown" aria-label="Язык: Русский"><svg class="wk-globe" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="lang-full">Русский</span><span class="lang-short">RU</span><span class="lang-arrow" aria-hidden="true">▾</span></button>
+        <div class="lang-dropdown" id="lang-dropdown">
+          <a class="lang-opt" href="../en/sorter.html" lang="en" hreflang="en">English</a>
+          <a class="lang-opt active" href="../ru/sorter.html" lang="ru" hreflang="ru" aria-current="page">Русский</a>
+          <a class="lang-opt" href="../../lessons/de/" lang="de" hreflang="de">Deutsch</a>
+          <a class="lang-opt" href="../../lessons/es/" lang="es" hreflang="es">Español</a>
+          <a class="lang-opt" href="../../lessons/fr/" lang="fr" hreflang="fr">Français</a>
+          <a class="lang-opt" href="../../lessons/hi/" lang="hi" hreflang="hi">हिन्दी</a>
+          <a class="lang-opt" href="../../lessons/id/" lang="id" hreflang="id">Bahasa Indonesia</a>
+          <a class="lang-opt" href="../../lessons/pt/" lang="pt" hreflang="pt">Português</a>
+          <a class="lang-opt" href="../../lessons/tr/" lang="tr" hreflang="tr">Türkçe</a>
+          <a class="lang-opt" href="../../lessons/vi/" lang="vi" hreflang="vi">Tiếng Việt</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<main id="main" class="wk-lesson">
+    <nav class="wk-crumbs" aria-label="Вы здесь">
+      <ol>
+        <li><a href="../../ru.html">Главная</a></li>
+        <li><a href="./">Все занятия Мастерской</a></li>
+        <li><a href="sorter.html">Почему сортировщик ошибся?</a></li>
+      </ol>
+    </nav>
+  <article class="wk-card" aria-labelledby="wk-act-title">
+    <h1 class="wk-lesson-title" id="wk-act-title">Почему сортировщик ошибся?</h1>
+    <nav class="wk-ageswitch" aria-label="Сложность">
+      <p>Сложность:</p>
+      <ol>
+      <li><a href="sorter.html?age=5-7" data-slug="5-7">5–7, со взрослым</a></li>
+      <li><a href="sorter.html?age=8-10" data-slug="8-10" aria-current="true">8–10</a></li>
+      <li><a href="sorter.html?age=11-13" data-slug="11-13">11–13</a></li>
+      <li><a href="sorter.html?age=14-plus" data-slug="14-plus">14+</a></li>
+      </ol>
+    </nav>
+    <section class="wk-goalbox" aria-labelledby="wk-goal-h">
+      <h2 id="wk-goal-h">Цель занятия</h2>
+      <p>Найти, из-за чего сортировщик ошибся, и исправить это примерами. Сравнить «до» и «после».</p>
+    </section>
+    <noscript><p class="wk-novoice">Само упражнение работает с JavaScript. Без него ниже — цель, объяснение и печатное задание.</p></noscript>
+    <section class="wk-app" id="wk-app" aria-live="off"></section>
+    <details class="wk-explain-all">
+      <summary>Объяснение</summary>
+      <p>Это учебная модель, а не нейросеть. Картинку она не «видит»: к каждой карточке уже приписаны два готовых признака — форма и фон. Модель пробует правило по форме и правило по фону и оставляет то, которое меньше ошибается на обучающих карточках.</p>
+      <p>Ошибка! Правильно — круг. В обучении все круги лежали на голубом фоне, а все квадраты — на жёлтом. Поэтому правило «жёлтый фон → квадрат» подходило к обучающим карточкам так же хорошо, как правило по форме.</p>
+      <p>Когда два правила одинаково подходят, наш сортировщик выбирает фон — так задано в этой демонстрации, чтобы ошибку было видно.</p>
+      <p>Сработало: среди обучающих карточек появились круги и квадраты на разном фоне. Правило по фону теперь ошибается, а правило по форме — нет.</p>
+      <p>Ничего не изменилось: добавленные карточки повторяют старую закономерность (круги на голубом, квадраты на жёлтом). Больше таких же примеров не помогает — нужны примеры, которые ей противоречат. Вернись и выбери другие.</p>
+      <p>Сортировщик ошибался не потому, что он «глупый», а потому, что в обучающих примерах была ложная подсказка — фон.</p>
+    </details>
+  </article>
+
+  <section class="wk-card wk-adult" aria-labelledby="wk-adult-h">
+    <h2 id="wk-adult-h">Для взрослого</h2>
+    <h3>Цель</h3>
+    <p>Ребёнок видит, что модель учится по примерам и может ухватиться за случайную подсказку (фон), и что исправляют это примерами, которые этой подсказке противоречат.</p>
+    <h3>Вопросы для разговора</h3>
+        <ul>
+          <li>Почему сортировщик назвал круг квадратом?</li>
+          <li>Какие карточки помогли, а какие нет? Почему?</li>
+          <li>Где в жизни может быть такая «подсказка-ловушка»?</li>
+        </ul>
+    <h3>Типичное заблуждение</h3>
+    <p>Чем больше данных, тем лучше всегда. Нет: десять одинаковых примеров не учат ничему новому; важно, чтобы примеры были разными там, где это важно.</p>
+    <h3>Признаки понимания</h3>
+        <ul>
+          <li>Объясняет ошибку словами «в примерах все круги были на голубом».</li>
+          <li>Выбирает карточку, которая нарушает ложную закономерность, и в новом примере тоже.</li>
+          <li>Не считает, что модель «видит» картинку как человек.</li>
+        </ul>
+    <h3>Как устроено упражнение</h3>
+    <p>Для взрослого: модель — правило по одному признаку. Сначала оба признака одинаково подходят к обучающим карточкам (0 ошибок); при равенстве демонстрация выбирает фон — это наше правило, а не свойство машинного обучения. Модель получает готовые признаки, а не пиксели.</p>
+  </section>
+
+  <section class="wk-card wk-print" aria-labelledby="wk-print-h">
+    <h2 id="wk-print-h">Печатное задание</h2>
+    <p>Нарисуй 4 карточки: 2 круга на голубом и 2 квадрата на жёлтом. Закрой листом фон и скажи: по чему ещё можно было бы «угадывать»? Дорисуй одну карточку, которая сломает подсказку «фон».</p>
+    <button type="button" class="wk-btn" data-print hidden>Распечатать задание</button>
+    <details class="wk-print-answers" open>
+      <summary>Ответы и объяснение (для взрослого)</summary>
+      <p>Подсказка-ловушка — цвет фона: в примерах он совпадает с формой. Ломает её круг на жёлтом или квадрат на голубом.</p>
+    </details>
+  </section>
+
+  <section class="wk-card wk-sources" aria-labelledby="wk-src-h">
+    <h2 id="wk-src-h">Источники</h2>
+    <ol>
+        <li><a href="https://arxiv.org/abs/2004.07780" rel="noopener" target="_blank">Geirhos et al., &quot;Shortcut learning in deep neural networks&quot;, Nature Machine Intelligence, 2020</a><br><span class="wk-supports">Что подтверждает: Модели машинного обучения могут опираться на случайную подсказку в обучающих данных (например, фон) вместо нужного признака.</span></li>
+        <li><a href="https://doi.org/10.1023/A:1022631118932" rel="noopener" target="_blank">Holte, &quot;Very Simple Classification Rules Perform Well on Most Commonly Used Datasets&quot;, Machine Learning, 1993</a><br><span class="wk-supports">Что подтверждает: Правило по одному признаку, выбранное по наименьшему числу ошибок, — известный простой метод классификации; наш сортировщик — его учебная версия.</span></li>
+    </ol>
+    <p class="wk-review">Статус: черновик автора. Текст не проверен редактором-носителем и педагогом; занятие не испытывалось с детьми.</p>
+  </section>
+
+  <nav class="wk-pager" aria-label="Другие занятия">
+    <a class="wk-pg" href="./">Все занятия Мастерской</a>
+    <a class="wk-pg wk-pg-next" href="check.html">Проверь уверенный ответ →</a>
+  </nav>
+</main>
+<footer class="wk-foot">
+  <div class="wk-foot-in">
+    <p>Упражнение работает в браузере: ответы не сохраняются и не отправляются. Как у любого сайта, хостинг получает обычные запросы страниц.</p>
+    <p><a href="../../lessons/ru/">Все уроки по возрастам</a></p>
+  </div>
+</footer>
+<script type="application/json" id="wk-data">{"kind":"sorter","defaultAge":"child","data":{"ages":{"tiny":{"start":[{"id":"a1","shape":"circle","bg":"blue","label":"circle"},{"id":"a2","shape":"circle","bg":"blue","label":"circle"},{"id":"a3","shape":"square","bg":"yellow","label":"square"},{"id":"a4","shape":"square","bg":"yellow","label":"square"}],"probe":{"id":"p1","shape":"circle","bg":"yellow","label":"circle"},"extras":[{"id":"x1","shape":"circle","bg":"yellow","label":"circle"},{"id":"x3","shape":"circle","bg":"blue","label":"circle"}],"pick":1,"test":[{"id":"t1","shape":"circle","bg":"yellow","label":"circle"},{"id":"t2","shape":"square","bg":"blue","label":"square"}]},"child":{"start":[{"id":"a1","shape":"circle","bg":"blue","label":"circle"},{"id":"a2","shape":"circle","bg":"blue","label":"circle"},{"id":"a5","shape":"circle","bg":"blue","label":"circle"},{"id":"a3","shape":"square","bg":"yellow","label":"square"},{"id":"a4","shape":"square","bg":"yellow","label":"square"},{"id":"a6","shape":"square","bg":"yellow","label":"square"}],"probe":{"id":"p1","shape":"circle","bg":"yellow","label":"circle"},"extras":[{"id":"x1","shape":"circle","bg":"yellow","label":"circle"},{"id":"x2","shape":"square","bg":"blue","label":"square"},{"id":"x3","shape":"circle","bg":"blue","label":"circle"},{"id":"x4","shape":"square","bg":"yellow","label":"square"}],"pick":2,"test":[{"id":"t1","shape":"circle","bg":"yellow","label":"circle"},{"id":"t2","shape":"square","bg":"blue","label":"square"},{"id":"t3","shape":"circle","bg":"blue","label":"circle"},{"id":"t4","shape":"square","bg":"yellow","label":"square"}]},"teen":{"start":[{"id":"a1","shape":"circle","bg":"blue","label":"circle"},{"id":"a2","shape":"circle","bg":"blue","label":"circle"},{"id":"a5","shape":"circle","bg":"blue","label":"circle"},{"id":"a3","shape":"square","bg":"yellow","label":"square"},{"id":"a4","shape":"square","bg":"yellow","label":"square"},{"id":"a6","shape":"square","bg":"yellow","label":"square"}],"probe":{"id":"p1","shape":"circle","bg":"yellow","label":"circle"},"extras":[{"id":"x1","shape":"circle","bg":"yellow","label":"circle"},{"id":"x2","shape":"square","bg":"blue","label":"square"},{"id":"x3","shape":"circle","bg":"blue","label":"circle"},{"id":"x4","shape":"square","bg":"yellow","label":"square"}],"pick":2,"test":[{"id":"t1","shape":"circle","bg":"yellow","label":"circle"},{"id":"t2","shape":"square","bg":"blue","label":"square"},{"id":"t3","shape":"circle","bg":"blue","label":"circle"},{"id":"t4","shape":"square","bg":"yellow","label":"square"}]},"adult":{"start":[{"id":"a1","shape":"circle","bg":"blue","label":"circle"},{"id":"a2","shape":"circle","bg":"blue","label":"circle"},{"id":"a5","shape":"circle","bg":"blue","label":"circle"},{"id":"a3","shape":"square","bg":"yellow","label":"square"},{"id":"a4","shape":"square","bg":"yellow","label":"square"},{"id":"a6","shape":"square","bg":"yellow","label":"square"}],"probe":{"id":"p1","shape":"circle","bg":"yellow","label":"circle"},"extras":[{"id":"x1","shape":"circle","bg":"yellow","label":"circle"},{"id":"x2","shape":"square","bg":"blue","label":"square"},{"id":"x3","shape":"circle","bg":"blue","label":"circle"},{"id":"x4","shape":"square","bg":"yellow","label":"square"}],"pick":3,"test":[{"id":"t1","shape":"circle","bg":"yellow","label":"circle"},{"id":"t2","shape":"square","bg":"blue","label":"square"},{"id":"t3","shape":"circle","bg":"blue","label":"circle"},{"id":"t4","shape":"square","bg":"yellow","label":"square"}]}},"transfer":{"start":[{"id":"n1","shape":"triangle","bg":"green","label":"triangle"},{"id":"n2","shape":"triangle","bg":"green","label":"triangle"},{"id":"n3","shape":"triangle","bg":"green","label":"triangle"},{"id":"n4","shape":"star","bg":"purple","label":"star"},{"id":"n5","shape":"star","bg":"purple","label":"star"},{"id":"n6","shape":"star","bg":"purple","label":"star"}],"probe":{"id":"np","shape":"star","bg":"green","label":"star"},"fixes":[{"id":"f1","shape":"star","bg":"green","label":"star"},{"id":"f2","shape":"triangle","bg":"green","label":"triangle"},{"id":"f3","shape":"star","bg":"purple","label":"star"}]},"categories":{"main":["circle","square"],"transfer":["triangle","star"]}},"ui":{"series":"Мастерская: занятия об ИИ","seriesLead":"Короткие занятия с опытом: предположи, попробуй, посмотри результат, разберись и реши новый пример. Без регистрации; ответы не сохраняются и никуда не отправляются.","ageLabel":"Сложность","ages":{"tiny":"5–7, со взрослым","child":"8–10","teen":"11–13","adult":"14+"},"stepOf":"Шаг {n} из {m}","next":"Дальше →","back":"← Назад","retry":"Попробовать ещё раз","before":"было","after":"стало","modelSaid":"сортировщик","limit":"Можно выбрать не больше: {pick}. Сними выбор с другой карточки.","qL":"«","qR":"»","srcOrigin":"Откуда: ","srcDate":"Дата: ","goalH":"Цель занятия","explainH":"Объяснение","sampleNote":"Учебный пример: тексты помощника написаны заранее, это не живой чат и не запрос к нейросети.","adultH":"Для взрослого","adultGoal":"Цель","adultQuestions":"Вопросы для разговора","adultMis":"Типичное заблуждение","adultSigns":"Признаки понимания","adultMethod":"Как устроено упражнение","printH":"Печатное задание","printAnswers":"Ответы и объяснение (для взрослого)","printBtn":"Распечатать задание","sourcesH":"Источники","supports":"Что подтверждает","review":"Статус: черновик автора. Текст не проверен редактором-носителем и педагогом; занятие не испытывалось с детьми.","catalog":"Все занятия Мастерской","lessons":"Все уроки по возрастам","home":"Главная","other":"Другие занятия","crumbs":"Вы здесь","privacy":"Упражнение работает в браузере: ответы не сохраняются и не отправляются. Как у любого сайта, хостинг получает обычные запросы страниц."},"next":[{"href":"sorter.html"},{"href":"check.html"},{"href":"../../lessons/ru/"}],"text":{"common":{"title":"Почему сортировщик ошибся?","desc":"Учебный сортировщик учится на карточках и ошибается из-за ложной закономерности. Ребёнок добавляет примеры, модель пересчитывает правило, результат проверяется на отдельных карточках.","words":{"shape":"форма","bg":"фон","circle":"круг","square":"квадрат","blue":"голубой фон","yellow":"жёлтый фон","triangle":"треугольник","star":"звезда","green":"зелёный фон","purple":"фиолетовый фон","unknown":"не знаю"},"howH":"Как устроен сортировщик","how":"Это учебная модель, а не нейросеть. Картинку она не «видит»: к каждой карточке уже приписаны два готовых признака — форма и фон. Модель пробует правило по форме и правило по фону и оставляет то, которое меньше ошибается на обучающих карточках.","trainH":"Обучающие карточки","predictH":"Твоё предположение","predictQ":"Сортировщик учился на этих карточках. Что он скажет про новую карточку?","runBtn":"Спросить сортировщика","said":"Сортировщик говорит: «{guess}».","wrongWhy":"Ошибка! Правильно — круг. В обучении все круги лежали на голубом фоне, а все квадраты — на жёлтом. Поэтому правило «жёлтый фон → квадрат» подходило к обучающим карточкам так же хорошо, как правило по форме.","tieNote":"Когда два правила одинаково подходят, наш сортировщик выбирает фон — так задано в этой демонстрации, чтобы ошибку было видно.","addH":"Добавь обучающие карточки","addQ":"Выбери карточек: не больше {pick}. Подумай, какие покажут сортировщику, что дело не в фоне.","retrainBtn":"Переобучить","needPick":"Сначала выбери хотя бы одну карточку.","nowRule":"Теперь сортировщик выбрал правило по признаку: {feature}.","fixedWhy":"Сработало: среди обучающих карточек появились круги и квадраты на разном фоне. Правило по фону теперь ошибается, а правило по форме — нет.","sameWhy":"Ничего не изменилось: добавленные карточки повторяют старую закономерность (круги на голубом, квадраты на жёлтом). Больше таких же примеров не помогает — нужны примеры, которые ей противоречат. Вернись и выбери другие.","backToAdd":"Выбрать другие карточки","testH":"Проверка на отдельных карточках","testNote":"Этих карточек сортировщик при обучении не видел.","testScore":"Верно: {right} из {total}.","newH":"Новый пример — реши сам","newIntro":"Другой сортировщик учился на треугольниках и звёздах. Его правильная категория — тоже форма.","newQ1":"Что он скажет про звезду на зелёном фоне?","newQ2":"Какую одну карточку ты добавишь, чтобы он перестал ошибаться?","newCheckBtn":"Проверить мой выбор","newOk":"Да! С этой карточкой сортировщик выбирает правило по форме и называет звезду звездой.","newNo":"Сортировщик всё ещё ошибается: эта карточка повторяет старую закономерность. Попробуй другую.","q1ok":"Верно: он ошибётся и скажет «треугольник» — в обучении все треугольники были на зелёном.","q1no":"Посмотри на обучающие карточки: какой фон был у всех треугольников?","doneH":"Что дальше?","doneText":"Сортировщик ошибался не потому, что он «глупый», а потому, что в обучающих примерах была ложная подсказка — фон.","choices":["Пройти занятие ещё раз","Следующее занятие: «Проверь уверенный ответ»","Все уроки"],"noJs":"Само упражнение работает с JavaScript. Без него ниже — цель, объяснение и печатное задание.","adult":{"goal":"Ребёнок видит, что модель учится по примерам и может ухватиться за случайную подсказку (фон), и что исправляют это примерами, которые этой подсказке противоречат.","questions":["Почему сортировщик назвал круг квадратом?","Какие карточки помогли, а какие нет? Почему?","Где в жизни может быть такая «подсказка-ловушка»?"],"misconception":"Чем больше данных, тем лучше всегда. Нет: десять одинаковых примеров не учат ничему новому; важно, чтобы примеры были разными там, где это важно.","signs":["Объясняет ошибку словами «в примерах все круги были на голубом».","Выбирает карточку, которая нарушает ложную закономерность, и в новом примере тоже.","Не считает, что модель «видит» картинку как человек."],"method":"Для взрослого: модель — правило по одному признаку. Сначала оба признака одинаково подходят к обучающим карточкам (0 ошибок); при равенстве демонстрация выбирает фон — это наше правило, а не свойство машинного обучения. Модель получает готовые признаки, а не пиксели.","print":{"task":"Нарисуй 4 карточки: 2 круга на голубом и 2 квадрата на жёлтом. Закрой листом фон и скажи: по чему ещё можно было бы «угадывать»? Дорисуй одну карточку, которая сломает подсказку «фон».","answers":"Подсказка-ловушка — цвет фона: в примерах он совпадает с формой. Ломает её круг на жёлтом или квадрат на голубом."}}},"tiny":{"goal":"Узнаем, почему машина может ошибиться, и поможем ей.","addQ":"Выбери одну карточку и покажи её сортировщику.","adultSay":"Взрослый читает вслух. Ребёнок показывает пальцем или говорит ответ — писать не нужно."},"child":{"goal":"Найти, из-за чего сортировщик ошибся, и исправить это примерами. Сравнить «до» и «после».","errorsH":"Ошибки правил на обучающих карточках","errorsRow":"по форме: {shape} · по фону: {bg}"},"teen":{"goal":"Понять причину ошибки, различить обучение и проверку, исправить данные и проверить результат.","errorsH":"Ошибки правил на обучающих карточках","errorsRow":"по форме: {shape} · по фону: {bg}","whyTestQ":"Почему проверочные карточки нельзя добавлять в обучение?","whyTestOpts":["Тогда проверка покажет, как модель запомнила знакомые карточки, а не как она справится с новыми","Потому что их слишком много","Это ничего не меняет"],"whyTestOk":"Верно. Проверка честная, только если модель этих карточек не видела.","whyTestNo":"Не совсем. Подумай: что мы хотим узнать проверкой — как модель помнит старое или как работает с новым?"},"adult":{"goal":"Разобрать ограничения метода: качество и разнообразие данных, правило при равенстве, разделение обучения и проверки, последствия ошибки.","errorsH":"Ошибки правил на обучающих карточках","errorsRow":"по форме: {shape} · по фону: {bg}","whyTestQ":"Почему проверочные карточки нельзя добавлять в обучение?","whyTestOpts":["Тогда проверка покажет, как модель запомнила знакомые карточки, а не как она справится с новыми","Потому что их слишком много","Это ничего не меняет"],"whyTestOk":"Верно. Проверка честная, только если модель этих карточек не видела.","whyTestNo":"Не совсем. Что мы измеряем проверкой — память о знакомом или работу с новым?","limitsH":"Ограничения метода","limits":["Модель выбирает один признак; реальные модели используют много признаков и тоже могут находить ложные подсказки.","Правило при равенстве (сначала фон) — выбор этой демонстрации. Другое правило дало бы другой ответ на тех же данных.","Если исправлять только то, что видно на проверке, можно незаметно «подогнать» модель под проверочные карточки."],"stakesQ":"Сортировщик решает, какие письма считать спамом, по ложной подсказке. Чем это опасно?","stakesOpts":["Важные письма могут пропасть, а люди будут доверять ошибке, потому что «так решила машина»","Ничем, машины не ошибаются","Только тем, что работает медленно"],"stakesOk":"Да. Последствия ошибки зависят от того, где модель применяют, — поэтому решения проверяют люди.","stakesNo":"Подумай, кто пострадает, если модель ошибается незаметно."}}}</script>
+<script src="../../js/lesson.js"></script>
+<script src="../../js/sorter-model.js"></script>
+<script src="../../js/workshop.js"></script>
+<script src="../../js/workshop-sorter.js"></script>
+</body>
+</html>
