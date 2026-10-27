@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none';">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Por qué se equivocó el clasificador? — Taller: actividades sobre IA | Kids AI Test</title>
+  <meta name="description" content="Un clasificador de práctica aprende con tarjetas y se equivoca por un patrón falso. El niño o la niña agrega ejemplos, el modelo vuelve a calcular su regla y el resultado se comprueba con tarjetas aparte.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://iamalex-afk.github.io/kids-ai-test/workshop/es/sorter.html">
+  <link rel="alternate" hreflang="ru" href="https://iamalex-afk.github.io/kids-ai-test/workshop/ru/sorter.html">
+  <link rel="alternate" hreflang="en" href="https://iamalex-afk.github.io/kids-ai-test/workshop/en/sorter.html">
+  <link rel="alternate" hreflang="vi" href="https://iamalex-afk.github.io/kids-ai-test/workshop/vi/sorter.html">
+  <link rel="alternate" hreflang="id" href="https://iamalex-afk.github.io/kids-ai-test/workshop/id/sorter.html">
+  <link rel="alternate" hreflang="pt" href="https://iamalex-afk.github.io/kids-ai-test/workshop/pt/sorter.html">
+  <link rel="alternate" hreflang="es" href="https://iamalex-afk.github.io/kids-ai-test/workshop/es/sorter.html">
+  <link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/workshop/en/sorter.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="¿Por qué se equivocó el clasificador? — Taller: actividades sobre IA | Kids AI Test">
+  <meta property="og:description" content="Un clasificador de práctica aprende con tarjetas y se equivoca por un patrón falso. El niño o la niña agrega ejemplos, el modelo vuelve a calcular su regla y el resultado se comprueba con tarjetas aparte.">
+  <meta property="og:url" content="https://iamalex-afk.github.io/kids-ai-test/workshop/es/sorter.html">
+  <meta property="og:image" content="https://iamalex-afk.github.io/kids-ai-test/og.png">
+  <link rel="icon" href="../../favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../css/workshop.css">
+  <link rel="stylesheet" href="../../css/lesson.css">
+</head>
+<body class="wk-home wk-page wk-workshop" data-age="child">
+<a class="wk-skip" href="#main">Saltar al contenido</a>
+<header class="wk-header">
+  <div class="wk-header-in">
+    <a class="wk-brand" href="../../es.html" data-wk-home>
+      <span class="wk-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="wk-brand-txt"><span class="wk-brand-name">kids ai test</span><span class="wk-brand-sub">Taller para usar la IA con criterio</span></span>
+    </a>
+    <div class="wk-actions">
+      <div class="lang-switcher" id="lang-switcher">
+        <button type="button" class="lang-globe" id="lang-globe" aria-expanded="false" aria-controls="lang-dropdown" aria-label="Idioma: Español"><svg class="wk-globe" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="lang-full">Español</span><span class="lang-short">ES</span><span class="lang-arrow" aria-hidden="true">▾</span></button>
+        <div class="lang-dropdown" id="lang-dropdown">
+          <a class="lang-opt" href="../en/sorter.html" lang="en" hreflang="en">English</a>
+          <a class="lang-opt" href="../ru/sorter.html" lang="ru" hreflang="ru">Русский</a>
+          <a class="lang-opt" href="../../lessons/de/" lang="de" hreflang="de">Deutsch</a>
+          <a class="lang-opt active" href="../es/sorter.html" lang="es" hreflang="es" aria-current="page">Español</a>
+          <a class="lang-opt" href="../../lessons/fr/" lang="fr" hreflang="fr">Français</a>
+          <a class="lang-opt" href="../../lessons/hi/" lang="hi" hreflang="hi">हिन्दी</a>
+          <a class="lang-opt" href="../id/sorter.html" lang="id" hreflang="id">Bahasa Indonesia</a>
+          <a class="lang-opt" href="../pt/sorter.html" lang="pt" hreflang="pt">Português</a>
+          <a class="lang-opt" href="../../lessons/tr/" lang="tr" hreflang="tr">Türkçe</a>
+          <a class="lang-opt" href="../vi/sorter.html" lang="vi" hreflang="vi">Tiếng Việt</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<main id="main" class="wk-lesson">
+    <nav class="wk-crumbs" aria-label="Estás aquí">
+      <ol>
+        <li><a href="../../es.html">Inicio</a></li>
+        <li><a href="./">Todas las actividades del Taller</a></li>
+        <li><a href="sorter.html">¿Por qué se equivocó el clasificador?</a></li>
+      </ol>
+    </nav>
+  <article class="wk-card" aria-labelledby="wk-act-title">
+    <h1 class="wk-lesson-title" id="wk-act-title">¿Por qué se equivocó el clasificador?</h1>
+    <nav class="wk-ageswitch" aria-label="Dificultad">
+      <p>Dificultad:</p>
+      <ol>
+      <li><a href="sorter.html?age=5-7" data-slug="5-7">5–7 años, con una persona adulta</a></li>
+      <li><a href="sorter.html?age=8-10" data-slug="8-10" aria-current="true">8–10 años</a></li>
+      <li><a href="sorter.html?age=11-13" data-slug="11-13">11–13 años</a></li>
+      <li><a href="sorter.html?age=14-plus" data-slug="14-plus">14 años o más</a></li>
+      </ol>
+    </nav>
+    <section class="wk-goalbox" aria-labelledby="wk-goal-h">
+      <h2 id="wk-goal-h">Objetivo</h2>
+      <p>Descubrir qué hizo equivocarse al clasificador y corregirlo con ejemplos. Comparar el &quot;antes&quot; y el &quot;después&quot;.</p>
+    </section>
+    <noscript><p class="wk-novoice">La actividad necesita JavaScript. Sin él, abajo están el objetivo, la explicación y una tarea para imprimir.</p></noscript>
+    <section class="wk-app" id="wk-app" aria-live="off"></section>
+    <details class="wk-explain-all">
+      <summary>Explicación</summary>
+      <p>Es un modelo de práctica, no una red neuronal. No &quot;ve&quot; la imagen: cada tarjeta ya trae dos rasgos listos — la forma y el fondo. El modelo prueba una regla por la forma y otra por el fondo, y se queda con la que comete menos errores en las tarjetas de entrenamiento.</p>
+      <p>¡Se equivocó! Es un círculo. En el entrenamiento, todos los círculos estaban sobre fondo azul y todos los cuadrados sobre fondo amarillo. Por eso la regla &quot;fondo amarillo → cuadrado&quot; encajaba con las tarjetas de entrenamiento igual de bien que la regla por la forma.</p>
+      <p>Cuando dos reglas encajan igual de bien, nuestro clasificador elige el fondo: esta demostración está hecha así para que el error se vea.</p>
+      <p>Funcionó: ahora las tarjetas de entrenamiento tienen círculos y cuadrados sobre fondos distintos. La regla por el fondo empieza a fallar y la regla por la forma no.</p>
+      <p>No cambió nada: las tarjetas que agregaste repiten el patrón viejo (círculos en azul, cuadrados en amarillo). Más de lo mismo no ayuda: hacen falta ejemplos que rompan el patrón. Vuelve y elige otras.</p>
+      <p>El clasificador se equivocó no porque sea &quot;tonto&quot;, sino porque los ejemplos de entrenamiento tenían una pista falsa: el fondo.</p>
+    </details>
+  </article>
+
+  <section class="wk-card wk-adult" aria-labelledby="wk-adult-h">
+    <h2 id="wk-adult-h">Para la persona adulta</h2>
+    <h3>Objetivo</h3>
+    <p>El niño o la niña ve que un modelo aprende de ejemplos y puede agarrarse a una pista casual (el fondo), y que esto se corrige con ejemplos que contradicen esa pista.</p>
+    <h3>Preguntas para conversar</h3>
+        <ul>
+          <li>¿Por qué el clasificador llamó cuadrado al círculo?</li>
+          <li>¿Qué tarjetas ayudaron y cuáles no? ¿Por qué?</li>
+          <li>¿Dónde podría aparecer en la vida real una &quot;pista trampa&quot; como esta?</li>
+        </ul>
+    <h3>Idea equivocada frecuente</h3>
+    <p>Más datos siempre es mejor. No es así: diez ejemplos iguales no enseñan nada nuevo; lo importante es que los ejemplos varíen donde importa.</p>
+    <h3>Señales de que lo entendió</h3>
+        <ul>
+          <li>Explica el error con frases como &quot;en los ejemplos todos los círculos estaban en azul&quot;.</li>
+          <li>Elige una tarjeta que rompe el patrón falso, y lo vuelve a hacer en el ejemplo nuevo.</li>
+          <li>No da por hecho que el modelo &quot;ve&quot; la imagen como una persona.</li>
+        </ul>
+    <h3>Cómo funciona la actividad</h3>
+    <p>Para la persona adulta: el modelo es una regla de un solo rasgo. Al principio ambos rasgos encajan igual de bien con las tarjetas de entrenamiento (0 errores); en caso de empate, esta demostración elige el fondo. Es una regla nuestra, no una propiedad del aprendizaje automático. El modelo recibe rasgos ya preparados, no píxeles.</p>
+  </section>
+
+  <section class="wk-card wk-print" aria-labelledby="wk-print-h">
+    <h2 id="wk-print-h">Tarea para imprimir</h2>
+    <p>Dibuja 4 tarjetas: 2 círculos sobre azul y 2 cuadrados sobre amarillo. Tapa las formas y pregunta: ¿por qué otra cosa se podría &quot;adivinar&quot;? Agrega una tarjeta que rompa la pista del &quot;fondo&quot;.</p>
+    <button type="button" class="wk-btn" data-print hidden>Imprimir la tarea</button>
+    <details class="wk-print-answers" open>
+      <summary>Respuestas y explicación (para la persona adulta)</summary>
+      <p>La pista trampa es el color del fondo: en los ejemplos siempre coincide con la forma. Un círculo sobre amarillo o un cuadrado sobre azul la rompen.</p>
+    </details>
+  </section>
+
+  <section class="wk-card wk-sources" aria-labelledby="wk-src-h">
+    <h2 id="wk-src-h">Fuentes</h2>
+    <ol>
+        <li><a href="https://arxiv.org/abs/2004.07780" rel="noopener" target="_blank">Geirhos et al., &quot;Shortcut learning in deep neural networks&quot;, Nature Machine Intelligence, 2020</a><br><span class="wk-supports">Qué respalda: Los modelos de aprendizaje automático pueden apoyarse en una pista casual de los datos de entrenamiento (como el fondo) en lugar del rasgo que se buscaba.</span></li>
+        <li><a href="https://doi.org/10.1023/A:1022631118932" rel="noopener" target="_blank">Holte, &quot;Very Simple Classification Rules Perform Well on Most Commonly Used Datasets&quot;, Machine Learning, 1993</a><br><span class="wk-supports">Qué respalda: Una regla de un solo rasgo, elegida por el menor número de errores, es un método de clasificación sencillo y conocido; nuestro clasificador es una versión didáctica de él.</span></li>
+    </ol>
+    <p class="wk-review">Estado: borrador del autor. Sin revisión de un editor nativo ni de un docente; la actividad no se ha probado con niños.</p>
+  </section>
+
+  <nav class="wk-pager" aria-label="Otras actividades">
+    <a class="wk-pg" href="./">Todas las actividades del Taller</a>
+    <a class="wk-pg wk-pg-next" href="check.html">Comprueba una respuesta segura →</a>
+  </nav>
+</main>
+<footer class="wk-foot">
+  <div class="wk-foot-in">
+    <p>La actividad funciona en tu navegador: las respuestas no se guardan ni se envían. Como en cualquier sitio web, el servidor recibe las solicitudes normales de página.</p>
+    <p><a href="../../lessons/es/">Todas las lecciones por edad</a></p>
+  </div>
+</footer>
+<script type="application/json" id="wk-data">{"kind":"sorter","defaultAge":"child","data":{"ages":{"tiny":{"start":[{"id":"a1","shape":"circle","bg":"blue","label":"circle"},{"id":"a2","shape":"circle","bg":"blue","label":"circle"},{"id":"a3","shape":"square","bg":"yellow","label":"square"},{"id":"a4","shape":"square","bg":"yellow","label":"square"}],"probe":{"id":"p1","shape":"circle","bg":"yellow","label":"circle"},"extras":[{"id":"x1","shape":"circle","bg":"yellow","label":"circle"},{"id":"x3","shape":"circle","bg":"blue","label":"circle"}],"pick":1,"test":[{"id":"t1","shape":"circle","bg":"yellow","label":"circle"},{"id":"t2","shape":"square","bg":"blue","label":"square"}]},"child":{"start":[{"id":"a1","shape":"circle","bg":"blue","label":"circle"},{"id":"a2","shape":"circle","bg":"blue","label":"circle"},{"id":"a5","shape":"circle","bg":"blue","label":"circle"},{"id":"a3","shape":"square","bg":"yellow","label":"square"},{"id":"a4","shape":"square","bg":"yellow","label":"square"},{"id":"a6","shape":"square","bg":"yellow","label":"square"}],"probe":{"id":"p1","shape":"circle","bg":"yellow","label":"circle"},"extras":[{"id":"x1","shape":"circle","bg":"yellow","label":"circle"},{"id":"x2","shape":"square","bg":"blue","label":"square"},{"id":"x3","shape":"circle","bg":"blue","label":"circle"},{"id":"x4","shape":"square","bg":"yellow","label":"square"}],"pick":2,"test":[{"id":"t1","shape":"circle","bg":"yellow","label":"circle"},{"id":"t2","shape":"square","bg":"blue","label":"square"},{"id":"t3","shape":"circle","bg":"blue","label":"circle"},{"id":"t4","shape":"square","bg":"yellow","label":"square"}]},"teen":{"start":[{"id":"a1","shape":"circle","bg":"blue","label":"circle"},{"id":"a2","shape":"circle","bg":"blue","label":"circle"},{"id":"a5","shape":"circle","bg":"blue","label":"circle"},{"id":"a3","shape":"square","bg":"yellow","label":"square"},{"id":"a4","shape":"square","bg":"yellow","label":"square"},{"id":"a6","shape":"square","bg":"yellow","label":"square"}],"probe":{"id":"p1","shape":"circle","bg":"yellow","label":"circle"},"extras":[{"id":"x1","shape":"circle","bg":"yellow","label":"circle"},{"id":"x2","shape":"square","bg":"blue","label":"square"},{"id":"x3","shape":"circle","bg":"blue","label":"circle"},{"id":"x4","shape":"square","bg":"yellow","label":"square"}],"pick":2,"test":[{"id":"t1","shape":"circle","bg":"yellow","label":"circle"},{"id":"t2","shape":"square","bg":"blue","label":"square"},{"id":"t3","shape":"circle","bg":"blue","label":"circle"},{"id":"t4","shape":"square","bg":"yellow","label":"square"}]},"adult":{"start":[{"id":"a1","shape":"circle","bg":"blue","label":"circle"},{"id":"a2","shape":"circle","bg":"blue","label":"circle"},{"id":"a5","shape":"circle","bg":"blue","label":"circle"},{"id":"a3","shape":"square","bg":"yellow","label":"square"},{"id":"a4","shape":"square","bg":"yellow","label":"square"},{"id":"a6","shape":"square","bg":"yellow","label":"square"}],"probe":{"id":"p1","shape":"circle","bg":"yellow","label":"circle"},"extras":[{"id":"x1","shape":"circle","bg":"yellow","label":"circle"},{"id":"x2","shape":"square","bg":"blue","label":"square"},{"id":"x3","shape":"circle","bg":"blue","label":"circle"},{"id":"x4","shape":"square","bg":"yellow","label":"square"}],"pick":3,"test":[{"id":"t1","shape":"circle","bg":"yellow","label":"circle"},{"id":"t2","shape":"square","bg":"blue","label":"square"},{"id":"t3","shape":"circle","bg":"blue","label":"circle"},{"id":"t4","shape":"square","bg":"yellow","label":"square"}]}},"transfer":{"start":[{"id":"n1","shape":"triangle","bg":"green","label":"triangle"},{"id":"n2","shape":"triangle","bg":"green","label":"triangle"},{"id":"n3","shape":"triangle","bg":"green","label":"triangle"},{"id":"n4","shape":"star","bg":"purple","label":"star"},{"id":"n5","shape":"star","bg":"purple","label":"star"},{"id":"n6","shape":"star","bg":"purple","label":"star"}],"probe":{"id":"np","shape":"star","bg":"green","label":"star"},"fixes":[{"id":"f1","shape":"star","bg":"green","label":"star"},{"id":"f2","shape":"triangle","bg":"green","label":"triangle"},{"id":"f3","shape":"star","bg":"purple","label":"star"}]},"categories":{"main":["circle","square"],"transfer":["triangle","star"]}},"ui":{"series":"Taller: actividades sobre IA","seriesLead":"Actividades cortas para probar con tus manos: predice, prueba, mira el resultado, entiéndelo y resuelve un ejemplo nuevo. Sin registro; las respuestas no se guardan ni se envían a ningún sitio.","ageLabel":"Dificultad","ages":{"tiny":"5–7 años, con una persona adulta","child":"8–10 años","teen":"11–13 años","adult":"14 años o más"},"stepOf":"Paso {n} de {m}","next":"Siguiente →","back":"← Atrás","retry":"Intentar de nuevo","before":"antes","after":"después","modelSaid":"clasificador","limit":"Puedes elegir como máximo {pick}. Primero quita la selección de otra tarjeta.","qL":"«","qR":"»","srcOrigin":"Origen: ","srcDate":"Fecha: ","goalH":"Objetivo","explainH":"Explicación","sampleNote":"Ejemplo de práctica: los textos del asistente están escritos de antemano; no es un chat en vivo ni una petición a una red neuronal.","adultH":"Para la persona adulta","adultGoal":"Objetivo","adultQuestions":"Preguntas para conversar","adultMis":"Idea equivocada frecuente","adultSigns":"Señales de que lo entendió","adultMethod":"Cómo funciona la actividad","printH":"Tarea para imprimir","printAnswers":"Respuestas y explicación (para la persona adulta)","printBtn":"Imprimir la tarea","sourcesH":"Fuentes","supports":"Qué respalda","review":"Estado: borrador del autor. Sin revisión de un editor nativo ni de un docente; la actividad no se ha probado con niños.","catalog":"Todas las actividades del Taller","lessons":"Todas las lecciones por edad","home":"Inicio","other":"Otras actividades","crumbs":"Estás aquí","privacy":"La actividad funciona en tu navegador: las respuestas no se guardan ni se envían. Como en cualquier sitio web, el servidor recibe las solicitudes normales de página."},"next":[{"href":"sorter.html"},{"href":"check.html"},{"href":"../../lessons/es/"}],"text":{"common":{"title":"¿Por qué se equivocó el clasificador?","desc":"Un clasificador de práctica aprende con tarjetas y se equivoca por un patrón falso. El niño o la niña agrega ejemplos, el modelo vuelve a calcular su regla y el resultado se comprueba con tarjetas aparte.","words":{"shape":"forma","bg":"fondo","circle":"círculo","square":"cuadrado","blue":"fondo azul","yellow":"fondo amarillo","triangle":"triángulo","star":"estrella","green":"fondo verde","purple":"fondo morado","unknown":"no sé"},"howH":"Cómo funciona el clasificador","how":"Es un modelo de práctica, no una red neuronal. No \"ve\" la imagen: cada tarjeta ya trae dos rasgos listos — la forma y el fondo. El modelo prueba una regla por la forma y otra por el fondo, y se queda con la que comete menos errores en las tarjetas de entrenamiento.","trainH":"Tarjetas de entrenamiento","predictH":"Tu predicción","predictQ":"El clasificador aprendió con estas tarjetas. ¿Qué dirá de la tarjeta nueva?","runBtn":"Preguntar al clasificador","said":"El clasificador dice: \"{guess}\".","wrongWhy":"¡Se equivocó! Es un círculo. En el entrenamiento, todos los círculos estaban sobre fondo azul y todos los cuadrados sobre fondo amarillo. Por eso la regla \"fondo amarillo → cuadrado\" encajaba con las tarjetas de entrenamiento igual de bien que la regla por la forma.","tieNote":"Cuando dos reglas encajan igual de bien, nuestro clasificador elige el fondo: esta demostración está hecha así para que el error se vea.","addH":"Agrega tarjetas de entrenamiento","addQ":"Elige hasta {pick} tarjetas. Piensa: ¿cuáles le mostrarán al clasificador que el fondo no es lo importante?","retrainBtn":"Entrenar de nuevo","needPick":"Primero elige al menos una tarjeta.","nowRule":"Ahora el clasificador eligió la regla según: {feature}.","fixedWhy":"Funcionó: ahora las tarjetas de entrenamiento tienen círculos y cuadrados sobre fondos distintos. La regla por el fondo empieza a fallar y la regla por la forma no.","sameWhy":"No cambió nada: las tarjetas que agregaste repiten el patrón viejo (círculos en azul, cuadrados en amarillo). Más de lo mismo no ayuda: hacen falta ejemplos que rompan el patrón. Vuelve y elige otras.","backToAdd":"Elegir otras tarjetas","testH":"Comprobar con tarjetas aparte","testNote":"El clasificador no vio estas tarjetas durante el entrenamiento.","testScore":"Aciertos: {right} de {total}.","newH":"Ejemplo nuevo: resuélvelo tú","newIntro":"Otro clasificador aprendió con triángulos y estrellas. Su categoría correcta también es la forma.","newQ1":"¿Qué dirá de una estrella sobre fondo verde?","newQ2":"¿Qué UNA tarjeta agregarías para que deje de equivocarse?","newCheckBtn":"Comprobar mi elección","newOk":"¡Sí! Con esta tarjeta el clasificador elige la regla por la forma y llama estrella a la estrella.","newNo":"El clasificador sigue equivocándose: esta tarjeta repite el patrón viejo. Prueba con otra.","q1ok":"Correcto: se equivocará y dirá \"triángulo\", porque en el entrenamiento todos los triángulos estaban sobre verde.","q1no":"Mira las tarjetas de entrenamiento: ¿qué fondo tenían todos los triángulos?","doneH":"¿Y ahora qué?","doneText":"El clasificador se equivocó no porque sea \"tonto\", sino porque los ejemplos de entrenamiento tenían una pista falsa: el fondo.","choices":["Repetir esta actividad","Siguiente actividad: \"Comprueba una respuesta segura\"","Todas las lecciones"],"noJs":"La actividad necesita JavaScript. Sin él, abajo están el objetivo, la explicación y una tarea para imprimir.","adult":{"goal":"El niño o la niña ve que un modelo aprende de ejemplos y puede agarrarse a una pista casual (el fondo), y que esto se corrige con ejemplos que contradicen esa pista.","questions":["¿Por qué el clasificador llamó cuadrado al círculo?","¿Qué tarjetas ayudaron y cuáles no? ¿Por qué?","¿Dónde podría aparecer en la vida real una \"pista trampa\" como esta?"],"misconception":"Más datos siempre es mejor. No es así: diez ejemplos iguales no enseñan nada nuevo; lo importante es que los ejemplos varíen donde importa.","signs":["Explica el error con frases como \"en los ejemplos todos los círculos estaban en azul\".","Elige una tarjeta que rompe el patrón falso, y lo vuelve a hacer en el ejemplo nuevo.","No da por hecho que el modelo \"ve\" la imagen como una persona."],"method":"Para la persona adulta: el modelo es una regla de un solo rasgo. Al principio ambos rasgos encajan igual de bien con las tarjetas de entrenamiento (0 errores); en caso de empate, esta demostración elige el fondo. Es una regla nuestra, no una propiedad del aprendizaje automático. El modelo recibe rasgos ya preparados, no píxeles.","print":{"task":"Dibuja 4 tarjetas: 2 círculos sobre azul y 2 cuadrados sobre amarillo. Tapa las formas y pregunta: ¿por qué otra cosa se podría \"adivinar\"? Agrega una tarjeta que rompa la pista del \"fondo\".","answers":"La pista trampa es el color del fondo: en los ejemplos siempre coincide con la forma. Un círculo sobre amarillo o un cuadrado sobre azul la rompen."}}},"tiny":{"goal":"Vamos a descubrir por qué una máquina puede equivocarse, y a ayudarla.","addQ":"Elige una tarjeta y muéstrasela al clasificador.","adultSay":"Una persona adulta lee en voz alta. El niño o la niña señala o dice la respuesta: no hace falta escribir."},"child":{"goal":"Descubrir qué hizo equivocarse al clasificador y corregirlo con ejemplos. Comparar el \"antes\" y el \"después\".","errorsH":"Errores de cada regla en las tarjetas de entrenamiento","errorsRow":"por la forma: {shape} · por el fondo: {bg}"},"teen":{"goal":"Entender la causa del error, distinguir entrenamiento de comprobación, corregir los datos y comprobar el resultado.","errorsH":"Errores de cada regla en las tarjetas de entrenamiento","errorsRow":"por la forma: {shape} · por el fondo: {bg}","whyTestQ":"¿Por qué las tarjetas de comprobación no se pueden agregar al entrenamiento?","whyTestOpts":["Entonces la comprobación mostraría qué tan bien recuerda el modelo tarjetas conocidas, no cómo maneja las nuevas","Porque son demasiadas","Da igual"],"whyTestOk":"Correcto. Una comprobación es justa solo si el modelo no ha visto esas tarjetas.","whyTestNo":"Todavía no. ¿Qué queremos saber con la comprobación: cómo recuerda el modelo las tarjetas viejas o cómo funciona con las nuevas?"},"adult":{"goal":"Examinar los límites del método: calidad y variedad de los datos, la regla de desempate, separar entrenamiento y comprobación, y las consecuencias de un error.","errorsH":"Errores de cada regla en las tarjetas de entrenamiento","errorsRow":"por la forma: {shape} · por el fondo: {bg}","whyTestQ":"¿Por qué las tarjetas de comprobación no se pueden agregar al entrenamiento?","whyTestOpts":["Entonces la comprobación mostraría qué tan bien recuerda el modelo tarjetas conocidas, no cómo maneja las nuevas","Porque son demasiadas","Da igual"],"whyTestOk":"Correcto. Una comprobación es justa solo si el modelo no ha visto esas tarjetas.","whyTestNo":"Todavía no. ¿Qué mide una comprobación: la memoria de lo conocido o el trabajo con lo nuevo?","limitsH":"Límites del método","limits":["El modelo elige un solo rasgo; los modelos reales usan muchos rasgos y también pueden encontrar pistas falsas.","La regla de desempate (primero el fondo) es una decisión de esta demostración. Otra regla daría otra respuesta con los mismos datos.","Si solo corriges lo que aparece en la comprobación, puedes terminar ajustando el modelo a las propias tarjetas de comprobación sin darte cuenta."],"stakesQ":"Un clasificador decide qué correos son spam usando una pista falsa. ¿Por qué es un problema?","stakesOpts":["Pueden perderse correos importantes, y la gente puede confiar en el error porque \"lo decidió la máquina\"","No lo es, las máquinas no se equivocan","Solo porque es lento"],"stakesOk":"Sí. Las consecuencias de un error dependen de dónde se usa el modelo; por eso las personas revisan sus decisiones.","stakesNo":"Piensa en quién sale perjudicado si el modelo se equivoca sin que nadie lo note."}}}</script>
+<script src="../../js/lesson.js"></script>
+<script src="../../js/sorter-model.js"></script>
+<script src="../../js/workshop.js"></script>
+<script src="../../js/workshop-sorter.js"></script>
+</body>
+</html>
