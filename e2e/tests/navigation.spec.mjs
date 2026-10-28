@@ -8,7 +8,10 @@ for (const lang of LANGS) {
     const errors = watchErrors(page);
     await page.goto(pageOf(lang));
     await noHorizontalOverflow(page, 'home');
-    await page.locator('#wk-audience').getByRole('button', { name: T[lang].gamesT }).click();
+    // by its attribute: the kids card's text also contains the word "games"
+    const games = page.locator('#wk-audience [data-audience="games"]');
+    await expect(games).toContainText(T[lang].gamesT);
+    await games.click();
     await expect(page.locator('#wk-age')).toBeVisible();
     await noHorizontalOverflow(page, 'age');
     await page.locator('.wk-age[data-age="teen"]').click();
@@ -62,12 +65,12 @@ test('ru: Lessons and a quiz → exit → all three games still there', async ({
   expect(errors).toEqual([]);
 });
 
-for (const [lang, re] of [['ru', /workshop\/ru\/sorter\.html\?age=8-10$/], ['de', /lessons\/de\/8-10-1\.html$/]]) {
-  test(`${lang}: Start opens the recommended activity`, async ({ page }) => {
+for (const lang of LANGS) {
+  test(`${lang}: Start opens the Workshop activity for the age`, async ({ page }) => {
     const errors = watchErrors(page);
     await toRoute(page, lang, 'child');
     await page.locator('#wk-route [data-route-for="child"] .wk-start-go').click();
-    await expect(page).toHaveURL(re);
+    await expect(page).toHaveURL(new RegExp(`workshop/${lang}/sorter\\.html\\?age=8-10$`));
     await expect(page.locator('h1')).toBeVisible();
     await noHorizontalOverflow(page, 'activity page');
     expect(errors).toEqual([]);
