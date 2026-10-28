@@ -106,6 +106,15 @@ ${x.say.map((s) => `        <li>${esc(s)}</li>`).join('\n')}
       </ul>
       <p class="ar-try">${esc(u.tryIt)}: ${linkFor(l, a.links[i], u)}</p>
     </section>`).join('\n');
+  const adult = t.adult ? `    <section class="wk-card ar-block ar-adult" aria-labelledby="ar-adult">
+      <h2 id="ar-adult">${esc(u.adult)}</h2>
+      <p><b>${esc(u.adultGoal)}:</b> ${esc(t.adult.goal)}</p>
+      <p class="ar-say-h">${esc(u.adultAsk)}</p>
+      <ul class="ar-say">
+${t.adult.ask.map((s) => `        <li>${esc(s)}</li>`).join('\n')}
+      </ul>
+      <p><b>${esc(u.adultSigns)}:</b> ${esc(t.adult.signs)}</p>
+    </section>\n` : '';
   const myths = t.myths.length ? `  <section class="wk-card ar-block" aria-labelledby="ar-myths">
     <h2 id="ar-myths">${esc(u.myths)}</h2>
     <dl class="ar-myths">
@@ -146,7 +155,7 @@ ${t.facts.map((f, i) => `        <li>${esc(f)} ${ref(a.facts[i])}</li>`).join('\
       <h2 id="ar-ages">${esc(u.ages)}</h2>
 ${ages}
     </section>
-${myths}    <section class="wk-card ar-block ar-conclusion" aria-labelledby="ar-concl">
+${adult}${myths}    <section class="wk-card ar-block ar-conclusion" aria-labelledby="ar-concl">
       <h2 id="ar-concl">${esc(u.conclusion)}</h2>
       <p>${esc(t.conclusion)}</p>
       <p class="ar-level">${esc(u.levelLabel)}: <b>${esc(u.levels[a.level])}</b></p>

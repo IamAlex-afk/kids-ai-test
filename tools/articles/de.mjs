@@ -24,6 +24,7 @@ export default {
     honesty: 'Die Fakten stammen aus den unten verlinkten Primärquellen. „Unsere Schlussfolgerung“ ist die Sicht der Seite auf Grundlage dieser Fakten, kein Zitat.',
     all: 'Alle Artikel',
     tinyNote: 'Für 5–7 Jahre: Ein Erwachsener liest gemeinsam mit dem Kind.',
+    adult: 'Für Erwachsene', adultGoal: 'Ziel', adultAsk: 'Fragen für das Gespräch', adultSigns: 'Zeichen von Verständnis',
   },
   'what-is-ai': {
     title: 'Was ist KI? – in einfachen Worten',
@@ -44,6 +45,7 @@ export default {
     ],
     myths: [],
     conclusion: 'KI ist ein starkes Werkzeug, um aus Beispielen zu raten, aber kein Freund und kein Alleswisser. Die wichtigste Fähigkeit daneben: die Antwort prüfen und selbst entscheiden.',
+    adult: { goal: 'Das Kind kann in eigenen Worten sagen: KI ist ein Programm, das aus Beispielen lernt, rät und sich irren kann.', ask: ['Wie hat die KI gelernt, eine Katze zu erkennen?', 'Warum kann sich eine KI irren, auch wenn sie sicher klingt?', 'Wie können wir ihre Antwort prüfen?'], signs: 'Das Kind nennt KI nicht lebendig oder Freund und schlägt von sich aus vor, eine wichtige Antwort zu prüfen.' },
   },
   'explain-ai-to-a-child': {
     title: 'Wie erkläre ich meinem Kind, was KI ist?',
@@ -63,7 +65,7 @@ export default {
       { say: ['„Wer hat dieses System gebaut, womit wurde es trainiert und wohin gehen deine Daten?“', '„Ein Deepfake kann echt aussehen – prüf die Quelle.“', '„KI ist ein Werkzeug. Entscheidungen und Verantwortung bleiben beim Menschen.“'] },
     ],
     myths: [
-      { m: 'KI lebt und kann eine Freundin sein.', t: 'Es ist ein Programm. Kinder schreiben ihm leicht eine „Persönlichkeit“ zu – darum lohnt es sich, klar zu sagen, dass KI nichts fühlt und keine Freundin ist.' },
+      { m: 'KI lebt und kann eine Freundin sein.', t: 'Es ist ein Programm. In der MIT-Studie sprachen Kinder darüber, „wer“ der Sprachassistent ist – darum lohnt es sich, klar zu sagen, dass KI nichts fühlt und keine Freundin ist.' },
       { m: 'KI hat immer recht, weil sie sicher klingt.', t: 'KI kann Falsches mit Überzeugung sagen. Wichtiges prüfen wir an einer zweiten Quelle.' },
       { m: 'Einer KI kann man jedes Geheimnis erzählen.', t: 'Der Schutz von Kinderdaten ist eine der Forderungen von UNICEF. Persönliches (Name, Adresse, Fotos, Passwörter) gehört nicht in einen Chatbot.' },
       { m: 'Besser KI verbieten, bis das Kind groß ist.', t: 'UNICEF verlangt, Kinder auf ein Leben mit KI vorzubereiten, und die UNESCO, ihnen beizubringen, ihre eigene Rolle neben KI zu verstehen und zu behaupten. Ein Verbot lehrt das nicht – eine begleitete erste Begegnung schon.' },
@@ -77,7 +79,7 @@ export default {
     facts: [
       'In einem Experiment mit fast tausend Schülerinnen und Schülern im Fach Mathematik verbesserte der Zugang zu GPT-4 beim Üben die Noten. Als der Zugang wegfiel, schnitten die Jugendlichen mit dem normalen Chatbot jedoch um 17 % schlechter ab als jene, die nie KI hatten. Eine Tutor-Version mit Einstellungen, die das Lernen schützen, verhinderte diesen Schaden weitgehend.',
       'Nach einigen Tagen erinnert sich besser, wer sich aus dem Gedächtnis selbst abgefragt hat, als wer wiedergelesen hat – obwohl Wiederlesen das Gefühl gibt, sicherer zu sein.',
-      'Die UNESCO legt in ihren Empfehlungen von 2023 eine Altersgrenze von 13 Jahren für KI-Werkzeuge im Unterricht fest und fordert Schulungen für Lehrkräfte.',
+      'Die UNESCO nennt in ihren Empfehlungen von 2023 13 Jahre als untere Altersgrenze für KI-Werkzeuge im Unterricht und fordert Schulungen für Lehrkräfte.',
       'Text von einer KI kann falsch sein, auch wenn er sicher klingt.',
     ],
     ages: [
@@ -92,5 +94,6 @@ export default {
       { m: 'Eine KI-Antwort kann man so abgeben, wie sie ist.', t: 'KI kann sich mit Überzeugung irren. Prüf sie am Schulbuch und erklär die Lösung in eigenen Worten.' },
     ],
     conclusion: 'Bei Hausaufgaben hilft KI als Tutor, nicht als Löser: Zuerst denkst du selbst, die KI gibt Tipps und prüft, und dein Verständnis testest du ohne sie. Jüngere Kinder nur gemeinsam mit einem Erwachsenen; für KI-Werkzeuge im Unterricht nennt die UNESCO ein Alter von 13 Jahren.',
+    adult: { goal: 'Das Kind nutzt KI als Hinweis und prüft sein Verständnis ohne sie.', ask: ['Was an dieser Aufgabe ist von dir, und was hat die KI vorgeschlagen?', 'Kannst du die Lösung ohne Hilfen erklären?', 'Wo können wir diese Antwort prüfen?'], signs: 'Das Kind erklärt die Lösung in eigenen Worten und löst eine ähnliche Aufgabe ohne KI.' },
   },
 };

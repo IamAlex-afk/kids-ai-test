@@ -57,6 +57,31 @@ test('articles: same structure and UI keys in every language', () => {
   }
 });
 
+test('articles: family articles have the adult block (goal, questions, signs) in every language', () => {
+  for (const l of ARTICLE_LANGS) for (const a of ARTICLES.filter((x) => x.audience === 'family')) {
+    const x = texts[l][a.slug].adult;
+    assert.ok(x && x.goal && x.signs && x.ask.length === texts.ru[a.slug].adult.ask.length, `tools/articles/${l}.mjs ${a.slug}: adult block`);
+  }
+});
+
+// Found in review (docs/CONTENT-REVIEW.md): gendered forms addressed to the
+// child, and two overstatements of the sources. They must not come back.
+test('articles: corrected wording does not come back', () => {
+  const wrong = {
+    ru: /ты сам\b|подумай сам|думаешь сам|ещё не понял\b|я научился|легко приписыва|установила возраст/,
+    en: /easily give it|sets an age limit of 13/,
+    de: /leicht eine „Persönlichkeit“|legt [^.]*Altersgrenze von 13 Jahren[^.]* fest/,
+    es: /atribuyen fácilmente|fija una edad mínima/,
+    fr: /tout seul|prêtent facilement|celui qui s’est rappelé|fixent un âge minimum/,
+    pt: /sozinho|facilmente atribuem|estabelece a idade mínima/,
+    id: /mudah memberinya|menetapkan batas usia 13/,
+    tr: /kolayca bir "kişilik"|13 yaş sınırı koyar/,
+    hi: /आसानी से "व्यक्तित्व"|उम्र-सीमा तय की गई/,
+    vi: /dễ gán cho nó|đặt giới hạn độ tuổi 13/,
+  };
+  for (const l of ARTICLE_LANGS) assert.doesNotMatch(read(`tools/articles/${l}.mjs`), wrong[l], `tools/articles/${l}.mjs`);
+});
+
 test('articles: links lead to existing pages; hreflang, canonical, no scripts', () => {
   for (const l of ARTICLE_LANGS) for (const a of ARTICLES) {
     const file = `articles/${l}/${a.slug}.html`;
