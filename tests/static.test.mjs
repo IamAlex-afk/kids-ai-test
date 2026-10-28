@@ -62,8 +62,16 @@ test('no unsupported promises about the card, trust or comparisons', () => {
 // retrieval; no "Resnick 2017" study was found.
 test('parents\' FAQ: corrected claims do not come back', () => {
   const wrong = /Resnick, 2017|Ericsson, 1993|Ericsson \(1993\)|AI systems interacting with children as high-risk|взаимодействующие с детьми, к группе высокого риска|mit Kindern interagieren, als Hochrisiko|interactúan con niños como de alto riesgo|interagissant avec des enfants comme à haut risque|berinteraksi dengan anak sebagai berisiko tinggi|interagem com crianças como de alto risco|etkileşime giren AI sistemlerini yüksek riskli|tương tác với trẻ em là rủi ro cao|70% of jobs|70% рабочих мест|70% der Arbeitsplätze|70% de los empleos|70% des emplois|70% नौकरियाँ|70% pekerjaan|70% dos empregos|%70'i|70% việc làm/;
-  for (const f of [...LANGS.map(page), 'js/parents-faq.js', 'llms.txt'])
+  for (const f of [...LANGS.map(page), ...LANGS.map((l) => `js/parents-faq/${l}.js`), 'llms.txt'])
     assert.doesNotMatch(read(f), wrong, f);
+});
+
+test('parents\' FAQ: each page loads only its own language file', () => {
+  for (const l of LANGS) {
+    const files = [...read(page(l)).matchAll(/src="(js\/parents-faq[^"]*)"/g)].map(m => m[1]);
+    assert.deepEqual(files, [`js/parents-faq/${l}.js`], page(l));
+    assert.match(read(`js/parents-faq/${l}.js`), new RegExp(`^window\\.PARENTS_FAQ=\\{\\n${l}:\\{`, 'm'), l);
+  }
 });
 
 test('age labels use the 5–7 / 8–10 / 11–13 / 14+ scheme', () => {

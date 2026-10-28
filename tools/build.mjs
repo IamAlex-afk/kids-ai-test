@@ -33,6 +33,7 @@ const FILES = [
 const DIRS = [
   { dir: 'css', ext: ['.css'] },
   { dir: 'js', ext: ['.js'] },
+  { dir: 'js/parents-faq', ext: ['.js'] },   // parents' Q&A, one file per language
   { dir: 'data', ext: ['.js'] },
   { dir: 'assets', ext: ['.png', '.ogg', '.md'] },
   { dir: 'assets/sfx', ext: ['.ogg'] },
