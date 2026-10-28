@@ -783,8 +783,8 @@ window.LANG_DATA = {
           title: 'Почему лента показывает именно ЭТО видео',
           text:  'YouTube, TikTok и Instagram используют ИИ, чтобы решать, что показать следующим — и цель не в том, чтобы тебя информировать, а в том, чтобы удержать тебя как можно дольше. ИИ узнаёт, что заставляет именно ТЕБЯ листать дальше.',
           example: '🎣 Это работает как крючок для рыбалки, а не как учитель. Каждое рекомендованное видео выбрано, потому что люди вроде тебя обычно смотрят «ещё одно».',
-          source:    'Stanford Internet Observatory, 2024',
-          sourceUrl: 'https://stacks.stanford.edu/file/druid:mb753jn6512/sio_annual_report_2024.pdf',
+          source:    'Ковингтон и др. «Deep Neural Networks for YouTube Recommendations», Google, 2016',
+          sourceUrl: 'https://research.google/pubs/deep-neural-networks-for-youtube-recommendations/',
           miniTest: [
             {
               q:       'Для чего в первую очередь оптимизирован рекомендательный алгоритм?',
@@ -1051,8 +1051,8 @@ window.LANG_DATA = {
           options: ['Она знает, что реально для тебя полезно 🌟', 'Она оптимизирована на максимум времени просмотра, а не на твоё благополучие ⏳', 'Это чистая случайность 🎲', 'Она показывает только образовательный контент 📚'],
           correct: 1,
           explanation: 'Рекомендательный ИИ построен так, чтобы удерживать твоё внимание — это бизнес-модель, а не совпадение.',
-          source:    'Stanford Internet Observatory, 2024',
-          sourceUrl: 'https://stacks.stanford.edu/file/druid:mb753jn6512/sio_annual_report_2024.pdf',
+          source:    'Ковингтон и др. «Deep Neural Networks for YouTube Recommendations», Google, 2016',
+          sourceUrl: 'https://research.google/pubs/deep-neural-networks-for-youtube-recommendations/',
         },
         {
           type:    'likert',
@@ -1092,8 +1092,8 @@ window.LANG_DATA = {
           options: ['Они используют слишком много интернет-трафика 📡', 'Их можно производить намного быстрее, чем люди успевают проверять факты 📣', 'Они всегда плохо написаны 📉', 'Их никто не читает 🤷'],
           correct: 1,
           explanation: 'ИИ может выдавать огромные объёмы убедительно звучащей дезинформации быстро — именно масштаб делает это опасным.',
-          source:    'Stanford Internet Observatory, 2024',
-          sourceUrl: 'https://stacks.stanford.edu/file/druid:mb753jn6512/sio_annual_report_2024.pdf',
+          source:    'Голдстейн и др. «Generative Language Models and Automated Influence Operations», 2023',
+          sourceUrl: 'https://arxiv.org/abs/2301.04246',
         },
               {
           type:    "choice",
@@ -1617,8 +1617,8 @@ window.LANG_DATA = {
           options: ["ИИ-дезинформацию легко распознать, потому что она звучит по-роботски 🤖", "Главная опасность — качество; ИИ пишет дезинформацию лучше, чем люди 📝", "Главная опасность — масштаб; ИИ может создавать и распространять ложный контент быстрее, чем его можно проверить 📣", "ИИ-дезинформация действует только на технологически неподкованную аудиторию 👥"],
           correct: 2,
           explanation: "Масштаб — ключевая опасность. Проверка фактов медленная и требует людей; генерация контента ИИ — быстрая и автоматическая. Даже если каждый отдельный случай можно распознать, объём превышает возможности проверки.",
-          source: "Stanford Internet Observatory, 2024",
-          sourceUrl: "https://stacks.stanford.edu/file/druid:mb753jn6512/sio_annual_report_2024.pdf",
+          source: "Голдстейн и др. «Generative Language Models and Automated Influence Operations», 2023",
+          sourceUrl: "https://arxiv.org/abs/2301.04246",
         },
         {
           type:    "choice",
