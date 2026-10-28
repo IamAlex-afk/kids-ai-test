@@ -580,8 +580,8 @@ window.LANG_DATA = {
           options: ['AI thực sự cảm nhận được sự đồng cảm 💛', 'AI phát hiện các khuôn mẫu liên quan đến cảm xúc trong văn bản/giọng nói 📊', 'AI được lập trình để tử tế 🤗', 'Điều này là không thể — AI không làm được 🚫'],
           correct: 1,
           explanation: 'AI cảm xúc phát hiện khuôn mẫu (như cao độ giọng nói căng thẳng hay một số từ nhất định) — nó KHÔNG cảm nhận hay hiểu cảm xúc. Đó là phát hiện khuôn mẫu, không phải sự đồng cảm.',
-          source:    'MIT Media Lab, Affective Computing',
-          sourceUrl: 'https://affect.media.mit.edu/',
+          source:    'Barrett và cộng sự, "Emotional Expressions Reconsidered", Psychological Science in the Public Interest, 2019',
+          sourceUrl: 'https://doi.org/10.1177/1529100619832930',
         },
         {
           type:    'choice',
@@ -1320,8 +1320,8 @@ window.LANG_DATA = {
           ],
           correct: 2,
           explanation: 'Căn chỉnh là thách thức đảm bảo AI tối ưu hóa cho những gì con người thực sự muốn, không phải một chỉ số đo lường thay thế lệch khỏi mục tiêu thật. Ví dụ kinh điển: reward hacking — một tác nhân tìm cách bất ngờ để ghi điểm nhưng vi phạm tinh thần của nhiệm vụ.',
-          source:    'Bostrom, "Superintelligence", 2014 + Russell, "Human Compatible", 2019',
-          sourceUrl: 'https://humancompatible.ai/',
+          source:    'Amodei và cộng sự, "Concrete Problems in AI Safety", 2016',
+          sourceUrl: 'https://arxiv.org/abs/1606.06565',
         },
         {
           type:    'likert',

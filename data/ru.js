@@ -125,8 +125,8 @@ window.LANG_DATA = {
           title: 'ИИ как огромная головоломка',
           text:       "ИИ прочитал миллионы книжек очень быстро и запомнил, как слова встречаются рядом. Когда ты спрашиваешь что-то — он ищет похожий ответ в памяти. Но он не думает и не понимает, как думаешь ты. Он работает по особым правилам, которым его научили — без них он ничего не умеет.",
           example: '📚 Представь, что ты прочитал 1000 сказок и теперь можешь угадать, что будет дальше. ИИ делает то же самое — но с миллиардами текстов!',
-          source:    'Яндекс Учебник — «Как работает ИИ»',
-          sourceUrl: 'https://education.yandex.ru/',
+          source:    'Лекун, Бенджио, Хинтон «Глубокое обучение», Nature 2015',
+          sourceUrl: 'https://www.nature.com/articles/nature14539',
           miniTest: [
             {
               q:       'Может ли ИИ проголодаться?',
@@ -684,8 +684,8 @@ window.LANG_DATA = {
           options: ['ИИ правда чувствует эмпатию 💛', 'ИИ распознаёт паттерны, связанные с эмоциями, в тексте/голосе 📊', 'ИИ запрограммирован быть добрым 🤗', 'Это невозможно — ИИ не может этого делать 🚫'],
           correct: 1,
           explanation: 'Эмоциональный ИИ распознаёт паттерны (например, напряжённую интонацию голоса) — но не ЧУВСТВУЕТ и не понимает эмоции.',
-          source:    'MIT Media Lab, Аффективные вычисления',
-          sourceUrl: 'https://affect.media.mit.edu/',
+          source:    'Барретт и др., «Emotional Expressions Reconsidered», Psychological Science in the Public Interest, 2019',
+          sourceUrl: 'https://doi.org/10.1177/1529100619832930',
         },
         {
           type:    'choice',
@@ -979,9 +979,9 @@ window.LANG_DATA = {
           targets: ['ФИШИНГ', 'ИСПОЛЬЗУЕТ ИИ', 'ЧТОБЫ ЗВУЧАТЬ', 'УБЕДИТЕЛЬНЕЕ'],
           decoys:  ['ОЧЕВИДЕН', 'ОТ РОБОТОВ'],
           icon:    '🎣',
-          fact:    'Мошенники используют языковые модели для написания безошибочных, персонализированных писем-ловушек.',
-          source:    'FTC Consumer Alerts, 2023',
-          sourceUrl: 'https://consumer.ftc.gov/consumer-alerts',
+          fact:    'Мошенники используют ИИ, чтобы их сообщения и звонки звучали убедительнее. Неожиданную просьбу проверяй сам — через контакт, который уже знаешь.',
+          source:    'FTC, «Scammers use AI to enhance their family emergency schemes», 2023',
+          sourceUrl: 'https://consumer.ftc.gov/consumer-alerts/2023/03/scammers-use-ai-enhance-their-family-emergency-schemes',
         },
         {
           unit:    'word',
@@ -1553,8 +1553,8 @@ window.LANG_DATA = {
           ],
           correct: 2,
           explanation: 'Согласование — задача обеспечить оптимизацию ИИ под то, что люди реально хотят, а не измеримый прокси, расходящийся от истинной цели. Классический пример: агент находит неожиданные способы набирать очки, нарушая дух задачи.',
-          source:    'Рассел «Совместимый с человеком», 2019',
-          sourceUrl: 'https://humancompatible.ai/',
+          source:    'Амодеи и др., «Concrete Problems in AI Safety», 2016',
+          sourceUrl: 'https://arxiv.org/abs/1606.06565',
         },
         {
           type:    'choice',
