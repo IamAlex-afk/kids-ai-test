@@ -2,9 +2,9 @@
 // dist/ served locally under /kids-ai-test/. Writes every report (HTML+JSON)
 // to out/ and a median table to out/summary.md (also the job summary).
 //
-// Report only — nothing fails on a score yet; thresholds are proposed from
-// these numbers. Note: python's http.server sends no gzip and no cache
-// headers, so Performance here is a lower bound of GitHub Pages, not equal.
+// Gate: Accessibility, Best practices and SEO must be 100 in EVERY run (the
+// worst run counts, so a flaky 100 fails). Performance is report only.
+// Note: python's http.server sends no gzip and no cache headers, so Performance here is a lower bound of GitHub Pages, not equal.
 // SEO score ≠ Google ranking; Accessibility score ≠ full accessibility.
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -50,6 +50,13 @@ const lines = [
   '',
   `Browser: ${rows[0]?.runs[0]?.ua || 'unknown'}`,
 ];
+const GATED = ['accessibility', 'best-practices', 'seo'];
+const fails = rows.flatMap((r) => r.runs.flatMap((x, i) => GATED
+  .filter((c) => x.cats[c] < 100).map((c) => `${r.path}: ${c} = ${x.cats[c]} (run ${i + 1})`)));
+lines.push('', fails.length
+  ? `**FAIL** — below 100 in Accessibility/Best practices/SEO:\n${fails.map((f) => `- ${f}`).join('\n')}`
+  : '**PASS** — Accessibility, Best practices, SEO = 100 in every run (Performance: report only).');
 fs.writeFileSync('out/summary.md', lines.join('\n') + '\n');
 console.log(lines.join('\n'));
 if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join('\n') + '\n');
+if (fails.length) process.exit(1);

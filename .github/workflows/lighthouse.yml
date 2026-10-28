@@ -1,7 +1,8 @@
 name: Lighthouse
 
-# Report-only Lighthouse of dist/ built from this commit (3 runs per page,
-# medians in the job summary, all reports as an artifact). Own runner — never
+# Lighthouse of dist/ built from this commit (3 runs per page, fails if
+# A11y/BP/SEO < 100 in any run; Performance report only; medians in the job
+# summary, all reports as an artifact). Own runner — never
 # alongside the browser checks. Read-only: never deploys, no secrets.
 on:
   pull_request:
