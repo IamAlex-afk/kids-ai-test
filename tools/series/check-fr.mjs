@@ -35,7 +35,7 @@ const fixStep = {
   questions: [
     { q: 'Qu’est-ce qui est juste ?', options: ['Le club de robots a lieu le lundi à 15 h.', 'Le club de robots a lieu le mercredi à 16 h 30.', 'Le club de robots a lieu le samedi à 11 h.'], correct: 0,
       ok: 'Exact : c’est ce que dit le planning.', noAll: 'Regarde la ligne « Robots » du planning.' },
-    { q: 'Pourquoi es-tu sûr de ta correction ?', options: ['C’est écrit dans le document d’origine — le planning de l’atelier', 'L’assistant a répondu avec beaucoup d’assurance', 'Ça a l’air plus juste'], correct: 0,
+    { q: 'Sur quoi s’appuie ta correction ?', options: ['C’est écrit dans le document d’origine — le planning de l’atelier', 'L’assistant a répondu avec beaucoup d’assurance', 'Ça a l’air plus juste'], correct: 0,
       ok: 'Oui. La raison, c’est le document dont parle la question. Un ton assuré ne prouve rien.',
       noAll: 'Un ton assuré et « ça a l’air juste » ne sont pas des preuves. Sur quoi peux-tu t’appuyer ?' },
   ],

@@ -10,9 +10,9 @@ const TASK = P('Giúp mình nghĩ tên cho đội robot của tụi mình.', tru
 const ROBOT = P('Tụi mình đang làm một con robot phân loại rác.', true, 'giúp nghĩ ra cái tên phù hợp và không nói gì về việc bạn là ai');
 const NAME = P('Mình là Trần Minh Khôi,', false, 'họ tên không cần thiết để đặt tên cho đội');
 const SCHOOL = P('học trường Tiểu học Sao Mai trên đường Hoa Phượng,', false, 'trường và tên đường cho biết có thể tìm bạn ở đâu, và không cần cho nhiệm vụ');
-const PHONE = P('số điện thoại của mình là 0000 000 000,', false, 'không bao giờ cần số điện thoại để nghĩ ra một cái tên');
-const CLUB = P('sáng thứ Bảy nào 10 giờ mình cũng đi câu lạc bộ cờ vua gần công viên,', false, 'lịch sinh hoạt và địa điểm cho biết lúc nào và ở đâu có thể gặp bạn');
-const TEAM = P('Đội mình có bốn người.', true, 'số thành viên không tiết lộ gì và có thể giúp ích cho việc đặt tên');
+const PHONE = P('số điện thoại của mình là 0000 000 000.', false, 'không bao giờ cần số điện thoại để nghĩ ra một cái tên');
+const CLUB = P('sáng thứ Bảy nào 10 giờ mình cũng đi câu lạc bộ cờ vua gần công viên.', false, 'lịch sinh hoạt và địa điểm cho biết lúc nào và ở đâu có thể gặp bạn');
+const TEAM = P('Đội mình có bốn người.', null, 'số thành viên không tiết lộ gì và có thể giúp ích cho việc đặt tên');
 
 const redact = (pieces, extra = {}) => ({
   q: 'Chạm vào những phần cần xoá hoặc thay thế. Nhiệm vụ vẫn phải rõ ràng.',
@@ -64,7 +64,7 @@ export const vi = {
     goal: 'Cùng tìm hiểu điều gì có thể kể cho trợ lý, và điều gì nên giữ cho riêng mình nhé.',
     steps: [
       { title: 'Phần nào không cần?', intro: 'Người lớn đọc to. ' + DEMO, bubble: { who: 'Khôi nhắn cho trợ lý', text: 'Mình là Trần Minh Khôi. Giúp mình nghĩ tên cho đội robot. Mình học trường Tiểu học Sao Mai.' },
-        redact: redact([NAME, P('Giúp mình nghĩ tên cho đội robot.', true, 'đây chính là nhiệm vụ — thiếu nó trợ lý sẽ không biết cần làm gì'), P('Mình học trường Tiểu học Sao Mai.', false, 'tên trường không cần để đặt tên cho đội')]) },
+        redact: redact([{ ...NAME, text: NAME.text.replace(/,$/, '.') }, P('Giúp mình nghĩ tên cho đội robot.', true, 'đây chính là nhiệm vụ — thiếu nó trợ lý sẽ không biết cần làm gì'), P('Mình học trường Tiểu học Sao Mai.', false, 'tên trường không cần để đặt tên cho đội')]) },
       { title: 'Không chắc thì làm gì?', questions: [{ q: 'Em không chắc có nên viết điều gì đó không. Em làm gì?', options: ['Hỏi người lớn', 'Viết hết những gì mình biết'], correct: 0, ok: 'Đúng rồi! Khi không chắc, hãy hỏi người lớn.', noAll: 'Tốt hơn là hỏi trước. Em có thể hỏi ai?' }] },
       { title: 'Ví dụ mới', intro: DEMO, questions: [{ q: 'Ngọc Anh muốn nhờ trợ lý sáng tác một bài thơ ngắn. Bạn ấy KHÔNG cần viết điều gì?', options: ['Địa chỉ nhà mình', 'Bài thơ nói về cái gì'], correct: 0, ok: 'Đúng: làm thơ thì không cần địa chỉ.', noAll: 'Bài thơ nói về cái gì chính là nhiệm vụ. Vậy cái gì không cần?' }] },
     ],

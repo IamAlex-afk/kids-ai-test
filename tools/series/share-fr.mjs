@@ -11,9 +11,9 @@ const TASK = P('Aide-moi à trouver un nom pour notre équipe de robotique.', tr
 const ROBOT = P('On construit un robot qui trie les déchets.', true, 'aide à trouver un nom qui colle et ne dit rien sur qui tu es');
 const NAME = P('Je m’appelle Hugo Bernard,', false, 'ton prénom et ton nom ne servent à rien pour nommer une équipe');
 const SCHOOL = P('je suis à l’école des Tilleuls, rue des Jardins,', false, 'ton école et ta rue montrent où te trouver et ne servent pas à la tâche');
-const PHONE = P('mon numéro est le 00 00 00 00 00,', false, 'un numéro de téléphone ne sert jamais à trouver un nom');
-const CLUB = P('tous les samedis à 10 h je vais au club d’échecs près du parc,', false, 'ton emploi du temps et le lieu montrent où et quand on peut te trouver');
-const TEAM = P('On est quatre dans l’équipe.', true, 'le nombre de membres ne révèle rien et peut aider à trouver le nom');
+const PHONE = P('mon numéro est le 00 00 00 00 00.', false, 'un numéro de téléphone ne sert jamais à trouver un nom');
+const CLUB = P('tous les samedis à 10 h je vais au club d’échecs près du parc.', false, 'ton emploi du temps et le lieu montrent où et quand on peut te trouver');
+const TEAM = P('On est quatre dans l’équipe.', null, 'le nombre de membres ne révèle rien et peut aider à trouver le nom');
 
 const redact = (pieces, extra = {}) => ({
   q: 'Touche les morceaux qu’il faut enlever ou remplacer. La tâche doit rester claire.',
@@ -51,7 +51,7 @@ export const fr = {
     choices: ['Refaire cette activité', 'Activité suivante : « Pourquoi le trieur s’est-il trompé ? »', 'Toutes les leçons'],
     adult: {
       goal: 'L’enfant sépare la tâche des informations personnelles, enlève ou remplace le superflu, et comprend qu’une combinaison de petits détails peut révéler qui est quelqu’un.',
-      questions: ['Qu’est-ce qui, dans le message d’Hugo, ne sert pas à trouver un nom ?', 'Pourquoi les invités ont-ils besoin de l’adresse, mais pas l’assistant ?', 'Que feras-tu si tu n’es pas sûr de pouvoir écrire quelque chose ?'],
+      questions: ['Qu’est-ce qui, dans le message d’Hugo, ne sert pas à trouver un nom ?', 'Pourquoi les invités ont-ils besoin de l’adresse, mais pas l’assistant ?', 'Que feras-tu si tu hésites à écrire quelque chose ?'],
       misconception: 'Si on ne donne pas son nom, on ne partage rien de personnel. L’école, l’emploi du temps, les lieux et les photos réunis peuvent désigner une personne même sans son nom.',
       signs: ['Enlève le nom, l’école, le numéro de téléphone et le mot de passe, mais garde l’essentiel de la tâche.', 'Propose un remplacement : [adresse], « ma ville » au lieu de la rue.', 'Dit qu’il ou elle demanderait à un adulte en cas de doute.'],
       method: 'Tous les noms, adresses et numéros sont inventés. L’enfant ne tape rien sur lui-même : il ou elle marque seulement des morceaux d’un texte déjà écrit. La vérification compare les marques avec une explication rédigée à l’avance et explique chaque morceau.',
@@ -65,8 +65,8 @@ export const fr = {
     goal: 'Découvrons ce qu’on peut raconter à un assistant et ce qu’il vaut mieux garder pour soi.',
     steps: [
       { title: 'Qu’est-ce qui est en trop ?', intro: 'Un adulte lit à voix haute. ' + DEMO, bubble: { who: 'Hugo écrit à l’assistant', text: 'Je m’appelle Hugo Bernard. Aide-moi à trouver un nom pour mon équipe de robots. Je suis à l’école des Tilleuls.' },
-        redact: redact([NAME, P('Aide-moi à trouver un nom pour mon équipe de robots.', true, 'c’est la tâche elle-même — sans elle, l’assistant ne sait pas ce qu’il faut faire'), P('Je suis à l’école des Tilleuls.', false, 'l’école ne sert à rien pour nommer l’équipe')]) },
-      { title: 'Si tu n’es pas sûr, que fais-tu ?', questions: [{ q: 'Tu n’es pas sûr de pouvoir écrire quelque chose. Que fais-tu ?', options: ['Je demande à un adulte', 'J’écris tout ce que je sais'], correct: 0, ok: 'Oui ! En cas de doute, demande à un adulte.', noAll: 'Mieux vaut demander d’abord. À qui pourrais-tu demander ?' }] },
+        redact: redact([{ ...NAME, text: NAME.text.replace(/,$/, '.') }, P('Aide-moi à trouver un nom pour mon équipe de robots.', true, 'c’est la tâche elle-même — sans elle, l’assistant ne sait pas ce qu’il faut faire'), P('Je suis à l’école des Tilleuls.', false, 'l’école ne sert à rien pour nommer l’équipe')]) },
+      { title: 'Si tu hésites, que fais-tu ?', questions: [{ q: 'Tu ne sais pas si tu peux écrire quelque chose. Que fais-tu ?', options: ['Je demande à un adulte', 'J’écris tout ce que je sais'], correct: 0, ok: 'Oui ! En cas de doute, demande à un adulte.', noAll: 'Mieux vaut demander d’abord. À qui pourrais-tu demander ?' }] },
       { title: 'Nouvel exemple', intro: DEMO, questions: [{ q: 'Léa veut que l’assistant invente un petit poème. Qu’est-ce qu’elle n’a PAS besoin d’écrire ?', options: ['Son adresse', 'Le sujet du poème'], correct: 0, ok: 'Exact : un poème n’a pas besoin d’adresse.', noAll: 'Le sujet du poème, c’est la tâche elle-même. Alors, qu’est-ce qui est en trop ?' }] },
     ],
   },

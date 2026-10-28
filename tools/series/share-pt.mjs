@@ -10,9 +10,9 @@ const TASK = P('Me ajuda a pensar num nome para a nossa equipe de robótica.', t
 const ROBOT = P('Estamos montando um robô que separa o lixo.', true, 'ajuda a achar um nome que combine e não diz nada sobre quem você é');
 const NAME = P('Eu sou o Lucas Oliveira,', false, 'nome e sobrenome não são necessários para dar nome a uma equipe');
 const SCHOOL = P('estudo na Escola Sol Nascente, na Rua das Flores,', false, 'a escola e a rua mostram onde encontrar você e não são necessárias para a tarefa');
-const PHONE = P('meu celular é (00) 00000-0000,', false, 'número de telefone nunca é necessário para pensar num nome');
-const CLUB = P('todo sábado às 10h vou ao clube de xadrez perto da praça,', false, 'a sua rotina e o lugar mostram onde e quando dá para encontrar você');
-const TEAM = P('Somos quatro na equipe.', true, 'o número de integrantes não revela nada e pode ajudar com o nome');
+const PHONE = P('meu celular é (00) 00000-0000.', false, 'número de telefone nunca é necessário para pensar num nome');
+const CLUB = P('todo sábado às 10h vou ao clube de xadrez perto da praça.', false, 'a sua rotina e o lugar mostram onde e quando dá para encontrar você');
+const TEAM = P('Somos quatro na equipe.', null, 'o número de integrantes não revela nada e pode ajudar com o nome');
 
 const redact = (pieces, extra = {}) => ({
   q: 'Toque nos trechos que devem ser tirados ou trocados. A tarefa precisa continuar clara.',
@@ -24,7 +24,7 @@ const redact = (pieces, extra = {}) => ({
 });
 
 const laura = {
-  title: 'Exemplo novo — resolva sozinho',
+  title: 'Exemplo novo — sua vez',
   intro: 'Outro pedido. ' + DEMO + ' Dica: os convidados precisam do endereço, o assistente não — no texto dá para trocar por [endereço] e preencher depois.',
   bubble: { who: 'A Laura escreve ao assistente', text: 'Meu nome é Laura Souza. Me ajuda a escrever um convite para o meu aniversário, no sábado às 15h. Endereço: Rua dos Pinheiros, 7, apto 12. E me diz se a senha do meu jogo é forte: gatinho123?' },
   redact: redact([
@@ -64,7 +64,7 @@ export const pt = {
     goal: 'Vamos descobrir o que dá para contar a um assistente e o que é melhor guardar para nós.',
     steps: [
       { title: 'O que não é necessário?', intro: 'Um adulto lê em voz alta. ' + DEMO, bubble: { who: 'O Lucas escreve ao assistente', text: 'Eu sou o Lucas Oliveira. Me ajuda a pensar num nome para a minha equipe de robôs. Eu estudo na Escola Sol Nascente.' },
-        redact: redact([NAME, P('Me ajuda a pensar num nome para a minha equipe de robôs.', true, 'esta é a própria tarefa — sem ela o assistente não sabe o que é preciso'), P('Eu estudo na Escola Sol Nascente.', false, 'a escola não é necessária para dar nome à equipe')]) },
+        redact: redact([{ ...NAME, text: NAME.text.replace(/,$/, '.') }, P('Me ajuda a pensar num nome para a minha equipe de robôs.', true, 'esta é a própria tarefa — sem ela o assistente não sabe o que é preciso'), P('Eu estudo na Escola Sol Nascente.', false, 'a escola não é necessária para dar nome à equipe')]) },
       { title: 'Na dúvida, o que fazer?', questions: [{ q: 'Você não tem certeza se pode escrever alguma coisa. O que você faz?', options: ['Pergunto a um adulto', 'Escrevo tudo o que sei'], correct: 0, ok: 'Isso! Na dúvida, pergunte a um adulto.', noAll: 'É melhor perguntar antes. A quem você poderia perguntar?' }] },
       { title: 'Exemplo novo', intro: DEMO, questions: [{ q: 'A Laura quer que o assistente invente um poeminha. O que ela NÃO precisa escrever?', options: ['O endereço dela', 'Sobre o que é o poema'], correct: 0, ok: 'Certo: um poema não precisa de endereço.', noAll: 'Sobre o que é o poema é a própria tarefa. Então o que não é necessário?' }] },
     ],

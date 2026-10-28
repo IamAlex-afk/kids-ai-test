@@ -29,7 +29,7 @@ const url = (l, file = '') => `${SITE}workshop/${l}/${file}`;
 // JSON inside <script>: no "</script>" break-out, no HTML comment tricks
 const jsonForScript = (v) => JSON.stringify(v).replace(/</g, '\\u003c').replace(/>/g, '\\u003e').replace(/&/g, '\\u0026');
 
-function head(l, { title, desc, file, langs }) {
+function head(l, { title, desc, file, langs, wait = false }) {
   const alt = langs.map((x) => `  <link rel="alternate" hreflang="${x}" href="${url(x, file)}">`).join('\n');
   return `<!DOCTYPE html>
 <html lang="${l}" dir="ltr">
@@ -51,7 +51,8 @@ ${alt}
   <link rel="icon" href="../../favicon.ico" sizes="48x48">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../../css/workshop.css">
-  <link rel="stylesheet" href="../../css/lesson.css">`;
+  <link rel="stylesheet" href="../../css/lesson.css">${wait ? `
+  <script>document.documentElement.classList.add('wk-wait')</script>` : ''}`;
 }
 
 // Language menu: the same activity where it exists, else that language's lessons.
@@ -82,7 +83,7 @@ function activityPage(l, s, idx) {
   const a = t.adult;
   const explain = s.staticKeys.map((k) => `      <p>${esc(t[k])}</p>`).join('\n');
   const sources = s.sources.map((x) => `        <li><a href="${esc(x.url)}" rel="noopener" target="_blank">${esc(x.title)}</a><br><span class="wk-supports">${esc(u.supports)}: ${esc(x.supports[l])}</span></li>`).join('\n');
-  return `${head(l, { title: `${t.title} — ${u.series} | Kids AI Test`, desc: t.desc, file, langs: s.langs })}
+  return `${head(l, { title: `${t.title} — ${u.series} | Kids AI Test`, desc: t.desc, file, langs: s.langs, wait: true })}
 </head>
 <body class="wk-home wk-page wk-workshop" data-age="child">
 ${header(l, { home, langHref: langHref(file) })}

@@ -10,9 +10,9 @@ const TASK = P('Robotik takımımıza bir isim bulmama yardım et.', true, 'gör
 const ROBOT = P('Çöpleri ayıran bir robot yapıyoruz.', true, 'uygun bir isim bulmaya yardım eder ve senin kim olduğun hakkında hiçbir şey söylemez');
 const NAME = P('Ben Emre Yılmaz,', false, 'bir takıma isim koymak için adın ve soyadın gerekmez');
 const SCHOOL = P('Bahçe Sokak’taki Güneş İlkokulu’na gidiyorum,', false, 'okulun ve sokağın seni nerede bulabileceklerini gösterir ve görev için gerekmez');
-const PHONE = P('telefon numaram 0000 000 00 00,', false, 'bir isim bulmak için telefon numarası asla gerekmez');
-const CLUB = P('her Cumartesi saat 10’da parkın yanındaki satranç kulübüne gidiyorum,', false, 'programın ve gittiğin yer, seni nerede ve ne zaman bulabileceklerini gösterir');
-const TEAM = P('Takımda dört kişiyiz.', true, 'üye sayısı hiçbir şey açığa çıkarmaz ve isim bulmaya yardımcı olabilir');
+const PHONE = P('telefon numaram 0000 000 00 00.', false, 'bir isim bulmak için telefon numarası asla gerekmez');
+const CLUB = P('her Cumartesi saat 10’da parkın yanındaki satranç kulübüne gidiyorum.', false, 'programın ve gittiğin yer, seni nerede ve ne zaman bulabileceklerini gösterir');
+const TEAM = P('Takımda dört kişiyiz.', null, 'üye sayısı hiçbir şey açığa çıkarmaz ve isim bulmaya yardımcı olabilir');
 
 const redact = (pieces, extra = {}) => ({
   q: 'Çıkarılması ya da değiştirilmesi gereken parçalara dokun. Görev anlaşılır kalmalı.',
@@ -63,7 +63,7 @@ export const tr = {
     goal: 'Hadi, bir asistana neyi anlatabileceğimizi ve neyi kendimize saklamanın daha iyi olduğunu bulalım.',
     steps: [
       { title: 'Ne gereksiz?', intro: 'Bir yetişkin sesli okur. ' + DEMO, bubble: { who: 'Emre asistana yazıyor', text: 'Ben Emre Yılmaz. Robot takımıma bir isim bulmama yardım et. Güneş İlkokulu’na gidiyorum.' },
-        redact: redact([NAME, P('Robot takımıma bir isim bulmama yardım et.', true, 'görevin kendisi bu — o olmadan asistan neye ihtiyaç olduğunu bilemez'), P('Güneş İlkokulu’na gidiyorum.', false, 'takıma isim koymak için okul gerekmez')]) },
+        redact: redact([{ ...NAME, text: NAME.text.replace(/,$/, '.') }, P('Robot takımıma bir isim bulmama yardım et.', true, 'görevin kendisi bu — o olmadan asistan neye ihtiyaç olduğunu bilemez'), P('Güneş İlkokulu’na gidiyorum.', false, 'takıma isim koymak için okul gerekmez')]) },
       { title: 'Emin değilsen ne yaparsın?', questions: [{ q: 'Bir şeyi yazabilir misin, emin değilsin. Ne yaparsın?', options: ['Bir yetişkine sorarım', 'Bildiğim her şeyi yazarım'], correct: 0, ok: 'Evet! Emin olmadığında bir yetişkine sor.', noAll: 'Önce sormak daha iyi. Kime sorabilirsin?' }] },
       { title: 'Yeni örnek', intro: DEMO, questions: [{ q: 'Elif, asistanın kısa bir şiir yazmasını istiyor. Neyi yazmasına GEREK YOK?', options: ['Adresini', 'Şiirin ne hakkında olduğunu'], correct: 0, ok: 'Doğru: şiir için adres gerekmez.', noAll: 'Şiirin ne hakkında olduğu görevin kendisi. O zaman gereksiz olan ne?' }] },
     ],

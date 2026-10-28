@@ -34,6 +34,10 @@
   // texts: common, overridden by the age block
   const T = Object.assign({}, D.text.common, D.text[age] || {});
   const U = D.ui;
+  // The goal box is written into the page for the default age; show the
+  // goal of the age actually chosen.
+  const goalP = document.querySelector('.wk-goalbox p');
+  if (goalP && T.goal) goalP.textContent = T.goal;
   const fill = (s, v) => String(s).replace(/\{(\w+)\}/g, (_, k) => (k in v ? v[k] : ''));
 
   /* ── tiny DOM helpers (text only through textContent) ── */
@@ -91,6 +95,18 @@
     go(0);
   }
 
+  // Order of options on screen: two stay as written (yes/no, a pair of
+  // shapes); three or more are rotated by a hash of the question, and the
+  // rotation never leaves the first (right) answer on top.
+  function displayOrder(q, n) {
+    const idx = [...Array(n).keys()];
+    if (n < 3) return idx;
+    let h = 0;
+    for (const ch of String(q)) h = (h * 31 + ch.codePointAt(0)) >>> 0;
+    const shift = 1 + (h % (n - 1));
+    return idx.map((i) => (i + shift) % n);
+  }
+
   // A question with fixed options. check(i) → { ok, text }. Wrong → explanation
   // + "Try again"; right → explanation, done(). Options stay readable.
   let qn = 0;
@@ -98,15 +114,20 @@
     const id = 'wk-q' + (++qn);
     const fb = el('p', { class: 'wk-fb', role: 'status', 'aria-live': 'polite', id: id + '-fb' });
     const retry = el('button', { type: 'button', class: 'wk-retry', text: U.retry, hidden: true });
-    const btns = options.map((o, k) => el('li', null, el('button', {
-      type: 'button', class: 'wk-opt', onclick: () => pick(k),
-    }, o)));
+    // The texts list the right answer first; shown in that order, a child
+    // would learn "press the first one". Three or more options are shown in
+    // an order fixed by the question text (same every visit, no randomness);
+    // check() still gets the original index.
+    const order = displayOrder(q, options.length);
+    const btns = order.map((k) => el('li', null, el('button', {
+      type: 'button', class: 'wk-opt', onclick: () => pick(order.indexOf(k)),
+    }, options[k])));
     const list = el('ol', { class: 'wk-opts', 'aria-labelledby': id });
     list.append(...btns);
     box.append(el('p', { class: 'wk-check-q', id, text: q }), list, fb, retry);
     const buttons = btns.map((li) => li.firstChild);
-    function pick(k) {
-      const r = check(k);
+    function pick(k) {                                   // k = position on screen
+      const r = check(order[k]);
       buttons.forEach((b) => { b.disabled = true; });
       buttons[k].classList.add(r.ok ? 'is-right' : 'is-wrong');
       buttons[k].setAttribute('aria-describedby', fb.id);
@@ -134,15 +155,21 @@
   });
 
   const KINDS = {};
-  window.KAT_Workshop = { register: (k, fn) => { KINDS[k] = fn; }, el, say, fill, question, runSteps, withAge };
-
+  let started = false;
   function start() {
     const kind = KINDS[D.kind];
-    if (!kind) return;
+    if (!kind || started) return;
+    started = true;
     document.documentElement.classList.add('wk-js');
-    kind({ D, T, U, age, el, say, fill, question, runSteps });
+    // .wk-wait (set in <head>) keeps the parts below hidden until now, so
+    // filling the activity does not visibly push them down (CLS).
+    try { kind({ D, T, U, age, el, say, fill, question, runSteps }); }
+    finally { document.documentElement.classList.remove('wk-wait'); }
   }
-  // Activity modules register themselves below this file; start after them.
+  // Activity modules register themselves below this file. The page's own
+  // module starts the activity at once (still while the page is parsed), so
+  // the first paint already has it and nothing below jumps down (CLS).
+  window.KAT_Workshop = { register: (k, fn) => { KINDS[k] = fn; if (k === D.kind) start(); }, el, say, fill, question, runSteps, withAge };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
   else setTimeout(start, 0);
 })();

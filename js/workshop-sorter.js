@@ -52,7 +52,6 @@
     // 1. guess, then ask the sorter
     steps.push({ title: T.predictH, render(box, done) {
       if (T.adultSay) box.append(el('p', { class: 'wk-tiny-note', text: T.adultSay }));
-      box.append(el('p', { class: 'wk-goal', text: T.goal }));
       box.append(el('h3', { text: T.trainH }), cardRow(A.start, words));
       box.append(el('p', { class: 'wk-check-q', text: T.predictQ }), cardRow([A.probe], words));
       const fb = el('p', { class: 'wk-fb', role: 'status', 'aria-live': 'polite' });
@@ -62,7 +61,11 @@
         onclick: (e) => { guessed = c; opts.forEach((b) => b.setAttribute('aria-pressed', String(b === e.currentTarget))); run.disabled = false; } }, words[c]));
       const run = el('button', { type: 'button', class: 'wk-btn wk-btn-main', text: T.runBtn, disabled: true, onclick: () => {
         const g = M.predict(before, A.probe);
-        say(fb, fill(T.said, { guess: g ? words[g] : words.unknown }) + ' ' + T.wrongWhy + ' ' + T.tieNote, g === A.probe.label ? 'right' : 'wrong');
+        // The child predicted what the SORTER will say: judge that guess, not
+        // the sorter (a right prediction of its mistake is a right answer).
+        say(fb, (guessed === g ? T.guessRight : T.guessWrong) + ' ' + fill(T.said, { guess: g ? words[g] : words.unknown })
+          + ' ' + T.wrongWhy + ' ' + T.tieNote, guessed === g ? 'right' : 'wrong');
+        opts.forEach((b) => { b.disabled = true; });
         if (showErrors) guessBox.replaceChildren(el('p', { class: 'wk-errors' }, el('b', { text: T.errorsH + ': ' }), errLine(before)));
         run.disabled = true;
         done();
@@ -103,7 +106,7 @@
       const r = M.evaluate(after || before, A.test);
       const list = el('ul', { class: 'wk-results' });
       r.rows.forEach((row) => list.append(el('li', { class: row.ok ? 'is-right' : 'is-wrong' },
-        cardView(row.card, words), el('span', { text: `${row.ok ? '✓' : '✗'} ${U.modelSaid}: ${row.guess ? words[row.guess] : words.unknown}` }))));
+        cardView(row.card, words), el('span', { text: `${row.ok ? '✓' : '✗'} ${T.modelSaid || U.modelSaid}: ${row.guess ? words[row.guess] : words.unknown}` }))));
       box.append(list, el('p', { class: 'wk-score', text: fill(T.testScore, { right: r.right, total: r.total }) }));
       if (T.whyTestQ) {
         question(box, T.whyTestQ, T.whyTestOpts, (k) => (k === 0 ? { ok: true, text: T.whyTestOk } : { ok: false, text: T.whyTestNo }), done);

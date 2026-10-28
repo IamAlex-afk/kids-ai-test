@@ -10,9 +10,9 @@ const TASK = P('Hilf mir, einen Namen für unser Robotik-Team zu finden.', true,
 const ROBOT = P('Wir bauen einen Roboter, der Müll sortiert.', true, 'hilft, einen passenden Namen zu finden, und verrät nichts darüber, wer du bist');
 const NAME = P('Ich bin Jonas Becker,', false, 'Vor- und Nachname braucht man nicht, um ein Team zu benennen');
 const SCHOOL = P('gehe in die Lindenpark-Grundschule in der Gartenstraße,', false, 'Schule und Straße zeigen, wo man dich findet, und sind für die Aufgabe nicht nötig');
-const PHONE = P('meine Handynummer ist 0000 0000000,', false, 'eine Telefonnummer braucht man nie, um sich einen Namen auszudenken');
-const CLUB = P('jeden Samstag um 10 Uhr gehe ich in den Schachclub am Park,', false, 'dein Wochenplan und der Ort zeigen, wo und wann man dich antreffen kann');
-const TEAM = P('Wir sind zu viert im Team.', true, 'die Zahl der Mitglieder verrät nichts und kann beim Namen helfen');
+const PHONE = P('meine Handynummer ist 0000 0000000.', false, 'eine Telefonnummer braucht man nie, um sich einen Namen auszudenken');
+const CLUB = P('jeden Samstag um 10 Uhr gehe ich in den Schachclub am Park.', false, 'dein Wochenplan und der Ort zeigen, wo und wann man dich antreffen kann');
+const TEAM = P('Wir sind zu viert im Team.', null, 'die Zahl der Mitglieder verrät nichts und kann beim Namen helfen');
 
 const redact = (pieces, extra = {}) => ({
   q: 'Tippe auf die Stücke, die weg oder ersetzt werden sollen. Die Aufgabe muss klar bleiben.',
@@ -64,7 +64,7 @@ export const de = {
     goal: 'Wir finden heraus, was wir einem Assistenten erzählen können und was wir besser für uns behalten.',
     steps: [
       { title: 'Was ist überflüssig?', intro: 'Eine erwachsene Person liest vor. ' + DEMO, bubble: { who: 'Jonas schreibt dem Assistenten', text: 'Ich bin Jonas Becker. Hilf mir, einen Namen für mein Roboter-Team zu finden. Ich gehe in die Lindenpark-Grundschule.' },
-        redact: redact([NAME, P('Hilf mir, einen Namen für mein Roboter-Team zu finden.', true, 'das ist die Aufgabe selbst — ohne sie weiß der Assistent nicht, was gebraucht wird'), P('Ich gehe in die Lindenpark-Grundschule.', false, 'die Schule braucht man nicht, um das Team zu benennen')]) },
+        redact: redact([{ ...NAME, text: NAME.text.replace(/,$/, '.') }, P('Hilf mir, einen Namen für mein Roboter-Team zu finden.', true, 'das ist die Aufgabe selbst — ohne sie weiß der Assistent nicht, was gebraucht wird'), P('Ich gehe in die Lindenpark-Grundschule.', false, 'die Schule braucht man nicht, um das Team zu benennen')]) },
       { title: 'Unsicher — was tust du?', questions: [{ q: 'Du bist nicht sicher, ob du etwas schreiben darfst. Was tust du?', options: ['Ich frage einen Erwachsenen', 'Ich schreibe alles, was ich weiß'], correct: 0, ok: 'Ja! Im Zweifel frag einen Erwachsenen.', noAll: 'Besser erst fragen. Wen könntest du fragen?' }] },
       { title: 'Neues Beispiel', intro: DEMO, questions: [{ q: 'Emma möchte, dass der Assistent ein kleines Gedicht schreibt. Was muss sie NICHT schreiben?', options: ['Ihre Adresse', 'Worum es im Gedicht geht'], correct: 0, ok: 'Richtig: Für ein Gedicht braucht man keine Adresse.', noAll: 'Worum es im Gedicht geht, ist die Aufgabe selbst. Was ist dann überflüssig?' }] },
     ],
