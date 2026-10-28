@@ -70,7 +70,7 @@ test('parents\' FAQ: each page loads only its own language file', () => {
   for (const l of LANGS) {
     const files = [...read(page(l)).matchAll(/src="(js\/parents-faq[^"]*)"/g)].map(m => m[1]);
     assert.deepEqual(files, [`js/parents-faq/${l}.js`], page(l));
-    assert.match(read(`js/parents-faq/${l}.js`), new RegExp(`^window\\.PARENTS_FAQ=\\{\\n${l}:\\{`, 'm'), l);
+    assert.match(read(`js/parents-faq/${l}.js`), new RegExp(`^window\\.PARENTS_FAQ=\\{\\r?\\n${l}:\\{`, 'm'), l);
   }
 });
 
