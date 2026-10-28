@@ -172,6 +172,8 @@ body {
   text-transform: uppercase; letter-spacing: 2px;
   color: var(--accent); white-space: nowrap;
 }
+/* long headers (e.g. the FAQ's) wrap on phones instead of widening the page */
+@media (max-width: 480px) { .sec-header-text { white-space: normal; min-width: 0; } }
 .sec-header-line {
   flex: 1; height: 1px;
   background: linear-gradient(90deg, var(--border), transparent);
