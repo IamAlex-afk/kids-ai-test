@@ -11,8 +11,11 @@ const PORT = 8765;
 export default defineConfig({
   testDir: './tests',
   workers: 1,
-  retries: 1,                 // a test that passes only on retry is reported as flaky
+  retries: 1,                 // one retry, with a trace…
+  failOnFlakyTests: true,     // …but passing only on the retry still fails the run
+  forbidOnly: true,           // a stray test.only cannot silently skip the rest
   timeout: 60_000,
+  globalTimeout: 15 * 60_000,
   expect: { timeout: 8_000 },
   reporter: [['list'], ['html', { open: 'never', outputFolder: 'report' }]],
   outputDir: 'results',
