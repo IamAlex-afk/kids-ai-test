@@ -19,7 +19,7 @@ concurrency:
 jobs:
   e2e:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -34,7 +34,7 @@ jobs:
       - name: Install Playwright
         working-directory: e2e
         run: |
-          if [ -f package-lock.json ]; then npm ci; else npm install --no-audit --no-fund; fi
+          npm ci --no-audit --no-fund
           npx playwright install --with-deps chromium
           npx playwright --version
       - name: Run browser checks
@@ -48,5 +48,4 @@ jobs:
           path: |
             e2e/report/
             e2e/results/
-            e2e/package-lock.json
-          retention-days: 14
+          retention-days: 7
