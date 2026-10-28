@@ -107,7 +107,7 @@
   }
 
   function onClick(e) {
-    const t = e.target.closest('[data-audience], .wk-age, [data-wk-back], [data-wk-under5], [data-wk-change], [data-wk-home], [data-wk-old]');
+    const t = e.target.closest('[data-audience], .wk-age, [data-wk-back], [data-wk-under5], [data-wk-change], [data-wk-home], [data-wk-games], [data-wk-old]');
     if (!t) return;
 
     if (t.dataset.audience) {
@@ -124,6 +124,11 @@
         try { history.replaceState({ wk: 'hub' }, ''); } catch (_) {}
         showHub();
       }
+    } else if (t.hasAttribute('data-wk-games')) {
+      // straight to the existing game picker for the age chosen above
+      try { history.replaceState({ wk: 'hub' }, ''); } catch (_) {}
+      showHub();
+      K().openGames?.();
     } else if (t.hasAttribute('data-wk-old')) {
       // the older route: lessons with a quiz, the result card and the games
       try { history.replaceState({ wk: 'hub' }, ''); } catch (_) {}

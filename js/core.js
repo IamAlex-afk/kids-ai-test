@@ -1366,6 +1366,7 @@ window.KAT = {
   // js/entry.js
   selectAge,
   openModePicker,
+  openGames() { hide('mode-picker'); startGame(); },
   openParents,
   exitToHub,
   inSection: () => sectionEntry,

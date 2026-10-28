@@ -152,4 +152,24 @@
 .wk-route-list { margin: 0; padding-left: 1.2em; display: grid; gap: 2px; }
 .wk-route-list a { display: inline-flex; align-items: center; min-height: 44px; color: var(--violet); font-weight: 600; text-underline-offset: 3px; }
 .wk-route-old { margin: 18px 0 0; }
+.wk-games-go {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  margin: 0 0 20px;
+  padding: 12px 26px;
+  border: 2px solid var(--violet);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--violet);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+.wk-games-go:hover { background: #f1eaff; }
+.wk-games-go:focus-visible {
+  outline: 3px solid var(--violet);
+  outline-offset: 4px;
+}
 @media (max-width: 640px) { .wk-start { padding: 20px 18px; } .wk-start-go { justify-self: stretch; justify-content: center; } }
