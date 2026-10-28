@@ -1265,7 +1265,7 @@ function initParent() {
   renderParentFaq();
 }
 
-// Parents' Q&A (js/parents-faq.js). Claims that cite a study or a law must
+// Parents' Q&A (js/parents-faq/<lang>.js, the page's language only). Claims that cite a study or a law must
 // match the document named (corrected 2026-10: EU AI Act, WEF, memory
 // research; an unverifiable "Resnick 2017" removed). Only the age-specific section matching S.age is shown
 // (previously showed all four ages' Q&A stacked together regardless of
