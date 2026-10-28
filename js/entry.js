@@ -150,7 +150,8 @@
         showHub();
       }
     } else if (t.hasAttribute('data-wk-games')) {
-      openActivity('games');
+      // TEMPORARY BREAK for the sensitivity check — never merged
+      openActivity('lessons');
     } else if (t.hasAttribute('data-wk-old')) {
       openActivity('lessons');
     } else if (t.hasAttribute('data-wk-back')) {

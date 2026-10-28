@@ -39,7 +39,7 @@ jobs:
           npx playwright --version
       - name: Run browser checks
         working-directory: e2e
-        run: npx playwright test
+        run: npx playwright test -g "ru, 8–10: All games"
       - name: Upload report
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
