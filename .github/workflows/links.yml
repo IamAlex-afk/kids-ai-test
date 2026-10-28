@@ -1,0 +1,39 @@
+name: Links
+
+# Weekly (and on demand) check of the external links cited in the content.
+# Report only: job summary + artifact; never fails on a link, never edits or
+# deletes anything, no secrets. 403/429/timeouts = "could not check".
+on:
+  schedule:
+    - cron: '17 4 * * 1'
+  workflow_dispatch:
+  pull_request:
+    paths: ['links/**', '.github/workflows/links.yml']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: links
+  cancel-in-progress: true
+
+jobs:
+  links:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - name: Check external links
+        run: node links/check.mjs
+      - name: Upload report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: links-report
+          path: links/out/
+          retention-days: 30
