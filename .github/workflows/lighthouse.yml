@@ -1,0 +1,51 @@
+name: Lighthouse
+
+# Report-only Lighthouse of dist/ built from this commit (3 runs per page,
+# medians in the job summary, all reports as an artifact). Own runner — never
+# alongside the browser checks. Read-only: never deploys, no secrets.
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lighthouse-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - name: Build dist/
+        run: node tools/build.mjs --check
+      - name: Serve dist/ at /kids-ai-test/
+        run: |
+          mkdir -p site && ln -s "$PWD/dist" site/kids-ai-test
+          (python3 -m http.server 8766 --bind 127.0.0.1 --directory site >/dev/null 2>&1 &)
+          for i in $(seq 1 20); do curl -sf http://127.0.0.1:8766/kids-ai-test/ru.html -o /dev/null && break; sleep 1; done
+      - name: Install Lighthouse
+        working-directory: lighthouse
+        run: |
+          if [ -f package-lock.json ]; then npm ci --no-audit --no-fund; else npm install --no-audit --no-fund; fi
+          npx lighthouse --version
+      - name: Run Lighthouse (3 runs per page)
+        working-directory: lighthouse
+        run: node run.mjs
+      - name: Upload reports
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: lighthouse-reports
+          path: |
+            lighthouse/out/
+            lighthouse/package-lock.json
+          retention-days: 7
