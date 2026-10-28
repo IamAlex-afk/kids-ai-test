@@ -35,7 +35,7 @@ jobs:
       - name: Install Lighthouse
         working-directory: lighthouse
         run: |
-          if [ -f package-lock.json ]; then npm ci --no-audit --no-fund; else npm install --no-audit --no-fund; fi
+          npm ci --no-audit --no-fund
           npx lighthouse --version
       - name: Run Lighthouse (3 runs per page)
         working-directory: lighthouse
@@ -47,5 +47,4 @@ jobs:
           name: lighthouse-reports
           path: |
             lighthouse/out/
-            lighthouse/package-lock.json
           retention-days: 7
