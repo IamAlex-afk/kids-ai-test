@@ -1390,7 +1390,8 @@ window.KAT = {
    INIT
 ───────────────────────────────────────────── */
 function init() {
-  S.lang = document.documentElement.lang || 'en';
+  // pt.html says lang="pt-BR"; every string table is keyed by the base code
+  S.lang = (document.documentElement.lang || 'en').split('-')[0].toLowerCase();
   lsLoad();
   setupPwaInstall();
   const exitTitle = ui('ui_exit_title');
