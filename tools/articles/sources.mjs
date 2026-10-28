@@ -1,0 +1,68 @@
+// Sources the articles cite. Each entry was opened and read; `quote` is copied
+// verbatim from it (original language) and is what the citing claims rest on.
+// `checked` is the date it was last opened. Add a source only after reading it.
+export const SOURCES = {
+  lecun2015: {
+    title: 'Deep learning',
+    by: 'LeCun, Bengio, Hinton · Nature 521, 436–444',
+    year: 2015,
+    url: 'https://www.nature.com/articles/nature14539',
+    quote: 'Deep learning discovers intricate structure in large data sets by using the backpropagation algorithm to indicate how a machine should change its internal parameters',
+    where: 'abstract',
+    checked: '2026-10-28',
+  },
+  ai4k12: {
+    title: 'Five Big Ideas in AI',
+    by: 'AI4K12 (AAAI, CSTA)',
+    year: 2020,
+    url: 'https://ai4k12.org/big-idea-1-overview/',
+    quote: 'Perception is the process of extracting meaning from sensory signals.',
+    where: 'Big Idea 1 overview; the five ideas: Perception, Representation & Reasoning, Learning, Natural Interaction, Societal Impact',
+    checked: '2026-10-28',
+  },
+  ji2023: {
+    title: 'Survey of Hallucination in Natural Language Generation',
+    by: 'Ji et al. · ACM Computing Surveys',
+    year: 2023,
+    url: 'https://arxiv.org/abs/2202.03629',
+    quote: 'deep learning based generation is prone to hallucinate unintended text, which degrades the system performance',
+    where: 'abstract',
+    checked: '2026-10-28',
+  },
+  euai50: {
+    title: 'EU AI Act, Article 50: transparency obligations',
+    by: 'Regulation (EU) 2024/1689',
+    year: 2024,
+    url: 'https://artificialintelligenceact.eu/article/50/',
+    quote: 'the natural persons concerned are informed that they are interacting with an AI system',
+    where: 'Art. 50(1); deep fakes: Art. 50(4) "shall disclose that the content has been artificially generated or manipulated"',
+    checked: '2026-10-28',
+  },
+  druga2017: {
+    title: '"Hey Google is it OK if I eat you?" Initial Explorations in Child-Agent Interaction',
+    by: 'Druga, Williams, Breazeal, Resnick · IDC 2017, MIT Media Lab',
+    year: 2017,
+    url: 'https://www.media.mit.edu/publications/child-agent-interaction/',
+    quote: '26 participants (3-10 years old) … perceived intelligence, identity attribution, playfulness, and understanding',
+    where: 'abstract: children played with Amazon Alexa, Google Home, Cozmo and Julie Chatbot; the four themes that emerged',
+    checked: '2026-10-28',
+  },
+  unicef2025: {
+    title: 'Guidance on AI and children, version 3.0',
+    by: 'UNICEF Innocenti',
+    year: 2025,
+    url: 'https://www.unicef.org/innocenti/reports/policy-guidance-ai-children',
+    quote: 'Ensure safety for children · Protect children\'s data and privacy · Provide transparency, explainability and accountability for children · Prepare and skill children for present and future developments in AI',
+    where: '4 of the 10 requirements for child-centred AI; v3.0 (December 2025) adds AI companions',
+    checked: '2026-10-28',
+  },
+  unesco2024: {
+    title: 'AI competency framework for students',
+    by: 'UNESCO',
+    year: 2024,
+    url: 'https://www.unesco.org/en/articles/what-you-need-know-about-unescos-new-ai-competency-frameworks-students-and-teachers',
+    quote: 'A human-centred mindset: Encouraging students to understand and assert their agency in relation to AI.',
+    where: 'UNESCO summary of 3 September 2024; the other competencies: ethics of AI, AI techniques and applications, AI system design',
+    checked: '2026-10-28',
+  },
+};

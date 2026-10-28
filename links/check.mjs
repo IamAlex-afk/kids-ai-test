@@ -13,8 +13,9 @@ import path from 'node:path';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const SOURCES = [
-  ['tools/series', /\.mjs$/], ['data', /\.js$/], ['js', /\.js$/],
+  ['tools/series', /\.mjs$/], ['tools/articles', /\.mjs$/], ['data', /\.js$/], ['js', /\.js$/],
   ...fs.readdirSync(path.join(ROOT, 'lessons')).map((l) => [`lessons/${l}`, /\.html$/]),
+  ...fs.readdirSync(path.join(ROOT, 'articles')).map((l) => [`articles/${l}`, /\.html$/]),
   ...fs.readdirSync(path.join(ROOT, 'workshop')).filter((d) => fs.statSync(path.join(ROOT, 'workshop', d)).isDirectory())
     .map((l) => [`workshop/${l}`, /\.html$/]),
   ['.', /\.html$/],

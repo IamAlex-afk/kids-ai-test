@@ -14,6 +14,7 @@ const PAGES = [
   ['home-ru', 'ru.html'],
   ['lesson-ru-8-10-1', 'lessons/ru/8-10-1.html'],
   ['workshop-ru-sorter', 'workshop/ru/sorter.html?age=8-10'],
+  ['article-ru-explain', 'articles/ru/explain-ai-to-a-child.html'],
 ];
 const RUNS = 3;
 const CATS = ['performance', 'accessibility', 'best-practices', 'seo'];
