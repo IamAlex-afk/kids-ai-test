@@ -70,4 +70,27 @@ export default {
     ],
     conclusion: 'Kısa ve deneyerek anlatın: "bu bir program, örneklerden tahmin eder ve yanılabilir". İki kural üzerinde anlaşın: önemli olanı kontrol etmek ve kişisel olanı paylaşmamak. 5–7 yaşta yalnızca bir yetişkinle birlikte.',
   },
+  'ai-and-homework': {
+    title: 'Yapay zekâ ve ödev: senin yerine yapmak değil, yardım etmek',
+    desc: 'Ödevi yapay zekâyla yapıp yine de düşünmeyi öğrenmek mümkün mü? GPT-4 ile yapılan okul deneyi ne gösterdi, kendini sınamak neden tekrar okumaktan iyi, 5–7, 8–10, 11–13 ve 14+ yaş için kurallar.',
+    lead: 'Yapay zekâ bir saniyede hazır bir çözüm verebilir. Ama ödev, cevaba sahip olmak için değil, akılda kalan şey için yapılır. Bilinenler ve yapay zekâyı öğrenmeye yardım edecek şekilde kullanmanın yolu burada.',
+    facts: [
+      'Matematik dersinde yaklaşık bin lise öğrencisiyle yapılan bir deneyde, alıştırma sırasında GPT-4 erişimi notları yükseltti. Ancak erişim kaldırılınca standart sohbet botunu kullanan öğrenciler, hiç yapay zekâ kullanmamış olanlardan %17 daha kötü sonuç aldı. Öğrenmeyi korumak için ayarlanmış öğretmen sürümü bu zararı büyük ölçüde ortadan kaldırdı.',
+      'Birkaç gün sonra, kendini hafızadan sınayan kişi tekrar okuyandan daha çok hatırlar; oysa tekrar okumak insana daha emin hissettirir.',
+      'UNESCO\'nun 2023 tarihli rehberi, sınıfta yapay zekâ araçlarının kullanımı için 13 yaş sınırı koyar ve öğretmenlerin eğitilmesini ister.',
+      'Yapay zekânın yazdığı metin, kendinden emin görünse bile yanlış olabilir.',
+    ],
+    ages: [
+      { say: ['Ödevi sen yaparsın. Zorlanırsan yapay zekâyı değil, bir büyüğünü çağır.', 'Yapay zekâ yanlış cevap verebilir, bu yüzden büyükler her şeyi kontrol eder.', 'Aferin, en hızlı cevaba değil, düşündüğün cevaba.'] },
+      { say: ['Önce kendin dene, sonra kontrol et.', 'Yapay zekâya soracaksan hazır cevabı değil, ipucu iste.', 'Yapay zekânın cevabını ders kitabıyla ya da bir büyüğünle karşılaştır.'] },
+      { say: ['Kural: kendin düşün → sor → bir kaynakla karşılaştır → kendi sözlerinle açıkla.', 'Yapay zekâ olmadan açıklayamıyorsan henüz anlamamışsındır.', 'Sınavdan önce yardımları kapat ve kendini hafızadan sına.'] },
+      { say: ['GPT-4 deneyinde notlar alıştırmada yükseldi, erişim olmadan %17 düştü: koltuk değneği olarak yapay zekâ öğrenmeyi engeller.', 'Yapay zekâyı bir öğretmen gibi kullan: çözümü değil, konuyla ilgili sorular ve hatalarının analizini iste.', 'Öğretmenin yapay zekâya izin veriyorsa nerede yardım ettiğini söyle ve cevaplarını kontrol et: yapay zekâ hata yapar.'] },
+    ],
+    myths: [
+      { m: 'Yapay zekâ benimle birlikte çözdüyse öğrenmişimdir.', t: 'Yapay zekâyla alıştırmada notlar yükseldi ama onsuz, yapay zekâsız öğrenenlerden daha düşük kaldı. Öğreten, kendin yaptığındır.' },
+      { m: 'Hazır bir çözümü tekrar okumak onu öğrenmektir.', t: 'Tekrar okumak güven verir ama birkaç gün sonra kendi hatırlamaya çalışan daha çok hatırlar.' },
+      { m: 'Yapay zekânın cevabı olduğu gibi teslim edilebilir.', t: 'Yapay zekâ kendinden emin şekilde yanılabilir. Kitapla kontrol et ve çözümü kendi sözlerinle açıkla.' },
+    ],
+    conclusion: 'Ödevde yapay zekâ, çözücü olarak değil öğretmen olarak işe yarar: önce sen düşünürsün, yapay zekâ ipucu verir ve kontrol eder, anladığını ise onsuz sınarsın. Küçükler yalnızca bir yetişkinle; sınıfta yapay zekâ araçları için UNESCO 13 yaşı belirtir.',
+  },
 };

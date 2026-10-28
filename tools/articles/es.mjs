@@ -70,4 +70,27 @@ export default {
     ],
     conclusion: 'Explique de forma breve y con la experiencia: «es un programa, adivina a partir de ejemplos y puede equivocarse». Acuerden dos reglas: comprobar lo importante y no compartir lo personal. De 5 a 7 años, solo junto con un adulto.',
   },
+  'ai-and-homework': {
+    title: 'La IA y los deberes: ayudar, no resolverlos por ti',
+    desc: '¿Se pueden hacer los deberes con IA sin dejar de pensar? Qué mostró un experimento escolar con GPT-4, por qué ponerse a prueba supera a releer y reglas para 5–7, 8–10, 11–13 y 14+ años.',
+    lead: 'La IA puede dar una solución terminada en un segundo. Pero los deberes no son para tener la respuesta, sino para lo que queda en la cabeza. Esto es lo que se sabe y cómo usar la IA para que ayude a aprender.',
+    facts: [
+      'En un experimento con casi mil estudiantes de matemáticas de secundaria, tener GPT-4 durante la práctica mejoró las notas. Pero al quitar el acceso, quienes habían usado un chatbot normal rindieron un 17 % peor que quienes nunca tuvieron IA. Una versión tutor con ajustes pensados para proteger el aprendizaje eliminó en gran parte ese daño.',
+      'Días después recuerda más quien se puso a prueba de memoria que quien releyó, aunque releer hace sentir más seguridad.',
+      'La guía de la UNESCO de 2023 fija una edad mínima de 13 años para usar herramientas de IA en el aula y pide formar al profesorado.',
+      'Un texto de IA puede ser falso aunque suene seguro.',
+    ],
+    ages: [
+      { say: ['La tarea la haces tú. Si es difícil, llama a una persona adulta, no a la IA.', 'La IA puede responder mal, por eso los adultos lo revisan todo.', 'Lo valioso no es la respuesta más rápida, sino la que pensaste tú.'] },
+      { say: ['Primero inténtalo tú y luego compruébalo.', 'Si preguntas a una IA, pide una pista, no la respuesta hecha.', 'Compara la respuesta de la IA con el libro de texto o con un adulto.'] },
+      { say: ['La regla: piensa tú → pregunta → compara con una fuente → explícalo con tus palabras.', 'Si no puedes explicarlo sin IA, todavía no lo has entendido.', 'Antes de un examen, cierra las ayudas y ponte a prueba de memoria.'] },
+      { say: ['En el experimento con GPT-4 las notas subían en la práctica y bajaban un 17 % sin acceso: la IA como muleta impide aprender.', 'Usa la IA como tutor: pídele preguntas sobre el tema y que analice tus errores, no la solución.', 'Si tu profesor permite la IA, di en qué te ayudó y comprueba sus respuestas: la IA se equivoca.'] },
+    ],
+    myths: [
+      { m: 'Si la IA lo resolvió conmigo, ya lo aprendí.', t: 'Con IA las notas subían en la práctica, pero sin ella acababan más bajas que las de quienes aprendieron sin IA. Enseña lo que haces tú.' },
+      { m: 'Releer una solución hecha es aprenderla.', t: 'Releer da seguridad, pero días después recuerda más quien lo recordó por sí mismo.' },
+      { m: 'La respuesta de la IA se puede entregar tal cual.', t: 'La IA puede equivocarse con seguridad. Compruébala con el libro y explica la solución con tus palabras.' },
+    ],
+    conclusion: 'En los deberes la IA sirve como tutor, no como solucionador: primero piensas tú, la IA da pistas y comprueba, y tu comprensión la pruebas sin ella. Los más pequeños, solo con un adulto; para herramientas de IA en el aula, la UNESCO señala la edad de 13 años.',
+  },
 };

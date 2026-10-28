@@ -70,4 +70,27 @@ export default {
     ],
     conclusion: 'Jelaskan secara singkat dan lewat pengalaman: "ini program, ia menebak dari contoh dan bisa salah". Sepakati dua aturan: periksa hal penting dan jangan bagikan hal pribadi. Untuk usia 5–7, hanya bersama orang dewasa.',
   },
+  'ai-and-homework': {
+    title: 'AI dan PR: membantu, bukan mengerjakan untukmu',
+    desc: 'Bisakah mengerjakan PR dengan AI tanpa berhenti berpikir? Apa hasil eksperimen GPT-4 di sekolah, mengapa menguji diri lebih baik daripada membaca ulang, dan aturan untuk usia 5–7, 8–10, 11–13, dan 14+.',
+    lead: 'AI bisa memberi jawaban jadi dalam sedetik. Tetapi PR bukan soal jawabannya, melainkan soal apa yang tertinggal di kepala. Inilah yang sudah diketahui dan cara memakai AI agar membantu belajar.',
+    facts: [
+      'Dalam eksperimen dengan hampir seribu siswa SMA pada pelajaran matematika, akses ke GPT-4 saat latihan menaikkan nilai. Namun ketika akses dicabut, siswa yang memakai chatbot biasa mendapat nilai 17% lebih rendah daripada yang tidak pernah memakai AI. Versi tutor dengan pengaturan yang melindungi proses belajar sebagian besar menghilangkan dampak buruk ini.',
+      'Beberapa hari kemudian, orang yang menguji dirinya dari ingatan lebih banyak ingat daripada yang membaca ulang, walaupun membaca ulang membuat orang merasa lebih yakin.',
+      'Panduan UNESCO tahun 2023 menetapkan batas usia 13 tahun untuk memakai alat AI di kelas dan meminta pelatihan bagi guru.',
+      'Teks dari AI bisa salah walaupun terdengar yakin.',
+    ],
+    ages: [
+      { say: ['Tugasnya kamu kerjakan sendiri. Kalau sulit, panggil orang dewasa, bukan AI.', 'AI bisa menjawab salah, karena itu orang dewasa memeriksa semuanya.', 'Hebat itu bukan yang paling cepat menjawab, tapi yang sudah berpikir.'] },
+      { say: ['Coba sendiri dulu, lalu periksa.', 'Kalau bertanya ke AI, minta petunjuk, bukan jawaban jadi.', 'Cocokkan jawaban AI dengan buku pelajaran atau tanyakan orang dewasa.'] },
+      { say: ['Aturannya: pikir sendiri → tanya → cocokkan dengan sumber → jelaskan dengan kata-katamu.', 'Kalau kamu tidak bisa menjelaskannya tanpa AI, berarti kamu belum paham.', 'Sebelum ulangan, tutup bantuan dan uji dirimu dari ingatan.'] },
+      { say: ['Dalam eksperimen GPT-4, nilai naik saat latihan dan turun 17% tanpa akses: AI sebagai tongkat penyangga menghambat belajar.', 'Pakai AI sebagai tutor: minta pertanyaan tentang topik dan analisis kesalahanmu, bukan solusinya.', 'Kalau gurumu mengizinkan AI, sebutkan di bagian mana AI membantu dan periksa jawabannya: AI bisa salah.'] },
+    ],
+    myths: [
+      { m: 'Kalau AI menyelesaikannya bersamaku, berarti aku sudah belajar.', t: 'Dengan AI, nilai naik saat latihan, tetapi tanpa AI nilainya lebih rendah daripada yang belajar tanpa AI. Yang mengajarimu adalah yang kamu kerjakan sendiri.' },
+      { m: 'Membaca ulang solusi jadi berarti mempelajarinya.', t: 'Membaca ulang memberi rasa yakin, tetapi beberapa hari kemudian yang mengingat sendiri lebih banyak ingat.' },
+      { m: 'Jawaban AI boleh dikumpulkan apa adanya.', t: 'AI bisa salah dengan yakin. Periksa dengan buku dan jelaskan solusinya dengan kata-katamu sendiri.' },
+    ],
+    conclusion: 'Untuk PR, AI berguna sebagai tutor, bukan sebagai pengerja: kamu berpikir dulu, AI memberi petunjuk dan memeriksa, lalu pemahamanmu diuji tanpa AI. Anak yang lebih kecil hanya bersama orang dewasa; untuk alat AI di kelas, UNESCO menyebut usia 13 tahun.',
+  },
 };

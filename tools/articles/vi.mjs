@@ -72,4 +72,27 @@ export default {
     ],
     conclusion: 'Hãy giải thích ngắn gọn và qua trải nghiệm: "đây là một chương trình, nó đoán từ ví dụ và có thể sai". Thống nhất hai quy tắc: kiểm tra điều quan trọng và không chia sẻ thông tin cá nhân. Với trẻ 5–7 tuổi, chỉ dùng cùng người lớn.',
   },
+  'ai-and-homework': {
+    title: 'AI và bài tập về nhà: giúp đỡ, không làm thay',
+    desc: 'Làm bài tập với AI mà vẫn biết tự suy nghĩ? Thí nghiệm GPT-4 ở trường học cho thấy gì, vì sao tự kiểm tra tốt hơn đọc lại, và quy tắc cho 5–7, 8–10, 11–13 và từ 14 tuổi.',
+    lead: 'AI có thể đưa ra lời giải hoàn chỉnh trong một giây. Nhưng bài tập về nhà không nhằm có đáp án, mà nhằm những gì còn lại trong đầu. Đây là những điều đã biết và cách dùng AI để AI giúp việc học.',
+    facts: [
+      'Trong một thí nghiệm với gần một nghìn học sinh trung học học toán, được dùng GPT-4 khi luyện tập giúp điểm số tăng. Nhưng khi bị lấy lại quyền dùng, những em đã dùng chatbot thông thường làm bài kém hơn 17% so với những em chưa từng dùng AI. Phiên bản gia sư với thiết lập bảo vệ việc học đã loại bỏ phần lớn tác hại này.',
+      'Vài ngày sau, người tự kiểm tra bằng trí nhớ nhớ tốt hơn người đọc lại, dù đọc lại khiến người ta cảm thấy tự tin hơn.',
+      'Hướng dẫn năm 2023 của UNESCO đặt giới hạn độ tuổi 13 cho việc dùng công cụ AI trong lớp học và kêu gọi đào tạo giáo viên.',
+      'Chữ do AI viết có thể sai dù nghe rất tự tin.',
+    ],
+    ages: [
+      { say: ['Bài tập là em tự làm. Nếu khó, hãy gọi người lớn, không phải AI.', 'AI có thể trả lời sai, nên người lớn luôn kiểm tra.', 'Giỏi không phải là trả lời nhanh nhất, mà là đã tự suy nghĩ.'] },
+      { say: ['Hãy tự thử trước, rồi mới kiểm tra.', 'Nếu hỏi AI, hãy xin gợi ý, đừng xin đáp án có sẵn.', 'So câu trả lời của AI với sách giáo khoa hoặc hỏi người lớn.'] },
+      { say: ['Quy tắc: tự nghĩ → hỏi → so với nguồn → giải thích bằng lời của mình.', 'Nếu không giải thích được khi không có AI, nghĩa là em chưa hiểu.', 'Trước bài kiểm tra, hãy tắt các gợi ý và tự kiểm tra bằng trí nhớ.'] },
+      { say: ['Trong thí nghiệm GPT-4, điểm tăng khi luyện tập nhưng giảm 17% khi không còn AI: dựa dẫm vào AI cản trở việc học.', 'Hãy dùng AI như gia sư: xin câu hỏi về chủ đề và phân tích lỗi của mình, không xin lời giải.', 'Nếu giáo viên cho phép dùng AI, hãy nói rõ AI đã giúp ở đâu và kiểm tra câu trả lời: AI có thể sai.'] },
+    ],
+    myths: [
+      { m: 'Nếu AI cùng mình giải bài thì mình đã học được.', t: 'Có AI khi luyện tập thì điểm tăng, nhưng không có AI thì điểm lại thấp hơn những em học không dùng AI. Điều giúp mình học là việc mình tự làm.' },
+      { m: 'Đọc lại lời giải có sẵn là học thuộc.', t: 'Đọc lại khiến mình tự tin, nhưng vài ngày sau người tự nhớ lại sẽ nhớ tốt hơn.' },
+      { m: 'Có thể nộp nguyên câu trả lời của AI.', t: 'AI có thể sai một cách tự tin. Hãy kiểm tra với sách và tự giải thích lời giải bằng lời của mình.' },
+    ],
+    conclusion: 'Với bài tập về nhà, AI hữu ích như một gia sư, không phải người giải hộ: em tự nghĩ trước, AI gợi ý và kiểm tra, rồi em tự kiểm tra mức hiểu bài mà không có AI. Trẻ nhỏ chỉ dùng cùng người lớn; với công cụ AI trong lớp học, UNESCO nêu độ tuổi 13.',
+  },
 };

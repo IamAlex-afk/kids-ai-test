@@ -70,4 +70,27 @@ export default {
     ],
     conclusion: 'Explain briefly and through experience: "it is a program, it guesses from examples and can be wrong". Agree on two rules — check important things and don\'t share personal ones. At 5–7, only together with an adult.',
   },
+  'ai-and-homework': {
+    title: 'AI and homework: help, not doing it for you',
+    desc: 'Can you do homework with AI and still learn to think? What a school experiment with GPT-4 showed, why testing yourself beats rereading, and rules for ages 5–7, 8–10, 11–13 and 14+.',
+    lead: 'AI can produce a finished solution in a second. But homework is not about the answer — it is about what stays in your head. Here is what is known about it, and how to use AI so that it helps you learn.',
+    facts: [
+      'In an experiment with nearly a thousand high school maths students, access to GPT-4 during practice raised grades. But once access was taken away, students who had used a standard chatbot did 17% worse than those who never had AI. A tutor version with settings designed to safeguard learning largely removed this harm.',
+      'Days later, people who tested themselves from memory remember more than people who reread — even though rereading makes them feel more confident.',
+      'UNESCO\'s 2023 guidance sets an age limit of 13 for using AI tools in the classroom and calls for teacher training on it.',
+      'Text from an AI can be wrong even when it sounds confident.',
+    ],
+    ages: [
+      { say: ['You do the task yourself. If it is hard, call a grown-up, not the AI.', 'AI can give a wrong answer, so grown-ups check everything.', 'Well done is not the fastest answer — it is the one you thought about.'] },
+      { say: ['Try it yourself first, then check.', 'If you ask an AI, ask for a hint, not the finished answer.', 'Check the AI\'s answer against your textbook or with an adult.'] },
+      { say: ['The rule: think yourself → ask → check against a source → explain in your own words.', 'If you can\'t explain it without AI, you haven\'t understood it yet.', 'Before a test, close the hints and check yourself from memory.'] },
+      { say: ['In the GPT-4 experiment grades rose in practice and fell by 17% without access: an AI crutch gets in the way of learning.', 'Use AI as a tutor: ask for questions on the topic and for a breakdown of your mistakes, not for the solution.', 'If your teacher allows AI, say where it helped, and check its answers: AI makes mistakes.'] },
+    ],
+    myths: [
+      { m: 'If AI solved it with me, I have learned it.', t: 'With AI in practice grades went up, but without it they ended up lower than for those who learned without AI. What teaches is what you do yourself.' },
+      { m: 'Rereading a finished solution means learning it.', t: 'Rereading gives confidence, but days later the person who recalled it themselves remembers more.' },
+      { m: 'You can hand in an AI answer as it is.', t: 'AI can be confidently wrong. Check it against your textbook and explain the solution in your own words.' },
+    ],
+    conclusion: 'In homework, AI is useful as a tutor, not as a solver: you think first, AI gives hints and checks, and you test your understanding without it. Younger children — only together with an adult; for AI tools in the classroom UNESCO names the age of 13.',
+  },
 };

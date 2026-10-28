@@ -70,4 +70,27 @@ export default {
     ],
     conclusion: 'Kurz und über Erfahrung erklären: „Das ist ein Programm, es rät aus Beispielen und kann sich irren.“ Vereinbaren Sie zwei Regeln – Wichtiges prüfen und Persönliches nicht teilen. Mit 5–7 Jahren nur gemeinsam mit einem Erwachsenen.',
   },
+  'ai-and-homework': {
+    title: 'KI und Hausaufgaben: helfen, nicht für dich lösen',
+    desc: 'Hausaufgaben mit KI – und trotzdem denken lernen? Was ein Schulexperiment mit GPT-4 zeigte, warum Selbsttesten besser ist als Wiederlesen, Regeln für 5–7, 8–10, 11–13 und ab 14 Jahren.',
+    lead: 'KI liefert in einer Sekunde eine fertige Lösung. Aber bei Hausaufgaben geht es nicht um die Antwort, sondern um das, was im Kopf bleibt. Das ist darüber bekannt – und so hilft KI beim Lernen.',
+    facts: [
+      'In einem Experiment mit fast tausend Schülerinnen und Schülern im Fach Mathematik verbesserte der Zugang zu GPT-4 beim Üben die Noten. Als der Zugang wegfiel, schnitten die Jugendlichen mit dem normalen Chatbot jedoch um 17 % schlechter ab als jene, die nie KI hatten. Eine Tutor-Version mit Einstellungen, die das Lernen schützen, verhinderte diesen Schaden weitgehend.',
+      'Nach einigen Tagen erinnert sich besser, wer sich aus dem Gedächtnis selbst abgefragt hat, als wer wiedergelesen hat – obwohl Wiederlesen das Gefühl gibt, sicherer zu sein.',
+      'Die UNESCO legt in ihren Empfehlungen von 2023 eine Altersgrenze von 13 Jahren für KI-Werkzeuge im Unterricht fest und fordert Schulungen für Lehrkräfte.',
+      'Text von einer KI kann falsch sein, auch wenn er sicher klingt.',
+    ],
+    ages: [
+      { say: ['Die Aufgabe machst du selbst. Wenn es schwer ist, ruf einen Erwachsenen, nicht die KI.', 'KI kann falsch antworten, darum prüfen Erwachsene alles.', 'Toll ist nicht die schnellste Antwort, sondern die, über die du nachgedacht hast.'] },
+      { say: ['Versuch es zuerst selbst, dann prüf es.', 'Wenn du eine KI fragst, bitte um einen Tipp, nicht um die fertige Antwort.', 'Vergleich die Antwort der KI mit dem Schulbuch oder frag einen Erwachsenen.'] },
+      { say: ['Die Regel: selbst denken → fragen → mit einer Quelle vergleichen → in eigenen Worten erklären.', 'Wenn du es ohne KI nicht erklären kannst, hast du es noch nicht verstanden.', 'Vor einer Klassenarbeit: Hilfen zu und dich selbst aus dem Gedächtnis abfragen.'] },
+      { say: ['Im GPT-4-Experiment stiegen die Noten beim Üben und fielen ohne Zugang um 17 %: KI als Krücke behindert das Lernen.', 'Nutz KI als Tutor: Bitte um Fragen zum Thema und um eine Analyse deiner Fehler, nicht um die Lösung.', 'Wenn deine Lehrkraft KI erlaubt, sag, wo sie geholfen hat, und prüf ihre Antworten: KI macht Fehler.'] },
+    ],
+    myths: [
+      { m: 'Wenn die KI es mit mir gelöst hat, habe ich es gelernt.', t: 'Mit KI stiegen die Noten beim Üben, ohne sie lagen sie danach niedriger als bei denen, die ohne KI gelernt hatten. Es lehrt, was du selbst tust.' },
+      { m: 'Eine fertige Lösung wiederzulesen heißt, sie zu lernen.', t: 'Wiederlesen gibt Sicherheit, aber nach einigen Tagen erinnert sich besser, wer selbst abgerufen hat.' },
+      { m: 'Eine KI-Antwort kann man so abgeben, wie sie ist.', t: 'KI kann sich mit Überzeugung irren. Prüf sie am Schulbuch und erklär die Lösung in eigenen Worten.' },
+    ],
+    conclusion: 'Bei Hausaufgaben hilft KI als Tutor, nicht als Löser: Zuerst denkst du selbst, die KI gibt Tipps und prüft, und dein Verständnis testest du ohne sie. Jüngere Kinder nur gemeinsam mit einem Erwachsenen; für KI-Werkzeuge im Unterricht nennt die UNESCO ein Alter von 13 Jahren.',
+  },
 };

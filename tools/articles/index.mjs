@@ -28,4 +28,14 @@ export const ARTICLES = [
     level: 'experts',
     links: ['workshop:sorter:5-7', 'workshop:sorter:8-10', 'workshop:check:11-13', 'workshop:share:14-plus'],
   },
+  {
+    slug: 'ai-and-homework',
+    published: '2026-10-28',
+    checked: '2026-10-28',
+    audience: 'family',
+    facts: [['bastani2025'], ['roediger2006'], ['unesco2023'], ['ji2023']],
+    myths: [['bastani2025'], ['roediger2006'], ['ji2023']],
+    level: 'data',
+    links: ['lesson:5-7-5', 'lesson:8-10-3', 'lesson:11-13-8', 'lesson:14-plus-8'],
+  },
 ];

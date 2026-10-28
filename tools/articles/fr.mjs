@@ -70,4 +70,27 @@ export default {
     ],
     conclusion: 'Expliquez brièvement et par l’expérience : « c’est un programme, il devine à partir d’exemples et peut se tromper ». Convenez de deux règles : vérifier ce qui est important et ne pas partager ce qui est personnel. Entre 5 et 7 ans, uniquement avec un adulte.',
   },
+  'ai-and-homework': {
+    title: 'L’IA et les devoirs : aider, pas faire à ta place',
+    desc: 'Faire ses devoirs avec l’IA sans cesser de réfléchir ? Ce qu’a montré une expérience scolaire avec GPT-4, pourquoi s’auto-tester vaut mieux que relire, et des règles pour 5–7, 8–10, 11–13 et 14 ans et plus.',
+    lead: 'L’IA peut fournir une solution toute faite en une seconde. Mais les devoirs ne servent pas à avoir la réponse : ils servent à ce qui reste dans la tête. Voici ce que l’on sait, et comment utiliser l’IA pour qu’elle aide à apprendre.',
+    facts: [
+      'Dans une expérience avec près d’un millier de lycéens en mathématiques, l’accès à GPT-4 pendant l’entraînement a amélioré les notes. Mais une fois l’accès retiré, les élèves qui avaient utilisé un chatbot standard ont fait 17 % moins bien que ceux qui n’avaient jamais eu d’IA. Une version tuteur, réglée pour protéger l’apprentissage, a en grande partie supprimé ce préjudice.',
+      'Quelques jours plus tard, on se souvient mieux en s’étant interrogé de mémoire qu’en ayant relu, même si relire donne un sentiment de plus grande assurance.',
+      'Les recommandations de l’UNESCO de 2023 fixent un âge minimum de 13 ans pour utiliser des outils d’IA en classe et demandent de former les enseignants.',
+      'Un texte produit par une IA peut être faux même s’il paraît sûr de lui.',
+    ],
+    ages: [
+      { say: ['Le travail, c’est toi qui le fais. Si c’est difficile, appelle un adulte, pas l’IA.', 'L’IA peut se tromper, c’est pour cela que les adultes vérifient tout.', 'Bravo, ce n’est pas la réponse la plus rapide, c’est celle à laquelle tu as réfléchi.'] },
+      { say: ['Essaie d’abord tout seul, puis vérifie.', 'Si tu demandes à une IA, demande un indice, pas la réponse toute faite.', 'Compare la réponse de l’IA avec ton manuel ou avec un adulte.'] },
+      { say: ['La règle : réfléchir soi-même → demander → comparer avec une source → expliquer avec ses mots.', 'Si tu ne peux pas l’expliquer sans IA, tu ne l’as pas encore compris.', 'Avant un contrôle, ferme les aides et interroge-toi de mémoire.'] },
+      { say: ['Dans l’expérience avec GPT-4, les notes montaient à l’entraînement et baissaient de 17 % sans accès : l’IA-béquille empêche d’apprendre.', 'Utilise l’IA comme tuteur : demande des questions sur le sujet et l’analyse de tes erreurs, pas la solution.', 'Si ton professeur autorise l’IA, dis où elle t’a aidé et vérifie ses réponses : l’IA se trompe.'] },
+    ],
+    myths: [
+      { m: 'Si l’IA l’a résolu avec moi, je l’ai appris.', t: 'Avec l’IA, les notes montaient à l’entraînement, mais sans elle elles finissaient plus basses que chez ceux qui avaient appris sans IA. Ce qui fait apprendre, c’est ce que l’on fait soi-même.' },
+      { m: 'Relire une solution toute faite, c’est l’apprendre.', t: 'Relire rassure, mais quelques jours plus tard, celui qui s’est rappelé lui-même s’en souvient mieux.' },
+      { m: 'On peut rendre une réponse d’IA telle quelle.', t: 'L’IA peut se tromper avec assurance. Vérifie avec ton manuel et explique la solution avec tes mots.' },
+    ],
+    conclusion: 'Pour les devoirs, l’IA est utile comme tuteur, pas comme solveur : tu réfléchis d’abord, l’IA donne des indices et vérifie, et tu testes ta compréhension sans elle. Les plus jeunes, seulement avec un adulte ; pour les outils d’IA en classe, l’UNESCO indique l’âge de 13 ans.',
+  },
 };
