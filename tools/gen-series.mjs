@@ -17,7 +17,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { header, pageOf, esc } from './gen-entry.mjs';
+import { header, pageOf, esc, fitTitle, metaDesc } from './gen-entry.mjs';
 import { SERIES, SERIES_LANGS, SERIES_LASTMOD } from './series.mjs';
 import { UI } from './series/ui.mjs';
 
@@ -83,7 +83,11 @@ function activityPage(l, s, idx) {
   const a = t.adult;
   const explain = s.staticKeys.map((k) => `      <p>${esc(t[k])}</p>`).join('\n');
   const sources = s.sources.map((x) => `        <li><a href="${esc(x.url)}" rel="noopener" target="_blank">${esc(x.title)}</a><br><span class="wk-supports">${esc(u.supports)}: ${esc(x.supports[l])}</span></li>`).join('\n');
-  return `${head(l, { title: `${t.title} — ${u.series} | Kids AI Test`, desc: t.desc, file, langs: s.langs, wait: true })}
+  const ld = { '@context': 'https://schema.org', '@type': 'LearningResource', name: t.title, description: metaDesc(t.desc),
+    inLanguage: l, url: url(l, file), learningResourceType: 'activity', typicalAgeRange: '5-17', isAccessibleForFree: true,
+    citation: s.sources.map((x) => ({ '@type': 'CreativeWork', name: x.title, url: x.url })) };
+  return `${head(l, { title: fitTitle(`${t.title} — ${u.series} | Kids AI Test`, `${t.title} | Kids AI Test`, t.title), desc: metaDesc(t.desc), file, langs: s.langs, wait: true })}
+  <script type="application/ld+json">${jsonForScript(ld)}</script>
 </head>
 <body class="wk-home wk-page wk-workshop" data-age="child">
 ${header(l, { home, langHref: langHref(file) })}
@@ -166,7 +170,11 @@ function catalogPage(l) {
     const t = s.text[l].common;
     return `      <li class="wk-cat-item"><a href="${s.file}"><b>${esc(t.title)}</b></a><span class="wk-cat-d">${esc(s.text[l].child.goal || t.goal)}</span></li>`;
   }).join('\n');
-  return `${head(l, { title: `${u.series} | Kids AI Test`, desc: u.seriesLead, file: '', langs: SERIES_LANGS })}
+  const ld = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: u.series, description: u.seriesLead,
+    inLanguage: l, url: url(l),
+    hasPart: SERIES.filter((s) => s.langs.includes(l)).map((s) => ({ '@type': 'LearningResource', name: s.text[l].common.title, url: url(l, s.file) })) };
+  return `${head(l, { title: `${u.series} | Kids AI Test`, desc: metaDesc(u.seriesLead), file: '', langs: SERIES_LANGS })}
+  <script type="application/ld+json">${jsonForScript(ld)}</script>
 </head>
 <body class="wk-home wk-page">
 ${header(l, { home, langHref: langHref('') })}
