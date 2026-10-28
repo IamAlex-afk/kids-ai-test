@@ -96,6 +96,7 @@ ${more.join('\n')}
       <button type="button" class="wk-back" data-wk-change>${esc(t.change)}</button>
       <h2 class="wk-q" tabindex="-1">${esc(t.routeQ)}</h2>
       <p class="wk-route-now">${esc(t.ageNow)}: <b data-route-label></b></p>
+      <button type="button" class="wk-games-go" data-wk-games>🎮 ${esc(t.allGames)} →</button>
 ${blocks}
       <p class="wk-route-old"><button type="button" class="wk-link" data-wk-old>${esc(t.oldRoute)} →</button></p>
 ${t.seriesNote ? `      <p class="wk-note">${esc(t.seriesNote)}</p>\n` : ''}    </div>`;
