@@ -176,6 +176,11 @@
           <span class="wk-aud-d">Готовые занятия, вопросы для беседы и первоисточники.</span>
           <span class="wk-aud-a">Выбрать возраст ребёнка →</span>
         </button>
+        <button type="button" class="wk-aud wk-aud-games" data-audience="games">
+          <span class="wk-aud-t">🎮 Игры</span>
+          <span class="wk-aud-d">AI Змейка, Circuit Runner, Circuit Racer</span>
+          <span class="wk-aud-a">Выбрать возраст →</span>
+        </button>
       </div>
       <ul class="wk-facts">
         <li>Бесплатно</li>
@@ -215,7 +220,6 @@
       <button type="button" class="wk-back" data-wk-change>← Изменить возраст</button>
       <h2 class="wk-q" tabindex="-1">Твой маршрут</h2>
       <p class="wk-route-now">Возраст: <b data-route-label></b></p>
-      <button type="button" class="wk-games-go" data-wk-games>🎮 Все игры →</button>
       <div class="wk-route-age" data-route-for="tiny" hidden>
         <div class="wk-start">
           <p class="wk-start-badge">Начни отсюда</p>
@@ -272,7 +276,10 @@
             <li><a href="lessons/ru/#age-14-plus">Все уроки для этого возраста</a></li>
         </ul>
       </div>
-      <p class="wk-route-old"><button type="button" class="wk-link" data-wk-old>Уроки с тестом, карточкой и играми →</button></p>
+      <div class="wk-route-alt">
+        <button type="button" class="wk-alt" data-wk-games><span class="wk-alt-t">🎮 Все игры</span><span class="wk-alt-d">AI Змейка, Circuit Runner, Circuit Racer</span></button>
+        <button type="button" class="wk-alt" data-wk-old><span class="wk-alt-t">📖 Уроки и тест</span><span class="wk-alt-d">Короткие уроки, итоговый тест и твоя карточка</span></button>
+      </div>
     </div>
   </section>
 

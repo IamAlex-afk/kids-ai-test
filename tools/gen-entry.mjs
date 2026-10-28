@@ -58,8 +58,8 @@ function lessonData(l) {
 }
 
 // Third screen (kids): ONE recommended activity per age with "Start", then
-// the other activities, all lessons of the age and the older lessons-with-
-// quiz route (core.js). The recommendation comes from the Workshop registry
+// the other activities, all lessons of the age, and two cards: the games
+// catalog and the lessons-with-quiz route (both in core.js). The recommendation comes from the Workshop registry
 // where the language has the series, else the first existing lesson.
 function route(l) {
   const t = T[l];
@@ -96,9 +96,11 @@ ${more.join('\n')}
       <button type="button" class="wk-back" data-wk-change>${esc(t.change)}</button>
       <h2 class="wk-q" tabindex="-1">${esc(t.routeQ)}</h2>
       <p class="wk-route-now">${esc(t.ageNow)}: <b data-route-label></b></p>
-      <button type="button" class="wk-games-go" data-wk-games>🎮 ${esc(t.allGames)} →</button>
 ${blocks}
-      <p class="wk-route-old"><button type="button" class="wk-link" data-wk-old>${esc(t.oldRoute)} →</button></p>
+      <div class="wk-route-alt">
+        <button type="button" class="wk-alt" data-wk-games><span class="wk-alt-t">🎮 ${esc(t.allGames)}</span><span class="wk-alt-d">${esc(t.gamesList)}</span></button>
+        <button type="button" class="wk-alt" data-wk-old><span class="wk-alt-t">📖 ${esc(t.lessonsT)}</span><span class="wk-alt-d">${esc(t.lessonsD)}</span></button>
+      </div>
 ${t.seriesNote ? `      <p class="wk-note">${esc(t.seriesNote)}</p>\n` : ''}    </div>`;
 }
 
@@ -144,6 +146,11 @@ ${steps}
           <span class="wk-aud-t">${esc(t.parT)}</span>
           <span class="wk-aud-d">${esc(t.parD)}</span>
           <span class="wk-aud-a">${esc(t.parA)}</span>
+        </button>
+        <button type="button" class="wk-aud wk-aud-games" data-audience="games">
+          <span class="wk-aud-t">🎮 ${esc(t.gamesT)}</span>
+          <span class="wk-aud-d">${esc(t.gamesList)}</span>
+          <span class="wk-aud-a">${esc(t.kidsA)}</span>
         </button>
       </div>
       <ul class="wk-facts">
