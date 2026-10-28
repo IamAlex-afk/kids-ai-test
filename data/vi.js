@@ -133,8 +133,8 @@ window.LANG_DATA = {
           title: 'AI giống như NGƯỜI GIẢI ĐỐ',
           text:       "AI nhìn vào hàng triệu câu đố và học ra khuôn mẫu. Khi em hỏi nó điều gì, nó tìm khuôn mẫu phù hợp nhất mà nó từng thấy. Nó KHÔNG biết mọi thứ như cách em biết. Nó hoạt động theo những quy tắc đặc biệt mà nó được dạy — nếu không có chúng, nó chẳng làm được gì cả.",
           example: '🌈 Hãy tưởng tượng em đã xếp 1000 hộp bút màu theo màu sắc. Giờ em xếp rất nhanh! AI cũng vậy — nhưng với chữ.',
-          source:    'Cách AI hoạt động — BBC Bitesize',
-          sourceUrl: 'https://www.bbc.co.uk/bitesize/articles/znmsscw',
+          source:    'LeCun, Bengio, Hinton, "Deep Learning", Nature 2015',
+          sourceUrl: 'https://www.nature.com/articles/nature14539',
           miniTest: [
             {
               q:       'AI có thể cảm thấy ĐÓI không?',
@@ -676,8 +676,8 @@ window.LANG_DATA = {
           title: 'Tại sao trang chủ của bạn hiện ĐÚNG video đó',
           text:  'YouTube, TikTok và Instagram dùng AI để chọn video tiếp theo hiển thị — và mục đích không phải để cung cấp thông tin cho bạn, mà là để giữ bạn xem lâu nhất có thể. AI học chính xác điều gì khiến RIÊNG BẠN tiếp tục lướt.',
           example: '🎣 Nó hoạt động như lưỡi câu cá, không phải như giáo viên. Mỗi video được đề xuất đều được chọn vì những người giống bạn thường xem "thêm một video nữa".',
-          source:    'Stanford Internet Observatory, 2024',
-          sourceUrl: 'https://stacks.stanford.edu/file/druid:mb753jn6512/sio_annual_report_2024.pdf',
+          source:    'Covington và cộng sự, "Deep Neural Networks for YouTube Recommendations", Google, 2016',
+          sourceUrl: 'https://research.google/pubs/deep-neural-networks-for-youtube-recommendations/',
           miniTest: [
             {
               q:       'Thuật toán đề xuất chủ yếu được tối ưu hóa để làm gì?',
@@ -880,8 +880,8 @@ window.LANG_DATA = {
           options: ['Nó biết điều gì thực sự tốt cho bạn 🌟', 'Nó được tối ưu để tối đa hóa thời gian xem của bạn, không phải sức khỏe tinh thần của bạn ⏳', 'Hoàn toàn ngẫu nhiên 🎲', 'Nó chỉ hiện nội dung giáo dục 📚'],
           correct: 1,
           explanation: 'AI đề xuất được xây dựng để thu hút sự chú ý của bạn — đó là mô hình kinh doanh, không phải sự trùng hợp.',
-          source:    'Stanford Internet Observatory, 2024',
-          sourceUrl: 'https://stacks.stanford.edu/file/druid:mb753jn6512/sio_annual_report_2024.pdf',
+          source:    'Covington và cộng sự, "Deep Neural Networks for YouTube Recommendations", Google, 2016',
+          sourceUrl: 'https://research.google/pubs/deep-neural-networks-for-youtube-recommendations/',
         },
         {
           type:    'likert',
@@ -921,8 +921,8 @@ window.LANG_DATA = {
           options: ['Nó dùng quá nhiều dữ liệu internet 📡', 'Nó có thể được tạo ra nhanh hơn nhiều so với tốc độ con người kiểm chứng 📣', 'Nó luôn được viết kém 📉', 'Không ai đọc nó cả 🤷'],
           correct: 1,
           explanation: 'AI có thể tạo ra lượng lớn thông tin sai lệch nghe có vẻ thuyết phục một cách nhanh chóng — chính quy mô khiến nó nguy hiểm.',
-          source:    'Stanford Internet Observatory, 2024',
-          sourceUrl: 'https://stacks.stanford.edu/file/druid:mb753jn6512/sio_annual_report_2024.pdf',
+          source:    'Goldstein và cộng sự, "Generative Language Models and Automated Influence Operations", 2023',
+          sourceUrl: 'https://arxiv.org/abs/2301.04246',
         },
               {
           type:    "choice",
@@ -1306,8 +1306,8 @@ window.LANG_DATA = {
           ],
           correct: 2,
           explanation: 'Quy mô là mối nguy chính. Kiểm chứng sự thật diễn ra chậm và do con người thực hiện; tạo nội dung AI thì nhanh và tự động. Ngay cả khi từng nội dung có thể bị phát hiện, khối lượng lớn vẫn áp đảo năng lực kiểm chứng.',
-          source:    'Stanford Internet Observatory, 2024',
-          sourceUrl: 'https://stacks.stanford.edu/file/druid:mb753jn6512/sio_annual_report_2024.pdf',
+          source:    'Goldstein và cộng sự, "Generative Language Models and Automated Influence Operations", 2023',
+          sourceUrl: 'https://arxiv.org/abs/2301.04246',
         },
         {
           type:    'choice',
