@@ -25,8 +25,11 @@ const CONCURRENCY = 4;
 const TIMEOUT_MS = 20000;
 const UA = 'Mozilla/5.0 (compatible; kids-ai-test-link-check; +https://github.com/IamAlex-afk/kids-ai-test)';
 
-const decode = (s) => s.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'")
-  .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/\s+/g, ' ').trim();
+// &amp; last, so "&amp;lt;" stays "&lt;" (no double unescaping).
+const decode = (s) => s.replace(/&quot;/g, '"').replace(/&#39;/g, "'")
+  .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
+// Plain text for the report: no tags, and no stray < > left to form one.
+const plain = (s) => s.replace(/<[^>]*>/g, ' ').replace(/[<>]/g, '');
 const urls = new Map(); // url -> { files:Set, texts:Set }
 for (const [dir, re] of SOURCES) {
   const abs = path.join(ROOT, dir);
@@ -36,7 +39,7 @@ for (const [dir, re] of SOURCES) {
     const src = fs.readFileSync(path.join(abs, name), 'utf8');
     const seen = new Map();
     for (const m of src.matchAll(/<a\s[^>]*href="(https?:\/\/[^"]+)"[^>]*>([\s\S]{0,300}?)<\/a>/g)) {
-      seen.set(decode(m[1]), decode(m[2].replace(/<[^>]+>/g, '')));
+      seen.set(decode(m[1]), plain(decode(plain(m[2]))));
     }
     for (const m of src.matchAll(/https?:\/\/[^\s"'<>`)\\]+/g)) {
       const u = decode(m[0]).replace(/[.,;:]+$/, '');
@@ -102,7 +105,7 @@ await Promise.all(Array.from({ length: CONCURRENCY }, async () => {
 
 const rows = list.map((url) => ({ url, ...results.get(url), verdict: verdict(results.get(url)),
   files: [...urls.get(url).files], texts: [...urls.get(url).texts] }));
-const cell = (s) => String(s || '').replace(/\|/g, '\\|');
+const cell = (s) => String(s || '').replace(/[<>]/g, '').replace(/\\/g, '\\\\').replace(/\|/g, '\\|');
 const count = (v) => rows.filter((r) => r.verdict === v).length;
 const table = (rs) => [
   '| URL | HTTP | available | page title (on topic? — compare by hand) | cited as | confirms the claim | where |',
