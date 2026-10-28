@@ -22,6 +22,7 @@
 
   let entry, hubbar;
   let audience = 'kids';
+  let wantGames = false;      // came from the home "Games" card: age → straight to the games
   let faqAge = null;          // parents' FAQ section to show ('tiny' for "not 5 yet")
   let pendingHome = false;   // go home after core.js has closed an open activity
   let focusOnPop = false;    // move focus when our own history.back() lands
@@ -91,6 +92,27 @@
     syncHubbar();
   }
 
+  // Kids: open the games catalog or the lessons-with-quiz from the route
+  // screen. The history entry stays 'route', so closing the activity (✕ or
+  // browser Back) lands on the same route screen.
+  function openActivity(kind) {
+    entry.hidden = true;
+    document.body.classList.remove('wk-home');
+    if (kind === 'games') K().openGames?.();
+    else K().openLessons?.();
+    syncHubbar();
+  }
+
+  // core.js, after a game or the lessons/quiz closed: back to the route of
+  // the chosen age (kids), otherwise the hub as before.
+  function backToRoute() {
+    const age = K().state?.age;
+    if (audience === 'kids' && age && $('#wk-route')) {
+      K().closeModePicker?.();
+      showRoute(age, true);
+    } else showHub();
+  }
+
   function syncHubbar() {
     if (!entry.hidden) { hubbar.hidden = true; return; }
     hubbar.hidden = busy();
@@ -111,7 +133,9 @@
     if (!t) return;
 
     if (t.dataset.audience) {
+      // 'games' is the kids' path with the games opened right after the age
       audience = t.dataset.audience === 'parents' ? 'parents' : 'kids';
+      wantGames = t.dataset.audience === 'games';
       try { history.pushState({ wk: 'age' }, ''); } catch (_) {}
       showAge(true);
     } else if (t.classList.contains('wk-age')) {
@@ -119,21 +143,18 @@
       faqAge = null;
       if (audience === 'kids' && $('#wk-route')) {
         try { history.replaceState({ wk: 'route' }, ''); } catch (_) {}
-        showRoute(t.dataset.age, true);
+        showRoute(t.dataset.age, !wantGames);
+        if (wantGames) { wantGames = false; openActivity('games'); }
       } else {
         try { history.replaceState({ wk: 'hub' }, ''); } catch (_) {}
         showHub();
       }
     } else if (t.hasAttribute('data-wk-games')) {
-      // straight to the existing game picker for the age chosen above
-      try { history.replaceState({ wk: 'hub' }, ''); } catch (_) {}
-      showHub();
-      K().openGames?.();
+      openActivity('games');
     } else if (t.hasAttribute('data-wk-old')) {
-      // the older route: lessons with a quiz, the result card and the games
-      try { history.replaceState({ wk: 'hub' }, ''); } catch (_) {}
-      showHub();
+      openActivity('lessons');
     } else if (t.hasAttribute('data-wk-back')) {
+      wantGames = false;
       if (wkState() === 'age') { focusOnPop = true; history.back(); }
       else showAudience(true);
     } else if (t.hasAttribute('data-wk-under5')) {
@@ -141,6 +162,7 @@
       try { history.replaceState({ wk: 'hub' }, ''); } catch (_) {}
       showHub();
     } else if (t.hasAttribute('data-wk-change')) {
+      wantGames = false;
       try { history.replaceState({ wk: 'age' }, ''); } catch (_) {}
       showAge(true);
     } else if (t.hasAttribute('data-wk-home')) {
@@ -160,6 +182,7 @@
     const focus = focusOnPop; focusOnPop = false;
     if (st.wk === 'route') { showRoute(K().state?.age, focus); return; }
     if (st.wk === 'age') { showAge(focus); return; }
+    wantGames = false;
     showAudience(focus);
   }
 
@@ -181,6 +204,7 @@
 
   window.KAT_Entry = {
     showHub,
+    backToRoute,
     // core.js: saved progress was restored → show it instead of the entry screens
     resume() { audience = 'kids'; showHub(); },
   };

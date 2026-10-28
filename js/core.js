@@ -633,6 +633,8 @@ function exitFullscreenGame() {
   document.body.classList.remove('game-fullscreen');
   window.KAT_Companion?.setFloatingVisible(true);
   leaveSection();
+  hide('game');
+  window.KAT_Entry?.backToRoute();
 }
 
 function renderGamePicker(container, games) {
@@ -741,6 +743,16 @@ function onGameDone() {
     </div>
   `;
   $('btn-go-quiz').addEventListener('click', startQuiz);
+  // Back to the catalog (same label and handler as the route screen's card)
+  const more = document.querySelector('#wk-route [data-wk-games] .wk-alt-t');
+  if (more) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'btn-outline';
+    b.setAttribute('data-wk-games', '');
+    b.textContent = more.textContent;
+    container.querySelector('.action-row').appendChild(b);
+  }
 }
 
 /* ─────────────────────────────────────────────
@@ -1366,7 +1378,9 @@ window.KAT = {
   // js/entry.js
   selectAge,
   openModePicker,
-  openGames() { hide('mode-picker'); startGame(); },
+  closeModePicker: () => hide('mode-picker'),
+  openGames() { closeActivities(); startGame(); },
+  openLessons() { closeActivities(); startLessons(); },
   openParents,
   exitToHub,
   inSection: () => sectionEntry,
@@ -1395,8 +1409,17 @@ function exitToHub() {
   hide('lessons');
   hide('quiz');
   leaveSection();
-  window.KAT_Entry?.showHub();
+  window.KAT_Entry?.backToRoute();
   requestAnimationFrame(() => window.scrollTo(0, 0));
+}
+
+// Before opening games or lessons from the route screen: nothing left over
+// from a previous activity (e.g. a finished game's score card) stays on screen.
+function closeActivities() {
+  hide('mode-picker');
+  hide('lessons');
+  hide('quiz');
+  hide('game');
 }
 
 /* ─────────────────────────────────────────────

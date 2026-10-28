@@ -89,6 +89,7 @@
 .wk-aud { min-height: 172px; padding: 26px 26px 22px; }
 .wk-aud-kids    { background: #f1eaff; border-color: #d2c9ef; }
 .wk-aud-parents { background: #e5f3e9; border-color: #c3ddcb; }
+.wk-aud-games   { grid-column: 1 / -1; min-height: 0; background: #fff4dc; border-color: #e3cfa2; }
 .wk-aud-t { font-size: 1.5rem; font-weight: 800; line-height: 1.2; }
 .wk-aud-d { color: var(--quiet); }
 .wk-aud-a { margin-top: auto; padding-top: 8px; font-weight: 700; color: var(--violet); }
@@ -151,25 +152,21 @@
 .wk-route-h { margin: 22px 0 6px; font-size: 1.125rem; }
 .wk-route-list { margin: 0; padding-left: 1.2em; display: grid; gap: 2px; }
 .wk-route-list a { display: inline-flex; align-items: center; min-height: 44px; color: var(--violet); font-weight: 600; text-underline-offset: 3px; }
-.wk-route-old { margin: 18px 0 0; }
-.wk-games-go {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 52px;
-  margin: 0 0 20px;
-  padding: 12px 26px;
-  border: 2px solid var(--violet);
-  border-radius: 999px;
-  background: #fff;
-  color: var(--violet);
-  font: inherit;
-  font-weight: 800;
-  cursor: pointer;
+/* games catalog + lessons-with-quiz: two equal cards under the activities */
+.wk-route-alt { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; max-width: 44em; margin: 22px 0 0; }
+.wk-alt {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 4px;
+  min-height: 52px; padding: 18px 20px; border-radius: 22px;
+  border: 1.5px solid var(--line); background: #fff; color: var(--ink);
+  font: inherit; text-align: left; cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease;
 }
-.wk-games-go:hover { background: #f1eaff; }
-.wk-games-go:focus-visible {
-  outline: 3px solid var(--violet);
-  outline-offset: 4px;
+.wk-alt[data-wk-games] { background: #fff4dc; border-color: #e3cfa2; }
+.wk-alt:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(32, 41, 65, .11); }
+.wk-alt-t { font-size: 1.125rem; font-weight: 800; color: var(--violet); }
+.wk-alt-d { color: var(--quiet); line-height: 1.45; }
+@media (prefers-reduced-motion: reduce) { .wk-alt { transition: none; } .wk-alt:hover { transform: none; } }
+@media (max-width: 640px) {
+  .wk-start { padding: 20px 18px; } .wk-start-go { justify-self: stretch; justify-content: center; }
+  .wk-route-alt { grid-template-columns: 1fr; }
 }
-@media (max-width: 640px) { .wk-start { padding: 20px 18px; } .wk-start-go { justify-self: stretch; justify-content: center; } }

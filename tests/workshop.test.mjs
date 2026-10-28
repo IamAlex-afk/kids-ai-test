@@ -196,7 +196,9 @@ test('route after the age: one "Start" per age, real targets, the older route st
       else assert.match(href, new RegExp(`^lessons/${l}/(5-7|8-10|11-13|14-plus)-1\\.html$`), `${page(l)}: ${href}`);
       assert.ok(fs.existsSync(new URL(href.split('?')[0], root)), `${page(l)}: ${href} exists`);
     }
-    assert.match(route, /data-wk-old/, `${page(l)}: lessons with quiz, card and games still reachable`);
+    assert.match(route, /data-wk-old/, `${page(l)}: lessons with quiz and card still reachable`);
+    assert.match(route, /data-wk-games/, `${page(l)}: the games catalog is reachable from the route`);
+    assert.match(html, /id="wk-audience"[\s\S]*data-audience="games"[\s\S]*id="wk-age"/, `${page(l)}: home screen has the Games card`);
   }
 });
 
