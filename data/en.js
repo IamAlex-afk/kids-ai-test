@@ -169,8 +169,8 @@ window.LANG_DATA = {
           title: 'AI is like a PUZZLE SOLVER',
           text:       "AI looks at millions of puzzles and learns the pattern. When you ask it something, it finds the best pattern it saw before. It does NOT know things like you know things. It follows special rules it was taught — without them, it can't do anything.",
           example: '🌈 Imagine you sorted 1000 boxes of crayons by colour. Now you\'re really fast at sorting! AI is like that — but with words.',
-          source:    'How AI works — BBC Bitesize',
-          sourceUrl: 'https://www.bbc.co.uk/bitesize/articles/znmsscw',
+          source:    'LeCun, Bengio, Hinton, "Deep Learning", Nature 2015',
+          sourceUrl: 'https://www.nature.com/articles/nature14539',
           miniTest: [
             {
               q:       'Can AI feel HUNGRY?',
@@ -832,8 +832,8 @@ window.LANG_DATA = {
           title: 'Why your feed shows you THAT video',
           text:  'YouTube, TikTok, and Instagram use AI to pick what shows up next — and it\'s not trying to inform you, it\'s trying to keep you watching as long as possible. The AI learns exactly what makes YOU personally keep scrolling.',
           example: '🎣 It works like a fishing hook, not a teacher. Every video it recommends was picked because people like you tend to watch "just one more."',
-          source:    'Stanford Internet Observatory, 2024',
-          sourceUrl: 'https://stacks.stanford.edu/file/druid:mb753jn6512/sio_annual_report_2024.pdf',
+          source:    'Covington et al., "Deep Neural Networks for YouTube Recommendations", Google, 2016',
+          sourceUrl: 'https://research.google/pubs/deep-neural-networks-for-youtube-recommendations/',
           miniTest: [
             {
               q:       'What is a recommendation algorithm mainly optimized to do?',
@@ -1102,8 +1102,8 @@ window.LANG_DATA = {
           options: ['It knows what\'s actually good for you 🌟', 'It\'s optimized to maximize your watch time, not your wellbeing ⏳', 'It\'s completely random 🎲', 'It only shows educational content 📚'],
           correct: 1,
           explanation: 'Recommendation AI is built to keep you engaged — that\'s the business model, not a coincidence.',
-          source:    'Stanford Internet Observatory, 2024',
-          sourceUrl: 'https://stacks.stanford.edu/file/druid:mb753jn6512/sio_annual_report_2024.pdf',
+          source:    'Covington et al., "Deep Neural Networks for YouTube Recommendations", Google, 2016',
+          sourceUrl: 'https://research.google/pubs/deep-neural-networks-for-youtube-recommendations/',
         },
         {
           type:    'likert',
@@ -1143,8 +1143,8 @@ window.LANG_DATA = {
           options: ['It uses too much internet data 📡', 'It can be produced much faster than humans can fact-check it 📣', 'It\'s always poorly written 📉', 'Nobody ever reads it 🤷'],
           correct: 1,
           explanation: 'AI can churn out huge amounts of convincing-sounding misinformation fast — scale is what makes it dangerous.',
-          source:    'Stanford Internet Observatory, 2024',
-          sourceUrl: 'https://stacks.stanford.edu/file/druid:mb753jn6512/sio_annual_report_2024.pdf',
+          source:    'Goldstein et al., "Generative Language Models and Automated Influence Operations", 2023',
+          sourceUrl: 'https://arxiv.org/abs/2301.04246',
         },
               {
           type:    "choice",
@@ -1585,8 +1585,8 @@ window.LANG_DATA = {
           ],
           correct: 2,
           explanation: 'Scale is the key danger. Fact-checking is slow and human; AI content generation is fast and automated. Even if each piece is detectable, the volume overwhelms verification capacity.',
-          source:    'Stanford Internet Observatory, 2024',
-          sourceUrl: 'https://stacks.stanford.edu/file/druid:mb753jn6512/sio_annual_report_2024.pdf',
+          source:    'Goldstein et al., "Generative Language Models and Automated Influence Operations", 2023',
+          sourceUrl: 'https://arxiv.org/abs/2301.04246',
         },
         {
           type:    'likert',
