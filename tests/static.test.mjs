@@ -138,11 +138,13 @@ test('sitemap: only canonical, indexable published pages; honest lastmod', async
   const { renderAll: renderSeries } = await import(new URL('tools/gen-series.mjs', root));
   const lessonFiles = [...renderAll().keys()];
   const seriesFiles = [...renderSeries().keys()];
+  const { renderAll: renderArticles } = await import(new URL('tools/gen-articles.mjs', root));
+  const articleFiles = [...(await renderArticles()).keys()];
   const sm = read('sitemap.xml');
   const SITE = 'https://iamalex-afk.github.io/kids-ai-test/';
   const urls = [...sm.matchAll(/<url>([\s\S]*?)<\/url>/g)].map(m => m[1]);
-  assert.equal(urls.length, LANGS.length + lessonFiles.length + seriesFiles.length, 'language pages + lessons + workshop pages');
-  const allowed = new Set([...LANGS.map(page), ...lessonFiles, ...seriesFiles]);
+  assert.equal(urls.length, LANGS.length + lessonFiles.length + seriesFiles.length + articleFiles.length, 'language pages + lessons + workshop + article pages');
+  const allowed = new Set([...LANGS.map(page), ...lessonFiles, ...seriesFiles, ...articleFiles]);
   const today = new Date().toISOString().slice(0, 10);
   const seen = new Set();
   for (const u of urls) {

@@ -156,7 +156,7 @@ ${steps}
       <ul class="wk-facts">
 ${t.facts.map((f) => `        <li>${esc(f)}</li>`).join('\n')}
       </ul>
-      <p class="wk-about">${SERIES_LANGS.includes(l) ? `<a href="workshop/${l}/">${esc(SERIES_UI[l].catalog)}</a>` : ''}<a href="lessons/${l}/">${esc(t.allLessons)}</a><a href="#about">${esc(t.about)}</a></p>
+      <p class="wk-about">${SERIES_LANGS.includes(l) ? `<a href="workshop/${l}/">${esc(SERIES_UI[l].catalog)}</a>` : ''}<a href="lessons/${l}/">${esc(t.allLessons)}</a><a href="articles/${l}/">${esc(t.allArticles)}</a><a href="#about">${esc(t.about)}</a></p>
     </div>
 
     <div class="wk-screen" id="wk-age" hidden>
