@@ -9,6 +9,7 @@ dist/
 e2e/report/
 e2e/results/
 site/
+lighthouse/out/
 
 # Local audit scratch files
 .audit/

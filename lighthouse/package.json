@@ -1,0 +1,9 @@
+{
+  "name": "kids-ai-test-lighthouse",
+  "private": true,
+  "description": "Lighthouse reports of the built site (dist/) in CI. Not published, not loaded by the site.",
+  "type": "module",
+  "devDependencies": {
+    "lighthouse": "13.6.0"
+  }
+}
