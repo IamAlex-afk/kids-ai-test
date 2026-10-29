@@ -21,6 +21,25 @@ export const LANGS = ['en', 'ru', 'de', 'es', 'fr', 'hi', 'id', 'pt', 'tr', 'vi'
 export const pageOf = (l) => (l === 'en' ? 'index.html' : `${l}.html`);
 const AGES = [['tiny', '5–7'], ['child', '8–10'], ['teen', '11–13'], ['adult', '14+']];
 
+// <title>: the first candidate that fits 60 characters (search results cut
+// longer ones), else the last. Candidates go from full to short; the topic
+// itself is never cut.
+export const TITLE_MAX = 60;
+export const fitTitle = (...c) => c.find((s) => [...s].length <= TITLE_MAX) || c[c.length - 1];
+// <meta name="description">: whole sentences that fit 160 characters (longer
+// ones are cut in search results); a word-boundary cut with "…" when whole
+// sentences give less than 100. The full text stays on the page.
+export const DESC_MAX = 160;
+export function metaDesc(text) {
+  const s = String(text).replace(/\s+/g, ' ').trim();
+  if ([...s].length <= DESC_MAX) return s;
+  const parts = s.match(/[^.!?।]+[.!?।]+(?=\s|$)/g) || [];
+  let out = '';
+  for (const p of parts) { const next = (out + p).trim(); if ([...next].length > DESC_MAX) break; out = next + ' '; }
+  if ([...out.trim()].length >= 100) return out.trim();
+  const cut = [...s].slice(0, DESC_MAX - 1).join('');
+  return cut.slice(0, cut.lastIndexOf(' ')).replace(/[\s,;:—–-]+$/, '') + '…';
+}
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 const GLOBE = '<svg class="wk-globe" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';

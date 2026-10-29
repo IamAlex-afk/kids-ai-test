@@ -17,7 +17,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
-import { header, LANGS, pageOf, esc } from './gen-entry.mjs';
+import { header, LANGS, pageOf, esc, fitTitle, metaDesc } from './gen-entry.mjs';
 import { T } from './entry-i18n.mjs';
 import { L } from './lesson-i18n.mjs';
 
@@ -25,12 +25,12 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://iamalex-afk.github.io/kids-ai-test/';
 // Date the lesson pages last changed in substance. Set by hand: a build must
 // not pretend that unchanged pages are new.
-export const LESSONS_LASTMOD = '2026-10-26';
+export const LESSONS_LASTMOD = '2026-10-28';
 export const AGES = [
-  { key: 'tiny', slug: '5-7' },
-  { key: 'child', slug: '8-10' },
-  { key: 'teen', slug: '11-13' },
-  { key: 'adult', slug: '14-plus' },
+  { key: 'tiny', slug: '5-7', range: '5-7' },
+  { key: 'child', slug: '8-10', range: '8-10' },
+  { key: 'teen', slug: '11-13', range: '11-13' },
+  { key: 'adult', slug: '14-plus', range: '14-' },
 ];
 const HTML_LANG = { pt: 'pt-BR' };
 const CSP = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none';";
@@ -85,6 +85,15 @@ function crumbsLd(items) {
   return `  <script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: list }).replace(/</g, '\\u003c')}</script>`;
 }
 
+// What the lesson is, for search engines: age, language, free, its source.
+function resourceLd(l, x, age, href) {
+  const o = { '@context': 'https://schema.org', '@type': 'LearningResource', name: x.title, description: snippet(x.text),
+    inLanguage: HTML_LANG[l] || l, url: href, learningResourceType: 'lesson', typicalAgeRange: age.range,
+    isAccessibleForFree: true, about: { '@type': 'Thing', name: 'Artificial intelligence' } };
+  if (x.sourceUrl) o.citation = { '@type': 'CreativeWork', name: x.source || x.sourceUrl, url: x.sourceUrl };
+  return `  <script type="application/ld+json">${JSON.stringify(o).replace(/</g, '\\u003c')}</script>`;
+}
+
 // The last item is marked as the current page only when it is this page (a catalog).
 function crumbs(l, items, lastIsPage = false) {
   return `    <nav class="wk-crumbs" aria-label="${esc(L[l].crumbs)}">
@@ -132,7 +141,7 @@ function lessonPage(l, ageIdx, lessons, i) {
   const t = L[l], age = AGES[ageIdx], x = lessons[i];
   const n = i + 1, m = lessons.length, file = lessonFile(age.slug, n);
   const ageName = t.ages[ageIdx];
-  const title = `${x.title} — ${t.lessonWord}, ${ageName} | Kids AI Test`;
+  const title = fitTitle(`${x.title} — ${t.lessonWord}, ${ageName} | Kids AI Test`, `${x.title} — ${ageName} | Kids AI Test`, `${x.title} | Kids AI Test`, x.title);
   const home = `../../${pageOf(l)}`;
   const items = [[t.home, home], [t.all, './'], [ageName, `./#age-${age.slug}`]];
   const ldItems = [[t.home, SITE + (l === 'en' ? '' : pageOf(l))], [t.all, url(l)], [ageName, url(l) + `#age-${age.slug}`]];
@@ -144,6 +153,7 @@ function lessonPage(l, ageIdx, lessons, i) {
       : `<p class="wk-source wk-source-none">${esc(t.noSource)}</p>`;
   return `${head(l, { title, desc: snippet(x.text), file })}
 ${crumbsLd(ldItems)}
+${resourceLd(l, x, age, url(l, file))}
 </head>
 <body class="wk-home wk-page" data-age="${age.key}" data-right="${esc(t.right)}" data-wrong="${esc(t.wrong)}">
 ${header(l, { home, langHref: (y) => `../${y}/${file}` })}
@@ -189,7 +199,7 @@ ${lessons.map((x, i) => `      <li><a href="${lessonFile(age.slug, i + 1)}"><spa
     </ol>
   </section>`;
   }).join('\n');
-  return `${head(l, { title: `${t.catTitle} | Kids AI Test`, desc: t.catDesc, file: '' })}
+  return `${head(l, { title: `${t.catTitle} | Kids AI Test`, desc: metaDesc(t.catDesc), file: '' })}
 ${crumbsLd([[t.home, SITE + (l === 'en' ? '' : pageOf(l))], [t.all, url(l)]])}
 </head>
 <body class="wk-home wk-page">

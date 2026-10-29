@@ -15,7 +15,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { header, pageOf, esc } from './gen-entry.mjs';
+import { header, pageOf, esc, fitTitle, metaDesc } from './gen-entry.mjs';
 import { T } from './entry-i18n.mjs';
 import { L } from './lesson-i18n.mjs';
 import { ARTICLES, ARTICLE_LANGS, ARTICLES_LASTMOD } from './articles/index.mjs';
@@ -134,7 +134,7 @@ ${t.myths.map((x, i) => `      <dt><span class="ar-tag">${esc(u.myth)}</span> ${
     isAccessibleForFree: true,
     citation: order.map((id) => ({ '@type': 'CreativeWork', name: SOURCES[id].title, url: SOURCES[id].url })),
   };
-  return `${head(l, { title: `${t.title} | Kids AI Test`, desc: t.desc, file, type: 'article' })}
+  return `${head(l, { title: fitTitle(`${t.title} | Kids AI Test`, t.title), desc: metaDesc(t.desc), file, type: 'article' })}
 ${ld(jsonld)}
 </head>
 <body class="wk-home wk-page">
@@ -175,7 +175,9 @@ ${footer(l)}`;
 function catalogPage(l, texts) {
   const u = texts.ui;
   const home = `../../${pageOf(l)}`;
-  return `${head(l, { title: `${u.catTitle} | Kids AI Test`, desc: u.catDesc, file: '' })}
+  return `${head(l, { title: fitTitle(`${u.catTitle} | Kids AI Test`, u.catTitle), desc: metaDesc(u.catDesc), file: '' })}
+${ld({ '@context': 'https://schema.org', '@type': 'CollectionPage', name: u.catTitle, description: u.catDesc, inLanguage: HTML_LANG[l] || l, url: url(l),
+    hasPart: ARTICLES.map((a) => ({ '@type': 'Article', headline: texts[a.slug].title, url: url(l, `${a.slug}.html`) })) })}
 </head>
 <body class="wk-home wk-page">
 ${header(l, { home, langHref: (y) => `../${y}/` })}
