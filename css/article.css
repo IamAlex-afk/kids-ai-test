@@ -31,3 +31,4 @@
 .ar-cat { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
 .ar-cat a { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px; min-height: 44px; font-size: 1.125rem; color: var(--ink); }
 .ar-cat p { margin: 4px 0 0; color: var(--quiet); line-height: 1.55; }
+.ar-adult { background: var(--sky); border-color: #c1d3ef; }

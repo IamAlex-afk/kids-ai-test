@@ -24,6 +24,7 @@ export default {
     honesty: 'Fakta diambil dari sumber primer yang ditautkan di bawah. "Kesimpulan kami" adalah pandangan situs berdasarkan fakta tersebut, bukan kutipan.',
     all: 'Semua artikel',
     tinyNote: 'Untuk usia 5–7: orang dewasa membaca bersama anak.',
+    adult: 'Untuk orang dewasa', adultGoal: 'Tujuan', adultAsk: 'Pertanyaan untuk diobrolkan', adultSigns: 'Tanda sudah paham',
   },
   'what-is-ai': {
     title: 'Apa itu AI? Dengan kata-kata sederhana',
@@ -44,6 +45,7 @@ export default {
     ],
     myths: [],
     conclusion: 'AI adalah alat yang kuat untuk menebak dari contoh, tetapi bukan teman dan tidak tahu segalanya. Keterampilan utama di sampingnya: memeriksa jawaban dan memutuskan sendiri.',
+    adult: { goal: 'Anak bisa mengatakan dengan kata-katanya sendiri: AI adalah program yang belajar dari contoh, menebak, dan bisa salah.', ask: ['Bagaimana AI belajar mengenali kucing?', 'Mengapa AI bisa salah walaupun terdengar yakin?', 'Bagaimana kita memeriksa jawabannya?'], signs: 'Anak tidak menyebut AI hidup atau teman dan atas kemauan sendiri mengusulkan untuk memeriksa jawaban yang penting.' },
   },
   'explain-ai-to-a-child': {
     title: 'Cara menjelaskan AI kepada anak',
@@ -63,7 +65,7 @@ export default {
       { say: ['"Siapa yang membuat sistem ini, dilatih dengan apa, dan ke mana datamu pergi?"', '"Deepfake bisa terlihat asli — periksa sumbernya."', '"AI adalah alat. Keputusan dan tanggung jawab tetap pada manusia."'] },
     ],
     myths: [
-      { m: 'AI itu hidup dan bisa menjadi teman.', t: 'AI adalah program. Anak mudah memberinya "kepribadian", jadi sebaiknya katakan dengan jelas bahwa AI tidak punya perasaan dan bukan teman.' },
+      { m: 'AI itu hidup dan bisa menjadi teman.', t: 'AI adalah program. Dalam studi MIT, anak-anak membicarakan "siapa" asisten suara itu, jadi sebaiknya katakan dengan jelas bahwa AI tidak punya perasaan dan bukan teman.' },
       { m: 'AI selalu benar karena terdengar yakin.', t: 'AI bisa menyatakan hal yang salah dengan yakin. Hal penting diperiksa dengan sumber kedua.' },
       { m: 'Rahasia apa pun boleh diceritakan kepada AI.', t: 'Melindungi data anak adalah salah satu persyaratan UNICEF. Hal pribadi (nama, alamat, foto, kata sandi) tidak untuk chatbot.' },
       { m: 'Lebih baik melarang AI sampai anak besar.', t: 'UNICEF meminta agar anak disiapkan untuk hidup bersama AI, dan UNESCO meminta agar anak diajari memahami dan menegaskan perannya sendiri di samping AI. Larangan tidak mengajarkan itu; perkenalan pertama yang didampingi mengajarkannya.' },
@@ -77,7 +79,7 @@ export default {
     facts: [
       'Dalam eksperimen dengan hampir seribu siswa SMA pada pelajaran matematika, akses ke GPT-4 saat latihan menaikkan nilai. Namun ketika akses dicabut, siswa yang memakai chatbot biasa mendapat nilai 17% lebih rendah daripada yang tidak pernah memakai AI. Versi tutor dengan pengaturan yang melindungi proses belajar sebagian besar menghilangkan dampak buruk ini.',
       'Beberapa hari kemudian, orang yang menguji dirinya dari ingatan lebih banyak ingat daripada yang membaca ulang, walaupun membaca ulang membuat orang merasa lebih yakin.',
-      'Panduan UNESCO tahun 2023 menetapkan batas usia 13 tahun untuk memakai alat AI di kelas dan meminta pelatihan bagi guru.',
+      'Panduan UNESCO tahun 2023 menyebut 13 tahun sebagai batas usia minimum untuk memakai alat AI di kelas dan meminta pelatihan bagi guru.',
       'Teks dari AI bisa salah walaupun terdengar yakin.',
     ],
     ages: [
@@ -92,5 +94,6 @@ export default {
       { m: 'Jawaban AI boleh dikumpulkan apa adanya.', t: 'AI bisa salah dengan yakin. Periksa dengan buku dan jelaskan solusinya dengan kata-katamu sendiri.' },
     ],
     conclusion: 'Untuk PR, AI berguna sebagai tutor, bukan sebagai pengerja: kamu berpikir dulu, AI memberi petunjuk dan memeriksa, lalu pemahamanmu diuji tanpa AI. Anak yang lebih kecil hanya bersama orang dewasa; untuk alat AI di kelas, UNESCO menyebut usia 13 tahun.',
+    adult: { goal: 'Anak memakai AI sebagai petunjuk dan memeriksa pemahamannya tanpa AI.', ask: ['Bagian mana dari tugas ini milikmu, dan apa yang disarankan AI?', 'Bisakah kamu menjelaskan solusinya tanpa bantuan?', 'Di mana kita bisa memeriksa jawaban ini?'], signs: 'Anak menjelaskan solusinya dengan kata-katanya sendiri dan menyelesaikan tugas serupa tanpa AI.' },
   },
 };
