@@ -384,8 +384,8 @@ window.LANG_DATA = {
           q:       'Is AI your friend? 🤝',
           correct: 0,
           explanation: 'AI is a helpful tool, but it\'s not a friend. Real friends remember you, care about you, and have feelings. AI cannot.',
-          source:    'Common Sense Media, "AI & Children", 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, "Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions',
         },
       ],
 
@@ -530,8 +530,8 @@ window.LANG_DATA = {
           title: 'Talking to AI isn\'t the same as talking to a friend',
           text:  'AI chatbots can be fun to talk to, and they always seem to have time for you. But a real friend remembers your birthday because they care, laughs because something is actually funny to them, and can give you a real hug. AI does none of that — it just predicts friendly-sounding words.',
           example: '🤗 A stuffed animal can be comforting to hold — but it\'s not the same as a real friend hugging you back. AI conversation is comforting the same way, not because it truly cares.',
-          source:    'Common Sense Media, "AI & Children", 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, "Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions',
           miniTest: [
             {
               q:       'Can an AI chatbot truly care about you the way a real friend does?',
@@ -574,8 +574,8 @@ window.LANG_DATA = {
           decoys:  ['Q', 'X'],
           icon:    '✅',
           fact:    'Before you believe something AI told you, check it with a trusted adult or a real book.',
-          source:    'Common Sense Media, "AI & Children", 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, "Teens, Trust, and Technology in the Age of AI", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/research-brief-teens-trust-and-technology-in-the-age-of-ai',
         },
         {
           unit:    'letter',
@@ -811,8 +811,8 @@ window.LANG_DATA = {
           title: 'Spotting deepfakes and AI-made fakes',
           text:  'AI can now create fake photos, videos, and even voices of real people saying things they never said. These are called "deepfakes." Some are obvious, but the best ones can fool almost anyone at first glance.',
           example: '🔍 Look for: hands with too many fingers, weird blinking, lighting that doesn\'t match, or a voice that sounds slightly "off." When in doubt, check if a trusted news source is reporting the same thing.',
-          source:    'Common Sense Media, "AI & Children", 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, "Teens, Trust, and Technology in the Age of AI", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/research-brief-teens-trust-and-technology-in-the-age-of-ai',
           miniTest: [
             {
               q:       'You see a shocking video of a celebrity saying something crazy. What should you do first?',
@@ -911,8 +911,8 @@ window.LANG_DATA = {
           title: 'Is that even a real person? AI in games and chats',
           text:  'Some "players" you meet online might not be human at all. AI-powered bots can chat, play games, and even argue with you convincingly. Some apps use AI characters designed to feel like real friends — but they\'re built by companies with their own goals.',
           example: '🕵️ Just like you\'d double-check a stranger\'s profile, it\'s smart to stay a little skeptical of who — or what — you\'re really talking to online.',
-          source:    'Common Sense Media, "AI & Children", 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, "Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions',
           miniTest: [
             {
               q:       'Can you always be 100% sure the "player" you\'re chatting with online is a real human?',
@@ -956,8 +956,8 @@ window.LANG_DATA = {
           decoys:  ['CARTOONS', 'MOVIES'],
           icon:    '🎭',
           fact:    'AI can generate fake video and audio of real people. Always check the source before you trust or share it.',
-          source:    'Common Sense Media, "AI & Children", 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, "Teens, Trust, and Technology in the Age of AI", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/research-brief-teens-trust-and-technology-in-the-age-of-ai',
         },
         {
           unit:    'word',
@@ -1093,8 +1093,8 @@ window.LANG_DATA = {
           options: ['It has really good lighting 💡', 'Something looks slightly "off" — blinking, hands, voice, or lighting 🔍', 'It\'s longer than 10 minutes ⏱️', 'It was posted at night 🌙'],
           correct: 1,
           explanation: 'Deepfakes often have small visual glitches. Also always check if trusted sources confirm the story.',
-          source:    'Common Sense Media, "AI & Children", 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, "Teens, Trust, and Technology in the Age of AI", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/research-brief-teens-trust-and-technology-in-the-age-of-ai',
         },
         {
           type:    'choice',

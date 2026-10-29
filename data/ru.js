@@ -479,8 +479,8 @@ window.LANG_DATA = {
           title: 'Разговор с ИИ — это не то же самое, что разговор с другом',
           text:  'С ИИ-чат-ботами может быть весело разговаривать, и у них, кажется, всегда есть на тебя время. Но настоящий друг помнит твой день рождения, потому что ему не всё равно, смеётся, потому что ему правда смешно, и может по-настоящему тебя обнять. ИИ ничего из этого не делает — он просто предсказывает слова, звучащие по-дружески.',
           example: '🤗 Мягкую игрушку приятно обнимать — но это не то же самое, что объятия настоящего друга в ответ. Разговор с ИИ утешает похожим образом, но не потому, что ему правда не всё равно.',
-          source:    'Common Sense Media, «ИИ и дети», 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, «Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions», 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions',
           miniTest: [
             {
               q:       'Может ли ИИ-чат-бот по-настоящему заботиться о тебе так же, как настоящий друг?',
@@ -762,8 +762,8 @@ window.LANG_DATA = {
           title: 'Как распознать дипфейк и подделку от ИИ',
           text:  'ИИ теперь умеет создавать поддельные фото, видео и даже голоса реальных людей, которые говорят то, чего никогда не говорили. Это называется «дипфейк». Некоторые подделки заметны сразу, но лучшие могут обмануть почти любого с первого взгляда.',
           example: '🔍 Обращай внимание на: руки с неправильным числом пальцев, странное моргание, освещение, которое не совпадает, или голос, звучащий чуть «не так». Если сомневаешься — проверь, пишут ли об этом надёжные новостные источники.',
-          source:    'Common Sense Media, «ИИ и дети», 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, «Teens, Trust, and Technology in the Age of AI», 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/research-brief-teens-trust-and-technology-in-the-age-of-ai',
           miniTest: [
             {
               q:       'Ты видишь шокирующее видео, где знаменитость говорит что-то безумное. Что делать в первую очередь?',
@@ -862,8 +862,8 @@ window.LANG_DATA = {
           title: 'Это точно человек? ИИ в играх и чатах',
           text:  '«Игрок», которого ты встретил онлайн, может оказаться вообще не человеком. ИИ-боты умеют убедительно общаться, играть и даже спорить с тобой. Некоторые приложения используют ИИ-персонажей, которые ощущаются как настоящие друзья — но их создали компании со своими собственными целями.',
           example: '🕵️ Так же, как ты бы перепроверил профиль незнакомца, разумно немного сомневаться в том, кто — или что — на самом деле с тобой общается онлайн.',
-          source:    'Common Sense Media, «ИИ и дети», 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, «Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions», 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions',
           miniTest: [
             {
               q:       'Можешь ли ты быть на 100% уверен, что «игрок», с которым ты общаешься онлайн, — настоящий человек?',
@@ -1042,8 +1042,8 @@ window.LANG_DATA = {
           options: ['У него очень хорошее освещение 💡', 'Что-то выглядит слегка «не так» — моргание, руки, голос или свет 🔍', 'Оно длиннее 10 минут ⏱️', 'Оно опубликовано ночью 🌙'],
           correct: 1,
           explanation: 'У дипфейков часто есть мелкие визуальные огрехи. Также всегда проверяй, подтверждают ли историю надёжные источники.',
-          source:    'Common Sense Media, «ИИ и дети», 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, «Teens, Trust, and Technology in the Age of AI», 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/research-brief-teens-trust-and-technology-in-the-age-of-ai',
         },
         {
           type:    'choice',

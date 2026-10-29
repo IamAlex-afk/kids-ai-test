@@ -294,8 +294,8 @@ window.LANG_DATA = {
           q:       'AI có phải là bạn của em không? 🤝',
           correct: 0,
           explanation: 'AI là một công cụ hữu ích, nhưng nó không phải là bạn. Bạn thật sự nhớ em, quan tâm đến em, và có cảm xúc. AI thì không thể.',
-          source:    'Common Sense Media, "AI & Children", 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, "Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions',
         },
       ],
 
@@ -438,8 +438,8 @@ window.LANG_DATA = {
           title: 'Nói chuyện với AI không giống nói chuyện với bạn bè',
           text:  'Trò chuyện với chatbot AI có thể vui, và chúng dường như luôn có thời gian cho em. Nhưng một người bạn thật nhớ sinh nhật em vì họ quan tâm, cười vì điều gì đó thực sự buồn cười với họ, và có thể ôm em thật sự. AI không làm bất kỳ điều nào trong số đó — nó chỉ đoán những từ nghe có vẻ thân thiện.',
           example: '🤗 Ôm một con thú nhồi bông có thể thấy an ủi — nhưng điều đó không giống như được một người bạn thật ôm lại. Trò chuyện với AI cũng an ủi theo cách tương tự, không phải vì nó thực sự quan tâm.',
-          source:    'Common Sense Media, "AI và Trẻ em", 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, "Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions',
           miniTest: [
             {
               q:       'Một chatbot AI có thể thực sự quan tâm đến em giống như một người bạn thật không?',
@@ -655,8 +655,8 @@ window.LANG_DATA = {
           title: 'Nhận biết deepfake và nội dung giả do AI tạo ra',
           text:  'AI giờ đây có thể tạo ảnh, video, thậm chí giọng nói giả của người thật nói những điều họ chưa từng nói. Đây gọi là "deepfake". Một số dễ nhận ra, nhưng những cái tốt nhất có thể đánh lừa hầu hết mọi người ngay từ cái nhìn đầu tiên.',
           example: '🔍 Hãy để ý: bàn tay có số ngón tay sai, chớp mắt kỳ lạ, ánh sáng không khớp, hoặc giọng nói nghe hơi "khác lạ". Nếu nghi ngờ, hãy kiểm tra xem nguồn tin đáng tin cậy có đưa tin tương tự không.',
-          source:    'Common Sense Media, "AI & Children", 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, "Teens, Trust, and Technology in the Age of AI", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/research-brief-teens-trust-and-technology-in-the-age-of-ai',
           miniTest: [
             {
               q:       'Bạn thấy một video gây sốc trong đó một người nổi tiếng nói điều gì đó điên rồ. Nên làm gì đầu tiên?',
@@ -755,8 +755,8 @@ window.LANG_DATA = {
           title: 'Đây có thực sự là một người thật không? AI trong game và chat',
           text:  'Một số "người chơi" bạn gặp trực tuyến có thể hoàn toàn không phải con người. Các bot chạy bằng AI có thể trò chuyện, chơi game, thậm chí tranh luận với bạn một cách thuyết phục. Một số ứng dụng dùng các nhân vật AI được thiết kế để cảm giác như bạn bè thật — nhưng chúng được tạo ra bởi các công ty với mục đích riêng của họ.',
           example: '🕵️ Giống như bạn sẽ kiểm tra lại hồ sơ của một người lạ, việc giữ một chút hoài nghi về việc bạn thực sự đang nói chuyện với ai — hay cái gì — trên mạng là điều khôn ngoan.',
-          source:    'Common Sense Media, "AI và Trẻ em", 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, "Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions',
           miniTest: [
             {
               q:       'Bạn có thể luôn chắc chắn 100% rằng "người chơi" bạn đang trò chuyện trực tuyến là một người thật không?',
@@ -871,8 +871,8 @@ window.LANG_DATA = {
           options: ['Ánh sáng rất đẹp 💡', 'Có gì đó trông hơi "khác lạ" — chớp mắt, tay, giọng nói hoặc ánh sáng 🔍', 'Dài hơn 10 phút ⏱️', 'Được đăng vào ban đêm 🌙'],
           correct: 1,
           explanation: 'Deepfake thường có những lỗi hình ảnh nhỏ. Cũng luôn kiểm tra xem nguồn đáng tin cậy có xác nhận câu chuyện không.',
-          source:    'Common Sense Media, "AI & Children", 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, "Teens, Trust, and Technology in the Age of AI", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/research-brief-teens-trust-and-technology-in-the-age-of-ai',
         },
         {
           type:    'choice',
