@@ -24,6 +24,7 @@ export default {
     honesty: 'Les faits viennent des sources primaires citées ci-dessous. « Notre conclusion » est l’avis du site fondé sur ces faits, pas une citation.',
     all: 'Tous les articles',
     tinyNote: 'Pour les 5–7 ans : un adulte lit avec l’enfant.',
+    adult: 'Pour l’adulte', adultGoal: 'Objectif', adultAsk: 'Questions pour en parler', adultSigns: 'Signes de compréhension',
   },
   'what-is-ai': {
     title: 'Qu’est-ce que l’IA ? En mots simples',
@@ -44,6 +45,7 @@ export default {
     ],
     myths: [],
     conclusion: 'L’IA est un outil puissant pour deviner à partir d’exemples, mais ce n’est ni une amie ni une encyclopédie infaillible. La compétence clé à ses côtés : vérifier la réponse et décider soi-même.',
+    adult: { goal: 'L’enfant peut dire avec ses mots : l’IA est un programme qui apprend à partir d’exemples, devine et peut se tromper.', ask: ['Comment l’IA a-t-elle appris à reconnaître un chat ?', 'Pourquoi une IA peut-elle se tromper même si elle paraît sûre ?', 'Comment pouvons-nous vérifier sa réponse ?'], signs: 'L’enfant ne dit pas que l’IA est vivante ou une amie et propose de lui-même ou d’elle-même de vérifier une réponse importante.' },
   },
   'explain-ai-to-a-child': {
     title: 'Comment expliquer l’IA à un enfant',
@@ -63,7 +65,7 @@ export default {
       { say: ['« Qui a créé ce système, avec quoi l’a-t-on entraîné et où vont tes données ? »', '« Un deepfake peut avoir l’air vrai : vérifie la source. »', '« L’IA est un outil. Les décisions et la responsabilité restent aux humains. »'] },
     ],
     myths: [
-      { m: 'L’IA est vivante et peut être une amie.', t: 'C’est un programme. Les enfants lui prêtent facilement une « personnalité » ; il vaut donc la peine de dire clairement que l’IA ne ressent rien et n’est pas une amie.' },
+      { m: 'L’IA est vivante et peut être une amie.', t: 'C’est un programme. Dans l’étude du MIT, des enfants se demandaient « qui » est l’assistant vocal ; il vaut donc la peine de dire clairement que l’IA ne ressent rien et n’est pas une amie.' },
       { m: 'L’IA a toujours raison puisqu’elle a l’air sûre d’elle.', t: 'L’IA peut affirmer des choses fausses avec assurance. Ce qui est important se vérifie auprès d’une deuxième source.' },
       { m: 'On peut confier n’importe quel secret à une IA.', t: 'Protéger les données des enfants fait partie des exigences de l’UNICEF. Le personnel (nom, adresse, photos, mots de passe) ne se confie pas à un chatbot.' },
       { m: 'Mieux vaut interdire l’IA jusqu’à ce que l’enfant soit grand.', t: 'L’UNICEF demande de préparer les enfants à vivre avec l’IA, et l’UNESCO de leur apprendre à comprendre et affirmer leur propre rôle à ses côtés. Une interdiction n’apprend pas cela ; une première rencontre accompagnée, si.' },
@@ -77,20 +79,21 @@ export default {
     facts: [
       'Dans une expérience avec près d’un millier de lycéens en mathématiques, l’accès à GPT-4 pendant l’entraînement a amélioré les notes. Mais une fois l’accès retiré, les élèves qui avaient utilisé un chatbot standard ont fait 17 % moins bien que ceux qui n’avaient jamais eu d’IA. Une version tuteur, réglée pour protéger l’apprentissage, a en grande partie supprimé ce préjudice.',
       'Quelques jours plus tard, on se souvient mieux en s’étant interrogé de mémoire qu’en ayant relu, même si relire donne un sentiment de plus grande assurance.',
-      'Les recommandations de l’UNESCO de 2023 fixent un âge minimum de 13 ans pour utiliser des outils d’IA en classe et demandent de former les enseignants.',
+      'Les recommandations de l’UNESCO de 2023 indiquent 13 ans comme âge minimum pour utiliser des outils d’IA en classe et demandent de former les enseignants.',
       'Un texte produit par une IA peut être faux même s’il paraît sûr de lui.',
     ],
     ages: [
       { say: ['Le travail, c’est toi qui le fais. Si c’est difficile, appelle un adulte, pas l’IA.', 'L’IA peut se tromper, c’est pour cela que les adultes vérifient tout.', 'Bravo, ce n’est pas la réponse la plus rapide, c’est celle à laquelle tu as réfléchi.'] },
-      { say: ['Essaie d’abord tout seul, puis vérifie.', 'Si tu demandes à une IA, demande un indice, pas la réponse toute faite.', 'Compare la réponse de l’IA avec ton manuel ou avec un adulte.'] },
+      { say: ['Essaie d’abord par toi-même, puis vérifie.', 'Si tu demandes à une IA, demande un indice, pas la réponse toute faite.', 'Compare la réponse de l’IA avec ton manuel ou avec un adulte.'] },
       { say: ['La règle : réfléchir soi-même → demander → comparer avec une source → expliquer avec ses mots.', 'Si tu ne peux pas l’expliquer sans IA, tu ne l’as pas encore compris.', 'Avant un contrôle, ferme les aides et interroge-toi de mémoire.'] },
       { say: ['Dans l’expérience avec GPT-4, les notes montaient à l’entraînement et baissaient de 17 % sans accès : l’IA-béquille empêche d’apprendre.', 'Utilise l’IA comme tuteur : demande des questions sur le sujet et l’analyse de tes erreurs, pas la solution.', 'Si ton professeur autorise l’IA, dis où elle t’a aidé et vérifie ses réponses : l’IA se trompe.'] },
     ],
     myths: [
       { m: 'Si l’IA l’a résolu avec moi, je l’ai appris.', t: 'Avec l’IA, les notes montaient à l’entraînement, mais sans elle elles finissaient plus basses que chez ceux qui avaient appris sans IA. Ce qui fait apprendre, c’est ce que l’on fait soi-même.' },
-      { m: 'Relire une solution toute faite, c’est l’apprendre.', t: 'Relire rassure, mais quelques jours plus tard, celui qui s’est rappelé lui-même s’en souvient mieux.' },
+      { m: 'Relire une solution toute faite, c’est l’apprendre.', t: 'Relire rassure, mais quelques jours plus tard, on se souvient mieux quand on a cherché dans sa mémoire.' },
       { m: 'On peut rendre une réponse d’IA telle quelle.', t: 'L’IA peut se tromper avec assurance. Vérifie avec ton manuel et explique la solution avec tes mots.' },
     ],
     conclusion: 'Pour les devoirs, l’IA est utile comme tuteur, pas comme solveur : tu réfléchis d’abord, l’IA donne des indices et vérifie, et tu testes ta compréhension sans elle. Les plus jeunes, seulement avec un adulte ; pour les outils d’IA en classe, l’UNESCO indique l’âge de 13 ans.',
+    adult: { goal: 'L’enfant utilise l’IA comme indice et vérifie sa compréhension sans elle.', ask: ['Quelle partie de ce travail vient de toi, et laquelle l’IA a-t-elle suggérée ?', 'Peux-tu expliquer la solution sans aide ?', 'Où pouvons-nous vérifier cette réponse ?'], signs: 'L’enfant explique la solution avec ses mots et résout un exercice semblable sans IA.' },
   },
 };

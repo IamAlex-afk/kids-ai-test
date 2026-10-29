@@ -24,6 +24,7 @@ export default {
     honesty: 'The facts come from the primary sources linked below. "Our conclusion" is the site\'s view based on those facts, not a quote.',
     all: 'All articles',
     tinyNote: 'For ages 5–7: an adult reads together with the child.',
+    adult: 'For the adult', adultGoal: 'Goal', adultAsk: 'Questions to talk about', adultSigns: 'Signs of understanding',
   },
   'what-is-ai': {
     title: 'What is AI — in simple words',
@@ -44,6 +45,7 @@ export default {
     ],
     myths: [],
     conclusion: 'AI is a strong tool for guessing from examples, but it is not a friend and it does not know everything. The key skill next to it is to check the answer and decide for yourself.',
+    adult: { goal: 'The child can say in their own words: AI is a program that learns from examples, guesses and can be wrong.', ask: ['How did the AI learn to recognise a cat?', 'Why can an AI be wrong even when it sounds sure?', 'How can we check its answer?'], signs: 'The child does not call AI alive or a friend and suggests checking an important answer on their own.' },
   },
   'explain-ai-to-a-child': {
     title: 'How to explain AI to a child',
@@ -63,7 +65,7 @@ export default {
       { say: ['"Who made this system, what was it trained on, and where does your data go?"', '"A deepfake can look real — check the source."', '"AI is a tool. Decisions and responsibility stay with people."'] },
     ],
     myths: [
-      { m: 'AI is alive and can be a friend.', t: 'It is a program. Children easily give it a "personality", so it is worth saying plainly that AI does not feel and is not a friend.' },
+      { m: 'AI is alive and can be a friend.', t: 'It is a program. In the MIT study children talked about "who" the voice assistant is — so it is worth saying plainly that AI does not feel and is not a friend.' },
       { m: 'AI is always right because it sounds sure.', t: 'AI can state wrong things confidently. Check important things against a second source.' },
       { m: 'You can tell AI any secret.', t: 'Protecting children\'s data is one of UNICEF\'s requirements. Personal things (name, address, photos, passwords) are not for a chatbot.' },
       { m: 'Better to ban AI until the child grows up.', t: 'UNICEF asks to prepare children for life with AI, and UNESCO to teach them to understand and assert their own role next to it. A ban does not teach that; a guided first contact does.' },
@@ -77,7 +79,7 @@ export default {
     facts: [
       'In an experiment with nearly a thousand high school maths students, access to GPT-4 during practice raised grades. But once access was taken away, students who had used a standard chatbot did 17% worse than those who never had AI. A tutor version with settings designed to safeguard learning largely removed this harm.',
       'Days later, people who tested themselves from memory remember more than people who reread — even though rereading makes them feel more confident.',
-      'UNESCO\'s 2023 guidance sets an age limit of 13 for using AI tools in the classroom and calls for teacher training on it.',
+      'UNESCO\'s 2023 guidance names 13 as the lower age limit for AI tools in the classroom and calls for teacher training on it.',
       'Text from an AI can be wrong even when it sounds confident.',
     ],
     ages: [
@@ -92,5 +94,6 @@ export default {
       { m: 'You can hand in an AI answer as it is.', t: 'AI can be confidently wrong. Check it against your textbook and explain the solution in your own words.' },
     ],
     conclusion: 'In homework, AI is useful as a tutor, not as a solver: you think first, AI gives hints and checks, and you test your understanding without it. Younger children — only together with an adult; for AI tools in the classroom UNESCO names the age of 13.',
+    adult: { goal: 'The child uses AI as a hint and checks their understanding without it.', ask: ['Which part of this task is yours, and which did the AI suggest?', 'Can you explain the solution without hints?', 'Where can we check this answer?'], signs: 'The child explains the solution in their own words and solves a similar task without AI.' },
   },
 };
