@@ -153,8 +153,8 @@ window.LANG_DATA = {
           title: 'What IS a robot?',
           text:       "A robot is a machine that follows rules. Alexa, Siri, and Google — they are not alive. They are like a very smart toy that listens and talks. But they can't feel happy or sad. She can be helpful — but she isn't a real friend.",
           example: '🎮 A video game follows rules too! If you press jump, Mario jumps. AI is the same — it follows rules, it doesn\'t think.',
-          source:    'MIT Media Lab, Early Childhood AI',
-          sourceUrl: 'https://www.media.mit.edu/',
+          source:    'Druga et al., "Hey Google is it OK if I eat you?", MIT Media Lab, IDC 2017',
+          sourceUrl: 'https://www.media.mit.edu/publications/child-agent-interaction/',
           miniTest: [
             {
               q:       'Is Alexa alive like a dog or cat?',
@@ -338,7 +338,7 @@ window.LANG_DATA = {
           correct: 1,
           explanation: "Yes! AI is a computer program made by people — it is not alive and does not feel anything.",
           source:    "Stanford AI Index 2024",
-          sourceUrl: "https://aiindex.stanford.edu",
+          sourceUrl: "https://hai.stanford.edu/ai-index/2024-ai-index-report",
         },
         {
           type:    'yesno',
@@ -346,15 +346,15 @@ window.LANG_DATA = {
           correct: 0, // 0 = NO
           explanation: 'Robots and AI have no feelings. They process information but cannot experience sadness, joy, or love.',
           source:    'Stanford AI Index 2024',
-          sourceUrl: 'https://aiindex.stanford.edu',
+          sourceUrl: 'https://hai.stanford.edu/ai-index/2024-ai-index-report',
         },
         {
           type:    'yesno',
           q:       'Is Siri alive like a person? 🧑',
           correct: 0,
           explanation: 'Siri is a clever program — it\'s not alive. It has no heart, no feelings, no real thoughts.',
-          source:    'Apple Siri Technical Overview',
-          sourceUrl: 'https://machinelearning.apple.com/',
+          source:    'Druga et al., "Hey Google is it OK if I eat you?", MIT Media Lab, IDC 2017',
+          sourceUrl: 'https://www.media.mit.edu/publications/child-agent-interaction/',
         },
         {
           type:    'yesno',
@@ -384,8 +384,8 @@ window.LANG_DATA = {
           q:       'Is AI your friend? 🤝',
           correct: 0,
           explanation: 'AI is a helpful tool, but it\'s not a friend. Real friends remember you, care about you, and have feelings. AI cannot.',
-          source:    'Common Sense Media, "AI & Children", 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, "Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions',
         },
       ],
 
@@ -530,8 +530,8 @@ window.LANG_DATA = {
           title: 'Talking to AI isn\'t the same as talking to a friend',
           text:  'AI chatbots can be fun to talk to, and they always seem to have time for you. But a real friend remembers your birthday because they care, laughs because something is actually funny to them, and can give you a real hug. AI does none of that — it just predicts friendly-sounding words.',
           example: '🤗 A stuffed animal can be comforting to hold — but it\'s not the same as a real friend hugging you back. AI conversation is comforting the same way, not because it truly cares.',
-          source:    'Common Sense Media, "AI & Children", 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, "Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions',
           miniTest: [
             {
               q:       'Can an AI chatbot truly care about you the way a real friend does?',
@@ -559,7 +559,7 @@ window.LANG_DATA = {
           icon:    '❗',
           fact:    'AI can be wrong! It guesses based on patterns, so always double-check important answers.',
           source:    'Stanford AI Index 2024',
-          sourceUrl: 'https://aiindex.stanford.edu',
+          sourceUrl: 'https://hai.stanford.edu/ai-index/2024-ai-index-report',
         },
         {
           unit:    'letter',
@@ -574,8 +574,8 @@ window.LANG_DATA = {
           decoys:  ['Q', 'X'],
           icon:    '✅',
           fact:    'Before you believe something AI told you, check it with a trusted adult or a real book.',
-          source:    'Common Sense Media, "AI & Children", 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, "Teens, Trust, and Technology in the Age of AI", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/research-brief-teens-trust-and-technology-in-the-age-of-ai',
         },
         {
           unit:    'letter',
@@ -673,7 +673,7 @@ window.LANG_DATA = {
           correct: 1,
           explanation: "AI is a program built by people. It learns by finding patterns in huge amounts of text, images, and sounds — but it doesn't think or feel like a human.",
           source:    "Stanford AI Index 2024",
-          sourceUrl: "https://aiindex.stanford.edu",
+          sourceUrl: "https://hai.stanford.edu/ai-index/2024-ai-index-report",
         },
         {
           type:    'choice',
@@ -744,7 +744,7 @@ window.LANG_DATA = {
           correct: 2,
           explanation: 'Humans are responsible. The builders choose the training data; the company deploys it; the user applies it. AI has no moral agency.',
           source:    'European AI Act, 2024',
-          sourceUrl: 'https://artificialintelligenceact.eu/',
+          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
         },
       ],
 
@@ -811,8 +811,8 @@ window.LANG_DATA = {
           title: 'Spotting deepfakes and AI-made fakes',
           text:  'AI can now create fake photos, videos, and even voices of real people saying things they never said. These are called "deepfakes." Some are obvious, but the best ones can fool almost anyone at first glance.',
           example: '🔍 Look for: hands with too many fingers, weird blinking, lighting that doesn\'t match, or a voice that sounds slightly "off." When in doubt, check if a trusted news source is reporting the same thing.',
-          source:    'Common Sense Media, "AI & Children", 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, "Teens, Trust, and Technology in the Age of AI", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/research-brief-teens-trust-and-technology-in-the-age-of-ai',
           miniTest: [
             {
               q:       'You see a shocking video of a celebrity saying something crazy. What should you do first?',
@@ -893,16 +893,16 @@ window.LANG_DATA = {
         {
           icon:  '🎨',
           title: 'AI art — who actually owns it?',
-          text:  'AI image generators were trained on millions of real artists\' work — often without asking permission. When you generate a picture with AI, courts and companies are still arguing about who owns it: you, the AI company, or the original artists whose work trained it.',
+          text:  'AI image generators were trained on millions of real artists\' works — often without their permission. Whether that is allowed is still being decided in court. And who owns an AI picture? In the US, the Copyright Office explained in 2025: what AI created entirely on its own is not protected by copyright, and a request (a prompt) alone is not enough to make you the author. What a person adds is protected. Other countries have their own rules.',
           example: '⚖️ Imagine a chef who learned every recipe by tasting other people\'s cooking without asking, then sells a "new" dish. Is it really new? That\'s the debate happening with AI art right now.',
-          source:    'US Copyright Office, "Copyright and Artificial Intelligence", 2023',
-          sourceUrl: 'https://www.copyright.gov/ai/',
+          source:    'US Copyright Office, "Copyright and Artificial Intelligence. Part 2: Copyrightability", 2025',
+          sourceUrl: 'https://www.copyright.gov/ai/Copyright-and-Artificial-Intelligence-Part-2-Copyrightability-Report.pdf',
           miniTest: [
             {
               q:       'Why is AI-generated art legally complicated?',
               options: ['It\'s illegal everywhere 🚫', 'It was trained on real artists\' work, often without their permission 📊', 'Computers can\'t legally own anything 💻', 'It isn\'t complicated at all ✅'],
               correct: 1,
-              explanation: 'AI art tools learned from real human artwork, frequently without consent — which is why ownership and fairness are still being debated and regulated.',
+              explanation: 'AI learned from people\'s work, often without the artists\' consent — courts are deciding whether that is allowed. And a picture made entirely by AI from a single prompt is not protected by copyright, according to the US Copyright Office (2025).',
             },
           ],
         },
@@ -911,8 +911,8 @@ window.LANG_DATA = {
           title: 'Is that even a real person? AI in games and chats',
           text:  'Some "players" you meet online might not be human at all. AI-powered bots can chat, play games, and even argue with you convincingly. Some apps use AI characters designed to feel like real friends — but they\'re built by companies with their own goals.',
           example: '🕵️ Just like you\'d double-check a stranger\'s profile, it\'s smart to stay a little skeptical of who — or what — you\'re really talking to online.',
-          source:    'Common Sense Media, "AI & Children", 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, "Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions',
           miniTest: [
             {
               q:       'Can you always be 100% sure the "player" you\'re chatting with online is a real human?',
@@ -948,7 +948,7 @@ window.LANG_DATA = {
           icon:    '🧠',
           fact:    'AI systems learn patterns from massive human-made datasets. If that data is biased, the AI repeats the bias.',
           source:    'Stanford AI Index 2024',
-          sourceUrl: 'https://aiindex.stanford.edu',
+          sourceUrl: 'https://hai.stanford.edu/ai-index/2024-ai-index-report',
         },
         {
           unit:    'word',
@@ -956,8 +956,8 @@ window.LANG_DATA = {
           decoys:  ['CARTOONS', 'MOVIES'],
           icon:    '🎭',
           fact:    'AI can generate fake video and audio of real people. Always check the source before you trust or share it.',
-          source:    'Common Sense Media, "AI & Children", 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, "Teens, Trust, and Technology in the Age of AI", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/research-brief-teens-trust-and-technology-in-the-age-of-ai',
         },
         {
           unit:    'word',
@@ -1064,7 +1064,7 @@ window.LANG_DATA = {
           icon:    '📋',
           fact:    'The EU AI Act and GDPR require informed consent for AI systems that collect, process, or profile personal data.',
           source:    'EU AI Act 2024',
-          sourceUrl: 'https://artificialintelligenceact.eu/',
+          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
         },
       ],
 
@@ -1076,7 +1076,7 @@ window.LANG_DATA = {
           correct: 1,
           explanation: "Modern AI systems, including large language models, don't truly understand language the way humans do — they are statistical models that find patterns in massive datasets and generate the most probable output. That's why they can sound confident and still be wrong.",
           source:    "Stanford AI Index 2024",
-          sourceUrl: "https://aiindex.stanford.edu",
+          sourceUrl: "https://hai.stanford.edu/ai-index/2024-ai-index-report",
         },
         {
           type:    'choice',
@@ -1093,8 +1093,8 @@ window.LANG_DATA = {
           options: ['It has really good lighting 💡', 'Something looks slightly "off" — blinking, hands, voice, or lighting 🔍', 'It\'s longer than 10 minutes ⏱️', 'It was posted at night 🌙'],
           correct: 1,
           explanation: 'Deepfakes often have small visual glitches. Also always check if trusted sources confirm the story.',
-          source:    'Common Sense Media, "AI & Children", 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, "Teens, Trust, and Technology in the Age of AI", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/research-brief-teens-trust-and-technology-in-the-age-of-ai',
         },
         {
           type:    'choice',
@@ -1268,7 +1268,7 @@ window.LANG_DATA = {
           text:  'Three governance models currently compete: (1) The EU AI Act — binding risk-based regulation, prohibited uses, transparency requirements; (2) US approach — mostly voluntary frameworks (NIST AI RMF, White House commitments); (3) China — state-directed AI with national strategic goals. The fundamental tension: safety and accountability slow deployment; speed is commercially and strategically valuable. Who writes the rules shapes who benefits.',
           example: '⚖️ The EU AI Act bans real-time remote biometric surveillance in public spaces. US law currently permits it. China mandates it. Same technology — three different legal realities.',
           source:    'EU AI Act (2024), NIST AI RMF 1.0 (2023)',
-          sourceUrl: 'https://artificialintelligenceact.eu/',
+          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
           miniTest: [
             {
               q:       'The EU AI Act classifies AI systems by...',
@@ -1500,7 +1500,7 @@ window.LANG_DATA = {
           correct: 1,
           explanation: "This matches how AI systems are formally described in most modern research and policy documents: software that produces outputs — predictions, recommendations, or decisions — from data, without possessing understanding, consciousness, or intent. Knowledge here is a statistical property of the model's weights, not stored facts.",
           source:    "Stanford AI Index 2024",
-          sourceUrl: "https://aiindex.stanford.edu",
+          sourceUrl: "https://hai.stanford.edu/ai-index/2024-ai-index-report",
         },
         {
           type:    'choice',
@@ -1522,7 +1522,7 @@ window.LANG_DATA = {
           ideal:   4,
           explanation: 'The EU AI Act requires disclosure for AI interactions with people. Transparency is a near-universal recommendation across governance frameworks. Some argue exceptions exist for clearly-labeled creative fiction.',
           source:    'EU AI Act Art. 52 (transparency obligations)',
-          sourceUrl: 'https://artificialintelligenceact.eu/',
+          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
         },
         {
           type:    'choice',
@@ -1558,7 +1558,7 @@ window.LANG_DATA = {
           ideal:   5,
           explanation: 'Training data transparency is required under the EU AI Act for high-risk and general-purpose AI systems. It enables bias auditing, copyright accountability, and informed public debate.',
           source:    'EU AI Act Art. 53',
-          sourceUrl: 'https://artificialintelligenceact.eu/',
+          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
         },
         {
           type:    'choice',
@@ -1572,7 +1572,7 @@ window.LANG_DATA = {
           correct: 1,
           explanation: 'Real-time remote biometric surveillance is Article 5 — explicitly prohibited. Medical and recruitment AI are high-risk (requiring auditing), not banned. Watermarking is a transparency requirement.',
           source:    'EU AI Act Article 5',
-          sourceUrl: 'https://artificialintelligenceact.eu/',
+          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
         },
         {
           type:    'choice',
@@ -1643,7 +1643,7 @@ window.LANG_DATA = {
           ideal:   5,
           explanation: 'Independent auditing is a central demand of AI accountability advocates and is required under the EU AI Act for high-risk systems. This is near-consensus among AI ethics researchers.',
           source:    'EU AI Act Art. 43-44',
-          sourceUrl: 'https://artificialintelligenceact.eu/',
+          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
         },
         {
           type:    'choice',
@@ -1671,7 +1671,7 @@ window.LANG_DATA = {
           correct: 2,
           explanation: 'Recruitment AI is explicitly listed in EU AI Act Annex III as high-risk. It must meet strict requirements: human oversight, data quality measures, accuracy tests, and logging. The employer carries legal liability.',
           source:    'EU AI Act Annex III',
-          sourceUrl: 'https://artificialintelligenceact.eu/',
+          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
         },
         {
           type:    'likert',

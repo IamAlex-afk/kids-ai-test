@@ -17,7 +17,7 @@ import { share } from './series/share.mjs';
 const SCENARIO = { scripts: ['workshop.js', 'workshop-scenario.js'], staticKeys: ['explain1', 'explain2', 'explain3', 'doneText'] };
 
 // Date the series pages last changed in substance. Set by hand.
-export const SERIES_LASTMOD = '2026-10-27';
+export const SERIES_LASTMOD = '2026-10-28';
 // Languages of the series. Each needs tools/series/<lesson>-<lang>.mjs for
 // every lesson (exporting the language code) and a block in series/ui.mjs.
 export const SERIES_LANGS = ['ru', 'en', 'vi', 'id', 'pt', 'es', 'fr', 'de', 'tr', 'hi'];

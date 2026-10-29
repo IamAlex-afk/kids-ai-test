@@ -293,7 +293,7 @@ window.LANG_DATA = {
           correct: 1,
           explanation: "Да! ИИ — это компьютерная программа, которую создали люди. Она не живая и ничего не чувствует.",
           source:    "Stanford AI Index 2024",
-          sourceUrl: "https://aiindex.stanford.edu",
+          sourceUrl: "https://hai.stanford.edu/ai-index/2024-ai-index-report",
         },
         {
           type:    'yesno',
@@ -301,7 +301,7 @@ window.LANG_DATA = {
           correct: 0,
           explanation: 'Роботы и ИИ не чувствуют ничего. Они обрабатывают информацию, но грусти, радости или любви у них нет.',
           source:    'Стэнфордский индекс ИИ 2024',
-          sourceUrl: 'https://aiindex.stanford.edu',
+          sourceUrl: 'https://hai.stanford.edu/ai-index/2024-ai-index-report',
         },
         {
           type:    'yesno',
@@ -479,8 +479,8 @@ window.LANG_DATA = {
           title: 'Разговор с ИИ — это не то же самое, что разговор с другом',
           text:  'С ИИ-чат-ботами может быть весело разговаривать, и у них, кажется, всегда есть на тебя время. Но настоящий друг помнит твой день рождения, потому что ему не всё равно, смеётся, потому что ему правда смешно, и может по-настоящему тебя обнять. ИИ ничего из этого не делает — он просто предсказывает слова, звучащие по-дружески.',
           example: '🤗 Мягкую игрушку приятно обнимать — но это не то же самое, что объятия настоящего друга в ответ. Разговор с ИИ утешает похожим образом, но не потому, что ему правда не всё равно.',
-          source:    'Common Sense Media, «ИИ и дети», 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, «Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions», 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions',
           miniTest: [
             {
               q:       'Может ли ИИ-чат-бот по-настоящему заботиться о тебе так же, как настоящий друг?',
@@ -508,7 +508,7 @@ window.LANG_DATA = {
           icon:    '❗',
           fact:    'ИИ может ошибаться! Он угадывает по шаблонам, поэтому важные ответы всегда проверяй.',
           source:    'Стэнфордский индекс ИИ 2024',
-          sourceUrl: 'https://aiindex.stanford.edu',
+          sourceUrl: 'https://hai.stanford.edu/ai-index/2024-ai-index-report',
         },
         {
           unit:    'letter',
@@ -624,7 +624,7 @@ window.LANG_DATA = {
           correct: 1,
           explanation: "ИИ — это программа, созданная людьми. Она учится, находя закономерности в огромном количестве текстов, картинок и звуков — но не думает и не чувствует, как человек.",
           source:    "Stanford AI Index 2024",
-          sourceUrl: "https://aiindex.stanford.edu",
+          sourceUrl: "https://hai.stanford.edu/ai-index/2024-ai-index-report",
         },
         {
           type:    'choice',
@@ -694,7 +694,7 @@ window.LANG_DATA = {
           correct: 2,
           explanation: 'Ответственность несут люди. Создатели выбирают данные; компания запускает; пользователь применяет. У ИИ нет моральной ответственности.',
           source:    'Закон ЕС об ИИ, 2024',
-          sourceUrl: 'https://artificialintelligenceact.eu/',
+          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
         },
       ],
 
@@ -762,8 +762,8 @@ window.LANG_DATA = {
           title: 'Как распознать дипфейк и подделку от ИИ',
           text:  'ИИ теперь умеет создавать поддельные фото, видео и даже голоса реальных людей, которые говорят то, чего никогда не говорили. Это называется «дипфейк». Некоторые подделки заметны сразу, но лучшие могут обмануть почти любого с первого взгляда.',
           example: '🔍 Обращай внимание на: руки с неправильным числом пальцев, странное моргание, освещение, которое не совпадает, или голос, звучащий чуть «не так». Если сомневаешься — проверь, пишут ли об этом надёжные новостные источники.',
-          source:    'Common Sense Media, «ИИ и дети», 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, «Teens, Trust, and Technology in the Age of AI», 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/research-brief-teens-trust-and-technology-in-the-age-of-ai',
           miniTest: [
             {
               q:       'Ты видишь шокирующее видео, где знаменитость говорит что-то безумное. Что делать в первую очередь?',
@@ -844,16 +844,16 @@ window.LANG_DATA = {
         {
           icon:  '🎨',
           title: 'ИИ-арт — а кому он вообще принадлежит?',
-          text:  'ИИ-генераторы картинок обучались на миллионах работ настоящих художников — часто без спроса разрешения. Когда ты создаёшь картинку с помощью ИИ, суды и компании до сих пор спорят, кому она принадлежит: тебе, ИИ-компании или художникам, чьи работы использовались для обучения.',
+          text:  'ИИ-генераторы картинок обучались на миллионах работ настоящих художников — часто без их разрешения. Можно ли так делать, ещё решают суды. А кому принадлежит картинка от ИИ? В США Бюро авторского права в 2025 году разъяснило: то, что целиком создал ИИ, авторским правом не защищено, и одного запроса (промпта) для авторства мало. Защищено то, что добавил сам человек. В других странах правила свои.',
           example: '⚖️ Представь повара, который выучил все рецепты, пробуя чужую готовку без спроса, а потом продаёт «новое» блюдо. Это правда что-то новое? Именно об этом сейчас спорят насчёт ИИ-арта.',
-          source:    'Бюро авторского права США, «Copyright and Artificial Intelligence», 2023',
-          sourceUrl: 'https://www.copyright.gov/ai/',
+          source:    'Бюро авторского права США, «Copyright and Artificial Intelligence. Part 2: Copyrightability», 2025',
+          sourceUrl: 'https://www.copyright.gov/ai/Copyright-and-Artificial-Intelligence-Part-2-Copyrightability-Report.pdf',
           miniTest: [
             {
               q:       'Почему ИИ-арт юридически сложная тема?',
               options: ['Он везде запрещён 🚫', 'Он обучался на работах настоящих художников, часто без их разрешения 📊', 'Компьютеры не могут ничем юридически владеть 💻', 'На самом деле тут всё просто ✅'],
               correct: 1,
-              explanation: 'Инструменты ИИ-арта учились на настоящих человеческих работах, часто без согласия авторов — поэтому вопросы владения и справедливости всё ещё обсуждаются и регулируются.',
+              explanation: 'ИИ учился на работах людей, часто без согласия авторов, — и можно ли так, решают суды. А картинка, которую целиком сделал ИИ по одному запросу, по разъяснению Бюро авторского права США (2025) не защищена авторским правом.',
             },
           ],
         },
@@ -862,8 +862,8 @@ window.LANG_DATA = {
           title: 'Это точно человек? ИИ в играх и чатах',
           text:  '«Игрок», которого ты встретил онлайн, может оказаться вообще не человеком. ИИ-боты умеют убедительно общаться, играть и даже спорить с тобой. Некоторые приложения используют ИИ-персонажей, которые ощущаются как настоящие друзья — но их создали компании со своими собственными целями.',
           example: '🕵️ Так же, как ты бы перепроверил профиль незнакомца, разумно немного сомневаться в том, кто — или что — на самом деле с тобой общается онлайн.',
-          source:    'Common Sense Media, «ИИ и дети», 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, «Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions», 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions',
           miniTest: [
             {
               q:       'Можешь ли ты быть на 100% уверен, что «игрок», с которым ты общаешься онлайн, — настоящий человек?',
@@ -899,7 +899,7 @@ window.LANG_DATA = {
           icon:    '🧠',
           fact:    'ИИ учится на данных, которые создали люди. Если в данных есть перекос — ИИ повторит его.',
           source:    'Стэнфордский индекс ИИ 2024',
-          sourceUrl: 'https://aiindex.stanford.edu',
+          sourceUrl: 'https://hai.stanford.edu/ai-index/2024-ai-index-report',
         },
         {
           unit:    'word',
@@ -1013,7 +1013,7 @@ window.LANG_DATA = {
           icon:    '📋',
           fact:    'Закон ЕС об ИИ и GDPR требуют информированного согласия для систем, которые обрабатывают персональные данные.',
           source:    'Закон ЕС об ИИ 2024',
-          sourceUrl: 'https://artificialintelligenceact.eu/',
+          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
         },
       ],
 
@@ -1025,7 +1025,7 @@ window.LANG_DATA = {
           correct: 1,
           explanation: "Современные ИИ-системы, включая большие языковые модели, не «понимают» в человеческом смысле — это статистические модели, которые находят закономерности в огромных данных и генерируют самый вероятный результат. Поэтому они могут звучать очень уверенно и всё равно ошибаться.",
           source:    "Stanford AI Index 2024",
-          sourceUrl: "https://aiindex.stanford.edu",
+          sourceUrl: "https://hai.stanford.edu/ai-index/2024-ai-index-report",
         },
         {
           type:    'choice',
@@ -1042,8 +1042,8 @@ window.LANG_DATA = {
           options: ['У него очень хорошее освещение 💡', 'Что-то выглядит слегка «не так» — моргание, руки, голос или свет 🔍', 'Оно длиннее 10 минут ⏱️', 'Оно опубликовано ночью 🌙'],
           correct: 1,
           explanation: 'У дипфейков часто есть мелкие визуальные огрехи. Также всегда проверяй, подтверждают ли историю надёжные источники.',
-          source:    'Common Sense Media, «ИИ и дети», 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, «Teens, Trust, and Technology in the Age of AI», 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/research-brief-teens-trust-and-technology-in-the-age-of-ai',
         },
         {
           type:    'choice',
@@ -1218,7 +1218,7 @@ window.LANG_DATA = {
           text:  'Три модели управления конкурируют: (1) Закон ЕС об ИИ — обязательная регуляция на основе рисков, запрещённые применения, требования прозрачности; (2) Подход США — в основном добровольные рамки (NIST AI RMF); (3) Китай — государственно направленный ИИ; (4) Россия — регуляция ИИ в разработке, акцент на суверенные технологии (Алиса, GigaChat, YandexGPT). Фундаментальное противоречие: безопасность и подотчётность замедляют деплой; скорость коммерчески и стратегически выгодна.',
           example: '⚖️ Закон ЕС запрещает биометрическую слежку в реальном времени в публичных местах. Россия пока не имеет аналогичного запрета. Та же технология — разные правовые реальности.',
           source:    'Закон ЕС об ИИ (2024), NIST AI RMF 1.0 (2023)',
-          sourceUrl: 'https://artificialintelligenceact.eu/',
+          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
           miniTest: [
             {
               q:       'Закон ЕС об ИИ классифицирует системы ИИ по...',
@@ -1448,7 +1448,7 @@ window.LANG_DATA = {
           correct: 1,
           explanation: "Это соответствует тому, как системы ИИ формально описываются в большинстве современных исследовательских и нормативных документов: программное обеспечение, которое производит результаты — прогнозы, рекомендации или решения — на основе данных, не обладая пониманием, сознанием или намерением. «Знание» здесь — статистическое свойство весов модели, а не хранимые факты.",
           source:    "Stanford AI Index 2024",
-          sourceUrl: "https://aiindex.stanford.edu",
+          sourceUrl: "https://hai.stanford.edu/ai-index/2024-ai-index-report",
         },
         {
           type:    'choice',
@@ -1470,7 +1470,7 @@ window.LANG_DATA = {
           ideal:   4,
           explanation: 'Закон ЕС об ИИ требует раскрытия информации для взаимодействий с людьми. Прозрачность — почти универсальная рекомендация всех систем регулирования.',
           source:    'Закон ЕС об ИИ, ст. 52',
-          sourceUrl: 'https://artificialintelligenceact.eu/',
+          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
         },
         {
           type:    'choice',
@@ -1506,7 +1506,7 @@ window.LANG_DATA = {
           ideal:   5,
           explanation: 'Прозрачность обучающих данных требуется по Закону ЕС об ИИ для высокорисковых и универсальных систем. Это позволяет аудит предвзятости и защиту авторских прав.',
           source:    'Закон ЕС об ИИ, ст. 53',
-          sourceUrl: 'https://artificialintelligenceact.eu/',
+          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
         },
         {
           type:    'choice',
@@ -1520,7 +1520,7 @@ window.LANG_DATA = {
           correct: 1,
           explanation: 'Биометрическое наблюдение в реальном времени — статья 5, явно запрещена. Медицинский и кадровый ИИ — высокий риск (требует аудита), не запрещён.',
           source:    'Закон ЕС об ИИ, статья 5',
-          sourceUrl: 'https://artificialintelligenceact.eu/',
+          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
         },
         {
           type:    'choice',
@@ -1568,7 +1568,7 @@ window.LANG_DATA = {
           correct: 2,
           explanation: 'Кадровый ИИ явно перечислен в Приложении III Закона ЕС как высокорисковый. Он должен соответствовать строгим требованиям: надзор человека, качество данных, тесты точности.',
           source:    'Закон ЕС об ИИ, Приложение III',
-          sourceUrl: 'https://artificialintelligenceact.eu/',
+          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
         },
         {
           type:    'choice',
@@ -1635,7 +1635,7 @@ window.LANG_DATA = {
           ideal:   5,
           explanation: "Независимый аудит — центральное требование сторонников подотчётности ИИ и обязателен по Закону ЕС об ИИ для систем высокого риска. Это почти консенсус среди исследователей этики ИИ.",
           source: "Закон ЕС об ИИ, ст. 43-44",
-          sourceUrl: "https://artificialintelligenceact.eu/",
+          sourceUrl: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
         },
 ],
 

@@ -24,6 +24,7 @@ export default {
     honesty: 'Los datos proceden de las fuentes primarias enlazadas abajo. «Nuestra conclusión» es la opinión del sitio basada en esos datos, no una cita.',
     all: 'Todos los artículos',
     tinyNote: 'Para 5–7 años: un adulto lee junto con el niño.',
+    adult: 'Para la persona adulta', adultGoal: 'Objetivo', adultAsk: 'Preguntas para conversar', adultSigns: 'Señales de comprensión',
   },
   'what-is-ai': {
     title: 'Qué es la IA, en palabras sencillas',
@@ -44,6 +45,7 @@ export default {
     ],
     myths: [],
     conclusion: 'La IA es una herramienta potente para adivinar a partir de ejemplos, pero no es una amiga ni lo sabe todo. La habilidad clave a su lado es comprobar la respuesta y decidir por uno mismo.',
+    adult: { goal: 'El niño o la niña puede decir con sus palabras: la IA es un programa que aprende de ejemplos, adivina y puede equivocarse.', ask: ['¿Cómo aprendió la IA a reconocer un gato?', '¿Por qué una IA puede equivocarse aunque suene segura?', '¿Cómo podemos comprobar su respuesta?'], signs: 'No llama a la IA viva ni amiga y propone por iniciativa propia comprobar una respuesta importante.' },
   },
   'explain-ai-to-a-child': {
     title: 'Cómo explicarle a un niño qué es la IA',
@@ -63,7 +65,7 @@ export default {
       { say: ['«¿Quién hizo este sistema, con qué lo entrenaron y adónde van tus datos?».', '«Un deepfake puede parecer real: comprueba la fuente».', '«La IA es una herramienta. Las decisiones y la responsabilidad siguen siendo de las personas».'] },
     ],
     myths: [
-      { m: 'La IA está viva y puede ser una amiga.', t: 'Es un programa. Los niños le atribuyen fácilmente una «personalidad», así que conviene decir claramente que la IA no siente y no es una amiga.' },
+      { m: 'La IA está viva y puede ser una amiga.', t: 'Es un programa. En el estudio del MIT los niños hablaron de «quién» es el asistente de voz, así que conviene decir claramente que la IA no siente y no es una amiga.' },
       { m: 'La IA siempre tiene razón porque suena segura.', t: 'La IA puede afirmar cosas falsas con seguridad. Lo importante se comprueba con una segunda fuente.' },
       { m: 'A la IA se le puede contar cualquier secreto.', t: 'Proteger los datos de los niños es uno de los requisitos de UNICEF. Lo personal (nombre, dirección, fotos, contraseñas) no se comparte con un chatbot.' },
       { m: 'Mejor prohibir la IA hasta que el niño crezca.', t: 'UNICEF pide preparar a los niños para vivir con la IA, y la UNESCO, enseñarles a entender y afirmar su propio papel junto a ella. Una prohibición no enseña eso; un primer contacto acompañado, sí.' },
@@ -77,7 +79,7 @@ export default {
     facts: [
       'En un experimento con casi mil estudiantes de matemáticas de secundaria, tener GPT-4 durante la práctica mejoró las notas. Pero al quitar el acceso, quienes habían usado un chatbot normal rindieron un 17 % peor que quienes nunca tuvieron IA. Una versión tutor con ajustes pensados para proteger el aprendizaje eliminó en gran parte ese daño.',
       'Días después recuerda más quien se puso a prueba de memoria que quien releyó, aunque releer hace sentir más seguridad.',
-      'La guía de la UNESCO de 2023 fija una edad mínima de 13 años para usar herramientas de IA en el aula y pide formar al profesorado.',
+      'La guía de la UNESCO de 2023 señala los 13 años como edad mínima para usar herramientas de IA en el aula y pide formar al profesorado.',
       'Un texto de IA puede ser falso aunque suene seguro.',
     ],
     ages: [
@@ -92,5 +94,6 @@ export default {
       { m: 'La respuesta de la IA se puede entregar tal cual.', t: 'La IA puede equivocarse con seguridad. Compruébala con el libro y explica la solución con tus palabras.' },
     ],
     conclusion: 'En los deberes la IA sirve como tutor, no como solucionador: primero piensas tú, la IA da pistas y comprueba, y tu comprensión la pruebas sin ella. Los más pequeños, solo con un adulto; para herramientas de IA en el aula, la UNESCO señala la edad de 13 años.',
+    adult: { goal: 'Usa la IA como pista y comprueba su comprensión sin ella.', ask: ['¿Qué parte de esta tarea es tuya y qué sugirió la IA?', '¿Puedes explicar la solución sin ayudas?', '¿Dónde podemos comprobar esta respuesta?'], signs: 'Explica la solución con sus palabras y resuelve una tarea parecida sin IA.' },
   },
 };
