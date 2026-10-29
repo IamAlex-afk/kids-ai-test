@@ -550,10 +550,10 @@ window.LANG_DATA = {
         },
         {
           type:    'choice',
-          q:       'Kỹ năng quan trọng nhất khi sử dụng AI là gì?',
+          q:       'Kỹ năng nào dưới đây giúp ích nhất khi sử dụng AI?',
           options: ['Gõ phím thật nhanh ⌨️', 'Biết hết mọi công cụ AI 📱', 'Tư duy phản biện — kiểm tra và đặt câu hỏi 🧠', 'Dùng AI cho mọi việc 🤖'],
           correct: 2,
-          explanation: 'Tư duy phản biện là kỹ năng số 1. AI đưa ra câu trả lời tức thì — nhưng em cần đánh giá xem chúng có tốt hay không.',
+          explanation: 'Tư duy phản biện là một trong những kỹ năng quan trọng nhất. AI đưa ra câu trả lời tức thì — nhưng em cần đánh giá xem chúng có tốt hay không.',
           source:    'UNESCO, "AI competency framework for students", 2024',
           sourceUrl: 'https://doi.org/10.54675/JKJB9835',
         },

@@ -704,10 +704,10 @@ window.LANG_DATA = {
         },
         {
           type:    'choice',
-          q:       'What is the most important skill when using AI?',
+          q:       'Which of these skills helps most when using AI?',
           options: ['Typing fast ⌨️', 'Knowing all the AI tools 📱', 'Critical thinking — verifying and questioning 🧠', 'Using AI for everything 🤖'],
           correct: 2,
-          explanation: 'Critical thinking is the #1 skill. AI gives you answers instantly — but you need to judge whether they\'re good.',
+          explanation: 'Critical thinking is one of the most important skills. AI gives you answers instantly — but you need to judge whether they\'re good.',
           source:    'UNESCO, "AI competency framework for students", 2024',
           sourceUrl: 'https://doi.org/10.54675/JKJB9835',
         },
