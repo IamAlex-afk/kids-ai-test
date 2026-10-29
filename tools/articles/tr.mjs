@@ -24,6 +24,7 @@ export default {
     honesty: 'Bilgiler aşağıda bağlantısı verilen birincil kaynaklardan alınmıştır. "Bizim sonucumuz", bu bilgilere dayanan site görüşüdür, alıntı değildir.',
     all: 'Tüm makaleler',
     tinyNote: '5–7 yaş için: bir yetişkin çocukla birlikte okur.',
+    adult: 'Yetişkin için', adultGoal: 'Amaç', adultAsk: 'Sohbet için sorular', adultSigns: 'Anladığının işaretleri',
   },
   'what-is-ai': {
     title: 'Yapay zekâ nedir? Basit sözlerle',
@@ -44,6 +45,7 @@ export default {
     ],
     myths: [],
     conclusion: 'Yapay zekâ, örneklerden tahmin yapan güçlü bir araçtır ama arkadaş değildir ve her şeyi bilmez. Yanında en önemli beceri: yanıtı kontrol etmek ve kararı kendin vermek.',
+    adult: { goal: 'Çocuk kendi sözleriyle şunu söyleyebilir: yapay zekâ örneklerden öğrenen, tahmin eden ve yanılabilen bir programdır.', ask: ['Yapay zekâ kediyi tanımayı nasıl öğrendi?', 'Yapay zekâ emin görünse bile neden yanılabilir?', 'Cevabını nasıl kontrol edebiliriz?'], signs: 'Çocuk yapay zekâya canlı ya da arkadaş demez ve önemli bir cevabı kontrol etmeyi kendiliğinden önerir.' },
   },
   'explain-ai-to-a-child': {
     title: 'Çocuğa yapay zekâ nasıl anlatılır?',
@@ -63,7 +65,7 @@ export default {
       { say: ['"Bu sistemi kim yaptı, neyle eğitildi ve verilerin nereye gidiyor?"', '"Bir deepfake gerçek gibi görünebilir; kaynağı kontrol et."', '"Yapay zekâ bir araçtır. Kararlar ve sorumluluk insanlarda kalır."'] },
     ],
     myths: [
-      { m: 'Yapay zekâ canlıdır ve arkadaş olabilir.', t: 'O bir programdır. Çocuklar ona kolayca bir "kişilik" yakıştırır; bu yüzden yapay zekânın hissetmediğini ve arkadaş olmadığını açıkça söylemekte yarar var.' },
+      { m: 'Yapay zekâ canlıdır ve arkadaş olabilir.', t: 'O bir programdır. MIT araştırmasında çocuklar sesli asistanın "kim" olduğunu konuştu; bu yüzden yapay zekânın hissetmediğini ve arkadaş olmadığını açıkça söylemekte yarar var.' },
       { m: 'Yapay zekâ emin konuştuğu için hep haklıdır.', t: 'Yapay zekâ yanlış şeyleri de kendinden emin söyleyebilir. Önemli şeyleri ikinci bir kaynaktan kontrol ederiz.' },
       { m: 'Yapay zekâya her sır anlatılabilir.', t: 'Çocukların verilerini korumak UNICEF\'in şartlarından biridir. Kişisel bilgiler (ad, adres, fotoğraf, şifre) sohbet botuna verilmez.' },
       { m: 'Çocuk büyüyene kadar yapay zekâyı yasaklamak daha iyidir.', t: 'UNICEF çocukları yapay zekâyla yaşama hazırlamayı, UNESCO da onlara yapay zekâ yanında kendi rollerini anlamayı ve savunmayı öğretmeyi ister. Yasak bunu öğretmez; eşlik edilen ilk tanışma öğretir.' },
@@ -77,7 +79,7 @@ export default {
     facts: [
       'Matematik dersinde yaklaşık bin lise öğrencisiyle yapılan bir deneyde, alıştırma sırasında GPT-4 erişimi notları yükseltti. Ancak erişim kaldırılınca standart sohbet botunu kullanan öğrenciler, hiç yapay zekâ kullanmamış olanlardan %17 daha kötü sonuç aldı. Öğrenmeyi korumak için ayarlanmış öğretmen sürümü bu zararı büyük ölçüde ortadan kaldırdı.',
       'Birkaç gün sonra, kendini hafızadan sınayan kişi tekrar okuyandan daha çok hatırlar; oysa tekrar okumak insana daha emin hissettirir.',
-      'UNESCO\'nun 2023 tarihli rehberi, sınıfta yapay zekâ araçlarının kullanımı için 13 yaş sınırı koyar ve öğretmenlerin eğitilmesini ister.',
+      'UNESCO\'nun 2023 tarihli rehberi, sınıfta yapay zekâ araçlarının kullanımı için 13 yaşını alt sınır olarak belirtir ve öğretmenlerin eğitilmesini ister.',
       'Yapay zekânın yazdığı metin, kendinden emin görünse bile yanlış olabilir.',
     ],
     ages: [
@@ -92,5 +94,6 @@ export default {
       { m: 'Yapay zekânın cevabı olduğu gibi teslim edilebilir.', t: 'Yapay zekâ kendinden emin şekilde yanılabilir. Kitapla kontrol et ve çözümü kendi sözlerinle açıkla.' },
     ],
     conclusion: 'Ödevde yapay zekâ, çözücü olarak değil öğretmen olarak işe yarar: önce sen düşünürsün, yapay zekâ ipucu verir ve kontrol eder, anladığını ise onsuz sınarsın. Küçükler yalnızca bir yetişkinle; sınıfta yapay zekâ araçları için UNESCO 13 yaşı belirtir.',
+    adult: { goal: 'Çocuk yapay zekâyı ipucu olarak kullanır ve anladığını onsuz kontrol eder.', ask: ['Bu ödevin hangi kısmı senin, hangisini yapay zekâ önerdi?', 'Çözümü yardım almadan açıklayabilir misin?', 'Bu cevabı nereden kontrol edebiliriz?'], signs: 'Çocuk çözümü kendi sözleriyle açıklar ve benzer bir soruyu yapay zekâ olmadan çözer.' },
   },
 };
