@@ -185,8 +185,8 @@ window.LANG_DATA = {
           title: 'AI is a TOOL — you are the BOSS',
           text:  'AI is a very helpful tool, like a calculator. A calculator can\'t make you love maths — and AI can\'t make your choices for you. YOU decide.',
           example: '✏️ A pencil is a tool. It can\'t draw by itself — YOU make the drawing. AI is the same: you are the artist.',
-          source:    'UNESCO AI for Children, 2022',
-          sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
+          source:    'UNESCO, "AI competency framework for students", 2024',
+          sourceUrl: 'https://doi.org/10.54675/JKJB9835',
           miniTest: [
             {
               q:       'Who is in charge — you or the AI?',
@@ -483,8 +483,8 @@ window.LANG_DATA = {
           title: 'YOU are in control',
           text:       "AI is the most powerful tool humans have ever built. But it's still a tool — like a hammer. A hammer can build a house or break a window. YOU decide how to use it. The people who understand AI best are the ones who stay in control of it. And if a tool is used to cause harm, the person is responsible — not the tool.",
           example: '🔨 + 🧠 = 🏠. Tool + Smart Human = Amazing Result. AI + Critical Thinking = Your Superpower.',
-          source:    'UNESCO "AI Competency Framework", 2022',
-          sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
+          source:    'UNESCO, "AI competency framework for students", 2024',
+          sourceUrl: 'https://doi.org/10.54675/JKJB9835',
           miniTest: [
             {
               q:       'What\'s the best way to use AI?',
@@ -708,8 +708,8 @@ window.LANG_DATA = {
           options: ['Typing fast ⌨️', 'Knowing all the AI tools 📱', 'Critical thinking — verifying and questioning 🧠', 'Using AI for everything 🤖'],
           correct: 2,
           explanation: 'Critical thinking is the #1 skill. AI gives you answers instantly — but you need to judge whether they\'re good.',
-          source:    'UNESCO AI Competency 2022',
-          sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
+          source:    'UNESCO, "AI competency framework for students", 2024',
+          sourceUrl: 'https://doi.org/10.54675/JKJB9835',
         },
         {
           type:    'choice',
@@ -853,8 +853,8 @@ window.LANG_DATA = {
           title: 'What happens after you chat with an AI?',
           text:  'When you type something into a chatbot, it doesn\'t just disappear. Companies often save your conversations to improve their AI — and sometimes real people read chats to check the AI\'s answers.',
           example: '✉️ Treat an AI chat a bit like a postcard, not a locked diary — assume it could be read by someone at the company. Never type your address, passwords, or a friend\'s private info.',
-          source:    'UNESCO "AI Competency Framework", 2022',
-          sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
+          source:    'UNESCO, "AI competency framework for students", 2024',
+          sourceUrl: 'https://doi.org/10.54675/JKJB9835',
           miniTest: [
             {
               q:       'Is it safe to tell an AI chatbot your home address so it can "help you better"?',
@@ -979,8 +979,8 @@ window.LANG_DATA = {
           decoys:  ['ROBOTS', 'LUCK'],
           icon:    '🧑‍⚖️',
           fact:    'AI can suggest, but for anything important — health, money, safety — a human should decide.',
-          source:    'UNESCO "AI Competency Framework", 2022',
-          sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
+          source:    'UNESCO, "AI competency framework for students", 2024',
+          sourceUrl: 'https://doi.org/10.54675/JKJB9835',
         },
         {
           unit:    'word',
@@ -1309,8 +1309,8 @@ window.LANG_DATA = {
           title: 'Your role in the AI era — not passive, not afraid',
           text:  'AI literacy is now a democratic necessity. Societies make collective decisions about AI through elections, regulation, procurement, employment, and consumer choices. Informed citizens are a prerequisite for accountable AI governance. The people who understand how AI actually works are the ones who can meaningfully participate in shaping how it\'s used — and that includes you.',
           example: '🗳️ AI is being deployed in: hiring (your future employer may use it), healthcare (your doctor may rely on it), courts (some jurisdictions use predictive tools), education (your school may adopt it). Your understanding of it is not academic — it\'s practical.',
-          source:    'UNESCO "AI Competency Framework for Citizens", 2022',
-          sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
+          source:    'UNESCO, "AI competency framework for students", 2024',
+          sourceUrl: 'https://doi.org/10.54675/JKJB9835',
           miniTest: [
             {
               q:       'AI literacy matters for people who DON\'T work in tech because...',
@@ -1416,8 +1416,8 @@ window.LANG_DATA = {
           decoys:  ['BLIND TRUST', 'TOTAL AVOIDANCE'],
           icon:    '🛡️',
           fact:    'The goal isn\'t to fear AI — it\'s to question sources, verify facts, and keep humans in charge of decisions.',
-          source:    'UNESCO "AI Competency Framework", 2022',
-          sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
+          source:    'UNESCO, "AI competency framework for students", 2024',
+          sourceUrl: 'https://doi.org/10.54675/JKJB9835',
         },
         {
           unit:    'phrase',

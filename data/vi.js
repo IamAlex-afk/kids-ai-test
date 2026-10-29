@@ -149,8 +149,8 @@ window.LANG_DATA = {
           title: 'AI là CÔNG CỤ — em là NGƯỜI QUYẾT ĐỊNH',
           text:  'AI là một công cụ rất hữu ích, giống như máy tính bỏ túi. Máy tính bỏ túi không thể khiến em yêu thích môn toán — và AI cũng không thể quyết định thay em. EM là người quyết định.',
           example: '✏️ Bút chì là một công cụ. Nó không thể tự vẽ — CHÍNH em mới là người vẽ. AI cũng vậy: em là người nghệ sĩ.',
-          source:    'UNESCO, AI cho trẻ em, 2022',
-          sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
+          source:    'UNESCO, "AI competency framework for students", 2024',
+          sourceUrl: 'https://doi.org/10.54675/JKJB9835',
           miniTest: [
             {
               q:       'Ai là người quyết định — em hay AI?',
@@ -391,8 +391,8 @@ window.LANG_DATA = {
           title: 'EM là người kiểm soát',
           text:       "AI là công cụ mạnh mẽ nhất mà con người từng tạo ra. Nhưng nó vẫn chỉ là một công cụ — giống như cái búa. Cái búa có thể xây một ngôi nhà hoặc làm vỡ cửa sổ. EM quyết định cách sử dụng nó. Những người hiểu AI rõ nhất là những người luôn kiểm soát được nó. Và nếu một công cụ bị dùng để gây hại, người chịu trách nhiệm là con người — không phải công cụ.",
           example: '🔨 + 🧠 = 🏠. Công cụ + Con người thông minh = Kết quả tuyệt vời. AI + Tư duy phản biện = Siêu năng lực của em.',
-          source:    'UNESCO "AI Competency Framework", 2022',
-          sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
+          source:    'UNESCO, "AI competency framework for students", 2024',
+          sourceUrl: 'https://doi.org/10.54675/JKJB9835',
           miniTest: [
             {
               q:       'Cách tốt nhất để sử dụng AI là gì?',
@@ -482,8 +482,8 @@ window.LANG_DATA = {
           decoys:  ['Q', 'X'],
           icon:    '✅',
           fact:    'Trước khi tin điều AI nói, hãy kiểm tra với người lớn hoặc một cuốn sách đáng tin cậy.',
-          source:    'UNESCO "AI Competency Framework", 2022',
-          sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
+          source:    'UNESCO, "AI competency framework for students", 2024',
+          sourceUrl: 'https://doi.org/10.54675/JKJB9835',
         },
         { unit: 'letter', targets: ['R','O','B','O','T'], decoys: ['X', 'Q', 'Z'], icon: '🤖',
           fact: 'Robot làm theo quy tắc — không tự nghĩ. AI giống như bộ não của robot!' },
@@ -554,8 +554,8 @@ window.LANG_DATA = {
           options: ['Gõ phím thật nhanh ⌨️', 'Biết hết mọi công cụ AI 📱', 'Tư duy phản biện — kiểm tra và đặt câu hỏi 🧠', 'Dùng AI cho mọi việc 🤖'],
           correct: 2,
           explanation: 'Tư duy phản biện là kỹ năng số 1. AI đưa ra câu trả lời tức thì — nhưng em cần đánh giá xem chúng có tốt hay không.',
-          source:    'UNESCO AI Competency 2022',
-          sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
+          source:    'UNESCO, "AI competency framework for students", 2024',
+          sourceUrl: 'https://doi.org/10.54675/JKJB9835',
         },
         {
           type:    'choice',
@@ -697,8 +697,8 @@ window.LANG_DATA = {
           title: 'Điều gì xảy ra sau khi bạn trò chuyện với AI',
           text:  'Khi bạn gõ điều gì đó vào chatbot, nó không đơn giản biến mất. Các công ty thường lưu lại cuộc trò chuyện để cải thiện AI của họ — và đôi khi người thật đọc các đoạn chat để kiểm tra câu trả lời của AI.',
           example: '✉️ Hãy coi cuộc trò chuyện với AI giống như một tấm bưu thiếp hơn là một cuốn nhật ký khóa kín — giả định rằng ai đó ở công ty có thể đọc được. Đừng bao giờ gõ địa chỉ, mật khẩu, hoặc thông tin riêng tư của bạn bè.',
-          source:    'UNESCO "AI Competency Framework", 2022',
-          sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
+          source:    'UNESCO, "AI competency framework for students", 2024',
+          sourceUrl: 'https://doi.org/10.54675/JKJB9835',
           miniTest: [
             {
               q:       'Có an toàn không khi nói địa chỉ nhà cho chatbot AI để nó "giúp tốt hơn"?',
@@ -821,8 +821,8 @@ window.LANG_DATA = {
           decoys:  ['RÔ BỐT', 'MAY MẮN'],
           icon:    '🧑‍⚖️',
           fact:    'AI có thể gợi ý, nhưng với những việc quan trọng — sức khỏe, tiền bạc, an toàn — con người phải là người quyết định.',
-          source:    'UNESCO "AI Competency Framework", 2022',
-          sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
+          source:    'UNESCO, "AI competency framework for students", 2024',
+          sourceUrl: 'https://doi.org/10.54675/JKJB9835',
         },
         { unit: 'word', targets: ['MẠNG', 'THẦN', 'KINH', 'KHÔNG', 'PHẢI', 'NÃO', 'THẬT'], decoys: ['CÓ Ý THỨC', 'SỐNG'], icon: '🧠',
           fact: 'Mạng thần kinh là các hàm toán học lấy cảm hứng từ nơ-ron — không có ý thức hay sự hiểu biết.' },
@@ -1085,8 +1085,8 @@ window.LANG_DATA = {
           title: 'Vai trò của bạn trong thời đại AI — không thụ động, không sợ hãi',
           text:  'Hiểu biết về AI giờ đây là một nhu cầu dân chủ. Các xã hội đưa ra quyết định tập thể về AI thông qua bầu cử, quy định, mua sắm công, việc làm và lựa chọn tiêu dùng. Công dân được thông tin đầy đủ là điều kiện tiên quyết cho việc quản trị AI có trách nhiệm giải trình. Những người hiểu AI thực sự hoạt động như thế nào là những người có thể tham gia một cách có ý nghĩa vào việc định hình cách nó được sử dụng — và điều đó bao gồm cả bạn.',
           example: '🗳️ AI đang được triển khai trong: tuyển dụng (nhà tuyển dụng tương lai của bạn có thể dùng nó), y tế (bác sĩ của bạn có thể dựa vào nó), tòa án (một số khu vực pháp lý dùng công cụ dự đoán), giáo dục (trường của bạn có thể áp dụng nó). Hiểu biết của bạn về nó không phải là học thuật — mà là thực tiễn.',
-          source:    'UNESCO "AI Competency Framework for Citizens", 2022',
-          sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
+          source:    'UNESCO, "AI competency framework for students", 2024',
+          sourceUrl: 'https://doi.org/10.54675/JKJB9835',
           miniTest: [
             {
               q:       'Hiểu biết về AI quan trọng với những người KHÔNG làm việc trong ngành công nghệ vì...',
@@ -1190,8 +1190,8 @@ window.LANG_DATA = {
           decoys:  ['TIN TƯỞNG MÙ QUÁNG', 'PHỚT LỜ HOÀN TOÀN'],
           icon:    '🛡️',
           fact:    'Mục tiêu không phải là sợ AI — mà là đặt câu hỏi về nguồn thông tin, xác minh sự thật, và để con người là người quyết định.',
-          source:    'UNESCO "AI Competency Framework", 2022',
-          sourceUrl: 'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
+          source:    'UNESCO, "AI competency framework for students", 2024',
+          sourceUrl: 'https://doi.org/10.54675/JKJB9835',
         },
         { unit: 'phrase', targets: ['KIẾN', 'TRÚC', 'TRANSFORMER', 'DÙNG', 'CƠ', 'CHẾ', 'CHÚ', 'Ý'], decoys: ['TƯ DUY THẬT', 'DỰA TRÊN QUY TẮC'], icon: '⚙️',
           fact: 'Transformer tính quan hệ thống kê giữa các token — không có suy luận ký hiệu, chỉ là trọng số chú ý.' },
