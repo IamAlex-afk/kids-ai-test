@@ -115,16 +115,16 @@ window.LANG_DATA = {
         {
           icon:  '🤖',
           title: 'Robot LÀ gì?',
-          text:       "Robot là một cỗ máy làm theo quy tắc. Alexa, Siri, Google — chúng không sống. Chúng giống như một món đồ chơi rất thông minh biết nghe và nói. Nhưng chúng không thể vui hay buồn. Nó có thể hữu ích — nhưng nó không phải là bạn thật sự.",
+          text:       "Robot là một cỗ máy làm theo quy tắc. Trợ lý Google, Kiki — chúng không sống. Chúng giống như một món đồ chơi rất thông minh biết nghe và nói. Nhưng chúng không thể vui hay buồn. Nó có thể hữu ích — nhưng nó không phải là bạn thật sự.",
           example: '🎮 Trò chơi điện tử cũng làm theo quy tắc! Nếu em bấm nhảy, Mario sẽ nhảy. AI cũng vậy — nó làm theo quy tắc, nó không suy nghĩ.',
-          source:    'MIT Media Lab, AI cho trẻ nhỏ',
-          sourceUrl: 'https://www.media.mit.edu/',
+          source:    'Druga và cộng sự, "Hey Google is it OK if I eat you?", MIT Media Lab, IDC 2017',
+          sourceUrl: 'https://www.media.mit.edu/publications/child-agent-interaction/',
           miniTest: [
             {
-              q:       'Alexa có sống như một chú chó hay mèo không?',
+              q:       'Trợ lý Google có sống như một chú chó hay mèo không?',
               options: ['Có, nó có cảm xúc! 🐶', 'Không, nó là một cỗ máy 🤖'],
               correct: 1,
-              explanation: 'Alexa là một cỗ máy! Nó làm theo quy tắc, giống như đồng hồ làm theo quy tắc để chỉ đúng giờ.',
+              explanation: 'Trợ lý Google là một cỗ máy! Nó làm theo quy tắc, giống như đồng hồ làm theo quy tắc để chỉ đúng giờ.',
             },
           ],
         },
@@ -248,7 +248,7 @@ window.LANG_DATA = {
           correct: 1,
           explanation: "Đúng vậy! AI là một chương trình máy tính do con người tạo ra — nó không sống và không cảm nhận được gì cả.",
           source:    "Stanford AI Index 2024",
-          sourceUrl: "https://aiindex.stanford.edu",
+          sourceUrl: "https://hai.stanford.edu/ai-index/2024-ai-index-report",
         },
         {
           type:    'yesno',
@@ -256,15 +256,15 @@ window.LANG_DATA = {
           correct: 0,
           explanation: 'Robot và AI không có cảm xúc gì cả. Chúng xử lý thông tin nhưng không thể trải nghiệm nỗi buồn, niềm vui hay tình yêu.',
           source:    'Stanford AI Index 2024',
-          sourceUrl: 'https://aiindex.stanford.edu',
+          sourceUrl: 'https://hai.stanford.edu/ai-index/2024-ai-index-report',
         },
         {
           type:    'yesno',
-          q:       'Siri có sống như một con người không? 🧑',
+          q:       'Kiki có sống như một con người không? 🧑',
           correct: 0,
-          explanation: 'Siri là một chương trình thông minh — nó không sống. Nó không có trái tim, không có cảm xúc, không có suy nghĩ thật.',
-          source:    'Apple Siri Technical Overview',
-          sourceUrl: 'https://machinelearning.apple.com/',
+          explanation: 'Kiki là một chương trình thông minh — nó không sống. Nó không có trái tim, không có cảm xúc, không có suy nghĩ thật.',
+          source:    'Druga và cộng sự, "Hey Google is it OK if I eat you?", MIT Media Lab, IDC 2017',
+          sourceUrl: 'https://www.media.mit.edu/publications/child-agent-interaction/',
         },
         {
           type:    'yesno',
@@ -294,8 +294,8 @@ window.LANG_DATA = {
           q:       'AI có phải là bạn của em không? 🤝',
           correct: 0,
           explanation: 'AI là một công cụ hữu ích, nhưng nó không phải là bạn. Bạn thật sự nhớ em, quan tâm đến em, và có cảm xúc. AI thì không thể.',
-          source:    'Common Sense Media, "AI & Children", 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, "Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions',
         },
       ],
 
@@ -317,7 +317,7 @@ window.LANG_DATA = {
       protocols: [
         { num: 1, icon: '🤔', title: 'Luôn hỏi người lớn', text: 'Nếu AI nói điều gì đó bất ngờ — luôn kiểm tra lại với một người thật.' },
         { num: 2, icon: '🎨', title: 'Em là người nghệ sĩ', text: 'AI có thể giúp nhưng CHÍNH em mới là người sáng tạo. Ý tưởng của em luôn đặc biệt hơn.' },
-        { num: 3, icon: '❤️', title: 'Bạn thật sự có cảm xúc', text: 'Alexa và Siri không thể là bạn của em. Nhưng người thật thì có thể!' },
+        { num: 3, icon: '❤️', title: 'Bạn thật sự có cảm xúc', text: 'Trợ lý Google hay Kiki không thể là bạn của em. Nhưng người thật thì có thể!' },
         { num: 4, icon: '🛑', title: 'Nói KHÔNG cũng được', text: 'Em không bao giờ phải nghe theo robot. Em luôn là người quyết định.' },
         { num: 5, icon: '📚', title: 'Học tập là siêu năng lực của em', text: 'AI học từ sách vở — em cũng có thể, và em sẽ còn giỏi hơn nữa!' },
         { num: 6, icon: '🌍', title: 'AI có thể sai', text: 'AI có thể nói những điều không đúng. Đó là lý do vì sao con người biết suy nghĩ lại quan trọng đến vậy.' },
@@ -438,8 +438,8 @@ window.LANG_DATA = {
           title: 'Nói chuyện với AI không giống nói chuyện với bạn bè',
           text:  'Trò chuyện với chatbot AI có thể vui, và chúng dường như luôn có thời gian cho em. Nhưng một người bạn thật nhớ sinh nhật em vì họ quan tâm, cười vì điều gì đó thực sự buồn cười với họ, và có thể ôm em thật sự. AI không làm bất kỳ điều nào trong số đó — nó chỉ đoán những từ nghe có vẻ thân thiện.',
           example: '🤗 Ôm một con thú nhồi bông có thể thấy an ủi — nhưng điều đó không giống như được một người bạn thật ôm lại. Trò chuyện với AI cũng an ủi theo cách tương tự, không phải vì nó thực sự quan tâm.',
-          source:    'Common Sense Media, "AI và Trẻ em", 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, "Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions',
           miniTest: [
             {
               q:       'Một chatbot AI có thể thực sự quan tâm đến em giống như một người bạn thật không?',
@@ -467,7 +467,7 @@ window.LANG_DATA = {
           icon:    '❗',
           fact:    'AI có thể sai! Nó đoán theo khuôn mẫu, vì vậy luôn kiểm tra lại câu trả lời quan trọng.',
           source:    'Stanford AI Index 2024',
-          sourceUrl: 'https://aiindex.stanford.edu',
+          sourceUrl: 'https://hai.stanford.edu/ai-index/2024-ai-index-report',
         },
         {
           unit:    'letter',
@@ -519,7 +519,7 @@ window.LANG_DATA = {
           correct: 1,
           explanation: "AI là một chương trình do con người tạo ra. Nó học bằng cách tìm ra các quy luật trong một lượng lớn văn bản, hình ảnh và âm thanh — nhưng nó không suy nghĩ hay cảm nhận như con người.",
           source:    "Stanford AI Index 2024",
-          sourceUrl: "https://aiindex.stanford.edu",
+          sourceUrl: "https://hai.stanford.edu/ai-index/2024-ai-index-report",
         },
         {
           type:    'choice',
@@ -580,8 +580,8 @@ window.LANG_DATA = {
           options: ['AI thực sự cảm nhận được sự đồng cảm 💛', 'AI phát hiện các khuôn mẫu liên quan đến cảm xúc trong văn bản/giọng nói 📊', 'AI được lập trình để tử tế 🤗', 'Điều này là không thể — AI không làm được 🚫'],
           correct: 1,
           explanation: 'AI cảm xúc phát hiện khuôn mẫu (như cao độ giọng nói căng thẳng hay một số từ nhất định) — nó KHÔNG cảm nhận hay hiểu cảm xúc. Đó là phát hiện khuôn mẫu, không phải sự đồng cảm.',
-          source:    'MIT Media Lab, Affective Computing',
-          sourceUrl: 'https://affect.media.mit.edu/',
+          source:    'Barrett và cộng sự, "Emotional Expressions Reconsidered", Psychological Science in the Public Interest, 2019',
+          sourceUrl: 'https://doi.org/10.1177/1529100619832930',
         },
         {
           type:    'choice',
@@ -590,7 +590,7 @@ window.LANG_DATA = {
           correct: 2,
           explanation: 'Con người chịu trách nhiệm. Người xây dựng chọn dữ liệu huấn luyện; công ty triển khai nó; người dùng áp dụng nó. AI không có ý chí đạo đức.',
           source:    'European AI Act, 2024',
-          sourceUrl: 'https://artificialintelligenceact.eu/',
+          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
         },
       ],
 
@@ -655,8 +655,8 @@ window.LANG_DATA = {
           title: 'Nhận biết deepfake và nội dung giả do AI tạo ra',
           text:  'AI giờ đây có thể tạo ảnh, video, thậm chí giọng nói giả của người thật nói những điều họ chưa từng nói. Đây gọi là "deepfake". Một số dễ nhận ra, nhưng những cái tốt nhất có thể đánh lừa hầu hết mọi người ngay từ cái nhìn đầu tiên.',
           example: '🔍 Hãy để ý: bàn tay có số ngón tay sai, chớp mắt kỳ lạ, ánh sáng không khớp, hoặc giọng nói nghe hơi "khác lạ". Nếu nghi ngờ, hãy kiểm tra xem nguồn tin đáng tin cậy có đưa tin tương tự không.',
-          source:    'Common Sense Media, "AI & Children", 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, "Teens, Trust, and Technology in the Age of AI", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/research-brief-teens-trust-and-technology-in-the-age-of-ai',
           miniTest: [
             {
               q:       'Bạn thấy một video gây sốc trong đó một người nổi tiếng nói điều gì đó điên rồ. Nên làm gì đầu tiên?',
@@ -737,16 +737,16 @@ window.LANG_DATA = {
         {
           icon:  '🎨',
           title: 'Nghệ thuật AI — thực ra thuộc về ai?',
-          text:  'Các công cụ tạo ảnh AI được huấn luyện trên hàng triệu tác phẩm của các nghệ sĩ thật — thường không xin phép. Khi bạn tạo một bức tranh bằng AI, tòa án và các công ty vẫn đang tranh cãi ai là chủ sở hữu: bạn, công ty AI, hay các nghệ sĩ gốc có tác phẩm đã dùng để huấn luyện AI đó.',
+          text:  'Các công cụ tạo ảnh AI được huấn luyện trên hàng triệu tác phẩm của nghệ sĩ thật — thường không xin phép họ. Việc đó có được phép hay không vẫn đang được tòa án quyết định. Vậy bức tranh do AI làm thuộc về ai? Ở Mỹ, Cục Bản quyền năm 2025 đã giải thích: thứ hoàn toàn do AI tự tạo ra không được bảo hộ bản quyền, và chỉ một yêu cầu (prompt) thì chưa đủ để trở thành tác giả. Phần do con người tự thêm vào thì được bảo hộ. Các nước khác có quy định riêng.',
           example: '⚖️ Hãy tưởng tượng một đầu bếp học mọi công thức bằng cách nếm thử món ăn của người khác mà không xin phép, rồi bán một món "mới". Đó có thực sự là mới không? Đó chính là cuộc tranh luận đang diễn ra về nghệ thuật AI ngay bây giờ.',
-          source:    'Cục Bản quyền Hoa Kỳ, "Copyright and Artificial Intelligence", 2023',
-          sourceUrl: 'https://www.copyright.gov/ai/',
+          source:    'Cục Bản quyền Hoa Kỳ, "Copyright and Artificial Intelligence. Part 2: Copyrightability", 2025',
+          sourceUrl: 'https://www.copyright.gov/ai/Copyright-and-Artificial-Intelligence-Part-2-Copyrightability-Report.pdf',
           miniTest: [
             {
               q:       'Vì sao nghệ thuật do AI tạo ra lại phức tạp về mặt pháp lý?',
               options: ['Nó bị cấm ở khắp mọi nơi 🚫', 'Nó được huấn luyện trên tác phẩm của các nghệ sĩ thật, thường không có sự cho phép của họ 📊', 'Máy tính không thể sở hữu bất cứ thứ gì về mặt pháp lý 💻', 'Nó không hề phức tạp chút nào ✅'],
               correct: 1,
-              explanation: 'Các công cụ nghệ thuật AI học từ tác phẩm của con người thật, thường không có sự đồng ý — đó là lý do vấn đề sở hữu và công bằng vẫn đang được tranh luận và quy định.',
+              explanation: 'AI học từ tác phẩm của con người, thường không có sự đồng ý của nghệ sĩ — tòa án đang quyết định việc đó có được phép không. Và theo Cục Bản quyền Mỹ (2025), bức tranh hoàn toàn do AI tạo ra từ một prompt không được bảo hộ bản quyền.',
             },
           ],
         },
@@ -755,8 +755,8 @@ window.LANG_DATA = {
           title: 'Đây có thực sự là một người thật không? AI trong game và chat',
           text:  'Một số "người chơi" bạn gặp trực tuyến có thể hoàn toàn không phải con người. Các bot chạy bằng AI có thể trò chuyện, chơi game, thậm chí tranh luận với bạn một cách thuyết phục. Một số ứng dụng dùng các nhân vật AI được thiết kế để cảm giác như bạn bè thật — nhưng chúng được tạo ra bởi các công ty với mục đích riêng của họ.',
           example: '🕵️ Giống như bạn sẽ kiểm tra lại hồ sơ của một người lạ, việc giữ một chút hoài nghi về việc bạn thực sự đang nói chuyện với ai — hay cái gì — trên mạng là điều khôn ngoan.',
-          source:    'Common Sense Media, "AI và Trẻ em", 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, "Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions',
           miniTest: [
             {
               q:       'Bạn có thể luôn chắc chắn 100% rằng "người chơi" bạn đang trò chuyện trực tuyến là một người thật không?',
@@ -792,7 +792,7 @@ window.LANG_DATA = {
           icon:    '🧠',
           fact:    'Hệ thống AI học các khuôn mẫu từ lượng dữ liệu khổng lồ do con người tạo ra. Nếu dữ liệu có thiên vị, AI sẽ lặp lại thiên vị đó.',
           source:    'Stanford AI Index 2024',
-          sourceUrl: 'https://aiindex.stanford.edu',
+          sourceUrl: 'https://hai.stanford.edu/ai-index/2024-ai-index-report',
         },
         {
           unit:    'word',
@@ -843,7 +843,7 @@ window.LANG_DATA = {
         { unit: 'word', targets: ['DẤU', 'CHÂN', 'SỐ', 'CỦA', 'BẠN', 'HUẤN', 'LUYỆN', 'AI', 'TƯƠNG', 'LAI'], decoys: ['BIẾN MẤT', 'VẪN RIÊNG TƯ'], icon: '👣',
           fact: 'Mọi thứ bạn đăng, tìm kiếm hoặc nhấp vào trên mạng đều có thể trở thành dữ liệu huấn luyện cho các hệ thống AI tương lai.' },
         { unit: 'word', targets: ['SỰ', 'ĐỒNG', 'Ý', 'QUAN', 'TRỌNG', 'VỚI', 'CẢ', 'HỆ', 'THỐNG', 'AI'], decoys: ['TÙY CHỌN', 'TỰ ĐỘNG'], icon: '📋',
-          fact: 'Đạo luật AI của EU và GDPR yêu cầu sự đồng ý có hiểu biết đối với các hệ thống AI thu thập, xử lý hoặc lập hồ sơ dữ liệu cá nhân.', source: 'Đạo luật AI của EU 2024', sourceUrl: 'https://artificialintelligenceact.eu/' },
+          fact: 'Đạo luật AI của EU và GDPR yêu cầu sự đồng ý có hiểu biết đối với các hệ thống AI thu thập, xử lý hoặc lập hồ sơ dữ liệu cá nhân.', source: 'Đạo luật AI của EU 2024', sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj' },
       ],
 
       quiz: [
@@ -854,7 +854,7 @@ window.LANG_DATA = {
           correct: 1,
           explanation: "Các hệ thống AI hiện đại, bao gồm cả các mô hình ngôn ngữ lớn, không thực sự \"hiểu\" theo nghĩa của con người — chúng là các mô hình thống kê tìm ra quy luật trong lượng dữ liệu khổng lồ và tạo ra kết quả có khả năng xảy ra nhất. Đó là lý do chúng có thể nghe rất tự tin mà vẫn sai.",
           source:    "Stanford AI Index 2024",
-          sourceUrl: "https://aiindex.stanford.edu",
+          sourceUrl: "https://hai.stanford.edu/ai-index/2024-ai-index-report",
         },
         {
           type:    'choice',
@@ -871,8 +871,8 @@ window.LANG_DATA = {
           options: ['Ánh sáng rất đẹp 💡', 'Có gì đó trông hơi "khác lạ" — chớp mắt, tay, giọng nói hoặc ánh sáng 🔍', 'Dài hơn 10 phút ⏱️', 'Được đăng vào ban đêm 🌙'],
           correct: 1,
           explanation: 'Deepfake thường có những lỗi hình ảnh nhỏ. Cũng luôn kiểm tra xem nguồn đáng tin cậy có xác nhận câu chuyện không.',
-          source:    'Common Sense Media, "AI & Children", 2024',
-          sourceUrl: 'https://www.commonsensemedia.org/research',
+          source:    'Common Sense Media, "Teens, Trust, and Technology in the Age of AI", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/research-brief-teens-trust-and-technology-in-the-age-of-ai',
         },
         {
           type:    'choice',
@@ -1044,7 +1044,7 @@ window.LANG_DATA = {
           text:  'Ba mô hình quản trị hiện đang cạnh tranh: (1) Đạo luật AI của EU — quy định ràng buộc dựa trên rủi ro, cấm một số ứng dụng, yêu cầu minh bạch; (2) Cách tiếp cận của Mỹ — chủ yếu là các khung tự nguyện (NIST AI RMF, cam kết Nhà Trắng); (3) Trung Quốc — AI do nhà nước định hướng với mục tiêu chiến lược quốc gia. Căng thẳng cơ bản: an toàn và trách nhiệm giải trình làm chậm việc triển khai; tốc độ mang giá trị thương mại và chiến lược. Ai viết ra luật lệ sẽ định hình ai được hưởng lợi.',
           example: '⚖️ Đạo luật AI của EU cấm giám sát sinh trắc học từ xa theo thời gian thực ở nơi công cộng. Luật Mỹ hiện cho phép điều này. Trung Quốc bắt buộc điều đó. Cùng một công nghệ — ba thực tế pháp lý khác nhau.',
           source:    'EU AI Act (2024), NIST AI RMF 1.0 (2023)',
-          sourceUrl: 'https://artificialintelligenceact.eu/',
+          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
           miniTest: [
             {
               q:       'Đạo luật AI của EU phân loại các hệ thống AI theo...',
@@ -1221,7 +1221,7 @@ window.LANG_DATA = {
           correct: 1,
           explanation: "Điều này khớp với cách các hệ thống AI được mô tả chính thức trong hầu hết các tài liệu nghiên cứu và chính sách hiện đại: phần mềm tạo ra kết quả — dự đoán, đề xuất hoặc quyết định — từ dữ liệu, mà không sở hữu sự hiểu biết, ý thức hay ý định. \"Kiến thức\" ở đây là một đặc tính thống kê của trọng số mô hình, không phải sự thật được lưu trữ.",
           source:    "Stanford AI Index 2024",
-          sourceUrl: "https://aiindex.stanford.edu",
+          sourceUrl: "https://hai.stanford.edu/ai-index/2024-ai-index-report",
         },
         {
           type:    'choice',
@@ -1243,7 +1243,7 @@ window.LANG_DATA = {
           ideal:   4,
           explanation: 'Đạo luật AI của EU yêu cầu tiết lộ khi AI tương tác với con người. Minh bạch là khuyến nghị gần như phổ quát trong các khung quản trị. Một số cho rằng có ngoại lệ với tác phẩm hư cấu được gắn nhãn rõ ràng.',
           source:    'EU AI Act Art. 52',
-          sourceUrl: 'https://artificialintelligenceact.eu/',
+          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
         },
         {
           type:    'choice',
@@ -1279,7 +1279,7 @@ window.LANG_DATA = {
           ideal:   5,
           explanation: 'Minh bạch dữ liệu huấn luyện là yêu cầu theo Đạo luật AI của EU đối với hệ thống AI rủi ro cao và mục đích chung. Nó cho phép kiểm toán thiên vị, trách nhiệm bản quyền, và tranh luận công khai có căn cứ.',
           source:    'EU AI Act Art. 53',
-          sourceUrl: 'https://artificialintelligenceact.eu/',
+          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
         },
         {
           type:    'choice',
@@ -1293,7 +1293,7 @@ window.LANG_DATA = {
           correct: 1,
           explanation: 'Giám sát sinh trắc học từ xa theo thời gian thực là Điều 5 — bị cấm rõ ràng. AI y tế và tuyển dụng thuộc nhóm rủi ro cao (yêu cầu kiểm toán), không bị cấm. Watermark là yêu cầu về minh bạch.',
           source:    'EU AI Act Article 5',
-          sourceUrl: 'https://artificialintelligenceact.eu/',
+          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
         },
         {
           type:    'choice',
@@ -1320,8 +1320,8 @@ window.LANG_DATA = {
           ],
           correct: 2,
           explanation: 'Căn chỉnh là thách thức đảm bảo AI tối ưu hóa cho những gì con người thực sự muốn, không phải một chỉ số đo lường thay thế lệch khỏi mục tiêu thật. Ví dụ kinh điển: reward hacking — một tác nhân tìm cách bất ngờ để ghi điểm nhưng vi phạm tinh thần của nhiệm vụ.',
-          source:    'Bostrom, "Superintelligence", 2014 + Russell, "Human Compatible", 2019',
-          sourceUrl: 'https://humancompatible.ai/',
+          source:    'Amodei và cộng sự, "Concrete Problems in AI Safety", 2016',
+          sourceUrl: 'https://arxiv.org/abs/1606.06565',
         },
         {
           type:    'likert',
@@ -1329,7 +1329,7 @@ window.LANG_DATA = {
           ideal:   5,
           explanation: 'Kiểm toán độc lập là yêu cầu trung tâm của những người ủng hộ trách nhiệm giải trình AI và được quy định theo Đạo luật AI của EU đối với hệ thống rủi ro cao. Đây gần như là sự đồng thuận giữa các nhà nghiên cứu đạo đức AI.',
           source:    'EU AI Act Art. 43-44',
-          sourceUrl: 'https://artificialintelligenceact.eu/',
+          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
         },
         {
           type:    'choice',
@@ -1343,7 +1343,7 @@ window.LANG_DATA = {
           correct: 2,
           explanation: 'AI tuyển dụng được liệt kê rõ ràng trong Phụ lục III của Đạo luật AI EU là rủi ro cao. Nó phải đáp ứng các yêu cầu nghiêm ngặt: giám sát con người, biện pháp chất lượng dữ liệu, kiểm tra độ chính xác, và ghi nhật ký. Người sử dụng lao động chịu trách nhiệm pháp lý.',
           source:    'EU AI Act Annex III',
-          sourceUrl: 'https://artificialintelligenceact.eu/',
+          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
         },
               {
           type:    "choice",
