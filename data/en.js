@@ -353,8 +353,8 @@ window.LANG_DATA = {
           q:       'Is Siri alive like a person? 🧑',
           correct: 0,
           explanation: 'Siri is a clever program — it\'s not alive. It has no heart, no feelings, no real thoughts.',
-          source:    'Apple Siri Technical Overview',
-          sourceUrl: 'https://machinelearning.apple.com/',
+          source:    'Druga et al., "Hey Google is it OK if I eat you?", MIT Media Lab, IDC 2017',
+          sourceUrl: 'https://www.media.mit.edu/publications/child-agent-interaction/',
         },
         {
           type:    'yesno',

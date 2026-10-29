@@ -115,16 +115,16 @@ window.LANG_DATA = {
         {
           icon:  '🤖',
           title: 'Robot LÀ gì?',
-          text:       "Robot là một cỗ máy làm theo quy tắc. Alexa, Siri, Google — chúng không sống. Chúng giống như một món đồ chơi rất thông minh biết nghe và nói. Nhưng chúng không thể vui hay buồn. Nó có thể hữu ích — nhưng nó không phải là bạn thật sự.",
+          text:       "Robot là một cỗ máy làm theo quy tắc. Trợ lý Google, Kiki — chúng không sống. Chúng giống như một món đồ chơi rất thông minh biết nghe và nói. Nhưng chúng không thể vui hay buồn. Nó có thể hữu ích — nhưng nó không phải là bạn thật sự.",
           example: '🎮 Trò chơi điện tử cũng làm theo quy tắc! Nếu em bấm nhảy, Mario sẽ nhảy. AI cũng vậy — nó làm theo quy tắc, nó không suy nghĩ.',
           source:    'MIT Media Lab, AI cho trẻ nhỏ',
           sourceUrl: 'https://www.media.mit.edu/',
           miniTest: [
             {
-              q:       'Alexa có sống như một chú chó hay mèo không?',
+              q:       'Trợ lý Google có sống như một chú chó hay mèo không?',
               options: ['Có, nó có cảm xúc! 🐶', 'Không, nó là một cỗ máy 🤖'],
               correct: 1,
-              explanation: 'Alexa là một cỗ máy! Nó làm theo quy tắc, giống như đồng hồ làm theo quy tắc để chỉ đúng giờ.',
+              explanation: 'Trợ lý Google là một cỗ máy! Nó làm theo quy tắc, giống như đồng hồ làm theo quy tắc để chỉ đúng giờ.',
             },
           ],
         },
@@ -260,11 +260,11 @@ window.LANG_DATA = {
         },
         {
           type:    'yesno',
-          q:       'Siri có sống như một con người không? 🧑',
+          q:       'Kiki có sống như một con người không? 🧑',
           correct: 0,
-          explanation: 'Siri là một chương trình thông minh — nó không sống. Nó không có trái tim, không có cảm xúc, không có suy nghĩ thật.',
-          source:    'Apple Siri Technical Overview',
-          sourceUrl: 'https://machinelearning.apple.com/',
+          explanation: 'Kiki là một chương trình thông minh — nó không sống. Nó không có trái tim, không có cảm xúc, không có suy nghĩ thật.',
+          source:    'Druga và cộng sự, "Hey Google is it OK if I eat you?", MIT Media Lab, IDC 2017',
+          sourceUrl: 'https://www.media.mit.edu/publications/child-agent-interaction/',
         },
         {
           type:    'yesno',
@@ -317,7 +317,7 @@ window.LANG_DATA = {
       protocols: [
         { num: 1, icon: '🤔', title: 'Luôn hỏi người lớn', text: 'Nếu AI nói điều gì đó bất ngờ — luôn kiểm tra lại với một người thật.' },
         { num: 2, icon: '🎨', title: 'Em là người nghệ sĩ', text: 'AI có thể giúp nhưng CHÍNH em mới là người sáng tạo. Ý tưởng của em luôn đặc biệt hơn.' },
-        { num: 3, icon: '❤️', title: 'Bạn thật sự có cảm xúc', text: 'Alexa và Siri không thể là bạn của em. Nhưng người thật thì có thể!' },
+        { num: 3, icon: '❤️', title: 'Bạn thật sự có cảm xúc', text: 'Trợ lý Google hay Kiki không thể là bạn của em. Nhưng người thật thì có thể!' },
         { num: 4, icon: '🛑', title: 'Nói KHÔNG cũng được', text: 'Em không bao giờ phải nghe theo robot. Em luôn là người quyết định.' },
         { num: 5, icon: '📚', title: 'Học tập là siêu năng lực của em', text: 'AI học từ sách vở — em cũng có thể, và em sẽ còn giỏi hơn nữa!' },
         { num: 6, icon: '🌍', title: 'AI có thể sai', text: 'AI có thể nói những điều không đúng. Đó là lý do vì sao con người biết suy nghĩ lại quan trọng đến vậy.' },
