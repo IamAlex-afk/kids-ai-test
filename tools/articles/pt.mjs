@@ -25,6 +25,7 @@ export default {
     honesty: 'Os fatos vêm das fontes primárias indicadas abaixo. "Nossa conclusão" é a opinião do site com base nesses fatos, não uma citação.',
     all: 'Todos os artigos',
     tinyNote: 'Para 5–7 anos: um adulto lê junto com a criança.',
+    adult: 'Para o adulto', adultGoal: 'Objetivo', adultAsk: 'Perguntas para conversar', adultSigns: 'Sinais de compreensão',
   },
   'what-is-ai': {
     title: 'O que é IA, em palavras simples',
@@ -45,6 +46,7 @@ export default {
     ],
     myths: [],
     conclusion: 'A IA é uma ferramenta forte para adivinhar a partir de exemplos, mas não é amiga nem sabe tudo. A habilidade principal ao lado dela é conferir a resposta e decidir por conta própria.',
+    adult: { goal: 'A criança consegue dizer com as próprias palavras: a IA é um programa que aprende com exemplos, adivinha e pode errar.', ask: ['Como a IA aprendeu a reconhecer um gato?', 'Por que uma IA pode errar mesmo parecendo segura?', 'Como podemos conferir a resposta dela?'], signs: 'A criança não chama a IA de viva nem de amiga e, por iniciativa própria, sugere conferir uma resposta importante.' },
   },
   'explain-ai-to-a-child': {
     title: 'Como explicar para uma criança o que é IA',
@@ -64,7 +66,7 @@ export default {
       { say: ['"Quem fez esse sistema, com o que ele foi treinado e para onde vão os seus dados?"', '"Um deepfake pode parecer real; confira a fonte."', '"A IA é uma ferramenta. Decisões e responsabilidade continuam com as pessoas."'] },
     ],
     myths: [
-      { m: 'A IA está viva e pode ser amiga.', t: 'É um programa. As crianças facilmente atribuem a ela uma "personalidade", então vale dizer com clareza que a IA não sente e não é amiga.' },
+      { m: 'A IA está viva e pode ser amiga.', t: 'É um programa. No estudo do MIT, crianças falaram sobre "quem" é o assistente de voz, então vale dizer com clareza que a IA não sente e não é amiga.' },
       { m: 'A IA sempre está certa porque parece segura.', t: 'A IA pode afirmar coisas erradas com confiança. O que é importante a gente confere numa segunda fonte.' },
       { m: 'Dá para contar qualquer segredo para a IA.', t: 'Proteger os dados das crianças é uma das exigências do UNICEF. Coisas pessoais (nome, endereço, fotos, senhas) não são para um chatbot.' },
       { m: 'Melhor proibir a IA até a criança crescer.', t: 'O UNICEF pede para preparar as crianças para viver com a IA, e a UNESCO, para ensiná-las a entender e afirmar o próprio papel ao lado dela. Uma proibição não ensina isso; um primeiro contato acompanhado, sim.' },
@@ -78,20 +80,21 @@ export default {
     facts: [
       'Num experimento com quase mil estudantes de matemática do ensino médio, ter GPT-4 durante a prática melhorou as notas. Mas, quando o acesso foi retirado, quem tinha usado um chatbot comum foi 17% pior do que quem nunca teve IA. Uma versão tutora, configurada para proteger a aprendizagem, eliminou em grande parte esse prejuízo.',
       'Dias depois, lembra mais quem se testou de memória do que quem releu, embora reler dê mais sensação de segurança.',
-      'A orientação da UNESCO de 2023 estabelece a idade mínima de 13 anos para usar ferramentas de IA em sala de aula e pede formação de professores.',
+      'A orientação da UNESCO de 2023 aponta 13 anos como idade mínima para usar ferramentas de IA em sala de aula e pede formação de professores.',
       'Um texto de IA pode estar errado mesmo soando confiante.',
     ],
     ages: [
       { say: ['A tarefa é você que faz. Se estiver difícil, chame um adulto, não a IA.', 'A IA pode responder errado, por isso os adultos conferem tudo.', 'O que vale não é a resposta mais rápida, e sim a que você pensou.'] },
-      { say: ['Primeiro tente sozinho, depois confira.', 'Se perguntar a uma IA, peça uma dica, não a resposta pronta.', 'Compare a resposta da IA com o livro didático ou com um adulto.'] },
-      { say: ['A regra: pense sozinho → pergunte → compare com uma fonte → explique com suas palavras.', 'Se você não consegue explicar sem IA, ainda não entendeu.', 'Antes da prova, feche as ajudas e se teste de memória.'] },
+      { say: ['Primeiro tente por conta própria, depois confira.', 'Se perguntar a uma IA, peça uma dica, não a resposta pronta.', 'Compare a resposta da IA com o livro didático ou com um adulto.'] },
+      { say: ['A regra: pense por conta própria → pergunte → compare com uma fonte → explique com suas palavras.', 'Se você não consegue explicar sem IA, ainda não entendeu.', 'Antes da prova, feche as ajudas e se teste de memória.'] },
       { say: ['No experimento com GPT-4, as notas subiam na prática e caíam 17% sem acesso: a IA como muleta atrapalha o aprendizado.', 'Use a IA como tutora: peça perguntas sobre o tema e a análise dos seus erros, não a solução.', 'Se o professor permite IA, diga onde ela ajudou e confira as respostas: a IA erra.'] },
     ],
     myths: [
-      { m: 'Se a IA resolveu comigo, eu aprendi.', t: 'Com IA, as notas subiam na prática, mas sem ela ficavam mais baixas do que as de quem aprendeu sem IA. O que ensina é o que você faz sozinho.' },
+      { m: 'Se a IA resolveu comigo, eu aprendi.', t: 'Com IA, as notas subiam na prática, mas sem ela ficavam mais baixas do que as de quem aprendeu sem IA. O que ensina é o que você faz por conta própria.' },
       { m: 'Reler uma solução pronta é aprender.', t: 'Reler dá segurança, mas dias depois lembra mais quem recordou por conta própria.' },
       { m: 'Dá para entregar a resposta da IA do jeito que veio.', t: 'A IA pode errar com confiança. Confira no livro e explique a solução com suas palavras.' },
     ],
     conclusion: 'Na lição de casa, a IA é útil como tutora, não como quem resolve: primeiro você pensa, a IA dá dicas e confere, e você testa seu entendimento sem ela. Os menores, só com um adulto; para ferramentas de IA em sala de aula, a UNESCO aponta a idade de 13 anos.',
+    adult: { goal: 'A criança usa a IA como dica e confere o próprio entendimento sem ela.', ask: ['Que parte desta tarefa é sua e o que a IA sugeriu?', 'Você consegue explicar a solução sem ajuda?', 'Onde podemos conferir essa resposta?'], signs: 'A criança explica a solução com as próprias palavras e resolve uma tarefa parecida sem IA.' },
   },
 };
