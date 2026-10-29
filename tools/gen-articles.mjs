@@ -15,7 +15,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { header, pageOf, esc } from './gen-entry.mjs';
+import { header, pageOf, esc, fitTitle, metaDesc } from './gen-entry.mjs';
 import { T } from './entry-i18n.mjs';
 import { L } from './lesson-i18n.mjs';
 import { ARTICLES, ARTICLE_LANGS, ARTICLES_LASTMOD } from './articles/index.mjs';
@@ -106,6 +106,15 @@ ${x.say.map((s) => `        <li>${esc(s)}</li>`).join('\n')}
       </ul>
       <p class="ar-try">${esc(u.tryIt)}: ${linkFor(l, a.links[i], u)}</p>
     </section>`).join('\n');
+  const adult = t.adult ? `    <section class="wk-card ar-block ar-adult" aria-labelledby="ar-adult">
+      <h2 id="ar-adult">${esc(u.adult)}</h2>
+      <p><b>${esc(u.adultGoal)}:</b> ${esc(t.adult.goal)}</p>
+      <p class="ar-say-h">${esc(u.adultAsk)}</p>
+      <ul class="ar-say">
+${t.adult.ask.map((s) => `        <li>${esc(s)}</li>`).join('\n')}
+      </ul>
+      <p><b>${esc(u.adultSigns)}:</b> ${esc(t.adult.signs)}</p>
+    </section>\n` : '';
   const myths = t.myths.length ? `  <section class="wk-card ar-block" aria-labelledby="ar-myths">
     <h2 id="ar-myths">${esc(u.myths)}</h2>
     <dl class="ar-myths">
@@ -125,7 +134,7 @@ ${t.myths.map((x, i) => `      <dt><span class="ar-tag">${esc(u.myth)}</span> ${
     isAccessibleForFree: true,
     citation: order.map((id) => ({ '@type': 'CreativeWork', name: SOURCES[id].title, url: SOURCES[id].url })),
   };
-  return `${head(l, { title: `${t.title} | Kids AI Test`, desc: t.desc, file, type: 'article' })}
+  return `${head(l, { title: fitTitle(`${t.title} | Kids AI Test`, t.title), desc: metaDesc(t.desc), file, type: 'article' })}
 ${ld(jsonld)}
 </head>
 <body class="wk-home wk-page">
@@ -146,7 +155,7 @@ ${t.facts.map((f, i) => `        <li>${esc(f)} ${ref(a.facts[i])}</li>`).join('\
       <h2 id="ar-ages">${esc(u.ages)}</h2>
 ${ages}
     </section>
-${myths}    <section class="wk-card ar-block ar-conclusion" aria-labelledby="ar-concl">
+${adult}${myths}    <section class="wk-card ar-block ar-conclusion" aria-labelledby="ar-concl">
       <h2 id="ar-concl">${esc(u.conclusion)}</h2>
       <p>${esc(t.conclusion)}</p>
       <p class="ar-level">${esc(u.levelLabel)}: <b>${esc(u.levels[a.level])}</b></p>
@@ -166,7 +175,9 @@ ${footer(l)}`;
 function catalogPage(l, texts) {
   const u = texts.ui;
   const home = `../../${pageOf(l)}`;
-  return `${head(l, { title: `${u.catTitle} | Kids AI Test`, desc: u.catDesc, file: '' })}
+  return `${head(l, { title: fitTitle(`${u.catTitle} | Kids AI Test`, u.catTitle), desc: metaDesc(u.catDesc), file: '' })}
+${ld({ '@context': 'https://schema.org', '@type': 'CollectionPage', name: u.catTitle, description: u.catDesc, inLanguage: HTML_LANG[l] || l, url: url(l),
+    hasPart: ARTICLES.map((a) => ({ '@type': 'Article', headline: texts[a.slug].title, url: url(l, `${a.slug}.html`) })) })}
 </head>
 <body class="wk-home wk-page">
 ${header(l, { home, langHref: (y) => `../${y}/` })}

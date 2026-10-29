@@ -76,11 +76,11 @@ window.LANG_DATA = {
         {
           icon:'🤖',
           title:'Robot nedir?',
-          text:       "Robot kurallara uyan bir makinedir. Alexa, Siri ve Google Asistan canlı değildir. Çok akıllı bir oyuncak gibidir — dinler ve konuşur. Ama sevinç veya üzüntü hissedemezler. Yardımcı olabilir — ama gerçek bir arkadaş değildir.",
+          text:       "Robot kurallara uyan bir makinedir. Siri ve Google Asistan canlı değildir. Çok akıllı bir oyuncak gibidir — dinler ve konuşur. Ama sevinç veya üzüntü hissedemezler. Yardımcı olabilir — ama gerçek bir arkadaş değildir.",
           example:"🎮 Video oyunları da kurallara uyar! Zıpla'ya basarsan karakter zıplar. YZ de aynısını yapar — kurallara uyar, düşünmez.",
           source:'UNESCO AI for Children, 2022', sourceUrl:'https://unesdoc.unesco.org/ark:/48223/pf0000380969',
-          miniTest: [{ q:'Alexa bir köpek gibi canlı mı?', options:['Evet, hisseder! 🐶','Hayır, o bir makine 🤖'], correct:1,
-            explanation:"Alexa bir makinedir! Tıpkı saatin doğru zamanı göstermek için kurallara uyması gibi, o da kurallara uyar." }],
+          miniTest: [{ q:'Google Asistan bir köpek gibi canlı mı?', options:['Evet, hisseder! 🐶','Hayır, o bir makine 🤖'], correct:1,
+            explanation:"Google Asistan bir makinedir! Tıpkı saatin doğru zamanı göstermek için kurallara uyması gibi, o da kurallara uyar." }],
         },
         {
           icon:'🧩',
@@ -167,7 +167,7 @@ window.LANG_DATA = {
       protocols: [
         { num:1, icon:'🤔', title:'Her zaman bir yetişkine sor', text:"YZ şaşırtıcı bir şey söylerse — her zaman gerçek bir insanla kontrol et." },
         { num:2, icon:'🎨', title:'Sen sanatçısın', text:"YZ yardımcı olabilir, ama YARATAN SENSİN. Senin fikirlerin her zaman daha özel." },
-        { num:3, icon:'❤️', title:'Gerçek arkadaşların duyguları vardır', text:"Alexa ve Siri arkadaş olamaz. Ama gerçek insanlar olabilir!" },
+        { num:3, icon:'❤️', title:'Gerçek arkadaşların duyguları vardır', text:"Siri ve Google Asistan arkadaş olamaz. Ama gerçek insanlar olabilir!" },
         { num:4, icon:'🛑', title:"HAYIR demek tamam", text:"Bir robota asla uymak zorunda değilsin. Patron her zaman sensin." },
         { num:5, icon:'📚', title:'Öğrenmek senin süper gücün', text:"YZ kitaplardan öğrendi — sen de, ve çok daha iyi olacaksın!" },
         { num:6, icon:'🌍', title:'YZ hatalar yapar', text:"YZ yanlış şeyler söyleyebilir. Bu yüzden düşünen insanlar bu kadar önemlidir." },

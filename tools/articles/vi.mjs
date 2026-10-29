@@ -26,6 +26,7 @@ export default {
     honesty: 'Các sự thật lấy từ những nguồn gốc dẫn bên dưới. "Kết luận của chúng tôi" là quan điểm của trang dựa trên các sự thật đó, không phải trích dẫn.',
     all: 'Tất cả bài viết',
     tinyNote: 'Cho trẻ 5–7 tuổi: người lớn đọc cùng trẻ.',
+    adult: 'Dành cho người lớn', adultGoal: 'Mục tiêu', adultAsk: 'Câu hỏi để trò chuyện', adultSigns: 'Dấu hiệu đã hiểu',
   },
   'what-is-ai': {
     title: 'AI là gì? Giải thích bằng lời đơn giản',
@@ -46,6 +47,7 @@ export default {
     ],
     myths: [],
     conclusion: 'AI là công cụ mạnh để đoán từ ví dụ, nhưng không phải bạn bè và không biết hết mọi thứ. Kỹ năng quan trọng nhất khi dùng AI là kiểm tra câu trả lời và tự mình quyết định.',
+    adult: { goal: 'Trẻ có thể nói bằng lời của mình: AI là một chương trình học từ ví dụ, biết đoán và có thể sai.', ask: ['AI đã học cách nhận ra con mèo như thế nào?', 'Vì sao AI có thể sai dù nghe rất chắc chắn?', 'Mình kiểm tra câu trả lời của nó bằng cách nào?'], signs: 'Trẻ không gọi AI là sinh vật sống hay bạn bè và tự đề nghị kiểm tra một câu trả lời quan trọng.' },
   },
   'explain-ai-to-a-child': {
     title: 'Giải thích cho trẻ AI là gì như thế nào?',
@@ -65,7 +67,7 @@ export default {
       { say: ['"Ai làm ra hệ thống này, nó được huấn luyện bằng gì, và dữ liệu của con đi đâu?"', '"Deepfake có thể trông như thật — hãy kiểm tra nguồn."', '"AI là công cụ. Quyết định và trách nhiệm vẫn thuộc về con người."'] },
     ],
     myths: [
-      { m: 'AI là sinh vật sống và có thể làm bạn.', t: 'Đó là một chương trình. Trẻ dễ gán cho nó một "tính cách", nên cần nói rõ rằng AI không có cảm xúc và không phải là bạn.' },
+      { m: 'AI là sinh vật sống và có thể làm bạn.', t: 'Đó là một chương trình. Trong nghiên cứu của MIT, trẻ đã bàn xem trợ lý giọng nói "là ai", nên cần nói rõ rằng AI không có cảm xúc và không phải là bạn.' },
       { m: 'AI luôn đúng vì nó nói rất chắc chắn.', t: 'AI có thể tự tin nói điều sai. Điều quan trọng thì kiểm tra bằng một nguồn thứ hai.' },
       { m: 'Có thể kể cho AI mọi bí mật.', t: 'Bảo vệ dữ liệu của trẻ là một trong các yêu cầu của UNICEF. Thông tin cá nhân (tên, địa chỉ, ảnh, mật khẩu) không chia sẻ với chatbot.' },
       { m: 'Tốt nhất là cấm AI cho đến khi trẻ lớn.', t: 'UNICEF yêu cầu chuẩn bị cho trẻ sống cùng AI, còn UNESCO đề nghị dạy trẻ hiểu và khẳng định vai trò của mình bên cạnh AI. Lệnh cấm không dạy được điều đó; một lần làm quen có người lớn đi cùng thì dạy được.' },
@@ -79,7 +81,7 @@ export default {
     facts: [
       'Trong một thí nghiệm với gần một nghìn học sinh trung học học toán, được dùng GPT-4 khi luyện tập giúp điểm số tăng. Nhưng khi bị lấy lại quyền dùng, những em đã dùng chatbot thông thường làm bài kém hơn 17% so với những em chưa từng dùng AI. Phiên bản gia sư với thiết lập bảo vệ việc học đã loại bỏ phần lớn tác hại này.',
       'Vài ngày sau, người tự kiểm tra bằng trí nhớ nhớ tốt hơn người đọc lại, dù đọc lại khiến người ta cảm thấy tự tin hơn.',
-      'Hướng dẫn năm 2023 của UNESCO đặt giới hạn độ tuổi 13 cho việc dùng công cụ AI trong lớp học và kêu gọi đào tạo giáo viên.',
+      'Hướng dẫn năm 2023 của UNESCO nêu 13 tuổi là độ tuổi tối thiểu để dùng công cụ AI trong lớp học và kêu gọi đào tạo giáo viên.',
       'Chữ do AI viết có thể sai dù nghe rất tự tin.',
     ],
     ages: [
@@ -94,5 +96,6 @@ export default {
       { m: 'Có thể nộp nguyên câu trả lời của AI.', t: 'AI có thể sai một cách tự tin. Hãy kiểm tra với sách và tự giải thích lời giải bằng lời của mình.' },
     ],
     conclusion: 'Với bài tập về nhà, AI hữu ích như một gia sư, không phải người giải hộ: em tự nghĩ trước, AI gợi ý và kiểm tra, rồi em tự kiểm tra mức hiểu bài mà không có AI. Trẻ nhỏ chỉ dùng cùng người lớn; với công cụ AI trong lớp học, UNESCO nêu độ tuổi 13.',
+    adult: { goal: 'Trẻ dùng AI như một gợi ý và tự kiểm tra mức hiểu bài mà không cần AI.', ask: ['Phần nào trong bài này là của con, phần nào AI gợi ý?', 'Con có giải thích được lời giải mà không cần trợ giúp không?', 'Mình có thể kiểm tra câu trả lời này ở đâu?'], signs: 'Trẻ giải thích lời giải bằng lời của mình và tự giải một bài tương tự mà không có AI.' },
   },
 };
