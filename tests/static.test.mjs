@@ -70,13 +70,27 @@ test('parents\' FAQ: corrected claims do not come back', () => {
 // for AI tools in class, so no "chatbots from about 8"; Stanford Internet
 // Observatory and Yandex Uchebnik are no longer sources (PR #21, #33); no
 // unsourced "concepts ahead of tools by 1–2 years"; Roediger & Karpicke backs
-// one rule, not "three rules confirmed by research". Languages are added as
-// they are reviewed (C3).
+// one rule, not "three rules confirmed by research"; the UNESCO 2023 document is
+// the generative-AI guidance, not an "AI in Education" report.
 test('parents\' FAQ: review 2026-11 findings do not come back', () => {
+  const all = /Stanford Internet Observatory|AI in Education|arXiv/;
   const wrong = {
-    ru: /примерно с 8 лет|Стэнфордская интернет-обсерватория|Яндекс Учебник|опережать инструменты|подтверждённых исследованиями|«AI in Education»|крикнул|Доверил бы ты/,
+    ru: /примерно с 8 лет|Стэнфордская интернет-обсерватория|Яндекс Учебник|опережать инструменты|подтверждённых исследованиями|крикнул|Доверил бы ты/,
+    en: /from around age 8|precede tools by|Three evidence-informed rules/,
+    de: /etwa ab 8 Jahren|Werkzeugen um 1–2 Jahre|Drei evidenzbasierte Regeln/,
+    es: /alrededor de los 8 años|Observatorio de Internet de Stanford|preceder a las herramientas|Tres reglas basadas en evidencia/,
+    fr: /environ 8 ans|Observatoire Internet de Stanford|précéder les outils|Trois règles fondées sur des preuves/,
+    pt: /cerca de 8 anos|preceder as ferramentas|Três regras baseadas em evidências/,
+    tr: /yaklaşık 8 yaşından|Stanford İnternet Gözlemevi|araçlardan 1–2 yıl|Kanıta dayalı üç kural/,
+    id: /sekitar usia 8 tahun|mendahului alat 1–2|Tiga aturan berbasis bukti/,
+    vi: /khoảng 8 tuổi|đi trước công cụ 1–2|Ba quy tắc dựa trên bằng chứng|Từ tác giả tương tự/,
+    hi: /लगभग 8 साल की उम्र से|टूल्स से 1–2 साल|तीन साक्ष्य-आधारित नियम/,
   };
-  for (const [l, re] of Object.entries(wrong)) assert.doesNotMatch(read(`js/parents-faq/${l}.js`), re, l);
+  for (const [l, re] of Object.entries(wrong)) {
+    const s = read(`js/parents-faq/${l}.js`);
+    assert.doesNotMatch(s, re, l);
+    assert.doesNotMatch(s, all, l);
+  }
 });
 
 test('parents\' FAQ: each page loads only its own language file', () => {
