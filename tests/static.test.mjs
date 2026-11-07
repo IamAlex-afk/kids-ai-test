@@ -66,6 +66,19 @@ test('parents\' FAQ: corrected claims do not come back', () => {
     assert.doesNotMatch(read(f), wrong, f);
 });
 
+// Review 2026-11 (docs/review/faq-ru.md): our own source (UNESCO 2023) sets 13
+// for AI tools in class, so no "chatbots from about 8"; Stanford Internet
+// Observatory and Yandex Uchebnik are no longer sources (PR #21, #33); no
+// unsourced "concepts ahead of tools by 1–2 years"; Roediger & Karpicke backs
+// one rule, not "three rules confirmed by research". Languages are added as
+// they are reviewed (C3).
+test('parents\' FAQ: review 2026-11 findings do not come back', () => {
+  const wrong = {
+    ru: /примерно с 8 лет|Стэнфордская интернет-обсерватория|Яндекс Учебник|опережать инструменты|подтверждённых исследованиями|«AI in Education»|крикнул|Доверил бы ты/,
+  };
+  for (const [l, re] of Object.entries(wrong)) assert.doesNotMatch(read(`js/parents-faq/${l}.js`), re, l);
+});
+
 test('parents\' FAQ: each page loads only its own language file', () => {
   for (const l of LANGS) {
     const files = [...read(page(l)).matchAll(/src="(js\/parents-faq[^"]*)"/g)].map(m => m[1]);
