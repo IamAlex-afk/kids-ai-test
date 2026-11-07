@@ -45,7 +45,6 @@ faq_adult:[
 {q: "Ergenim bir AI sohbet botundan tıbbi veya hukuki tavsiye istedi — endişelenmeli miyim?", a: "AI sohbet botları, doğru olsun ya da olmasın, tam bir güvenle tıbbi veya hukuki görünen metinler üretebilir — bu 'halüsinasyon' sorunudur ve ara sıra dikkatsizlikten değil, altta yatan modelin çalışma biçiminden kaynaklanır. Bu yaşta öğretmeye değer kural: AI bir konuyu anlamaya veya sorular hazırlamaya yardımcı olabilir, ama gerçek bir tıbbi veya hukuki karar, harekete geçmeden önce gerçek bir doktor, avukat veya resmi kaynaktan doğrulama gerektirir."},
 {q: "Büyük ergenler bir AI'ın söylediği her şeyi kesinlikle doğrulamalı mı?", a: "Her şey aynı titizliği gerektirmez — yararlı beceri, hangi iddiaların gerçekten önemli olduğunu bilmektir. Sadece merakı etkileyen bir bilgi (tarihi bir tarih, bir bilgi yarışması cevabı) yanlışsa düşük risklidir; bir kararı etkileyen bir bilgi (sağlık, para, hukuki durum, bir başvuru veya deneme için bir şey) yüksek risklidir ve inanılmadan veya tekrarlanmadan önce bağımsız bir kaynak gerektirir."}
 ],
-proto_by:"Aynı yazardan:",proto_desc:"AI çağında zihniyet yeniden başlatma için sistematik bir rehber — bilinçli uyum için 33 kanıta dayalı protokol.",
 cta_self:"Testi kendim yapayım →",cta_child:"← Çocuk için ayarla"
 }
 };

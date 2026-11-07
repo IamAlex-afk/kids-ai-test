@@ -45,7 +45,6 @@ faq_adult:[
 {q: "Con thiếu niên của tôi hỏi chatbot AI về lời khuyên y tế hoặc pháp lý — tôi có nên lo lắng không?", a: "Chatbot AI có thể tạo ra văn bản nghe như y tế hoặc pháp lý với sự tự tin tuyệt đối bất kể nó có chính xác hay không — đây là vấn đề 'ảo giác', và đó là cách mô hình nền tảng hoạt động, không phải sự bất cẩn thỉnh thoảng. Quy tắc đáng dạy ở độ tuổi này: AI có thể giúp hiểu một chủ đề hoặc chuẩn bị câu hỏi, nhưng bất kỳ quyết định y tế hoặc pháp lý thực sự nào cũng cần được xác minh bởi bác sĩ, luật sư hoặc nguồn chính thức thật trước khi hành động."},
 {q: "Thiếu niên lớn hơn có nên kiểm tra lại tuyệt đối mọi điều AI nói không?", a: "Không phải mọi thứ đều cần mức độ xem xét như nhau — kỹ năng hữu ích là biết những khẳng định nào thực sự quan trọng. Một sự thật chỉ ảnh hưởng đến sự tò mò (một ngày lịch sử, một câu trả lời đố vui) có rủi ro thấp nếu sai; một sự thật ảnh hưởng đến một quyết định (sức khỏe, tiền bạc, tình trạng pháp lý, điều gì đó cho đơn xin học hoặc bài luận) có rủi ro cao và cần một nguồn độc lập trước khi tin hoặc lặp lại."}
 ],
-proto_by:"Cùng tác giả:",proto_desc:"Hướng dẫn hệ thống để khởi động lại tư duy trong thời đại AI — 33 giao thức dựa trên bằng chứng để thích nghi có ý thức.",
 cta_self:"Tự làm bài kiểm tra →",cta_child:"← Thiết lập cho trẻ"
 }
 };

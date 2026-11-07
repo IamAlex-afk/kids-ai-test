@@ -93,6 +93,15 @@ test('parents\' FAQ: review 2026-11 findings do not come back', () => {
   }
 });
 
+// Owner 2026-11-07: the author's "33 protocols" book has nothing to do with a kids'
+// site — no promo line under the FAQ and no footer link.
+test('home pages: no promo for the author\'s other projects', () => {
+  for (const l of LANGS) {
+    assert.doesNotMatch(read(page(l)), /human-os-patch-33-protocols/, page(l));
+    assert.doesNotMatch(read(`js/parents-faq/${l}.js`), /proto_by|proto_desc/, l);
+  }
+});
+
 test('parents\' FAQ: each page loads only its own language file', () => {
   for (const l of LANGS) {
     const files = [...read(page(l)).matchAll(/src="(js\/parents-faq[^"]*)"/g)].map(m => m[1]);

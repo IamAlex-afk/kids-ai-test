@@ -45,7 +45,6 @@ faq_adult:[
 {q:"My teenager asked an AI chatbot for medical or legal advice — should I be concerned?",a:"AI chatbots can produce medical- or legal-sounding text with total confidence regardless of whether it's accurate — this is the 'hallucination' problem, and it's how the underlying model works, not occasional carelessness. The rule worth teaching at this age: AI can help you understand a topic or prepare questions, but any actual medical or legal decision needs verification from a real doctor, lawyer, or official source before acting on it."},
 {q:"Should older teens fact-check everything an AI tells them?",a:"Not everything needs the same scrutiny — the useful skill is knowing which claims are load-bearing. A fact that only affects curiosity (a historical date, a trivia answer) is low-stakes if wrong; a fact that affects a decision (health, money, legal standing, something going into an application or essay) is high-stakes and needs an independent source before being trusted or repeated."}
 ],
-proto_by:"By the same author:",proto_desc:"A systematic guide to mindset rebooting in the AI era — 33 evidence-based protocols for conscious adaptation.",
 cta_self:"Take the test yourself →",cta_child:"← Set up for child"
 }
 };

@@ -45,7 +45,6 @@ faq_adult:[
 {q: "Mein Teenager hat einen KI-Chatbot nach medizinischem oder rechtlichem Rat gefragt — sollte ich besorgt sein?", a: "KI-Chatbots können medizinisch oder juristisch klingenden Text mit völliger Sicherheit produzieren, unabhängig davon, ob er stimmt — das ist das 'Halluzinations'-Problem, und es liegt daran, wie das zugrunde liegende Modell funktioniert, nicht an gelegentlicher Nachlässigkeit. Die Regel, die man in diesem Alter vermitteln sollte: KI kann helfen, ein Thema zu verstehen oder Fragen vorzubereiten, aber jede echte medizinische oder rechtliche Entscheidung braucht vor dem Handeln die Bestätigung eines echten Arztes, Anwalts oder einer offiziellen Quelle."},
 {q: "Sollten ältere Teenager alles überprüfen, was eine KI ihnen sagt?", a: "Nicht alles braucht dieselbe Sorgfalt — die nützliche Fähigkeit ist zu erkennen, welche Aussagen wirklich tragend sind. Eine Tatsache, die nur die Neugier betrifft (ein historisches Datum, eine Quizantwort), ist unkritisch, wenn sie falsch ist; eine Tatsache, die eine Entscheidung beeinflusst (Gesundheit, Geld, rechtlicher Status, etwas für eine Bewerbung oder einen Aufsatz), ist kritisch und braucht eine unabhängige Quelle, bevor man ihr glaubt oder sie weitergibt."}
 ],
-proto_by:"Vom selben Autor:",proto_desc:"Ein systematischer Leitfaden zur Neukalibrierung des Denkens im KI-Zeitalter — 33 evidenzbasierte Protokolle zur bewussten Anpassung.",
 cta_self:"Test selbst machen →",cta_child:"← Für Kind einrichten"
 }
 };

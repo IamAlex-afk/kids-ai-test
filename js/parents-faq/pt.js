@@ -45,7 +45,6 @@ faq_adult:[
 {q: "Meu adolescente pediu conselho médico ou jurídico a um chatbot de IA — devo me preocupar?", a: "Chatbots de IA podem produzir texto com aparência médica ou jurídica com total confiança, seja ele preciso ou não — esse é o problema das 'alucinações', e é assim que o modelo subjacente funciona, não um descuido ocasional. A regra que vale a pena ensinar nessa idade: a IA pode ajudar a entender um assunto ou preparar perguntas, mas qualquer decisão médica ou jurídica real precisa de verificação com um médico, advogado ou fonte oficial de verdade antes de agir."},
 {q: "Adolescentes mais velhos devem checar absolutamente tudo que uma IA diz?", a: "Nem tudo exige o mesmo escrutínio — a habilidade útil é saber quais afirmações realmente importam. Um fato que só afeta a curiosidade (uma data histórica, uma resposta de quiz) tem baixo risco se estiver errado; um fato que afeta uma decisão (saúde, dinheiro, situação jurídica, algo para uma inscrição ou redação) tem alto risco e precisa de uma fonte independente antes de ser acreditado ou repetido."}
 ],
-proto_by:"Do mesmo autor:",proto_desc:"Um guia sistemático para reiniciar a mentalidade na era da IA — 33 protocolos baseados em evidências para adaptação consciente.",
 cta_self:"Fazer o teste eu mesmo →",cta_child:"← Configurar para criança"
 }
 };

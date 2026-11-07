@@ -45,7 +45,6 @@ faq_adult:[
 {q: "Anak remaja saya meminta saran medis atau hukum dari chatbot AI — haruskah saya khawatir?", a: "Chatbot AI bisa menghasilkan teks yang terdengar medis atau hukum dengan keyakinan penuh, terlepas dari apakah itu akurat atau tidak — ini masalah 'halusinasi', dan begitulah cara kerja model dasarnya, bukan kelalaian sesekali. Aturan yang layak diajarkan di usia ini: AI bisa membantu memahami suatu topik atau menyiapkan pertanyaan, tapi keputusan medis atau hukum yang sesungguhnya memerlukan verifikasi dari dokter, pengacara, atau sumber resmi sungguhan sebelum bertindak."},
 {q: "Haruskah remaja yang lebih tua memeriksa ulang benar-benar semua yang dikatakan AI?", a: "Tidak semua hal butuh tingkat ketelitian yang sama — keterampilan yang berguna adalah mengetahui klaim mana yang benar-benar penting. Fakta yang hanya memengaruhi rasa ingin tahu (tanggal sejarah, jawaban kuis) berisiko rendah jika salah; fakta yang memengaruhi keputusan (kesehatan, uang, status hukum, sesuatu untuk pendaftaran atau esai) berisiko tinggi dan memerlukan sumber independen sebelum dipercaya atau diulang."}
 ],
-proto_by:"Dari penulis yang sama:",proto_desc:"Panduan sistematis untuk mengkalibrasi ulang pola pikir di era AI — 33 protokol berbasis bukti untuk adaptasi sadar.",
 cta_self:"Ikuti tes sendiri →",cta_child:"← Siapkan untuk anak"
 }
 };
