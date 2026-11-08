@@ -1222,8 +1222,7 @@ window.LANG_DATA = {
           options: ["Một tâm trí tự chủ sở hữu ý thức, ý định và nhận thức về bản thân", "Một hệ thống phần mềm, từ một đầu vào cho trước, tạo ra kết quả — dự đoán, đề xuất hoặc quyết định — cho một tập hợp mục tiêu đã xác định", "Một cơ sở dữ liệu tĩnh chứa mọi sự thật đã được ghi lại về thế giới", "Một mô phỏng bộ não con người ở cấp độ nơ-ron"],
           correct: 1,
           explanation: "Điều này khớp với cách các hệ thống AI được mô tả chính thức trong hầu hết các tài liệu nghiên cứu và chính sách hiện đại: phần mềm tạo ra kết quả — dự đoán, đề xuất hoặc quyết định — từ dữ liệu, mà không sở hữu sự hiểu biết, ý thức hay ý định. \"Kiến thức\" ở đây là một đặc tính thống kê của trọng số mô hình, không phải sự thật được lưu trữ.",
-          source:    "Stanford AI Index 2024",
-          sourceUrl: "https://hai.stanford.edu/ai-index/2024-ai-index-report",
+          source:'EU AI Act, Art. 3', sourceUrl:'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
         },
         {
           type:    'choice',
@@ -1244,7 +1243,7 @@ window.LANG_DATA = {
           q:       '"Các hệ thống AI nên bị pháp luật bắt buộc phải tiết lộ rằng chúng là AI trong mọi tương tác với con người."',
           ideal:   4,
           explanation: 'Đạo luật AI của EU yêu cầu tiết lộ khi AI tương tác với con người. Minh bạch là khuyến nghị gần như phổ quát trong các khung quản trị. Một số cho rằng có ngoại lệ với tác phẩm hư cấu được gắn nhãn rõ ràng.',
-          source:    'EU AI Act Art. 52',
+          source:    'EU AI Act Art. 50',
           sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
         },
         {
@@ -1330,7 +1329,7 @@ window.LANG_DATA = {
           q:       '"Các hệ thống AI nên được kiểm toán bởi bên thứ ba độc lập trước khi triển khai vào các quyết định rủi ro cao (tuyển dụng, tín dụng, tư pháp hình sự)."',
           ideal:   5,
           explanation: 'Kiểm toán độc lập là yêu cầu trung tâm của những người ủng hộ trách nhiệm giải trình AI và được quy định theo Đạo luật AI của EU đối với hệ thống rủi ro cao. Đây gần như là sự đồng thuận giữa các nhà nghiên cứu đạo đức AI.',
-          source:    'EU AI Act Art. 43-44',
+          source:    'EU AI Act Art. 43',
           sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
         },
         {
