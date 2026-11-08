@@ -18,3 +18,15 @@
 | ✓ | урок «Риски» (CAIS 2023, ЕС) | реальные vs спекулятивные риски | ✅ | — | |
 | ✓ | квиз «кадровый ИИ — высокий риск, Прил. III» | ✅ (занятость — п. 4 Приложения III) | — | | |
 | ✓ | Каплан 2020 | степенные законы масштабирования | ✅ | — | |
+
+## Сверка с текстом закона (2026-11-09, artificialintelligenceact.eu, HTTP 200)
+Юрист + научный редактор. На сайте закона есть пометки о поправках со сроком 2 декабря 2026 —
+при публикации ссылаться на статьи, но не обещать даты вступления.
+
+| # | Статья | Дословно | Вывод |
+|---|---|---|---|
+| 1 | ст. 50(1) | "the natural persons concerned are informed that they are interacting with an AI system" (+ исключение: "unless this is obvious…") | ✅ ст. 50, не 52 — править |
+| 2 | ст. 53(1)(d) | "make publicly available a sufficiently detailed summary about the content used for training" | ✅ только для поставщиков моделей общего назначения, «резюме», не «данные»; к высокому риску не относится — править |
+| 3 | ст. 5(1)(h) | (по сводке страницы, дословно не дочитано) "systems in publicly accessible spaces for the purposes of law enforcement" + 3 исключения + разрешение суда | ⚠️ граница «для полиции, с узкими исключениями и разрешением суда» — править; дословно перепроверить по Official Journal |
+| 4 | ст. 43(1)–(2) | для п. 2–8 Приложения III — "internal control as referred to in Annex VI"; "does not provide for the involvement of a notified body"; для п. 1 (биометрия) — выбор Annex VI или VII | ✅ «аудит третьей стороной обязателен для высокого риска» — НЕВЕРНО; найм и образование (п. 3–4) — самооценка поставщика — править |
+| 5 | ст. 3(1) | "generate outputs such as predictions, content, recommendations, or decisions" | ✅ определение квиза взято отсюда → источник «Закон ЕС об ИИ, ст. 3» |
