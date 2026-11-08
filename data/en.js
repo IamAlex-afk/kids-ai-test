@@ -1103,7 +1103,7 @@ window.LANG_DATA = {
           q:       'Why does an app\'s "For You" feed keep suggesting videos you can\'t stop watching?',
           options: ['It knows what\'s actually good for you 🌟', 'It\'s optimized to maximize your watch time, not your wellbeing ⏳', 'It\'s completely random 🎲', 'It only shows educational content 📚'],
           correct: 1,
-          explanation: 'Recommendation AI is built to keep you engaged — that\'s the business model, not a coincidence.',
+          explanation: 'Recommendation AI is built to keep you engaged — in Google\'s 2016 paper the system\'s target is watch time.',
           source:    'Covington et al., "Deep Neural Networks for YouTube Recommendations", Google, 2016',
           sourceUrl: 'https://research.google/pubs/deep-neural-networks-for-youtube-recommendations/',
         },

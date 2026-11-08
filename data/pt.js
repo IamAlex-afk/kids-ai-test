@@ -455,7 +455,7 @@ window.LANG_DATA = {
           source: 'Common Sense Media, "Teens, Trust, and Technology in the Age of AI", 2025', sourceUrl: 'https://www.commonsensemedia.org/research/research-brief-teens-trust-and-technology-in-the-age-of-ai' },
         { type:'choice', q:'Por que o feed "Para Você" de um app continua sugerindo vídeos dos quais você não consegue parar de assistir?',
           options:['Ele sabe o que é realmente bom para você 🌟','Ele é otimizado para maximizar seu tempo de tela, não seu bem-estar ⏳','É totalmente aleatório 🎲','Ele só mostra conteúdo educativo 📚'],
-          correct:1, explanation:'A IA de recomendação é feita para prender sua atenção — esse é o modelo de negócio, não uma coincidência.',
+          correct:1, explanation:'A IA de recomendação é feita para prender sua atenção — ela é configurada assim: no artigo do Google de 2016, o objetivo do sistema é o tempo de exibição.',
           source: 'Covington et al., "Deep Neural Networks for YouTube Recommendations", Google, 2016', sourceUrl: 'https://research.google/pubs/deep-neural-networks-for-youtube-recommendations/' },
         { type:'likert', q:'"Eu paro e penso por que um app está me mostrando algo, em vez de simplesmente continuar rolando."', ideal:5,
           explanation:'Perceber como os algoritmos tentam prender sua atenção é uma habilidade real — isso devolve o controle para você.' },

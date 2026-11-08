@@ -467,7 +467,7 @@ window.LANG_DATA = {
           source: 'Common Sense Media, "Teens, Trust, and Technology in the Age of AI", 2025', sourceUrl: 'https://www.commonsensemedia.org/research/research-brief-teens-trust-and-technology-in-the-age-of-ai' },
         { type:'choice', q:'¿Por qué el feed "Para ti" de una app sigue sugiriendo videos de los que no puedes dejar de ver?',
           options:['Sabe qué es realmente bueno para ti 🌟','Está optimizado para maximizar tu tiempo de visualización, no tu bienestar ⏳','Es totalmente aleatorio 🎲','Solo muestra contenido educativo 📚'],
-          correct:1, explanation:'La IA de recomendación está diseñada para captar tu atención — ese es el modelo de negocio, no una coincidencia.',
+          correct:1, explanation:'La IA de recomendación está diseñada para captar tu atención — está configurada así: en el artículo de Google de 2016 el objetivo del sistema es el tiempo de visualización.',
           source: 'Covington et al., "Deep Neural Networks for YouTube Recommendations", Google, 2016', sourceUrl: 'https://research.google/pubs/deep-neural-networks-for-youtube-recommendations/' },
         { type:'likert', q:'"Me detengo a pensar por qué una app me muestra algo, en vez de simplemente seguir deslizando."', ideal:5,
           explanation:'Notar cómo los algoritmos intentan captar tu atención es una habilidad real — te devuelve el control.' },

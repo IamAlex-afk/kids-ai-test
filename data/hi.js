@@ -456,7 +456,7 @@ window.LANG_DATA = {
           source: 'Common Sense Media, "Teens, Trust, and Technology in the Age of AI", 2025', sourceUrl: 'https://www.commonsensemedia.org/research/research-brief-teens-trust-and-technology-in-the-age-of-ai' },
         { type:'choice', q:'ऐप का "तुम्हारे लिए" फ़ीड ऐसे वीडियो सुझाता रहता है जिनसे तुम रुक नहीं पाते, ऐसा क्यों?',
           options:['उसे पता है तुम्हारे लिए असल में क्या अच्छा है 🌟','वो तुम्हारा देखने का समय बढ़ाने के लिए बनाया गया है, तुम्हारी भलाई के लिए नहीं ⏳','ये पूरी तरह बेतरतीब है 🎲','वो सिर्फ शैक्षणिक सामग्री दिखाता है 📚'],
-          correct:1, explanation:'सुझाव देने वाली एआई तुम्हारा ध्यान खींचे रखने के लिए बनाई जाती है — यही व्यापार का तरीका है, कोई इत्तेफ़ाक नहीं।',
+          correct:1, explanation:'सुझाव देने वाली एआई तुम्हारा ध्यान खींचे रखने के लिए बनाई जाती है — Google के 2016 के लेख में सिस्टम का लक्ष्य देखने का समय है।',
           source: 'Covington एट अल., "Deep Neural Networks for YouTube Recommendations", Google, 2016', sourceUrl: 'https://research.google/pubs/deep-neural-networks-for-youtube-recommendations/' },
         { type:'likert', q:'"मैं रुककर सोचता हूं कि ऐप मुझे ये क्यों दिखा रहा है, बस स्क्रॉल करते रहने के बजाय।"', ideal:5,
           explanation:'ये पहचानना कि एल्गोरिदम तुम्हारा ध्यान कैसे खींचने की कोशिश करते हैं, एक असली कौशल है — ये तुम्हें नियंत्रण वापस देता है।' },

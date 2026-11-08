@@ -455,7 +455,7 @@ window.LANG_DATA = {
           source: 'Common Sense Media, "Teens, Trust, and Technology in the Age of AI", 2025', sourceUrl: 'https://www.commonsensemedia.org/research/research-brief-teens-trust-and-technology-in-the-age-of-ai' },
         { type:'choice', q:'Warum schlägt dir ein "Für dich"-Feed ständig Videos vor, von denen du nicht loskommst?',
           options:['Er weiß, was wirklich gut für dich ist 🌟','Er ist auf maximale Sehzeit optimiert, nicht auf dein Wohlbefinden ⏳','Das ist reiner Zufall 🎲','Er zeigt nur Bildungsinhalte 📚'],
-          correct:1, explanation:'Empfehlungs-KI ist darauf gebaut, dich zu fesseln — das ist das Geschäftsmodell, kein Zufall.',
+          correct:1, explanation:'Empfehlungs-KI ist darauf gebaut, dich zu fesseln — sie ist genau so eingestellt: In Googles Studie von 2016 ist das Ziel des Systems die Wiedergabezeit.',
           source: 'Covington et al., "Deep Neural Networks for YouTube Recommendations", Google, 2016', sourceUrl: 'https://research.google/pubs/deep-neural-networks-for-youtube-recommendations/' },
         { type:'likert', q:'"Ich halte inne und denke nach, warum eine App mir etwas zeigt, statt einfach weiterzuscrollen."', ideal:5,
           explanation:'Zu bemerken, wie Algorithmen deine Aufmerksamkeit fesseln wollen, ist eine echte Fähigkeit — sie gibt dir die Kontrolle zurück.' },

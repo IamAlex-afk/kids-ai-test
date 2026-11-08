@@ -881,7 +881,7 @@ window.LANG_DATA = {
           q:       'Tại sao trang "Dành cho bạn" của một ứng dụng cứ đề xuất những video bạn không thể ngừng xem?',
           options: ['Nó biết điều gì thực sự tốt cho bạn 🌟', 'Nó được tối ưu để tối đa hóa thời gian xem của bạn, không phải sức khỏe tinh thần của bạn ⏳', 'Hoàn toàn ngẫu nhiên 🎲', 'Nó chỉ hiện nội dung giáo dục 📚'],
           correct: 1,
-          explanation: 'AI đề xuất được xây dựng để thu hút sự chú ý của bạn — đó là mô hình kinh doanh, không phải sự trùng hợp.',
+          explanation: 'AI đề xuất được xây dựng để thu hút sự chú ý của bạn — nó được thiết lập như vậy: trong bài báo năm 2016 của Google, mục tiêu của hệ thống là thời gian xem.',
           source:    'Covington và cộng sự, "Deep Neural Networks for YouTube Recommendations", Google, 2016',
           sourceUrl: 'https://research.google/pubs/deep-neural-networks-for-youtube-recommendations/',
         },

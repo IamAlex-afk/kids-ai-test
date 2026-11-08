@@ -457,7 +457,7 @@ window.LANG_DATA = {
           source: 'Common Sense Media, "Teens, Trust, and Technology in the Age of AI", 2025', sourceUrl: 'https://www.commonsensemedia.org/research/research-brief-teens-trust-and-technology-in-the-age-of-ai' },
         { type:'choice', q:'Bir uygulamanın "Senin İçin" akışı neden vazgeçemediğin videolar önermeye devam eder?',
           options:['Senin için gerçekten neyin iyi olduğunu bilir 🌟','Refahını değil, izleme süreni maksimize etmek için optimize edilmiştir ⏳','Bu tamamen rastgele 🎲','Sadece eğitici içerik gösterir 📚'],
-          correct:1, explanation:'Öneri yapay zekası dikkatini çekmek için tasarlanmıştır — bu bir tesadüf değil, iş modelidir.',
+          correct:1, explanation:'Öneri yapay zekası dikkatini çekmek için tasarlanmıştır — Google\'ın 2016 makalesinde sistemin hedefi izleme süresidir.',
           source: 'Covington ve ark., "Deep Neural Networks for YouTube Recommendations", Google, 2016', sourceUrl: 'https://research.google/pubs/deep-neural-networks-for-youtube-recommendations/' },
         { type:'likert', q:'"Bir uygulama bana bir şey gösterdiğinde, sadece kaydırmaya devam etmek yerine durup neden gösterdiğini düşünürüm."', ideal:5,
           explanation:'Algoritmaların dikkatini nasıl çekmeye çalıştığını fark etmek gerçek bir beceridir — bu sana kontrolü geri verir.' },

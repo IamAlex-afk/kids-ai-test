@@ -457,7 +457,7 @@ window.LANG_DATA = {
           source: 'Common Sense Media, "Teens, Trust, and Technology in the Age of AI", 2025', sourceUrl: 'https://www.commonsensemedia.org/research/research-brief-teens-trust-and-technology-in-the-age-of-ai' },
         { type:'choice', q:'Kenapa feed "Untukmu" di sebuah aplikasi terus menyarankan video yang tidak bisa kamu hentikan?',
           options:['Dia tahu apa yang benar-benar baik untukmu 🌟','Dia dioptimalkan untuk memaksimalkan waktu tontonmu, bukan kesejahteraanmu ⏳','Itu murni acak 🎲','Dia hanya menampilkan konten edukasi 📚'],
-          correct:1, explanation:'AI rekomendasi dibangun untuk menarik perhatianmu — itu model bisnisnya, bukan kebetulan.',
+          correct:1, explanation:'AI rekomendasi dibangun untuk menarik perhatianmu — memang diatur begitu: dalam makalah Google tahun 2016, tujuan sistemnya adalah waktu tonton.',
           source: 'Covington dkk., "Deep Neural Networks for YouTube Recommendations", Google, 2016', sourceUrl: 'https://research.google/pubs/deep-neural-networks-for-youtube-recommendations/' },
         { type:'likert', q:'"Aku berhenti sejenak dan berpikir kenapa aplikasi menunjukkan sesuatu padaku, bukan cuma terus scroll."', ideal:5,
           explanation:'Menyadari bagaimana algoritma mencoba menarik perhatianmu adalah keterampilan nyata — itu mengembalikan kendali padamu.' },
