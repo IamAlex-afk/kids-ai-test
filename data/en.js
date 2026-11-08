@@ -929,7 +929,7 @@ window.LANG_DATA = {
           title: 'When AI gets your homework wrong',
           text:  'Using AI to help with homework can be smart — but submitting AI mistakes as your own work can hurt your grade AND your learning. The safest approach: use AI to explain a concept, then write the answer yourself, in your own words.',
           example: '🏋️ Using AI for every answer is like having someone else lift your weights at the gym — you won\'t actually get stronger, even if the weight got lifted.',
-          source:    null,
+          source: 'Bastani et al., "Generative AI without guardrails can harm learning", PNAS 2025', sourceUrl: 'https://doi.org/10.1073/pnas.2422633122',
           miniTest: [
             {
               q:       'What\'s the smartest way to use AI for homework?',
@@ -1077,8 +1077,8 @@ window.LANG_DATA = {
           options: ["An electronic brain that thinks and reasons just like a human", "A statistical system trained on huge datasets that finds patterns and predicts the most likely output", "A complete database containing every fact in the world", "A program that has become self-aware"],
           correct: 1,
           explanation: "Modern AI systems, including large language models, don't truly understand language the way humans do — they are statistical models that find patterns in massive datasets and generate the most probable output. That's why they can sound confident and still be wrong.",
-          source:    "Stanford AI Index 2024",
-          sourceUrl: "https://hai.stanford.edu/ai-index/2024-ai-index-report",
+          source:    'LeCun, Bengio, Hinton, "Deep Learning", Nature 2015',
+          sourceUrl: "https://www.nature.com/articles/nature14539",
         },
         {
           type:    'choice',
@@ -1103,7 +1103,7 @@ window.LANG_DATA = {
           q:       'Why does an app\'s "For You" feed keep suggesting videos you can\'t stop watching?',
           options: ['It knows what\'s actually good for you 🌟', 'It\'s optimized to maximize your watch time, not your wellbeing ⏳', 'It\'s completely random 🎲', 'It only shows educational content 📚'],
           correct: 1,
-          explanation: 'Recommendation AI is built to keep you engaged — that\'s the business model, not a coincidence.',
+          explanation: 'Recommendation AI is built to keep you engaged — in Google\'s 2016 paper the system\'s target is watch time.',
           source:    'Covington et al., "Deep Neural Networks for YouTube Recommendations", Google, 2016',
           sourceUrl: 'https://research.google/pubs/deep-neural-networks-for-youtube-recommendations/',
         },
