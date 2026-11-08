@@ -464,6 +464,25 @@
     ctx.lineTo(pts[pts.length - 1].x, pts[pts.length - 1].y);
   }
 
+  // Rounded body (2026-11-08): one smooth tube through the segment centres
+  // under the keycaps, so the snake reads as a single soft body that bends,
+  // not a row of separate squares. Thicker for 5–10, slimmer for 11+.
+  function drawBodyTube(ctx, pts, cell, tier) {
+    if (pts.length < 2) return;
+    const w = cell * (tier === 'cute' ? 0.86 : 0.7);
+    ctx.save();
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    smoothPathThrough(ctx, pts);
+    ctx.strokeStyle = 'rgba(30,8,60,0.9)'; ctx.lineWidth = w + 3; ctx.stroke();
+    smoothPathThrough(ctx, pts);
+    ctx.strokeStyle = 'rgba(88,40,150,0.95)'; ctx.lineWidth = w; ctx.stroke();
+    ctx.translate(-w * 0.12, -w * 0.12);
+    smoothPathThrough(ctx, pts);
+    ctx.strokeStyle = 'rgba(200,160,255,0.28)'; ctx.lineWidth = w * 0.28;
+    ctx.stroke();
+    ctx.restore();
+  }
+
   function drawCable(ctx, centerPts, cell, now) {
     if (centerPts.length < 2) return;
     const baseW = cell * 0.27;
@@ -995,7 +1014,19 @@
         drawCable(ctx, cablePts, cell, now);
       }
 
-      // 2. Draw keyboard body segments (back to front, skip head)
+      // 2. Rounded body tube under the keycaps (head to the cable joint).
+      // Skip pairs that jump across the board edge when walls wrap.
+      {
+        const tubePts = [];
+        for (let i = 0; i < Math.min(n, cableStart); i++) {
+          const c = iCenters[i], p = tubePts[tubePts.length - 1];
+          if (p && (Math.abs(c.cx - p.x) > cell * 1.5 || Math.abs(c.cy - p.y) > cell * 1.5)) break;
+          tubePts.push({ x: c.cx, y: c.cy });
+        }
+        drawBodyTube(ctx, tubePts, cell, tier);
+      }
+
+      // 3. Draw keyboard body segments (back to front, skip head)
       for (let i = Math.min(n - 1, cableStart - 1); i >= 1; i--) {
         const seg = iCenters[i];
         const alpha = Math.max(0.3, 1 - (i / Math.max(1, n - 1)) * 0.55);
