@@ -28,6 +28,43 @@ https://developers.google.com/search/docs/specialty/international/localized-vers
 
 Машинный перевод на этих двух страницах не упоминается — смотреть политику спама (кусок Q1b).
 
-## Дальше (Q1b)
-helpful/people-first content · spam policies (scaled content abuse) · guidance on AI-generated content ·
-FAQ/structured data · page experience. Источник — только developers.google.com.
+## 3. Creating helpful, reliable, people-first content
+https://developers.google.com/search/docs/fundamentals/creating-helpful-content
+
+| Правило | Цитата | У нас / вывод |
+|---|---|---|
+| Для людей | "People-first content means content that's created primarily for people, and not to manipulate search engine rankings." | ✅ цель сайта — дети и родители |
+| Сигнал тревоги | "Are you using extensive automation to produce content on many topics?" | ⚠️ 10 языков сделаны с ИИ → нужна ручная проверка (Q4, Q8) |
+| Как сделано | "AI or automation disclosures are useful for content where someone might think \"How was this created?\"" | ❌ на сайте не сказано, что тексты готовились с ИИ и проверялись → добавить блок «Как сделан сайт» |
+| Авторы | "Fabricating creator profiles (such as by using AI-generated headshots, made-up names, or false credentials" | ✅ автор настоящий (Alex Bitkin, GitHub) |
+
+## 4. Spam policies — Scaled content abuse
+https://developers.google.com/search/docs/essentials/spam-policies (журнал: уточнены 2026-05-15)
+
+| Правило | Цитата | Вывод |
+|---|---|---|
+| Масса без пользы | "creating large amounts of unoriginal content that provides little to no value to users, no matter how it's created." | у нас 390+ страниц — каждая должна быть полезна сама |
+| ИИ без пользы | "Using generative AI tools or other similar tools to generate many pages without adding value for users" | ценность = проверенные источники, 4 возраста, местные примеры |
+| Перевод как приём | "including through automated transformations like synonymizing, translating, or other obfuscation techniques" | ⚠️ перевод — нарушение, только если страниц много и пользы мало → адаптация по странам (Q5) и вычитка (Q8) |
+
+## 5. Guidance on generative AI content
+https://developers.google.com/search/docs/fundamentals/using-gen-ai-content (журнал: обновлено 2026-10-01)
+
+| Правило | Цитата | Вывод |
+|---|---|---|
+| Проверка фактов | "It is critical to manually factcheck and review all AI-generated content for accuracy and trustworthiness" | = наш протокол CONTENT-REVIEW + реестр источников |
+| Ошибки ИИ | "Generative AI outputs may contain inaccuracies (also known as hallucinations)." | Q4: сверить все факты с реестром |
+| Раскрыть способ | "If you're automatically generating content, consider adding information on how your content was created" | → блок «Как сделан сайт» ×10 |
+
+## 6. FAQ rich results — сняты
+Страница faqpage не открылась (отдаёт журнал изменений). В журнале Google:
+- 2026-05-08 "Deprecating the FAQ rich result feature": "This feature will no longer appear in Google Search starting May 7, 2026."
+- 2026-06-15: "The FAQ rich result feature is no longer shown in Google Search results"
+
+Вывод: FAQPage JSON-LD на 10 главных больше не даёт блоков в выдаче. Вреда нет (тест держит совпадение
+с текстом), но и пользы для Google нет; оставить — для других поисковиков и ИИ-ответов, не обещать «сниппеты».
+
+## Итог Q1 → задачи
+1. Блок «Как сделан сайт» на 10 языках: тексты готовились с ИИ, факты сверены с первоисточниками, кто отвечает.
+2. Q2: hreflang взаимность/self/x-default на всех страницах; нет страниц «переведено только меню».
+3. Q4/Q5/Q8 — главное против «массового контента»: проверка фактов, адаптация по странам, вычитка носителем.
