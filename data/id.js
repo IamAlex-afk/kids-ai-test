@@ -202,11 +202,11 @@ window.LANG_DATA = {
         {
           icon:'🎭',
           title:'Kenapa ChatGPT terdengar sangat nyata',
-          text:'ChatGPT telah membaca sebagian besar internet — miliaran percakapan, cerita, dan jawaban. Dia belajar berbicara persis seperti manusia saat ramah, cerdas, atau lucu. Tapi terdengar nyata bukan berarti NYATA. Burung beo bisa bilang "Aku cinta kamu" tanpa tahu apa artinya cinta.',
+          text:'Chatbot seperti ChatGPT dilatih dengan teks dalam jumlah sangat besar — dari internet, buku, dan ensiklopedia. Begitulah mereka belajar berbicara seperti manusia saat ramah, cerdas, atau lucu. Tapi terdengar nyata bukan berarti NYATA. Burung beo bisa bilang "Aku cinta kamu" tanpa tahu apa artinya cinta.',
           example:'🦜 Burung beo vs. pemahaman: Burung beo belajar bilang "Selamat malam" saat gelap. Dia SAMA SEKALI tidak tahu apa arti "malam". ChatGPT jauh lebih canggih — tapi ide dasarnya mirip.',
           source:'Brown dkk., "GPT-3", NeurIPS 2020', sourceUrl:'https://arxiv.org/abs/2005.14165',
           miniTest: [{ q:'Kenapa ChatGPT terdengar seperti orang sungguhan?',
-            options:['Karena diam-diam itu orang sungguhan 🤫','Karena belajar dari miliaran percakapan manusia 📚','Karena dia punya perasaan 💛','Karena itu keajaiban ✨'],
+            options:['Karena diam-diam itu orang sungguhan 🤫','Karena belajar dari teks tulisan manusia dalam jumlah sangat besar 📚','Karena dia punya perasaan 💛','Karena itu keajaiban ✨'],
             correct:1, explanation:'ChatGPT belajar terdengar manusiawi dengan mempelajari cara manusia menulis — bukan karena dia MANUSIA.' }],
         },
         {
@@ -230,11 +230,11 @@ window.LANG_DATA = {
             correct:2, explanation:'AI paling berkuasa saat digabungkan dengan pikiran kritismu. Itulah literasi digital.' }],
         },
         { icon:'🖼️', title:'AI yang membuat gambar dan video',
-          text:'Alat seperti Midjourney dan DALL-E bisa membuat gambar baru hanya dari deskripsi teks — sesuatu yang belum pernah ada sebelumnya. Mereka belajar dengan mempelajari jutaan gambar asli, jadi mereka tahu kira-kira seperti apa "naga naik sepeda" walau belum pernah melihatnya.',
+          text:'Alat seperti Midjourney dan DALL-E bisa membuat gambar baru hanya dari deskripsi teks — sesuatu yang belum pernah ada sebelumnya. Mereka belajar dari gambar berketerangan dalam jumlah sangat besar — ratusan juta — jadi mereka tahu kira-kira seperti apa "naga naik sepeda" walau belum pernah melihatnya.',
           example:'🧩 Ini seperti puzzle raksasa — AI menggabungkan potongan pola yang dipelajarinya untuk membuat sesuatu yang baru, bukan menyalin satu gambar persis.',
           source:'Ramesh dkk., "Hierarchical Text-Conditional Image Generation with CLIP Latents (DALL-E 2)", OpenAI 2022', sourceUrl:'https://arxiv.org/abs/2204.06125',
           miniTest: [{ q:'Bagaimana AI membuat gambar sesuatu yang belum pernah ada, seperti "naga naik sepeda"?',
-            options:['Dia mencari foto persisnya di internet 🔍','Dia menggabungkan pola yang dipelajari dari jutaan gambar asli 🧩','Ada seniman tersembunyi yang menggambarnya diam-diam 🎨','Ini sepenuhnya acak 🎲'], correct:1,
+            options:['Dia mencari foto persisnya di internet 🔍','Dia menggabungkan pola yang dipelajari dari sangat banyak gambar asli 🧩','Ada seniman tersembunyi yang menggambarnya diam-diam 🎨','Ini sepenuhnya acak 🎲'], correct:1,
             explanation:'AI gambar mempelajari pola dari banyak sekali gambar asli, lalu menggabungkan pola itu dengan cara baru agar sesuai deskripsimu.' }] },
         { icon:'⚡', title:'AI berjalan di komputer sungguhan, di gedung sungguhan',
           text:'AI bukan sihir yang melayang di udara — dia berjalan di gedung raksasa penuh komputer kuat yang disebut "pusat data". Menjawab pertanyaanmu butuh listrik sungguhan dan mesin sungguhan yang sedang bekerja keras, sekarang juga, di suatu tempat di dunia.',
@@ -247,7 +247,7 @@ window.LANG_DATA = {
           source:'Common Sense Media, "Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions", 2025', sourceUrl:'https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions',
           miniTest: [{ q:'Bisakah chatbot AI benar-benar peduli padamu seperti teman sungguhan?',
             options:['Ya, kalau kamu cukup sering mengobrol dengannya 💛','Tidak — dia memprediksi kata-kata yang terdengar peduli, dia tidak merasakan apa-apa 🤖','Hanya AI mahal yang bisa peduli 💰','Hanya jika dia bilang "aku peduli padamu" 💬'], correct:1,
-            explanation:'AI bisa terdengar peduli karena belajar dari jutaan percakapan penuh perhatian — tapi tidak ada perasaan di balik kata-katanya.' }] },
+            explanation:'AI bisa terdengar peduli karena belajar dari sangat banyak teks tentang orang-orang yang saling peduli — tapi tidak ada perasaan di balik kata-katanya.' }] },
 
       ],
       snake: [
@@ -287,7 +287,7 @@ window.LANG_DATA = {
       quiz: [
         { type:"choice", q:"Apa itu Kecerdasan Buatan (AI)?",
           options:["Robot dengan perasaan dan pikiran sungguhan 🤔", "Program komputer yang menemukan pola dalam data dan memprediksi jawaban terbaik 🔍", "Makhluk ajaib yang tinggal di internet ✨", "Persis sama seperti otak manusia 🧠"],
-          correct:1, explanation:"AI adalah program buatan manusia. Ia belajar dengan menemukan pola dalam teks, gambar, dan suara dalam jumlah besar — tetapi ia tidak berpikir atau merasa seperti manusia.", source:"Stanford AI Index 2024", sourceUrl:"https://hai.stanford.edu/ai-index/2024-ai-index-report" },
+          correct:1, explanation:"AI adalah program buatan manusia. Ia belajar dengan menemukan pola dalam teks, gambar, dan suara dalam jumlah besar — tetapi ia tidak berpikir atau merasa seperti manusia.", source:'LeCun, Bengio, Hinton, "Deep Learning", Nature 2015', sourceUrl:'https://www.nature.com/articles/nature14539' },
         { type:'choice', q:'ChatGPT membaca pertanyaanmu lalu...',
           options:['Mencari di database 🗄️','Memprediksi kata yang paling mungkin satu per satu 🔤','Menelepon ahli sungguhan 📞','Berpikir mendalam seperti manusia 💭'],
           correct:1, explanation:'ChatGPT memprediksi kata berikutnya yang paling mungkin, lalu berikutnya — seperti autocorrect yang sangat canggih. Tidak ada pencarian database, tidak ada pemikiran nyata.',

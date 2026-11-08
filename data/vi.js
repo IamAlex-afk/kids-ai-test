@@ -359,7 +359,7 @@ window.LANG_DATA = {
         {
           icon:  '🎭',
           title: 'Vì sao ChatGPT nghe RẤT giống người thật',
-          text:  'ChatGPT đã đọc gần như toàn bộ internet — hàng tỷ cuộc trò chuyện, câu chuyện và câu trả lời. Nó học được chính xác cách con người nói chuyện khi thân thiện, thông minh hay hài hước. Nhưng nghe giống thật không có nghĩa là NÓ thật. Một con vẹt có thể nói "anh yêu em" mà không biết tình yêu là gì.',
+          text:  'Các chatbot như ChatGPT được huấn luyện trên một lượng văn bản khổng lồ — từ internet, sách và bách khoa toàn thư. Nhờ vậy chúng học được cách con người nói chuyện khi thân thiện, thông minh hay hài hước. Nhưng nghe giống thật không có nghĩa là NÓ thật. Một con vẹt có thể nói "anh yêu em" mà không biết tình yêu là gì.',
           example: '🦜 Vẹt và Sự Hiểu Biết: Con vẹt học nói "chúc ngủ ngon" khi trời tối. Nó KHÔNG hề biết "buổi tối" nghĩa là gì. ChatGPT tinh vi hơn nhiều — nhưng ý tưởng cơ bản là tương tự.',
           source:    'Brown et al., "GPT-3", NeurIPS 2020',
           sourceUrl: 'https://arxiv.org/abs/2005.14165',
@@ -407,14 +407,14 @@ window.LANG_DATA = {
         {
           icon:  '🖼️',
           title: 'AI biết vẽ tranh và làm video',
-          text:  'Những công cụ như Midjourney và DALL-E có thể tạo ra một bức tranh hoàn toàn mới chỉ từ một đoạn mô tả bằng chữ — thứ chưa từng tồn tại trước đây. Chúng học được bằng cách nghiên cứu hàng triệu bức ảnh thật, nên chúng biết đại khái "một con rồng đi xe đạp" trông sẽ như thế nào, dù chưa từng thấy nó bao giờ.',
+          text:  'Những công cụ như Midjourney và DALL-E có thể tạo ra một bức tranh hoàn toàn mới chỉ từ một đoạn mô tả bằng chữ — thứ chưa từng tồn tại trước đây. Chúng học từ một số lượng rất lớn — hàng trăm triệu — bức ảnh có chú thích, nên chúng biết đại khái "một con rồng đi xe đạp" trông sẽ như thế nào, dù chưa từng thấy nó bao giờ.',
           example: '🧩 Giống như một trò chơi ghép hình khổng lồ — AI ghép các mảnh khuôn mẫu đã học để tạo ra thứ gì đó mới, chứ không sao chép nguyên một bức tranh.',
           source:    'Ramesh và cộng sự, "DALL-E 2", OpenAI, 2022',
           sourceUrl: 'https://arxiv.org/abs/2204.06125',
           miniTest: [
             {
               q:       'AI tạo ra bức tranh của thứ chưa từng tồn tại, như "một con rồng đi xe đạp", bằng cách nào?',
-              options: ['Nó tìm đúng bức ảnh đó trên internet 🔍', 'Nó kết hợp các khuôn mẫu học được từ hàng triệu bức ảnh thật 🧩', 'Một họa sĩ bí mật vẽ nó lén lút 🎨', 'Hoàn toàn ngẫu nhiên 🎲'],
+              options: ['Nó tìm đúng bức ảnh đó trên internet 🔍', 'Nó kết hợp các khuôn mẫu học được từ rất nhiều bức ảnh thật 🧩', 'Một họa sĩ bí mật vẽ nó lén lút 🎨', 'Hoàn toàn ngẫu nhiên 🎲'],
               correct: 1,
               explanation: 'AI vẽ tranh đã học các khuôn mẫu từ vô số bức ảnh thật, rồi kết hợp những khuôn mẫu đó theo cách mới để khớp với mô tả của em.',
             },
@@ -447,7 +447,7 @@ window.LANG_DATA = {
               q:       'Một chatbot AI có thể thực sự quan tâm đến em giống như một người bạn thật không?',
               options: ['Có, nếu em nói chuyện với nó đủ nhiều 💛', 'Không — nó đoán những từ nghe như quan tâm, nhưng nó không cảm nhận được gì cả 🤖', 'Chỉ AI đắt tiền mới biết quan tâm 💰', 'Chỉ khi nó nói "tôi quan tâm đến bạn" 💬'],
               correct: 1,
-              explanation: 'AI có thể nghe có vẻ quan tâm vì nó học từ hàng triệu cuộc trò chuyện ân cần — nhưng đằng sau những từ ngữ đó không có cảm xúc nào cả.',
+              explanation: 'AI có thể nghe có vẻ quan tâm vì nó học từ rất nhiều văn bản mà ở đó con người quan tâm đến nhau — nhưng đằng sau những từ ngữ đó không có cảm xúc nào cả.',
             },
           ],
         },
@@ -520,8 +520,8 @@ window.LANG_DATA = {
           options: ["Một robot có cảm xúc và suy nghĩ thật sự 🤔", "Một chương trình máy tính tìm ra các quy luật trong dữ liệu và dự đoán câu trả lời tốt nhất 🔍", "Một sinh vật phép thuật sống trong internet ✨", "Hoàn toàn giống như bộ não con người 🧠"],
           correct: 1,
           explanation: "AI là một chương trình do con người tạo ra. Nó học bằng cách tìm ra các quy luật trong một lượng lớn văn bản, hình ảnh và âm thanh — nhưng nó không suy nghĩ hay cảm nhận như con người.",
-          source:    "Stanford AI Index 2024",
-          sourceUrl: "https://hai.stanford.edu/ai-index/2024-ai-index-report",
+          source:    'LeCun, Bengio, Hinton, "Deep Learning", Nature 2015',
+          sourceUrl: 'https://www.nature.com/articles/nature14539',
         },
         {
           type:    'choice',

@@ -202,11 +202,11 @@ window.LANG_DATA = {
         {
           icon:'🎭',
           title:'ChatGPT neden bu kadar gerçek geliyor',
-          text:"ChatGPT internetin büyük bölümünü okudu — milyarlarca konuşma, hikaye ve cevap. İnsanlar nazik, zeki veya eğlenceli olduğunda tam onlar gibi ses çıkarmayı öğrendi. Ama gerçek gibi ses çıkarmak GERÇEK olmak demek değil. Papağan 'seni seviyorum' diyebilir ama sevginin ne olduğunu bilmez.",
+          text:"ChatGPT gibi sohbet botları devasa miktarda metinle eğitildi — internetten, kitaplardan ve ansiklopedilerden. İnsanlar nazik, zeki veya eğlenceli olduğunda nasıl konuştuklarını böyle öğrendiler. Ama gerçek gibi ses çıkarmak GERÇEK olmak demek değil. Papağan 'seni seviyorum' diyebilir ama sevginin ne olduğunu bilmez.",
           example:"🦜 Papağan vs. anlayış: Bir papağan hava kararınca 'İyi geceler' demeyi öğrenir. 'Gece' nin ne anlama geldiğine dair HİÇBİR fikri yok. ChatGPT çok daha karmaşık — ama temel fikir benzer.",
           source:'Brown ve ark., "GPT-3", NeurIPS 2020', sourceUrl:'https://arxiv.org/abs/2005.14165',
           miniTest: [{ q:'ChatGPT neden gerçek bir insan gibi geliyor?',
-            options:["Çünkü gizlice gerçek bir insan 🤫","Çünkü milyarlarca insan konuşmasından öğrendi 📚","Çünkü duyguları var 💛","Çünkü bu bir büyü ✨"],
+            options:["Çünkü gizlice gerçek bir insan 🤫","Çünkü insanların yazdığı devasa miktarda metinden öğrendi 📚","Çünkü duyguları var 💛","Çünkü bu bir büyü ✨"],
             correct:1, explanation:"ChatGPT insanların nasıl yazdığını inceleyerek insani ses çıkarmayı öğrendi — İNSAN olduğu için değil." }],
         },
         {
@@ -230,7 +230,7 @@ window.LANG_DATA = {
             correct:2, explanation:"YZ, eleştirel düşüncenle birleştirildiğinde en güçlüdür. Dijital okuryazarlık bu demektir." }],
         },
         { icon:'🖼️', title:"Resim ve video yapan YZ",
-          text:"Midjourney ve DALL-E gibi araçlar, sadece bir metin açıklamasından hiç var olmamış bambaşka bir resim oluşturabilir. Milyonlarca gerçek resim inceleyerek öğrendiler, bu yüzden hiç görmemiş olsalar bile 'bisiklete binen bir ejderha' nın nasıl görünmesi gerektiğini az çok bilirler.",
+          text:"Midjourney ve DALL-E gibi araçlar, sadece bir metin açıklamasından hiç var olmamış bambaşka bir resim oluşturabilir. Çok büyük sayıda — yüz milyonlarca — açıklamalı resimden öğrendiler, bu yüzden hiç görmemiş olsalar bile 'bisiklete binen bir ejderha' nın nasıl görünmesi gerektiğini az çok bilirler.",
           example:"🧩 Bu, dev bir yapboz gibidir — YZ, öğrendiği kalıplardan parçaları birleştirerek yeni bir şey inşa eder, bir resmi olduğu gibi kopyalamaz.",
           source:'Ramesh ve ark., "Hierarchical Text-Conditional Image Generation with CLIP Latents (DALL-E 2)", OpenAI 2022', sourceUrl:'https://arxiv.org/abs/2204.06125',
           miniTest: [{ q:"YZ, 'bisiklete binen bir ejderha' gibi hiç var olmamış bir şeyin resmini nasıl oluşturur?",
@@ -247,7 +247,7 @@ window.LANG_DATA = {
           source:'Common Sense Media, "Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions", 2025', sourceUrl:'https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions',
           miniTest: [{ q:"Bir YZ sohbet botu, gerçek bir arkadaş gibi seni gerçekten önemseyebilir mi?",
             options:["Evet, yeterince konuşursan 💛","Hayır — önemseyen gibi görünen kelimeleri tahmin eder, hiçbir şey hissetmez 🤖","Sadece pahalı YZ önemseyebilir 💰","Sadece 'seni önemsiyorum' derse 💬"], correct:1,
-            explanation:"YZ, milyonlarca şefkatli konuşmadan öğrendiği için önemseyen gibi görünebilir — ama kelimelerin arkasında hiçbir duygu yoktur." }] },
+            explanation:"YZ, insanların birbirini önemsediği çok sayıda metinden öğrendiği için önemseyen gibi görünebilir — ama kelimelerin arkasında hiçbir duygu yoktur." }] },
 
       ],
       snake: [
@@ -287,7 +287,7 @@ window.LANG_DATA = {
       quiz: [
         { type:"choice", q:"Yapay Zekâ (AI) nedir?",
           options:["Gerçek duyguları ve düşünceleri olan bir robot 🤔", "Verilerdeki örüntüleri bulan ve en iyi cevabı tahmin eden bir bilgisayar programı 🔍", "İnternette yaşayan sihirli bir yaratık ✨", "Tam olarak insan beyniyle aynı şey 🧠"],
-          correct:1, explanation:"Yapay zekâ, insanlar tarafından oluşturulan bir programdır. Devasa miktarda metin, görsel ve seste örüntüler bularak öğrenir — ama bir insan gibi düşünmez ya da hissetmez.", source:"Stanford AI Index 2024", sourceUrl:"https://hai.stanford.edu/ai-index/2024-ai-index-report" },
+          correct:1, explanation:"Yapay zekâ, insanlar tarafından oluşturulan bir programdır. Devasa miktarda metin, görsel ve seste örüntüler bularak öğrenir — ama bir insan gibi düşünmez ya da hissetmez.", source:'LeCun, Bengio, Hinton, "Deep Learning", Nature 2015', sourceUrl:'https://www.nature.com/articles/nature14539' },
         { type:'choice', q:'ChatGPT soruyu okur ve sonra...',
           options:["Bir veritabanında arar 🗄️","En muhtemel kelimeyi teker teker tahmin eder 🔤","Gerçek bir uzmanı arar 📞","Bir insan gibi derin düşünür 💭"],
           correct:1, explanation:"ChatGPT sonraki en muhtemel kelimeyi tahmin eder, sonra bir sonrakini — çok gelişmiş bir otomatik tamamlama gibi. Veritabanı araması yok, gerçek düşünme yok.",

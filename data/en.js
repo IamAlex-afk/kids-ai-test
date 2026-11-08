@@ -451,14 +451,14 @@ window.LANG_DATA = {
         {
           icon:  '🎭',
           title: 'Why ChatGPT sounds SO real',
-          text:  'ChatGPT read most of the internet — billions of conversations, stories, and answers. It learned exactly how humans sound when they\'re being friendly, smart, or funny. But sounding real doesn\'t mean BEING real. A parrot can say "I love you" without knowing what love is.',
+          text:  'Chatbots like ChatGPT were trained on a huge amount of text — from the internet, books, and encyclopedias. That\'s how they learned how humans sound when they\'re being friendly, smart, or funny. But sounding real doesn\'t mean BEING real. A parrot can say "I love you" without knowing what love is.',
           example: '🦜 Parrot vs. Understanding: A parrot learns to say "goodnight" when it gets dark. It has NO idea what "night" means. ChatGPT is much more sophisticated — but the basic idea is similar.',
           source:    'Brown et al., "GPT-3", NeurIPS 2020',
           sourceUrl: 'https://arxiv.org/abs/2005.14165',
           miniTest: [
             {
               q:       'Why does ChatGPT sound like a real person?',
-              options: ['Because it IS a person in secret 🤫', 'Because it learned from billions of human conversations 📚', 'Because it has feelings 💛', 'Because it\'s magic ✨'],
+              options: ['Because it IS a person in secret 🤫', 'Because it learned from a huge amount of text written by people 📚', 'Because it has feelings 💛', 'Because it\'s magic ✨'],
               correct: 1,
               explanation: 'ChatGPT learned to sound human by studying how humans write — not because it IS human.',
             },
@@ -499,14 +499,14 @@ window.LANG_DATA = {
         {
           icon:  '🖼️',
           title: 'AI that makes pictures and videos',
-          text:  'Tools like Midjourney and DALL-E can create a brand-new picture just from a text description — something that never existed before. They learned by studying millions of real images, so they know what a "dragon riding a bicycle" should probably look like, even though they\'ve never seen one.',
+          text:  'Tools like Midjourney and DALL-E can create a brand-new picture just from a text description — something that never existed before. They learned from a huge number — hundreds of millions — of pictures with captions, so they know what a "dragon riding a bicycle" should probably look like, even though they\'ve never seen one.',
           example: '🧩 It\'s a bit like a giant jigsaw puzzle — AI mixes pieces from patterns it learned to build something new, not by copying one picture exactly.',
           source:    'Ramesh et al., "Hierarchical Text-Conditional Image Generation with CLIP Latents (DALL-E 2)", OpenAI 2022',
           sourceUrl: 'https://arxiv.org/abs/2204.06125',
           miniTest: [
             {
               q:       'How does AI create a picture of something that never existed, like a "dragon riding a bicycle"?',
-              options: ['It searches the internet for the exact photo 🔍', 'It combines patterns learned from millions of real images 🧩', 'A hidden artist draws it secretly 🎨', 'It\'s completely random 🎲'],
+              options: ['It searches the internet for the exact photo 🔍', 'It combines patterns learned from a huge number of real images 🧩', 'A hidden artist draws it secretly 🎨', 'It\'s completely random 🎲'],
               correct: 1,
               explanation: 'Image AI learned patterns from huge amounts of real pictures, then combines those patterns in new ways to match your description.',
             },
@@ -539,7 +539,7 @@ window.LANG_DATA = {
               q:       'Can an AI chatbot truly care about you the way a real friend does?',
               options: ['Yes, if you talk to it enough 💛', 'No — it predicts caring-sounding words, it doesn\'t feel anything 🤖', 'Only expensive AI can care 💰', 'Only if it says "I care about you" 💬'],
               correct: 1,
-              explanation: 'AI can sound caring because it learned from millions of caring conversations — but it has no feelings behind the words.',
+              explanation: 'AI can sound caring because it learned from a great many texts where people care about each other — but it has no feelings behind the words.',
             },
           ],
         },
@@ -674,8 +674,8 @@ window.LANG_DATA = {
           options: ["A robot with real feelings and thoughts 🤔", "A computer program that finds patterns in data and predicts the best answer 🔍", "A magical creature that lives inside the internet ✨", "Exactly the same as a human brain 🧠"],
           correct: 1,
           explanation: "AI is a program built by people. It learns by finding patterns in huge amounts of text, images, and sounds — but it doesn't think or feel like a human.",
-          source:    "Stanford AI Index 2024",
-          sourceUrl: "https://hai.stanford.edu/ai-index/2024-ai-index-report",
+          source:    'LeCun, Bengio, Hinton, "Deep Learning", Nature 2015',
+          sourceUrl: 'https://www.nature.com/articles/nature14539',
         },
         {
           type:    'choice',
