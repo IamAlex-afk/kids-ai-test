@@ -163,6 +163,65 @@
   // keeping the cute/cyber base tone but rotating the trace/grid colour.
   const BG_ACCENTS_CUTE  = ['129,140,248', '244,114,182', '52,211,153', '251,191,36'];
   const BG_ACCENTS_CYBER = ['34,211,238', '167,139,250', '52,211,153', '248,113,113'];
+  // Expedition location under the circuit board (2026-11-08), the same four
+  // places as Circuit Racer, one per round: forest lab, coral bay, sun canyon,
+  // orbital station. Painted once per round into the pre-rendered background,
+  // low alpha, so the tokens stay the brightest things on the board. Brighter
+  // and simpler shapes for 5–10 ('cute'), dimmer and finer for 11+.
+  function paintSnakeLocation(g, W, H, cell, isCute, roundIdx) {
+    const loc = ['forest', 'coral', 'canyon', 'orbit'][roundIdx % 4];
+    const a = isCute ? 1 : 0.7;
+    const rng = seededRng(4242 + roundIdx * 31);
+    g.save();
+    const tint = { forest: '20,83,45', coral: '14,90,110', canyon: '120,53,15', orbit: '30,27,75' }[loc];
+    const grad = g.createLinearGradient(0, 0, 0, H);
+    grad.addColorStop(0, `rgba(${tint},${0.10 * a})`); grad.addColorStop(1, `rgba(${tint},${0.35 * a})`);
+    g.fillStyle = grad; g.fillRect(0, 0, W, H);
+    if (loc === 'forest') {
+      for (let x = -cell; x < W + cell; x += cell * (isCute ? 2.4 : 1.8)) {
+        const r = cell * (0.9 + rng() * 0.7);
+        g.fillStyle = `rgba(34,197,94,${0.10 * a})`;
+        g.beginPath(); g.arc(x, H - r * 0.4, r, 0, Math.PI * 2); g.fill();
+      }
+      for (let i = 0; i < (isCute ? 12 : 20); i++) {
+        g.fillStyle = `rgba(253,224,71,${(0.15 + rng() * 0.2) * a})`;
+        g.beginPath(); g.arc(rng() * W, rng() * H * 0.8, 1.6, 0, Math.PI * 2); g.fill();
+      }
+    } else if (loc === 'coral') {
+      g.strokeStyle = `rgba(186,230,253,${0.08 * a})`; g.lineWidth = 2;
+      for (let y = cell; y < H; y += cell * 2) {
+        g.beginPath();
+        for (let x = 0; x <= W; x += cell) g.quadraticCurveTo(x - cell / 2, y - 4, x, y);
+        g.stroke();
+      }
+      g.strokeStyle = `rgba(251,113,133,${0.16 * a})`; g.lineCap = 'round'; g.lineWidth = Math.max(3, cell * 0.18);
+      for (let x = cell; x < W; x += cell * (isCute ? 3 : 2.2)) {
+        const h = cell * (1 + rng());
+        [-0.5, 0, 0.5].forEach(dx => { g.beginPath(); g.moveTo(x, H); g.quadraticCurveTo(x, H - h * 0.5, x + dx * cell, H - h); g.stroke(); });
+      }
+    } else if (loc === 'canyon') {
+      g.fillStyle = `rgba(253,186,116,${0.18 * a})`;
+      g.beginPath(); g.arc(W - cell * 1.6, cell * 1.6, cell * (isCute ? 1.4 : 1), 0, Math.PI * 2); g.fill();
+      ['rgba(194,65,12,', 'rgba(234,88,12,'].forEach((c, i) => {
+        g.fillStyle = `${c}${(0.14 - i * 0.04) * a})`;
+        g.beginPath(); g.moveTo(0, H);
+        for (let x = 0; x <= W; x += cell) g.lineTo(x, H - cell * (1.2 + i * 0.8) - Math.sin(x / (cell * 2) + i) * cell * 0.5);
+        g.lineTo(W, H); g.closePath(); g.fill();
+      });
+    } else {
+      for (let i = 0; i < (isCute ? 30 : 60); i++) {
+        g.fillStyle = `rgba(255,255,255,${(0.15 + rng() * 0.35) * a})`;
+        g.fillRect(rng() * W, rng() * H, 1.5, 1.5);
+      }
+      const px = cell * 2, py = cell * 2, pr = cell * (isCute ? 1.3 : 1);
+      g.fillStyle = `rgba(167,139,250,${0.20 * a})`;
+      g.beginPath(); g.arc(px, py, pr, 0, Math.PI * 2); g.fill();
+      g.strokeStyle = `rgba(196,181,253,${0.22 * a})`; g.lineWidth = 2;
+      g.beginPath(); g.ellipse(px, py, pr * 1.7, pr * 0.45, -0.3, 0, Math.PI * 2); g.stroke();
+    }
+    g.restore();
+  }
+
   function buildBgCanvas(W, H, cell, cols, rows, tier, roundIdx) {
     const isCute = tier === 'cute';
     const bc = document.createElement('canvas');
@@ -170,6 +229,7 @@
     const g = bc.getContext('2d');
     g.fillStyle = isCute ? '#0b0f1e' : '#07080f';
     g.fillRect(0, 0, W, H);
+    paintSnakeLocation(g, W, H, cell, isCute, roundIdx || 0);
 
     const palette = isCute ? BG_ACCENTS_CUTE : BG_ACCENTS_CYBER;
     const traceColor = palette[(roundIdx || 0) % palette.length];
