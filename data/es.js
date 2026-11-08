@@ -415,6 +415,7 @@ window.LANG_DATA = {
         { icon:'📝', title:'Cuando la IA se equivoca en tu tarea',
           text:'Usar la IA para ayudar con la tarea puede ser inteligente — pero entregar los errores de la IA como tu propio trabajo puede dañar tanto tu calificación COMO tu aprendizaje. El enfoque más seguro: usa la IA para entender un concepto, luego escribe la respuesta tú mismo, con tus propias palabras.',
           example:'🏋️ Usar IA para cada respuesta es como dejar que otra persona levante las pesas por ti en el gimnasio — el peso se levanta, pero tú no te vuelves realmente más fuerte.',
+          source:'Bastani et al., "Generative AI without guardrails can harm learning", PNAS 2025', sourceUrl:'https://doi.org/10.1073/pnas.2422633122',
           miniTest: [{ q:'¿Cuál es la forma más inteligente de usar la IA para la tarea?',
             options:['Copiar la respuesta directamente 📋','Usarla para entender, luego escribir tu propia respuesta ✍️','Nunca usarla 🚫','Usarla solo durante los exámenes 📝'], correct:1,
             explanation:'La IA es una gran ayuda para estudiar — pero el pensamiento y la escritura de verdad deben seguir siendo tuyos, para que realmente aprendas.' }] },
@@ -455,7 +456,7 @@ window.LANG_DATA = {
       quiz: [
         { type:"choice", q:"¿Qué definición describe mejor a la IA moderna, como los chatbots que usas todos los días?",
           options:["Un cerebro electrónico que piensa y razona igual que un humano", "Un sistema estadístico entrenado con enormes cantidades de datos que encuentra patrones y predice el resultado más probable", "Una base de datos completa que contiene todos los hechos del mundo", "Un programa que ha desarrollado autoconciencia"],
-          correct:1, explanation:"Los sistemas de IA modernos, incluidos los grandes modelos de lenguaje, no \"entienden\" en el sentido humano — son modelos estadísticos que encuentran patrones en enormes cantidades de datos y generan el resultado más probable. Por eso pueden sonar muy seguros y aun así estar equivocados.", source:"Stanford AI Index 2024", sourceUrl:"https://hai.stanford.edu/ai-index/2024-ai-index-report" },
+          correct:1, explanation:"Los sistemas de IA modernos, incluidos los grandes modelos de lenguaje, no \"entienden\" en el sentido humano — son modelos estadísticos que encuentran patrones en enormes cantidades de datos y generan el resultado más probable. Por eso pueden sonar muy seguros y aun así estar equivocados.", source:'LeCun, Bengio, Hinton, "Deep Learning", Nature 2015', sourceUrl:'https://www.nature.com/articles/nature14539' },
         { type:'choice', q:'Un chatbot de IA te da una respuesta que suena muy segura. ¿Deberías confiar siempre en ella?',
           options:['Sí, sonar seguro significa tener razón 👍','No — sonar seguro y tener razón no es lo mismo 🎲','Solo si usa palabras difíciles 📖','Solo los fines de semana 📅'],
           correct:1, explanation:'La IA puede sonar muy segura de sí misma y aun así estar completamente equivocada. La seguridad no es prueba de nada.',

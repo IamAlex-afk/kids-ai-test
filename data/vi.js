@@ -773,7 +773,7 @@ window.LANG_DATA = {
           title: 'Khi AI làm sai bài tập về nhà của bạn',
           text:  'Dùng AI để giúp làm bài tập về nhà có thể là khôn ngoan — nhưng nộp lỗi của AI như thể đó là bài làm của chính mình có thể gây hại cho cả điểm số LẪN việc học của bạn. Cách an toàn nhất: dùng AI để hiểu khái niệm, rồi tự viết câu trả lời bằng chính lời của mình.',
           example: '🏋️ Dùng AI cho mọi câu trả lời giống như nhờ người khác nâng tạ hộ mình ở phòng gym — tạ được nâng lên, nhưng bạn không thực sự khỏe hơn.',
-          source:    null,
+          source: 'Bastani et al., "Generative AI without guardrails can harm learning", PNAS 2025', sourceUrl: 'https://doi.org/10.1073/pnas.2422633122',
           miniTest: [
             {
               q:       'Cách khôn ngoan nhất để dùng AI cho bài tập về nhà là gì?',
@@ -855,8 +855,8 @@ window.LANG_DATA = {
           options: ["Một bộ não điện tử suy nghĩ và lập luận hệt như con người", "Một hệ thống thống kê được huấn luyện trên lượng dữ liệu khổng lồ, tìm ra quy luật và dự đoán kết quả có khả năng xảy ra nhất", "Một cơ sở dữ liệu đầy đủ chứa mọi sự thật trên thế giới", "Một chương trình đã phát triển được ý thức về bản thân"],
           correct: 1,
           explanation: "Các hệ thống AI hiện đại, bao gồm cả các mô hình ngôn ngữ lớn, không thực sự \"hiểu\" theo nghĩa của con người — chúng là các mô hình thống kê tìm ra quy luật trong lượng dữ liệu khổng lồ và tạo ra kết quả có khả năng xảy ra nhất. Đó là lý do chúng có thể nghe rất tự tin mà vẫn sai.",
-          source:    "Stanford AI Index 2024",
-          sourceUrl: "https://hai.stanford.edu/ai-index/2024-ai-index-report",
+          source:    'LeCun, Bengio, Hinton, "Deep Learning", Nature 2015',
+          sourceUrl: "https://www.nature.com/articles/nature14539",
         },
         {
           type:    'choice',

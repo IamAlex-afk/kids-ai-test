@@ -405,6 +405,7 @@ window.LANG_DATA = {
         { icon:'📝', title:"YZ ödevini yanlış yaptığında",
           text:"Ödev için YZ kullanmak akıllıca olabilir — ama YZ'nin hatalarını kendi çalışman gibi teslim etmek hem notunu HEM DE öğrenmeni olumsuz etkileyebilir. En güvenli yol: bir kavramı anlamak için YZ'yi kullan, sonra cevabı kendi kelimelerinle kendin yaz.",
           example:"🏋️ Her cevap için YZ kullanmak, spor salonunda ağırlıkları senin yerine başkasının kaldırmasına benzer — ağırlık kalkar ama sen gerçekten güçlenmezsin.",
+          source:'Bastani et al., "Generative AI without guardrails can harm learning", PNAS 2025', sourceUrl:'https://doi.org/10.1073/pnas.2422633122',
           miniTest: [{ q:"Ödev için YZ kullanmanın en akıllıca yolu nedir?",
             options:["Cevabı doğrudan kopyala 📋","Anlamak için kullan, sonra kendi cevabını yaz ✍️","Hiç kullanma 🚫","Sadece sınavlarda kullan 📝"], correct:1,
             explanation:"YZ harika bir çalışma yardımcısıdır — ama asıl düşünme ve yazma hâlâ senin olmalı, böylece gerçekten öğrenirsin." }] },
@@ -445,7 +446,7 @@ window.LANG_DATA = {
       quiz: [
         { type:"choice", q:"Her gün kullandığın sohbet botları gibi modern yapay zekâyı en doğru şekilde hangi tanım açıklar?",
           options:["Tıpkı bir insan gibi düşünen ve akıl yürüten elektronik bir beyin", "Devasa veri kümeleri üzerinde eğitilmiş, örüntüler bulan ve en olası sonucu tahmin eden istatistiksel bir sistem", "Dünyadaki her gerçeği içeren eksiksiz bir veritabanı", "Öz farkındalık geliştirmiş bir program"],
-          correct:1, explanation:"Büyük dil modelleri de dahil olmak üzere modern yapay zekâ sistemleri, insani anlamda hiçbir şeyi \"anlamaz\" — bunlar devasa veri kümelerinde örüntüler bulan ve en olası çıktıyı üreten istatistiksel modellerdir. Bu yüzden çok kendinden emin görünüp yine de yanılabilirler.", source:"Stanford AI Index 2024", sourceUrl:"https://hai.stanford.edu/ai-index/2024-ai-index-report" },
+          correct:1, explanation:"Büyük dil modelleri de dahil olmak üzere modern yapay zekâ sistemleri, insani anlamda hiçbir şeyi \"anlamaz\" — bunlar devasa veri kümelerinde örüntüler bulan ve en olası çıktıyı üreten istatistiksel modellerdir. Bu yüzden çok kendinden emin görünüp yine de yanılabilirler.", source:'LeCun, Bengio, Hinton, "Deep Learning", Nature 2015', sourceUrl:'https://www.nature.com/articles/nature14539' },
         { type:'choice', q:'Bir yapay zeka sohbet botu sana çok emin görünen bir cevap veriyor. Ona her zaman güvenmeli misin?',
           options:['Evet, emin olmak doğru olmak demektir 👍','Hayır — emin olmak ve doğru olmak aynı şey değildir 🎲','Sadece büyük kelimeler kullanıyorsa güven 📖','Sadece hafta sonları 📅'],
           correct:1, explanation:'Yapay zeka kendinden çok emin görünüp yine de tamamen yanılabilir. Kendinden eminlik kanıt değildir.',

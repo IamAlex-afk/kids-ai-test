@@ -405,6 +405,7 @@ window.LANG_DATA = {
         { icon:'📝', title:'Saat AI salah mengerjakan PR-mu',
           text:'Memakai AI untuk membantu PR bisa jadi pintar — tapi menyerahkan kesalahan AI sebagai hasil kerjamu sendiri bisa merugikan nilai DAN pembelajaranmu. Cara paling aman: pakai AI untuk memahami konsepnya, lalu tulis jawabanmu sendiri dengan kata-katamu sendiri.',
           example:'🏋️ Memakai AI untuk setiap jawaban seperti menyuruh orang lain mengangkat beban di gym untukmu — bebannya terangkat, tapi kamu tidak benar-benar jadi lebih kuat.',
+          source:'Bastani et al., "Generative AI without guardrails can harm learning", PNAS 2025', sourceUrl:'https://doi.org/10.1073/pnas.2422633122',
           miniTest: [{ q:'Apa cara paling cerdas memakai AI untuk PR?',
             options:['Menyalin jawabannya langsung 📋','Memakainya untuk memahami, lalu menulis jawabanmu sendiri ✍️','Tidak pernah memakainya sama sekali 🚫','Hanya memakainya saat ujian 📝'], correct:1,
             explanation:'AI adalah pembantu belajar yang hebat — tapi pemikiran dan tulisan sesungguhnya harus tetap milikmu, supaya kamu benar-benar belajar.' }] },
@@ -445,7 +446,7 @@ window.LANG_DATA = {
       quiz: [
         { type:"choice", q:"Definisi mana yang paling tepat menggambarkan AI modern — seperti chatbot yang kamu gunakan setiap hari?",
           options:["Otak elektronik yang berpikir dan bernalar persis seperti manusia", "Sistem statistik yang dilatih dengan data dalam jumlah besar, yang menemukan pola dan memprediksi hasil paling mungkin", "Basis data lengkap yang berisi setiap fakta di dunia", "Program yang telah mengembangkan kesadaran diri"],
-          correct:1, explanation:"Sistem AI modern, termasuk model bahasa besar (LLM), tidak \"memahami\" dalam arti manusiawi — mereka adalah model statistik yang menemukan pola dalam data besar dan menghasilkan output paling mungkin. Itu sebabnya mereka bisa terdengar sangat yakin namun tetap salah.", source:"Stanford AI Index 2024", sourceUrl:"https://hai.stanford.edu/ai-index/2024-ai-index-report" },
+          correct:1, explanation:"Sistem AI modern, termasuk model bahasa besar (LLM), tidak \"memahami\" dalam arti manusiawi — mereka adalah model statistik yang menemukan pola dalam data besar dan menghasilkan output paling mungkin. Itu sebabnya mereka bisa terdengar sangat yakin namun tetap salah.", source:'LeCun, Bengio, Hinton, "Deep Learning", Nature 2015', sourceUrl:'https://www.nature.com/articles/nature14539' },
         { type:'choice', q:'Chatbot AI memberimu jawaban yang terdengar sangat yakin. Haruskah kamu selalu percaya?',
           options:['Ya, terdengar yakin berarti benar 👍','Tidak — terdengar yakin dan benar itu berbeda 🎲','Percaya hanya kalau dia pakai kata-kata sulit 📖','Hanya di akhir pekan 📅'],
           correct:1, explanation:'AI bisa terdengar sangat yakin dan tetap saja sepenuhnya salah. Keyakinan bukan bukti.',

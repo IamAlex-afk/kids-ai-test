@@ -403,6 +403,7 @@ window.LANG_DATA = {
         { icon:'📝', title:'Wenn KI deine Hausaufgaben falsch macht',
           text:'KI für Hausaufgaben zu nutzen kann klug sein — aber KI-Fehler als deine eigene Arbeit abzugeben kann sowohl deiner Note ALS AUCH deinem Lernen schaden. Der sicherste Weg: nutze KI, um ein Konzept zu verstehen, und schreibe die Antwort dann selbst, in deinen eigenen Worten.',
           example:'🏋️ KI für jede Antwort zu nutzen ist, als würde jemand anderes im Fitnessstudio die Gewichte für dich heben — das Gewicht wird gehoben, aber du wirst nicht wirklich stärker.',
+          source:'Bastani et al., "Generative AI without guardrails can harm learning", PNAS 2025', sourceUrl:'https://doi.org/10.1073/pnas.2422633122',
           miniTest: [{ q:'Was ist der klügste Weg, KI für Hausaufgaben zu nutzen?',
             options:['Die Antwort direkt kopieren 📋','Damit verstehen, dann selbst antworten ✍️','Nie benutzen 🚫','Nur bei Tests benutzen 📝'], correct:1,
             explanation:'KI ist ein großartiger Lernhelfer — aber das eigentliche Denken und Schreiben sollte trotzdem deins bleiben, damit du wirklich lernst.' }] },
@@ -443,7 +444,7 @@ window.LANG_DATA = {
       quiz: [
         { type:"choice", q:"Welche Definition beschreibt moderne KI am besten — zum Beispiel die Chatbots, die du jeden Tag benutzt?",
           options:["Ein elektronisches Gehirn, das genau wie ein Mensch denkt und urteilt", "Ein statistisches System, trainiert auf riesigen Datenmengen, das Muster findet und das wahrscheinlichste Ergebnis vorhersagt", "Eine vollständige Datenbank mit jeder Tatsache der Welt", "Ein Programm, das ein Selbstbewusstsein entwickelt hat"],
-          correct:1, explanation:"Moderne KI-Systeme, einschließlich großer Sprachmodelle, „verstehen\" nicht im menschlichen Sinn — es sind statistische Modelle, die Muster in riesigen Datenmengen finden und das wahrscheinlichste Ergebnis erzeugen. Deshalb können sie sehr selbstsicher klingen und trotzdem falsch liegen.", source:"Stanford AI Index 2024", sourceUrl:"https://hai.stanford.edu/ai-index/2024-ai-index-report" },
+          correct:1, explanation:"Moderne KI-Systeme, einschließlich großer Sprachmodelle, „verstehen\" nicht im menschlichen Sinn — es sind statistische Modelle, die Muster in riesigen Datenmengen finden und das wahrscheinlichste Ergebnis erzeugen. Deshalb können sie sehr selbstsicher klingen und trotzdem falsch liegen.", source:'LeCun, Bengio, Hinton, "Deep Learning", Nature 2015', sourceUrl:'https://www.nature.com/articles/nature14539' },
         { type:'choice', q:'Ein KI-Chatbot gibt dir eine sehr selbstsichere Antwort. Solltest du ihr immer vertrauen?',
           options:['Ja, Selbstsicherheit bedeutet richtig 👍','Nein — Selbstsicherheit und Richtigkeit sind nicht dasselbe 🎲','Nur vertrauen, wenn sie große Wörter benutzt 📖','Nur am Wochenende 📅'],
           correct:1, explanation:'KI kann sich ihrer Sache sehr sicher klingen und trotzdem völlig falschliegen. Selbstsicherheit ist kein Beweis.',

@@ -403,6 +403,7 @@ window.LANG_DATA = {
         { icon:'📝', title:'Quand l\'IA se trompe dans tes devoirs',
           text:"Utiliser l'IA pour t'aider avec les devoirs peut être intelligent — mais rendre les erreurs de l'IA comme ton propre travail peut nuire à ta note ET à ton apprentissage. L'approche la plus sûre : utilise l'IA pour comprendre un concept, puis écris la réponse toi-même, avec tes propres mots.",
           example:"🏋️ Utiliser l'IA pour chaque réponse, c'est comme laisser quelqu'un d'autre soulever les poids à ta place à la salle de sport — le poids est soulevé, mais tu ne deviens pas vraiment plus fort.",
+          source:'Bastani et al., "Generative AI without guardrails can harm learning", PNAS 2025', sourceUrl:'https://doi.org/10.1073/pnas.2422633122',
           miniTest: [{ q:"Quelle est la façon la plus intelligente d'utiliser l'IA pour les devoirs ?",
             options:['Copier directement la réponse 📋','L\'utiliser pour comprendre, puis écrire sa propre réponse ✍️','Ne jamais l\'utiliser 🚫','L\'utiliser seulement pendant les examens 📝'], correct:1,
             explanation:"L'IA est une excellente aide à l'étude — mais la vraie réflexion et l'écriture doivent rester les tiennes, pour que tu apprennes vraiment." }] },
@@ -443,7 +444,7 @@ window.LANG_DATA = {
       quiz: [
         { type:"choice", q:"Quelle définition décrit le mieux l'IA moderne, comme les chatbots que tu utilises tous les jours ?",
           options:["Un cerveau électronique qui pense et raisonne exactement comme un humain", "Un système statistique entraîné sur d'énormes quantités de données, qui trouve des motifs et prédit le résultat le plus probable", "Une base de données complète contenant tous les faits du monde", "Un programme qui a développé une conscience de soi"],
-          correct:1, explanation:"Les systèmes d'IA modernes, y compris les grands modèles de langage, ne « comprennent » pas au sens humain — ce sont des modèles statistiques qui trouvent des motifs dans d'énormes quantités de données et génèrent le résultat le plus probable. C'est pourquoi ils peuvent sembler très sûrs d'eux tout en se trompant.", source:"Stanford AI Index 2024", sourceUrl:"https://hai.stanford.edu/ai-index/2024-ai-index-report" },
+          correct:1, explanation:"Les systèmes d'IA modernes, y compris les grands modèles de langage, ne « comprennent » pas au sens humain — ce sont des modèles statistiques qui trouvent des motifs dans d'énormes quantités de données et génèrent le résultat le plus probable. C'est pourquoi ils peuvent sembler très sûrs d'eux tout en se trompant.", source:'LeCun, Bengio, Hinton, "Deep Learning", Nature 2015', sourceUrl:'https://www.nature.com/articles/nature14539' },
         { type:'choice', q:'Un chatbot IA te donne une réponse qui semble très sûre d\'elle. Faut-il toujours lui faire confiance ?',
           options:['Oui, être sûr de soi veut dire avoir raison 👍','Non — être sûr de soi et avoir raison, ce n\'est pas pareil 🎲','Seulement si elle utilise de grands mots 📖','Seulement le week-end 📅'],
           correct:1, explanation:'L\'IA peut sembler très sûre d\'elle tout en se trompant complètement. La confiance n\'est pas une preuve.',

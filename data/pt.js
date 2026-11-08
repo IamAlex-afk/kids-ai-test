@@ -403,6 +403,7 @@ window.LANG_DATA = {
         { icon:'📝', title:'Quando a IA erra sua lição de casa',
           text:'Usar IA para ajudar na lição de casa pode ser inteligente — mas entregar os erros da IA como seu próprio trabalho pode prejudicar sua nota E seu aprendizado. A abordagem mais segura: use a IA para entender um conceito, depois escreva a resposta você mesmo, com suas próprias palavras.',
           example:'🏋️ Usar IA para cada resposta é como deixar outra pessoa levantar peso por você na academia — o peso é levantado, mas você não fica realmente mais forte.',
+          source:'Bastani et al., "Generative AI without guardrails can harm learning", PNAS 2025', sourceUrl:'https://doi.org/10.1073/pnas.2422633122',
           miniTest: [{ q:'Qual é a forma mais inteligente de usar IA na lição de casa?',
             options:['Copiar a resposta diretamente 📋','Usar para entender, depois escrever sua própria resposta ✍️','Nunca usar 🚫','Usar só durante provas 📝'], correct:1,
             explanation:'A IA é uma ótima ajuda para estudar — mas o pensamento e a escrita de verdade ainda devem ser seus, para que você realmente aprenda.' }] },
@@ -443,7 +444,7 @@ window.LANG_DATA = {
       quiz: [
         { type:"choice", q:"Qual definição descreve melhor a IA moderna — como os chatbots que você usa todos os dias?",
           options:["Um cérebro eletrônico que pensa e raciocina exatamente como um humano", "Um sistema estatístico treinado com enormes quantidades de dados, que encontra padrões e prevê o resultado mais provável", "Um banco de dados completo contendo todos os fatos do mundo", "Um programa que desenvolveu autoconsciência"],
-          correct:1, explanation:"Sistemas de IA modernos, incluindo grandes modelos de linguagem, não \"entendem\" no sentido humano — são modelos estatísticos que encontram padrões em enormes quantidades de dados e geram o resultado mais provável. Por isso podem soar muito confiantes e mesmo assim estar errados.", source:"Stanford AI Index 2024", sourceUrl:"https://hai.stanford.edu/ai-index/2024-ai-index-report" },
+          correct:1, explanation:"Sistemas de IA modernos, incluindo grandes modelos de linguagem, não \"entendem\" no sentido humano — são modelos estatísticos que encontram padrões em enormes quantidades de dados e geram o resultado mais provável. Por isso podem soar muito confiantes e mesmo assim estar errados.", source:'LeCun, Bengio, Hinton, "Deep Learning", Nature 2015', sourceUrl:'https://www.nature.com/articles/nature14539' },
         { type:'choice', q:'Um chatbot de IA te dá uma resposta que soa muito confiante. Deve-se sempre confiar nela?',
           options:['Sim, confiança significa que está correto 👍','Não — confiança e estar correto não são a mesma coisa 🎲','Só confiar se ela usar palavras difíceis 📖','Só nos fins de semana 📅'],
           correct:1, explanation:'A IA pode soar muito segura de si e mesmo assim estar completamente errada. Confiança não é prova.',
