@@ -95,9 +95,14 @@ export async function playEachGame(page, lang) {
   const names = GAME_NAMES[lang];
   const card = (n) => catalog(page).locator('.pf-world-card', { hasText: n });
 
+  // Snake opens an expedition level map first (js/snake.js startLevelSelect):
+  // pick the first open level, play, exit back to the map, then to the catalog.
   await card(names.snake).click();
+  await page.locator('#sk-levels .gw-level-card:not([disabled])').first().click();
   await canvasLives(page, '#sk-canvas', '#sk-overlay');
   await page.locator('#sk-exit').click();
+  await expect(page.locator('#sk-levels')).toBeVisible();
+  await page.locator('#sk-back-games').click();
   await expectCatalog(page, lang);
 
   await card(names.runner).click();
