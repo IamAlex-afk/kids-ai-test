@@ -551,11 +551,12 @@
   ═══════════════════════════════════════════════════════════════════ */
   function KatSnake(container, opts) {
     const age    = AGE_CFG[opts.age] ? opts.age : 'child';
-    const cfg    = AGE_CFG[age];
+    const cfg    = { ...AGE_CFG[age] };
     const tier   = tierFor(age);
     const lang   = opts.lang || 'en';
     const rounds = opts.rounds || [];
 
+    let userPaused = false, playPace = 1;
     let alive      = true;
     let roundIdx   = 0;
     let rafId      = null;
@@ -590,13 +591,15 @@
     container.__katSnakeTeardown = teardown;
 
     buildFrame();
+
     rafId = requestAnimationFrame(renderLoop);
-    playRound(0);
+    playRound(Math.max(0,Math.min(rounds.length-1,opts.startIndex||0)));
 
     function renderLoop() { if (!alive) return; draw(); rafId = requestAnimationFrame(renderLoop); }
 
     /* ─── DOM ─────────────────────────────────────────────────────── */
     function buildFrame() {
+      container.classList.add("game-worlds");
       container.innerHTML = `
         <div class="snake-hud">
           <div class="game-score-box">
@@ -646,28 +649,53 @@
       // real leftover viewport height (minus every other HUD block)
       // instead of a fixed cap, so fullscreen mode actually uses the
       // full screen on tall phones instead of leaving dead space below.
+      cleanupFns.push(window.KAT_Worlds.sessionControls(container, lang, {
+        pace(value) { playPace = value; },
+      kind: 'snake', hint: t(lang, 'hint'), goal: () => currentRound?.targets[sess?.collected || 0] || rounds[roundIdx]?.targets[0], pause(value) { userPaused = value; },
+    }));
       const wrap = container.querySelector('.snake-canvas-wrap');
-      const chromeH = Array.from(container.children)
-        .filter(el => el !== wrap)
-        .reduce((sum, el) => sum + el.getBoundingClientRect().height, 0);
-      const avW = Math.min(container.clientWidth || window.innerWidth - 16, window.innerWidth - 16);
-      const avH = Math.max(280, Math.min(window.innerHeight - chromeH - 32, 900));
-      const targetCols = Math.max(9, Math.min(14, Math.floor(avW / cfg.cell)));
+      const avW = Math.max(240, Math.min(wrap.clientWidth - 2, 1200));
+      const avH = Math.max(180, wrap.clientHeight - 2);
+      const maxCols={tiny:9,child:11,teen:13,adult:14}[age];
+      const minCols=age==='tiny'?7:9;
+      const targetCols=Math.max(minCols,Math.min(maxCols,Math.floor(avW/(age==='tiny'?52:cfg.cell))));
       cfg.cell = Math.floor(avW / targetCols);
-      cfg.cols = Math.max(9, Math.floor(avW / cfg.cell));
+      cfg.cols = Math.max(minCols, Math.floor(avW / cfg.cell));
       cfg.rows = Math.max(7, Math.min(14, Math.floor(avH / cfg.cell)));
 
-      els.canvas.width  = cfg.cols * cfg.cell;
-      els.canvas.height = cfg.rows * cfg.cell;
-      els.canvas.style.width = '100%';
-      els.canvas.style.maxWidth = (cfg.cols * cfg.cell) + 'px';
-
-      bgCanvas = buildBgCanvas(cfg.cols * cfg.cell, cfg.rows * cfg.cell, cfg.cell, cfg.cols, cfg.rows, tier, 0);
+      function resizeBoard() {
+        const pixelW=Math.max(180,wrap.clientWidth-2),pixelH=Math.max(160,wrap.clientHeight-2);
+        const oldCell=cfg.cell;
+        // Transpose the grid on orientation changes. This is a bijection: body
+        // adjacency, target occupancy, decoys and direction remain consistent.
+        const transpose=cfg.cols!==cfg.rows && (pixelW>pixelH)!==(cfg.cols>cfg.rows);
+        if(transpose){
+          [cfg.cols,cfg.rows]=[cfg.rows,cfg.cols];
+          for(const point of new Set([...(snake||[]),...(prevSnake||[]),...(target?[target]:[]),...(decoyList||[])])) [point.x,point.y]=[point.y,point.x];
+          if(dir)dir={x:dir.y,y:dir.x};
+          if(pendingDir)pendingDir={x:pendingDir.y,y:pendingDir.x};
+        }
+        cfg.cell=Math.max(12,Math.floor(Math.min(pixelW/cfg.cols,pixelH/cfg.rows)));
+        const ratio=cfg.cell/oldCell;
+        for(const point of [...particles,...floats]){
+          if(transpose){[point.x,point.y]=[point.y,point.x];if('vx' in point)[point.vx,point.vy]=[point.vy,point.vx];}
+          point.x*=ratio;point.y*=ratio;
+        }
+        els.width=cfg.cols*cfg.cell;els.height=cfg.rows*cfg.cell;
+        const pixelRatio=Math.min(2,window.devicePixelRatio||1);
+        els.canvas.width=Math.round(els.width*pixelRatio);els.canvas.height=Math.round(els.height*pixelRatio);
+        els.ctx.setTransform(pixelRatio,0,0,pixelRatio,0,0);
+        els.canvas.style.width='100%';els.canvas.style.maxWidth=els.width+'px';
+        bgCanvas=window.KAT_Worlds.board(els.width,els.height,cfg.cell,cfg.cols,cfg.rows,roundIdx);
+      }
+      resizeBoard();
+      cleanupFns.push(window.KAT_Worlds.watchSize(wrap,resizeBoard));
 
       container.querySelectorAll('.sk-dbtn').forEach(btn =>
-        on(btn, 'pointerdown', (e) => { e.preventDefault(); setDir(btn.dataset.dir); })
+        { on(btn, 'pointerdown', (e) => { e.preventDefault(); setDir(btn.dataset.dir); }); on(btn, 'click', e=>{if(e.detail===0)setDir(btn.dataset.dir);}); }
       );
       on(document, 'keydown', (e) => {
+        if (userPaused || /^(BUTTON|INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName)) return;
         const map = { ArrowUp:'up', w:'up', W:'up', ArrowDown:'down', s:'down', S:'down', ArrowLeft:'left', a:'left', A:'left', ArrowRight:'right', d:'right', D:'right' };
         if (map[e.key]) { e.preventDefault(); setDir(map[e.key]); }
       });
@@ -685,7 +713,7 @@
     /* ─── INPUT ───────────────────────────────────────────────────── */
     function setDir(name) {
       const v = VEC[name];
-      if (!v || !sess) return;
+      if (userPaused || !v || !sess) return;
       if (snake && snake.length > 1 && v.x === -dir.x && v.y === -dir.y) return;
       if (pendingDir !== v) haptic([15]);
       pendingDir = v;
@@ -698,8 +726,11 @@
       if (!round) { finishAll(); return; }
       // Fresh background per round — keeps the board from looking
       // identical for the whole session.
-      bgCanvas = buildBgCanvas(cfg.cols * cfg.cell, cfg.rows * cfg.cell, cfg.cell, cfg.cols, cfg.rows, tier, idx);
-      els.roundLbl.textContent = `${t(lang, 'round')} ${idx + 1} / ${rounds.length}`;
+      bgCanvas = window.KAT_Worlds.board(cfg.cols * cfg.cell, cfg.rows * cfg.cell, cfg.cell, cfg.cols, cfg.rows, idx);
+      const place=window.KAT_Worlds.location(idx,lang);
+      els.roundLbl.textContent = `${window.KAT_Worlds.expeditionText(lang,4)} ${idx+1}/${rounds.length} · ${place.icon} ${place.name}`;
+      currentRound=round;snake=null;prevSnake=null;sess=null;
+      els.canvas.closest('.snake-canvas-wrap').style.background=place.shade;
       renderProgress(round, 0);
       showIntro(round, () => runRound(round));
     }
@@ -715,10 +746,13 @@
       els.overlay.classList.remove('hidden');
       els.overlay.innerHTML = `
         <div class="snake-overlay-card" style="backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);">
-          <p class="snake-overlay-kicker">${t(lang, 'ready')}</p>
+          <canvas class="gw-level-preview" aria-hidden="true"></canvas>
+          <p class="snake-overlay-kicker">${window.KAT_Worlds.location(roundIdx,lang).name}</p>
           <p class="snake-overlay-target">${round.targets.join(round.unit === 'letter' ? ' ' : '  ')}</p>
+          <p class="gw-intro-hint">${window.KAT_Worlds.tip(lang,'snake')}</p>
           <button class="btn-primary" id="sk-start-btn">${t(lang, 'start')}</button>
         </div>`;
+      window.KAT_Worlds.locationPreview(els.overlay.querySelector('.gw-level-preview'),roundIdx);
       els.overlay.querySelector('#sk-start-btn').addEventListener('click', () => {
         if (!alive) return;
         els.overlay.classList.add('hidden'); cb();
@@ -769,6 +803,7 @@
     function loop(round) {
       clearTimeout(tick);
       if (!alive) return;
+      if (userPaused || document.hidden) { tick = setTimeout(() => loop(round), 100); return; }
 
       const snapPrev = snake.map(s => ({ ...s }));
       dir = pendingDir;
@@ -818,7 +853,7 @@
       if (sess.collected >= round.targets.length) { roundComplete(round); return; }
 
       const speedMult = Math.max(0.78, 1 - streak * 0.022);
-      tick = setTimeout(() => loop(round), sess.speed * speedMult);
+      tick = setTimeout(() => loop(round), sess.speed * speedMult / playPace);
     }
 
     function onProgress(round) {
@@ -838,7 +873,7 @@
       dir = { x: 1, y: 0 }; pendingDir = dir;
       lastMoveTs = Date.now();
       spawnFood(round);
-      tick = setTimeout(() => loop(round), sess.speed);
+      tick = setTimeout(() => loop(round), sess.speed / playPace);
     }
 
     function roundComplete(round) {
@@ -853,6 +888,7 @@
           <p class="snake-word-reveal snake-word-reveal-${round.unit}">${wordDisplay}</p>
           <p class="snake-overlay-icon">${round.icon || '💡'}</p>
           <p class="snake-overlay-fact">${round.fact || ''}</p>
+          ${roundIdx+1<rounds.length?`<p class="gw-next-place">${window.KAT_Worlds.expeditionText(lang,13)}: ${window.KAT_Worlds.location(roundIdx+1,lang).icon} ${window.KAT_Worlds.location(roundIdx+1,lang).name}</p>`:''}
           <button class="btn-primary" id="sk-cont-btn">${t(lang, 'cont')}</button>
         </div>`;
       els.overlay.querySelector('#sk-cont-btn').addEventListener('click', () => {
@@ -880,16 +916,16 @@
       if (!els.ctx) return;
       const ctx  = els.ctx;
       const cell = cfg.cell;
-      const W    = els.canvas.width, H = els.canvas.height;
-      const now  = Date.now();
+      const W    = els.width, H = els.height;
+      const now  = userPaused ? lastMoveTs : Date.now();
       const isDead   = now < flashEnd;
       const isEating = now < eatingEnd;
 
       // Background (pre-rendered circuit board)
-      ctx.drawImage(bgCanvas, 0, 0);
+      ctx.drawImage(bgCanvas, 0, 0, W, H);
 
       // Red flash overlay on error/death
-      if (isDead) {
+      if (isDead && !window.KAT_Worlds.reducedMotion()) {
         const flashAlpha = 0.08 + 0.10 * Math.sin(now * 0.04);
         ctx.fillStyle = `rgba(248,113,113,${flashAlpha})`;
         ctx.fillRect(0, 0, W, H);
@@ -898,13 +934,13 @@
       if (!snake || !prevSnake) {
         tickParticles(particles); drawParticles(ctx, particles);
         tickFloats(floats); drawFloats(ctx, floats, cell);
-        drawCRTOverlay(ctx, W, H);
+
         return;
       }
 
       // Interpolation
       const isHitStop = now < hitStopEnd;
-      const lerpT = isHitStop ? 1 : Math.min(1, (now - lastMoveTs) / sess.speed);
+      const lerpT = (userPaused || isHitStop) ? 1 : Math.min(1, (now - lastMoveTs) / (sess.speed / playPace));
 
       // Compute interpolated center positions for each segment
       const iCenters = snake.map((cur, i) => {
@@ -919,34 +955,13 @@
         return {
           x: lerp(fx, cur.x, lerpT) * cell,
           y: lerp(fy, cur.y, lerpT) * cell,
-          cx: lerp(fx, cur.x, lerpT) * cell + cell / 2,
-          cy: lerp(fy, cur.y, lerpT) * cell + cell / 2,
+          cx: ((lerp(fx, cur.x, lerpT) * cell + cell / 2) % W + W) % W,
+          cy: ((lerp(fy, cur.y, lerpT) * cell + cell / 2) % H + H) % H,
         };
       });
 
-      const n = iCenters.length;
-      const cableStart = Math.max(2, n - Math.max(3, Math.floor(n * 0.30)));
-
-      // 1. Draw cable (tail as smooth bezier path)
-      if (n > cableStart) {
-        const cablePts = iCenters.slice(cableStart).map(c => ({ x: c.cx, y: c.cy }));
-        // Connect first cable segment to the last keyboard segment
-        if (cableStart > 0) cablePts.unshift({ x: iCenters[cableStart - 1].cx, y: iCenters[cableStart - 1].cy });
-        drawCable(ctx, cablePts, cell, now);
-      }
-
-      // 2. Draw keyboard body segments (back to front, skip head)
-      for (let i = Math.min(n - 1, cableStart - 1); i >= 1; i--) {
-        const seg = iCenters[i];
-        const alpha = Math.max(0.3, 1 - (i / Math.max(1, n - 1)) * 0.55);
-        drawKeySegment(ctx, seg.x, seg.y, cell, i, alpha, tier);
-      }
-
-      // 3. Draw monitor head
-      if (n > 0) {
-        const head = iCenters[0];
-        drawMonitor(ctx, head.cx, head.cy, cell, dir, now, isEating, isDead, tier);
-      }
+      const art=window.KAT_Worlds;
+      art.serpent(ctx,iCenters,cell,dir,{hurt:isDead,eating:isEating});
 
       // Tokens
       const unit = (currentRound && currentRound.unit) || 'letter';
@@ -954,20 +969,52 @@
                    : unit === 'word'   ? { maxW: cell * 3.2, baseMult: 0.42, minFont: 8 }
                    :                     { maxW: cell * 2.2, baseMult: 0.50, minFont: 10 };
 
-      if (target) drawToken(ctx, target, cell, true, sizing, now, tier);
-      (decoyList || []).forEach(d => drawToken(ctx, d, cell, false, sizing, now, tier));
+      function drawPickup(tok, good) {
+        const x=tok.x*cell+cell/2, y=tok.y*cell+cell/2;
+        if(good) {
+          ctx.strokeStyle='#b8ffe5'; ctx.lineWidth=2;
+          ctx.beginPath();ctx.ellipse(x,y,cell*.44,cell*.44,0,0,Math.PI*2);ctx.stroke();
+        }
+        art.token(ctx,x,y,tok.text,good?'letter':'fake',cell*.35,sizing.maxW);
+      }
+      if(target) drawPickup(target,true);
+      (decoyList||[]).forEach(d=>drawPickup(d,false));
+      if(!userPaused && !art.reducedMotion()) {
+        tickParticles(particles); drawParticles(ctx,particles);
+        tickFloats(floats); drawFloats(ctx,floats,cell);
+      }
 
-      // Particles and floats
-      tickParticles(particles); drawParticles(ctx, particles);
-      tickFloats(floats);       drawFloats(ctx, floats, cell);
-
-      // CRT overlay (vignette + scanlines)
-      drawCRTOverlay(ctx, W, H);
     }
 
   } // end KatSnake
 
-  window.KAT_Snake = {
-    start(container, opts) { return new KatSnake(container, opts); },
-  };
+  function startLevelSelect(container,opts){
+    const lang=opts.lang||'en',age=AGE_CFG[opts.age]?opts.age:'child',rounds=opts.rounds||[];
+    if(!rounds.length){opts.onAllDone?.();return;}
+    const art=window.KAT_Worlds,key=lang+':'+age;
+    const saved=window.KAT_Store?.readJSON('kat_snake_levels',{});
+    const progress=saved&&typeof saved==='object'&&!Array.isArray(saved)?saved:{};
+    const completed=new Set((Array.isArray(progress[key])?progress[key]:[]).filter(i=>Number.isInteger(i)&&i>=0&&i<rounds.length));
+    function render(){
+      container.__katSnakeTeardown?.();container.__katSnakeTeardown=null;
+      container.classList.add('game-worlds');
+      container.innerHTML=`<button class="pf-icon-btn" id="sk-back-games">← ${t(lang,'exit')}</button><h2 class="gw-picker-title">${art.expeditionText(lang,5)}</h2><p class="snake-hint">${completed.size} / ${rounds.length} · ${t(lang,'done')}</p><div class="gw-level-grid" id="sk-levels"></div>`;
+      container.querySelector('#sk-back-games').addEventListener('click',()=>opts.onExit?.());
+      const grid=container.querySelector('#sk-levels');
+      rounds.forEach((round,i)=>{
+        const unlocked=i===0||completed.has(i-1),place=art.location(i,lang),card=document.createElement('button');
+        card.className='gw-level-card';card.type='button';card.disabled=!unlocked;
+        const preview=document.createElement('canvas');preview.className='gw-level-preview';preview.setAttribute('aria-hidden','true');card.append(preview);art.locationPreview(preview,i);
+        const label=document.createElement('strong');label.textContent=`${completed.has(i)?'✓ ':''}${art.expeditionText(lang,4)} ${i+1} · ${place.name}`;card.append(label);
+        const info=document.createElement('span');info.textContent=unlocked?round.targets.join(round.unit==='letter'?'':' '):'🔒 '+art.expeditionText(lang,11);card.append(info);
+        card.addEventListener('click',()=>new KatSnake(container,{...opts,startIndex:i,onExit:render,onRoundComplete(idx,total,misses){
+          completed.add(idx);progress[key]=[...completed];window.KAT_Store?.writeJSON('kat_snake_levels',progress);opts.onRoundComplete?.(idx,total,misses);
+        }}));
+        grid.append(card);
+      });
+    }
+    render();
+  }
+  window.KAT_Snake = { start:startLevelSelect };
+
 })();

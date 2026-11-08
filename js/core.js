@@ -639,6 +639,8 @@ function exitFullscreenGame() {
 
 function renderGamePicker(container, games) {
   games = games || availableGames();
+  container.classList.add("game-worlds");
+  const gameArea = container.closest("#game"); if (gameArea) gameArea.scrollTop = 0;
   container.innerHTML = `
     <button class="pf-icon-btn game-picker-exit" id="gp-exit" title="${gpStr('exit')}">✕</button>
     <p class="snake-hint" style="margin-bottom:10px;font-weight:700;">${gpStr('title')}</p>
@@ -654,6 +656,10 @@ function renderGamePicker(container, games) {
       <span class="pf-world-meta">${g.desc}</span>`;
     card.addEventListener('click', () => g.launch(container));
     grid.appendChild(card);
+    const cover = document.createElement('canvas');
+    cover.className = 'gw-card-art'; cover.setAttribute('aria-hidden','true');
+    card.prepend(cover);
+    window.KAT_Worlds.cover(cover, g.launch === launchSnake ? 'snake' : g.launch === launchRacing ? 'race' : 'runner');
   });
 }
 
