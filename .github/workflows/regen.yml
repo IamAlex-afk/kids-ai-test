@@ -1,0 +1,61 @@
+name: Regenerate pages (manual)
+
+# Run by hand from the Actions tab on a WORKING branch when the generators can't
+# be run locally (e.g. a Telegram session without node). Regenerates every page
+# that tools/gen-*.mjs writes, runs the same build check and tests as pages.yml,
+# and commits the result to that branch. Never runs on main: publishing stays
+# "merge a PR into main" (pages.yml).
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Working branch to regenerate (not main)'
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: regen-${{ inputs.branch }}
+  cancel-in-progress: false
+
+jobs:
+  regen:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Refuse main
+        env:
+          BRANCH: ${{ inputs.branch }}
+        run: |
+          case "$BRANCH" in
+            main|refs/heads/main|'') echo "::error::not on main"; exit 1 ;;
+          esac
+      # Actions pinned to full commit SHAs (tag in the comment), as in pages.yml.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ inputs.branch }}
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - name: Generators
+        run: |
+          node tools/gen-series.mjs
+          node tools/gen-lessons.mjs
+          node tools/gen-articles.mjs
+          node tools/gen-entry.mjs
+      - name: Build dist/ and check local links
+        run: node tools/build.mjs --check
+      - name: Tests
+        run: node --test "tests/**/*.test.mjs"
+      - name: Commit regenerated pages to the branch
+        env:
+          BRANCH: ${{ inputs.branch }}
+        run: |
+          if git diff --quiet; then echo "Nothing to regenerate"; exit 0; fi
+          git diff --stat
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -am 'Regenerate pages (tools/gen-*.mjs) — manual workflow'
+          git push origin "HEAD:refs/heads/$BRANCH"
