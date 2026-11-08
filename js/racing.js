@@ -506,6 +506,159 @@
     ctx.restore();
   }
 
+  /* ─── EXPEDITION LOCATIONS (procedural Canvas art, 2026-11-08) ──────
+     Four places the tracks run through, cycled by world index: forest
+     laboratory, coral bay, sun canyon, orbital station. Each has its own
+     roadside props and a light backdrop layer drawn over the age theme's
+     sky, so the age palette (softer for 5–10, darker for 11+) is kept and
+     the location adds the "where am I" cue. All shapes are drawn here — no
+     image files, no third-party art. */
+  const LOCATIONS = [
+    { id: 'forest', icon: '🌲', ground: '#173d24' },
+    { id: 'coral',  icon: '🪸', ground: '#0e3a4a' },
+    { id: 'canyon', icon: '🏜️', ground: '#4a2a14' },
+    { id: 'orbit',  icon: '🛰️', ground: '#0b1030' },
+  ];
+  function locationFor(worldIdx) { return LOCATIONS[worldIdx % LOCATIONS.length]; }
+  // Location names on the track cards, 10 languages (forest, coral, canyon, orbit).
+  const LOC_NAMES = {
+    en: ['Forest lab', 'Coral bay', 'Sun canyon', 'Orbital station'],
+    ru: ['Лесная лаборатория', 'Коралловая бухта', 'Солнечный каньон', 'Орбитальная станция'],
+    de: ['Waldlabor', 'Korallenbucht', 'Sonnenschlucht', 'Raumstation'],
+    es: ['Laboratorio del bosque', 'Bahía de coral', 'Cañón del sol', 'Estación orbital'],
+    fr: ['Labo de la forêt', 'Baie de corail', 'Canyon du soleil', 'Station orbitale'],
+    hi: ['जंगल की प्रयोगशाला', 'मूंगे की खाड़ी', 'धूप की घाटी', 'अंतरिक्ष स्टेशन'],
+    id: ['Lab hutan', 'Teluk karang', 'Ngarai matahari', 'Stasiun orbit'],
+    pt: ['Laboratório da floresta', 'Baía de corais', 'Cânion do sol', 'Estação orbital'],
+    tr: ['Orman laboratuvarı', 'Mercan koyu', 'Güneş kanyonu', 'Yörünge istasyonu'],
+    vi: ['Phòng thí nghiệm rừng', 'Vịnh san hô', 'Hẻm núi mặt trời', 'Trạm quỹ đạo'],
+  };
+  function locationName(lang, worldIdx) { return (LOC_NAMES[lang] || LOC_NAMES.en)[worldIdx % LOCATIONS.length]; }
+  const rand01 = (a, b) => { const s = Math.sin(a * 12.9898 + b * 78.233) * 43758.5453; return s - Math.floor(s); };
+
+  // Coral: a branching coral fan + a small bubble, warm pinks/oranges.
+  function drawCoral(ctx, cx, cy, w, now) {
+    const r = w / 2;
+    ctx.save(); ctx.translate(cx, cy);
+    ctx.fillStyle = 'rgba(0,0,0,0.28)';
+    ctx.beginPath(); ctx.ellipse(0, r * 0.6, r * 0.8, r * 0.3, 0, 0, Math.PI * 2); ctx.fill();
+    const hue = 345 + rand01(cx, cy) * 40;
+    ctx.strokeStyle = `hsl(${hue % 360}, 80%, 62%)`; ctx.lineCap = 'round';
+    ctx.lineWidth = Math.max(3, r * 0.22);
+    [[-0.7, -0.9], [0, -1.1], [0.7, -0.85]].forEach(([dx, dy]) => {
+      ctx.beginPath(); ctx.moveTo(0, r * 0.5);
+      ctx.quadraticCurveTo(dx * r * 0.3, 0, dx * r, dy * r * 0.8); ctx.stroke();
+    });
+    ctx.fillStyle = `hsl(${(hue + 20) % 360}, 90%, 72%)`;
+    [[-0.7, -0.75], [0, -0.9], [0.7, -0.7]].forEach(([dx, dy]) => {
+      ctx.beginPath(); ctx.arc(dx * r, dy * r * 0.85, r * 0.16, 0, Math.PI * 2); ctx.fill();
+    });
+    const b = ((now * 0.03 + cy) % (r * 2)) - r;
+    ctx.strokeStyle = 'rgba(186,230,253,0.55)'; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.arc(r * 0.5, -b, r * 0.12, 0, Math.PI * 2); ctx.stroke();
+    ctx.restore();
+  }
+  // Canyon: a layered sandstone rock, and every other one a round cactus.
+  function drawRock(ctx, cx, cy, w, cactus) {
+    const r = w / 2;
+    ctx.save(); ctx.translate(cx, cy);
+    ctx.fillStyle = 'rgba(0,0,0,0.3)';
+    ctx.beginPath(); ctx.ellipse(0, r * 0.55, r * 0.85, r * 0.32, 0, 0, Math.PI * 2); ctx.fill();
+    if (cactus) {
+      const g = ctx.createLinearGradient(-r * 0.3, 0, r * 0.3, 0);
+      g.addColorStop(0, '#4ade80'); g.addColorStop(1, '#166534');
+      ctx.fillStyle = g;
+      rrect(ctx, -r * 0.2, -r * 0.9, r * 0.4, r * 1.4, r * 0.2); ctx.fill();
+      rrect(ctx, -r * 0.62, -r * 0.4, r * 0.28, r * 0.55, r * 0.14); ctx.fill();
+      rrect(ctx, r * 0.34, -r * 0.6, r * 0.28, r * 0.55, r * 0.14); ctx.fill();
+      ctx.fillStyle = '#f9a8d4';
+      ctx.beginPath(); ctx.arc(0, -r * 0.92, r * 0.12, 0, Math.PI * 2); ctx.fill();
+    } else {
+      const bands = ['#c2410c', '#ea580c', '#fb923c'];
+      bands.forEach((c, i) => {
+        ctx.fillStyle = c;
+        ctx.beginPath(); ctx.ellipse(0, r * (0.3 - i * 0.32), r * (0.85 - i * 0.18), r * 0.34, 0, 0, Math.PI * 2); ctx.fill();
+      });
+      ctx.fillStyle = 'rgba(255,255,255,0.18)';
+      ctx.beginPath(); ctx.ellipse(-r * 0.2, -r * 0.4, r * 0.3, r * 0.12, -0.3, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.restore();
+  }
+  // Orbit: an antenna mast with a blinking light, in the track's accent.
+  function drawAntenna(ctx, cx, cy, h, glowColor, now) {
+    ctx.save(); ctx.translate(cx, cy);
+    ctx.fillStyle = '#334155';
+    rrect(ctx, -h * 0.18, h * 0.12, h * 0.36, h * 0.16, h * 0.05); ctx.fill();
+    ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = Math.max(2, h * 0.06);
+    ctx.beginPath(); ctx.moveTo(0, h * 0.14); ctx.lineTo(0, -h * 0.45); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(-h * 0.2, -h * 0.25); ctx.lineTo(h * 0.2, -h * 0.25); ctx.stroke();
+    const on = Math.floor((now + cy * 7) / 600) % 2 === 0;
+    ctx.shadowColor = glowColor; ctx.shadowBlur = on ? h * 0.5 : 0;
+    ctx.fillStyle = on ? glowColor : '#475569';
+    ctx.beginPath(); ctx.arc(0, -h * 0.5, h * 0.09, 0, Math.PI * 2); ctx.fill();
+    ctx.restore(); ctx.shadowBlur = 0;
+  }
+  // Forest lab: a small glass dome with a glowing plant inside.
+  function drawLabDome(ctx, cx, cy, w, glowColor) {
+    const r = w / 2;
+    ctx.save(); ctx.translate(cx, cy);
+    ctx.fillStyle = 'rgba(0,0,0,0.3)';
+    ctx.beginPath(); ctx.ellipse(0, r * 0.45, r * 0.9, r * 0.28, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#475569'; rrect(ctx, -r * 0.8, r * 0.2, r * 1.6, r * 0.3, r * 0.1); ctx.fill();
+    const g = ctx.createRadialGradient(-r * 0.25, -r * 0.3, 0, 0, 0, r);
+    g.addColorStop(0, 'rgba(224,242,254,0.55)'); g.addColorStop(1, 'rgba(56,189,248,0.18)');
+    ctx.fillStyle = g; ctx.strokeStyle = 'rgba(186,230,253,0.8)'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(0, r * 0.2, r * 0.72, Math.PI, 0); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.shadowColor = glowColor; ctx.shadowBlur = r * 0.6; ctx.fillStyle = glowColor;
+    ctx.beginPath(); ctx.ellipse(0, -r * 0.05, r * 0.14, r * 0.26, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.restore(); ctx.shadowBlur = 0;
+  }
+  // One roadside slot: what stands at the shoulder in this location.
+  function drawRoadsideProp(ctx, loc, slot, x, y, sizes, accent, now) {
+    const { bigW, smallW, poleH } = sizes;
+    if (loc.id === 'forest') {
+      if (slot === 2) drawLabDome(ctx, x, y, bigW * 0.9, accent);
+      else drawTree(ctx, x, y, slot === 0 ? bigW : smallW);
+    } else if (loc.id === 'coral') {
+      if (slot === 2) drawPole(ctx, x, y, poleH, accent);
+      else drawCoral(ctx, x, y, slot === 0 ? bigW : smallW, now);
+    } else if (loc.id === 'canyon') {
+      drawRock(ctx, x, y, slot === 0 ? bigW : smallW, slot === 1);
+    } else {
+      if (slot === 1) drawAntenna(ctx, x, y, poleH, accent, now);
+      else drawPole(ctx, x, y, poleH, accent);
+    }
+  }
+  // Backdrop layer over the sky gradient: a few location cues on the
+  // shoulders (fireflies, light rays, sun haze, stars). Kept low-contrast so
+  // pickups on the road always stay the brightest things on screen.
+  function drawLocationBackdrop(ctx, loc, W, H, roadX1, roadX2, scroll, tier, now) {
+    ctx.save();
+    ctx.fillStyle = loc.ground; ctx.globalAlpha = 0.45;
+    ctx.fillRect(0, 0, roadX1, H); ctx.fillRect(roadX2, 0, W - roadX2, H);
+    ctx.globalAlpha = 1;
+    const n = tier === 'cute' ? 10 : 18;
+    for (let i = 0; i < n; i++) {
+      const side = i % 2 === 0;
+      const fx = side ? rand01(i, 1) * roadX1 : roadX2 + rand01(i, 2) * (W - roadX2);
+      const fy = ((rand01(i, 3) * H + scroll * (loc.id === 'orbit' ? 0.3 : 0.6)) % H);
+      if (loc.id === 'forest') {
+        ctx.fillStyle = `rgba(253,224,71,${0.35 + 0.35 * Math.sin(now * 0.004 + i)})`;
+        ctx.beginPath(); ctx.arc(fx, fy, 1.8, 0, Math.PI * 2); ctx.fill();
+      } else if (loc.id === 'coral') {
+        ctx.strokeStyle = 'rgba(186,230,253,0.25)'; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(fx - 8, fy); ctx.quadraticCurveTo(fx, fy - 4, fx + 8, fy); ctx.stroke();
+      } else if (loc.id === 'canyon') {
+        ctx.fillStyle = 'rgba(253,186,116,0.18)';
+        ctx.beginPath(); ctx.ellipse(fx, fy, 10, 3, 0, 0, Math.PI * 2); ctx.fill();
+      } else {
+        ctx.fillStyle = `rgba(255,255,255,${0.4 + 0.4 * rand01(i, 4)})`;
+        ctx.fillRect(fx, fy, 1.6, 1.6);
+      }
+    }
+    ctx.restore();
+  }
+
   // The player character: a running/hovering bot, not a car — matches the
   // site's AI/robot theme (and the monitor-head snake, the platformer
   // robot) instead of an out-of-theme vehicle. Progressive build-up beats
@@ -579,6 +732,85 @@
     ctx.restore(); ctx.shadowBlur = 0;
   }
 
+  // Kart with the bot as its driver (2026-11-08): rounded body in the skin
+  // colour, four tyres whose tread marks scroll with the road, a front
+  // bumper light and the same build-up stages as the runner. Bigger and
+  // rounder for 5–10 ('cute'), lower and sharper for 11+ ('cyber').
+  // drawRunnerBot stays as the fallback renderer.
+  function drawKartBot(ctx, x, y, opts) {
+    const { partStage, maxStage, hurt, shielded, boosting, skinColor, now, tier, scroll } = opts;
+    const k = tier === 'cute' ? 1.12 : 1;
+    ctx.save();
+    ctx.translate(x, y); ctx.scale(k, k);
+    const glow = hurt ? '#f87171' : skinColor;
+
+    ctx.fillStyle = 'rgba(0,0,0,0.38)';
+    ctx.beginPath(); ctx.ellipse(0, 24, 20, 6, 0, 0, Math.PI * 2); ctx.fill();
+
+    if (boosting) {
+      ctx.fillStyle = 'rgba(251,191,36,0.65)';
+      [-7, 7].forEach(bx => {
+        ctx.beginPath(); ctx.moveTo(bx - 3, 24); ctx.lineTo(bx, 36 + Math.random() * 8); ctx.lineTo(bx + 3, 24); ctx.fill();
+      });
+    }
+
+    // Tyres: dark rounded blocks with tread lines moving at road speed.
+    const tread = ((scroll || 0) * 0.6) % 6;
+    [[-15, -12], [15, -12], [-16, 13], [16, 13]].forEach(([tx, ty]) => {
+      ctx.fillStyle = '#111827';
+      rrect(ctx, tx - 4, ty - 6, 8, 12, 3); ctx.fill();
+      ctx.strokeStyle = 'rgba(148,163,184,0.55)'; ctx.lineWidth = 1;
+      for (let t = -6 + tread; t < 6; t += 6) { ctx.beginPath(); ctx.moveTo(tx - 3, ty + t); ctx.lineTo(tx + 3, ty + t); ctx.stroke(); }
+    });
+
+    // Body: rounded capsule, light upper-left to dark lower-right.
+    const bodyFill = hurt ? '#7f1d1d' : glow;
+    const g = ctx.createLinearGradient(-12, -20, 12, 22);
+    g.addColorStop(0, shadeColor(bodyFill, 38)); g.addColorStop(0.55, bodyFill); g.addColorStop(1, shadeColor(bodyFill, -35));
+    ctx.fillStyle = g; ctx.strokeStyle = shadeColor(bodyFill, -45); ctx.lineWidth = 1.8;
+    ctx.shadowColor = glow; ctx.shadowBlur = hurt ? 18 : (boosting ? 22 : 10);
+    rrect(ctx, -12, -20, 24, 42, tier === 'cute' ? 11 : 7); ctx.fill(); ctx.stroke();
+    ctx.shadowBlur = 0;
+
+    // Front bumper light (stage 1+) and side stripes (stage 2+).
+    ctx.fillStyle = partStage >= 1 ? '#fef08a' : 'rgba(254,240,138,0.35)';
+    rrect(ctx, -7, -21, 14, 3, 1.5); ctx.fill();
+    if (partStage >= 2) {
+      ctx.fillStyle = 'rgba(255,255,255,0.75)';
+      rrect(ctx, -10, 6, 3, 12, 1.5); ctx.fill(); rrect(ctx, 7, 6, 3, 12, 1.5); ctx.fill();
+    }
+    // Rear spoiler (stage 3+).
+    if (partStage >= 3) {
+      ctx.fillStyle = shadeColor(bodyFill, -20);
+      rrect(ctx, -14, 20, 28, 4, 2); ctx.fill();
+    }
+
+    // Driver: the bot's head and visor in the cockpit.
+    ctx.fillStyle = '#e2e8f0';
+    ctx.beginPath(); ctx.arc(0, -3, 8, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#0f172a'; rrect(ctx, -6, -6, 12, 5, 2.5); ctx.fill();
+    ctx.fillStyle = '#7dd3fc'; ctx.shadowColor = '#7dd3fc'; ctx.shadowBlur = 6;
+    ctx.beginPath(); ctx.arc(-2.5, -3.5, 1.4, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(2.5, -3.5, 1.4, 0, Math.PI * 2); ctx.fill();
+    ctx.shadowBlur = 0;
+
+    if (partStage >= maxStage) {
+      const pulse = 0.7 + 0.3 * Math.sin(now * 0.01);
+      ctx.strokeStyle = glow; ctx.lineWidth = 1.5; ctx.globalAlpha = pulse;
+      ctx.beginPath(); ctx.moveTo(0, -11); ctx.lineTo(0, -17); ctx.stroke();
+      ctx.fillStyle = '#ffe066'; ctx.shadowColor = '#ffe066'; ctx.shadowBlur = 10;
+      ctx.beginPath(); ctx.arc(0, -18, 2.2, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = 1; ctx.shadowBlur = 0;
+    }
+    if (shielded) {
+      const pulse = 0.75 + 0.25 * Math.sin(now * 0.01);
+      ctx.strokeStyle = `rgba(96,165,250,${0.5 * pulse})`;
+      ctx.lineWidth = 2; ctx.shadowBlur = 16; ctx.shadowColor = '#60a5fa';
+      ctx.beginPath(); ctx.arc(0, 0, 30 * pulse, 0, Math.PI * 2); ctx.stroke();
+    }
+    ctx.restore(); ctx.shadowBlur = 0;
+  }
+
   // Hazards on the data-highway: spam, scams, phishing, malware — not
   // traffic. Matches the "glowing badge" treatment js/platformer.js
   // already uses for its obstacles, so a pulsing warning-coloured disc
@@ -612,6 +844,7 @@
     const world = opts.world;
     const worldIdx = opts.worldIdx;
     const theme = themeFor(age, worldIdx);
+    const loc = locationFor(worldIdx);
     const hazardColors = AGE_HAZARD_COLORS[age] || AGE_HAZARD_COLORS.child;
     const hazardGlyphs = AGE_RACE_HAZARDS[age] || AGE_RACE_HAZARDS.child;
     const protocolPool = opts.protocols || [];
@@ -1139,16 +1372,12 @@
         const treeOff = state.roadY % spacing;
         const leftX  = state.roadX1 * 0.5;
         const rightX = state.roadX2 + (W - state.roadX2) * 0.5;
+        drawLocationBackdrop(ctx, loc, W, H, state.roadX1, state.roadX2, state.roadY, tier, now);
+        const sizes = { bigW, smallW, poleH };
         for (let y = -treeOff - spacing; y < H + spacing; y += spacing) {
-          const slot = Math.floor((y + state.roadY) / spacing) % 3;
-          if (slot === 2) {
-            drawPole(ctx, leftX, y, poleH, theme.accent);
-            drawPole(ctx, rightX, y, poleH, theme.accent);
-          } else {
-            const w = slot === 0 ? bigW : smallW;
-            drawTree(ctx, leftX, y, w);
-            drawTree(ctx, rightX, y, w);
-          }
+          const slot = ((Math.floor((y + state.roadY) / spacing) % 3) + 3) % 3;
+          drawRoadsideProp(ctx, loc, slot, leftX, y, sizes, theme.accent, now);
+          drawRoadsideProp(ctx, loc, (slot + 1) % 3, rightX, y, sizes, theme.accent, now);
         }
       }
 
@@ -1209,10 +1438,10 @@
         ctx.restore();
       });
 
-      drawRunnerBot(ctx, laneX(state.laneVisual), state.carY, {
+      drawKartBot(ctx, laneX(state.laneVisual), state.carY, {
         partStage: state.parts, maxStage: cfg.partStages, hurt,
         shielded: state.shield, boosting: now < state.boostUntil,
-        skinColor: SKINS[getSkin()] || theme.accent, now,
+        skinColor: SKINS[getSkin()] || theme.accent, now, tier, scroll: state.roadY,
       });
       drawParticles(ctx, particles);
       ctx.restore();
@@ -1267,6 +1496,7 @@
         card.innerHTML = isUnlocked ? `
           <span class="pf-world-icon">${w.icon}</span>
           <span class="pf-world-title">${w.title}</span>
+          <span class="pf-world-meta">${locationFor(i).icon} ${locationName(lang, i)}</span>
           <span class="pf-world-stars">${cleared ? '⭐'.repeat(stars) + '☆'.repeat(3 - stars) : ''}</span>
           <span class="pf-world-meta">${best ? t(lang,'best') + ': ' + best : ''}</span>` : `
           <span class="pf-world-icon">🔒</span>

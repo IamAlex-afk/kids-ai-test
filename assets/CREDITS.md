@@ -33,6 +33,13 @@ same as the snake's monitor-head and the platformer's robot) — the
 `car-cyan/red/gold.png` sprites and the procedural car renderer this
 replaced have been removed as unused.
 
+Since 2026-11-08 the player drives a kart with the bot as its driver
+(`drawKartBot`), and tracks run through four expedition locations — forest
+lab, coral bay, sun canyon, orbital station (`LOCATIONS`, `drawCoral`,
+`drawRock`, `drawAntenna`, `drawLabDome`, `drawLocationBackdrop`). All of it
+is original procedural Canvas artwork in `js/racing.js`: no image files, no
+generated images, no third-party art. `drawRunnerBot` remains as a fallback.
+
 - `sfx/round-complete.ogg` — from Kenney's "Music Jingles" pack
   (kenney.nl/assets/music-jingles), 8-Bit jingles/jingles_NES05.ogg.
   Unmodified. License: CC0 1.0.
