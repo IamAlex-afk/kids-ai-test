@@ -13,8 +13,8 @@
 
    Ages are the site's existing 4 buckets (tiny/child/teen/adult) —
    there's no exact-age input anywhere else on the site, so the new
-   "3-6 / 7-9 / 10-12+" mechanic grid is mapped onto them:
-     tiny  -> 3-6 tier   child -> 7-9 tier   teen & adult -> 10-12+ tier
+   age presets are tiny = 5–7, child = 8–10, teen = 11–13, adult = 14+.
+   These presets are adjustable, not developmental assessments.
 
    API mirrors js/snake.js:
      window.KAT_Platformer.startWorldSelect(container, {
@@ -619,6 +619,10 @@
      ONE RUN
   ═══════════════════════════════════════════════════════════════════ */
   function PfRun(container, opts) {
+    const effects=window.KAT_Effects.create();
+    let effectPanel;
+    let gameTime = Date.now();
+    let lastTs = performance.now();
     const age  = AGE_CFG[opts.age] ? opts.age : 'child';
     const cfg  = AGE_CFG[age];
     const lang = opts.lang || 'en';
@@ -636,6 +640,7 @@
       [quizQueue[i], quizQueue[j]] = [quizQueue[j], quizQueue[i]];
     }
 
+    let userPaused = false, playPace = 1;
     let alive = true, rafId = null, els = {}, cleanupFns = [];
     let bgStars = [];
     for (let i = 0; i < 40; i++) bgStars.push({ x: rng() * 1000, y: rng() * 300, r: rng() * 1.6 + 0.4 });
@@ -647,12 +652,11 @@
     const totalLetters = Math.max(1, letterQueue.length);
 
     const state = {
-      startTs: Date.now(),
+      startTs: gameTime,
       collected: 0,
       parts: 0,
       coins: 0,
       shield: false,
-      magnetUntil: 0,
       spawned: [],
       platforms: [],
       nextSpawnAt: 250,
@@ -693,6 +697,7 @@
     container.__katPfTeardown = teardown;
 
     buildFrame();
+
     showIntro();
     bumpWorldsPlayed(age);
     rafId = requestAnimationFrame(loop);
@@ -700,6 +705,7 @@
     /* ─── DOM ───────────────────────────────────────────────────────── */
     function buildFrame() {
       const showHint = cfg.hints === 'always' || (cfg.hints === 'first3' && worldsPlayedCount(age) < 3);
+      container.classList.add("game-worlds");
       container.innerHTML = `
         <div class="snake-hud">
           <div class="game-score-box"><span class="game-score-num" id="pf-parts">0/${cfg.partStages}</span><span class="game-score-lbl">${t(lang,'part')}</span></div>
@@ -735,37 +741,59 @@
 
       // Measure the real leftover viewport height instead of a fixed
       // cap, so fullscreen mode fills the whole screen on mobile.
+      cleanupFns.push(window.KAT_Worlds.sessionControls(container, lang, {
+        pace(value) { playPace = value; },
+      kind: 'runner', hint: t(lang, 'hint'), goal: () => letterQueue[state.collected]?.text,
+      pause(value) { userPaused = value; lastTs = performance.now(); state.sliding = false; state.shiftHeld = false; if(value) music.stop(); else if(!MUTED && !state.paused && !state.over) music.start(); },
+    }));
+      effectPanel=window.KAT_Worlds.effectStatus(container,lang,effects);
+      cleanupFns.push(effectPanel.dispose);
       const wrap = container.querySelector('.snake-canvas-wrap');
-      const chromeH = Array.from(container.children)
-        .filter(el => el !== wrap)
-        .reduce((sum, el) => sum + el.getBoundingClientRect().height, 0);
-      const avW = Math.min(container.clientWidth || window.innerWidth - 16, window.innerWidth - 16, 680);
-      const avH = Math.max(280, Math.min(window.innerHeight - chromeH - 32, 760));
-      els.canvas.width  = Math.max(280, avW);
-      els.canvas.height = Math.max(200, avH);
-      els.canvas.style.width = '100%';
-      els.canvas.style.maxWidth = els.canvas.width + 'px';
-
-      player.x = els.canvas.width * 0.22;
-      state.groundY = els.canvas.height * 0.72;
-      player.y = state.groundY; player.prevY = state.groundY;
+      function resizeScene() {
+        const pixelW=Math.max(180,wrap.clientWidth-2),pixelH=Math.max(160,wrap.clientHeight-2);
+        const view=window.KAT_Worlds.sceneSize(pixelW,pixelH,age);
+        if(els.pixelW===pixelW && els.pixelH===pixelH)return;
+        const oldH=els.height;
+        els.width=view.width;els.height=view.height;els.worldScale=view.scale;
+        els.pixelW=pixelW;els.pixelH=pixelH;
+        const dpr=Math.min(2,window.devicePixelRatio||1);
+        els.canvas.width=Math.round(pixelW*dpr);els.canvas.height=Math.round(pixelH*dpr);
+        els.ctx.setTransform(dpr*view.scale,0,0,dpr*view.scale,0,0);
+        els.canvas.style.width='100%';
+        const dx=els.width*.22-player.x,dy=els.height*.72-(state.groundY||0);
+        player.x=els.width*.22;state.groundY=els.height*.72;
+        if(oldH) {
+          player.y+=dy;player.prevY+=dy;
+          state.spawned.forEach(item=>{item.x+=dx;item.y+=dy;});
+          state.platforms.forEach(p=>{p.x1+=dx;p.x2+=dx;});
+          state.projectiles.forEach(p=>{p.x+=dx;p.y+=dy;});
+          particles.forEach(p=>{p.x+=dx;p.y+=dy;});
+        } else {player.y=state.groundY;player.prevY=state.groundY;}
+      }
+      resizeScene();
+      cleanupFns.push(window.KAT_Worlds.watchSize(wrap,resizeScene));
 
       on(container.querySelector('#pf-jump'), 'pointerdown', (e) => { e.preventDefault(); doJump(); });
+      on(container.querySelector('#pf-jump'), 'click', e=>{if(e.detail===0)doJump();});
       const slideBtn = container.querySelector('#pf-slide');
       if (slideBtn) {
-        on(slideBtn, 'pointerdown', (e) => { e.preventDefault(); state.sliding = true; });
+        on(slideBtn, 'pointerdown', (e) => { e.preventDefault(); if (!userPaused && !state.paused) state.sliding = true; });
         on(slideBtn, 'pointerup',   () => { state.sliding = false; });
         on(slideBtn, 'pointerleave',() => { state.sliding = false; });
+        on(slideBtn, 'keydown',e=>{if([' ','Enter'].includes(e.key)){e.preventDefault();if(!userPaused&&!state.paused)state.sliding=true;}});
+        on(slideBtn, 'keyup',()=>{state.sliding=false;});
+        on(slideBtn, 'blur',()=>{state.sliding=false;});
       }
       const dashBtn = container.querySelector('#pf-dash');
-      if (dashBtn) on(dashBtn, 'pointerdown', (e) => { e.preventDefault(); doDash(); });
+      if (dashBtn) { on(dashBtn, 'pointerdown', e=>{e.preventDefault();doDash();});on(dashBtn, 'click', e=>{if(e.detail===0)doDash();}); }
       on(container.querySelector('#pf-mute'), 'click', (e) => {
         setMuted(!MUTED); e.currentTarget.textContent = MUTED ? '🔇' : '🔊';
-        if (MUTED) music.stop(); else if (!state.paused) music.start();
+        if (MUTED) music.stop(); else if (!userPaused && !state.paused) music.start();
       });
       on(container.querySelector('#pf-exit'), 'click', () => finishRun('exit'));
 
       on(document, 'keydown', (e) => {
+        if (userPaused || /^(BUTTON|INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName)) return;
         if (e.key === 'Shift') state.shiftHeld = true;
         if (['ArrowUp', 'w', 'W', ' ', 'Spacebar'].includes(e.key)) { e.preventDefault(); state.shiftHeld && cfg.dash ? doDash() : doJump(); }
         if (cfg.slide && (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S')) state.sliding = true;
@@ -779,13 +807,13 @@
 
     /* ─── INPUT ───────────────────────────────────────────────────── */
     function doJump() {
-      if (state.paused || state.over) return;
-      const now = Date.now();
+      if (userPaused || state.paused || state.over) return;
+      const now = gameTime;
       if (player.onGround || now - player.lastGroundTs < 90) {
-        player.vy = cfg.jumpVel; player.onGround = false; player.jumpsUsed = 1;
+        player.vy = effects.jumpVelocity(cfg.jumpVel); player.onGround = false; player.jumpsUsed = 1;
         playJumpSound(); haptic([15]);
       } else if (cfg.doubleJump && player.jumpsUsed < 2) {
-        player.vy = cfg.jumpVel * 0.85; player.jumpsUsed = 2;
+        player.vy = effects.jumpVelocity(cfg.jumpVel) * 0.85; player.jumpsUsed = 2;
         playJump2Sound(); haptic([15, 15, 15]);
         spawnBurst(particles, player.x, player.y - 15, theme.accent, 10);
       } else {
@@ -793,8 +821,8 @@
       }
     }
     function doDash() {
-      if (state.paused || state.over || !cfg.dash) return;
-      const now = Date.now();
+      if (userPaused || state.paused || state.over || !cfg.dash) return;
+      const now = gameTime;
       if (now < player.dashUntil) return;
       player.dashUntil = now + 500;
       playDashSound(); haptic([30]);
@@ -809,12 +837,13 @@
         <div class="snake-overlay-card">
           <p class="snake-overlay-kicker">${world.icon} ${world.title}</p>
           <p class="pf-lesson-text">${world.lessonText || ''}</p>
+          <p class="gw-intro-hint">${window.KAT_Worlds.tip(lang,'runner')}</p>
           <button class="btn-primary" id="pf-start-btn">${t(lang, 'start')}</button>
         </div>`;
       els.overlay.querySelector('#pf-start-btn').addEventListener('click', () => {
         if (!alive) return;
-        els.overlay.classList.add('hidden'); state.paused = false; state.startTs = Date.now();
-        music.start();
+        els.overlay.classList.add('hidden'); state.paused = false; state.startTs = gameTime;
+        if(!userPaused) music.start();
         seedOpeningSpawn();
       }, { once: true });
     }
@@ -826,11 +855,11 @@
     function seedOpeningSpawn() {
       const nextLetter = letterQueue[0];
       if (!nextLetter) return;
-      state.spawned.push({ kind: 'letter', x: els.canvas.width * 0.62, y: state.groundY - 34, w: 22, h: 22, text: nextLetter.text, qidx: 0 });
+      state.spawned.push({ kind: 'letter', x: els.width * 0.62, y: state.groundY - 34, w: 22, h: 22, text: nextLetter.text, qidx: 0 });
       // Also guarantee one working bonus shows up almost immediately —
       // with only a ~16% combined chance per random spawn, it's easy for a
       // short test run to never see one and conclude "bonuses don't work".
-      state.spawned.push({ kind: 'shield', x: els.canvas.width * 0.9, y: state.groundY - 34, w: 22, h: 22 });
+      state.spawned.push({ kind: 'shield', x: els.width * 0.9, y: state.groundY - 34, w: 22, h: 22 });
     }
 
     function showFact(round) {
@@ -895,7 +924,7 @@
     function trySpawn() {
       if (state.elapsedMs < state.nextSpawnAt) return;
       scheduleSpawn();
-      const spawnX = els.canvas.width + 40;
+      const spawnX = els.width + 40;
       const nextIdx = state.collected + countKind('letter');
       const nextLetter = letterQueue[nextIdx];
       const roll = Math.random();
@@ -946,7 +975,7 @@
       if (state.elapsedMs < state.nextPlatformAt) return;
       schedulePlatform();
       const width = 150 + Math.random() * 100;
-      const x1 = els.canvas.width + 60;
+      const x1 = els.width + 60;
       let kind = 'static';
       if (worldIdx >= 2 && Math.random() < 0.4) kind = 'unstable';
       else if (worldIdx >= 1 && Math.random() < 0.5) kind = 'moving';
@@ -992,18 +1021,19 @@
       els.coins.textContent = '🪙 ' + state.coins;
     }
     function collectShield() {
-      state.shield = true;
+      effects.activate('shield');state.shield = true;
       playShieldSound(); haptic([20, 10, 20]);
       els.shieldI.classList.remove('hidden');
       toast('🛡️ ' + t(lang, 'shieldOn'));
     }
     function collectMagnet() {
-      state.magnetUntil = Date.now() + 3000;
+      effects.activate('magnet');
       playShieldSound(); haptic([20]);
       toast('🧲 ' + t(lang, 'magnetOn'));
     }
     function hitSpring() {
-      player.vy = cfg.jumpVel * 1.6; player.onGround = false; player.jumpsUsed = 0;
+      effects.activate('jump');
+      player.vy = effects.jumpVelocity(cfg.jumpVel); player.onGround = false; player.jumpsUsed = 1;
       playSpringSound(); haptic([40]);
       spawnBurst(particles, player.x, player.y, theme.accent, 12);
     }
@@ -1075,15 +1105,15 @@
       // actively iterating that same array. Reassigning/emptying it mid-loop
       // leaves later iterations reading undefined and throws. The 1.4s
       // invulnerability window below is what actually keeps the player safe.
-      player.hurtUntil = Date.now() + 1400;
+      player.hurtUntil = gameTime + 1400;
       spawnBurst(particles, player.x, player.y - 15, '#f87171', 16);
     }
 
     function takeHit() {
-      const now = Date.now();
+      const now = gameTime;
       if (now < player.hurtUntil || now < player.dashUntil) return; // invulnerable while dashing
       state.everHit = true;
-      if (state.shield) {
+      if (effects.absorbHit()) {
         state.shield = false; els.shieldI.classList.add('hidden');
         player.hurtUntil = now + 700;
         playShieldSound(); haptic([30]);
@@ -1122,7 +1152,7 @@
         if (bonus) streakBonus = 20;
       }
 
-      const seconds = (Date.now() - state.startTs) / 1000;
+      const seconds = (gameTime - state.startTs) / 1000;
       const score = Math.round(seconds * 10) + state.collected * 50 + state.coins + streakBonus;
       if (state.won) { playWinSound(); markCleared(age, worldIdx); window.KAT_Companion?.recordAccomplishment(`pf_${age}_w${worldIdx}`, lang); }
       else if (reason !== 'exit') playGameOverSound();
@@ -1177,12 +1207,20 @@
     }
 
     /* ─── LOOP ────────────────────────────────────────────────────── */
-    let lastTs = Date.now();
     function loop() {
       if (!alive) return;
-      const now = Date.now();
-      const dt = Math.min(48, now - lastTs); lastTs = now;
-      if (!state.paused && !state.over) update(dt, now);
+      const wallTime = performance.now();
+      const activeDelta = Math.max(0, wallTime - lastTs);
+      const dt = Math.min(48, activeDelta); lastTs = wallTime;
+      if (!userPaused && !document.hidden && !state.paused && !state.over) gameTime += dt * playPace / els.worldScale;
+      const now = gameTime;
+      if (!userPaused && !document.hidden && !state.paused && !state.over) {
+        effects.tick(activeDelta);
+        state.shield=effects.active('shield');
+        els.shieldI.classList.toggle('hidden',!state.shield);
+        update(dt * playPace / els.worldScale, now);
+      }
+      effectPanel.update();
       draw(now);
       rafId = requestAnimationFrame(loop);
     }
@@ -1198,6 +1236,7 @@
       player.prevY = player.y;
       player.vy += cfg.gravity * (dt / 16.6);
       player.y += player.vy * (dt / 16.6);
+      if(player.y<65){player.y=65;player.vy=Math.max(0,player.vy);}
 
       // Platform surfaces (one-way: only solid when approaching from above)
       let landedPlatform = null;
@@ -1213,7 +1252,7 @@
       if (landedPlatform) {
         if (jumpBufferReady) {
           player.y = landedPlatform._y;
-          player.jumpBuffered = 0; player.vy = cfg.jumpVel; player.jumpsUsed = 1; player.onGround = false; player.onPlatform = null;
+          player.jumpBuffered = 0; player.vy = effects.jumpVelocity(cfg.jumpVel); player.jumpsUsed = 1; player.onGround = false; player.onPlatform = null;
         } else {
           player.y = landedPlatform._y; player.vy = 0; player.onPlatform = landedPlatform;
           if (!player.onGround) { player.onGround = true; player.lastGroundTs = now; player.jumpsUsed = 0; }
@@ -1222,7 +1261,7 @@
       } else if (player.y >= state.groundY) {
         player.y = state.groundY; player.vy = 0; player.onPlatform = null;
         if (jumpBufferReady) {
-          player.jumpBuffered = 0; player.vy = cfg.jumpVel; player.jumpsUsed = 1; player.onGround = false;
+          player.jumpBuffered = 0; player.vy = effects.jumpVelocity(cfg.jumpVel); player.jumpsUsed = 1; player.onGround = false;
         } else {
           player.onGround = true; player.lastGroundTs = now; player.jumpsUsed = 0;
         }
@@ -1248,7 +1287,7 @@
 
       // Move + collide entities
       const dx = state.speed * (dt / 16.6);
-      const magnetActive = now < state.magnetUntil;
+      const magnetActive = effects.active('magnet');
       for (let i = state.spawned.length - 1; i >= 0; i--) {
         const s = state.spawned[i];
         s.x -= dx;
@@ -1267,7 +1306,7 @@
           else if (s.kind === 'coin') { collectCoin(s); state.spawned.splice(i, 1); }
           else if (s.kind === 'shield') { collectShield(); state.spawned.splice(i, 1); }
           else if (s.kind === 'magnet') { collectMagnet(); state.spawned.splice(i, 1); }
-          else if (s.kind === 'spring') { hitSpring(); }
+          else if (s.kind === 'spring') { hitSpring(); state.spawned.splice(i,1); }
           else if (s.kind === 'overhead' && state.sliding) { /* safely slid under it */ }
           else if (s.kind === 'fake') { takeHit(); toast('👻 ' + t(lang, 'fakeHit')); state.spawned.splice(i, 1); }
           else if (s.kind === 'obstacle' || s.kind === 'overhead') { takeHit(); state.spawned.splice(i, 1); }
@@ -1398,133 +1437,25 @@
     }
 
     function draw(now) {
-      const ctx = els.ctx, W = els.canvas.width, H = els.canvas.height;
+      const ctx=els.ctx,W=els.width,H=els.height, art=window.KAT_Worlds, p=art.palette(worldIdx);
+      ctx.save(); art.background(ctx,W,H,worldIdx);
+      // One camera transform applies to the ground, robot and pickups alike.
+      // Collision coordinates are unchanged; the closer camera makes details legible.
+      // The viewport transform scales the entire world uniformly.
+      art.ground(ctx,W,H,state.groundY,state.worldX,worldIdx);
+      state.platforms.forEach(platform=>{
+        if(platform.gone) return;
+        const py=platformY(platform), unstable=platform.kind==='unstable';
+        art.slab(ctx,platform.x1,py,platform.x2-platform.x1,12,unstable?'#f8d99e':p.light,unstable?'#ba9463':p.edge,6);
+      });
+      state.spawned.forEach(s=>{ctx.save();ctx.translate(s.x,s.y);art.pickup(ctx,s,16);ctx.restore();});
+      state.projectiles.forEach(pr=>art.oval(ctx,pr.x,pr.y,5,3,'#bb7828'));
       ctx.save();
-      if (now < state.shakeUntil) {
-        ctx.translate((Math.random() - 0.5) * 8, (Math.random() - 0.5) * 8);
-      }
-
-      drawBackground(ctx, W, H, now);
-
-      const hurt = now < player.hurtUntil && Math.floor(now / 90) % 2 === 0;
-      if (now < player.hurtUntil) { ctx.fillStyle = 'rgba(248,113,113,0.10)'; ctx.fillRect(0, 0, W, H); }
-      if (now < player.dashUntil) { ctx.fillStyle = 'rgba(255,255,255,0.05)'; ctx.fillRect(0, 0, W, H); }
-
-      // Ground
-      ctx.strokeStyle = theme.accent; ctx.lineWidth = 2; ctx.globalAlpha = 0.6;
-      ctx.beginPath(); ctx.moveTo(0, state.groundY + 22); ctx.lineTo(W, state.groundY + 22); ctx.stroke();
-      ctx.globalAlpha = 1;
-      ctx.fillStyle = theme.ground; ctx.globalAlpha = 0.5;
-      ctx.fillRect(0, state.groundY + 22, W, H - state.groundY - 22);
-      ctx.globalAlpha = 1;
-      ctx.strokeStyle = 'rgba(255,255,255,0.12)'; ctx.lineWidth = 1;
-      const tick = 30, off = state.worldX % tick;
-      for (let x = -off; x < W; x += tick) { ctx.beginPath(); ctx.moveTo(x, state.groundY + 22); ctx.lineTo(x - 10, state.groundY + 32); ctx.stroke(); }
-
-      // A second, wider-spaced row of theme-accent studs for a bit of
-      // ground texture instead of one flat tinted rectangle.
-      ctx.fillStyle = theme.accent; ctx.globalAlpha = 0.22;
-      const studGap = 70, studOff = state.worldX % studGap;
-      for (let x = -studOff; x < W; x += studGap) {
-        ctx.beginPath(); ctx.arc(x, state.groundY + 46, 1.6, 0, Math.PI * 2); ctx.fill();
-      }
-      ctx.globalAlpha = 1;
-
-      // Platforms
-      state.platforms.forEach(p => {
-        if (p.gone) return;
-        const py = platformY(p);
-        const crumble = p.kind === 'unstable' && p.touchedAt && (Date.now() - p.touchedAt > 500);
-        ctx.save();
-        if (crumble) ctx.translate((Math.random() - 0.5) * 4, 0);
-        ctx.globalAlpha = crumble ? 0.5 : 1;
-        ctx.shadowBlur = 10; ctx.shadowColor = p.kind === 'unstable' ? '#f59e0b' : theme.accent;
-        ctx.strokeStyle = p.kind === 'unstable' ? '#f59e0b' : theme.accent;
-        ctx.lineWidth = 3;
-        ctx.beginPath(); ctx.moveTo(p.x1, py); ctx.lineTo(p.x2, py); ctx.stroke();
-        ctx.restore();
-      });
-
-      // Entities
-      state.spawned.forEach(s => {
-        ctx.save();
-        ctx.translate(s.x, s.y);
-        if (s.kind === 'letter') {
-          const pulse = 0.85 + 0.15 * Math.sin(now * 0.006 + s.x);
-          ctx.shadowBlur = 14 * pulse; ctx.shadowColor = '#00ff88';
-          ctx.fillStyle = 'rgba(0,255,136,0.14)';
-          ctx.beginPath(); ctx.arc(0, 0, 15 * pulse, 0, Math.PI * 2); ctx.fill();
-          ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-          ctx.font = pickupFont(ctx, s.text);
-          ctx.fillStyle = '#00ff88'; ctx.fillText(s.text, 0, 1);
-        } else if (s.kind === 'fake') {
-          const glitch = Math.random() < 0.35;
-          ctx.globalAlpha = glitch ? 0.55 : 0.9;
-          ctx.shadowBlur = 12; ctx.shadowColor = '#c084fc';
-          ctx.fillStyle = 'rgba(192,132,252,0.14)';
-          ctx.beginPath(); ctx.arc(glitch ? 2 : 0, 0, 15, 0, Math.PI * 2); ctx.fill();
-          ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-          ctx.font = pickupFont(ctx, s.text);
-          ctx.fillStyle = '#c084fc'; ctx.fillText(s.text, glitch ? 2 : 0, 1);
-        } else if (s.kind === 'coin') {
-          ctx.shadowBlur = 10; ctx.shadowColor = '#fbbf24';
-          ctx.fillStyle = '#fbbf24';
-          ctx.beginPath(); ctx.arc(0, 0, 8, 0, Math.PI * 2); ctx.fill();
-        } else if (s.kind === 'shield') {
-          ctx.shadowBlur = 12; ctx.shadowColor = '#60a5fa';
-          ctx.fillStyle = 'rgba(96,165,250,0.85)';
-          ctx.beginPath(); ctx.arc(0, 0, 10, 0, Math.PI * 2); ctx.fill();
-          ctx.font = '11px system-ui'; ctx.textAlign = 'center'; ctx.fillStyle = '#fff'; ctx.fillText('🛡', 0, 4);
-        } else if (s.kind === 'magnet') {
-          ctx.shadowBlur = 12; ctx.shadowColor = '#a78bfa';
-          ctx.fillStyle = 'rgba(167,139,250,0.85)';
-          ctx.beginPath(); ctx.arc(0, 0, 10, 0, Math.PI * 2); ctx.fill();
-          ctx.font = '11px system-ui'; ctx.textAlign = 'center'; ctx.fillStyle = '#fff'; ctx.fillText('🧲', 0, 4);
-        } else if (s.kind === 'spring') {
-          ctx.shadowBlur = 10; ctx.shadowColor = '#34d399';
-          ctx.strokeStyle = '#34d399'; ctx.lineWidth = 3;
-          ctx.beginPath(); ctx.moveTo(-10, 6); ctx.lineTo(-6, -6); ctx.lineTo(0, 6); ctx.lineTo(6, -6); ctx.lineTo(10, 6); ctx.stroke();
-        } else {
-          // Give hazards the same "glowing badge" treatment as pickups —
-          // before, obstacles were a bare emoji floating with just a
-          // shadow, which read as unfinished next to the polished pickups.
-          const hazPulse = 0.85 + 0.15 * Math.sin(now * 0.008 + s.x);
-          ctx.shadowBlur = 10 * hazPulse; ctx.shadowColor = '#f87171';
-          ctx.fillStyle = 'rgba(248,113,113,0.16)';
-          ctx.beginPath(); ctx.arc(0, 0, 15 * hazPulse, 0, Math.PI * 2); ctx.fill();
-          ctx.font = '18px system-ui, sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-          ctx.fillText(s.glyph, 0, 1);
-        }
-        ctx.restore();
-      });
-
-      state.projectiles.forEach(pr => {
-        ctx.save();
-        ctx.shadowBlur = 10; ctx.shadowColor = '#facc15';
-        ctx.fillStyle = '#fde047';
-        ctx.beginPath(); ctx.ellipse(pr.x, pr.y, 5, 3, Math.atan2((pr.target?pr.target.y:pr.y)-pr.y, (pr.target?pr.target.x:pr.x)-pr.x), 0, Math.PI * 2); ctx.fill();
-        ctx.restore();
-      });
-
-      // The procedural robot (custom neon glow + shading, matching the
-      // site's Snake/Racing art) reads far stronger than the flat,
-      // desaturated Kenney sprite sheet at this size — verified side by
-      // side, so it's the default now. isSpriteReady() is left wired up
-      // for a future higher-detail sheet.
-      if (isSpriteReady() && FORCE_SPRITE_ROBOT) {
-        drawRobotSprite(ctx, player.x, player.y, {
-          onGround: player.onGround, now, hurt, moving: !state.paused && !state.over,
-          sliding: state.sliding && cfg.slide,
-        });
-      } else {
-        drawRobot(ctx, player.x, player.y, {
-          partStage: state.parts, maxStage: cfg.partStages, onGround: player.onGround, now, hurt,
-          sliding: state.sliding && cfg.slide, shielded: state.shield, dashing: now < player.dashUntil,
-          jumpsUsed: player.jumpsUsed, skinColor: SKINS[getSkin()] || theme.accent,
-          firing: now < player.fireFlashUntil,
-        });
-      }
-      drawParticles(ctx, particles);
+      if(state.sliding && cfg.slide) { ctx.translate(player.x,player.y); ctx.scale(1,.6); ctx.translate(-player.x,-player.y); }
+      if(!player.onGround)art.oval(ctx,player.x,state.groundY+3,16,3,'#314f4933');
+      art.robot(ctx,player.x,player.y-19,46,{now:state.paused?0:now,parts:state.parts,color:SKINS[getSkin()]||p.accent,hurt:now<player.hurtUntil,shielded:state.shield,airborne:!player.onGround,jumpBoost:effects.active('jump'),magnet:effects.active('magnet')});
+      ctx.restore();
+      if(!art.reducedMotion()) drawParticles(ctx,particles);
       ctx.restore();
     }
 

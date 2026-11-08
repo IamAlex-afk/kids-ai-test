@@ -348,8 +348,8 @@
 
   const LS_SKIN = 'kat_race_skin';
   const LS_SKIN_UNLOCKED = 'kat_race_skin_unlocked';
-  function getSkin() { return readJSON(LS_SKIN, 'cyan'); }
-  function setSkin(name) { if (SKINS[name]) writeJSON(LS_SKIN, name); }
+  function getSkin() { return window.KAT_Worlds.vehicleId(readJSON(LS_SKIN, 'cyan')); }
+  function setSkin(name) { if (Object.hasOwn(SKINS,name)) writeJSON(LS_SKIN, name); }
   function skinsUnlocked() { return !!readJSON(LS_SKIN_UNLOCKED, false); }
   function unlockSkins() { writeJSON(LS_SKIN_UNLOCKED, true); }
 
@@ -602,6 +602,10 @@
      ONE RUN
   ═══════════════════════════════════════════════════════════════════ */
   function RaceRun(container, opts) {
+    const effects=window.KAT_Effects.create();
+    let effectPanel;
+    let gameTime = Date.now();
+    let lastTs = performance.now();
     const age = AGE_CFG[opts.age] ? opts.age : 'child';
     const cfg = AGE_CFG[age];
     // Visual tier: tiny/child get a calmer, sparser roadside; teen/adult
@@ -621,6 +625,7 @@
       [quizQueue[i], quizQueue[j]] = [quizQueue[j], quizQueue[i]];
     }
 
+    let userPaused = false, playPace = 1;
     let alive = true, rafId = null, els = {}, cleanupFns = [];
 
     const letterQueue = [];
@@ -630,7 +635,8 @@
     const totalLetters = Math.max(1, letterQueue.length);
 
     const state = {
-      startTs: Date.now(),
+      vehicle: opts.vehicle || getSkin(),
+      startTs: gameTime,
       collected: 0, parts: 0, coins: 0, shield: false,
       spawned: [],
       nextSpawnAt: 250,
@@ -661,6 +667,7 @@
     container.__katRaceTeardown = teardown;
 
     buildFrame();
+
     showIntro();
     bumpWorldsPlayed(age);
     rafId = requestAnimationFrame(loop);
@@ -668,10 +675,11 @@
     /* ─── DOM ───────────────────────────────────────────────────────── */
     function buildFrame() {
       const showHint = cfg.hints === 'always' || (cfg.hints === 'first3' && worldsPlayedCount(age) < 3);
+      container.classList.add("game-worlds");
       container.innerHTML = `
         <div class="snake-hud">
           <div class="game-score-box"><span class="game-score-num" id="rc-parts">0/${cfg.partStages}</span><span class="game-score-lbl">${t(lang,'part')}</span></div>
-          <div class="game-round-info">${world.icon} ${world.title}</div>
+          <div class="game-round-info">${window.KAT_Worlds.location(worldIdx,lang).icon} ${window.KAT_Worlds.location(worldIdx,lang).name} · ${world.title}</div>
           <div class="game-score-box"><span class="game-score-num" id="rc-letters">0/${totalLetters}</span><span class="game-score-lbl">${t(lang,'letters')}</span></div>
         </div>
         <div class="pf-subhud">
@@ -703,32 +711,48 @@
 
       // Measure the real leftover viewport height instead of a fixed
       // cap, so fullscreen mode fills the whole screen on mobile.
+      cleanupFns.push(window.KAT_Worlds.sessionControls(container, lang, {
+        pace(value) { playPace = value; },
+      kind: 'race', hint: t(lang, 'hint'), goal: () => letterQueue[state.collected]?.text,
+      pause(value) { userPaused = value; lastTs = performance.now(); if(value) music.stop(); else if(!MUTED && !state.paused && !state.over) music.start(); },
+    }));
+      effectPanel=window.KAT_Worlds.effectStatus(container,lang,effects);
+      cleanupFns.push(effectPanel.dispose);
       const wrap = container.querySelector('.snake-canvas-wrap');
-      const chromeH = Array.from(container.children)
-        .filter(el => el !== wrap)
-        .reduce((sum, el) => sum + el.getBoundingClientRect().height, 0);
-      const avW = Math.min(container.clientWidth || window.innerWidth - 16, window.innerWidth - 16, 680);
-      const avH = Math.max(280, Math.min(window.innerHeight - chromeH - 32, 760));
-      els.canvas.width = Math.max(280, avW);
-      els.canvas.height = Math.max(240, avH);
-      els.canvas.style.width = '100%';
-      els.canvas.style.maxWidth = els.canvas.width + 'px';
-
-      state.roadX1 = els.canvas.width * 0.08;
-      state.roadX2 = els.canvas.width * 0.92;
-      state.carY = els.canvas.height * 0.78;
+      function resizeScene() {
+        const pixelW=Math.max(180,wrap.clientWidth-2),pixelH=Math.max(160,wrap.clientHeight-2);
+        const view=window.KAT_Worlds.sceneSize(pixelW,pixelH,age);
+        if(els.pixelW===pixelW && els.pixelH===pixelH)return;
+        const oldW=els.width,oldH=els.height;
+        els.width=view.width;els.height=view.height;els.worldScale=view.scale;
+        els.pixelW=pixelW;els.pixelH=pixelH;
+        const dpr=Math.min(2,window.devicePixelRatio||1);
+        els.canvas.width=Math.round(pixelW*dpr);els.canvas.height=Math.round(pixelH*dpr);
+        els.ctx.setTransform(dpr*view.scale,0,0,dpr*view.scale,0,0);
+        els.canvas.style.width='100%';
+        state.roadX1=els.width*.08;state.roadX2=els.width*.92;state.carY=els.height*.78;
+        if(oldH) {
+          state.spawned.forEach(item=>{item.y*=els.height/oldH;});
+          particles.forEach(p=>{p.x*=els.width/oldW;p.y*=els.height/oldH;});
+        }
+      }
+      resizeScene();
+      cleanupFns.push(window.KAT_Worlds.watchSize(wrap,resizeScene));
 
       on(container.querySelector('#rc-left'), 'pointerdown', (e) => { e.preventDefault(); shiftLane(-1); });
+      on(container.querySelector('#rc-left'), 'click', e=>{if(e.detail===0)shiftLane(-1);});
       on(container.querySelector('#rc-right'), 'pointerdown', (e) => { e.preventDefault(); shiftLane(1); });
+      on(container.querySelector('#rc-right'), 'click', e=>{if(e.detail===0)shiftLane(1);});
       const boostBtn = container.querySelector('#rc-boost');
-      if (boostBtn) on(boostBtn, 'pointerdown', (e) => { e.preventDefault(); doBoost(); });
+      if (boostBtn) { on(boostBtn, 'pointerdown', e=>{e.preventDefault();doBoost();});on(boostBtn, 'click', e=>{if(e.detail===0)doBoost();}); }
       on(container.querySelector('#rc-mute'), 'click', (e) => {
         setMuted(!MUTED); e.currentTarget.textContent = MUTED ? '🔇' : '🔊';
-        if (MUTED) music.stop(); else if (!state.paused) music.start();
+        if (MUTED) music.stop(); else if (!userPaused && !state.paused) music.start();
       });
       on(container.querySelector('#rc-exit'), 'click', () => finishRun('exit'));
 
       on(document, 'keydown', (e) => {
+        if (userPaused || /^(BUTTON|INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName)) return;
         if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') shiftLane(-1);
         if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') shiftLane(1);
         if (cfg.boost && (e.key === ' ' || e.key === 'Shift')) doBoost();
@@ -743,15 +767,15 @@
 
     /* ─── INPUT ───────────────────────────────────────────────────── */
     function shiftLane(delta) {
-      if (state.paused || state.over) return;
+      if (userPaused || state.paused || state.over) return;
       const next = Math.max(0, Math.min(cfg.lanes - 1, state.lane + delta));
       if (next === state.lane) return;
       state.lane = next;
       playSwerveSound(); haptic([12]);
     }
     function doBoost() {
-      if (state.paused || state.over || !cfg.boost) return;
-      const now = Date.now();
+      if (userPaused || state.paused || state.over || !cfg.boost) return;
+      const now = gameTime;
       if (now < state.boostUntil) return;
       state.boostUntil = now + 500;
       playBoostSound(); haptic([30]);
@@ -768,23 +792,24 @@
       els.overlay.classList.remove('hidden');
       els.overlay.innerHTML = `
         <div class="snake-overlay-card">
-          <p class="snake-overlay-kicker">${world.icon} ${world.title}</p>
+          <p class="snake-overlay-kicker">${window.KAT_Worlds.location(worldIdx,lang).icon} ${window.KAT_Worlds.location(worldIdx,lang).name} · ${world.title}</p>
           <p class="pf-lesson-text">${world.lessonText || ''}</p>
+          <p class="gw-intro-hint">${window.KAT_Worlds.tip(lang,'race')}</p>
           <button class="btn-primary" id="rc-start-btn">${t(lang, 'start')}</button>
         </div>`;
       els.overlay.querySelector('#rc-start-btn').addEventListener('click', () => {
         if (!alive) return;
-        els.overlay.classList.add('hidden'); state.paused = false; state.startTs = Date.now();
-        music.start();
+        els.overlay.classList.add('hidden'); state.paused = false; state.startTs = gameTime;
+        if(!userPaused) music.start();
         seedOpeningSpawn();
       }, { once: true });
     }
 
     function seedOpeningSpawn() {
       const nextLetter = letterQueue[0];
-      if (nextLetter) state.spawned.push({ kind: 'letter', lane: state.lane, y: els.canvas.height * 0.35, text: nextLetter.text, qidx: 0 });
+      if (nextLetter) state.spawned.push({ kind: 'letter', lane: state.lane, y: els.height * 0.35, text: nextLetter.text, qidx: 0 });
       const otherLane = (state.lane + 1) % cfg.lanes;
-      state.spawned.push({ kind: 'shield', lane: otherLane, y: els.canvas.height * 0.15 });
+      state.spawned.push({ kind: 'shield', lane: otherLane, y: els.height * 0.15 });
     }
 
     function showFact(round) {
@@ -905,7 +930,7 @@
       els.coins.textContent = '🪙 ' + state.coins;
     }
     function collectShield() {
-      state.shield = true;
+      effects.activate('shield');state.shield = true;
       playShieldSound(); haptic([20, 10, 20]);
       els.shieldI.classList.remove('hidden');
       toast('🛡️ ' + t(lang, 'shieldOn'));
@@ -968,15 +993,15 @@
       // js/platformer.js's respawnAtCheckpoint for the exact bug this
       // avoids: reassigning/emptying that array mid-iteration leaves later
       // iterations reading undefined and throws.
-      state.hurtUntil = Date.now() + 1400;
+      state.hurtUntil = gameTime + 1400;
       spawnBurst(particles, laneX(state.lane), state.carY, '#f87171', 16);
     }
 
     function takeHit() {
-      const now = Date.now();
+      const now = gameTime;
       if (now < (state.hurtUntil || 0) || now < state.boostUntil) return; // invulnerable while boosting
       state.everHit = true;
-      if (state.shield) {
+      if (effects.absorbHit()) {
         state.shield = false; els.shieldI.classList.add('hidden');
         state.hurtUntil = now + 700;
         playShieldSound(); haptic([30]);
@@ -1014,7 +1039,7 @@
         if (bonus) streakBonus = 20;
       }
 
-      const seconds = (Date.now() - state.startTs) / 1000;
+      const seconds = (gameTime - state.startTs) / 1000;
       const score = Math.round(seconds * 10) + state.collected * 50 + state.coins + streakBonus;
       if (state.won) { playWinSound(); markCleared(age, worldIdx); window.KAT_Companion?.recordAccomplishment(`race_${age}_w${worldIdx}`, lang); }
       else if (reason !== 'exit') playGameOverSound();
@@ -1065,12 +1090,20 @@
     }
 
     /* ─── LOOP ────────────────────────────────────────────────────── */
-    let lastTs = Date.now();
     function loop() {
       if (!alive) return;
-      const now = Date.now();
-      const dt = Math.min(48, now - lastTs); lastTs = now;
-      if (!state.paused && !state.over) update(dt, now);
+      const wallTime = performance.now();
+      const activeDelta = Math.max(0, wallTime - lastTs);
+      const dt = Math.min(48, activeDelta); lastTs = wallTime;
+      if (!userPaused && !document.hidden && !state.paused && !state.over) gameTime += dt * playPace / els.worldScale;
+      const now = gameTime;
+      if (!userPaused && !document.hidden && !state.paused && !state.over) {
+        effects.tick(activeDelta);
+        state.shield=effects.active('shield');
+        els.shieldI.classList.toggle('hidden',!state.shield);
+        update(dt * playPace / els.worldScale, now);
+      }
+      effectPanel.update();
       draw(now);
       rafId = requestAnimationFrame(loop);
     }
@@ -1084,7 +1117,7 @@
       state.roadY += state.speed * (dt / 16.6);
 
       // Smoothly interpolate the visual lane position toward the logical one.
-      state.laneVisual = lerp(state.laneVisual, state.lane, 0.35);
+      state.laneVisual = lerp(state.laneVisual, state.lane, 1 - Math.exp(-dt / 55));
 
       trySpawn();
 
@@ -1093,7 +1126,7 @@
       for (let i = state.spawned.length - 1; i >= 0; i--) {
         const s = state.spawned[i];
         s.y += dy;
-        if (s.y > els.canvas.height + 60) { state.spawned.splice(i, 1); continue; }
+        if (s.y > els.height + 60) { state.spawned.splice(i, 1); continue; }
 
         const sameLane = s.lane === state.lane;
         const closeEnough = Math.abs(s.y - carY) < 22;
@@ -1112,110 +1145,7 @@
 
     /* ─── RENDER ──────────────────────────────────────────────────── */
     function draw(now) {
-      const ctx = els.ctx, W = els.canvas.width, H = els.canvas.height;
-      ctx.save();
-      if (now < state.shakeUntil) ctx.translate((Math.random() - 0.5) * 8, (Math.random() - 0.5) * 8);
-
-      const grad = ctx.createLinearGradient(0, 0, 0, H);
-      grad.addColorStop(0, theme.sky[0]); grad.addColorStop(1, theme.sky[1]);
-      ctx.fillStyle = grad; ctx.fillRect(0, 0, W, H);
-
-      const hurt = now < (state.hurtUntil || 0) && Math.floor(now / 90) % 2 === 0;
-      if (now < (state.hurtUntil || 0)) { ctx.fillStyle = 'rgba(248,113,113,0.10)'; ctx.fillRect(0, 0, W, H); }
-      if (now < state.boostUntil) { ctx.fillStyle = 'rgba(255,255,255,0.05)'; ctx.fillRect(0, 0, W, H); }
-
-      // Roadside trees + lamp posts — procedural, tiled vertically with the
-      // same scroll as the lane dividers so they read as part of the world,
-      // not a static overlay. Cycles big tree / small tree / lit lamp post
-      // for a real street instead of a uniform tree line; drawn before the
-      // road so the road's edge line sits on top.
-      {
-        // Cute tier: fewer, bigger, more evenly-spaced — calm and easy to
-        // read. Cyber tier: tighter spacing reads as a busier, faster world
-        // to match the higher traffic density/speed.
-        const spacing = tier === 'cute' ? 190 : 120;
-        const bigW = tier === 'cute' ? 68 : 56, smallW = tier === 'cute' ? 46 : 38;
-        const poleH = tier === 'cute' ? 60 : 50;
-        const treeOff = state.roadY % spacing;
-        const leftX  = state.roadX1 * 0.5;
-        const rightX = state.roadX2 + (W - state.roadX2) * 0.5;
-        for (let y = -treeOff - spacing; y < H + spacing; y += spacing) {
-          const slot = Math.floor((y + state.roadY) / spacing) % 3;
-          if (slot === 2) {
-            drawPole(ctx, leftX, y, poleH, theme.accent);
-            drawPole(ctx, rightX, y, poleH, theme.accent);
-          } else {
-            const w = slot === 0 ? bigW : smallW;
-            drawTree(ctx, leftX, y, w);
-            drawTree(ctx, rightX, y, w);
-          }
-        }
-      }
-
-      // Road
-      ctx.fillStyle = theme.road;
-      ctx.fillRect(state.roadX1, 0, state.roadX2 - state.roadX1, H);
-      ctx.strokeStyle = theme.accent; ctx.lineWidth = 2; ctx.globalAlpha = 0.7;
-      ctx.beginPath(); ctx.moveTo(state.roadX1, 0); ctx.lineTo(state.roadX1, H); ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(state.roadX2, 0); ctx.lineTo(state.roadX2, H); ctx.stroke();
-      ctx.globalAlpha = 1;
-
-      // Lane dividers (scrolling dashes) — thicker/slower-reading dashes
-      // for young kids, thinner/tighter stripes for older ages
-      const laneW = (state.roadX2 - state.roadX1) / cfg.lanes;
-      ctx.strokeStyle = 'rgba(255,255,255,0.25)'; ctx.lineWidth = tier === 'cute' ? 3 : 2;
-      const dash = tier === 'cute' ? 32 : 22, gap = tier === 'cute' ? 24 : 16, off = state.roadY % (dash + gap);
-      for (let l = 1; l < cfg.lanes; l++) {
-        const x = state.roadX1 + laneW * l;
-        for (let y = -off; y < H; y += dash + gap) { ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x, y + dash); ctx.stroke(); }
-      }
-
-      // Entities
-      state.spawned.forEach(s => {
-        const sx = laneX(s.lane);
-        ctx.save();
-        ctx.translate(sx, s.y);
-        if (s.kind === 'letter') {
-          const pulse = 0.85 + 0.15 * Math.sin(now * 0.006 + s.y);
-          ctx.shadowBlur = 14 * pulse; ctx.shadowColor = '#00ff88';
-          ctx.fillStyle = 'rgba(0,255,136,0.14)';
-          ctx.beginPath(); ctx.arc(0, 0, 15 * pulse, 0, Math.PI * 2); ctx.fill();
-          ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-          ctx.font = pickupFont(ctx, s.text);
-          ctx.fillStyle = '#00ff88'; ctx.fillText(s.text, 0, 1);
-        } else if (s.kind === 'fake') {
-          const glitch = Math.random() < 0.35;
-          ctx.globalAlpha = glitch ? 0.55 : 0.9;
-          ctx.shadowBlur = 12; ctx.shadowColor = '#c084fc';
-          ctx.fillStyle = 'rgba(192,132,252,0.14)';
-          ctx.beginPath(); ctx.arc(glitch ? 2 : 0, 0, 15, 0, Math.PI * 2); ctx.fill();
-          ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-          ctx.font = pickupFont(ctx, s.text);
-          ctx.fillStyle = '#c084fc'; ctx.fillText(s.text, glitch ? 2 : 0, 1);
-        } else if (s.kind === 'coin') {
-          ctx.shadowBlur = 10; ctx.shadowColor = '#fbbf24'; ctx.fillStyle = '#fbbf24';
-          ctx.beginPath(); ctx.arc(0, 0, 8, 0, Math.PI * 2); ctx.fill();
-        } else if (s.kind === 'shield') {
-          ctx.shadowBlur = 12; ctx.shadowColor = '#60a5fa';
-          ctx.fillStyle = 'rgba(96,165,250,0.85)';
-          ctx.beginPath(); ctx.arc(0, 0, 10, 0, Math.PI * 2); ctx.fill();
-          ctx.font = '11px system-ui'; ctx.textAlign = 'center'; ctx.fillStyle = '#fff'; ctx.fillText('🛡', 0, 4);
-        } else if (s.kind === 'oil') {
-          ctx.globalAlpha = 0.6; ctx.fillStyle = '#1e293b';
-          ctx.beginPath(); ctx.ellipse(0, 0, 14, 7, 0, 0, Math.PI * 2); ctx.fill();
-        } else if (s.kind === 'hazard') {
-          drawHazardBadge(ctx, 0, 0, s.color, s.glyph, now);
-        }
-        ctx.restore();
-      });
-
-      drawRunnerBot(ctx, laneX(state.laneVisual), state.carY, {
-        partStage: state.parts, maxStage: cfg.partStages, hurt,
-        shielded: state.shield, boosting: now < state.boostUntil,
-        skinColor: SKINS[getSkin()] || theme.accent, now,
-      });
-      drawParticles(ctx, particles);
-      ctx.restore();
+      window.KAT_Worlds.race(els.ctx,els.width,els.height,state,cfg,worldIdx,now,SKINS[state.vehicle]);
     }
 
   } // end RaceRun
@@ -1241,17 +1171,18 @@
 
     function render() {
       const ach = loadAch();
-      const unlocked = skinsUnlocked();
+      const art=window.KAT_Worlds;
+      container.classList.add('game-worlds');
       const streak = getStreak();
       container.innerHTML = `
         ${opts.onBack ? `<button class="pf-icon-btn" id="rc-back-games" style="margin-bottom:8px;">${t(lang,'backGames')}</button>` : ''}
         <p class="snake-hint" style="margin-bottom:4px;font-weight:700;">${t(lang, 'worlds')}</p>
         <p class="pf-ach-summary">🏆 ${ach.collectedLetters} ${t(lang,'letters').toLowerCase()} · 🏁 ${ach.worldsCompleted} · ⭐ ${ach.totalScore}${streak.count ? ' · 🔥 ' + streak.count : ''}</p>
-        <div class="pf-world-grid" id="rc-world-grid"></div>
-        ${unlocked ? `<div class="pf-skin-row" id="rc-skin-row"></div>` : ''}`;
+        <section class="gw-garage" aria-labelledby="rc-garage-title"><h2 id="rc-garage-title">${art.expeditionText(lang,6)}</h2><p>${art.expeditionText(lang,10)}</p><div id="rc-skin-row" class="gw-vehicle-row"></div></section>
+        <div class="pf-world-grid" id="rc-world-grid"></div>`;
       if (opts.onBack) container.querySelector('#rc-back-games').addEventListener('click', opts.onBack);
       function startWorld(i) {
-        new RaceRun(container, { age, lang, world: worlds[i], worldIdx: i, onExit: render, quiz: opts.quiz, protocols: opts.protocols, totalWorlds: worlds.length, startWorld });
+        new RaceRun(container, { age, lang, vehicle:getSkin(), world: worlds[i], worldIdx: i, onExit: render, quiz: opts.quiz, protocols: opts.protocols, totalWorlds: worlds.length, startWorld });
       }
       const grid = container.querySelector('#rc-world-grid');
       worlds.forEach((w, i) => {
@@ -1272,6 +1203,10 @@
           <span class="pf-world-icon">🔒</span>
           <span class="pf-world-title">${w.title}</span>
           <span class="pf-world-meta">${i === worlds.length - 1 ? t(lang,'lockedFinal') : t(lang,'locked')}</span>`;
+        const place=art.location(i,lang),preview=document.createElement('canvas');
+        preview.className='gw-level-preview';preview.setAttribute('aria-hidden','true');card.prepend(preview);art.locationPreview(preview,i);
+        const locationLabel=document.createElement('span');locationLabel.className='gw-track-place';locationLabel.textContent=`${art.expeditionText(lang,4)} ${i+1} · ${place.icon} ${place.name}`;preview.after(locationLabel);
+        card.disabled=!isUnlocked;
         card.addEventListener('click', () => {
           if (!isUnlocked) return;
           startWorld(i);
@@ -1279,17 +1214,14 @@
         grid.appendChild(card);
       });
 
-      if (unlocked) {
-        const row = container.querySelector('#rc-skin-row');
-        row.innerHTML = `<span class="pf-skin-label">${t(lang,'skin')}:</span>`;
-        Object.keys(SKINS).forEach(name => {
-          const b = document.createElement('button');
-          b.className = 'pf-skin-dot' + (getSkin() === name ? ' active' : '');
-          b.style.background = SKINS[name];
-          b.addEventListener('click', () => { setSkin(name); render(); });
-          row.appendChild(b);
-        });
-      }
+      const row=container.querySelector('#rc-skin-row');
+      ['cyan','red','gold'].forEach((id,i)=>{
+        const button=document.createElement('button');button.type='button';button.className='gw-vehicle-card';button.dataset.vehicle=id;
+        button.setAttribute('aria-pressed',String(getSkin()===id));
+        const preview=document.createElement('canvas');preview.setAttribute('aria-hidden','true');button.append(preview);art.vehiclePreview(preview,id);
+        const label=document.createElement('strong');label.textContent=art.expeditionText(lang,7+i);button.append(label);
+        button.addEventListener('click',()=>{setSkin(id);row.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.vehicle===getSkin())));});row.append(button);
+      });
 
       const doneBtn = document.createElement('button');
       doneBtn.className = 'btn-primary';

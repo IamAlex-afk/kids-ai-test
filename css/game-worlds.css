@@ -1,0 +1,172 @@
+/* Game-only surfaces; the learning pages retain their existing visual identity. */
+.game-worlds {
+  --bg2:#eaf2ee; --card:#fffdf7; --card2:#f3f4ed; --border:#c7d8d1;
+  --border2:#b4ccc3; --accent:#296a70; --green:#246746; --yellow:#875a11;
+  --text:#243c48; --muted:#48626d; --muted2:#536b75;
+  color:var(--text); background:#f7faf5; border-radius:24px; padding:16px;
+}
+.game-worlds .snake-canvas-wrap { padding:5px; border:1px solid #b7ccc4; border-radius:20px; box-shadow:0 12px 30px #345c4515; overflow:hidden; }
+.game-worlds .snake-canvas-wrap canvas { image-rendering:auto; border-radius:15px; }
+.game-worlds .game-score-box { border-radius:16px; background:#fffdf7; box-shadow:0 3px 0 #d1ded5; }
+.game-worlds .snake-hud { gap:8px; align-items:center; }
+.game-worlds .game-round-info { font-size:.85rem; font-weight:700; }
+.game-worlds .pf-icon-btn,.game-worlds .sk-dbtn,.game-worlds .pf-btn { background:#fffdf7; color:#254a54; border:1px solid #9bbab3; box-shadow:0 4px 0 #b2c8bd; border-radius:14px; min-width:44px; min-height:44px; }
+.game-worlds .pf-btn-jump { background:#d4eade; }
+.game-worlds button:focus-visible { outline:3px solid #295ea4; outline-offset:4px; }
+.game-worlds .pf-icon-btn:active,.game-worlds .sk-dbtn:active,.game-worlds .pf-btn:active { transform:translateY(2px); box-shadow:0 2px 0 #b2c8bd; }
+.game-worlds .snake-overlay { background:rgba(248,252,246,.97); color:#263f49; backdrop-filter:blur(8px); }
+.game-worlds .snake-overlay h3,.game-worlds .snake-overlay p { color:#263f49; }
+.game-worlds .pf-world-grid { gap:14px; }
+.game-worlds .pf-world-card { background:linear-gradient(155deg,#fffdf7,#e4eee7); color:#243c48; border:1px solid #b5ccc0; border-radius:20px; box-shadow:0 5px 0 #c3d3c8; padding:20px 14px; }
+.game-worlds .pf-world-icon { filter:drop-shadow(0 5px 3px #38534b20); font-size:2.4rem; }
+.game-worlds .pf-world-card.locked { opacity:.65; }
+.game-worlds .pf-toast { background:#fffdf2; color:#254a54; border:1px solid #b7ccc4; }
+.game-worlds .gw-pause { font:inherit; font-size:.8rem; padding:8px 12px; margin-inline-start:auto; }
+.game-worlds .gw-pause[aria-pressed="true"] { background:#d7e9f2; border:2px solid #296a70; }
+.game-worlds .snake-chip.done { background:#d7efdd; color:#235636; }
+@media(max-width:480px) { .game-worlds { padding:8px; border-radius:16px; } .game-worlds .game-score-box { padding:6px 10px; min-width:62px; } }
+@media(prefers-reduced-motion:reduce) { .game-worlds *, .game-worlds *::before,.game-worlds *::after { animation:none!important; transition:none!important; scroll-behavior:auto!important; } }
+/* The page's stacking context used to leave the header above the fullscreen
+   game, covering its back button. The in-game exit stays available. */
+body.game-fullscreen .wk-header { display:none; }
+body.game-fullscreen #game { background:#e9f1eb; }
+body.game-fullscreen #game > .game-wrap { padding:0; border:0; background:transparent; }
+.gw-card-art { display:block; width:100%; aspect-ratio:15/7; border-radius:14px; margin-bottom:12px; background:#e5f1eb; }
+.game-worlds #gp-grid .pf-world-card { overflow:hidden; text-align:start; }
+.game-worlds #gp-grid .pf-world-icon { display:none; }
+.game-worlds .pf-world-grid { grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); }
+.game-worlds #gp-grid .pf-world-title { font-size:1.05rem; }
+.game-worlds #gp-grid .pf-world-meta { font-size:.9rem; line-height:1.5; }
+
+/* The original games occupy the available viewport. Runner/racer resize the
+   world on rotation; Snake retains its board and uses object-fit. */
+body.game-fullscreen #game { max-width:none; padding:max(10px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left)); background:radial-gradient(ellipse at 30% 0,#eaf7fb,#e7efe8 70%); }
+body.game-fullscreen #game > .game-wrap { max-width:1200px; margin:0 auto; }
+body.game-fullscreen #game > .gw-session { height:calc(100dvh - max(10px,env(safe-area-inset-top)) - max(10px,env(safe-area-inset-bottom))); }
+.gw-session { display:flex; flex-direction:column; gap:6px; min-height:340px; }
+.gw-session .snake-hud { flex:none; margin:0; gap:12px; }
+.gw-session .game-score-box { min-width:72px; padding:4px 12px; }
+.gw-session .game-score-num { font-size:1.5rem; line-height:1.2; }
+.gw-session .game-round-info { font-size:clamp(.85rem,2vw,1.15rem); }
+.gw-session .pf-subhud { display:flex; flex-wrap:wrap; gap:6px; flex:none; margin:0; align-items:center; }
+.gw-session .pf-icon-btn { padding:8px 12px; font-size:.85rem; cursor:pointer; }
+.gw-session .snake-progress { margin:0; font-size:.95rem; }
+.gw-session .snake-canvas-wrap { flex:1; min-height:180px; margin:0; padding:0; background:#d9eae1; box-shadow:0 10px 40px #28534320,inset 0 0 0 1px #fff; }
+.gw-session .snake-canvas-wrap canvas { display:block; width:100%!important; height:100%; max-width:none!important; object-fit:contain; outline-offset:-4px; }
+.gw-session canvas:focus-visible { outline:3px solid #24599f; }
+.gw-session .snake-overlay { inset:0; overflow:auto; border-radius:18px; background:#f4faf0e8; backdrop-filter:blur(4px); }
+.gw-session .snake-overlay-card { margin:auto; max-width:440px; }
+.gw-session .snake-overlay button { min-height:44px; }
+.gw-session .snake-dpad { flex:none; grid-template-columns:repeat(4,minmax(48px,72px)); grid-template-rows:48px; grid-template-areas:'left up down right'; gap:10px; margin:0; }
+.gw-session .pf-controls { flex:none; gap:10px; margin:0; }
+.gw-session .pf-controls .pf-btn { padding:10px 24px; min-height:48px; }
+.gw-session .snake-hint { flex:none; margin:2px 0; font-size:.8rem; line-height:1.4; }
+.gw-objective { flex:none; text-align:center; margin:0; color:#34576a; font-size:.9rem; }
+.gw-objective strong { display:inline-block; min-width:32px; padding:3px 12px; border-radius:8px; background:#fffdf5; color:#1a5a47; font-size:1.1rem; box-shadow:0 2px 0 #aac7b7; }
+.gw-status { font-size:.8rem; color:#294f56; }
+.gw-status:empty { display:none; }
+.gw-help-dialog { color:#203f4e; background:#f9fcf4; border:1px solid #a9c3b9; border-radius:24px; padding:clamp(20px,4vw,36px); width:min(500px,calc(100vw - 32px)); max-height:calc(100dvh - 32px); box-shadow:0 20px 90px #102e3a50; }
+.gw-help-dialog::backdrop { background:#17344485; backdrop-filter:blur(6px); }
+.gw-help-dialog h2 { font-size:1.5rem; margin:0 0 16px; color:#203f4e; }
+.gw-help-dialog p { line-height:1.7; margin:0 0 20px; font-size:1.1rem; }
+.gw-help-dialog .gw-reassurance { font-size:.9rem; color:#426058; background:#e2eee4; padding:10px 14px; border-radius:12px; }
+.gw-help-dialog button { display:block; width:100%; min-height:48px; margin-top:12px; border-radius:12px; border:1px solid #8daaa0; background:#e2eee4; color:#234d48; font:inherit; cursor:pointer; }
+.gw-help-dialog .gw-return { background:#265e57; color:#fff; }
+.gw-help-dialog button:focus-visible { outline:3px solid #337bc2; outline-offset:3px; }
+@media(max-width:560px) {
+  .gw-session { gap:5px; }
+  .gw-session .pf-icon-btn { padding:6px 8px; font-size:.75rem; }
+  .gw-session .gw-pause { margin-inline-start:auto; }
+  .gw-session .game-score-box { min-width:60px; padding:3px 8px; }
+  .gw-session .snake-hint { font-size:.72rem; }
+  .gw-session .snake-progress { font-size:.8rem; }
+}
+@media(max-height:520px) and (min-width:600px) {
+  .gw-session { display:grid; grid-template-columns:minmax(190px,230px) minmax(0,1fr); grid-template-rows:auto auto 1fr auto; gap:8px 16px; min-height:300px; }
+  .gw-session .snake-canvas-wrap { grid-column:2; grid-row:1 / 5; min-height:0; }
+  .gw-session .snake-hud,.gw-session .pf-subhud,.gw-session .snake-progress,.gw-session .gw-objective,.gw-session .snake-dpad,.gw-session .pf-controls,.gw-session .snake-hint { grid-column:1; }
+  .gw-session .snake-hint { display:none; }
+  .gw-session .snake-dpad { gap:4px; grid-template-columns:repeat(4,44px); grid-template-rows:44px; }
+  .gw-session .pf-controls .pf-btn { padding:8px; font-size:.8rem; }
+}
+body.game-fullscreen #game { overflow-x:hidden; }
+.gw-session .pf-subhud { justify-content:flex-start; }
+.gw-session .gw-pause { margin-inline-start:auto; }
+.gw-session .snake-canvas-wrap { isolation:isolate; }
+.gw-session .snake-canvas-wrap:has(#sk-canvas) { background:linear-gradient(#e2eee4da,#c4dacfda),url('../assets/workshop/game-garden-v1.webp') center/cover; }
+.gw-session .pf-controls:has(#rc-left) { justify-content:center; gap:clamp(16px,10vw,120px); }
+.gw-session .pf-controls:has(#pf-jump) { justify-content:center; }
+.gw-session .pf-controls:has(#pf-jump) .pf-btn-jump { margin-left:0; }
+.gw-session .pf-controls > span:empty { display:none; }
+.gw-session .snake-overlay .btn-primary { color:#fff; background:#265e57; }
+.gw-session .gw-status { flex-basis:100%; text-align:center; }
+.gw-session .pf-icon-btn { margin-left:0; }
+.gw-session .gw-pause { margin-inline-start:auto; }
+.gw-session .gw-status { position:absolute; top:5px; left:50%; transform:translateX(-50%); z-index:2; width:max-content; max-width:80%; background:#f8fcf2ed; border:1px solid #b9cfc4; border-radius:12px; padding:5px 12px; pointer-events:none; }
+.gw-session .pf-subhud { position:relative; }
+.gw-session .gw-status:not(:empty) { top:calc(100% + 48px); }
+.gw-session .gw-intro-hint { font-size:1rem; line-height:1.6; margin:14px 0 20px; color:#345c55; }
+body.game-fullscreen #game > .age-decor { display:none; }
+.gw-session .snake-canvas-wrap .gw-status:not(:empty) { top:10px; }
+@media(max-width:560px) {
+  .gw-session .gw-fullscreen { font-size:0; width:44px; padding:6px; flex:none; }
+  .gw-session .gw-fullscreen::before { content:'⛶'; font-size:23px; }
+}
+@media(max-height:520px) and (min-width:600px) {
+  .gw-session .snake-hud { grid-row:1; }
+  .gw-session .pf-subhud { grid-row:2; }
+  .gw-session .gw-objective { grid-row:3; align-self:start; }
+  .gw-session .snake-dpad,.gw-session .pf-controls { grid-row:4; }
+  .gw-session .snake-progress { display:none; }
+}
+.gw-pace-state { font-size:.75rem; color:#315b55; }
+.gw-pace-state:empty { display:none; }
+.gw-help-dialog .gw-slow[aria-pressed="true"] { background:#d5e8d2; border:2px solid #2b6654; }
+.gw-help-dialog { margin:auto; }
+/* Active games use the complete screen width, including wide landscape. */
+body.game-fullscreen #game > .gw-session { width:100%; max-width:none; }
+.gw-session .gw-objective strong { font-size:1.3rem; padding:4px 14px; }
+@media(max-height:520px) and (min-width:600px) {
+  .gw-session { grid-template-columns:minmax(170px,200px) minmax(0,1fr); }
+  .gw-session .snake-hud { display:grid; grid-template-columns:1fr 1fr; gap:4px 8px; }
+  .gw-session .game-round-info { grid-column:1 / -1; grid-row:1; font-size:.78rem; line-height:1.3; }
+  .gw-session .game-score-box { min-width:0; padding:3px 6px; }
+  .gw-session .game-score-num { font-size:1.1rem; }
+  .gw-session .game-score-lbl { font-size:.7rem; }
+  .gw-session .pf-subhud { gap:5px; }
+  .gw-session .pf-icon-btn { padding:6px; min-width:44px; height:44px; }
+  .gw-session .gw-pause,.gw-session .gw-help,.gw-session .gw-fullscreen { font-size:0; width:44px; margin:0; flex:none; }
+  .gw-session .gw-pause::before { content:'Ⅱ'; font-size:20px; }
+  .gw-session .gw-pause[aria-pressed="true"]::before { content:'▶'; }
+  .gw-session .gw-help::before { content:'?'; font-size:22px; }
+  .gw-session .gw-fullscreen::before { content:'⛶'; font-size:23px; }
+  .gw-session .pf-controls { gap:5px; flex-wrap:wrap; }
+  .gw-session .pf-controls:has(#rc-left) { gap:12px; }
+  .gw-session .snake-canvas-wrap { height:100%; }
+}
+.gw-effects { position:absolute; z-index:1; top:10px; left:10px; right:10px; display:flex; flex-wrap:wrap; gap:6px; pointer-events:none; }
+.gw-effects span { background:#fffdf2ee; color:#244e58; border:1px solid #b0ccc2; border-radius:12px; padding:5px 9px; font-size:clamp(.7rem,1.6vw,.9rem); font-weight:700; box-shadow:0 3px 8px #26454015; }
+.gw-effects [hidden] { display:none; }
+.gw-help-dialog .gw-bonus-guide { border-left:3px solid #e9ac39; padding-left:12px; font-size:.9rem; }
+
+/* Location maps and free vehicle selection share accessible native buttons. */
+.gw-picker-title,.gw-garage h2 { color:#244e57; font-size:1.35rem; margin:12px 0 8px; }
+.gw-level-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:16px; padding:12px 0 24px; }
+.gw-level-card { display:flex; flex-direction:column; text-align:start; gap:8px; padding:10px 10px 16px; border:1px solid #abc8bb; border-radius:20px; background:#fffdf5; color:#244c55; box-shadow:0 4px 0 #c2d9cd; cursor:pointer; font:inherit; }
+.gw-level-card strong,.gw-level-card span { padding-inline:6px; }
+.gw-level-card:disabled { opacity:.68; cursor:default; }
+.gw-level-card:not(:disabled):hover { border-color:#258a81; box-shadow:0 5px 0 #83b8a6; }
+.gw-level-preview { display:block; width:100%; aspect-ratio:2/1; object-fit:cover; border-radius:12px; background:#deede5; }
+.gw-track-place { font-size:.9rem; font-weight:800; color:#296657; margin:8px 0; }
+.gw-garage { border:1px solid #b6d1c3; border-radius:22px; padding:14px; margin:16px 0 24px; background:linear-gradient(140deg,#f5fcf4,#e6f0ef); }
+.gw-garage h2 { margin:0; }
+.gw-garage p { margin:6px 0 12px; font-size:.85rem; color:#42636b; }
+.gw-vehicle-row { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.gw-vehicle-card { min-width:0; min-height:100px; border:2px solid #cadbd4; border-radius:16px; background:#ffffffbb; color:#244c55; cursor:pointer; padding:4px 4px 12px; font:inherit; }
+.gw-vehicle-card canvas { display:block; width:100%; aspect-ratio:15/8; }
+.gw-vehicle-card[aria-pressed="true"] { border-color:#277d70; background:#d8f0df; box-shadow:0 3px 0 #7fb49d; }
+.gw-vehicle-card[aria-pressed="true"] strong::before { content:'✓ '; }
+.gw-session .snake-overlay .gw-level-preview { max-height:145px; width:100%; object-fit:cover; margin-bottom:12px; }
+.gw-session .gw-next-place { font-size:.9rem; background:#dceee2; border-radius:12px; padding:8px; }
+@media(max-width:480px){.gw-level-grid{grid-template-columns:1fr 1fr;gap:10px}.gw-level-card{padding:7px 7px 12px;font-size:.85rem}.gw-vehicle-row{gap:6px}.gw-vehicle-card{font-size:.85rem}.gw-garage{padding:10px}}
+@media(max-height:520px) and (min-width:600px){.gw-session .snake-overlay .gw-level-preview{max-height:90px}.gw-session .snake-overlay-card{padding:12px}.gw-session .gw-intro-hint{font-size:.85rem;margin:8px 0}.gw-session .snake-overlay-target{font-size:1.5rem}}

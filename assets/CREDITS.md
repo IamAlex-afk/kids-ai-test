@@ -25,13 +25,12 @@
   {blue,purple,darkPurple}.png. Same pack as bg-stars.png, same purpose.
   License: CC0 1.0.
 
-Circuit Racer's roadside trees/lamp posts and the player character are
-drawn procedurally in `js/racing.js` (no image assets) — see that file's
-`drawTree`/`drawPole`/`robotBody`/`drawRunnerBot` functions. The player
-is a running/hovering bot, not a car (matches the site's AI/robot theme,
-same as the snake's monitor-head and the platformer's robot) — the
-`car-cyan/red/gold.png` sprites and the procedural car renderer this
-replaced have been removed as unused.
+Circuit Racer's current kart, tires, road, trees and lamps, and Snake's
+rounded body and monitor head are original procedural Canvas artwork in
+`js/game-worlds.js` (2026-10-31). The kart's rider uses the project-generated
+robot sprites credited below. The earlier procedural running-bot renderer
+remains in `js/racing.js` as a fallback; no third-party car model, game engine
+or new art pack was introduced by this update.
 
 - `sfx/round-complete.ogg` — from Kenney's "Music Jingles" pack
   (kenney.nl/assets/music-jingles), 8-Bit jingles/jingles_NES05.ogg.
@@ -51,3 +50,17 @@ replaced have been removed as unused.
   (kids-ai-test-lab.vonychkalesha.chatgpt.site/assets/workshop/), reused
   unmodified by the project owner. Downloaded 2026-10-26; verified as real
   WebP files (RIFF/WEBP VP8), 1200×800 and 660×440.
+
+## Original games garden backdrop (2026-10-30)
+
+`assets/workshop/game-garden-v1.webp` was generated for this project with OpenAI image generation. It is a decorative environment, not an illustration of an AI system or evidence of gameplay. Tiles, road and objects are drawn by the project's Canvas renderer in `js/game-worlds.js`. No additional third-party game engine or art pack is used by this update.
+
+## Original robot sprites (2026-10-30)
+
+`robot-explorer-v2.png` and `robot-armor-v2.png` were generated for this project with OpenAI image generation, with transparent backgrounds. The second image preserves the first character's pose and adds a protective robot vest. These are raster sprites rendered in Canvas 2D, not rigged 3D models or PlayStation assets. The earlier Kenney assets and credits are retained.
+
+Art direction: a friendly rounded ivory-and-turquoise explorer robot, expressive cyan eyes, orange shoes, polished toy-like depth, full body in a right-facing three-quarter pose; matching armor with an ivory/turquoise breastplate, shoulder protection and a shield emblem. The artwork represents a fictional game character and makes no claim about AI consciousness.
+
+## Four expedition locations (2026-10-31)
+
+`workshop/game-locations-v1.webp` — original four-panel environment atlas generated for this project with OpenAI's built-in image generation and encoded as WebP. Forest laboratory, coral bay, sun canyon and orbital station. Used by the Snake level map/board and Racer track cards/backgrounds. No third-party location, vehicle or character artwork was copied. The exact generation prompt and verification limits are recorded in `docs/review/EXPEDITION-2026-10-31.md`. The mechanical snake and three vehicle body designs are procedural artwork in `js/game-worlds.js`.

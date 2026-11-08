@@ -25,7 +25,7 @@
   const CONSENT = 'kat_consent_v1';
   // Every key this project has ever written. Exact keys + per-game prefixes.
   const OUR_KEYS = ['kat_v1', 'kat_v1_tracker', 'kat_stats', 'kat_companion_v2',
-    'kat_companion_intro_seen', 'kat_leaderboard_v1', 'kat_snake_muted'];
+    'kat_companion_intro_seen', 'kat_leaderboard_v1', 'kat_snake_muted', 'kat_snake_levels'];
   const OUR_PREFIXES = ['kat_race_', 'kat_pf_'];
   const isOurs = (k) => typeof k === 'string' &&
     (OUR_KEYS.includes(k) || OUR_PREFIXES.some(p => k.startsWith(p)));
