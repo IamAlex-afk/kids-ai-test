@@ -1550,7 +1550,7 @@ window.LANG_DATA = {
             'Code generation accuracy 💻',
           ],
           correct: 1,
-          explanation: 'ARC tasks require genuine novel reasoning — humans solve them easily, but LLMs fail dramatically. This is why Chollet argues current AI is fundamentally different from human intelligence.',
+          explanation: 'ARC tasks require genuine novel reasoning — humans solve them easily; language models struggled badly for years, and newer ones are catching up only at huge computing cost. This is why Chollet argues current AI is fundamentally different from human intelligence.',
           source:    'Chollet, "On the Measure of Intelligence", 2019',
           sourceUrl: 'https://arxiv.org/abs/1911.01547',
         },
