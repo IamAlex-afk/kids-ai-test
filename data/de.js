@@ -205,7 +205,7 @@ window.LANG_DATA = {
           example:'🦜 Papagei vs. Verständnis: Ein Papagei lernt, "Gute Nacht" zu sagen, wenn es dunkel wird. Er hat KEINE Ahnung, was "Nacht" bedeutet. ChatGPT ist viel ausgefeilter — aber die Grundidee ist ähnlich.',
           source:'Brown et al., "GPT-3", NeurIPS 2020', sourceUrl:'https://arxiv.org/abs/2005.14165',
           miniTest: [{ q:'Warum klingt ChatGPT wie eine echte Person?',
-            options:['Weil es im Geheimen EINE Person ist 🤫','Weil es aus Milliarden menschlicher Gespräche gelernt hat 📚','Weil es Gefühle hat 💛','Weil es Magie ist ✨'],
+            options:['Weil es im Geheimen EINE Person ist 🤫','Weil es aus riesigen Mengen von Texten gelernt hat, die Menschen geschrieben haben 📚','Weil es Gefühle hat 💛','Weil es Magie ist ✨'],
             correct:1, explanation:'ChatGPT hat gelernt, menschlich zu klingen, indem es studiert hat, wie Menschen schreiben — nicht weil es MENSCHLICH ist.' }],
         },
         {

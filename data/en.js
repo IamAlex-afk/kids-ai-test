@@ -458,7 +458,7 @@ window.LANG_DATA = {
           miniTest: [
             {
               q:       'Why does ChatGPT sound like a real person?',
-              options: ['Because it IS a person in secret 🤫', 'Because it learned from billions of human conversations 📚', 'Because it has feelings 💛', 'Because it\'s magic ✨'],
+              options: ['Because it IS a person in secret 🤫', 'Because it learned from a huge amount of text written by people 📚', 'Because it has feelings 💛', 'Because it\'s magic ✨'],
               correct: 1,
               explanation: 'ChatGPT learned to sound human by studying how humans write — not because it IS human.',
             },
