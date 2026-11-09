@@ -1138,9 +1138,10 @@ window.LANG_DATA = {
         {
           icon:  '🫂',
           title: 'Bạn đồng hành AI và sức khỏe tâm thần',
-          text:  'Các ứng dụng bạn đồng hành AI được thiết kế để cảm giác hỗ trợ cảm xúc và luôn sẵn sàng — chính vì vậy một số nhà nghiên cứu lo ngại. Không giống các mối quan hệ con người, chúng không bao giờ phản bác bạn, không bao giờ cần điều gì đáp lại, và được xây dựng bởi các công ty với mục tiêu về mức độ tương tác và doanh thu, không nhất thiết vì lợi ích của bạn.',
+          text:  'Các ứng dụng bạn đồng hành AI được thiết kế để cảm giác hỗ trợ cảm xúc và luôn sẵn sàng — chính vì vậy một số nhà nghiên cứu lo ngại. Không giống các mối quan hệ con người, chúng hiếm khi phản bác bạn, không bao giờ cần điều gì đáp lại, và được xây dựng bởi các công ty với mục tiêu về mức độ tương tác và doanh thu, không nhất thiết vì lợi ích của bạn.',
           example: '⚠️ Thoải mái không phải lúc nào cũng đồng nghĩa với lành mạnh. Một mối quan hệ không có chút ma sát nào có thể âm thầm thay thế công việc khó khăn hơn nhưng giá trị hơn của kết nối con người thật sự.',
-          source:    null,
+          source:    'Common Sense Media, "Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions',
           miniTest: [
             {
               q:       'Vì sao các ứng dụng bạn đồng hành AI có thể là mối lo ngại về sức khỏe tâm thần với một số người dùng?',
