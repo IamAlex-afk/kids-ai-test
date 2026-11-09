@@ -49,3 +49,27 @@ test('seo: no two pages share a title or a description', () => {
     for (const m of meta) { assert.ok(!seen.has(m[k]), `${k} of ${m.f} repeats ${seen.get(m[k])}`); seen.set(m[k], m.f); }
   }
 });
+
+// Google, "Tell Google about localized versions of your page" (read 2026-11-08):
+// "Each language version must list itself as well as all other language
+// versions" and "If two pages don't both point to each other, the tags will be
+// ignored." Plus an x-default on every page, and every alternate exists.
+test('seo: hreflang lists itself and x-default, and every pair points both ways', () => {
+  const SITE = 'https://iamalex-afk.github.io/kids-ai-test/';
+  const toFile = (u) => { let p = u.slice(SITE.length).split(/[?#]/)[0]; if (p === '' || p.endsWith('/')) p += 'index.html'; return p; };
+  const info = new Map(meta.map(({ f, h }) => [f, {
+    can: (h.match(/<link rel="canonical" href="([^"]+)"/) || [])[1],
+    alts: [...h.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"/g)].map((m) => [m[1], m[2]]),
+  }]));
+  for (const [f, { can, alts }] of info) {
+    assert.ok(can, `${f}: canonical`);
+    assert.ok(alts.some(([, u]) => u === can), `${f}: hreflang lists itself`);
+    assert.ok(alts.some(([c]) => c === 'x-default'), `${f}: x-default`);
+    for (const [c, u] of alts) {
+      if (c === 'x-default' || !u.startsWith(SITE)) continue;
+      const g = toFile(u);
+      assert.ok(info.has(g), `${f}: ${c} alternate ${g} exists`);
+      if (g !== f) assert.ok(info.get(g).alts.some(([, v]) => v === can), `${g} points back to ${f}`);
+    }
+  }
+});
