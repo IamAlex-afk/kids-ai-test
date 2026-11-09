@@ -30,13 +30,15 @@ export const fitTitle = (...c) => c.find((s) => [...s].length <= TITLE_MAX) || c
 // ones are cut in search results); a word-boundary cut with "…" when whole
 // sentences give less than 100. The full text stays on the page.
 export const DESC_MAX = 160;
+export const DESC_MIN = 70;
 export function metaDesc(text) {
   const s = String(text).replace(/\s+/g, ' ').trim();
   if ([...s].length <= DESC_MAX) return s;
-  const parts = s.match(/[^.!?।]+[.!?।]+(?=\s|$)/g) || [];
+  // Whole sentences (a closing quote may follow the full stop); cut mid-sentence only as a last resort.
+  const parts = s.match(/[^.!?।]+[.!?।]+["'»”’)]?(?=\s|$)/g) || [];
   let out = '';
-  for (const p of parts) { const next = (out + p).trim(); if ([...next].length > DESC_MAX) break; out = next + ' '; }
-  if ([...out.trim()].length >= 100) return out.trim();
+  for (const p of parts) { const next = (out + p.trim()).trim(); if ([...next].length > DESC_MAX) break; out = next + ' '; }
+  if ([...out.trim()].length >= DESC_MIN) return out.trim();
   const cut = [...s].slice(0, DESC_MAX - 1).join('');
   return cut.slice(0, cut.lastIndexOf(' ')).replace(/[\s,;:—–-]+$/, '') + '…';
 }

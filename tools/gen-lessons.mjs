@@ -46,13 +46,6 @@ export function loadData(l) {
   return ctx.window.LANG_DATA;
 }
 
-function snippet(text, max = 155) {
-  const s = String(text).replace(/\s+/g, ' ').trim();
-  if (s.length <= max) return s;
-  const cut = s.slice(0, max);
-  return cut.slice(0, Math.max(cut.lastIndexOf(' '), max - 20)).replace(/[\s,;:—–-]+$/, '') + '…';
-}
-
 function head(l, { title, desc, file }) {
   const alt = LANGS.map((x) => `  <link rel="alternate" hreflang="${x}" href="${url(x, file)}">`).join('\n');
   return `<!DOCTYPE html>
@@ -87,7 +80,7 @@ function crumbsLd(items) {
 
 // What the lesson is, for search engines: age, language, free, its source.
 function resourceLd(l, x, age, href) {
-  const o = { '@context': 'https://schema.org', '@type': 'LearningResource', name: x.title, description: snippet(x.text),
+  const o = { '@context': 'https://schema.org', '@type': 'LearningResource', name: x.title, description: metaDesc(x.text),
     inLanguage: HTML_LANG[l] || l, url: href, learningResourceType: 'lesson', typicalAgeRange: age.range,
     isAccessibleForFree: true, about: { '@type': 'Thing', name: 'Artificial intelligence' } };
   if (x.sourceUrl) o.citation = { '@type': 'CreativeWork', name: x.source || x.sourceUrl, url: x.sourceUrl };
@@ -151,7 +144,7 @@ function lessonPage(l, ageIdx, lessons, i) {
     ? `<p class="wk-source">${esc(t.source)}: <a href="${esc(x.sourceUrl)}" rel="noopener" target="_blank">${esc(x.source || x.sourceUrl)}</a></p>`
     : x.source ? `<p class="wk-source">${esc(t.source)}: ${esc(x.source)}</p>`
       : `<p class="wk-source wk-source-none">${esc(t.noSource)}</p>`;
-  return `${head(l, { title, desc: snippet(x.text), file })}
+  return `${head(l, { title, desc: metaDesc(x.text), file })}
 ${crumbsLd(ldItems)}
 ${resourceLd(l, x, age, url(l, file))}
 </head>
