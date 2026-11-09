@@ -28,3 +28,8 @@ prepare-kids-ai.sh
 
 # Local working files of AI sessions (scripts, downloaded CI reports)
 scratchpad/
+
+# Local only: plans, reviews, session notes (never on GitHub)
+_local/
+SESSION-STATUS.md
+*.patch
