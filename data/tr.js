@@ -222,7 +222,7 @@ window.LANG_DATA = {
         {
           icon:'🛡️',
           title:'SEN kontroldesin',
-          text:       "YZ, insanların şimdiye kadar yaptığı en güçlü araçtır. Ama yine de bir araç — tıpkı çekiç gibi. Çekiç bir ev inşa edebilir ya da bir pencereyi kırabilir. Nasıl kullanacağına SEN karar verirsin. YZ'yi en iyi anlayan insanlar kontrolü elinde tutan insanlardır. Ve bir araç zarar vermek için kullanılırsa, sorumlu olan kişidir — araç değil.",
+          text:       "YZ çok güçlü bir araçtır. Ama yine de bir araç — tıpkı çekiç gibi. Çekiç bir ev inşa edebilir ya da bir pencereyi kırabilir. Nasıl kullanacağına SEN karar verirsin. YZ'yi en iyi anlayan insanlar kontrolü elinde tutan insanlardır. Ve bir araç zarar vermek için kullanılırsa, sorumlu olan kişidir — araç değil.",
           example:"🔨 + 🧠 = 🏠. Araç + Akıllı insan = Harika sonuç. YZ + Eleştirel düşünce = Senin süper gücün.",
           source:'UNESCO, "AI competency framework for students", 2024', sourceUrl:'https://doi.org/10.54675/JKJB9835',
           miniTest: [{ q:"YZ'yi kullanmanın en iyi yolu nedir?",

@@ -221,7 +221,7 @@ window.LANG_DATA = {
         {
           icon:'🛡️',
           title:'TOI, tu as le contrôle',
-          text:       "L'IA est l'outil le plus puissant que les humains aient jamais construit. Mais c'est toujours un outil — comme un marteau. Un marteau peut construire une maison ou casser une fenêtre. C'est TOI qui décides comment tu l'utilises. Et si un outil est utilisé pour faire du mal, c'est la personne qui est responsable — pas l'outil.",
+          text:       "L'IA est un outil très puissant. Mais c'est toujours un outil — comme un marteau. Un marteau peut construire une maison ou casser une fenêtre. C'est TOI qui décides comment tu l'utilises. Et si un outil est utilisé pour faire du mal, c'est la personne qui est responsable — pas l'outil.",
           example:"🔨 + 🧠 = 🏠. Outil + Humain intelligent = Super résultat. IA + Pensée critique = Ton superpouvoir.",
           source:'UNESCO, « AI competency framework for students », 2024', sourceUrl:'https://doi.org/10.54675/JKJB9835',
           miniTest: [{ q:"Quelle est la meilleure façon d'utiliser l'IA ?",

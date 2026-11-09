@@ -222,7 +222,7 @@ window.LANG_DATA = {
         {
           icon:'🛡️',
           title:'KAMU yang pegang kendali',
-          text:       "AI adalah alat paling canggih yang pernah dibuat manusia. Tapi tetap saja alat — seperti palu. Palu bisa membangun rumah atau memecahkan jendela. KAMU yang memutuskan cara menggunakannya. Orang yang paling memahami AI adalah mereka yang tetap memegang kendali. Dan jika alat itu disalahgunakan, manusialah yang bertanggung jawab — bukan alatnya.",
+          text:       "AI adalah alat yang sangat canggih. Tapi tetap saja alat — seperti palu. Palu bisa membangun rumah atau memecahkan jendela. KAMU yang memutuskan cara menggunakannya. Orang yang paling memahami AI adalah mereka yang tetap memegang kendali. Dan jika alat itu disalahgunakan, manusialah yang bertanggung jawab — bukan alatnya.",
           example:'🔨 + 🧠 = 🏠. Alat + Manusia cerdas = Hasil luar biasa. AI + Berpikir kritis = Kekuatan supermu.',
           source:'UNESCO, "AI competency framework for students", 2024', sourceUrl:'https://doi.org/10.54675/JKJB9835',
           miniTest: [{ q:'Apa cara terbaik menggunakan AI?',
