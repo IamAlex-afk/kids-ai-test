@@ -170,3 +170,8 @@
   .wk-start { padding: 20px 18px; } .wk-start-go { justify-self: stretch; justify-content: center; }
   .wk-route-alt { grid-template-columns: 1fr; }
 }
+
+/* Games remain directly accessible alongside the learning route (owner patch 6c7632c). */
+.wk-games-go { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; margin: 0 0 20px; padding: 12px 26px; border: 2px solid var(--violet); border-radius: 999px; background: #fff; color: var(--violet); font: inherit; font-weight: 800; cursor: pointer; }
+.wk-games-go:hover { background: #f1eaff; }
+.wk-games-go:focus-visible { outline: 3px solid var(--violet); outline-offset: 4px; }
