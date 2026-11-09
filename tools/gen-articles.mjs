@@ -15,7 +15,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { header, pageOf, esc, fitTitle, metaDesc } from './gen-entry.mjs';
+import { header, pageOf, esc, fitTitle, metaDesc, authorLine } from './gen-entry.mjs';
 import { T } from './entry-i18n.mjs';
 import { L } from './lesson-i18n.mjs';
 import { ARTICLES, ARTICLE_LANGS, ARTICLES_LASTMOD } from './articles/index.mjs';
@@ -77,6 +77,7 @@ function footer(l) {
     <p>${esc(L[l].privacy)}</p>
     <p><a href="../../lessons/${l}/">${esc(L[l].all)}</a></p>
     <p><a href="../../${pageOf(l)}#about">${esc(T[l].about)}</a></p>
+    ${authorLine(T[l], l)}
   </div>
 </footer>
 </body>
