@@ -221,7 +221,7 @@ window.LANG_DATA = {
         {
           icon:'🛡️',
           title:'DU hast die Kontrolle',
-          text:       "KI ist das mächtigste Werkzeug, das Menschen je gebaut haben. Aber es ist immer noch ein Werkzeug — wie ein Hammer. Ein Hammer kann ein Haus bauen oder ein Fenster einschlagen. DU entscheidest, wie du ihn benutzt. Die Menschen, die KI am besten verstehen, sind diejenigen, die die Kontrolle behalten. Und wenn ein Werkzeug missbraucht wird, trägt der Mensch die Verantwortung — nicht das Werkzeug.",
+          text:       "KI ist ein sehr mächtiges Werkzeug. Aber es ist immer noch ein Werkzeug — wie ein Hammer. Ein Hammer kann ein Haus bauen oder ein Fenster einschlagen. DU entscheidest, wie du ihn benutzt. Die Menschen, die KI am besten verstehen, sind diejenigen, die die Kontrolle behalten. Und wenn ein Werkzeug missbraucht wird, trägt der Mensch die Verantwortung — nicht das Werkzeug.",
           example:'🔨 + 🧠 = 🏠. Werkzeug + Kluger Mensch = Tolles Ergebnis. KI + Kritisches Denken = Deine Superkraft.',
           source:'UNESCO, „AI competency framework for students“, 2024', sourceUrl:'https://doi.org/10.54675/JKJB9835',
           miniTest: [{ q:'Was ist der beste Weg, KI zu nutzen?',

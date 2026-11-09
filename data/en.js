@@ -483,7 +483,7 @@ window.LANG_DATA = {
         {
           icon:  '🛡️',
           title: 'YOU are in control',
-          text:       "AI is the most powerful tool humans have ever built. But it's still a tool — like a hammer. A hammer can build a house or break a window. YOU decide how to use it. The people who understand AI best are the ones who stay in control of it. And if a tool is used to cause harm, the person is responsible — not the tool.",
+          text:       "AI is a very powerful tool. But it's still a tool — like a hammer. A hammer can build a house or break a window. YOU decide how to use it. The people who understand AI best are the ones who stay in control of it. And if a tool is used to cause harm, the person is responsible — not the tool.",
           example: '🔨 + 🧠 = 🏠. Tool + Smart Human = Amazing Result. AI + Critical Thinking = Your Superpower.',
           source:    'UNESCO, "AI competency framework for students", 2024',
           sourceUrl: 'https://doi.org/10.54675/JKJB9835',

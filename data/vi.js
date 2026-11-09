@@ -391,7 +391,7 @@ window.LANG_DATA = {
         {
           icon:  '🛡️',
           title: 'EM là người kiểm soát',
-          text:       "AI là công cụ mạnh mẽ nhất mà con người từng tạo ra. Nhưng nó vẫn chỉ là một công cụ — giống như cái búa. Cái búa có thể xây một ngôi nhà hoặc làm vỡ cửa sổ. EM quyết định cách sử dụng nó. Những người hiểu AI rõ nhất là những người luôn kiểm soát được nó. Và nếu một công cụ bị dùng để gây hại, người chịu trách nhiệm là con người — không phải công cụ.",
+          text:       "AI là một công cụ rất mạnh mẽ. Nhưng nó vẫn chỉ là một công cụ — giống như cái búa. Cái búa có thể xây một ngôi nhà hoặc làm vỡ cửa sổ. EM quyết định cách sử dụng nó. Những người hiểu AI rõ nhất là những người luôn kiểm soát được nó. Và nếu một công cụ bị dùng để gây hại, người chịu trách nhiệm là con người — không phải công cụ.",
           example: '🔨 + 🧠 = 🏠. Công cụ + Con người thông minh = Kết quả tuyệt vời. AI + Tư duy phản biện = Siêu năng lực của em.',
           source:    'UNESCO, "AI competency framework for students", 2024',
           sourceUrl: 'https://doi.org/10.54675/JKJB9835',

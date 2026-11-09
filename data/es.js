@@ -233,7 +233,7 @@ window.LANG_DATA = {
         {
           icon:'🛡️',
           title:'TÚ tienes el control',
-          text:       "La IA es la herramienta más poderosa que los humanos han construido. Pero sigue siendo una herramienta — como un martillo. Un martillo puede construir una casa o romper una ventana. TÚ decides cómo usarlo. Las personas que mejor entienden la IA son las que mantienen el control. Y si una herramienta se usa para hacer daño, el responsable es la persona, no la herramienta.",
+          text:       "La IA es una herramienta muy poderosa. Pero sigue siendo una herramienta — como un martillo. Un martillo puede construir una casa o romper una ventana. TÚ decides cómo usarlo. Las personas que mejor entienden la IA son las que mantienen el control. Y si una herramienta se usa para hacer daño, el responsable es la persona, no la herramienta.",
           example:'🔨 + 🧠 = 🏠. Herramienta + Humano inteligente = Resultado increíble. IA + Pensamiento crítico = Tu superpoder.',
           source:'UNESCO, «AI competency framework for students», 2024', sourceUrl:'https://doi.org/10.54675/JKJB9835',
           miniTest: [{ q:'¿Cuál es la mejor forma de usar la IA?',

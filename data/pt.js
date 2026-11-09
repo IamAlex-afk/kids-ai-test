@@ -221,7 +221,7 @@ window.LANG_DATA = {
         {
           icon:'🛡️',
           title:'VOCÊ tem o controle',
-          text:       "A IA é a ferramenta mais poderosa que os humanos já construíram. Mas ainda é uma ferramenta — como um martelo. Um martelo pode construir uma casa ou quebrar uma janela. VOCÊ decide como usar. As pessoas que melhor entendem a IA são as que mantêm o controle. E se uma ferramenta for usada para causar dano, o responsável é a pessoa — não a ferramenta.",
+          text:       "A IA é uma ferramenta muito poderosa. Mas ainda é uma ferramenta — como um martelo. Um martelo pode construir uma casa ou quebrar uma janela. VOCÊ decide como usar. As pessoas que melhor entendem a IA são as que mantêm o controle. E se uma ferramenta for usada para causar dano, o responsável é a pessoa — não a ferramenta.",
           example:'🔨 + 🧠 = 🏠. Ferramenta + Humano inteligente = Resultado incrível. IA + Pensamento crítico = Seu superpoder.',
           source:'UNESCO, «AI competency framework for students», 2024', sourceUrl:'https://doi.org/10.54675/JKJB9835',
           miniTest: [{ q:'Qual é a melhor forma de usar a IA?',
