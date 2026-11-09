@@ -11,7 +11,9 @@ for (const lang of LANGS) {
       await toRoute(page, lang, age);
       await noHorizontalOverflow(page, 'route');
 
-      await page.locator('#wk-route').getByRole('button', { name: T[lang].allGames }).click();
+      const go = page.locator('#wk-route .wk-games-go');   // the owner's pill button (the card below has the same label)
+      await expect(go).toContainText(T[lang].allGames);
+      await go.click();
       await expectCatalog(page, lang);
       await noHorizontalOverflow(page, 'catalog');
       await playEachGame(page, lang);
