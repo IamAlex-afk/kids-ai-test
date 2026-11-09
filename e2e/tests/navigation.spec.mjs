@@ -27,7 +27,7 @@ for (const lang of LANGS) {
 test('ru: browser Back — game → activities → home, no loops', async ({ page }) => {
   const errors = watchErrors(page);
   await toRoute(page, 'ru', 'child');
-  await page.locator('#wk-route [data-wk-games]').click();
+  await page.locator('#wk-route .wk-games-go').click();
   await expectCatalog(page, 'ru');
 
   await page.goBack();                                   // closes the catalog
@@ -47,7 +47,7 @@ test('ru: Change age → new age is used by the games', async ({ page }) => {
   await expect(page.locator('#wk-age')).toBeVisible();
   await page.locator('.wk-age[data-age="adult"]').click();
   await expect(page.locator('#wk-route [data-route-label]')).toHaveText('14+');
-  await page.locator('#wk-route [data-wk-games]').click();
+  await page.locator('#wk-route .wk-games-go').click();
   await expectCatalog(page, 'ru');
   await expect(page.locator('body')).toHaveAttribute('data-age', 'adult');
   expect(errors).toEqual([]);
@@ -60,7 +60,7 @@ test('ru: Lessons and a quiz → exit → all three games still there', async ({
   await expect(page.locator('#lessons')).toBeVisible();
   await page.locator('#lessons-exit-btn').click();
   await expect(page.locator('#wk-route')).toBeVisible();
-  await page.locator('#wk-route [data-wk-games]').click();
+  await page.locator('#wk-route .wk-games-go').click();
   await expectCatalog(page, 'ru');
   expect(errors).toEqual([]);
 });
