@@ -83,6 +83,15 @@ export const SOURCES = {
     where: 'abstract: final test after 5 min, 2 days or 1 week; after 5 min restudying was better',
     checked: '2026-10-28',
   },
+  csm2025: {
+    title: 'Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions',
+    by: 'Common Sense Media',
+    year: 2025,
+    url: 'https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions',
+    quote: 'A third of teens have chosen AI companions over humans for serious conversations',
+    where: 'report page, key findings',
+    checked: '2026-11-09',
+  },
   unesco2023: {
     title: 'Guidance for generative AI in education and research',
     by: 'UNESCO',

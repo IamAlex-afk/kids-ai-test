@@ -38,4 +38,14 @@ export const ARTICLES = [
     level: 'data',
     links: ['lesson:5-7-5', 'lesson:8-10-3', 'lesson:11-13-8', 'lesson:14-plus-8'],
   },
+  {
+    slug: 'family-ai-agreement',
+    published: '2026-11-09',
+    checked: '2026-11-09',
+    audience: 'family',
+    facts: [['unicef2025'], ['unesco2023'], ['bastani2025'], ['ji2023'], ['csm2025']],
+    myths: [['unicef2025', 'unesco2024'], ['ji2023'], ['bastani2025']],
+    level: 'experts',
+    links: ['lesson:5-7-3', 'lesson:8-10-4', 'lesson:11-13-4', 'lesson:14-plus-9'],
+  },
 ];
