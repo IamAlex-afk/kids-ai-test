@@ -13,7 +13,7 @@
 <context>
 Сайт: бесплатно, без регистрации, без сбора данных, 4 возраста (5–7, 8–10, 11–13, 14+) × 10 языков
 (en ru de es fr hi id pt tr vi). RU — эталон смысла. Репо IamAlex-afk/kids-ai-test, публикация = merge PR в main.
-Состояние: SESSION-STATUS.md (верх) и docs/WORK-PLAN-QUALITY.md (первая строка без ✅).
+Состояние: SESSION-STATUS.md (верх) и docs/MASTER-PLAN-2026-11.md (первая подзадача [ ] сверху вниз; старый план — docs/WORK-PLAN-QUALITY.md).
 Правила Google — docs/review/google-rules.md; протокол текстов — docs/CONTENT-REVIEW.md.
 </context>
 
