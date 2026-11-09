@@ -83,10 +83,10 @@ function activityPage(l, s, idx) {
   const a = t.adult;
   const explain = s.staticKeys.map((k) => `      <p>${esc(t[k])}</p>`).join('\n');
   const sources = s.sources.map((x) => `        <li><a href="${esc(x.url)}" rel="noopener" target="_blank">${esc(x.title)}</a><br><span class="wk-supports">${esc(u.supports)}: ${esc(x.supports[l])}</span></li>`).join('\n');
-  const ld = { '@context': 'https://schema.org', '@type': 'LearningResource', name: t.title, description: metaDesc(t.desc),
+  const ld = { '@context': 'https://schema.org', '@type': 'LearningResource', name: t.title, description: metaDesc(t.desc, t.title),
     inLanguage: l, url: url(l, file), learningResourceType: 'activity', typicalAgeRange: '5-17', isAccessibleForFree: true,
     citation: s.sources.map((x) => ({ '@type': 'CreativeWork', name: x.title, url: x.url })) };
-  return `${head(l, { title: fitTitle(`${t.title} — ${u.series} | Kids AI Test`, `${t.title} | Kids AI Test`, t.title), desc: metaDesc(t.desc), file, langs: s.langs, wait: true })}
+  return `${head(l, { title: fitTitle(`${t.title} — ${u.series} | Kids AI Test`, `${t.title} | Kids AI Test`, t.title), desc: metaDesc(t.desc, t.title), file, langs: s.langs, wait: true })}
   <script type="application/ld+json">${jsonForScript(ld)}</script>
 </head>
 <body class="wk-home wk-page wk-workshop" data-age="child">
