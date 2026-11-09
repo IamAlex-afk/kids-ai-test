@@ -24,7 +24,7 @@
   // Age from the address (?age=8-10), else the page default. Changing it is
   // an ordinary link (the age switcher), so it also works without JS.
   const qAge = new URLSearchParams(location.search).get('age');
-  const age = SLUG[qAge] || D.defaultAge;
+  const age = Object.prototype.hasOwnProperty.call(SLUG, qAge) ? SLUG[qAge] : D.defaultAge; // ?age=__proto__ etc. -> default
   document.body.dataset.age = age;
   document.querySelectorAll('.wk-ageswitch a').forEach((a) => {
     if (SLUG[a.dataset.slug] === age) a.setAttribute('aria-current', 'true');
