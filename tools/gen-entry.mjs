@@ -37,7 +37,7 @@ export function metaDesc(text) {
   // Whole sentences (a closing quote may follow the full stop); cut mid-sentence only as a last resort.
   const parts = s.match(/[^.!?।]+[.!?।]+["'»”’)]?(?=\s|$)/g) || [];
   let out = '';
-  for (const p of parts) { const next = (out + p).trim(); if ([...next].length > DESC_MAX) break; out = next + ' '; }
+  for (const p of parts) { const next = (out + p.trim()).trim(); if ([...next].length > DESC_MAX) break; out = next + ' '; }
   if ([...out.trim()].length >= DESC_MIN) return out.trim();
   const cut = [...s].slice(0, DESC_MAX - 1).join('');
   return cut.slice(0, cut.lastIndexOf(' ')).replace(/[\s,;:—–-]+$/, '') + '…';
