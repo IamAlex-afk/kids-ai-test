@@ -1362,9 +1362,10 @@ window.LANG_DATA = {
         {
           icon:  '🫂',
           title: 'AI companions and mental health',
-          text:  'AI companion apps are designed to feel emotionally supportive and always available — which is exactly why some researchers are concerned. Unlike human relationships, they never challenge you, never need anything back, and are built by companies with engagement and revenue goals, not necessarily your wellbeing.',
+          text:  'AI companion apps are designed to feel emotionally supportive and always available — which is exactly why some researchers are concerned. Unlike human relationships, they rarely push back, never need anything back, and are built by companies with engagement and revenue goals, not necessarily your wellbeing.',
           example: '⚠️ Comfortable isn\'t always healthy. A relationship with zero friction can quietly substitute for the harder, more valuable work of real human connection.',
-          source:    null,
+          source:    'Common Sense Media, "Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions", 2025',
+          sourceUrl: 'https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions',
           miniTest: [
             {
               q:       'Why might AI companion apps be a mental health concern for some users?',
