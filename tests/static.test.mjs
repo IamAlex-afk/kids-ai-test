@@ -94,10 +94,15 @@ test('parents\' FAQ: review 2026-11 findings do not come back', () => {
 });
 
 // Owner 2026-11-07: the author's "33 protocols" book has nothing to do with a kids'
-// site — no promo line under the FAQ and no footer link.
-test('home pages: no promo for the author\'s other projects', () => {
+// site — no promo line under the FAQ and no link to the book/protocols.
+// Owner 2026-11-09: one footer link to the author's adult AI-dependency tests is allowed
+// (the test pages of the same site, not protocols.html).
+test('home pages: no promo for the author\'s book; only the adult tests link', () => {
   for (const l of LANGS) {
-    assert.doesNotMatch(read(page(l)), /human-os-patch-33-protocols/, page(l));
+    const h = read(page(l));
+    assert.doesNotMatch(h, /human-os-patch-33-protocols\/(?:[a-z]{2}\/)?protocols\.html/, page(l));
+    assert.doesNotMatch(h, /33\s*(?:protocol|протокол|Protokoll|protocolo|protocole|protokol|giao thức)/i, page(l));
+    assert.ok((h.match(/human-os-patch-33-protocols/g) || []).length <= 1, `${page(l)}: one tests link at most`);
     assert.doesNotMatch(read(`js/parents-faq/${l}.js`), /proto_by|proto_desc/, l);
   }
 });
