@@ -1268,7 +1268,7 @@ window.LANG_DATA = {
           icon:  '🏛️',
           title: 'AI Governance: regulation, self-regulation, and power',
           text:  'Three governance models currently compete: (1) The EU AI Act — binding risk-based regulation, prohibited uses, transparency requirements; (2) US approach — mostly voluntary frameworks (NIST AI RMF, White House commitments); (3) China — state-directed AI with national strategic goals. The fundamental tension: safety and accountability slow deployment; speed is commercially and strategically valuable. Who writes the rules shapes who benefits.',
-          example: '⚖️ The EU AI Act bans police from using real-time face recognition in public spaces — with narrow exceptions and only with a court\'s approval. Other countries set very different rules. Same technology — different legal realities.',
+          example: '⚖️ The EU AI Act bans police from using real-time face recognition in public spaces — with narrow exceptions and only with approval from a court or an independent authority. Other countries set very different rules. Same technology — different legal realities.',
           source:    'EU AI Act (2024), NIST AI RMF 1.0 (2023)',
           sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
           miniTest: [
@@ -1572,7 +1572,7 @@ window.LANG_DATA = {
             'AI used in job recruitment 💼',
           ],
           correct: 1,
-          explanation: 'Article 5 bans police real-time remote biometric identification in public spaces — except narrow cases authorised by a court. Medical and recruitment AI are high-risk: not banned, but they must meet strict requirements. Watermarking is a transparency requirement.',
+          explanation: 'Article 5 bans police real-time remote biometric identification in public spaces — except narrow cases authorised by a court or an independent authority. Medical and recruitment AI are high-risk: not banned, but they must meet strict requirements. Watermarking is a transparency requirement.',
           source:    'EU AI Act Article 5',
           sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
         },

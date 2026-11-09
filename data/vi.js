@@ -1044,7 +1044,7 @@ window.LANG_DATA = {
           icon:  '🏛️',
           title: 'Quản trị AI: quy định, tự quản, và quyền lực',
           text:  'Ba mô hình quản trị hiện đang cạnh tranh: (1) Đạo luật AI của EU — quy định ràng buộc dựa trên rủi ro, cấm một số ứng dụng, yêu cầu minh bạch; (2) Cách tiếp cận của Mỹ — chủ yếu là các khung tự nguyện (NIST AI RMF, cam kết Nhà Trắng); (3) Trung Quốc — AI do nhà nước định hướng với mục tiêu chiến lược quốc gia. Căng thẳng cơ bản: an toàn và trách nhiệm giải trình làm chậm việc triển khai; tốc độ mang giá trị thương mại và chiến lược. Ai viết ra luật lệ sẽ định hình ai được hưởng lợi.',
-          example: '⚖️ Đạo luật AI của EU cấm cảnh sát nhận diện khuôn mặt theo thời gian thực ở nơi công cộng — trừ một số ngoại lệ hẹp và phải có tòa án cho phép. Các nước khác có quy định rất khác. Cùng một công nghệ — những thực tế pháp lý khác nhau.',
+          example: '⚖️ Đạo luật AI của EU cấm cảnh sát nhận diện khuôn mặt theo thời gian thực ở nơi công cộng — trừ một số ngoại lệ hẹp và phải được tòa án hoặc một cơ quan độc lập cho phép. Các nước khác có quy định rất khác. Cùng một công nghệ — những thực tế pháp lý khác nhau.',
           source:    'EU AI Act (2024), NIST AI RMF 1.0 (2023)',
           sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
           miniTest: [
@@ -1292,7 +1292,7 @@ window.LANG_DATA = {
             'AI dùng trong tuyển dụng 💼',
           ],
           correct: 1,
-          explanation: 'Điều 5 cấm cảnh sát nhận dạng sinh trắc học từ xa theo thời gian thực ở nơi công cộng — trừ các trường hợp hẹp được tòa án cho phép. AI y tế và tuyển dụng thuộc nhóm rủi ro cao: không bị cấm, nhưng phải đáp ứng các yêu cầu nghiêm ngặt. Watermark là yêu cầu về minh bạch.',
+          explanation: 'Điều 5 cấm cảnh sát nhận dạng sinh trắc học từ xa theo thời gian thực ở nơi công cộng — trừ các trường hợp hẹp được tòa án hoặc một cơ quan độc lập cho phép. AI y tế và tuyển dụng thuộc nhóm rủi ro cao: không bị cấm, nhưng phải đáp ứng các yêu cầu nghiêm ngặt. Watermark là yêu cầu về minh bạch.',
           source:    'EU AI Act Article 5',
           sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
         },
