@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none';">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Что значит «рассуждение» и «понимание» в ИИ (и чего не значит)</title>
-  <meta name="description" content="GPT-4 сдаёт экзамены юриста, медицинские лицензионные тесты. Значит ли это, что он рассуждает? Тест ARC Шоле (2019) специально создан для задач, которые…">
+  <meta name="description" content="По отчёту OpenAI (2023), GPT-4 сдал пробный экзамен юриста. Значит ли это, что он рассуждает? Тест ARC Шоле (2019) специально создан для задач, которые…">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://iamalex-afk.github.io/kids-ai-test/lessons/ru/14-plus-3.html">
   <link rel="alternate" hreflang="en" href="https://iamalex-afk.github.io/kids-ai-test/lessons/en/14-plus-3.html">
@@ -21,7 +21,7 @@
   <link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/lessons/en/14-plus-3.html">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Что значит «рассуждение» и «понимание» в ИИ (и чего не значит)">
-  <meta property="og:description" content="GPT-4 сдаёт экзамены юриста, медицинские лицензионные тесты. Значит ли это, что он рассуждает? Тест ARC Шоле (2019) специально создан для задач, которые…">
+  <meta property="og:description" content="По отчёту OpenAI (2023), GPT-4 сдал пробный экзамен юриста. Значит ли это, что он рассуждает? Тест ARC Шоле (2019) специально создан для задач, которые…">
   <meta property="og:url" content="https://iamalex-afk.github.io/kids-ai-test/lessons/ru/14-plus-3.html">
   <meta property="og:image" content="https://iamalex-afk.github.io/kids-ai-test/og.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="../../css/workshop.css">
   <link rel="stylesheet" href="../../css/lesson.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://iamalex-afk.github.io/kids-ai-test/ru.html"},{"@type":"ListItem","position":2,"name":"Все уроки","item":"https://iamalex-afk.github.io/kids-ai-test/lessons/ru/"},{"@type":"ListItem","position":3,"name":"14 лет и старше","item":"https://iamalex-afk.github.io/kids-ai-test/lessons/ru/#age-14-plus"}]}</script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Что значит «рассуждение» и «понимание» в ИИ (и чего не значит)","description":"GPT-4 сдаёт экзамены юриста, медицинские лицензионные тесты. Значит ли это, что он рассуждает? Тест ARC Шоле (2019) специально создан для задач, которые…","inLanguage":"ru","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/ru/14-plus-3.html","learningResourceType":"lesson","typicalAgeRange":"14-","isAccessibleForFree":true,"about":{"@type":"Thing","name":"Artificial intelligence"},"citation":{"@type":"CreativeWork","name":"Шоле «Мера интеллекта», 2019 · Митчелл «ИИ: руководство для думающих людей», 2021","url":"https://arxiv.org/abs/1911.01547"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Что значит «рассуждение» и «понимание» в ИИ (и чего не значит)","description":"По отчёту OpenAI (2023), GPT-4 сдал пробный экзамен юриста. Значит ли это, что он рассуждает? Тест ARC Шоле (2019) специально создан для задач, которые…","inLanguage":"ru","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/ru/14-plus-3.html","learningResourceType":"lesson","typicalAgeRange":"14-","isAccessibleForFree":true,"about":{"@type":"Thing","name":"Artificial intelligence"},"citation":{"@type":"CreativeWork","name":"Шоле «Мера интеллекта», 2019 · Митчелл «ИИ: руководство для думающих людей», 2021","url":"https://arxiv.org/abs/1911.01547"}}</script>
 </head>
 <body class="wk-home wk-page" data-age="adult" data-right="Верно." data-wrong="Пока нет. Прочитай объяснение и попробуй ещё раз.">
 <a class="wk-skip" href="#main">Перейти к содержанию</a>
@@ -77,7 +77,7 @@
       <button type="button" class="wk-btn wk-stop" disabled>Остановить голос</button>
     </div>
     <p class="wk-novoice" hidden>На этом устройстве нет голоса для этого языка. Попросите взрослого прочитать урок вслух.</p>
-    <p class="wk-text" data-speak>GPT-4 сдаёт экзамены юриста, медицинские лицензионные тесты. Значит ли это, что он рассуждает? Тест ARC Шоле (2019) специально создан для задач, которые нельзя решить только паттерн-матчингом — и современные LLM проваливают их катастрофически. Промптинг с цепочкой мыслей улучшает результаты — но механизм спорен: настоящее рассуждение или выученные паттерны рассуждения-подобного текста? Отдельная проблема — интерпретируемость: даже когда модель отвечает верно, мы часто не можем объяснить, как именно она пришла к этому ответу изнутри.</p>
+    <p class="wk-text" data-speak>По отчёту OpenAI (2023), GPT-4 сдал пробный экзамен юриста. Значит ли это, что он рассуждает? Тест ARC Шоле (2019) специально создан для задач, которые нельзя решить только поиском похожих шаблонов, — языковые модели долго справлялись с ним очень плохо; новые модели продвинулись, но ценой огромных вычислений, а более сложная версия теста им по-прежнему трудна. Промптинг с цепочкой мыслей улучшает результаты — но механизм спорен: настоящее рассуждение или выученные паттерны рассуждения-подобного текста? Отдельная проблема — интерпретируемость: даже когда модель отвечает верно, мы часто не можем объяснить, как именно она пришла к этому ответу изнутри.</p>
     <aside class="wk-example" aria-labelledby="wk-ex-h">
       <h2 id="wk-ex-h">Пример</h2>
       <p data-speak>♟️ Deep Blue победил Каспарова в шахматах, не «понимая» шахмат. Stockfish играет лучше любого человека, не имея понятия о короле. Производительность и понимание разделимы.</p>
