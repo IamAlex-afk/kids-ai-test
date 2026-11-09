@@ -134,7 +134,7 @@ ${t.myths.map((x, i) => `      <dt><span class="ar-tag">${esc(u.myth)}</span> ${
     isAccessibleForFree: true,
     citation: order.map((id) => ({ '@type': 'CreativeWork', name: SOURCES[id].title, url: SOURCES[id].url })),
   };
-  return `${head(l, { title: fitTitle(`${t.title} | Kids AI Test`, t.title), desc: metaDesc(t.desc), file, type: 'article' })}
+  return `${head(l, { title: fitTitle(`${t.title} | Kids AI Test`, t.title), desc: metaDesc(t.desc, t.title), file, type: 'article' })}
 ${ld(jsonld)}
 </head>
 <body class="wk-home wk-page">

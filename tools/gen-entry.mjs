@@ -31,14 +31,38 @@ export const fitTitle = (...c) => c.find((s) => [...s].length <= TITLE_MAX) || c
 // sentences give less than 100. The full text stays on the page.
 export const DESC_MAX = 160;
 export const DESC_MIN = 70;
-export function metaDesc(text) {
+export function metaDesc(text, lead = '') {
+  // Whole sentences where possible (Google: describe the page accurately; no length limit, but
+  // long text is cut by width). Attempts: 1) whole sentences <= DESC_MAX; 2) page title as a lead
+  // sentence + whole sentences; 3) first clause of a too-long sentence (up to " — " or "; ");
+  // 4) lead + clause; 5) cut with "…".
+  const len = (x) => [...x].length;
   const s = String(text).replace(/\s+/g, ' ').trim();
-  if ([...s].length <= DESC_MAX) return s;
-  // Whole sentences (a closing quote may follow the full stop); cut mid-sentence only as a last resort.
-  const parts = s.match(/[^.!?।]+[.!?।]+["'»”’)]?(?=\s|$)/g) || [];
-  let out = '';
-  for (const p of parts) { const next = (out + p.trim()).trim(); if ([...next].length > DESC_MAX) break; out = next + ' '; }
-  if ([...out.trim()].length >= DESC_MIN) return out.trim();
+  if (len(s) <= DESC_MAX && len(s) >= DESC_MIN) return s;
+  const parts = (s.match(/[^.!?।]+[.!?।]+["'»”’)]?(?=\s|$)/g) || []).map((p) => p.trim());
+  const greedy = (start) => {
+    let out = start;
+    for (const p of parts) { const next = (out ? out + ' ' : '') + p; if (len(next) > DESC_MAX) break; out = next; }
+    return out;
+  };
+  const ok = (x) => len(x) >= DESC_MIN && len(x) <= DESC_MAX;
+  const leadS = String(lead).replace(/\s+/g, ' ').trim().replace(/[\s:;,—–-]+$/, '');
+  const leadSentence = leadS ? (/[.!?।…]$/.test(leadS) ? leadS : leadS + '.') : '';
+  let d = greedy(''); if (ok(d)) return d;
+  if (leadSentence) { d = greedy(leadSentence); if (ok(d)) return d; }
+  const first = parts[0] || s;
+  let clause = '';
+  for (const sep of [' — ', '; ']) {
+    let k = first.indexOf(sep);
+    while (k > 0) {
+      const c = first.slice(0, k).replace(/[\s,:;]+$/, '') + '.';
+      if (len(c) <= DESC_MAX && len(c) > len(clause)) clause = c;
+      k = first.indexOf(sep, k + 1);
+    }
+  }
+  if (ok(clause)) return clause;
+  if (leadSentence && clause && ok(leadSentence + ' ' + clause)) return leadSentence + ' ' + clause;
+  if (len(s) <= DESC_MAX) return s;
   const cut = [...s].slice(0, DESC_MAX - 1).join('');
   return cut.slice(0, cut.lastIndexOf(' ')).replace(/[\s,;:—–-]+$/, '') + '…';
 }

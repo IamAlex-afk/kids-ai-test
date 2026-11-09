@@ -80,7 +80,7 @@ function crumbsLd(items) {
 
 // What the lesson is, for search engines: age, language, free, its source.
 function resourceLd(l, x, age, href) {
-  const o = { '@context': 'https://schema.org', '@type': 'LearningResource', name: x.title, description: metaDesc(x.text),
+  const o = { '@context': 'https://schema.org', '@type': 'LearningResource', name: x.title, description: metaDesc(x.text, x.title),
     inLanguage: HTML_LANG[l] || l, url: href, learningResourceType: 'lesson', typicalAgeRange: age.range,
     isAccessibleForFree: true, about: { '@type': 'Thing', name: 'Artificial intelligence' } };
   if (x.sourceUrl) o.citation = { '@type': 'CreativeWork', name: x.source || x.sourceUrl, url: x.sourceUrl };
@@ -144,7 +144,7 @@ function lessonPage(l, ageIdx, lessons, i) {
     ? `<p class="wk-source">${esc(t.source)}: <a href="${esc(x.sourceUrl)}" rel="noopener" target="_blank">${esc(x.source || x.sourceUrl)}</a></p>`
     : x.source ? `<p class="wk-source">${esc(t.source)}: ${esc(x.source)}</p>`
       : `<p class="wk-source wk-source-none">${esc(t.noSource)}</p>`;
-  return `${head(l, { title, desc: metaDesc(x.text), file })}
+  return `${head(l, { title, desc: metaDesc(x.text, x.title), file })}
 ${crumbsLd(ldItems)}
 ${resourceLd(l, x, age, url(l, file))}
 </head>
