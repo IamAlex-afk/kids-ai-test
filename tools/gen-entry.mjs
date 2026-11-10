@@ -61,6 +61,12 @@ export function metaDesc(text, lead = '') {
     }
   }
   if (ok(clause)) return clause;
+  // A list after a colon ("Risks: a, b, c, d…"): keep whole list items up to a comma.
+  const colon = first.indexOf(': ');
+  if (colon > 0) {
+    let k = first.lastIndexOf(', ', DESC_MAX - 1);
+    while (k > colon) { const c = first.slice(0, k).replace(/[\s,:;]+$/, '') + '.'; if (ok(c)) return c; k = first.lastIndexOf(', ', k - 1); }
+  }
   if (leadSentence && clause && ok(leadSentence + ' ' + clause)) return leadSentence + ' ' + clause;
   if (len(s) <= DESC_MAX) return s;
   const cut = [...s].slice(0, DESC_MAX - 1).join('');
