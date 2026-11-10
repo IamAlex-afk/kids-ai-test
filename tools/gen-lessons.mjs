@@ -18,6 +18,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import { header, LANGS, pageOf, esc, fitTitle, metaDesc, authorLine } from './gen-entry.mjs';
+import { P as PRIVACY } from './privacy/texts.mjs';
 import { T } from './entry-i18n.mjs';
 import { L } from './lesson-i18n.mjs';
 
@@ -103,6 +104,7 @@ function footer(l) {
     <p>${esc(t.privacy)}</p>
     <p><a href="../../${pageOf(l)}">${esc(t.play)}</a></p>
     <p><a href="../../${pageOf(l)}#about">${esc(T[l].about)}</a></p>
+    <p><a href="../../privacy/${l}/">${esc(PRIVACY[l].h1)}</a></p>
     ${authorLine(T[l], l)}
   </div>
 </footer>

@@ -18,6 +18,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { header, pageOf, esc, fitTitle, metaDesc, authorLine } from './gen-entry.mjs';
+import { P as PRIVACY } from './privacy/texts.mjs';
 import { T } from './entry-i18n.mjs';
 import { SERIES, SERIES_LANGS, SERIES_LASTMOD } from './series.mjs';
 import { UI } from './series/ui.mjs';
@@ -155,6 +156,7 @@ ${sources}
   <div class="wk-foot-in">
     <p>${esc(u.privacy)}</p>
     <p><a href="../../lessons/${l}/">${esc(u.lessons)}</a></p>
+    <p><a href="../../privacy/${l}/">${esc(PRIVACY[l].h1)}</a></p>
     ${authorLine(T[l], l)}
   </div>
 </footer>

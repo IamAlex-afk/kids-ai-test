@@ -42,6 +42,8 @@ const DIRS = [
   ...LANGS.map((l) => ({ dir: `lessons/${l}`, ext: ['.html'] })),
   // Articles (tools/gen-articles.mjs), one folder per language
   ...LANGS.map((l) => ({ dir: `articles/${l}`, ext: ['.html'] })),
+  // Privacy page (tools/gen-privacy.mjs); languages without texts yet are skipped
+  ...LANGS.filter((l) => fs.existsSync(path.join(ROOT, `privacy/${l}`))).map((l) => ({ dir: `privacy/${l}`, ext: ['.html'] })),
   // Workshop activities (tools/gen-series.mjs) — only the languages of the series
   ...SERIES_LANGS.map((l) => ({ dir: `workshop/${l}`, ext: ['.html'] })),
 ];
@@ -53,7 +55,7 @@ const NO_PRECACHE = new Set(['sw.js', '404.html', 'googled8a35f2a8c073799.html',
 // visitor has opened; lesson.css and lesson.js are in the offline set.
 // Workshop pages and their scripts load only when an activity is opened
 // (then the worker keeps them); they are not part of the first-visit set.
-const ON_DEMAND = /^(lessons\/|articles\/|workshop\/|js\/workshop|js\/sorter-model\.js$)/;
+const ON_DEMAND = /^(lessons\/|articles\/|privacy\/|workshop\/|js\/workshop|js\/sorter-model\.js$)/;
 const precached = (f) => !NO_PRECACHE.has(f) && !ON_DEMAND.test(f);
 
 function listFiles() {
