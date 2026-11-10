@@ -207,6 +207,8 @@ test('sitemap: only canonical, indexable published pages; honest lastmod', async
   }
   // Pages that must never be indexed say so themselves
   assert.match(read('404.html'), /<meta name="robots" content="noindex">/);
+  // no scripts on the 404 page: the strictest CSP
+  assert.match(read('404.html'), /Content-Security-Policy" content="default-src 'none';/);
 });
 
 test('lesson pages: match tools/gen-lessons.mjs, one page per lesson in every language', async () => {
