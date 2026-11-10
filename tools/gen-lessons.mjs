@@ -34,7 +34,7 @@ export const AGES = [
   { key: 'adult', slug: '14-plus', range: '14-' },
 ];
 const HTML_LANG = { pt: 'pt-BR' };
-const CSP = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none';";
+const CSP = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none';";
 
 export const lessonFile = (slug, n) => `${slug}-${n}.html`;
 const url = (l, file = '') => `${SITE}lessons/${l}/${file}`;
