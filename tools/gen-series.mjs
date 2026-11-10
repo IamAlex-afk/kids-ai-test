@@ -14,6 +14,7 @@
 //   node tools/gen-series.mjs           write workshop/ and sitemap.xml
 //   node tools/gen-series.mjs --check   exit 1 if anything is out of date
 
+import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -25,7 +26,11 @@ import { UI } from './series/ui.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://iamalex-afk.github.io/kids-ai-test/';
-const CSP = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none';";
+// The only inline script (hides the parts below the activity until it mounts, against CLS):
+// allowed by its hash, not by 'unsafe-inline'.
+const WAIT_JS = "document.documentElement.classList.add('wk-wait')";
+const WAIT_HASH = `'sha256-${createHash('sha256').update(WAIT_JS).digest('base64')}'`;
+const CSP = `default-src 'self'; script-src 'self' ${WAIT_HASH}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none';`;
 const AGE_SLUGS = [['tiny', '5-7'], ['child', '8-10'], ['teen', '11-13'], ['adult', '14-plus']];
 const url = (l, file = '') => `${SITE}workshop/${l}/${file}`;
 // JSON inside <script>: no "</script>" break-out, no HTML comment tricks
@@ -54,7 +59,7 @@ ${alt}
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../../css/workshop.css">
   <link rel="stylesheet" href="../../css/lesson.css">${wait ? `
-  <script>document.documentElement.classList.add('wk-wait')</script>` : ''}`;
+  <script>${WAIT_JS}</script>` : ''}`;
 }
 
 // Language menu: the same activity where it exists, else that language's lessons.
