@@ -68,6 +68,15 @@ export function metaDesc(text, lead = '') {
 }
 export const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
+// Author block (E-E-A-T) + the author's adult self-check tests (Mind-OS: anonymous, scored in the
+// browser). Mind-OS has no id/tr pages, so those link to English.
+const MINDOS = 'https://iamalex-afk.github.io/human-os-patch-33-protocols/';
+const MINDOS_LANGS = ['ru', 'de', 'es', 'fr', 'hi', 'pt', 'vi'];
+export const mindosUrl = (l) => MINDOS + (MINDOS_LANGS.includes(l) ? `${l}/` : '');
+export function authorLine(t, l) {
+  return `<p>${esc(t.authorBy)} · <a href="${mindosUrl(l)}" target="_blank" rel="noopener">${esc(t.adultTests)} →</a></p>`;
+}
+
 const GLOBE = '<svg class="wk-globe" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
 
 // home: the brand link; langHref(x): where the language menu leads (the same
