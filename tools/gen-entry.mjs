@@ -84,7 +84,7 @@ export function header(l, { home = pageOf(l), langHref = pageOf } = {}) {
     </a>
     <div class="wk-actions">
       <div class="lang-switcher" id="lang-switcher">
-        <button type="button" class="lang-globe" id="lang-globe" aria-expanded="false" aria-controls="lang-dropdown" aria-label="${esc(t.langLabel)}: ${esc(LANG_NAMES[l])}">${GLOBE}<span class="lang-full">${esc(LANG_NAMES[l])}</span><span class="lang-short">${l.toUpperCase()}</span><span class="lang-arrow" aria-hidden="true">▾</span></button>
+        <button type="button" class="lang-globe" id="lang-globe" aria-expanded="false" aria-controls="lang-dropdown" aria-label="${esc(t.langLabel)}: ${esc(LANG_NAMES[l])} (${l.toUpperCase()})">${GLOBE}<span class="lang-full">${esc(LANG_NAMES[l])}</span><span class="lang-short">${l.toUpperCase()}</span><span class="lang-arrow" aria-hidden="true">▾</span></button>
         <div class="lang-dropdown" id="lang-dropdown">
 ${opts}
         </div>
