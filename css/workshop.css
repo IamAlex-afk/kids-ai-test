@@ -104,7 +104,7 @@ body.wk-home #result, body.wk-home #protocols, body.wk-home #tracker { display: 
 .wk-globe { flex: none; }
 .lang-short { display: none; }
 @media (max-width: 520px) { .lang-full { display: none; } .lang-short { display: inline; } }
-.lang-arrow { font-size: .7rem; transition: transform var(--t-base); }
+.lang-arrow { flex: none; transition: transform var(--t-base); }
 .lang-globe[aria-expanded="true"] .lang-arrow { transform: rotate(180deg); }
 
 .lang-dropdown {
