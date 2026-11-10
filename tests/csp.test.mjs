@@ -22,3 +22,14 @@ test('csp: lessons, articles, privacy and workshop pages forbid inline scripts',
   }
   assert.ok(n >= 390, `checked ${n} pages`);
 });
+
+test('csp: home pages forbid inline scripts and inline event handlers', () => {
+  for (const l of LANGS) {
+    const f = l === 'en' ? 'index.html' : `${l}.html`;
+    const h = fs.readFileSync(new URL(f, root), 'utf8');
+    assert.doesNotMatch(scriptSrc(csp(f)), /unsafe-inline|unsafe-eval/, f);
+    assert.doesNotMatch(h, /\son[a-z]+="/, `${f}: inline event handler`);
+    const inline = [...h.matchAll(/<script\b([^>]*)>/g)].filter((m) => !/\bsrc=/.test(m[1]) && !/json/.test(m[1]));
+    assert.equal(inline.length, 0, `${f}: inline <script>`);
+  }
+});
