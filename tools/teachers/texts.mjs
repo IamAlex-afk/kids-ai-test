@@ -132,7 +132,7 @@ export const TT = {
       '11-13': {
         grade: 'Grades 6–8 (ages 11–13)',
         card: '"AI guesses the next word." Why AI sounds confident but gets things wrong.',
-        title: 'AI Lesson Plan for Grades 6–8: Why AI Gets It Wrong (45 min)',
+        title: 'AI Lesson Plan for Grades 6–8: AI Guesses the Next Word',
         desc: 'A free 45-minute AI lesson plan for grades 6–8. The Human Chatbot game shows why AI can be confidently wrong and how to check its answers.',
         h1: 'AI lesson for grades 6–8: AI guesses the next word',
         goal: 'Students understand that a chatbot builds an answer by picking a likely next word rather than looking up the truth, and can check an answer against a second source.',
@@ -326,7 +326,7 @@ export const TT = {
       '11-13': {
         grade: '5–7 классы (11–13 лет)',
         card: '«ИИ угадывает следующее слово». Почему ИИ звучит уверенно, но ошибается.',
-        title: 'Урок об ИИ для 5–7 класса: почему ИИ ошибается — план 45 мин',
+        title: 'Урок об ИИ для 5–7 класса: ИИ угадывает следующее слово',
         desc: 'План урока об ИИ для 5–7 классов на 45 минут. Игра «Человек-чат-бот» показывает, почему ИИ уверенно ошибается и как проверить его ответ.',
         h1: 'Урок об ИИ для 5–7 класса: ИИ угадывает следующее слово',
         goal: 'Ученики понимают, что чат-бот составляет ответ, подбирая вероятное следующее слово, а не ищет правду, и умеют проверить ответ по второму источнику.',
