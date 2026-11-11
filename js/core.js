@@ -1405,6 +1405,10 @@ function init() {
   if (lessonsExitBtn) lessonsExitBtn.title = exitTitle;
   const quizExitBtn = $('quiz-exit-btn');
   if (quizExitBtn) quizExitBtn.title = exitTitle;
+  // No inline onclick on the home pages (strict CSP): the ✕ buttons are wired here.
+  for (const btn of [lessonsExitBtn, quizExitBtn]) btn?.addEventListener('click', () => exitToHub());
+  // Offline support (was an inline <script> on the home pages).
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
   afterBoot();
 }
 
