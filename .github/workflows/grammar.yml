@@ -1,0 +1,61 @@
+name: Grammar (LanguageTool, manual)
+
+# Run by hand from the Actions tab. Downloads the stable LanguageTool from its official site
+# (languagetool.org, LGPL 2.1), starts it locally on the runner (no text leaves the runner) and
+# writes a grammar/spelling report for en ru de es fr pt (tools/lt-check.mjs).
+# Report only: job summary + artifact; never edits pages, never blocks a deploy, no secrets.
+on:
+  workflow_dispatch:
+    inputs:
+      scope:
+        description: 'What to check'
+        type: choice
+        options: [teachers, privacy, lessons, articles, all]
+        default: teachers
+
+permissions:
+  contents: read
+
+concurrency:
+  group: grammar
+  cancel-in-progress: true
+
+jobs:
+  languagetool:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      # Actions pinned to full commit SHAs (tag in the comment), as in pages.yml.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - name: Download LanguageTool (stable)
+        run: |
+          java -version
+          curl -fsSL --retry 3 -o lt.zip https://languagetool.org/download/LanguageTool-stable.zip
+          unzip -q lt.zip -d lt
+          ls lt
+      - name: Start LanguageTool server (localhost only)
+        run: |
+          cd lt/LanguageTool-*/
+          : > server.properties
+          nohup java -Xmx2g -cp languagetool-server.jar org.languagetool.server.HTTPServer --config server.properties --port 8081 > ../../lt-server.log 2>&1 &
+          for i in $(seq 1 60); do
+            curl -fs -d 'language=en-US' -d 'text=This is a test.' http://localhost:8081/v2/check > /dev/null && echo "ready after ${i}s" && exit 0
+            sleep 1
+          done
+          cat ../../lt-server.log; exit 1
+      - name: Check texts
+        env:
+          SCOPE: ${{ inputs.scope }}
+        run: node tools/lt-check.mjs "$SCOPE"
+      - name: Upload report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: languagetool-report
+          path: lt-out/
+          retention-days: 30
