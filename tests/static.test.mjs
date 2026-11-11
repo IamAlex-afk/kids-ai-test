@@ -183,6 +183,8 @@ test('sitemap: only canonical, indexable published pages; honest lastmod', async
   const articleFiles = [...(await renderArticles()).keys()];
   const { renderAll: renderPrivacy } = await import(new URL('tools/gen-privacy.mjs', root));
   const privacyFiles = [...renderPrivacy().keys()];
+  const { renderAll: renderTeachers } = await import(new URL('tools/gen-teachers.mjs', root));
+  privacyFiles.push(...renderTeachers().keys()); // teacher materials: same rules as the privacy page
   const sm = read('sitemap.xml');
   const SITE = 'https://iamalex-afk.github.io/kids-ai-test/';
   const urls = [...sm.matchAll(/<url>([\s\S]*?)<\/url>/g)].map(m => m[1]);
@@ -270,7 +272,7 @@ test('speech: same rule on the old route — installed voices only, no fallback 
 });
 
 test('every page: one h1, heading levels never skip on the way down', () => {
-  const skip = new Set(['.git', 'node_modules', 'dist', 'docs', '.github']);
+  const skip = new Set(['.git', 'node_modules', 'dist', 'docs', '.github', 'graphify-out', '_local']); // last two: local, not published
   const walk = (dir) => fs.readdirSync(new URL(dir, root), { withFileTypes: true }).flatMap((e) =>
     e.isDirectory() ? (skip.has(e.name) ? [] : walk(`${dir}${e.name}/`)) : e.name.endsWith('.html') ? [`${dir}${e.name}`] : []);
   const pages = walk('');

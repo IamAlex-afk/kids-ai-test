@@ -44,6 +44,8 @@ const DIRS = [
   ...LANGS.map((l) => ({ dir: `articles/${l}`, ext: ['.html'] })),
   // Privacy page (tools/gen-privacy.mjs); languages without texts yet are skipped
   ...LANGS.filter((l) => fs.existsSync(path.join(ROOT, `privacy/${l}`))).map((l) => ({ dir: `privacy/${l}`, ext: ['.html'] })),
+  // Teacher materials (tools/gen-teachers.mjs); languages without texts yet are skipped
+  ...LANGS.filter((l) => fs.existsSync(path.join(ROOT, `teachers/${l}`))).map((l) => ({ dir: `teachers/${l}`, ext: ['.html'] })),
   // Workshop activities (tools/gen-series.mjs) — only the languages of the series
   ...SERIES_LANGS.map((l) => ({ dir: `workshop/${l}`, ext: ['.html'] })),
 ];

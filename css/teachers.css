@@ -1,0 +1,18 @@
+/* Teacher materials (tools/gen-teachers.mjs): age cards, lesson steps, print view. */
+.tc-cards { list-style: none; padding: 0; display: grid; gap: .75rem; }
+.tc-card a { display: block; padding: .9rem 1rem; border: 2px solid currentColor; border-radius: 12px; text-decoration: none; }
+.tc-card a:hover, .tc-card a:focus-visible { text-decoration: underline; }
+.tc-meta { font-weight: 600; }
+.tc-steps li { margin-bottom: .6rem; }
+.tc-parents { border-left: 4px solid currentColor; padding-left: 1rem; }
+.tc-made, .tc-disclaimer { margin-top: 1.5rem; opacity: .85; }
+
+@media print {
+  .wk-skip, .wk-header, .wk-crumbs, .wk-foot { display: none !important; }
+  body { background: #fff !important; color: #000 !important; }
+  .ar-main, .ar-article { max-width: none; margin: 0; padding: 0; box-shadow: none; background: none; }
+  a { color: #000; text-decoration: underline; }
+  .ar-article a[href^="http"]::after { content: " (" attr(href) ")"; font-size: .85em; word-break: break-all; }
+  h2 { break-after: avoid; }
+  li, p { break-inside: avoid; }
+}

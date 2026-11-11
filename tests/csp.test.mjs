@@ -9,8 +9,9 @@ const LANGS = ['en', 'ru', 'de', 'es', 'fr', 'hi', 'id', 'pt', 'tr', 'vi'];
 const csp = (rel) => (fs.readFileSync(new URL(rel, root), 'utf8').match(/Content-Security-Policy" content="([^"]+)"/) || [])[1] || '';
 const scriptSrc = (c) => (c.match(/script-src([^;]*)/) || [])[1] || '';
 
-test('csp: lessons, articles, privacy and workshop pages forbid inline scripts', () => {
-  const dirs = LANGS.flatMap((l) => [`lessons/${l}/`, `articles/${l}/`, `privacy/${l}/`, `workshop/${l}/`]);
+test('csp: lessons, articles, privacy, workshop and teacher pages forbid inline scripts', () => {
+  const dirs = LANGS.flatMap((l) => [`lessons/${l}/`, `articles/${l}/`, `privacy/${l}/`, `workshop/${l}/`, `teachers/${l}/`])
+    .filter((d) => fs.existsSync(new URL(d, root)));
   let n = 0;
   for (const d of dirs) {
     for (const f of fs.readdirSync(new URL(d, root)).filter((x) => x.endsWith('.html'))) {
