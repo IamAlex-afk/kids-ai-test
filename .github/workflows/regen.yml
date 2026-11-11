@@ -45,6 +45,7 @@ jobs:
           node tools/gen-lessons.mjs
           node tools/gen-articles.mjs
           node tools/gen-privacy.mjs
+          node tools/gen-teachers.mjs
           node tools/gen-entry.mjs
       - name: Build dist/ and check local links
         run: node tools/build.mjs --check
