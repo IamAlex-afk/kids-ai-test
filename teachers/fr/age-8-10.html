@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none';">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IA du CE2 au CM2 : comment une machine apprend – fiche</title>
+  <meta name="description" content="Fiche de préparation gratuite (45 min) sur l’IA du CE2 au CM2. La classe « entraîne une machine » et voit pourquoi des exemples biaisés causent des erreurs.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://iamalex-afk.github.io/kids-ai-test/teachers/fr/age-8-10.html">
+  <link rel="alternate" hreflang="en" href="https://iamalex-afk.github.io/kids-ai-test/teachers/en/age-8-10.html">
+  <link rel="alternate" hreflang="ru" href="https://iamalex-afk.github.io/kids-ai-test/teachers/ru/age-8-10.html">
+  <link rel="alternate" hreflang="de" href="https://iamalex-afk.github.io/kids-ai-test/teachers/de/age-8-10.html">
+  <link rel="alternate" hreflang="es" href="https://iamalex-afk.github.io/kids-ai-test/teachers/es/age-8-10.html">
+  <link rel="alternate" hreflang="fr" href="https://iamalex-afk.github.io/kids-ai-test/teachers/fr/age-8-10.html">
+  <link rel="alternate" hreflang="pt" href="https://iamalex-afk.github.io/kids-ai-test/teachers/pt/age-8-10.html">
+  <link rel="alternate" hreflang="vi" href="https://iamalex-afk.github.io/kids-ai-test/teachers/vi/age-8-10.html">
+  <link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/teachers/en/age-8-10.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="IA du CE2 au CM2 : comment une machine apprend – fiche">
+  <meta property="og:description" content="Fiche de préparation gratuite (45 min) sur l’IA du CE2 au CM2. La classe « entraîne une machine » et voit pourquoi des exemples biaisés causent des erreurs.">
+  <meta property="og:url" content="https://iamalex-afk.github.io/kids-ai-test/teachers/fr/age-8-10.html">
+  <meta property="og:image" content="https://iamalex-afk.github.io/kids-ai-test/og.png">
+  <link rel="icon" href="../../favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../css/workshop.css">
+  <link rel="stylesheet" href="../../css/lesson.css">
+  <link rel="stylesheet" href="../../css/article.css">
+  <link rel="stylesheet" href="../../css/teachers.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"L’IA du CE2 au CM2 : comment une machine apprend à partir d’exemples","description":"Fiche de préparation gratuite (45 min) sur l’IA du CE2 au CM2. La classe « entraîne une machine » et voit pourquoi des exemples biaisés causent des erreurs.","inLanguage":"fr","url":"https://iamalex-afk.github.io/kids-ai-test/teachers/fr/age-8-10.html","dateModified":"2026-11-11","isAccessibleForFree":true,"learningResourceType":"fiche de préparation","educationalLevel":"Du CE2 au CM2 (8–10 ans)","timeRequired":"PT45M","audience":{"@type":"EducationalAudience","educationalRole":"teacher"}}</script>
+</head>
+<body class="wk-home wk-page">
+<a class="wk-skip" href="#main">Aller au contenu</a>
+<header class="wk-header">
+  <div class="wk-header-in">
+    <a class="wk-brand" href="../../fr.html" data-wk-home>
+      <span class="wk-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="wk-brand-txt"><span class="wk-brand-name">kids ai test</span><span class="wk-brand-sub">Atelier pour utiliser l’IA avec discernement</span></span>
+    </a>
+    <div class="wk-actions">
+      <div class="lang-switcher" id="lang-switcher">
+        <button type="button" class="lang-globe" id="lang-globe" aria-expanded="false" aria-controls="lang-dropdown" aria-label="FR Français, langue"><svg class="wk-globe" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="lang-full">Français</span><span class="lang-short">FR</span><svg class="lang-arrow" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true" focusable="false"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="lang-dropdown" id="lang-dropdown">
+          <a class="lang-opt" href="../en/age-8-10.html" lang="en" hreflang="en">English</a>
+          <a class="lang-opt" href="../ru/age-8-10.html" lang="ru" hreflang="ru">Русский</a>
+          <a class="lang-opt" href="../de/age-8-10.html" lang="de" hreflang="de">Deutsch</a>
+          <a class="lang-opt" href="../es/age-8-10.html" lang="es" hreflang="es">Español</a>
+          <a class="lang-opt active" href="../fr/age-8-10.html" lang="fr" hreflang="fr" aria-current="page">Français</a>
+          <a class="lang-opt" href="../../hi.html" lang="hi" hreflang="hi">हिन्दी</a>
+          <a class="lang-opt" href="../../id.html" lang="id" hreflang="id">Bahasa Indonesia</a>
+          <a class="lang-opt" href="../pt/age-8-10.html" lang="pt" hreflang="pt">Português</a>
+          <a class="lang-opt" href="../../tr.html" lang="tr" hreflang="tr">Türkçe</a>
+          <a class="lang-opt" href="../vi/age-8-10.html" lang="vi" hreflang="vi">Tiếng Việt</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<main id="main" class="wk-lesson ar-main tc-main">
+  <nav class="wk-crumbs" aria-label="Vous êtes ici"><ol><li><a href="../../fr.html">Accueil</a></li><li><a href="./">Séance sur l’intelligence artificielle : 4 fiches de préparation</a></li><li><a href="age-8-10.html" aria-current="page">Du CE2 au CM2 (8–10 ans)</a></li></ol></nav>
+  <article class="ar-article">
+    <h1 class="wk-cat-title">L’IA du CE2 au CM2 : comment une machine apprend à partir d’exemples</h1>
+    <p class="tc-meta"><span>Du CE2 au CM2 (8–10 ans)</span> · <span>45 min</span></p>
+    <section><h2>Objectif de la séance</h2>
+      <p>Les élèves comprennent que l’IA apprend à partir d’exemples, au lieu de « savoir » toute seule, et que des exemples biaisés mènent à des erreurs.</p>
+      <p><small>Grande idée d’AI4K12 : apprentissage. UNESCO : techniques et applications de l’IA, niveau « comprendre » (notre estimation).</small></p>
+    </section>
+    <section><h2>Matériel</h2>
+    <ul>
+      <li>Un écran.</li>
+      <li>Cartes d’entraînement : 6 pommes rouges marquées « pomme » et 6 cartes « pas une pomme » — banane, concombre, poire, citron, carotte, prune.</li>
+      <li>Cartes de test sans légende : pomme verte, ballon rouge, tomate rouge, pomme jaune, cerise.</li>
+      <li>Une feuille « Règle de la machine » par groupe.</li>
+    </ul>
+      <p><a href="../../lessons/fr/8-10-1.html">Leçon sur le site: « Comment l’IA apprend vraiment » →</a></p>
+    </section>
+    <section><h2>Déroulement (45 minutes)</h2>
+    <ol class="tc-steps">
+      <li><b>5 min.</b> Mise en route. « Comment reconnaît-on une pomme ? Est-ce que quelqu’un nous l’a appris ? » Notez 2 ou 3 réponses au tableau.</li>
+      <li><b>7 min.</b> Leçon du site. Lecture collective et réponse à « Vérifie par toi-même » avec toute la classe.</li>
+      <li><b>12 min.</b> Entraîner la machine. Un groupe de 3 ou 4 joue la machine : le groupe ne regarde que les cartes d’entraînement et écrit la « Règle de la machine », par exemple « rouge et rond, c’est une pomme ».</li>
+      <li><b>10 min.</b> Tester la machine. Montrez les cartes de test ; la machine répond selon sa règle. La classe note les erreurs — le plus souvent, la pomme verte devient « pas une pomme » et le ballon rouge « pomme ». Dites à la classe : une vraie IA n’écrit pas de règles avec des mots, elle ajuste des nombres ; la feuille est une simplification.</li>
+      <li><b>8 min.</b> Discussion et nouvel entraînement : on ajoute la pomme verte et la jaune aux exemples, puis on teste à nouveau.</li>
+      <li><b>3 min.</b> Bilan. Au tableau : « L’IA apprend avec des exemples. Mauvais exemples, mauvaises réponses. »</li>
+    </ol>
+    </section>
+    <section><h2>Questions pour la discussion</h2>
+    <ul>
+      <li>La machine est-elle « bête », ou a-t-elle reçu trop peu d’exemples ?</li>
+      <li>Imagine qu’un programme qui reconnaît les visages ait été entraîné presque uniquement avec des photos d’adultes. Sur les photos de qui pourrait-il se tromper plus souvent ?</li>
+      <li>Qui choisit les exemples avec lesquels l’IA apprend ?</li>
+    </ul>
+    </section>
+    <section><h2>Vérifier les acquis</h2>
+      <p>Chaque élève complète la phrase : « La machine s’est trompée parce que… ».</p>
+    </section>
+    <section><h2>Différenciation</h2>
+    <ul>
+      <li>Pour soutenir : 3 cartes d’entraînement et 3 cartes de test.</li>
+      <li>Pour aller plus loin : inventer une carte qui trompera sûrement la machine et expliquer pourquoi.</li>
+    </ul>
+    </section>
+    <section class="tc-parents"><h2>Mot aux familles</h2>
+      <p>Aujourd’hui, la classe a « entraîné une machine » avec des images et a vu que l’IA apprend avec des exemples et se trompe quand ils sont biaisés. À la maison, demandez : « Pourquoi votre machine a-t-elle cru que le ballon était une pomme ? »</p>
+    </section>
+    <section><h2>Sources</h2>
+    <ul>
+      <li><a href="https://www.nature.com/articles/nature14539" target="_blank" rel="noopener">LeCun, Bengio, Hinton, « Deep learning », Nature, 2015</a></li>
+      <li><a href="https://ai4k12.org/" target="_blank" rel="noopener">AI4K12 — grande idée « Apprentissage »</a></li>
+    </ul>
+    </section>
+    <p><a href="./">← Toutes les fiches</a></p>
+    <p class="tc-made"><small>Comment ce support a été fait : l’auteur a rédigé les textes avec l’aide d’outils d’IA ; les affirmations sur l’IA ont été vérifiées dans les sources primaires ouvertes citées sur cette page. La version française n’a pas encore été relue par des enseignants ni par des locuteurs natifs.</small></p>
+    <p class="tc-disclaimer"><small>Support indépendant et gratuit. Ce n’est pas un document officiel de l’Éducation nationale ni d’une autre autorité scolaire. Chaque enseignant décide comment l’utiliser.</small></p>
+    <p><small>Mis à jour: <time datetime="2026-11-11">2026-11-11</time></small></p>
+  </article>
+</main>
+<footer class="wk-foot">
+  <div class="wk-foot-in">
+    <p><a href="../../lessons/fr/">Toutes les leçons</a></p>
+    <p><a href="../../privacy/fr/">Confidentialité</a></p>
+    <p><a href="../../fr.html#about">À propos du projet et de l’auteur</a></p>
+    <p>Auteur : Aleksei Bitkin · <a href="https://iamalex-afk.github.io/human-os-patch-33-protocols/fr/" target="_blank" rel="noopener">Pour les adultes : tests gratuits et anonymes de dépendance à l’IA (Mind-OS) →</a></p>
+  </div>
+</footer>
+</body>
+</html>
