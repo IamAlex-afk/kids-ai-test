@@ -149,7 +149,6 @@ ${explain}
     <ol>
 ${sources}
     </ol>
-    <p class="wk-review">${esc(u.review)}</p>
   </section>
 
   <nav class="wk-pager" aria-label="${esc(u.other)}">

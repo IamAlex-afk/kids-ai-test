@@ -21,7 +21,7 @@ export const TT = {
       questions: 'Tartışma soruları', check: 'Öğrenmeyi kontrol etme', diff: 'Farklılaştırma',
       parents: 'Ailelere not', sources: 'Kaynaklar', openLesson: 'Sitedeki ders',
       allPlans: 'Tüm ders planları', privacy: 'Gizlilik', updated: 'Güncellendi', lrType: 'ders planı',
-      made: 'Bu materyal nasıl hazırlandı: yazar metinleri yapay zekâ araçlarının yardımıyla yazdı; yapay zekâ hakkındaki her iddia bu sayfada bağlantısı verilen açık birincil kaynaklarla karşılaştırıldı. Türkçe sürümü henüz bir öğretmen ya da anadili Türkçe olan biri okumadı.',
+      made: 'Bu sayfadaki yapay zekâ iddiaları açık birincil kaynaklarla karşılaştırıldı; bağlantılar sayfanın kendisinde.',
       disclaimer: 'Bağımsız ve ücretsiz bir materyaldir. MEB veya başka bir eğitim kurumunun resmî belgesi değildir. Nasıl kullanılacağına öğretmen karar verir.',
     },
     hub: {
@@ -215,7 +215,7 @@ export const TT = {
       questions: 'Pertanyaan diskusi', check: 'Asesmen singkat', diff: 'Diferensiasi',
       parents: 'Pesan untuk orang tua', sources: 'Sumber', openLesson: 'Pelajaran di situs',
       allPlans: 'Semua modul ajar', privacy: 'Privasi', updated: 'Diperbarui', lrType: 'modul ajar',
-      made: 'Cara materi ini dibuat: penulis menyusunnya dengan bantuan alat AI; setiap klaim tentang AI dicocokkan dengan sumber primer terbuka yang ditautkan di halaman ini. Versi bahasa Indonesia belum dibaca oleh guru atau penutur asli.',
+      made: 'Klaim tentang AI di halaman ini dicocokkan dengan sumber primer terbuka — tautannya ada di halaman ini.',
       disclaimer: 'Materi independen dan gratis. Bukan dokumen resmi kementerian atau dinas pendidikan. Guru yang memutuskan cara memakainya.',
     },
     hub: {
@@ -409,7 +409,7 @@ export const TT = {
       questions: 'चर्चा के सवाल', check: 'समझ कैसे जाँचें', diff: 'अलग-अलग बच्चों के लिए',
       parents: 'अभिभावकों के लिए संदेश', sources: 'स्रोत', openLesson: 'साइट पर पाठ',
       allPlans: 'सभी पाठ योजनाएँ', privacy: 'गोपनीयता', updated: 'अपडेट', lrType: 'पाठ योजना',
-      made: 'यह सामग्री कैसे बनी: लेखक ने इसे एआई टूल की मदद से लिखा है; एआई के बारे में हर दावे को इस पेज पर दिए गए खुले मूल स्रोतों से मिलाया गया है। हिंदी संस्करण को अभी किसी शिक्षक या मूल वक्ता ने नहीं पढ़ा है।',
+      made: 'इस पेज पर एआई के बारे में हर दावे को खुले मूल स्रोतों से मिलाया गया है — लिंक इसी पेज पर हैं।',
       disclaimer: 'स्वतंत्र और मुफ़्त सामग्री। यह शिक्षा मंत्रालय, NCERT या किसी शिक्षा बोर्ड का आधिकारिक दस्तावेज़ नहीं है। इसका उपयोग कैसे करना है, यह शिक्षक तय करते हैं।',
     },
     hub: {
@@ -603,7 +603,7 @@ export const TT = {
       questions: 'Questions pour la discussion', check: 'Vérifier les acquis', diff: 'Différenciation',
       parents: 'Mot aux familles', sources: 'Sources', openLesson: 'Leçon sur le site',
       allPlans: 'Toutes les fiches', privacy: 'Confidentialité', updated: 'Mis à jour', lrType: 'fiche de préparation',
-      made: 'Comment ce support a été fait : l’auteur a rédigé les textes avec l’aide d’outils d’IA ; les affirmations sur l’IA ont été vérifiées dans les sources primaires ouvertes citées sur cette page. La version française n’a pas encore été relue par des enseignants ni par des locuteurs natifs.',
+      made: 'Les affirmations sur l’IA de cette page ont été vérifiées dans des sources primaires ouvertes ; les liens figurent sur la page.',
       disclaimer: 'Support indépendant et gratuit. Ce n’est pas un document officiel de l’Éducation nationale ni d’une autre autorité scolaire. Chaque enseignant décide comment l’utiliser.',
     },
     hub: {
@@ -797,7 +797,7 @@ export const TT = {
       questions: 'Fragen für das Gespräch', check: 'Lernstand prüfen', diff: 'Differenzierung',
       parents: 'Hinweis für Eltern', sources: 'Quellen', openLesson: 'Lektion auf der Website',
       allPlans: 'Alle Stundenentwürfe', privacy: 'Datenschutz', updated: 'Aktualisiert', lrType: 'Unterrichtsentwurf',
-      made: 'So ist dieses Material entstanden: Der Autor hat die Texte mit Hilfe von KI-Werkzeugen geschrieben; Aussagen über KI wurden mit den offenen Primärquellen auf dieser Seite abgeglichen. Die deutsche Fassung haben Lehrkräfte und Muttersprachler noch nicht geprüft.',
+      made: 'Aussagen über KI auf dieser Seite wurden mit offenen Primärquellen abgeglichen – die Links stehen auf der Seite.',
       disclaimer: 'Unabhängiges, kostenloses Material. Kein offizielles Dokument eines Kultusministeriums oder einer Schulbehörde. Die Lehrkraft entscheidet, wie sie es einsetzt.',
     },
     hub: {
@@ -991,7 +991,7 @@ export const TT = {
       questions: 'Preguntas para conversar', check: 'Cómo comprobar lo aprendido', diff: 'Atención a la diversidad',
       parents: 'Nota para las familias', sources: 'Fuentes', openLesson: 'Lección en el sitio',
       allPlans: 'Todos los planes de clase', privacy: 'Privacidad', updated: 'Actualizado', lrType: 'plan de clase',
-      made: 'Cómo se hizo este material: el autor escribió los textos con ayuda de herramientas de IA; las afirmaciones sobre IA se contrastaron con las fuentes primarias abiertas enlazadas en esta página. La versión en español aún no la ha revisado ningún docente ni hablante nativo.',
+      made: 'Las afirmaciones sobre la IA de esta página se contrastaron con fuentes primarias abiertas; los enlaces están en la propia página.',
       disclaimer: 'Material independiente y gratuito. No es un documento oficial de ningún ministerio ni autoridad educativa. Cada docente decide cómo usarlo.',
     },
     hub: {
@@ -1185,7 +1185,7 @@ export const TT = {
       questions: 'Perguntas para discussão', check: 'Como verificar a aprendizagem', diff: 'Adaptações para a turma',
       parents: 'Recado para as famílias', sources: 'Fontes', openLesson: 'Lição no site',
       allPlans: 'Todos os planos de aula', privacy: 'Privacidade', updated: 'Atualizado em', lrType: 'plano de aula',
-      made: 'Como este material foi feito: o autor escreveu os textos com a ajuda de ferramentas de IA; as afirmações sobre IA foram conferidas com as fontes primárias abertas indicadas nesta página. A versão em português ainda não foi revisada por docentes nem por falantes nativos.',
+      made: 'As afirmações sobre IA nesta página foram conferidas com fontes primárias abertas — os links estão na própria página.',
       disclaimer: 'Material independente e gratuito. Não é documento oficial do MEC nem de secretarias de educação. Cada docente decide como usá-lo.',
     },
     hub: {
@@ -1379,7 +1379,7 @@ export const TT = {
       questions: 'Câu hỏi thảo luận', check: 'Cách kiểm tra mức độ hiểu bài', diff: 'Phân hóa theo học sinh',
       parents: 'Lời nhắn cho phụ huynh', sources: 'Nguồn tham khảo', openLesson: 'Bài học trên trang',
       allPlans: 'Tất cả giáo án', privacy: 'Quyền riêng tư', updated: 'Cập nhật', lrType: 'giáo án',
-      made: 'Tài liệu này được làm như thế nào: tác giả soạn với sự hỗ trợ của công cụ AI; các nhận định về AI đã được đối chiếu với nguồn gốc mở (liên kết trên trang). Bản tiếng Việt chưa được giáo viên hay người bản ngữ kiểm tra.',
+      made: 'Các nhận định về AI trên trang này đã được đối chiếu với nguồn gốc mở — liên kết ở ngay trên trang.',
       disclaimer: 'Tài liệu độc lập, miễn phí. Không phải văn bản chính thức của Bộ Giáo dục và Đào tạo. Giáo viên tự quyết định cách sử dụng.',
     },
     hub: {
@@ -1573,7 +1573,7 @@ export const TT = {
       questions: 'Discussion questions', check: 'How to check understanding', diff: 'Differentiation',
       parents: 'Note for families', sources: 'Sources', openLesson: 'Lesson on this site',
       allPlans: 'All lesson plans', privacy: 'Privacy', updated: 'Updated', lrType: 'lesson plan',
-      made: 'How this was made: the author wrote these materials with the help of AI tools; claims about AI were checked against the open primary sources linked on this page. Teachers and students have not reviewed them yet.',
+      made: 'Claims about AI on this page were checked against the open primary sources linked on this page.',
       disclaimer: 'Independent free material. Not an official curriculum document of any education authority. Teachers decide how to use it.',
     },
     hub: {
@@ -1767,7 +1767,7 @@ export const TT = {
       questions: 'Вопросы для обсуждения', check: 'Как понять, что урок усвоен', diff: 'Для разных детей',
       parents: 'Памятка для родителей', sources: 'Источники', openLesson: 'Урок на сайте',
       allPlans: 'Все планы уроков', privacy: 'Конфиденциальность', updated: 'Обновлено', lrType: 'план урока',
-      made: 'Как сделан этот материал: тексты подготовлены автором с помощью ИИ-инструментов; утверждения об ИИ сверены с открытыми первоисточниками (ссылки — на странице). Педагоги и дети материал пока не проверяли.',
+      made: 'Утверждения об ИИ на этой странице сверены с открытыми первоисточниками — ссылки на этой же странице.',
       disclaimer: 'Независимый бесплатный материал. Не является официальным документом министерства образования. Учитель сам решает, как его использовать.',
     },
     hub: {
