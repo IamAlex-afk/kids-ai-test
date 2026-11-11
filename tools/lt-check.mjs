@@ -17,12 +17,13 @@ const DIRS = { teachers: 'teachers', privacy: 'privacy', lessons: 'lessons', art
 const sections = scope === 'all' ? Object.values(DIRS) : [DIRS[scope]];
 if (sections.includes(undefined)) { console.error(`unknown scope: ${scope}`); process.exit(2); }
 
+const ENT = { nbsp: ' ', '#160': ' ', quot: '"', '#39': "'", apos: "'", amp: '&', lt: '<', gt: '>' };
 const text = (html) => {
   const main = (html.match(/<main[\s\S]*?<\/main>/) || [html])[0];
   return main.replace(/<(script|style)[\s\S]*?<\/\1>/g, ' ')
     .replace(/<\/(p|li|h[1-6]|summary|figcaption|td|th)>/g, '\n')
     .replace(/<[^>]+>/g, ' ')
-    .replace(/&nbsp;|&#160;/g, ' ').replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&(nbsp|#160|quot|#39|apos|amp|lt|gt);/g, (_, e) => ENT[e]) // one pass: no double unescaping
     .split('\n').map((s) => s.replace(/[ \t]+/g, ' ').trim()).filter(Boolean).join('\n');
 };
 
