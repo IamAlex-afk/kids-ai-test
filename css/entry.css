@@ -81,7 +81,7 @@
   width: 100%; text-align: left; font: inherit; color: var(--ink);
   border: 1.5px solid; border-radius: var(--wk-radius);
   box-shadow: 0 6px 18px rgba(32, 41, 65, .06);
-  transition: transform .15s ease, box-shadow .15s ease;
+  transition: transform .15s ease-out;
 }
 .wk-aud:hover, .wk-age:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(32, 41, 65, .11); }
 .wk-aud:active, .wk-age:active { transform: none; }
@@ -159,7 +159,7 @@
   min-height: 52px; padding: 18px 20px; border-radius: 22px;
   border: 1.5px solid var(--line); background: #fff; color: var(--ink);
   font: inherit; text-align: left; cursor: pointer;
-  transition: transform .15s ease, box-shadow .15s ease;
+  transition: transform .15s ease-out;
 }
 .wk-alt[data-wk-games] { background: #fff4dc; border-color: #e3cfa2; }
 .wk-alt:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(32, 41, 65, .11); }
