@@ -138,7 +138,7 @@ function route(l) {
       href = `lessons/${l}/age-${slug}.html#lesson-1`;   // age page (gen-lessons.mjs ageFile; not imported: circular)
     }
     const more = series.slice(1).map((s) => `            <li><a href="workshop/${l}/${s.file}?age=${slug}">${esc(s.text[l].common.title)}</a></li>`);
-    more.push(`            <li><a href="lessons/${l}/age-${slug}.html">${esc(t.ageLessons)}</a></li>`);
+    more.push(`            <li><a href="lessons/${l}/age-${slug}.html">📖 ${esc(t.ageLessons)}</a></li>`);
     return `      <div class="wk-route-age" data-route-for="${k}" hidden>
         <div class="wk-start">
           <p class="wk-start-badge">${esc(t.startBadge)}</p>
@@ -160,7 +160,7 @@ ${more.join('\n')}
 ${blocks}
       <div class="wk-route-alt">
         <button type="button" class="wk-alt" data-wk-games><span class="wk-alt-t">🎮 ${esc(t.allGames)}</span><span class="wk-alt-d">${esc(t.gamesList)}</span></button>
-        <button type="button" class="wk-alt" data-wk-old><span class="wk-alt-t">📖 ${esc(t.lessonsT)}</span><span class="wk-alt-d">${esc(t.lessonsD)}</span></button>
+        <button type="button" class="wk-alt" data-wk-old><span class="wk-alt-t">🎯 ${esc(t.lessonsT)}</span><span class="wk-alt-d">${esc(t.lessonsD)}</span></button>
       </div>
 ${t.seriesNote ? `      <p class="wk-note">${esc(t.seriesNote)}</p>\n` : ''}    </div>`;
 }

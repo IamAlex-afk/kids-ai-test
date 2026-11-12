@@ -34,7 +34,7 @@ export const T = {
     u5q: 'Child not 5 yet?', u5a: 'How to talk about AI with little ones →',
     change: '← Change age', ageNow: 'Age',
     routeQ: 'Your route', startBadge: 'Start here', startBtn: 'Start', otherH: 'Other activities',
-    ageLessons: 'All lessons for this age', allGames: 'All games', gamesT: 'Games', gamesList: 'AI Snake, Circuit Runner, Circuit Racer', lessonsT: 'Lessons and a quiz', lessonsD: 'Short lessons, a final quiz and your own card', seriesNote: '',
+    ageLessons: 'Read all lessons for this age', allGames: 'All games', gamesT: 'Games', gamesList: 'AI Snake, Circuit Runner, Circuit Racer', lessonsT: 'Take the lessons with a quiz', lessonsD: 'Short lessons, a final quiz and your own card', seriesNote: '',
   },
   ru: {
     skip: 'Перейти к содержанию', langLabel: 'Язык', home: 'На главную',
@@ -59,7 +59,7 @@ export const T = {
     u5q: 'Ребёнку ещё нет 5 лет?', u5a: 'Как говорить об ИИ с малышом →',
     change: '← Изменить возраст', ageNow: 'Возраст',
     routeQ: 'Твой маршрут', startBadge: 'Начни отсюда', startBtn: 'Начать', otherH: 'Другие занятия',
-    ageLessons: 'Все уроки для этого возраста', allGames: 'Все игры', gamesT: 'Игры', gamesList: 'AI Змейка, Circuit Runner, Circuit Racer', lessonsT: 'Уроки и тест', lessonsD: 'Короткие уроки, итоговый тест и твоя карточка', seriesNote: '',
+    ageLessons: 'Читать все уроки для этого возраста', allGames: 'Все игры', gamesT: 'Игры', gamesList: 'AI Змейка, Circuit Runner, Circuit Racer', lessonsT: 'Пройти уроки с тестом', lessonsD: 'Короткие уроки, итоговый тест и твоя карточка', seriesNote: '',
   },
   de: {
     skip: 'Zum Inhalt springen', langLabel: 'Sprache', home: 'Startseite',
@@ -84,7 +84,7 @@ export const T = {
     u5q: 'Ihr Kind ist noch keine 5?', u5a: 'Wie man mit Kleinkindern über KI spricht →',
     change: '← Alter ändern', ageNow: 'Alter',
     routeQ: 'Dein Weg', startBadge: 'Fang hier an', startBtn: 'Starten', otherH: 'Weitere Aktivitäten',
-    ageLessons: 'Alle Lektionen für dieses Alter', allGames: 'Alle Spiele', gamesT: 'Spiele', gamesList: 'KI-Schlange, Circuit Runner, Circuit Racer', lessonsT: 'Lektionen und Quiz', lessonsD: 'Kurze Lektionen, ein Abschlussquiz und deine eigene Karte', seriesNote: '',
+    ageLessons: 'Alle Lektionen für dieses Alter lesen', allGames: 'Alle Spiele', gamesT: 'Spiele', gamesList: 'KI-Schlange, Circuit Runner, Circuit Racer', lessonsT: 'Lektionen mit Quiz durchspielen', lessonsD: 'Kurze Lektionen, ein Abschlussquiz und deine eigene Karte', seriesNote: '',
   },
   es: {
     skip: 'Saltar al contenido', langLabel: 'Idioma', home: 'Inicio',
@@ -109,7 +109,7 @@ export const T = {
     u5q: '¿Tu hijo aún no tiene 5 años?', u5a: 'Cómo hablar de la IA con los más pequeños →',
     change: '← Cambiar edad', ageNow: 'Edad',
     routeQ: 'Tu ruta', startBadge: 'Empieza aquí', startBtn: 'Empezar', otherH: 'Otras actividades',
-    ageLessons: 'Todas las lecciones para esta edad', allGames: 'Todos los juegos', gamesT: 'Juegos', gamesList: 'Serpiente IA, Circuit Runner, Circuit Racer', lessonsT: 'Lecciones y quiz', lessonsD: 'Lecciones cortas, un quiz final y tu propia tarjeta', seriesNote: '',
+    ageLessons: 'Leer todas las lecciones de esta edad', allGames: 'Todos los juegos', gamesT: 'Juegos', gamesList: 'Serpiente IA, Circuit Runner, Circuit Racer', lessonsT: 'Hacer las lecciones con quiz', lessonsD: 'Lecciones cortas, un quiz final y tu propia tarjeta', seriesNote: '',
   },
   fr: {
     skip: 'Aller au contenu', langLabel: 'Langue', home: 'Accueil',
@@ -134,7 +134,7 @@ export const T = {
     u5q: 'Votre enfant n’a pas encore 5 ans ?', u5a: 'Comment parler d’IA avec les tout-petits →',
     change: '← Changer d’âge', ageNow: 'Âge',
     routeQ: 'Ton parcours', startBadge: 'Commence ici', startBtn: 'Commencer', otherH: 'Autres activités',
-    ageLessons: 'Toutes les leçons pour cet âge', allGames: 'Tous les jeux', gamesT: 'Jeux', gamesList: 'Serpent IA, Circuit Runner, Circuit Racer', lessonsT: 'Leçons et quiz', lessonsD: 'Des leçons courtes, un quiz final et ta propre carte', seriesNote: '',
+    ageLessons: 'Lire toutes les leçons de cet âge', allGames: 'Tous les jeux', gamesT: 'Jeux', gamesList: 'Serpent IA, Circuit Runner, Circuit Racer', lessonsT: 'Faire les leçons avec un quiz', lessonsD: 'Des leçons courtes, un quiz final et ta propre carte', seriesNote: '',
   },
   hi: {
     skip: 'सामग्री पर जाएँ', langLabel: 'भाषा', home: 'मुख्य पृष्ठ',
@@ -159,7 +159,7 @@ export const T = {
     u5q: 'बच्चा अभी 5 साल का नहीं हुआ?', u5a: 'छोटे बच्चों से AI के बारे में कैसे बात करें →',
     change: '← उम्र बदलें', ageNow: 'उम्र',
     routeQ: 'तुम्हारा रास्ता', startBadge: 'यहाँ से शुरू करो', startBtn: 'शुरू करें', otherH: 'दूसरी गतिविधियाँ',
-    ageLessons: 'इस उम्र के सभी पाठ', allGames: 'सभी खेल', gamesT: 'खेल', gamesList: 'AI साँप, Circuit Runner, Circuit Racer', lessonsT: 'पाठ और क्विज़', lessonsD: 'छोटे पाठ, आख़िरी क्विज़ और तुम्हारा अपना कार्ड', seriesNote: '',
+    ageLessons: 'इस उम्र के सभी पाठ पढ़ो', allGames: 'सभी खेल', gamesT: 'खेल', gamesList: 'AI साँप, Circuit Runner, Circuit Racer', lessonsT: 'क्विज़ के साथ पाठ करो', lessonsD: 'छोटे पाठ, आख़िरी क्विज़ और तुम्हारा अपना कार्ड', seriesNote: '',
   },
   id: {
     skip: 'Lewati ke konten', langLabel: 'Bahasa', home: 'Beranda',
@@ -184,7 +184,7 @@ export const T = {
     u5q: 'Anak belum berusia 5 tahun?', u5a: 'Cara membicarakan AI dengan anak kecil →',
     change: '← Ubah usia', ageNow: 'Usia',
     routeQ: 'Rutemu', startBadge: 'Mulai dari sini', startBtn: 'Mulai', otherH: 'Kegiatan lain',
-    ageLessons: 'Semua pelajaran untuk usia ini', allGames: 'Semua game', gamesT: 'Game', gamesList: 'Ular AI, Circuit Runner, Circuit Racer', lessonsT: 'Pelajaran dan kuis', lessonsD: 'Pelajaran singkat, kuis akhir, dan kartumu sendiri', seriesNote: '',
+    ageLessons: 'Baca semua pelajaran untuk usia ini', allGames: 'Semua game', gamesT: 'Game', gamesList: 'Ular AI, Circuit Runner, Circuit Racer', lessonsT: 'Ikuti pelajaran dengan kuis', lessonsD: 'Pelajaran singkat, kuis akhir, dan kartumu sendiri', seriesNote: '',
   },
   pt: {
     skip: 'Pular para o conteúdo', langLabel: 'Idioma', home: 'Início',
@@ -209,7 +209,7 @@ export const T = {
     u5q: 'A criança ainda não tem 5 anos?', u5a: 'Como conversar sobre IA com os pequenos →',
     change: '← Mudar a idade', ageNow: 'Idade',
     routeQ: 'Seu caminho', startBadge: 'Comece aqui', startBtn: 'Começar', otherH: 'Outras atividades',
-    ageLessons: 'Todas as lições para esta idade', allGames: 'Todos os jogos', gamesT: 'Jogos', gamesList: 'Cobra IA, Circuit Runner, Circuit Racer', lessonsT: 'Lições e quiz', lessonsD: 'Lições curtas, um quiz final e seu próprio cartão', seriesNote: '',
+    ageLessons: 'Ler todas as lições desta idade', allGames: 'Todos os jogos', gamesT: 'Jogos', gamesList: 'Cobra IA, Circuit Runner, Circuit Racer', lessonsT: 'Fazer as lições com quiz', lessonsD: 'Lições curtas, um quiz final e seu próprio cartão', seriesNote: '',
   },
   tr: {
     skip: 'İçeriğe geç', langLabel: 'Dil', home: 'Ana sayfa',
@@ -234,7 +234,7 @@ export const T = {
     u5q: 'Çocuğunuz henüz 5 yaşında değil mi?', u5a: 'Küçük çocuklarla yapay zekâ hakkında nasıl konuşulur →',
     change: '← Yaşı değiştir', ageNow: 'Yaş',
     routeQ: 'Yolun', startBadge: 'Buradan başla', startBtn: 'Başla', otherH: 'Diğer etkinlikler',
-    ageLessons: 'Bu yaş için tüm dersler', allGames: 'Tüm oyunlar', gamesT: 'Oyunlar', gamesList: 'AI Yılanı, Circuit Runner, Circuit Racer', lessonsT: 'Dersler ve quiz', lessonsD: 'Kısa dersler, bir final quizi ve kendi kartın', seriesNote: '',
+    ageLessons: 'Bu yaşın tüm derslerini oku', allGames: 'Tüm oyunlar', gamesT: 'Oyunlar', gamesList: 'AI Yılanı, Circuit Runner, Circuit Racer', lessonsT: 'Dersleri quizle tamamla', lessonsD: 'Kısa dersler, bir final quizi ve kendi kartın', seriesNote: '',
   },
   vi: {
     skip: 'Chuyển đến nội dung', langLabel: 'Ngôn ngữ', home: 'Trang chủ',
@@ -259,6 +259,6 @@ export const T = {
     u5q: 'Con chưa đủ 5 tuổi?', u5a: 'Cách nói chuyện về AI với trẻ nhỏ →',
     change: '← Đổi độ tuổi', ageNow: 'Độ tuổi',
     routeQ: 'Lộ trình của bạn', startBadge: 'Bắt đầu từ đây', startBtn: 'Bắt đầu', otherH: 'Hoạt động khác',
-    ageLessons: 'Tất cả bài học cho độ tuổi này', allGames: 'Tất cả trò chơi', gamesT: 'Trò chơi', gamesList: 'Rắn AI, Circuit Runner, Circuit Racer', lessonsT: 'Bài học và bài kiểm tra', lessonsD: 'Bài học ngắn, bài kiểm tra cuối và thẻ của riêng bạn', seriesNote: '',
+    ageLessons: 'Đọc tất cả bài học cho độ tuổi này', allGames: 'Tất cả trò chơi', gamesT: 'Trò chơi', gamesList: 'Rắn AI, Circuit Runner, Circuit Racer', lessonsT: 'Học bài kèm bài kiểm tra', lessonsD: 'Bài học ngắn, bài kiểm tra cuối và thẻ của riêng bạn', seriesNote: '',
   },
 };
