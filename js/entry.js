@@ -22,6 +22,9 @@
   // One light design for the whole site (audit 2026-11-12): the light palette stays on when the
   // activities open; wk-home only controls which home sections are hidden before a choice.
   document.body.classList.add('wk-light');
+  // Age label of an age button; the age comes from state, so only the four known values reach the selector.
+  const AGE_KEYS = ['tiny', 'child', 'teen', 'adult'];
+  const ageLabelEl = (age) => (AGE_KEYS.includes(age) ? $(`.wk-age[data-age="${age}"] .age-label`, entry) : null);
 
   let entry, hubbar;
   let audience = 'kids';
@@ -77,7 +80,7 @@
     if (!routeEl || !age) { showHub(); return; }
     setScreen('route');
     $$('[data-route-for]', routeEl).forEach((b) => { b.hidden = b.dataset.routeFor !== age; });
-    const label = $(`.wk-age[data-age="${age}"] .age-label`, entry);
+    const label = ageLabelEl(age);
     const out = $('[data-route-label]', routeEl);
     if (out && label) out.textContent = label.textContent;
     if (focus) focusQuestion(routeEl);
@@ -120,7 +123,7 @@
     if (!entry.hidden) { hubbar.hidden = true; return; }
     hubbar.hidden = busy();
     const age = K().state?.age;
-    const label = age && $(`.wk-age[data-age="${age}"] .age-label`, entry);
+    const label = age && ageLabelEl(age);
     const chip = $('.wk-hub-age', hubbar);
     chip.hidden = !label;
     if (label) $('b', chip).textContent = label.textContent;

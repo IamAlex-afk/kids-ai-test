@@ -1292,7 +1292,10 @@ function renderParentFaq(ageKey = S.age) {
     const wrapEl = document.createElement('div');
     wrapEl.className = 'pf-sourced-faq';
     const heading = document.getElementById('faq-heading');
-    wrapEl.innerHTML = `<p><a href="#faq">${(heading && heading.textContent.trim()) || d.faq_h || 'FAQ'} →</a></p>`;
+    const p = document.createElement('p'), a = document.createElement('a');
+    a.href = '#faq';
+    a.textContent = `${(heading && heading.textContent.trim()) || d.faq_h || 'FAQ'} →`;   // text, never HTML
+    p.appendChild(a); wrapEl.appendChild(p);
     body.appendChild(wrapEl);
   }
 }
