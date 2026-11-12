@@ -372,7 +372,7 @@ function renderLesson() {
   // Progress bar
   const pct = Math.round((idx / lessons.length) * 100);
   const fill = $('lesson-prog-fill');
-  if (fill) fill.style.width = pct + '%';
+  if (fill) fill.style.transform = `scaleX(${pct / 100})`;
   const cnt  = $('lesson-count');
   if (cnt) cnt.textContent = `${ui('lesson_label') || 'Lesson'} ${idx + 1} / ${lessons.length}`;
   const ph = $('lesson-phase-label');
@@ -828,7 +828,7 @@ function renderQuestion() {
         <span class="quiz-prog-score">${ui('card_score')}: ${S.quiz.score}</span>
       </div>
       <div class="quiz-prog-bar">
-        <div class="quiz-prog-fill" style="width:${pct}%"></div>
+        <div class="quiz-prog-fill" style="transform:scaleX(${pct / 100})"></div>
       </div>
     </div>
 

@@ -94,7 +94,7 @@ body.wk-home #result, body.wk-home #protocols, body.wk-home #tracker { display: 
   background: var(--card); color: var(--text);
   border: 1px solid var(--border); border-radius: 999px;
   font-size: .9375rem; font-weight: 600; white-space: nowrap;
-  transition: border-color var(--t-fast), color var(--t-fast);
+  transition: none;
 }
 .top-btn:hover, .lang-globe:hover,
 .top-btn.active, .lang-globe[aria-expanded="true"] { border-color: var(--accent); color: var(--accent); }

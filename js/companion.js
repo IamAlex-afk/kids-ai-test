@@ -239,10 +239,10 @@
       const nextNeed = stage + 1;
       if (stage < STAGES.length - 1) {
         const pct = Math.round((s.done.length / nextNeed) * 100);
-        fillEl.style.width = Math.max(4, Math.min(100, pct)) + '%';
+        fillEl.style.transform = `scaleX(${Math.max(4, Math.min(100, pct)) / 100})`;
         subEl.textContent = `${t(lang,'level')} ${stage} · ${s.done.length} ${t(lang, 'learned')}`;
       } else {
-        fillEl.style.width = '100%';
+        fillEl.style.transform = 'scaleX(1)';
         subEl.textContent = `${s.done.length} ${t(lang, 'learned')} · ${t(lang, 'maxed')}`;
       }
     }
