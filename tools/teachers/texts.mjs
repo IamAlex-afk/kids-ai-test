@@ -793,7 +793,7 @@ export const TT = {
   },
   de: {
     ui: {
-      goal: 'Ziel der Stunde', need: 'Material', steps: 'Ablauf der Stunde (45 Minuten)', min: 'Min.',
+      goal: 'Ziel der Stunde', need: 'Material', steps: 'Ablauf der Stunde (45 Minuten)', min: 'Min',
       questions: 'Fragen für das Gespräch', check: 'Lernstand prüfen', diff: 'Differenzierung',
       parents: 'Hinweis für Eltern', sources: 'Quellen', openLesson: 'Lektion auf der Website',
       allPlans: 'Alle Stundenentwürfe', privacy: 'Datenschutz', updated: 'Aktualisiert', lrType: 'Unterrichtsentwurf',

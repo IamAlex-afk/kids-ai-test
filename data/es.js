@@ -200,7 +200,7 @@ window.LANG_DATA = {
         {
           icon:'📖',
           title:'¿Cómo aprende la IA realmente?',
-          text:'La IA no va a la escuela — lee millones de libros, páginas web y conversaciones a súper velocidad. Encuentra patrones: "gato" aparece junto a "miau" y "bigotes" — así aprende que están relacionados. Esto se llama aprendizaje automático.',
+          text:'La IA no va a la escuela — lee millones de libros, páginas web y conversaciones a supervelocidad. Encuentra patrones: "gato" aparece junto a "miau" y "bigotes" — así aprende que están relacionados. Esto se llama aprendizaje automático.',
           example:'🍎 Si ves 1000 fotos de manzanas, reconocerías la siguiente al instante. La IA hace exactamente eso — pero con miles de millones de ejemplos.',
           source:'LeCun, Bengio, Hinton, "Deep Learning", Nature 2015', sourceUrl:'https://www.nature.com/articles/nature14539',
           miniTest: [
@@ -436,7 +436,7 @@ window.LANG_DATA = {
           fact:'Las redes neuronales son funciones matematicas inspiradas en neuronas — sin consciencia ni comprension.' },
         { unit:'word', targets:['LA','IA','NO','TIENE','SENTIMIENTOS'], decoys:['VERDADEROS','SIEMPRE'], icon:'🤖',
           fact:'La IA imita emociones porque aprendio de texto humano — no las experimenta realmente.' },
-        { unit:'word', targets:['LOS','LLMs','PREDICEN','LA','SIGUIENTE','PALABRA'], decoys:['PIENSAN','COMPRENDEN'], icon:'📝',
+        { unit:'word', targets:['LOS','LLM','PREDICEN','LA','SIGUIENTE','PALABRA'], decoys:['PIENSAN','COMPRENDEN'], icon:'📝',
           fact:'Los modelos de lenguaje funcionan prediciendo el siguiente token mas probable — no piensan, solo hacen estadistica.' },
         { unit:'word', targets:['EL','PHISHING','USA','IA','PARA','ENGAÑAR'], decoys:['HONESTIDAD','PROTECCION'], icon:'🎣',
           fact:'Los mensajes de phishing generados por IA son mas convincentes que nunca. Siempre verifica al remitente y los enlaces.' },
@@ -516,12 +516,12 @@ window.LANG_DATA = {
         {
           icon:'🏗️',
           title:'La pila completa de LLM: del texto bruto al RLHF',
-          text:'Los LLMs modernos se construyen en tres fases: (1) Preentrenamiento en corpus masivos — predicción del siguiente token, miles de millones de parámetros; (2) Ajuste fino supervisado en demostraciones humanas curadas; (3) RLHF o IA Constitucional para alinear resultados con preferencias humanas. El modelo no guarda hechos como una base de datos: el conocimiento está repartido en miles de millones de pesos, aunque a veces memoriza literalmente fragmentos de sus textos de entrenamiento. "Conocimiento" es una metáfora de lo que son realmente distribuciones de probabilidad ponderadas.',
+          text:'Los LLM modernos se construyen en tres fases: (1) Preentrenamiento en corpus masivos — predicción del siguiente token, miles de millones de parámetros; (2) Ajuste fino supervisado en demostraciones humanas curadas; (3) RLHF o IA Constitucional para alinear resultados con preferencias humanas. El modelo no guarda hechos como una base de datos: el conocimiento está repartido en miles de millones de pesos, aunque a veces memoriza literalmente fragmentos de sus textos de entrenamiento. "Conocimiento" es una metáfora de lo que son realmente distribuciones de probabilidad ponderadas.',
           example:'🔧 Arquitectura → Datos → Ajuste fino → RLHF → Despliegue → Monitoreo. Cada paso involucra decisiones humanas que moldean lo que el modelo dirá.',
           source:'Ouyang et al. (InstructGPT) 2022 + Bai et al. (Constitutional AI, Anthropic) 2022', sourceUrl:'https://arxiv.org/abs/2212.08073',
           miniTest: [{ q:'¿Por qué no puedes simplemente preguntarle a un LLM "qué hay en tus datos de entrenamiento"?',
             options:['Las empresas lo ocultan por razones legales 🔒','El modelo no "almacena" datos — codifica patrones estadísticos; los documentos individuales no son recuperables 📊','Requeriría demasiada potencia de cómputo 💻','Los datos de entrenamiento están cifrados 🔐'],
-            correct:1, explanation:'Los LLMs no memorizan documentos como objetos discretos. Comprimen patrones en miles de millones de pesos de punto flotante. El texto específico a veces puede "reconstruirse" mediante prompting adversarial — un riesgo de privacidad conocido.' }],
+            correct:1, explanation:'Los LLM no memorizan documentos como objetos discretos. Comprimen patrones en miles de millones de pesos de punto flotante. El texto específico a veces puede "reconstruirse" mediante prompting adversarial — un riesgo de privacidad conocido.' }],
         },
         {
           icon:'🗺️',
@@ -611,7 +611,7 @@ window.LANG_DATA = {
         { unit:'phrase', targets:['CAPACIDADES EMERGENTES','APARECEN','IMPREDECIBLEMENTE','AL ESCALAR'], decoys:['PLANIFICADO','CONTROLADO'], icon:'🚀',
           fact:'Ciertas capacidades de IA aparecen de repente al escalar — los investigadores aun no entienden completamente por que.' },
         { unit:'phrase', targets:['SISTEMAS RAG','CONECTAN','MODELOS DE LENGUAJE','CON FUENTES EXTERNAS'], decoys:['SOLO MEMORIA','SIEMPRE ALUCINA'], icon:'🔗',
-          fact:'La generacion aumentada por recuperacion permite a los LLMs acceder a informacion actual — reduce la alucinacion en preguntas factuales.' },
+          fact:'La generacion aumentada por recuperacion permite a los LLM acceder a informacion actual — reduce la alucinacion en preguntas factuales.' },
         { unit:'phrase', targets:['EL FINE-TUNING','ADAPTA','MODELOS BASE','A TAREAS ESPECIFICAS'], decoys:['REENTRENA TODO','BORRA TODO'], icon:'🎛️',
           fact:'El fine-tuning es mas eficiente que el preentrenamiento — adaptas un modelo existente a datos medicos o juridicos.' },
         { unit:'phrase', targets:['LA ALINEACION IA','SIGNIFICA','ALINEAR OBJETIVOS','CON VALORES HUMANOS'], decoys:['IMPOSIBLE','INNECESARIO'], icon:'🎯',

@@ -199,7 +199,7 @@ window.LANG_DATA = {
         {
           icon:  '🎨',
           title: 'AI can draw pretend pictures',
-          text:  'Some pictures on the internet were never drawn by a person at all — a computer made them! You type words like "a cat wearing a hat" and AI creates a brand new picture. It\'s not magic — it learned from a huge, huge number of pictures.',
+          text:  'Some pictures on the internet were never drawn by a person at all — a computer made them! You type words like "a cat wearing a hat" and AI creates a brand-new picture. It\'s not magic — it learned from a huge, huge number of pictures.',
           example: '🖼️ It\'s like mixing paint colours you know to make a new colour — except AI mixes what it learned from pictures.',
           source:    'LeCun, Bengio, Hinton, "Deep Learning", Nature 2015',
           sourceUrl: 'https://www.nature.com/articles/nature14539',
