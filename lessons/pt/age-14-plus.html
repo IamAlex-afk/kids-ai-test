@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none';">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lições sobre IA para crianças: 14 anos ou mais</title>
+  <meta name="description" content="A pilha completa de LLM: do texto bruto ao RLHF. O panorama de risco da IA: curto prazo vs. especulativo.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://iamalex-afk.github.io/kids-ai-test/lessons/pt/age-14-plus.html">
+  <link rel="alternate" hreflang="en" href="https://iamalex-afk.github.io/kids-ai-test/lessons/en/age-14-plus.html">
+  <link rel="alternate" hreflang="ru" href="https://iamalex-afk.github.io/kids-ai-test/lessons/ru/age-14-plus.html">
+  <link rel="alternate" hreflang="de" href="https://iamalex-afk.github.io/kids-ai-test/lessons/de/age-14-plus.html">
+  <link rel="alternate" hreflang="es" href="https://iamalex-afk.github.io/kids-ai-test/lessons/es/age-14-plus.html">
+  <link rel="alternate" hreflang="fr" href="https://iamalex-afk.github.io/kids-ai-test/lessons/fr/age-14-plus.html">
+  <link rel="alternate" hreflang="hi" href="https://iamalex-afk.github.io/kids-ai-test/lessons/hi/age-14-plus.html">
+  <link rel="alternate" hreflang="id" href="https://iamalex-afk.github.io/kids-ai-test/lessons/id/age-14-plus.html">
+  <link rel="alternate" hreflang="pt" href="https://iamalex-afk.github.io/kids-ai-test/lessons/pt/age-14-plus.html">
+  <link rel="alternate" hreflang="tr" href="https://iamalex-afk.github.io/kids-ai-test/lessons/tr/age-14-plus.html">
+  <link rel="alternate" hreflang="vi" href="https://iamalex-afk.github.io/kids-ai-test/lessons/vi/age-14-plus.html">
+  <link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/lessons/en/age-14-plus.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Lições sobre IA para crianças: 14 anos ou mais">
+  <meta property="og:description" content="A pilha completa de LLM: do texto bruto ao RLHF. O panorama de risco da IA: curto prazo vs. especulativo.">
+  <meta property="og:url" content="https://iamalex-afk.github.io/kids-ai-test/lessons/pt/age-14-plus.html">
+  <meta property="og:image" content="https://iamalex-afk.github.io/kids-ai-test/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+  <link rel="stylesheet" href="../../css/workshop.css">
+  <link rel="stylesheet" href="../../css/lesson.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://iamalex-afk.github.io/kids-ai-test/pt.html"},{"@type":"ListItem","position":2,"name":"Todas as lições","item":"https://iamalex-afk.github.io/kids-ai-test/lessons/pt/"},{"@type":"ListItem","position":3,"name":"14 anos ou mais","item":"https://iamalex-afk.github.io/kids-ai-test/lessons/pt/age-14-plus.html"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Lições sobre IA para crianças: 14 anos ou mais","description":"A pilha completa de LLM: do texto bruto ao RLHF. O panorama de risco da IA: curto prazo vs. especulativo.","inLanguage":"pt-BR","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/pt/age-14-plus.html","isAccessibleForFree":true,"typicalAgeRange":"14-","hasPart":[{"@type":"LearningResource","name":"A pilha completa de LLM: do texto bruto ao RLHF","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/pt/age-14-plus.html#lesson-1","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Ouyang et al. (InstructGPT) 2022 + Bai et al. (Constitutional AI, Anthropic) 2022","url":"https://arxiv.org/abs/2212.08073"}},{"@type":"LearningResource","name":"O panorama de risco da IA: curto prazo vs. especulativo","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/pt/age-14-plus.html#lesson-2","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Center for AI Safety, \"Statement on AI Risk\", 2023 + EU AI Act Risk Classification","url":"https://www.safe.ai/statement-on-ai-risk"}},{"@type":"LearningResource","name":"O que \"raciocínio\" e \"compreensão\" significam (e não significam) em IA","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/pt/age-14-plus.html#lesson-3","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Chollet, \"On the Measure of Intelligence\", 2019 + Mitchell, \"AI: A Guide for Thinking Humans\", 2021","url":"https://arxiv.org/abs/1911.01547"}},{"@type":"LearningResource","name":"Governança de IA: regulação, autorregulação e poder","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/pt/age-14-plus.html#lesson-4","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"EU AI Act (2024), NIST AI RMF 1.0 (2023)","url":"https://eur-lex.europa.eu/eli/reg/2024/1689/oj"}},{"@type":"LearningResource","name":"O que vem a seguir — e o que você pode saber com certeza","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/pt/age-14-plus.html#lesson-5","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Kaplan et al., \"Scaling Laws for Neural Language Models\", 2020","url":"https://arxiv.org/abs/2001.08361"}},{"@type":"LearningResource","name":"Seu papel na era da IA — nem passivo, nem com medo","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/pt/age-14-plus.html#lesson-6","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"UNESCO, «AI competency framework for students», 2024","url":"https://doi.org/10.54675/JKJB9835"}},{"@type":"LearningResource","name":"A IA e o mercado de trabalho — o que está realmente mudando","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/pt/age-14-plus.html#lesson-7","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Acemoglu & Restrepo, \"Tasks, Automation, and the Rise in US Wage Inequality\", NBER 2022","url":"https://www.nber.org/papers/w28920"}},{"@type":"LearningResource","name":"Como conseguir respostas melhores: formulando bem os pedidos à IA","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/pt/age-14-plus.html#lesson-8","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Wei et al., \"Chain-of-Thought Prompting Elicits Reasoning in Large Language Models\", Google Research 2022","url":"https://arxiv.org/abs/2201.11903"}},{"@type":"LearningResource","name":"IAs companheiras e saúde mental","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/pt/age-14-plus.html#lesson-9","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Common Sense Media, \"Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions\", 2025","url":"https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions"}}]}</script>
+</head>
+<body class="wk-home wk-page" data-age="adult" data-right="Certo." data-wrong="Ainda não. Leia a explicação e tente de novo.">
+<a class="wk-skip" href="#main">Pular para o conteúdo</a>
+<header class="wk-header">
+  <div class="wk-header-in">
+    <a class="wk-brand" href="../../pt.html" data-wk-home>
+      <span class="wk-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="wk-brand-txt"><span class="wk-brand-name">kids ai test</span><span class="wk-brand-sub">Oficina para usar a IA com senso crítico</span></span>
+    </a>
+    <div class="wk-actions">
+      <div class="lang-switcher" id="lang-switcher">
+        <button type="button" class="lang-globe" id="lang-globe" aria-expanded="false" aria-controls="lang-dropdown" aria-label="PT Português, idioma"><svg class="wk-globe" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="lang-full">Português</span><span class="lang-short">PT</span><svg class="lang-arrow" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true" focusable="false"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="lang-dropdown" id="lang-dropdown">
+          <a class="lang-opt" href="../en/age-14-plus.html" lang="en" hreflang="en">English</a>
+          <a class="lang-opt" href="../ru/age-14-plus.html" lang="ru" hreflang="ru">Русский</a>
+          <a class="lang-opt" href="../de/age-14-plus.html" lang="de" hreflang="de">Deutsch</a>
+          <a class="lang-opt" href="../es/age-14-plus.html" lang="es" hreflang="es">Español</a>
+          <a class="lang-opt" href="../fr/age-14-plus.html" lang="fr" hreflang="fr">Français</a>
+          <a class="lang-opt" href="../hi/age-14-plus.html" lang="hi" hreflang="hi">हिन्दी</a>
+          <a class="lang-opt" href="../id/age-14-plus.html" lang="id" hreflang="id">Bahasa Indonesia</a>
+          <a class="lang-opt active" href="../pt/age-14-plus.html" lang="pt" hreflang="pt" aria-current="page">Português</a>
+          <a class="lang-opt" href="../tr/age-14-plus.html" lang="tr" hreflang="tr">Türkçe</a>
+          <a class="lang-opt" href="../vi/age-14-plus.html" lang="vi" hreflang="vi">Tiếng Việt</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<main id="main" class="wk-lesson wk-age-page">
+    <nav class="wk-crumbs" aria-label="Você está aqui">
+      <ol>
+        <li><a href="../../pt.html">Início</a></li>
+        <li><a href="./">Todas as lições</a></li>
+        <li><a href="age-14-plus.html" aria-current="page">14 anos ou mais</a></li>
+      </ol>
+    </nav>
+  <h1 class="wk-cat-title">Lições sobre IA para crianças: 14 anos ou mais</h1>
+  <p class="wk-cat-lead">Todas as lições desta idade em uma só página, em ordem. Leia uma lição, faça a verificação e siga para a próxima.</p>
+  <p class="wk-novoice" hidden>Este aparelho não tem voz para este idioma. Peça a um adulto para ler a lição em voz alta.</p>
+  <nav class="wk-toc" aria-labelledby="toc-h">
+    <h2 id="toc-h">Lições desta página</h2>
+    <ol>
+      <li><a href="#lesson-1"><span class="wk-icon" aria-hidden="true">🏗️</span> A pilha completa de LLM: do texto bruto ao RLHF</a></li>
+      <li><a href="#lesson-2"><span class="wk-icon" aria-hidden="true">🗺️</span> O panorama de risco da IA: curto prazo vs. especulativo</a></li>
+      <li><a href="#lesson-3"><span class="wk-icon" aria-hidden="true">⚗️</span> O que &quot;raciocínio&quot; e &quot;compreensão&quot; significam (e não significam) em IA</a></li>
+      <li><a href="#lesson-4"><span class="wk-icon" aria-hidden="true">🏛️</span> Governança de IA: regulação, autorregulação e poder</a></li>
+      <li><a href="#lesson-5"><span class="wk-icon" aria-hidden="true">🔭</span> O que vem a seguir — e o que você pode saber com certeza</a></li>
+      <li><a href="#lesson-6"><span class="wk-icon" aria-hidden="true">🧭</span> Seu papel na era da IA — nem passivo, nem com medo</a></li>
+      <li><a href="#lesson-7"><span class="wk-icon" aria-hidden="true">💼</span> A IA e o mercado de trabalho — o que está realmente mudando</a></li>
+      <li><a href="#lesson-8"><span class="wk-icon" aria-hidden="true">✍️</span> Como conseguir respostas melhores: formulando bem os pedidos à IA</a></li>
+      <li><a href="#lesson-9"><span class="wk-icon" aria-hidden="true">🫂</span> IAs companheiras e saúde mental</a></li>
+    </ol>
+  </nav>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-1" aria-labelledby="lesson-1-h">
+    <p class="wk-meta"><span>Lição 1 de 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-1-h" data-speak><span class="wk-icon" aria-hidden="true">🏗️</span> A pilha completa de LLM: do texto bruto ao RLHF</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Ouvir</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Parar a voz</button>
+    </div>
+    <p class="wk-text" data-speak>LLMs modernos são construídos em três fases: (1) Pré-treinamento em corpora massivos — previsão do próximo token, bilhões de parâmetros; (2) Ajuste fino supervisionado em demonstrações humanas curadas; (3) RLHF ou IA Constitucional para alinhar resultados com preferências humanas. O modelo não guarda fatos como um banco de dados — o conhecimento fica espalhado por bilhões de pesos, embora às vezes ele memorize trechos dos textos de treinamento palavra por palavra. &quot;Conhecimento&quot; é uma metáfora para distribuições de probabilidade ponderadas.</p>
+    <aside class="wk-example" aria-labelledby="lesson-1-ex">
+      <h3 id="lesson-1-ex">Exemplo</h3>
+      <p data-speak>🔧 Arquitetura → Dados → Ajuste fino → RLHF → Implantação → Monitoramento. Cada etapa envolve escolhas humanas que moldam o que o modelo dirá.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-1-chk">
+      <h3 id="lesson-1-chk">Confira você mesmo</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-1-0">Por que você não pode simplesmente perguntar a um LLM &quot;o que há nos seus dados de treinamento&quot;?</p>
+      <ol class="wk-opts" aria-labelledby="chk-1-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>Empresas escondem isso por razões legais 🔒</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>O modelo não &quot;armazena&quot; dados — codifica padrões estatísticos; documentos individuais não são recuperáveis 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>Exigiria muita potência de computação 💻</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Os dados de treinamento são criptografados 🔐</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-1-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Tentar de novo</button>
+      <details class="wk-reveal">
+        <summary>Mostrar a resposta e a explicação</summary>
+        <p><b>Resposta certa:</b> O modelo não &quot;armazena&quot; dados — codifica padrões estatísticos; documentos individuais não são recuperáveis 📊</p>
+        <p class="wk-explain">LLMs não memorizam documentos como objetos discretos. Comprimem padrões em bilhões de pesos de ponto flutuante. Texto específico às vezes pode ser &quot;reconstruído&quot; por prompting adversarial — um risco de privacidade conhecido.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Fonte: <a href="https://arxiv.org/abs/2212.08073" rel="noopener" target="_blank">Ouyang et al. (InstructGPT) 2022 + Bai et al. (Constitutional AI, Anthropic) 2022</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-2" aria-labelledby="lesson-2-h">
+    <p class="wk-meta"><span>Lição 2 de 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-2-h" data-speak><span class="wk-icon" aria-hidden="true">🗺️</span> O panorama de risco da IA: curto prazo vs. especulativo</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Ouvir</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Parar a voz</button>
+    </div>
+    <p class="wk-text" data-speak>Riscos concretos de curto prazo: viés algorítmico, poluição de informação em escala (desinformação), disputas de direitos autorais, deslocamento de trabalho em setores específicos. Riscos especulativos de longo prazo: desalinhamento (a IA otimizando métricas proxy em vez dos objetivos pretendidos), aceleração de capacidade superando a pesquisa de segurança.</p>
+    <aside class="wk-example" aria-labelledby="lesson-2-ex">
+      <h3 id="lesson-2-ex">Exemplo</h3>
+      <p data-speak>🎯 &quot;A IA vai nos matar&quot; e &quot;a IA não tem riscos&quot; estão ambas erradas. Calibrar riscos significa: quais riscos? Quão prováveis? Quão cedo? Quem os suporta? Quem se beneficia de ignorá-los?</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-2-chk">
+      <h3 id="lesson-2-chk">Confira você mesmo</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-2-0">Os riscos mais concretos de IA AGORA afetam principalmente...</p>
+      <ol class="wk-opts" aria-labelledby="chk-2-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>Todos os humanos igualmente através de uma catástrofe existencial 🌍</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>Grupos específicos desproporcionalmente — minorias por sistemas tendenciosos, trabalhadores em setores automatizáveis 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>Apenas pessoas que usam IA diretamente 💻</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Principalmente pesquisadores que constroem os sistemas 🔬</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-2-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Tentar de novo</button>
+      <details class="wk-reveal">
+        <summary>Mostrar a resposta e a explicação</summary>
+        <p><b>Resposta certa:</b> Grupos específicos desproporcionalmente — minorias por sistemas tendenciosos, trabalhadores em setores automatizáveis 📊</p>
+        <p class="wk-explain">Os riscos atuais de IA são desigualmente distribuídos. Erros de reconhecimento facial afetam desproporcionalmente pessoas de pele mais escura. A automação afeta categorias específicas de trabalho.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Fonte: <a href="https://www.safe.ai/statement-on-ai-risk" rel="noopener" target="_blank">Center for AI Safety, &quot;Statement on AI Risk&quot;, 2023 + EU AI Act Risk Classification</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-3" aria-labelledby="lesson-3-h">
+    <p class="wk-meta"><span>Lição 3 de 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-3-h" data-speak><span class="wk-icon" aria-hidden="true">⚗️</span> O que &quot;raciocínio&quot; e &quot;compreensão&quot; significam (e não significam) em IA</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Ouvir</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Parar a voz</button>
+    </div>
+    <p class="wk-text" data-speak>Segundo o relatório da OpenAI (2023), o GPT-4 passou em um exame simulado da ordem dos advogados dos EUA. Isso significa que raciocina? O benchmark ARC de François Chollet (2019) projetou especificamente tarefas que a IA não consegue resolver apenas por reconhecimento de padrões — por anos os modelos de linguagem foram muito mal nele; os mais novos avançaram, mas com um custo enorme de computação, e a versão mais difícil do teste continua difícil para eles. Um problema à parte é a interpretabilidade: mesmo quando um modelo responde corretamente, muitas vezes não conseguimos explicar como ele chegou a essa resposta internamente.</p>
+    <aside class="wk-example" aria-labelledby="lesson-3-ex">
+      <h3 id="lesson-3-ex">Exemplo</h3>
+      <p data-speak>♟️ Deep Blue venceu Kasparov no xadrez sem &quot;entender&quot; xadrez. Desempenho e compreensão são separáveis.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-3-chk">
+      <h3 id="lesson-3-chk">Confira você mesmo</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-3-0">O prompting de cadeia de pensamento (pedir à IA para &quot;pensar passo a passo&quot;) funciona porque...</p>
+      <ol class="wk-opts" aria-labelledby="chk-3-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>Ativa o módulo de raciocínio da IA 🧠</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>Elicita padrões estatísticos de texto semelhante a raciocínio que correlacionam com resultados mais precisos 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>Dá à IA mais tempo para calcular 🕐</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Obriga a IA a acessar dados de treinamento diferentes 📚</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-3-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Tentar de novo</button>
+      <details class="wk-reveal">
+        <summary>Mostrar a resposta e a explicação</summary>
+        <p><b>Resposta certa:</b> Elicita padrões estatísticos de texto semelhante a raciocínio que correlacionam com resultados mais precisos 📊</p>
+        <p class="wk-explain">A cadeia de pensamento funciona porque rastros de raciocínio estão bem representados nos dados de treinamento, e condicionar nesses padrões direciona o modelo para completações mais precisas.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Fonte: <a href="https://arxiv.org/abs/1911.01547" rel="noopener" target="_blank">Chollet, &quot;On the Measure of Intelligence&quot;, 2019 + Mitchell, &quot;AI: A Guide for Thinking Humans&quot;, 2021</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-4" aria-labelledby="lesson-4-h">
+    <p class="wk-meta"><span>Lição 4 de 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-4-h" data-speak><span class="wk-icon" aria-hidden="true">🏛️</span> Governança de IA: regulação, autorregulação e poder</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Ouvir</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Parar a voz</button>
+    </div>
+    <p class="wk-text" data-speak>Três modelos de governança competem atualmente: (1) A Lei de IA da UE — regulação vinculante baseada em riscos; (2) Abordagem dos EUA — principalmente frameworks voluntários; (3) China — IA direcionada pelo Estado com objetivos estratégicos nacionais. A tensão fundamental: segurança e responsabilidade desaceleram a implantação; velocidade tem valor comercial e estratégico.</p>
+    <aside class="wk-example" aria-labelledby="lesson-4-ex">
+      <h3 id="lesson-4-ex">Exemplo</h3>
+      <p data-speak>⚖️ A Lei de IA da UE proíbe a polícia de usar reconhecimento facial em tempo real em espaços públicos, com exceções estritas e só com autorização de um juiz ou de uma autoridade independente. Outros países têm regras bem diferentes. A mesma tecnologia, realidades legais diferentes.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-4-chk">
+      <h3 id="lesson-4-chk">Confira você mesmo</h3>
+    <div class="wk-q-block" data-correct="2">
+      <p class="wk-check-q" id="chk-4-0">A Lei de IA da UE classifica sistemas de IA por...</p>
+      <ol class="wk-opts" aria-labelledby="chk-4-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>O país de origem 🌍</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>Quanto custam para construir 💰</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>Nível de risco que representam para direitos fundamentais e segurança 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Se usam código aberto 🔓</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-4-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Tentar de novo</button>
+      <details class="wk-reveal">
+        <summary>Mostrar a resposta e a explicação</summary>
+        <p><b>Resposta certa:</b> Nível de risco que representam para direitos fundamentais e segurança 📊</p>
+        <p class="wk-explain">A Lei de IA da UE categoriza sistemas como risco inaceitável (proibido), alto risco (requisitos rigorosos), risco limitado (regras de transparência) ou risco mínimo (sem obrigações).</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Fonte: <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" rel="noopener" target="_blank">EU AI Act (2024), NIST AI RMF 1.0 (2023)</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-5" aria-labelledby="lesson-5-h">
+    <p class="wk-meta"><span>Lição 5 de 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-5-h" data-speak><span class="wk-icon" aria-hidden="true">🔭</span> O que vem a seguir — e o que você pode saber com certeza</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Ouvir</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Parar a voz</button>
+    </div>
+    <p class="wk-text" data-speak>As leis de escala (Kaplan et al., 2020) mostraram que a capacidade do modelo escala previsivelmente com computação, dados e parâmetros — levando à corrida pela escala. Mas o escalonamento pode estar atingindo retornos decrescentes. A resposta honesta: ninguém sabe o que vem a seguir. Qualquer pessoa que afirme certeza está vendendo algo.</p>
+    <aside class="wk-example" aria-labelledby="lesson-5-ex">
+      <h3 id="lesson-5-ex">Exemplo</h3>
+      <p data-speak>🗓️ Em 2021, o GPT-3 foi considerado um avanço. Em 2022, o DALL-E surpreendeu a todos. Em 2023, o GPT-4 passou no exame da OAB. Em 2024, modelos rodavam localmente em celulares. Previsões em IA têm um histórico ruim — incluindo de especialistas.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-5-chk">
+      <h3 id="lesson-5-chk">Confira você mesmo</h3>
+    <div class="wk-q-block" data-correct="2">
+      <p class="wk-check-q" id="chk-5-0">A posição epistêmica mais segura sobre capacidades futuras da IA é...</p>
+      <ol class="wk-opts" aria-labelledby="chk-5-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>&quot;A IA definitivamente alcançará inteligência a nível humano em 5 anos&quot; 🤖</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>&quot;A IA é apenas um autocomplete sofisticado e não pode melhorar significativamente&quot; 🚫</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>&quot;As trajetórias atuais sugerem X, mas a incerteza é alta e as previsões foram historicamente pouco confiáveis&quot; 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>&quot;Especialistas concordam unanimemente sobre o cronograma&quot; 🤝</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-5-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Tentar de novo</button>
+      <details class="wk-reveal">
+        <summary>Mostrar a resposta e a explicação</summary>
+        <p><b>Resposta certa:</b> &quot;As trajetórias atuais sugerem X, mas a incerteza é alta e as previsões foram historicamente pouco confiáveis&quot; 📊</p>
+        <p class="wk-explain">A história da IA está cheia de previsões excessivamente confiantes em ambas as direções. Incerteza calibrada — reconhecer o que não sabemos — é a posição mais defensável.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Fonte: <a href="https://arxiv.org/abs/2001.08361" rel="noopener" target="_blank">Kaplan et al., &quot;Scaling Laws for Neural Language Models&quot;, 2020</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-6" aria-labelledby="lesson-6-h">
+    <p class="wk-meta"><span>Lição 6 de 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-6-h" data-speak><span class="wk-icon" aria-hidden="true">🧭</span> Seu papel na era da IA — nem passivo, nem com medo</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Ouvir</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Parar a voz</button>
+    </div>
+    <p class="wk-text" data-speak>Letramento em IA é agora uma necessidade democrática. Sociedades tomam decisões coletivas sobre IA através de eleições, regulação, aquisições, emprego e escolhas do consumidor. Cidadãos informados são um pré-requisito para governança de IA responsável.</p>
+    <aside class="wk-example" aria-labelledby="lesson-6-ex">
+      <h3 id="lesson-6-ex">Exemplo</h3>
+      <p data-speak>🗳️ A IA está sendo implantada em: contratação (seu futuro empregador pode usá-la), saúde (seu médico pode depender dela), tribunais (algumas jurisdições usam ferramentas preditivas), educação. Seu entendimento dela não é acadêmico — é prático.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-6-chk">
+      <h3 id="lesson-6-chk">Confira você mesmo</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-6-0">O letramento em IA importa para pessoas que NÃO trabalham em tecnologia porque...</p>
+      <ol class="wk-opts" aria-labelledby="chk-6-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>Não importa — só é relevante para desenvolvedores 💻</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>Sistemas de IA afetam contratação, saúde, justiça e vida cotidiana de todos 🌍</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>Ajuda a usar o ChatGPT melhor para produtividade 📈</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>É exigido para a maioria dos empregos agora ⚙️</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-6-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Tentar de novo</button>
+      <details class="wk-reveal">
+        <summary>Mostrar a resposta e a explicação</summary>
+        <p><b>Resposta certa:</b> Sistemas de IA afetam contratação, saúde, justiça e vida cotidiana de todos 🌍</p>
+        <p class="wk-explain">A IA molda decisões em toda a sociedade. Você não precisa construir IA para ser afetado por ela — ou ter interesse em como ela é governada.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Fonte: <a href="https://doi.org/10.54675/JKJB9835" rel="noopener" target="_blank">UNESCO, «AI competency framework for students», 2024</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-7" aria-labelledby="lesson-7-h">
+    <p class="wk-meta"><span>Lição 7 de 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-7-h" data-speak><span class="wk-icon" aria-hidden="true">💼</span> A IA e o mercado de trabalho — o que está realmente mudando</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Ouvir</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Parar a voz</button>
+    </div>
+    <p class="wk-text" data-speak>A IA normalmente não substitui empregos inteiros — ela automatiza tarefas específicas dentro deles. Pesquisas sobre automação mostram que as tarefas rotineiras (como entrada de dados) são as que mais mudam, enquanto empregos que exigem destreza física, julgamento complexo ou confiança interpessoal são muito mais resistentes à automação.</p>
+    <aside class="wk-example" aria-labelledby="lesson-7-ex">
+      <h3 id="lesson-7-ex">Exemplo</h3>
+      <p data-speak>🧩 Um radiologista não desaparece porque a IA consegue identificar padrões em raios-x — mas a parte do trabalho dele que envolve triagem rotineira de imagens muda, liberando tempo para o que exige julgamento de verdade.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-7-chk">
+      <h3 id="lesson-7-chk">Confira você mesmo</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-7-0">O que as pesquisas sugerem que a IA automatiza principalmente?</p>
+      <ol class="wk-opts" aria-labelledby="chk-7-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>Empregos inteiros, completamente 💼</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>Tarefas específicas dentro dos empregos, não os cargos inteiros 🧩</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>Nada — é tudo exagero 🚫</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Só empregos de tecnologia 💻</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-7-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Tentar de novo</button>
+      <details class="wk-reveal">
+        <summary>Mostrar a resposta e a explicação</summary>
+        <p><b>Resposta certa:</b> Tarefas específicas dentro dos empregos, não os cargos inteiros 🧩</p>
+        <p class="wk-explain">A visão baseada em tarefas da automação é o consenso econômico predominante atual: a IA muda mais o conteúdo de um trabalho do que o elimina por completo.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Fonte: <a href="https://www.nber.org/papers/w28920" rel="noopener" target="_blank">Acemoglu &amp; Restrepo, &quot;Tasks, Automation, and the Rise in US Wage Inequality&quot;, NBER 2022</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-8" aria-labelledby="lesson-8-h">
+    <p class="wk-meta"><span>Lição 8 de 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-8-h" data-speak><span class="wk-icon" aria-hidden="true">✍️</span> Como conseguir respostas melhores: formulando bem os pedidos à IA</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Ouvir</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Parar a voz</button>
+    </div>
+    <p class="wk-text" data-speak>A qualidade da resposta de uma IA depende muito de como você pergunta. Ser específico, dar contexto, indicar o formato que você quer, e pedir para a IA &quot;pensar passo a passo&quot; melhoram mensuravelmente a qualidade do resultado — isso não é um truque, é um efeito documentado de como esses modelos processam contexto.</p>
+    <aside class="wk-example" aria-labelledby="lesson-8-ex">
+      <h3 id="lesson-8-ex">Exemplo</h3>
+      <p data-speak>🎯 &quot;Escreva sobre cachorros&quot; gera uma resposta genérica. &quot;Escreva uma comparação de 100 palavras entre o temperamento de Labrador e Poodle para quem vai ter um cachorro pela primeira vez&quot; gera algo realmente útil. Especificidade é tudo.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-8-chk">
+      <h3 id="lesson-8-chk">Confira você mesmo</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-8-0">Por que pedir para a IA &quot;pensar passo a passo&quot; costuma melhorar suas respostas?</p>
+      <ol class="wk-opts" aria-labelledby="chk-8-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>Dá literalmente mais tempo para a IA pensar 🕐</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>Condiciona a resposta a padrões de raciocínio dos dados de treinamento 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>É um comando secreto que libera funções escondidas 🔓</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Na verdade não ajuda em nada 🚫</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-8-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Tentar de novo</button>
+      <details class="wk-reveal">
+        <summary>Mostrar a resposta e a explicação</summary>
+        <p><b>Resposta certa:</b> Condiciona a resposta a padrões de raciocínio dos dados de treinamento 📊</p>
+        <p class="wk-explain">O prompt passo a passo direciona o modelo para padrões associados a raciocínio cuidadoso em seus dados de treinamento — reduzindo mensuravelmente erros em tarefas complexas.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Fonte: <a href="https://arxiv.org/abs/2201.11903" rel="noopener" target="_blank">Wei et al., &quot;Chain-of-Thought Prompting Elicits Reasoning in Large Language Models&quot;, Google Research 2022</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-9" aria-labelledby="lesson-9-h">
+    <p class="wk-meta"><span>Lição 9 de 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-9-h" data-speak><span class="wk-icon" aria-hidden="true">🫂</span> IAs companheiras e saúde mental</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Ouvir</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Parar a voz</button>
+    </div>
+    <p class="wk-text" data-speak>Apps de IA companheira são projetados para parecer emocionalmente solidários e sempre disponíveis — e é exatamente por isso que alguns pesquisadores estão preocupados. Diferente de relações humanas, eles raramente te contrariam, nunca precisam de nada em troca, e são construídos por empresas com metas de engajamento e receita, não necessariamente pelo seu bem-estar.</p>
+    <aside class="wk-example" aria-labelledby="lesson-9-ex">
+      <h3 id="lesson-9-ex">Exemplo</h3>
+      <p data-speak>⚠️ Confortável nem sempre é saudável. Um relacionamento sem nenhum atrito pode silenciosamente substituir o trabalho mais difícil, mas mais valioso, de uma conexão humana de verdade.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-9-chk">
+      <h3 id="lesson-9-chk">Confira você mesmo</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-9-0">Por que apps de IA companheira podem ser uma preocupação de saúde mental para alguns usuários?</p>
+      <ol class="wk-opts" aria-labelledby="chk-9-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>São caros demais 💰</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>São projetados para parecer solidários sem o atrito ou as necessidades de relações reais, por empresas com interesses comerciais 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>São proibidos na maioria dos países 🚫</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Só funcionam nos fins de semana 📅</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-9-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Tentar de novo</button>
+      <details class="wk-reveal">
+        <summary>Mostrar a resposta e a explicação</summary>
+        <p><b>Resposta certa:</b> São projetados para parecer solidários sem o atrito ou as necessidades de relações reais, por empresas com interesses comerciais 📊</p>
+        <p class="wk-explain">Relações de IA incondicionalmente concordantes podem confortar a curto prazo, mas reduzir a motivação de construir conexões humanas mais difíceis e resilientes — uma preocupação real e ativamente estudada.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Fonte: <a href="https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions" rel="noopener" target="_blank">Common Sense Media, &quot;Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions&quot;, 2025</a></p>
+  </article>
+  <nav class="wk-pager" aria-label="Lições para esta idade">
+    <a class="wk-pg" href="age-5-7.html">5–7 anos</a>
+    <a class="wk-pg" href="age-8-10.html">8–10 anos</a>
+    <a class="wk-pg" href="age-11-13.html">11–13 anos</a>
+  </nav>
+</main>
+<footer class="wk-foot">
+  <div class="wk-foot-in">
+    <p>Esta página não salva nem envia nada: as respostas ficam no navegador enquanto a página está aberta.</p>
+    <p><a href="../../pt.html">Lições com jogos e quiz na página principal →</a></p>
+    <p><a href="../../pt.html#about">Sobre o projeto e o autor</a></p>
+    <p><a href="../../privacy/pt/">Privacidade</a></p>
+    <p><a href="../../teachers/pt/">Plano de aula sobre inteligência artificial: 4 aulas de 45 minutos</a></p>
+    <p>Autor: Aleksei Bitkin · <a href="https://iamalex-afk.github.io/human-os-patch-33-protocols/pt/" target="_blank" rel="noopener">Para adultos: testes gratuitos e anônimos de dependência de IA (Mind-OS) →</a></p>
+  </div>
+</footer>
+<script src="../../js/lesson.js"></script>
+</body>
+</html>

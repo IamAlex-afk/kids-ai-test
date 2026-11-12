@@ -60,9 +60,10 @@
     });
   });
 
-  /* ── Listen / stop ── */
-  const voiceBox = $('.wk-voice'), noVoice = $('.wk-novoice');
-  if (!voiceBox) return;
+  /* ── Listen / stop ── one voice box per lesson (an age page has several); each reads only its own lesson
+     (the nearest .wk-voice-scope, else the whole page). Starting one stops the others. */
+  const boxes = $$('.wk-voice');
+  if (!boxes.length) return;
   const synth = window.speechSynthesis;
   const tag = document.documentElement.lang || 'en';
   const TAGS = { en: 'en-US', ru: 'ru-RU', de: 'de-DE', es: 'es-ES', fr: 'fr-FR', hi: 'hi-IN', id: 'id-ID', pt: 'pt-BR', tr: 'tr-TR', vi: 'vi-VN' };
@@ -76,7 +77,8 @@
     return vs.find((v) => v.lang === want) || vs.find((v) => v.lang.replace('_', '-').startsWith(prefix)) || null;
   };
   const decide = (voice) => {
-    if (voice) { voiceBox.hidden = false; noVoice.hidden = true; } else { voiceBox.hidden = true; noVoice.hidden = false; }
+    boxes.forEach((b) => { b.hidden = !voice; });
+    $$('.wk-novoice').forEach((n) => { n.hidden = !!voice; });
     return voice;
   };
   if (!synth || typeof SpeechSynthesisUtterance === 'undefined') { decide(null); return; }
@@ -91,20 +93,23 @@
     setTimeout(finish, 1200);
   }
 
-  const listen = $('.wk-listen', voiceBox), stop = $('.wk-stop', voiceBox);
-  const idle = () => { stop.disabled = true; listen.disabled = false; };
-  listen.addEventListener('click', () => {
-    voice = voice || findVoice();
-    if (!voice) { decide(null); return; }
-    synth.cancel();
-    const text = $$('[data-speak]').map((el) => el.textContent.trim()).filter(Boolean).join('. ');
-    const u = new SpeechSynthesisUtterance(text);
-    u.voice = voice; u.lang = voice.lang; u.rate = document.body.dataset.age === 'tiny' ? 0.85 : 0.95;
-    u.onend = u.onerror = idle;
-    stop.disabled = false; listen.disabled = true;
-    synth.speak(u);
-    stop.focus();
+  const idleAll = () => boxes.forEach((b) => { $('.wk-stop', b).disabled = true; $('.wk-listen', b).disabled = false; });
+  boxes.forEach((box) => {
+    const listen = $('.wk-listen', box), stop = $('.wk-stop', box);
+    const scope = box.closest('.wk-voice-scope') || document;
+    listen.addEventListener('click', () => {
+      voice = voice || findVoice();
+      if (!voice) { decide(null); return; }
+      synth.cancel(); idleAll();
+      const text = $$('[data-speak]', scope).map((el) => el.textContent.trim()).filter(Boolean).join('. ');
+      const u = new SpeechSynthesisUtterance(text);
+      u.voice = voice; u.lang = voice.lang; u.rate = document.body.dataset.age === 'tiny' ? 0.85 : 0.95;
+      u.onend = u.onerror = idleAll;
+      stop.disabled = false; listen.disabled = true;
+      synth.speak(u);
+      stop.focus();
+    });
+    stop.addEventListener('click', () => { synth.cancel(); idleAll(); listen.focus(); });
   });
-  stop.addEventListener('click', () => { synth.cancel(); idle(); listen.focus(); });
   window.addEventListener('pagehide', () => synth.cancel());
 })();

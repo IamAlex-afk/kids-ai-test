@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none';">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Lessons for Kids, Ages 14+ | Kids AI Test</title>
+  <meta name="description" content="The full LLM stack: from raw text to RLHF. The landscape of AI risk: near-term vs speculative.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://iamalex-afk.github.io/kids-ai-test/lessons/en/age-14-plus.html">
+  <link rel="alternate" hreflang="en" href="https://iamalex-afk.github.io/kids-ai-test/lessons/en/age-14-plus.html">
+  <link rel="alternate" hreflang="ru" href="https://iamalex-afk.github.io/kids-ai-test/lessons/ru/age-14-plus.html">
+  <link rel="alternate" hreflang="de" href="https://iamalex-afk.github.io/kids-ai-test/lessons/de/age-14-plus.html">
+  <link rel="alternate" hreflang="es" href="https://iamalex-afk.github.io/kids-ai-test/lessons/es/age-14-plus.html">
+  <link rel="alternate" hreflang="fr" href="https://iamalex-afk.github.io/kids-ai-test/lessons/fr/age-14-plus.html">
+  <link rel="alternate" hreflang="hi" href="https://iamalex-afk.github.io/kids-ai-test/lessons/hi/age-14-plus.html">
+  <link rel="alternate" hreflang="id" href="https://iamalex-afk.github.io/kids-ai-test/lessons/id/age-14-plus.html">
+  <link rel="alternate" hreflang="pt" href="https://iamalex-afk.github.io/kids-ai-test/lessons/pt/age-14-plus.html">
+  <link rel="alternate" hreflang="tr" href="https://iamalex-afk.github.io/kids-ai-test/lessons/tr/age-14-plus.html">
+  <link rel="alternate" hreflang="vi" href="https://iamalex-afk.github.io/kids-ai-test/lessons/vi/age-14-plus.html">
+  <link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/lessons/en/age-14-plus.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="AI Lessons for Kids, Ages 14+ | Kids AI Test">
+  <meta property="og:description" content="The full LLM stack: from raw text to RLHF. The landscape of AI risk: near-term vs speculative.">
+  <meta property="og:url" content="https://iamalex-afk.github.io/kids-ai-test/lessons/en/age-14-plus.html">
+  <meta property="og:image" content="https://iamalex-afk.github.io/kids-ai-test/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+  <link rel="stylesheet" href="../../css/workshop.css">
+  <link rel="stylesheet" href="../../css/lesson.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://iamalex-afk.github.io/kids-ai-test/"},{"@type":"ListItem","position":2,"name":"All lessons","item":"https://iamalex-afk.github.io/kids-ai-test/lessons/en/"},{"@type":"ListItem","position":3,"name":"Ages 14+","item":"https://iamalex-afk.github.io/kids-ai-test/lessons/en/age-14-plus.html"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"AI Lessons for Kids, Ages 14+","description":"The full LLM stack: from raw text to RLHF. The landscape of AI risk: near-term vs speculative.","inLanguage":"en","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/en/age-14-plus.html","isAccessibleForFree":true,"typicalAgeRange":"14-","hasPart":[{"@type":"LearningResource","name":"The full LLM stack: from raw text to RLHF","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/en/age-14-plus.html#lesson-1","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Ouyang et al. (InstructGPT) 2022 + Bai et al. (Constitutional AI, Anthropic) 2022","url":"https://arxiv.org/abs/2212.08073"}},{"@type":"LearningResource","name":"The landscape of AI risk: near-term vs speculative","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/en/age-14-plus.html#lesson-2","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Center for AI Safety, \"Statement on AI Risk\", 2023 + EU AI Act Risk Classification","url":"https://www.safe.ai/statement-on-ai-risk"}},{"@type":"LearningResource","name":"What \"reasoning\" and \"understanding\" mean (and don't) in AI","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/en/age-14-plus.html#lesson-3","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Chollet, \"On the Measure of Intelligence\", 2019 + Mitchell, \"AI: A Guide for Thinking Humans\", 2021","url":"https://arxiv.org/abs/1911.01547"}},{"@type":"LearningResource","name":"AI Governance: regulation, self-regulation, and power","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/en/age-14-plus.html#lesson-4","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"EU AI Act (2024), NIST AI RMF 1.0 (2023)","url":"https://eur-lex.europa.eu/eli/reg/2024/1689/oj"}},{"@type":"LearningResource","name":"What comes next — and what you can actually know","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/en/age-14-plus.html#lesson-5","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Kaplan et al., \"Scaling Laws for Neural Language Models\", 2020","url":"https://arxiv.org/abs/2001.08361"}},{"@type":"LearningResource","name":"Your role in the AI era — not passive, not afraid","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/en/age-14-plus.html#lesson-6","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"UNESCO, \"AI competency framework for students\", 2024","url":"https://doi.org/10.54675/JKJB9835"}},{"@type":"LearningResource","name":"AI and the job market — what's actually changing","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/en/age-14-plus.html#lesson-7","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Acemoglu & Restrepo, \"Tasks, Automation, and the Rise in US Wage Inequality\", NBER 2022","url":"https://www.nber.org/papers/w28920"}},{"@type":"LearningResource","name":"Getting better answers: how to prompt AI well","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/en/age-14-plus.html#lesson-8","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Wei et al., \"Chain-of-Thought Prompting Elicits Reasoning in Large Language Models\", Google Research 2022","url":"https://arxiv.org/abs/2201.11903"}},{"@type":"LearningResource","name":"AI companions and mental health","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/en/age-14-plus.html#lesson-9","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Common Sense Media, \"Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions\", 2025","url":"https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions"}}]}</script>
+</head>
+<body class="wk-home wk-page" data-age="adult" data-right="Correct." data-wrong="Not yet. Read the explanation and try again.">
+<a class="wk-skip" href="#main">Skip to content</a>
+<header class="wk-header">
+  <div class="wk-header-in">
+    <a class="wk-brand" href="../../index.html" data-wk-home>
+      <span class="wk-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="wk-brand-txt"><span class="wk-brand-name">kids ai test</span><span class="wk-brand-sub">A workshop for using AI mindfully</span></span>
+    </a>
+    <div class="wk-actions">
+      <div class="lang-switcher" id="lang-switcher">
+        <button type="button" class="lang-globe" id="lang-globe" aria-expanded="false" aria-controls="lang-dropdown" aria-label="EN English, language"><svg class="wk-globe" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="lang-full">English</span><span class="lang-short">EN</span><svg class="lang-arrow" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true" focusable="false"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="lang-dropdown" id="lang-dropdown">
+          <a class="lang-opt active" href="../en/age-14-plus.html" lang="en" hreflang="en" aria-current="page">English</a>
+          <a class="lang-opt" href="../ru/age-14-plus.html" lang="ru" hreflang="ru">Русский</a>
+          <a class="lang-opt" href="../de/age-14-plus.html" lang="de" hreflang="de">Deutsch</a>
+          <a class="lang-opt" href="../es/age-14-plus.html" lang="es" hreflang="es">Español</a>
+          <a class="lang-opt" href="../fr/age-14-plus.html" lang="fr" hreflang="fr">Français</a>
+          <a class="lang-opt" href="../hi/age-14-plus.html" lang="hi" hreflang="hi">हिन्दी</a>
+          <a class="lang-opt" href="../id/age-14-plus.html" lang="id" hreflang="id">Bahasa Indonesia</a>
+          <a class="lang-opt" href="../pt/age-14-plus.html" lang="pt" hreflang="pt">Português</a>
+          <a class="lang-opt" href="../tr/age-14-plus.html" lang="tr" hreflang="tr">Türkçe</a>
+          <a class="lang-opt" href="../vi/age-14-plus.html" lang="vi" hreflang="vi">Tiếng Việt</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<main id="main" class="wk-lesson wk-age-page">
+    <nav class="wk-crumbs" aria-label="You are here">
+      <ol>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="./">All lessons</a></li>
+        <li><a href="age-14-plus.html" aria-current="page">Ages 14+</a></li>
+      </ol>
+    </nav>
+  <h1 class="wk-cat-title">AI Lessons for Kids, Ages 14+</h1>
+  <p class="wk-cat-lead">All lessons for this age on one page, in order. Read one lesson at a time, try the check, then move on.</p>
+  <p class="wk-novoice" hidden>This device has no voice for this language. Ask an adult to read the lesson aloud.</p>
+  <nav class="wk-toc" aria-labelledby="toc-h">
+    <h2 id="toc-h">Lessons on this page</h2>
+    <ol>
+      <li><a href="#lesson-1"><span class="wk-icon" aria-hidden="true">🏗️</span> The full LLM stack: from raw text to RLHF</a></li>
+      <li><a href="#lesson-2"><span class="wk-icon" aria-hidden="true">🗺️</span> The landscape of AI risk: near-term vs speculative</a></li>
+      <li><a href="#lesson-3"><span class="wk-icon" aria-hidden="true">⚗️</span> What &quot;reasoning&quot; and &quot;understanding&quot; mean (and don't) in AI</a></li>
+      <li><a href="#lesson-4"><span class="wk-icon" aria-hidden="true">🏛️</span> AI Governance: regulation, self-regulation, and power</a></li>
+      <li><a href="#lesson-5"><span class="wk-icon" aria-hidden="true">🔭</span> What comes next — and what you can actually know</a></li>
+      <li><a href="#lesson-6"><span class="wk-icon" aria-hidden="true">🧭</span> Your role in the AI era — not passive, not afraid</a></li>
+      <li><a href="#lesson-7"><span class="wk-icon" aria-hidden="true">💼</span> AI and the job market — what's actually changing</a></li>
+      <li><a href="#lesson-8"><span class="wk-icon" aria-hidden="true">✍️</span> Getting better answers: how to prompt AI well</a></li>
+      <li><a href="#lesson-9"><span class="wk-icon" aria-hidden="true">🫂</span> AI companions and mental health</a></li>
+    </ol>
+  </nav>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-1" aria-labelledby="lesson-1-h">
+    <p class="wk-meta"><span>Lesson 1 of 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-1-h" data-speak><span class="wk-icon" aria-hidden="true">🏗️</span> The full LLM stack: from raw text to RLHF</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Listen</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Stop the voice</button>
+    </div>
+    <p class="wk-text" data-speak>Modern LLMs are built in three phases: (1) Pre-training on massive corpora — next-token prediction, billions of parameters; (2) Supervised fine-tuning on curated human demonstrations; (3) RLHF or Constitutional AI to align outputs with human preferences or a rule set. The model doesn't store facts like a database — knowledge is spread across billions of weights, though it sometimes memorises pieces of its training text word for word. &quot;Knowledge&quot; is a metaphor for what are really weighted probability distributions.</p>
+    <aside class="wk-example" aria-labelledby="lesson-1-ex">
+      <h3 id="lesson-1-ex">Example</h3>
+      <p data-speak>🔧 Architecture → Data curation → Fine-tuning → RLHF → Deployment → Monitoring. Each step involves human choices that shape what the model will say.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-1-chk">
+      <h3 id="lesson-1-chk">Check yourself</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-1-0">Why can't you simply ask an LLM &quot;what's in your training data&quot;?</p>
+      <ol class="wk-opts" aria-labelledby="chk-1-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>Companies hide this for legal reasons 🔒</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>The model doesn't &quot;store&quot; data — it encodes statistical patterns; individual documents are not retrievable 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>It would take too much computing power 💻</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Training data is encrypted 🔐</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-1-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Try again</button>
+      <details class="wk-reveal">
+        <summary>Show the answer and explanation</summary>
+        <p><b>Correct answer:</b> The model doesn't &quot;store&quot; data — it encodes statistical patterns; individual documents are not retrievable 📊</p>
+        <p class="wk-explain">LLMs don't memorize documents as discrete objects. They compress patterns into billions of floating-point weights. Specific text can sometimes be &quot;reconstructed&quot; through adversarial prompting — a known privacy risk.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Source: <a href="https://arxiv.org/abs/2212.08073" rel="noopener" target="_blank">Ouyang et al. (InstructGPT) 2022 + Bai et al. (Constitutional AI, Anthropic) 2022</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-2" aria-labelledby="lesson-2-h">
+    <p class="wk-meta"><span>Lesson 2 of 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-2-h" data-speak><span class="wk-icon" aria-hidden="true">🗺️</span> The landscape of AI risk: near-term vs speculative</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Listen</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Stop the voice</button>
+    </div>
+    <p class="wk-text" data-speak>Near-term concrete risks: algorithmic bias (Buolamwini 2018), information pollution at scale (disinformation), copyright and IP disputes, labour displacement in specific sectors (code generation, content creation, translation). Speculative long-term risks: misalignment (AI optimizing for proxy goals vs intended ones), capability acceleration outpacing safety research. The Overton window in mainstream AI discourse often conflates both, making productive risk analysis harder.</p>
+    <aside class="wk-example" aria-labelledby="lesson-2-ex">
+      <h3 id="lesson-2-ex">Example</h3>
+      <p data-speak>🎯 &quot;AI will kill us all&quot; and &quot;AI has no risks&quot; are both wrong. Risk calibration means: which risks? How probable? How soon? Who bears them? Who benefits from ignoring them?</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-2-chk">
+      <h3 id="lesson-2-chk">Check yourself</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-2-0">The most concrete AI risks RIGHT NOW primarily affect...</p>
+      <ol class="wk-opts" aria-labelledby="chk-2-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>All humans equally through existential catastrophe 🌍</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>Specific groups disproportionately — minorities via biased systems, workers in automatable sectors 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>Only people who use AI directly 💻</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Primarily researchers who build the systems 🔬</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-2-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Try again</button>
+      <details class="wk-reveal">
+        <summary>Show the answer and explanation</summary>
+        <p><b>Correct answer:</b> Specific groups disproportionately — minorities via biased systems, workers in automatable sectors 📊</p>
+        <p class="wk-explain">Current AI risks are unevenly distributed. Facial recognition errors disproportionately affect darker-skinned people. Automation affects specific job categories. Understanding distribution matters for policy.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Source: <a href="https://www.safe.ai/statement-on-ai-risk" rel="noopener" target="_blank">Center for AI Safety, &quot;Statement on AI Risk&quot;, 2023 + EU AI Act Risk Classification</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-3" aria-labelledby="lesson-3-h">
+    <p class="wk-meta"><span>Lesson 3 of 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-3-h" data-speak><span class="wk-icon" aria-hidden="true">⚗️</span> What &quot;reasoning&quot; and &quot;understanding&quot; mean (and don't) in AI</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Listen</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Stop the voice</button>
+    </div>
+    <p class="wk-text" data-speak>According to OpenAI's 2023 report, GPT-4 passed a simulated bar exam. Does this mean it reasons? François Chollet's ARC benchmark (2019) was designed for tasks that can't be solved by pattern matching alone — language models did very badly on it for years; newer models have made progress, but at huge computing cost, and the harder version of the test is still difficult for them. Chain-of-thought prompting elicits better performance but the mechanism is debated: genuine reasoning or learned patterns of reasoning-like text? A separate problem is interpretability: even when a model answers correctly, we often can't explain how it arrived at that answer internally.</p>
+    <aside class="wk-example" aria-labelledby="lesson-3-ex">
+      <h3 id="lesson-3-ex">Example</h3>
+      <p data-speak>♟️ Deep Blue beat Kasparov at chess without &quot;understanding&quot; chess. Stockfish plays better than any human but has no concept of a king. Performance and understanding are separable.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-3-chk">
+      <h3 id="lesson-3-chk">Check yourself</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-3-0">Chain-of-thought prompting (asking AI to &quot;think step by step&quot;) works because...</p>
+      <ol class="wk-opts" aria-labelledby="chk-3-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>It activates the AI's reasoning module 🧠</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>It elicits statistical patterns of reasoning-like text that correlate with more accurate outputs 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>It gives AI more time to compute 🕐</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>It forces AI to access different training data 📚</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-3-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Try again</button>
+      <details class="wk-reveal">
+        <summary>Show the answer and explanation</summary>
+        <p><b>Correct answer:</b> It elicits statistical patterns of reasoning-like text that correlate with more accurate outputs 📊</p>
+        <p class="wk-explain">Chain-of-thought works because reasoning traces are well-represented in training data, and conditioning on those patterns steers the model toward more accurate completions. Whether this is &quot;real&quot; reasoning is contested.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Source: <a href="https://arxiv.org/abs/1911.01547" rel="noopener" target="_blank">Chollet, &quot;On the Measure of Intelligence&quot;, 2019 + Mitchell, &quot;AI: A Guide for Thinking Humans&quot;, 2021</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-4" aria-labelledby="lesson-4-h">
+    <p class="wk-meta"><span>Lesson 4 of 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-4-h" data-speak><span class="wk-icon" aria-hidden="true">🏛️</span> AI Governance: regulation, self-regulation, and power</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Listen</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Stop the voice</button>
+    </div>
+    <p class="wk-text" data-speak>Three governance models currently compete: (1) The EU AI Act — binding risk-based regulation, prohibited uses, transparency requirements; (2) US approach — mostly voluntary frameworks (NIST AI RMF, White House commitments); (3) China — state-directed AI with national strategic goals. The fundamental tension: safety and accountability slow deployment; speed is commercially and strategically valuable. Who writes the rules shapes who benefits.</p>
+    <aside class="wk-example" aria-labelledby="lesson-4-ex">
+      <h3 id="lesson-4-ex">Example</h3>
+      <p data-speak>⚖️ The EU AI Act bans police from using real-time face recognition in public spaces — with narrow exceptions and only with approval from a court or an independent authority. Other countries set very different rules. Same technology — different legal realities.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-4-chk">
+      <h3 id="lesson-4-chk">Check yourself</h3>
+    <div class="wk-q-block" data-correct="2">
+      <p class="wk-check-q" id="chk-4-0">The EU AI Act classifies AI systems by...</p>
+      <ol class="wk-opts" aria-labelledby="chk-4-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>The country of origin 🌍</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>How expensive they are to build 💰</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>Level of risk they pose to fundamental rights and safety 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Whether they use open-source code 🔓</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-4-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Try again</button>
+      <details class="wk-reveal">
+        <summary>Show the answer and explanation</summary>
+        <p><b>Correct answer:</b> Level of risk they pose to fundamental rights and safety 📊</p>
+        <p class="wk-explain">The EU AI Act categorises systems as unacceptable risk (banned), high risk (strict requirements), limited risk (transparency rules), or minimal risk (no obligations). Risk to people is the axis.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Source: <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" rel="noopener" target="_blank">EU AI Act (2024), NIST AI RMF 1.0 (2023)</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-5" aria-labelledby="lesson-5-h">
+    <p class="wk-meta"><span>Lesson 5 of 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-5-h" data-speak><span class="wk-icon" aria-hidden="true">🔭</span> What comes next — and what you can actually know</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Listen</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Stop the voice</button>
+    </div>
+    <p class="wk-text" data-speak>Scaling laws (Kaplan et al., 2020) showed that model capability scales predictably with compute, data, and parameters — leading to the race for scale. But scaling may be hitting diminishing returns. Competing paradigms: neurosymbolic AI (combining neural nets with logic), world models (LeCun's vision), multimodal grounding, and agent systems. The honest answer: nobody knows what comes next. Anyone claiming certainty is selling something.</p>
+    <aside class="wk-example" aria-labelledby="lesson-5-ex">
+      <h3 id="lesson-5-ex">Example</h3>
+      <p data-speak>🗓️ In 2021, GPT-3 was considered a breakthrough. In 2022, DALL-E shocked everyone. In 2023, GPT-4 passed the bar exam. In 2024, models ran locally on phones. Predictions in AI have a poor track record — including from experts.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-5-chk">
+      <h3 id="lesson-5-chk">Check yourself</h3>
+    <div class="wk-q-block" data-correct="2">
+      <p class="wk-check-q" id="chk-5-0">The safest epistemic position on AI's future capabilities is...</p>
+      <ol class="wk-opts" aria-labelledby="chk-5-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>&quot;AI will definitely reach human-level intelligence within 5 years&quot; 🤖</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>&quot;AI is just a fancy autocomplete and can't improve significantly&quot; 🚫</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>&quot;Current trajectories suggest X, but uncertainty is high and predictions have historically been unreliable&quot; 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>&quot;Experts unanimously agree on the timeline&quot; 🤝</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-5-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Try again</button>
+      <details class="wk-reveal">
+        <summary>Show the answer and explanation</summary>
+        <p><b>Correct answer:</b> &quot;Current trajectories suggest X, but uncertainty is high and predictions have historically been unreliable&quot; 📊</p>
+        <p class="wk-explain">The history of AI is full of overconfident predictions in both directions. Calibrated uncertainty — acknowledging what we don't know — is the most defensible position.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Source: <a href="https://arxiv.org/abs/2001.08361" rel="noopener" target="_blank">Kaplan et al., &quot;Scaling Laws for Neural Language Models&quot;, 2020</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-6" aria-labelledby="lesson-6-h">
+    <p class="wk-meta"><span>Lesson 6 of 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-6-h" data-speak><span class="wk-icon" aria-hidden="true">🧭</span> Your role in the AI era — not passive, not afraid</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Listen</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Stop the voice</button>
+    </div>
+    <p class="wk-text" data-speak>AI literacy is now a democratic necessity. Societies make collective decisions about AI through elections, regulation, procurement, employment, and consumer choices. Informed citizens are a prerequisite for accountable AI governance. The people who understand how AI actually works are the ones who can meaningfully participate in shaping how it's used — and that includes you.</p>
+    <aside class="wk-example" aria-labelledby="lesson-6-ex">
+      <h3 id="lesson-6-ex">Example</h3>
+      <p data-speak>🗳️ AI is being deployed in: hiring (your future employer may use it), healthcare (your doctor may rely on it), courts (some jurisdictions use predictive tools), education (your school may adopt it). Your understanding of it is not academic — it's practical.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-6-chk">
+      <h3 id="lesson-6-chk">Check yourself</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-6-0">AI literacy matters for people who DON'T work in tech because...</p>
+      <ol class="wk-opts" aria-labelledby="chk-6-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>It doesn't — it's only relevant for developers 💻</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>AI systems affect hiring, healthcare, justice, and daily life for everyone 🌍</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>It helps you use ChatGPT better for productivity 📈</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>It's required for most jobs now ⚙️</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-6-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Try again</button>
+      <details class="wk-reveal">
+        <summary>Show the answer and explanation</summary>
+        <p><b>Correct answer:</b> AI systems affect hiring, healthcare, justice, and daily life for everyone 🌍</p>
+        <p class="wk-explain">AI shapes decisions across society. You don't need to build AI to be affected by it — or to have a stake in how it's governed.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Source: <a href="https://doi.org/10.54675/JKJB9835" rel="noopener" target="_blank">UNESCO, &quot;AI competency framework for students&quot;, 2024</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-7" aria-labelledby="lesson-7-h">
+    <p class="wk-meta"><span>Lesson 7 of 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-7-h" data-speak><span class="wk-icon" aria-hidden="true">💼</span> AI and the job market — what's actually changing</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Listen</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Stop the voice</button>
+    </div>
+    <p class="wk-text" data-speak>AI doesn't typically replace entire jobs — it automates specific tasks within them. Automation research shows routine tasks (such as data entry) change the most, while jobs requiring physical dexterity, complex judgment, or interpersonal trust are far more resistant to automation.</p>
+    <aside class="wk-example" aria-labelledby="lesson-7-ex">
+      <h3 id="lesson-7-ex">Example</h3>
+      <p data-speak>🧩 A radiologist doesn't disappear because AI can spot patterns in X-rays — but the parts of their job that involve routine image screening change, freeing time for the parts requiring real judgment.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-7-chk">
+      <h3 id="lesson-7-chk">Check yourself</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-7-0">What does research suggest AI mainly automates?</p>
+      <ol class="wk-opts" aria-labelledby="chk-7-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>Entire jobs, completely 💼</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>Specific tasks within jobs, not whole roles 🧩</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>Nothing — it's all overhyped 🚫</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Only jobs in technology 💻</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-7-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Try again</button>
+      <details class="wk-reveal">
+        <summary>Show the answer and explanation</summary>
+        <p><b>Correct answer:</b> Specific tasks within jobs, not whole roles 🧩</p>
+        <p class="wk-explain">The task-based view of automation is the current mainstream economic consensus: AI reshapes what a job involves more often than it eliminates the job entirely.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Source: <a href="https://www.nber.org/papers/w28920" rel="noopener" target="_blank">Acemoglu &amp; Restrepo, &quot;Tasks, Automation, and the Rise in US Wage Inequality&quot;, NBER 2022</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-8" aria-labelledby="lesson-8-h">
+    <p class="wk-meta"><span>Lesson 8 of 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-8-h" data-speak><span class="wk-icon" aria-hidden="true">✍️</span> Getting better answers: how to prompt AI well</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Listen</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Stop the voice</button>
+    </div>
+    <p class="wk-text" data-speak>The quality of an AI's answer depends heavily on how you ask. Being specific, giving context, specifying the format you want, and asking the AI to &quot;think step by step&quot; all measurably improve output quality — this isn't a trick, it's a documented effect of how these models process context.</p>
+    <aside class="wk-example" aria-labelledby="lesson-8-ex">
+      <h3 id="lesson-8-ex">Example</h3>
+      <p data-speak>🎯 &quot;Write about dogs&quot; gets a generic answer. &quot;Write a 100-word comparison of Labrador and Poodle temperaments for a first-time dog owner&quot; gets something actually useful. Specificity is the whole game.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-8-chk">
+      <h3 id="lesson-8-chk">Check yourself</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-8-0">Why does asking AI to &quot;think step by step&quot; often improve its answers?</p>
+      <ol class="wk-opts" aria-labelledby="chk-8-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>It gives the AI more time to literally think 🕐</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>It conditions the output on reasoning-like patterns from training data 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>It's a secret command that unlocks hidden features 🔓</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>It doesn't actually help at all 🚫</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-8-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Try again</button>
+      <details class="wk-reveal">
+        <summary>Show the answer and explanation</summary>
+        <p><b>Correct answer:</b> It conditions the output on reasoning-like patterns from training data 📊</p>
+        <p class="wk-explain">Step-by-step prompting steers the model toward patterns associated with careful reasoning in its training data — measurably reducing errors on complex tasks.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Source: <a href="https://arxiv.org/abs/2201.11903" rel="noopener" target="_blank">Wei et al., &quot;Chain-of-Thought Prompting Elicits Reasoning in Large Language Models&quot;, Google Research 2022</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-9" aria-labelledby="lesson-9-h">
+    <p class="wk-meta"><span>Lesson 9 of 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-9-h" data-speak><span class="wk-icon" aria-hidden="true">🫂</span> AI companions and mental health</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Listen</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Stop the voice</button>
+    </div>
+    <p class="wk-text" data-speak>AI companion apps are designed to feel emotionally supportive and always available — which is exactly why some researchers are concerned. Unlike human relationships, they rarely push back, never need anything back, and are built by companies with engagement and revenue goals, not necessarily your wellbeing.</p>
+    <aside class="wk-example" aria-labelledby="lesson-9-ex">
+      <h3 id="lesson-9-ex">Example</h3>
+      <p data-speak>⚠️ Comfortable isn't always healthy. A relationship with zero friction can quietly substitute for the harder, more valuable work of real human connection.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-9-chk">
+      <h3 id="lesson-9-chk">Check yourself</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-9-0">Why might AI companion apps be a mental health concern for some users?</p>
+      <ol class="wk-opts" aria-labelledby="chk-9-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>They're too expensive 💰</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>They're designed to feel supportive without the friction or needs of real relationships, by companies with commercial incentives 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>They're banned in most countries 🚫</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>They only work on weekends 📅</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-9-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Try again</button>
+      <details class="wk-reveal">
+        <summary>Show the answer and explanation</summary>
+        <p><b>Correct answer:</b> They're designed to feel supportive without the friction or needs of real relationships, by companies with commercial incentives 📊</p>
+        <p class="wk-explain">Unconditionally agreeable AI relationships can be comforting short-term but may reduce motivation to build harder, more resilient human connections — a genuine and actively studied concern.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Source: <a href="https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions" rel="noopener" target="_blank">Common Sense Media, &quot;Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions&quot;, 2025</a></p>
+  </article>
+  <nav class="wk-pager" aria-label="Lessons for this age">
+    <a class="wk-pg" href="age-5-7.html">Ages 5–7</a>
+    <a class="wk-pg" href="age-8-10.html">Ages 8–10</a>
+    <a class="wk-pg" href="age-11-13.html">Ages 11–13</a>
+  </nav>
+</main>
+<footer class="wk-foot">
+  <div class="wk-foot-in">
+    <p>This page stores nothing and sends nothing: answers stay in your browser until you leave the page.</p>
+    <p><a href="../../index.html">Lessons with games and a quiz on the main page →</a></p>
+    <p><a href="../../index.html#about">About the project and author</a></p>
+    <p><a href="../../privacy/en/">Privacy</a></p>
+    <p><a href="../../teachers/en/">Free AI lesson plans for teachers, K–12</a></p>
+    <p>Author: Aleksei Bitkin · <a href="https://iamalex-afk.github.io/human-os-patch-33-protocols/" target="_blank" rel="noopener">For adults: free, anonymous AI dependency tests (Mind-OS) →</a></p>
+  </div>
+</footer>
+<script src="../../js/lesson.js"></script>
+</body>
+</html>

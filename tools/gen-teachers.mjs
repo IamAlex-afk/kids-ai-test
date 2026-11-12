@@ -10,6 +10,7 @@ import { header, pageOf, esc, fitTitle, metaDesc, authorLine } from './gen-entry
 import { T } from './entry-i18n.mjs';
 import { L } from './lesson-i18n.mjs';
 import { TT, TEACHERS_LASTMOD, AGE_SLUGS } from './teachers/texts.mjs';
+import { lessonHref } from './gen-lessons.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://iamalex-afk.github.io/kids-ai-test/';
@@ -125,7 +126,7 @@ function plan(l, s) {
   const p = t.plans[s];
   const title = fitTitle(p.title);
   const desc = metaDesc(p.desc, p.h1);
-  const lesson = `../../lessons/${l}/${p.lesson}.html`;
+  const lesson = `../../lessons/${l}/${lessonHref(p.lesson)}`;
   const json = {
     '@context': 'https://schema.org', '@type': 'LearningResource', name: p.h1, description: desc,
     inLanguage: HTML_LANG[l] || l, url: url(l, s), dateModified: TEACHERS_LASTMOD, isAccessibleForFree: true,

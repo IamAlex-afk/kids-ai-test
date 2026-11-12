@@ -228,3 +228,13 @@ body[data-age="tiny"] .wk-card-pic svg { width: 104px; height: 104px; }
   .wk-page .wk-reveal[hidden] { display: block !important; }   /* the answer stays on paper */
   .wk-cat-age { break-inside: avoid; }
 }
+
+/* Age pages (all lessons of one age on one page, tools/gen-lessons.mjs agePage) */
+.wk-age-page .wk-age-lesson { margin-top: 24px; scroll-margin-top: 24px; }
+.wk-age-page .wk-age-lesson:first-of-type { margin-top: 8px; }
+.wk-toc { margin: 8px 0 24px; padding: 16px 20px; border: 1px solid var(--line, #e3e3ee); border-radius: 16px; background: #fff; }
+.wk-toc h2 { font-size: 1.125rem; margin: 0 0 8px; }
+.wk-toc ol { margin: 0; padding-left: 1.4em; display: grid; gap: 6px; }
+.wk-toc a { text-underline-offset: 3px; }
+.wk-cat-open { margin: 8px 0 0; font-weight: 600; }
+.wk-age-page .wk-pager { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }

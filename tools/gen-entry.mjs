@@ -135,10 +135,10 @@ function route(l) {
     } else {
       const x = data.ages[k].lessons[0];
       title = x.title; goal = t.ages[i];
-      href = `lessons/${l}/${slug}-1.html`;
+      href = `lessons/${l}/age-${slug}.html#lesson-1`;   // age page (gen-lessons.mjs ageFile; not imported: circular)
     }
     const more = series.slice(1).map((s) => `            <li><a href="workshop/${l}/${s.file}?age=${slug}">${esc(s.text[l].common.title)}</a></li>`);
-    more.push(`            <li><a href="lessons/${l}/#age-${slug}">${esc(t.ageLessons)}</a></li>`);
+    more.push(`            <li><a href="lessons/${l}/age-${slug}.html">${esc(t.ageLessons)}</a></li>`);
     return `      <div class="wk-route-age" data-route-for="${k}" hidden>
         <div class="wk-start">
           <p class="wk-start-badge">${esc(t.startBadge)}</p>

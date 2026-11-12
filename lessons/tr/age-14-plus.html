@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none';">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Çocuklar için Yapay Zekâ Dersleri: 14 yaş ve üstü</title>
+  <meta name="description" content="Tam LLM yığını: ham metinden RLHF'ye. YZ risk manzarası: kısa vadeli vs spekülatif. 9 dersin her birinde açıklama, örnek ve cevabı açıklanan bir kontrol var.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://iamalex-afk.github.io/kids-ai-test/lessons/tr/age-14-plus.html">
+  <link rel="alternate" hreflang="en" href="https://iamalex-afk.github.io/kids-ai-test/lessons/en/age-14-plus.html">
+  <link rel="alternate" hreflang="ru" href="https://iamalex-afk.github.io/kids-ai-test/lessons/ru/age-14-plus.html">
+  <link rel="alternate" hreflang="de" href="https://iamalex-afk.github.io/kids-ai-test/lessons/de/age-14-plus.html">
+  <link rel="alternate" hreflang="es" href="https://iamalex-afk.github.io/kids-ai-test/lessons/es/age-14-plus.html">
+  <link rel="alternate" hreflang="fr" href="https://iamalex-afk.github.io/kids-ai-test/lessons/fr/age-14-plus.html">
+  <link rel="alternate" hreflang="hi" href="https://iamalex-afk.github.io/kids-ai-test/lessons/hi/age-14-plus.html">
+  <link rel="alternate" hreflang="id" href="https://iamalex-afk.github.io/kids-ai-test/lessons/id/age-14-plus.html">
+  <link rel="alternate" hreflang="pt" href="https://iamalex-afk.github.io/kids-ai-test/lessons/pt/age-14-plus.html">
+  <link rel="alternate" hreflang="tr" href="https://iamalex-afk.github.io/kids-ai-test/lessons/tr/age-14-plus.html">
+  <link rel="alternate" hreflang="vi" href="https://iamalex-afk.github.io/kids-ai-test/lessons/vi/age-14-plus.html">
+  <link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/lessons/en/age-14-plus.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Çocuklar için Yapay Zekâ Dersleri: 14 yaş ve üstü">
+  <meta property="og:description" content="Tam LLM yığını: ham metinden RLHF'ye. YZ risk manzarası: kısa vadeli vs spekülatif. 9 dersin her birinde açıklama, örnek ve cevabı açıklanan bir kontrol var.">
+  <meta property="og:url" content="https://iamalex-afk.github.io/kids-ai-test/lessons/tr/age-14-plus.html">
+  <meta property="og:image" content="https://iamalex-afk.github.io/kids-ai-test/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+  <link rel="stylesheet" href="../../css/workshop.css">
+  <link rel="stylesheet" href="../../css/lesson.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ana sayfa","item":"https://iamalex-afk.github.io/kids-ai-test/tr.html"},{"@type":"ListItem","position":2,"name":"Tüm dersler","item":"https://iamalex-afk.github.io/kids-ai-test/lessons/tr/"},{"@type":"ListItem","position":3,"name":"14 yaş ve üstü","item":"https://iamalex-afk.github.io/kids-ai-test/lessons/tr/age-14-plus.html"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Çocuklar için Yapay Zekâ Dersleri: 14 yaş ve üstü","description":"Tam LLM yığını: ham metinden RLHF'ye. YZ risk manzarası: kısa vadeli vs spekülatif. 9 dersin her birinde açıklama, örnek ve cevabı açıklanan bir kontrol var.","inLanguage":"tr","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/tr/age-14-plus.html","isAccessibleForFree":true,"typicalAgeRange":"14-","hasPart":[{"@type":"LearningResource","name":"Tam LLM yığını: ham metinden RLHF'ye","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/tr/age-14-plus.html#lesson-1","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Ouyang ve ark. (InstructGPT) 2022 + Bai ve ark. (Constitutional AI, Anthropic) 2022","url":"https://arxiv.org/abs/2212.08073"}},{"@type":"LearningResource","name":"YZ risk manzarası: kısa vadeli vs spekülatif","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/tr/age-14-plus.html#lesson-2","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Center for AI Safety, \"Statement on AI Risk\", 2023 + EU AI Act Risk Classification","url":"https://www.safe.ai/statement-on-ai-risk"}},{"@type":"LearningResource","name":"YZ'de 'akıl yürütme' ve 'anlama' ne anlama geliyor (ve ne anlama gelmiyor)","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/tr/age-14-plus.html#lesson-3","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Chollet, \"On the Measure of Intelligence\", 2019 + Mitchell, \"AI: A Guide for Thinking Humans\", 2021","url":"https://arxiv.org/abs/1911.01547"}},{"@type":"LearningResource","name":"YZ yönetişimi: düzenleme, öz-düzenleme ve güç","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/tr/age-14-plus.html#lesson-4","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"EU AI Act (2024), NIST AI RMF 1.0 (2023)","url":"https://eur-lex.europa.eu/eli/reg/2024/1689/oj"}},{"@type":"LearningResource","name":"Sırada ne var — ve gerçekten ne bilebilirsin","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/tr/age-14-plus.html#lesson-5","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Kaplan ve ark., \"Scaling Laws for Neural Language Models\", 2020","url":"https://arxiv.org/abs/2001.08361"}},{"@type":"LearningResource","name":"YZ çağında senin rolün — ne pasif ne endişeli","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/tr/age-14-plus.html#lesson-6","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"UNESCO, \"AI competency framework for students\", 2024","url":"https://doi.org/10.54675/JKJB9835"}},{"@type":"LearningResource","name":"YZ ve iş piyasası — aslında ne değişiyor","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/tr/age-14-plus.html#lesson-7","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Acemoglu & Restrepo, \"Tasks, Automation, and the Rise in US Wage Inequality\", NBER 2022","url":"https://www.nber.org/papers/w28920"}},{"@type":"LearningResource","name":"Daha iyi cevaplar almak: YZ'ya iyi istem yazma","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/tr/age-14-plus.html#lesson-8","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Wei ve ark., \"Chain-of-Thought Prompting Elicits Reasoning in Large Language Models\", Google Research 2022","url":"https://arxiv.org/abs/2201.11903"}},{"@type":"LearningResource","name":"YZ arkadaşları ve ruh sağlığı","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/tr/age-14-plus.html#lesson-9","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Common Sense Media, \"Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions\", 2025","url":"https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions"}}]}</script>
+</head>
+<body class="wk-home wk-page" data-age="adult" data-right="Doğru." data-wrong="Henüz değil. Açıklamayı oku ve tekrar dene.">
+<a class="wk-skip" href="#main">İçeriğe geç</a>
+<header class="wk-header">
+  <div class="wk-header-in">
+    <a class="wk-brand" href="../../tr.html" data-wk-home>
+      <span class="wk-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="wk-brand-txt"><span class="wk-brand-name">kids ai test</span><span class="wk-brand-sub">Yapay zekâyı bilinçli kullanma atölyesi</span></span>
+    </a>
+    <div class="wk-actions">
+      <div class="lang-switcher" id="lang-switcher">
+        <button type="button" class="lang-globe" id="lang-globe" aria-expanded="false" aria-controls="lang-dropdown" aria-label="TR Türkçe, dil"><svg class="wk-globe" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="lang-full">Türkçe</span><span class="lang-short">TR</span><svg class="lang-arrow" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true" focusable="false"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="lang-dropdown" id="lang-dropdown">
+          <a class="lang-opt" href="../en/age-14-plus.html" lang="en" hreflang="en">English</a>
+          <a class="lang-opt" href="../ru/age-14-plus.html" lang="ru" hreflang="ru">Русский</a>
+          <a class="lang-opt" href="../de/age-14-plus.html" lang="de" hreflang="de">Deutsch</a>
+          <a class="lang-opt" href="../es/age-14-plus.html" lang="es" hreflang="es">Español</a>
+          <a class="lang-opt" href="../fr/age-14-plus.html" lang="fr" hreflang="fr">Français</a>
+          <a class="lang-opt" href="../hi/age-14-plus.html" lang="hi" hreflang="hi">हिन्दी</a>
+          <a class="lang-opt" href="../id/age-14-plus.html" lang="id" hreflang="id">Bahasa Indonesia</a>
+          <a class="lang-opt" href="../pt/age-14-plus.html" lang="pt" hreflang="pt">Português</a>
+          <a class="lang-opt active" href="../tr/age-14-plus.html" lang="tr" hreflang="tr" aria-current="page">Türkçe</a>
+          <a class="lang-opt" href="../vi/age-14-plus.html" lang="vi" hreflang="vi">Tiếng Việt</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<main id="main" class="wk-lesson wk-age-page">
+    <nav class="wk-crumbs" aria-label="Buradasınız">
+      <ol>
+        <li><a href="../../tr.html">Ana sayfa</a></li>
+        <li><a href="./">Tüm dersler</a></li>
+        <li><a href="age-14-plus.html" aria-current="page">14 yaş ve üstü</a></li>
+      </ol>
+    </nav>
+  <h1 class="wk-cat-title">Çocuklar için Yapay Zekâ Dersleri: 14 yaş ve üstü</h1>
+  <p class="wk-cat-lead">Bu yaşın tüm dersleri tek sayfada, sırayla. Bir dersi oku, kontrolü yap, sonra sıradakine geç.</p>
+  <p class="wk-novoice" hidden>Bu cihazda bu dil için ses yok. Dersi bir yetişkinin sesli okumasını isteyin.</p>
+  <nav class="wk-toc" aria-labelledby="toc-h">
+    <h2 id="toc-h">Bu sayfadaki dersler</h2>
+    <ol>
+      <li><a href="#lesson-1"><span class="wk-icon" aria-hidden="true">🏗️</span> Tam LLM yığını: ham metinden RLHF'ye</a></li>
+      <li><a href="#lesson-2"><span class="wk-icon" aria-hidden="true">🗺️</span> YZ risk manzarası: kısa vadeli vs spekülatif</a></li>
+      <li><a href="#lesson-3"><span class="wk-icon" aria-hidden="true">⚗️</span> YZ'de 'akıl yürütme' ve 'anlama' ne anlama geliyor (ve ne anlama gelmiyor)</a></li>
+      <li><a href="#lesson-4"><span class="wk-icon" aria-hidden="true">🏛️</span> YZ yönetişimi: düzenleme, öz-düzenleme ve güç</a></li>
+      <li><a href="#lesson-5"><span class="wk-icon" aria-hidden="true">🔭</span> Sırada ne var — ve gerçekten ne bilebilirsin</a></li>
+      <li><a href="#lesson-6"><span class="wk-icon" aria-hidden="true">🧭</span> YZ çağında senin rolün — ne pasif ne endişeli</a></li>
+      <li><a href="#lesson-7"><span class="wk-icon" aria-hidden="true">💼</span> YZ ve iş piyasası — aslında ne değişiyor</a></li>
+      <li><a href="#lesson-8"><span class="wk-icon" aria-hidden="true">✍️</span> Daha iyi cevaplar almak: YZ'ya iyi istem yazma</a></li>
+      <li><a href="#lesson-9"><span class="wk-icon" aria-hidden="true">🫂</span> YZ arkadaşları ve ruh sağlığı</a></li>
+    </ol>
+  </nav>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-1" aria-labelledby="lesson-1-h">
+    <p class="wk-meta"><span>Ders 1 / 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-1-h" data-speak><span class="wk-icon" aria-hidden="true">🏗️</span> Tam LLM yığını: ham metinden RLHF'ye</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Dinle</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Sesi durdur</button>
+    </div>
+    <p class="wk-text" data-speak>Modern LLM'ler üç aşamada oluşturulur: (1) büyük korpuslar üzerinde ön eğitim — sonraki token tahmini, milyarlarca parametre; (2) küratörlü insan gösterileri üzerinde denetimli ince ayar; (3) çıktıları insan tercihlerine hizalamak için RLHF veya Anayasal YZ. Model gerçekleri bir veritabanı gibi saklamaz — bilgisi milyarlarca ağırlığa dağılmıştır, ama bazen eğitim metinlerinden parçaları kelimesi kelimesine ezberler.</p>
+    <aside class="wk-example" aria-labelledby="lesson-1-ex">
+      <h3 id="lesson-1-ex">Örnek</h3>
+      <p data-speak>🔧 Mimari → Veri → İnce ayar → RLHF → Dağıtım → İzleme. Her adım, modelin ne söyleyeceğini şekillendiren insan kararlarını içerir.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-1-chk">
+      <h3 id="lesson-1-chk">Kendini dene</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-1-0">Bir LLM'e basitçe 'eğitim verilerinde ne var' diye neden soramazsın?</p>
+      <ol class="wk-opts" aria-labelledby="chk-1-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>Şirketler bunu yasal nedenlerle gizliyor 🔒</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>Model veriyi 'depolamıyor' — istatistiksel kalıpları kodluyor; bireysel belgeler alınamaz 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>Çok fazla hesaplama gücü gerektirir 💻</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Eğitim verisi şifreli 🔐</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-1-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Tekrar dene</button>
+      <details class="wk-reveal">
+        <summary>Cevabı ve açıklamayı göster</summary>
+        <p><b>Doğru cevap:</b> Model veriyi 'depolamıyor' — istatistiksel kalıpları kodluyor; bireysel belgeler alınamaz 📊</p>
+        <p class="wk-explain">LLM'ler belgeleri ayrık nesneler olarak ezberlemez. Kalıpları milyarlarca kayan nokta ağırlığına sıkıştırır. Belirli metin bazen düşmanca istemlerle 'yeniden oluşturulabilir' — bilinen bir gizlilik riski.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Kaynak: <a href="https://arxiv.org/abs/2212.08073" rel="noopener" target="_blank">Ouyang ve ark. (InstructGPT) 2022 + Bai ve ark. (Constitutional AI, Anthropic) 2022</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-2" aria-labelledby="lesson-2-h">
+    <p class="wk-meta"><span>Ders 2 / 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-2-h" data-speak><span class="wk-icon" aria-hidden="true">🗺️</span> YZ risk manzarası: kısa vadeli vs spekülatif</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Dinle</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Sesi durdur</button>
+    </div>
+    <p class="wk-text" data-speak>Somut kısa vadeli riskler: algoritmik önyargı, büyük ölçekli bilgi kirliliği (dezenformasyon), telif hakkı anlaşmazlıkları, belirli sektörlerde iş kayması. Spekülatif uzun vadeli riskler: yanlış hizalama (YZ amaçlanan hedefler yerine vekil ölçütler için optimize ediyor), yetenek ivmelenmesi güvenlik araştırmalarını geride bırakıyor.</p>
+    <aside class="wk-example" aria-labelledby="lesson-2-ex">
+      <h3 id="lesson-2-ex">Örnek</h3>
+      <p data-speak>🎯 'YZ hepimizi öldürecek' ve 'YZ'nin hiçbir riski yok' ikisi de yanlış. Risk kalibrasyonu şu demektir: hangi riskler? Ne kadar olası? Ne zaman? Kim taşıyor? Bunları görmezden gelmekten kim yararlanıyor?</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-2-chk">
+      <h3 id="lesson-2-chk">Kendini dene</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-2-0">ŞU AN en somut YZ riskleri öncelikle kimi etkiliyor?</p>
+      <ol class="wk-opts" aria-labelledby="chk-2-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>Varoluşsal felaket aracılığıyla herkesi eşit şekilde 🌍</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>Belirli grupları orantısız şekilde — önyargılı sistemler aracılığıyla azınlıklar, otomatize edilebilir sektörlerdeki işçiler 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>Yalnızca YZ'yi doğrudan kullananları 💻</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Öncelikle sistemleri inşa eden araştırmacıları 🔬</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-2-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Tekrar dene</button>
+      <details class="wk-reveal">
+        <summary>Cevabı ve açıklamayı göster</summary>
+        <p><b>Doğru cevap:</b> Belirli grupları orantısız şekilde — önyargılı sistemler aracılığıyla azınlıklar, otomatize edilebilir sektörlerdeki işçiler 📊</p>
+        <p class="wk-explain">Günümüz YZ riskleri eşitsiz dağılmış. Yüz tanıma hataları koyu tenli kişileri orantısız şekilde etkiliyor. Otomasyon belirli iş kategorilerini etkiliyor.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Kaynak: <a href="https://www.safe.ai/statement-on-ai-risk" rel="noopener" target="_blank">Center for AI Safety, &quot;Statement on AI Risk&quot;, 2023 + EU AI Act Risk Classification</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-3" aria-labelledby="lesson-3-h">
+    <p class="wk-meta"><span>Ders 3 / 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-3-h" data-speak><span class="wk-icon" aria-hidden="true">⚗️</span> YZ'de 'akıl yürütme' ve 'anlama' ne anlama geliyor (ve ne anlama gelmiyor)</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Dinle</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Sesi durdur</button>
+    </div>
+    <p class="wk-text" data-speak>OpenAI'nin 2023 raporuna göre GPT-4, ABD'deki avukatlık sınavının bir simülasyonunu geçti. Bu akıl yürüttüğü anlamına mı geliyor? François Chollet'in ARC kıyaslama testi (2019), YZ'nin salt örüntü tanımayla çözemeyeceği görevler için özel olarak tasarlandı — dil modelleri yıllarca bu testte çok kötü sonuç aldı; yeni modeller ilerledi, ama devasa bir hesaplama maliyetiyle, ve testin daha zor sürümü onları hâlâ zorluyor. Ayrı bir sorun da yorumlanabilirlik: bir model doğru cevap verse bile, çoğu zaman bu cevaba içeride nasıl ulaştığını açıklayamayız.</p>
+    <aside class="wk-example" aria-labelledby="lesson-3-ex">
+      <h3 id="lesson-3-ex">Örnek</h3>
+      <p data-speak>♟️ Deep Blue, satrancı 'anlamadan' Kasparov'u yendi. Stockfish herhangi bir insandan daha iyi oynuyor ama kral kavramı yok. Performans ve anlayış ayrılabilir.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-3-chk">
+      <h3 id="lesson-3-chk">Kendini dene</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-3-0">Chain-of-Thought istem (YZ'den 'adım adım düşünmesini' istemek) neden işe yarar?</p>
+      <ol class="wk-opts" aria-labelledby="chk-3-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>YZ'nin akıl yürütme modülünü etkinleştirir 🧠</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>Daha doğru çıktılarla ilişkili akıl yürütme benzeri metin istatistiksel kalıplarını ortaya çıkarır 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>YZ'ye daha fazla hesaplama süresi verir 🕐</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>YZ'yi diğer eğitim verilerine erişmeye zorlar 📚</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-3-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Tekrar dene</button>
+      <details class="wk-reveal">
+        <summary>Cevabı ve açıklamayı göster</summary>
+        <p><b>Doğru cevap:</b> Daha doğru çıktılarla ilişkili akıl yürütme benzeri metin istatistiksel kalıplarını ortaya çıkarır 📊</p>
+        <p class="wk-explain">Chain-of-Thought işe yarar çünkü akıl yürütme izleri eğitim verisinde iyi temsil edilir ve modeli bu kalıplara koşullandırmak onu daha doğru tamamlamalara yönlendirir.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Kaynak: <a href="https://arxiv.org/abs/1911.01547" rel="noopener" target="_blank">Chollet, &quot;On the Measure of Intelligence&quot;, 2019 + Mitchell, &quot;AI: A Guide for Thinking Humans&quot;, 2021</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-4" aria-labelledby="lesson-4-h">
+    <p class="wk-meta"><span>Ders 4 / 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-4-h" data-speak><span class="wk-icon" aria-hidden="true">🏛️</span> YZ yönetişimi: düzenleme, öz-düzenleme ve güç</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Dinle</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Sesi durdur</button>
+    </div>
+    <p class="wk-text" data-speak>Üç yönetişim modeli rekabet ediyor: (1) AB YZ Yasası — bağlayıcı risk temelli düzenleme, yasaklı kullanımlar, şeffaflık gereksinimleri; (2) ABD yaklaşımı — çoğunlukla gönüllü çerçeveler (NIST AI RMF); (3) Çin — ulusal stratejik hedeflerle devlet yönlendirmeli YZ. Temel gerilim: güvenlik ve hesap verebilirlik dağıtımı yavaşlatıyor; hız ticari ve stratejik değere sahip.</p>
+    <aside class="wk-example" aria-labelledby="lesson-4-ex">
+      <h3 id="lesson-4-ex">Örnek</h3>
+      <p data-speak>⚖️ AB YZ Yasası, polisin kamuya açık alanlarda gerçek zamanlı yüz tanıma kullanmasını yasaklıyor — dar istisnalar dışında ve yalnızca mahkeme ya da bağımsız bir kurum izniyle. Başka ülkelerin kuralları çok farklı. Aynı teknoloji — farklı hukuki gerçeklikler.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-4-chk">
+      <h3 id="lesson-4-chk">Kendini dene</h3>
+    <div class="wk-q-block" data-correct="2">
+      <p class="wk-check-q" id="chk-4-0">AB YZ Yasası YZ sistemlerini neye göre sınıflandırıyor?</p>
+      <ol class="wk-opts" aria-labelledby="chk-4-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>Menşe ülkesine 🌍</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>İnşa maliyetine 💰</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>Temel haklar ve güvenlik açısından risk düzeyine 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Açık kaynak kodu kullanıp kullanmadığına 🔓</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-4-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Tekrar dene</button>
+      <details class="wk-reveal">
+        <summary>Cevabı ve açıklamayı göster</summary>
+        <p><b>Doğru cevap:</b> Temel haklar ve güvenlik açısından risk düzeyine 📊</p>
+        <p class="wk-explain">AB YZ Yasası sistemleri kabul edilemez risk (yasaklı), yüksek risk (katı gereksinimler), sınırlı risk (şeffaflık kuralları) veya minimum risk (yükümlülük yok) olarak kategorize ediyor.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Kaynak: <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" rel="noopener" target="_blank">EU AI Act (2024), NIST AI RMF 1.0 (2023)</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-5" aria-labelledby="lesson-5-h">
+    <p class="wk-meta"><span>Ders 5 / 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-5-h" data-speak><span class="wk-icon" aria-hidden="true">🔭</span> Sırada ne var — ve gerçekten ne bilebilirsin</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Dinle</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Sesi durdur</button>
+    </div>
+    <p class="wk-text" data-speak>Ölçekleme yasaları (Kaplan ve ark., 2020), model yeteneklerinin hesaplama, veri ve parametrelerle öngörülebilir şekilde ölçeklendiğini gösterdi — bu büyüklüğe doğru silahlanma yarışını körükledi. Ama ölçekleme azalan getirilerle karşılaşabilir. Dürüst cevap: Sırada ne olduğunu kimse bilmiyor. Kesinlik iddia eden biri bir şeyler satıyor.</p>
+    <aside class="wk-example" aria-labelledby="lesson-5-ex">
+      <h3 id="lesson-5-ex">Örnek</h3>
+      <p data-speak>🗓️ 2021'de GPT-3 çığır açıcıydı. 2022'de DALL-E herkesi şaşırttı. 2023'te GPT-4 avukatlık sınavını geçti. 2024'te modeller telefonlarda yerel olarak çalışmaya başladı. YZ'deki tahminlerin — uzmanlarınki dahil — kötü bir sicili var.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-5-chk">
+      <h3 id="lesson-5-chk">Kendini dene</h3>
+    <div class="wk-q-block" data-correct="2">
+      <p class="wk-check-q" id="chk-5-0">Gelecekteki YZ yetenekleri hakkında en güvenli epistemik pozisyon şudur:</p>
+      <ol class="wk-opts" aria-labelledby="chk-5-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>'YZ kesinlikle 5 yılda insan zekasına ulaşacak' 🤖</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>'YZ sadece sofistike bir otomatik tamamlamadır ve önemli ölçüde gelişemez' 🚫</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>'Mevcut eğilimler X'e işaret ediyor, ama belirsizlik yüksek ve tahminler tarihsel olarak güvenilmez oldu' 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>'Uzmanlar zaman çizelgesinde oybirliğiyle hemfikir' 🤝</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-5-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Tekrar dene</button>
+      <details class="wk-reveal">
+        <summary>Cevabı ve açıklamayı göster</summary>
+        <p><b>Doğru cevap:</b> 'Mevcut eğilimler X'e işaret ediyor, ama belirsizlik yüksek ve tahminler tarihsel olarak güvenilmez oldu' 📊</p>
+        <p class="wk-explain">YZ tarihi her iki yönde de fazla özgüvenli tahminlerle dolu. Kalibreli belirsizlik — ne bilmediğimizi kabul etmek — en savunulabilir pozisyondur.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Kaynak: <a href="https://arxiv.org/abs/2001.08361" rel="noopener" target="_blank">Kaplan ve ark., &quot;Scaling Laws for Neural Language Models&quot;, 2020</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-6" aria-labelledby="lesson-6-h">
+    <p class="wk-meta"><span>Ders 6 / 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-6-h" data-speak><span class="wk-icon" aria-hidden="true">🧭</span> YZ çağında senin rolün — ne pasif ne endişeli</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Dinle</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Sesi durdur</button>
+    </div>
+    <p class="wk-text" data-speak>YZ okuryazarlığı artık demokratik bir zorunluluktur. Toplumlar YZ hakkında seçimler, düzenleme, tedarik, istihdam ve tüketici tercihleri aracılığıyla kolektif kararlar alıyor. Bilgilendirilmiş vatandaşlar, sorumlu YZ yönetişiminin ön koşuludur.</p>
+    <aside class="wk-example" aria-labelledby="lesson-6-ex">
+      <h3 id="lesson-6-ex">Örnek</h3>
+      <p data-speak>🗳️ YZ şu alanlarda kullanılıyor: işe alım (gelecekteki işveren kullanabilir), sağlık (doktoru güvenebilir), mahkemeler (bazı yargı bölgeleri tahmin araçları kullanıyor), eğitim. Bunun hakkındaki anlayışın akademik değil — pratik.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-6-chk">
+      <h3 id="lesson-6-chk">Kendini dene</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-6-0">YZ okuryazarlığı teknolojide ÇALIŞMAYAN kişiler için neden önemlidir?</p>
+      <ol class="wk-opts" aria-labelledby="chk-6-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>Önemli değil — yalnızca geliştiriciler için ilgili 💻</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>YZ sistemleri işe alım, sağlık, adalet ve herkesin günlük yaşamını etkiliyor 🌍</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>ChatGPT'yi verimlilik için daha iyi kullanmaya yardımcı oluyor 📈</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Artık çoğu iş için gereklidir ⚙️</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-6-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Tekrar dene</button>
+      <details class="wk-reveal">
+        <summary>Cevabı ve açıklamayı göster</summary>
+        <p><b>Doğru cevap:</b> YZ sistemleri işe alım, sağlık, adalet ve herkesin günlük yaşamını etkiliyor 🌍</p>
+        <p class="wk-explain">YZ tüm toplumda kararları şekillendiriyor. YZ'den etkilenmek için YZ inşa etmene gerek yok — ya da nasıl yönetildiğine dair çıkarın olması için.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Kaynak: <a href="https://doi.org/10.54675/JKJB9835" rel="noopener" target="_blank">UNESCO, &quot;AI competency framework for students&quot;, 2024</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-7" aria-labelledby="lesson-7-h">
+    <p class="wk-meta"><span>Ders 7 / 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-7-h" data-speak><span class="wk-icon" aria-hidden="true">💼</span> YZ ve iş piyasası — aslında ne değişiyor</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Dinle</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Sesi durdur</button>
+    </div>
+    <p class="wk-text" data-speak>YZ genellikle tüm işleri değil, işlerin içindeki belirli görevleri otomatikleştirir. Otomasyon araştırmaları, rutin görevlerin (örneğin veri girişi) en çok değiştiğini, fiziksel beceri, karmaşık yargı veya kişilerarası güven gerektiren işlerin ise otomasyona çok daha dayanıklı olduğunu gösteriyor.</p>
+    <aside class="wk-example" aria-labelledby="lesson-7-ex">
+      <h3 id="lesson-7-ex">Örnek</h3>
+      <p data-speak>🧩 Bir radyolog, YZ röntgenlerde örüntüleri fark edebiliyor diye ortadan kalkmaz — ama işinin rutin görüntü taramasını içeren kısmı değişir, bu da gerçek yargı gerektiren kısımlar için zaman açar.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-7-chk">
+      <h3 id="lesson-7-chk">Kendini dene</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-7-0">Araştırmalara göre YZ esas olarak neyi otomatikleştiriyor?</p>
+      <ol class="wk-opts" aria-labelledby="chk-7-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>Tüm işleri, tamamen 💼</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>İşlerin içindeki belirli görevleri, tüm rolü değil 🧩</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>Hiçbir şeyi — hepsi abartılıyor 🚫</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Sadece teknoloji işlerini 💻</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-7-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Tekrar dene</button>
+      <details class="wk-reveal">
+        <summary>Cevabı ve açıklamayı göster</summary>
+        <p><b>Doğru cevap:</b> İşlerin içindeki belirli görevleri, tüm rolü değil 🧩</p>
+        <p class="wk-explain">Otomasyona görev bazlı bakış, günümüzün ana akım ekonomik görüşüdür: YZ bir işi tamamen ortadan kaldırmaktan çok, o işin neyi içerdiğini değiştirir.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Kaynak: <a href="https://www.nber.org/papers/w28920" rel="noopener" target="_blank">Acemoglu &amp; Restrepo, &quot;Tasks, Automation, and the Rise in US Wage Inequality&quot;, NBER 2022</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-8" aria-labelledby="lesson-8-h">
+    <p class="wk-meta"><span>Ders 8 / 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-8-h" data-speak><span class="wk-icon" aria-hidden="true">✍️</span> Daha iyi cevaplar almak: YZ'ya iyi istem yazma</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Dinle</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Sesi durdur</button>
+    </div>
+    <p class="wk-text" data-speak>YZ'nin cevabının kalitesi büyük ölçüde nasıl sorduğuna bağlıdır. Spesifik olmak, bağlam vermek, istediğin formatı belirtmek ve YZ'den 'adım adım düşünmesini' istemek, çıktı kalitesini ölçülebilir şekilde artırır — bu bir hile değil, bu modellerin bağlamı nasıl işlediğine dair belgelenmiş bir etkidir.</p>
+    <aside class="wk-example" aria-labelledby="lesson-8-ex">
+      <h3 id="lesson-8-ex">Örnek</h3>
+      <p data-speak>🎯 'Köpekler hakkında yaz' genel bir cevap verir. 'İlk kez köpek sahibi olacak biri için Labrador ve Poodle mizacının 100 kelimelik karşılaştırmasını yaz' gerçekten kullanışlı bir şey verir. Her şey spesifiklikte.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-8-chk">
+      <h3 id="lesson-8-chk">Kendini dene</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-8-0">YZ'den 'adım adım düşünmesini' istemek cevaplarını neden genellikle iyileştirir?</p>
+      <ol class="wk-opts" aria-labelledby="chk-8-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>YZ'ya gerçekten düşünmesi için daha fazla zaman verir 🕐</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>Çıktıyı, eğitim verisindeki akıl yürütmeye benzer kalıplara yönlendirir 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>Gizli özellikleri açan gizli bir komuttur 🔓</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Aslında hiç yardımcı olmaz 🚫</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-8-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Tekrar dene</button>
+      <details class="wk-reveal">
+        <summary>Cevabı ve açıklamayı göster</summary>
+        <p><b>Doğru cevap:</b> Çıktıyı, eğitim verisindeki akıl yürütmeye benzer kalıplara yönlendirir 📊</p>
+        <p class="wk-explain">Adım adım istem yazma, modeli eğitim verisindeki dikkatli akıl yürütmeyle ilişkili kalıplara yönlendirir — bu da karmaşık görevlerdeki hataları ölçülebilir şekilde azaltır.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Kaynak: <a href="https://arxiv.org/abs/2201.11903" rel="noopener" target="_blank">Wei ve ark., &quot;Chain-of-Thought Prompting Elicits Reasoning in Large Language Models&quot;, Google Research 2022</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-9" aria-labelledby="lesson-9-h">
+    <p class="wk-meta"><span>Ders 9 / 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-9-h" data-speak><span class="wk-icon" aria-hidden="true">🫂</span> YZ arkadaşları ve ruh sağlığı</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Dinle</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Sesi durdur</button>
+    </div>
+    <p class="wk-text" data-speak>YZ arkadaş uygulamaları, duygusal olarak destekleyici ve her zaman ulaşılabilir hissettirmek üzere tasarlandı — bazı araştırmacıların endişelendiği tam olarak bu. İnsan ilişkilerinin aksine, seni nadiren sorgularlar, karşılığında hiçbir şeye ihtiyaç duymazlar ve etkileşim ve gelir hedefleri olan şirketler tarafından yapılırlar — mutlaka senin iyiliğin için değil.</p>
+    <aside class="wk-example" aria-labelledby="lesson-9-ex">
+      <h3 id="lesson-9-ex">Örnek</h3>
+      <p data-speak>⚠️ Rahat olmak her zaman sağlıklı olmak anlamına gelmez. Hiç sürtüşmesi olmayan bir ilişki, gerçek insan bağlantısının daha zor ama daha değerli işinin yerini sessizce alabilir.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-9-chk">
+      <h3 id="lesson-9-chk">Kendini dene</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-9-0">YZ arkadaş uygulamaları neden bazı kullanıcılar için ruh sağlığı endişesi olabilir?</p>
+      <ol class="wk-opts" aria-labelledby="chk-9-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>Çok pahalılar 💰</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>Ticari teşvikleri olan şirketler tarafından, gerçek ilişkilerin sürtüşmesi veya ihtiyaçları olmadan destekleyici hissettirmek üzere tasarlandılar 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>Çoğu ülkede yasak 🚫</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Sadece hafta sonları çalışırlar 📅</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-9-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Tekrar dene</button>
+      <details class="wk-reveal">
+        <summary>Cevabı ve açıklamayı göster</summary>
+        <p><b>Doğru cevap:</b> Ticari teşvikleri olan şirketler tarafından, gerçek ilişkilerin sürtüşmesi veya ihtiyaçları olmadan destekleyici hissettirmek üzere tasarlandılar 📊</p>
+        <p class="wk-explain">Koşulsuzca uyumlu YZ ilişkileri kısa vadede rahatlatıcı olabilir ama daha zor, daha dayanıklı insan bağlantıları kurma motivasyonunu azaltabilir — bu gerçek ve aktif olarak incelenen bir endişedir.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Kaynak: <a href="https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions" rel="noopener" target="_blank">Common Sense Media, &quot;Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions&quot;, 2025</a></p>
+  </article>
+  <nav class="wk-pager" aria-label="Bu yaşın dersleri">
+    <a class="wk-pg" href="age-5-7.html">5–7 yaş</a>
+    <a class="wk-pg" href="age-8-10.html">8–10 yaş</a>
+    <a class="wk-pg" href="age-11-13.html">11–13 yaş</a>
+  </nav>
+</main>
+<footer class="wk-foot">
+  <div class="wk-foot-in">
+    <p>Bu sayfa hiçbir şey kaydetmez ve göndermez: cevaplar yalnızca sayfa açıkken tarayıcıda kalır.</p>
+    <p><a href="../../tr.html">Oyunlu ve testli dersler ana sayfada →</a></p>
+    <p><a href="../../tr.html#about">Proje ve yazar hakkında</a></p>
+    <p><a href="../../privacy/tr/">Gizlilik</a></p>
+    <p><a href="../../teachers/tr/">Öğretmenler için yapay zekâ ders planı: 45 dakikalık 4 ders</a></p>
+    <p>Yazar: Aleksei Bitkin · <a href="https://iamalex-afk.github.io/human-os-patch-33-protocols/" target="_blank" rel="noopener">Yetişkinler için: ücretsiz ve anonim yapay zekâ bağımlılığı testleri (Mind-OS, İngilizce) →</a></p>
+  </div>
+</footer>
+<script src="../../js/lesson.js"></script>
+</body>
+</html>

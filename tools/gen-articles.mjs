@@ -19,6 +19,7 @@ import { header, pageOf, esc, fitTitle, metaDesc, authorLine } from './gen-entry
 import { P as PRIVACY } from './privacy/texts.mjs';
 import { T } from './entry-i18n.mjs';
 import { L } from './lesson-i18n.mjs';
+import { lessonHref } from './gen-lessons.mjs';
 import { ARTICLES, ARTICLE_LANGS, ARTICLES_LASTMOD } from './articles/index.mjs';
 import { SOURCES } from './articles/sources.mjs';
 
@@ -90,7 +91,7 @@ function footer(l) {
 function linkFor(l, spec, u) {
   const [kind, a, b] = spec.split(':');
   return kind === 'lesson'
-    ? `<a href="../../lessons/${l}/${a}.html">${esc(u.lessonLink)}</a>`
+    ? `<a href="../../lessons/${l}/${lessonHref(a)}">${esc(u.lessonLink)}</a>`
     : `<a href="../../workshop/${l}/${a}.html?age=${b}">${esc(u.workshopLink)}</a>`;
 }
 
