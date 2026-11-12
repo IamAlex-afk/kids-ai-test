@@ -19,6 +19,9 @@
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
   const K  = () => window.KAT || {};
   const ACTIVITIES = ['lessons', 'game', 'quiz', 'result'];
+  // One light design for the whole site (audit 2026-11-12): the light palette stays on when the
+  // activities open; wk-home only controls which home sections are hidden before a choice.
+  document.body.classList.add('wk-light');
 
   let entry, hubbar;
   let audience = 'kids';

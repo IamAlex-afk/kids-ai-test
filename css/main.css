@@ -451,7 +451,7 @@ body {
 .snake-overlay {
   position: absolute; inset: 8px; display: flex;
   align-items: center; justify-content: center; text-align: center;
-  background: rgba(8,11,20,.88); border-radius: 6px; padding: 16px;
+  background: rgba(255,255,255,.94); color: var(--text); border-radius: 6px; padding: 16px;
 }
 .snake-overlay.hidden { display: none; }
 .snake-overlay-card { max-width: 320px; }
@@ -556,7 +556,7 @@ body {
 
 .pf-toast {
   position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
-  background: rgba(8,11,20,.92); border: 1px solid var(--accent); border-radius: var(--r-sm);
+  background: rgba(255,255,255,.95); border: 1px solid var(--accent); border-radius: var(--r-sm);
   padding: 6px 14px; font-size: var(--fs-sm); font-weight: 700; color: var(--text);
   z-index: 2; pointer-events: none; transition: opacity .2s;
 }
