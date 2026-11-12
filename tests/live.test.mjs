@@ -56,10 +56,17 @@ test('live: page resources, sitemap and robots load', opts, async () => {
   for (const l of LANGS) assert.ok(sm.includes(`<loc>${new URL(page(l), BASE).href}</loc>`), `sitemap: ${l}`);
 });
 
-test('live: lesson catalogs and lesson pages open directly, indexable and canonical', opts, async () => {
+test('live: lesson catalogs and age pages open directly, indexable and canonical; old lesson URLs redirect', opts, async () => {
   const sm = await (await get('sitemap.xml')).text();
   for (const l of LANGS) {
-    for (const p of [`lessons/${l}/`, `lessons/${l}/8-10-1.html`, `lessons/${l}/14-plus-9.html`]) {
+    // old one-lesson URLs (2026-11-12): instant meta refresh to their lesson on the age page, not in the sitemap
+    for (const [old, target] of [['8-10-1.html', 'age-8-10.html#lesson-1'], ['14-plus-9.html', 'age-14-plus.html#lesson-9']]) {
+      const r = await get(`lessons/${l}/${old}`);
+      assert.equal(r.status, 200, `${l}/${old}`);
+      assert.match(await r.text(), new RegExp(`http-equiv="refresh" content="0; url=${target}"`), `${l}/${old}: redirect`);
+      assert.ok(!sm.includes(`lessons/${l}/${old}</loc>`), `${l}/${old}: not in sitemap`);
+    }
+    for (const p of [`lessons/${l}/`, `lessons/${l}/age-8-10.html`, `lessons/${l}/age-14-plus.html`]) {
       const url = new URL(p, BASE).href;
       const r = await get(p);
       assert.equal(r.status, 200, url);
