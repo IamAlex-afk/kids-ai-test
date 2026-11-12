@@ -80,10 +80,9 @@
   display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
   width: 100%; text-align: left; font: inherit; color: var(--ink);
   border: 1.5px solid; border-radius: var(--wk-radius);
-  box-shadow: 0 6px 18px rgba(32, 41, 65, .06);
   transition: transform .15s ease-out;
 }
-.wk-aud:hover, .wk-age:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(32, 41, 65, .11); }
+.wk-aud:hover, .wk-age:hover { transform: translateY(-2px); }
 .wk-aud:active, .wk-age:active { transform: none; }
 
 .wk-aud { min-height: 172px; padding: 26px 26px 22px; }
@@ -162,7 +161,7 @@
   transition: transform .15s ease-out;
 }
 .wk-alt[data-wk-games] { background: #fff4dc; border-color: #e3cfa2; }
-.wk-alt:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(32, 41, 65, .11); }
+.wk-alt:hover { transform: translateY(-2px); }
 .wk-alt-t { font-size: 1.125rem; font-weight: 800; color: var(--violet); }
 .wk-alt-d { color: var(--quiet); line-height: 1.45; }
 @media (prefers-reduced-motion: reduce) { .wk-alt { transition: none; } .wk-alt:hover { transform: none; } }

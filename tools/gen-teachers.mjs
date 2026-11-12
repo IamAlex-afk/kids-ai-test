@@ -52,16 +52,16 @@ ${ld(json)}
 </head>`;
 }
 
-function shell(l, slug, crumbs, body) {
+function shell(l, slug, crumbs, body, hub = false) {
   const t = TT[l];
   const home = `../../${pageOf(l)}`;
   const langHref = (y) => (TT[y] ? `../${y}/${fileOf(slug)}` : `../../${pageOf(y)}`);
   const trail = [`<li><a href="${home}">${esc(L[l].home)}</a></li>`, ...crumbs].join('');
   return `<body class="wk-home wk-page">
 ${header(l, { home, langHref })}
-<main id="main" class="wk-lesson ar-main tc-main">
+<main id="main" class="wk-lesson ${hub ? 'wk-catalog' : 'ar-main'} tc-main">
   <nav class="wk-crumbs" aria-label="${esc(L[l].crumbs)}"><ol>${trail}</ol></nav>
-  <article class="ar-article">
+  <article class="ar-article${hub ? ' tc-hub' : ''}">
 ${body}
     <p class="tc-made"><small>${esc(t.ui.made)}</small></p>
     <p class="tc-disclaimer"><small>${esc(t.ui.disclaimer)}</small></p>
@@ -86,9 +86,14 @@ function hub(l) {
   const h = t.hub;
   const title = fitTitle(h.title);
   const desc = metaDesc(h.desc, h.h1);
+  // Hub card = the age card of the lessons catalog, same age colours.
+  const TONE = { '5-7': 'tiny', '8-10': 'child', '11-13': 'teen', '14-plus': 'adult' };
   const cards = AGE_SLUGS.map((s) => {
     const p = t.plans[s];
-    return `      <li class="tc-card"><a href="${fileOf(s)}"><b>${esc(p.grade)}</b> — ${esc(p.card)}</a></li>`;
+    return `  <section class="wk-cat-age" data-age="${TONE[s]}">
+    <h2><a href="${fileOf(s)}">${esc(p.grade)} →</a></h2>
+    <p class="wk-cat-d">${esc(p.card)}</p>
+  </section>`;
   }).join('\n');
   const json = {
     '@context': 'https://schema.org', '@type': 'CollectionPage', name: h.h1, description: desc,
@@ -96,28 +101,27 @@ function hub(l) {
     hasPart: AGE_SLUGS.map((s) => ({ '@type': 'LearningResource', name: t.plans[s].h1, url: url(l, s) })),
   };
   const body = `    <h1 class="wk-cat-title">${esc(h.h1)}</h1>
+    <div class="wk-hub-text">
 ${h.intro.map((p) => `    <p>${esc(p)}</p>`).join('\n')}
-    <section><h2>${esc(h.plansH)}</h2>
-    <ul class="tc-cards">
+    <h2>${esc(h.plansH)}</h2>
+    </div>
 ${cards}
-    </ul>
-    </section>
-    <section><h2>${esc(h.howH)}</h2>
+    <section class="wk-hub-text"><h2>${esc(h.howH)}</h2>
 ${ul(h.howItems)}
     </section>
-    <section><h2>${esc(h.basisH)}</h2>
+    <section class="wk-hub-text"><h2>${esc(h.basisH)}</h2>
     <ul>
 ${h.basis.map((b) => `      <li>${esc(b.text)} ${ext(b.url, b.link)}</li>`).join('\n')}
     </ul>
     </section>
-    <section><h2>${esc(h.whyH)}</h2>
+    <section class="wk-hub-text"><h2>${esc(h.whyH)}</h2>
       <p>${esc(h.whyText)}</p>
     </section>
-    <section><h2>${esc(h.printH)}</h2>
+    <section class="wk-hub-text"><h2>${esc(h.printH)}</h2>
       <p>${esc(h.printText)}</p>
     </section>`;
   return `${head(l, '', title, desc, json)}
-${shell(l, '', [`<li><a href="./" aria-current="page">${esc(h.h1)}</a></li>`], body)}`;
+${shell(l, '', [`<li><a href="./" aria-current="page">${esc(h.h1)}</a></li>`], body, true)}`;
 }
 
 function plan(l, s) {

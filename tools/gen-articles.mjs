@@ -185,13 +185,15 @@ ${ld({ '@context': 'https://schema.org', '@type': 'CollectionPage', name: u.catT
 </head>
 <body class="wk-home wk-page">
 ${header(l, { home, langHref: (y) => `../${y}/` })}
-<main id="main" class="wk-lesson wk-catalog ar-main">
+<main id="main" class="wk-lesson wk-catalog">
 ${crumbs(l, [[L[l].home, home], [u.all, './']], true)}
   <h1 class="wk-cat-title">${esc(u.catTitle)}</h1>
   <p class="wk-cat-lead">${esc(u.catLead)}</p>
-  <ul class="ar-cat">
-${ARTICLES.map((a) => `    <li class="wk-card"><a href="${a.slug}.html"><span class="ar-tag">${esc(u.audience[a.audience])}</span> <b>${esc(texts[a.slug].title)}</b></a><p>${esc(texts[a.slug].desc)}</p></li>`).join('\n')}
-  </ul>
+${ARTICLES.map((a, i) => `  <section class="wk-cat-age" data-age="${['teen', 'adult', 'child', 'tiny'][i % 4]}">
+    <p class="wk-cat-tag">${esc(u.audience[a.audience])}</p>
+    <h2><a href="${a.slug}.html">${esc(texts[a.slug].title)} →</a></h2>
+    <p class="wk-cat-d">${esc(texts[a.slug].desc)}</p>
+  </section>`).join('\n')}
 </main>
 ${footer(l)}`;
 }
