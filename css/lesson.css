@@ -36,7 +36,6 @@ body.wk-page[data-age="adult"] { --age-ink: #185d50; --age-soft: #e2f3eb; --age-
 /* ── Lesson card ── */
 .wk-card {
   background: #fff; border: 1px solid var(--line); border-radius: var(--wk-radius);
-  box-shadow: 0 6px 18px rgba(32, 41, 65, .06);
   padding: 28px 32px 24px;
 }
 @media (max-width: 640px) { .wk-card { padding: 20px 18px; border-radius: 22px; } }
@@ -228,3 +227,22 @@ body[data-age="tiny"] .wk-card-pic svg { width: 104px; height: 104px; }
   .wk-page .wk-reveal[hidden] { display: block !important; }   /* the answer stays on paper */
   .wk-cat-age { break-inside: avoid; }
 }
+
+/* Age pages (all lessons of one age on one page, tools/gen-lessons.mjs agePage) */
+.wk-age-page .wk-age-lesson { margin-top: 24px; scroll-margin-top: 24px; }
+.wk-age-page .wk-age-lesson:first-of-type { margin-top: 8px; }
+.wk-toc { margin: 8px 0 24px; padding: 16px 20px; border: 1px solid var(--line, #e3e3ee); border-radius: 16px; background: #fff; }
+.wk-toc h2 { font-size: 1.125rem; margin: 0 0 8px; }
+.wk-toc ol { margin: 0; padding-left: 1.4em; display: grid; gap: 6px; }
+.wk-toc a { text-underline-offset: 3px; }
+.wk-cat-open { margin: 8px 0 0; font-weight: 600; }
+.wk-age-page .wk-pager { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 32px; }
+
+/* Hub pages (lessons, workshop, articles, teachers): one card component — the age card of the lessons
+   catalog. Title link, short description, one "open" link. Design logic 2026-11-12: hub = full width + card grid,
+   reading pages = narrow column, white cards only for things to do, no shadows. */
+.wk-cat-age h2 a { color: var(--ink); text-decoration: none; }
+.wk-cat-age h2 a:hover, .wk-cat-age h2 a:focus-visible { text-decoration: underline; }
+.wk-cat-age .wk-cat-tag { display: inline-block; margin: 0 0 6px; font-size: .8125rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--age-ink); }
+.wk-cat-go { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; color: var(--age-ink); }
+.wk-catalog > section.wk-hub-text { max-width: 720px; }

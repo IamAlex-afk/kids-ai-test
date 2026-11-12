@@ -451,7 +451,7 @@ body {
 .snake-overlay {
   position: absolute; inset: 8px; display: flex;
   align-items: center; justify-content: center; text-align: center;
-  background: rgba(8,11,20,.88); border-radius: 6px; padding: 16px;
+  background: rgba(255,255,255,.94); color: var(--text); border-radius: 6px; padding: 16px;
 }
 .snake-overlay.hidden { display: none; }
 .snake-overlay-card { max-width: 320px; }
@@ -556,7 +556,7 @@ body {
 
 .pf-toast {
   position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
-  background: rgba(8,11,20,.92); border: 1px solid var(--accent); border-radius: var(--r-sm);
+  background: rgba(255,255,255,.95); border: 1px solid var(--accent); border-radius: var(--r-sm);
   padding: 6px 14px; font-size: var(--fs-sm); font-weight: 700; color: var(--text);
   z-index: 2; pointer-events: none; transition: opacity .2s;
 }
@@ -946,7 +946,8 @@ footer a:hover { text-decoration: underline; }
   transition: opacity .25s, transform .25s;
 }
 .kat-float-mascot.kat-float-hidden { opacity: 0; transform: scale(.7); pointer-events: none; }
-.kat-float-canvas { display: block; filter: drop-shadow(0 4px 10px rgba(0,0,0,.4)); }
+.kat-float-canvas { display: block; filter: drop-shadow(0 2px 4px rgba(32,41,65,.18)); }
+@media (max-width: 420px) { .kat-float-bubble { max-width: 168px; } }
 @keyframes kat-float-bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
 
 .kat-float-bubble {
@@ -955,7 +956,6 @@ footer a:hover { text-decoration: underline; }
   background: var(--card); border: 1px solid var(--border2);
   border-radius: var(--r-sm); padding: 8px 12px;
   font-size: var(--fs-xs); font-weight: 600; color: var(--text);
-  box-shadow: 0 8px 24px rgba(0,0,0,.4);
   opacity: 0; transform: translateY(6px) scale(.94);
   transition: opacity .22s ease, transform .22s ease;
   pointer-events: none;

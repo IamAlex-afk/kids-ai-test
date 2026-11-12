@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none';">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Уроки об ИИ для детей: 14 лет и старше | Kids AI Test</title>
+  <meta name="description" content="Полный стек LLM: от предобучения до RLHF. Ландшафт рисков ИИ: реальные vs спекулятивные. В каждом из 9 уроков — объяснение, пример и проверка с разбором ответа.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://iamalex-afk.github.io/kids-ai-test/lessons/ru/age-14-plus.html">
+  <link rel="alternate" hreflang="en" href="https://iamalex-afk.github.io/kids-ai-test/lessons/en/age-14-plus.html">
+  <link rel="alternate" hreflang="ru" href="https://iamalex-afk.github.io/kids-ai-test/lessons/ru/age-14-plus.html">
+  <link rel="alternate" hreflang="de" href="https://iamalex-afk.github.io/kids-ai-test/lessons/de/age-14-plus.html">
+  <link rel="alternate" hreflang="es" href="https://iamalex-afk.github.io/kids-ai-test/lessons/es/age-14-plus.html">
+  <link rel="alternate" hreflang="fr" href="https://iamalex-afk.github.io/kids-ai-test/lessons/fr/age-14-plus.html">
+  <link rel="alternate" hreflang="hi" href="https://iamalex-afk.github.io/kids-ai-test/lessons/hi/age-14-plus.html">
+  <link rel="alternate" hreflang="id" href="https://iamalex-afk.github.io/kids-ai-test/lessons/id/age-14-plus.html">
+  <link rel="alternate" hreflang="pt" href="https://iamalex-afk.github.io/kids-ai-test/lessons/pt/age-14-plus.html">
+  <link rel="alternate" hreflang="tr" href="https://iamalex-afk.github.io/kids-ai-test/lessons/tr/age-14-plus.html">
+  <link rel="alternate" hreflang="vi" href="https://iamalex-afk.github.io/kids-ai-test/lessons/vi/age-14-plus.html">
+  <link rel="alternate" hreflang="x-default" href="https://iamalex-afk.github.io/kids-ai-test/lessons/en/age-14-plus.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Уроки об ИИ для детей: 14 лет и старше | Kids AI Test">
+  <meta property="og:description" content="Полный стек LLM: от предобучения до RLHF. Ландшафт рисков ИИ: реальные vs спекулятивные. В каждом из 9 уроков — объяснение, пример и проверка с разбором ответа.">
+  <meta property="og:url" content="https://iamalex-afk.github.io/kids-ai-test/lessons/ru/age-14-plus.html">
+  <meta property="og:image" content="https://iamalex-afk.github.io/kids-ai-test/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../../favicon.ico" sizes="48x48">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+  <link rel="stylesheet" href="../../css/workshop.css">
+  <link rel="stylesheet" href="../../css/lesson.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://iamalex-afk.github.io/kids-ai-test/ru.html"},{"@type":"ListItem","position":2,"name":"Все уроки","item":"https://iamalex-afk.github.io/kids-ai-test/lessons/ru/"},{"@type":"ListItem","position":3,"name":"14 лет и старше","item":"https://iamalex-afk.github.io/kids-ai-test/lessons/ru/age-14-plus.html"}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Уроки об ИИ для детей: 14 лет и старше","description":"Полный стек LLM: от предобучения до RLHF. Ландшафт рисков ИИ: реальные vs спекулятивные. В каждом из 9 уроков — объяснение, пример и проверка с разбором ответа.","inLanguage":"ru","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/ru/age-14-plus.html","isAccessibleForFree":true,"typicalAgeRange":"14-","hasPart":[{"@type":"LearningResource","name":"Полный стек LLM: от предобучения до RLHF","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/ru/age-14-plus.html#lesson-1","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Оуян и др. (InstructGPT) 2022 + Бай и др. (Constitutional AI, Anthropic) 2022","url":"https://arxiv.org/abs/2212.08073"}},{"@type":"LearningResource","name":"Ландшафт рисков ИИ: реальные vs спекулятивные","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/ru/age-14-plus.html#lesson-2","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Center for AI Safety «Заявление о рисках ИИ», 2023 · Классификация рисков Закона ЕС об ИИ","url":"https://www.safe.ai/statement-on-ai-risk"}},{"@type":"LearningResource","name":"Что значит «рассуждение» и «понимание» в ИИ (и чего не значит)","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/ru/age-14-plus.html#lesson-3","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Шоле «Мера интеллекта», 2019 · Митчелл «ИИ: руководство для думающих людей», 2021","url":"https://arxiv.org/abs/1911.01547"}},{"@type":"LearningResource","name":"Регулирование ИИ: ЕС, США, Россия, Китай","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/ru/age-14-plus.html#lesson-4","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Закон ЕС об ИИ (2024), NIST AI RMF 1.0 (2023)","url":"https://eur-lex.europa.eu/eli/reg/2024/1689/oj"}},{"@type":"LearningResource","name":"Что будет дальше — и что можно знать точно","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/ru/age-14-plus.html#lesson-5","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Каплан и др. «Законы масштабирования для языковых моделей», 2020","url":"https://arxiv.org/abs/2001.08361"}},{"@type":"LearningResource","name":"Твоя роль в эпоху ИИ","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/ru/age-14-plus.html#lesson-6","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"ЮНЕСКО, «AI competency framework for students», 2024","url":"https://doi.org/10.54675/JKJB9835"}},{"@type":"LearningResource","name":"ИИ и рынок труда — что происходит на самом деле","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/ru/age-14-plus.html#lesson-7","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Асемоглу и Рестрепо, «Tasks, Automation, and the Rise in US Wage Inequality», NBER 2022","url":"https://www.nber.org/papers/w28920"}},{"@type":"LearningResource","name":"Как получать от ИИ более качественные ответы","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/ru/age-14-plus.html#lesson-8","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Вей и др., «Chain-of-Thought Prompting Elicits Reasoning in Large Language Models», Google Research 2022","url":"https://arxiv.org/abs/2201.11903"}},{"@type":"LearningResource","name":"ИИ-компаньоны и психологическое здоровье","url":"https://iamalex-afk.github.io/kids-ai-test/lessons/ru/age-14-plus.html#lesson-9","learningResourceType":"lesson","citation":{"@type":"CreativeWork","name":"Common Sense Media, \"Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions\", 2025","url":"https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions"}}]}</script>
+</head>
+<body class="wk-home wk-page" data-age="adult" data-right="Верно." data-wrong="Пока нет. Прочитай объяснение и попробуй ещё раз.">
+<a class="wk-skip" href="#main">Перейти к содержанию</a>
+<header class="wk-header">
+  <div class="wk-header-in">
+    <a class="wk-brand" href="../../ru.html" data-wk-home>
+      <span class="wk-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="wk-brand-txt"><span class="wk-brand-name">kids ai test</span><span class="wk-brand-sub">Мастерская осознанного ИИ</span></span>
+    </a>
+    <div class="wk-actions">
+      <div class="lang-switcher" id="lang-switcher">
+        <button type="button" class="lang-globe" id="lang-globe" aria-expanded="false" aria-controls="lang-dropdown" aria-label="RU Русский, язык"><svg class="wk-globe" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span class="lang-full">Русский</span><span class="lang-short">RU</span><svg class="lang-arrow" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true" focusable="false"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="lang-dropdown" id="lang-dropdown">
+          <a class="lang-opt" href="../en/age-14-plus.html" lang="en" hreflang="en">English</a>
+          <a class="lang-opt active" href="../ru/age-14-plus.html" lang="ru" hreflang="ru" aria-current="page">Русский</a>
+          <a class="lang-opt" href="../de/age-14-plus.html" lang="de" hreflang="de">Deutsch</a>
+          <a class="lang-opt" href="../es/age-14-plus.html" lang="es" hreflang="es">Español</a>
+          <a class="lang-opt" href="../fr/age-14-plus.html" lang="fr" hreflang="fr">Français</a>
+          <a class="lang-opt" href="../hi/age-14-plus.html" lang="hi" hreflang="hi">हिन्दी</a>
+          <a class="lang-opt" href="../id/age-14-plus.html" lang="id" hreflang="id">Bahasa Indonesia</a>
+          <a class="lang-opt" href="../pt/age-14-plus.html" lang="pt" hreflang="pt">Português</a>
+          <a class="lang-opt" href="../tr/age-14-plus.html" lang="tr" hreflang="tr">Türkçe</a>
+          <a class="lang-opt" href="../vi/age-14-plus.html" lang="vi" hreflang="vi">Tiếng Việt</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<main id="main" class="wk-lesson wk-age-page">
+    <nav class="wk-crumbs" aria-label="Вы здесь">
+      <ol>
+        <li><a href="../../ru.html">Главная</a></li>
+        <li><a href="./">Все уроки</a></li>
+        <li><a href="age-14-plus.html" aria-current="page">14 лет и старше</a></li>
+      </ol>
+    </nav>
+  <h1 class="wk-cat-title">Уроки об ИИ для детей: 14 лет и старше</h1>
+  <p class="wk-cat-lead">Все уроки для этого возраста на одной странице, по порядку. Читайте по одному уроку, отвечайте на проверку и переходите к следующему.</p>
+  <p class="wk-novoice" hidden>На этом устройстве нет голоса для этого языка. Попросите взрослого прочитать урок вслух.</p>
+  <nav class="wk-toc" aria-labelledby="toc-h">
+    <h2 id="toc-h">Уроки на этой странице</h2>
+    <ol>
+      <li><a href="#lesson-1"><span class="wk-icon" aria-hidden="true">🏗️</span> Полный стек LLM: от предобучения до RLHF</a></li>
+      <li><a href="#lesson-2"><span class="wk-icon" aria-hidden="true">🗺️</span> Ландшафт рисков ИИ: реальные vs спекулятивные</a></li>
+      <li><a href="#lesson-3"><span class="wk-icon" aria-hidden="true">⚗️</span> Что значит «рассуждение» и «понимание» в ИИ (и чего не значит)</a></li>
+      <li><a href="#lesson-4"><span class="wk-icon" aria-hidden="true">🏛️</span> Регулирование ИИ: ЕС, США, Россия, Китай</a></li>
+      <li><a href="#lesson-5"><span class="wk-icon" aria-hidden="true">🔭</span> Что будет дальше — и что можно знать точно</a></li>
+      <li><a href="#lesson-6"><span class="wk-icon" aria-hidden="true">🧭</span> Твоя роль в эпоху ИИ</a></li>
+      <li><a href="#lesson-7"><span class="wk-icon" aria-hidden="true">💼</span> ИИ и рынок труда — что происходит на самом деле</a></li>
+      <li><a href="#lesson-8"><span class="wk-icon" aria-hidden="true">✍️</span> Как получать от ИИ более качественные ответы</a></li>
+      <li><a href="#lesson-9"><span class="wk-icon" aria-hidden="true">🫂</span> ИИ-компаньоны и психологическое здоровье</a></li>
+    </ol>
+  </nav>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-1" aria-labelledby="lesson-1-h">
+    <p class="wk-meta"><span>Урок 1 из 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-1-h" data-speak><span class="wk-icon" aria-hidden="true">🏗️</span> Полный стек LLM: от предобучения до RLHF</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Послушать</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Остановить голос</button>
+    </div>
+    <p class="wk-text" data-speak>Современные LLM строятся в три этапа: (1) Предобучение на огромных корпусах — предсказание следующего токена, миллиарды параметров; (2) Тонкая настройка на кураторских демонстрациях от людей; (3) RLHF или Constitutional AI для согласования выходных данных с предпочтениями людей или набором правил. Модель не хранит факты, как база данных, — знания распределены по миллиардам весов; при этом отдельные куски обучающих текстов она иногда запоминает дословно. «Знание» — метафора для весовых распределений вероятностей.</p>
+    <aside class="wk-example" aria-labelledby="lesson-1-ex">
+      <h3 id="lesson-1-ex">Пример</h3>
+      <p data-speak>🔧 Архитектура → Подготовка данных → Тонкая настройка → RLHF → Деплой → Мониторинг. Каждый шаг включает человеческие выборы, которые определяют, что модель будет говорить.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-1-chk">
+      <h3 id="lesson-1-chk">Проверь себя</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-1-0">Почему нельзя спросить LLM «что в твоих обучающих данных»?</p>
+      <ol class="wk-opts" aria-labelledby="chk-1-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>Компании скрывают это по юридическим причинам 🔒</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>Модель не «хранит» данные — она кодирует статистические паттерны; отдельные документы не извлекаемы 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>Это потребует слишком много вычислительной мощности 💻</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Данные зашифрованы 🔐</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-1-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Попробовать ещё раз</button>
+      <details class="wk-reveal">
+        <summary>Показать ответ и разбор</summary>
+        <p><b>Правильный ответ:</b> Модель не «хранит» данные — она кодирует статистические паттерны; отдельные документы не извлекаемы 📊</p>
+        <p class="wk-explain">LLM не запоминают документы как отдельные объекты. Они сжимают паттерны в миллиарды весов с плавающей точкой. Конкретные тексты иногда можно «восстановить» через состязательные промпты — это известный риск приватности.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Источник: <a href="https://arxiv.org/abs/2212.08073" rel="noopener" target="_blank">Оуян и др. (InstructGPT) 2022 + Бай и др. (Constitutional AI, Anthropic) 2022</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-2" aria-labelledby="lesson-2-h">
+    <p class="wk-meta"><span>Урок 2 из 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-2-h" data-speak><span class="wk-icon" aria-hidden="true">🗺️</span> Ландшафт рисков ИИ: реальные vs спекулятивные</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Послушать</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Остановить голос</button>
+    </div>
+    <p class="wk-text" data-speak>Реальные ближайшие риски: алгоритмическая предвзятость (Буоламвини 2018), загрязнение информационного пространства в масштабе, споры об авторских правах, вытеснение труда в конкретных секторах. Спекулятивные долгосрочные риски: рассогласование (ИИ оптимизирует прокси-цели вместо задуманных), ускорение возможностей опережает исследования безопасности. Мейнстримный дискурс часто смешивает оба типа, затрудняя продуктивный анализ рисков.</p>
+    <aside class="wk-example" aria-labelledby="lesson-2-ex">
+      <h3 id="lesson-2-ex">Пример</h3>
+      <p data-speak>🎯 «ИИ нас всех убьёт» и «у ИИ нет рисков» — оба утверждения неверны. Калибровка рисков: какие именно? Насколько вероятны? Как скоро? Кто несёт их? Кто выигрывает от их игнорирования?</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-2-chk">
+      <h3 id="lesson-2-chk">Проверь себя</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-2-0">Наиболее конкретные риски ИИ ПРЯМО СЕЙЧАС прежде всего затрагивают...</p>
+      <ol class="wk-opts" aria-labelledby="chk-2-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>Всё человечество поровну через экзистенциальную катастрофу 🌍</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>Конкретные группы непропорционально — меньшинства через предвзятые системы, работников в автоматизируемых секторах 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>Только тех, кто напрямую использует ИИ 💻</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Прежде всего исследователей, которые его создают 🔬</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-2-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Попробовать ещё раз</button>
+      <details class="wk-reveal">
+        <summary>Показать ответ и разбор</summary>
+        <p><b>Правильный ответ:</b> Конкретные группы непропорционально — меньшинства через предвзятые системы, работников в автоматизируемых секторах 📊</p>
+        <p class="wk-explain">Текущие риски ИИ распределены неравномерно. Понимание этого распределения важно для политики.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Источник: <a href="https://www.safe.ai/statement-on-ai-risk" rel="noopener" target="_blank">Center for AI Safety «Заявление о рисках ИИ», 2023 · Классификация рисков Закона ЕС об ИИ</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-3" aria-labelledby="lesson-3-h">
+    <p class="wk-meta"><span>Урок 3 из 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-3-h" data-speak><span class="wk-icon" aria-hidden="true">⚗️</span> Что значит «рассуждение» и «понимание» в ИИ (и чего не значит)</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Послушать</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Остановить голос</button>
+    </div>
+    <p class="wk-text" data-speak>По отчёту OpenAI (2023), GPT-4 сдал пробный экзамен юриста. Значит ли это, что он рассуждает? Тест ARC Шоле (2019) специально создан для задач, которые нельзя решить только поиском похожих шаблонов, — языковые модели долго справлялись с ним очень плохо; новые модели продвинулись, но ценой огромных вычислений, а более сложная версия теста им по-прежнему трудна. Промптинг с цепочкой мыслей улучшает результаты — но механизм спорен: настоящее рассуждение или выученные паттерны рассуждения-подобного текста? Отдельная проблема — интерпретируемость: даже когда модель отвечает верно, мы часто не можем объяснить, как именно она пришла к этому ответу изнутри.</p>
+    <aside class="wk-example" aria-labelledby="lesson-3-ex">
+      <h3 id="lesson-3-ex">Пример</h3>
+      <p data-speak>♟️ Deep Blue победил Каспарова в шахматах, не «понимая» шахмат. Stockfish играет лучше любого человека, не имея понятия о короле. Производительность и понимание разделимы.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-3-chk">
+      <h3 id="lesson-3-chk">Проверь себя</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-3-0">Промптинг с цепочкой мыслей («думай пошагово») работает потому, что...</p>
+      <ol class="wk-opts" aria-labelledby="chk-3-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>Активирует модуль рассуждения ИИ 🧠</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>Вызывает статистические паттерны рассуждения-подобного текста, которые коррелируют с более точными ответами 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>Даёт ИИ больше времени на вычисление 🕐</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Заставляет ИИ обращаться к другим обучающим данным 📚</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-3-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Попробовать ещё раз</button>
+      <details class="wk-reveal">
+        <summary>Показать ответ и разбор</summary>
+        <p><b>Правильный ответ:</b> Вызывает статистические паттерны рассуждения-подобного текста, которые коррелируют с более точными ответами 📊</p>
+        <p class="wk-explain">Chain-of-thought работает, потому что в обучающих данных хорошо представлены цепочки рассуждений, и обусловливание на их паттернах направляет модель к более точным завершениям.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Источник: <a href="https://arxiv.org/abs/1911.01547" rel="noopener" target="_blank">Шоле «Мера интеллекта», 2019 · Митчелл «ИИ: руководство для думающих людей», 2021</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-4" aria-labelledby="lesson-4-h">
+    <p class="wk-meta"><span>Урок 4 из 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-4-h" data-speak><span class="wk-icon" aria-hidden="true">🏛️</span> Регулирование ИИ: ЕС, США, Россия, Китай</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Послушать</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Остановить голос</button>
+    </div>
+    <p class="wk-text" data-speak>Три модели управления конкурируют: (1) Закон ЕС об ИИ — обязательная регуляция на основе рисков, запрещённые применения, требования прозрачности; (2) Подход США — в основном добровольные рамки (NIST AI RMF); (3) Китай — государственно направленный ИИ; (4) Россия — регуляция ИИ в разработке, акцент на суверенные технологии (Алиса, GigaChat, YandexGPT). Фундаментальное противоречие: безопасность и подотчётность замедляют деплой; скорость коммерчески и стратегически выгодна.</p>
+    <aside class="wk-example" aria-labelledby="lesson-4-ex">
+      <h3 id="lesson-4-ex">Пример</h3>
+      <p data-speak>⚖️ Закон ЕС запрещает полиции распознавать людей по лицу в реальном времени в общественных местах — с узкими исключениями и только с разрешения суда или независимого органа. В других странах правила свои. Та же технология — разные правовые реальности.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-4-chk">
+      <h3 id="lesson-4-chk">Проверь себя</h3>
+    <div class="wk-q-block" data-correct="2">
+      <p class="wk-check-q" id="chk-4-0">Закон ЕС об ИИ классифицирует системы ИИ по...</p>
+      <ol class="wk-opts" aria-labelledby="chk-4-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>Стране происхождения 🌍</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>Стоимости создания 💰</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>Уровню риска для основных прав и безопасности 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Использованию открытого кода 🔓</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-4-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Попробовать ещё раз</button>
+      <details class="wk-reveal">
+        <summary>Показать ответ и разбор</summary>
+        <p><b>Правильный ответ:</b> Уровню риска для основных прав и безопасности 📊</p>
+        <p class="wk-explain">Закон ЕС об ИИ делит системы на: неприемлемый риск (запрещены), высокий риск (строгие требования), ограниченный риск (правила прозрачности), минимальный риск (нет обязательств).</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Источник: <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" rel="noopener" target="_blank">Закон ЕС об ИИ (2024), NIST AI RMF 1.0 (2023)</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-5" aria-labelledby="lesson-5-h">
+    <p class="wk-meta"><span>Урок 5 из 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-5-h" data-speak><span class="wk-icon" aria-hidden="true">🔭</span> Что будет дальше — и что можно знать точно</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Послушать</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Остановить голос</button>
+    </div>
+    <p class="wk-text" data-speak>Законы масштабирования (Каплан и др., 2020) показали: возможности масштабируются предсказуемо с вычислениями, данными и параметрами. Но масштабирование, возможно, достигает убывающей отдачи. Конкурирующие парадигмы: нейросимволический ИИ, мировые модели (видение ЛеКуна), мультимодальное заземление, агентные системы. Честный ответ: никто не знает, что будет дальше. Любой, кто утверждает обратное с уверенностью, что-то продаёт.</p>
+    <aside class="wk-example" aria-labelledby="lesson-5-ex">
+      <h3 id="lesson-5-ex">Пример</h3>
+      <p data-speak>🗓️ В 2021 GPT-3 считался прорывом. В 2022 DALL-E всех шокировал. В 2023 GPT-4 сдал экзамен юриста. В 2024 модели запустились локально на телефонах. Прогнозы об ИИ, включая экспертные — имеют плохую репутацию.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-5-chk">
+      <h3 id="lesson-5-chk">Проверь себя</h3>
+    <div class="wk-q-block" data-correct="2">
+      <p class="wk-check-q" id="chk-5-0">Самая эпистемически безопасная позиция о будущих возможностях ИИ...</p>
+      <ol class="wk-opts" aria-labelledby="chk-5-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>«ИИ точно достигнет уровня человека через 5 лет» 🤖</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>«ИИ — просто автодополнение и не может улучшиться значительно» 🚫</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>«Текущие тенденции предполагают X, но неопределённость высока и прогнозы исторически ненадёжны» 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>«Эксперты единогласно согласны по срокам» 🤝</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-5-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Попробовать ещё раз</button>
+      <details class="wk-reveal">
+        <summary>Показать ответ и разбор</summary>
+        <p><b>Правильный ответ:</b> «Текущие тенденции предполагают X, но неопределённость высока и прогнозы исторически ненадёжны» 📊</p>
+        <p class="wk-explain">История ИИ полна самонадеянных прогнозов в обоих направлениях. Калиброванная неопределённость — наиболее защитимая позиция.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Источник: <a href="https://arxiv.org/abs/2001.08361" rel="noopener" target="_blank">Каплан и др. «Законы масштабирования для языковых моделей», 2020</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-6" aria-labelledby="lesson-6-h">
+    <p class="wk-meta"><span>Урок 6 из 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-6-h" data-speak><span class="wk-icon" aria-hidden="true">🧭</span> Твоя роль в эпоху ИИ</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Послушать</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Остановить голос</button>
+    </div>
+    <p class="wk-text" data-speak>Грамотность в области ИИ теперь демократическая необходимость. Общества принимают коллективные решения об ИИ через выборы, регулирование, закупки и потребительский выбор. Информированные граждане — предпосылка для подотчётного управления ИИ. Люди, которые понимают, как ИИ работает на самом деле, могут участвовать в формировании его применения.</p>
+    <aside class="wk-example" aria-labelledby="lesson-6-ex">
+      <h3 id="lesson-6-ex">Пример</h3>
+      <p data-speak>🗳️ ИИ уже применяется в: найме (твой будущий работодатель может его использовать), медицине, судах в некоторых юрисдикциях, образовании. Твоё понимание — не академическое, а практическое.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-6-chk">
+      <h3 id="lesson-6-chk">Проверь себя</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-6-0">Грамотность в области ИИ важна для людей не из IT-сферы, потому что...</p>
+      <ol class="wk-opts" aria-labelledby="chk-6-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>Не важна — только для разработчиков 💻</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>Системы ИИ влияют на найм, медицину, правосудие и повседневную жизнь всех 🌍</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>Помогает лучше использовать ChatGPT для продуктивности 📈</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Теперь требуется для большинства рабочих мест ⚙️</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-6-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Попробовать ещё раз</button>
+      <details class="wk-reveal">
+        <summary>Показать ответ и разбор</summary>
+        <p><b>Правильный ответ:</b> Системы ИИ влияют на найм, медицину, правосудие и повседневную жизнь всех 🌍</p>
+        <p class="wk-explain">ИИ формирует решения в обществе. Тебе не нужно строить ИИ, чтобы быть им затронутым — или иметь долю в том, как им управляют.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Источник: <a href="https://doi.org/10.54675/JKJB9835" rel="noopener" target="_blank">ЮНЕСКО, «AI competency framework for students», 2024</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-7" aria-labelledby="lesson-7-h">
+    <p class="wk-meta"><span>Урок 7 из 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-7-h" data-speak><span class="wk-icon" aria-hidden="true">💼</span> ИИ и рынок труда — что происходит на самом деле</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Послушать</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Остановить голос</button>
+    </div>
+    <p class="wk-text" data-speak>ИИ обычно не заменяет целые профессии — он автоматизирует конкретные задачи внутри них. Исследования автоматизации показывают, что сильнее всего меняются рутинные задачи (например, ввод данных), а профессии, требующие физической ловкости, сложных суждений или межличностного доверия, гораздо устойчивее к автоматизации.</p>
+    <aside class="wk-example" aria-labelledby="lesson-7-ex">
+      <h3 id="lesson-7-ex">Пример</h3>
+      <p data-speak>🧩 Рентгенолог не исчезает из-за того, что ИИ умеет находить паттерны на снимках — но часть его работы, связанная с рутинным просмотром снимков, меняется, освобождая время для того, что требует настоящего суждения.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-7-chk">
+      <h3 id="lesson-7-chk">Проверь себя</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-7-0">Что, согласно исследованиям, ИИ автоматизирует в первую очередь?</p>
+      <ol class="wk-opts" aria-labelledby="chk-7-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>Целые профессии полностью 💼</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>Конкретные задачи внутри профессий, а не роли целиком 🧩</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>Ничего — это всё преувеличено 🚫</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Только профессии в технологиях 💻</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-7-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Попробовать ещё раз</button>
+      <details class="wk-reveal">
+        <summary>Показать ответ и разбор</summary>
+        <p><b>Правильный ответ:</b> Конкретные задачи внутри профессий, а не роли целиком 🧩</p>
+        <p class="wk-explain">Задаче-ориентированный взгляд на автоматизацию — это текущий мейнстримный консенсус в экономике: ИИ чаще меняет содержание работы, чем полностью её устраняет.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Источник: <a href="https://www.nber.org/papers/w28920" rel="noopener" target="_blank">Асемоглу и Рестрепо, «Tasks, Automation, and the Rise in US Wage Inequality», NBER 2022</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-8" aria-labelledby="lesson-8-h">
+    <p class="wk-meta"><span>Урок 8 из 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-8-h" data-speak><span class="wk-icon" aria-hidden="true">✍️</span> Как получать от ИИ более качественные ответы</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Послушать</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Остановить голос</button>
+    </div>
+    <p class="wk-text" data-speak>Качество ответа ИИ сильно зависит от того, как ты спрашиваешь. Конкретика, контекст, указание нужного формата и просьба «рассуждать пошагово» — всё это измеримо улучшает результат. Это не хитрость, а задокументированный эффект того, как эти модели обрабатывают контекст.</p>
+    <aside class="wk-example" aria-labelledby="lesson-8-ex">
+      <h3 id="lesson-8-ex">Пример</h3>
+      <p data-speak>🎯 «Напиши про собак» даёт общий ответ. «Напиши сравнение темперамента лабрадора и пуделя на 100 слов для человека, который впервые заводит собаку» — даёт что-то реально полезное. Конкретика решает всё.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-8-chk">
+      <h3 id="lesson-8-chk">Проверь себя</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-8-0">Почему просьба к ИИ «рассуждать пошагово» часто улучшает его ответы?</p>
+      <ol class="wk-opts" aria-labelledby="chk-8-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>Это буквально даёт ИИ больше времени подумать 🕐</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>Это направляет ответ на паттерны рассуждений из обучающих данных 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>Это секретная команда, открывающая скрытые функции 🔓</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>На самом деле это никак не помогает 🚫</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-8-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Попробовать ещё раз</button>
+      <details class="wk-reveal">
+        <summary>Показать ответ и разбор</summary>
+        <p><b>Правильный ответ:</b> Это направляет ответ на паттерны рассуждений из обучающих данных 📊</p>
+        <p class="wk-explain">Пошаговый промпт направляет модель к паттернам, связанным с внимательным рассуждением в её обучающих данных — это измеримо снижает ошибки на сложных задачах.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Источник: <a href="https://arxiv.org/abs/2201.11903" rel="noopener" target="_blank">Вей и др., «Chain-of-Thought Prompting Elicits Reasoning in Large Language Models», Google Research 2022</a></p>
+  </article>
+  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-9" aria-labelledby="lesson-9-h">
+    <p class="wk-meta"><span>Урок 9 из 9</span></p>
+    <h2 class="wk-lesson-title" id="lesson-9-h" data-speak><span class="wk-icon" aria-hidden="true">🫂</span> ИИ-компаньоны и психологическое здоровье</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">Послушать</button>
+      <button type="button" class="wk-btn wk-stop" disabled>Остановить голос</button>
+    </div>
+    <p class="wk-text" data-speak>Приложения-ИИ-компаньоны спроектированы так, чтобы ощущаться эмоционально поддерживающими и всегда доступными — именно поэтому некоторые исследователи обеспокоены. В отличие от человеческих отношений, они редко тебе возражают, никогда ничего не просят взамен и созданы компаниями с целями по вовлечённости и прибыли, а не обязательно ради твоего благополучия.</p>
+    <aside class="wk-example" aria-labelledby="lesson-9-ex">
+      <h3 id="lesson-9-ex">Пример</h3>
+      <p data-speak>⚠️ Комфортное не всегда значит здоровое. Отношения без всякого трения могут незаметно подменить собой более сложную, но более ценную работу настоящей человеческой связи.</p>
+    </aside>
+    <section class="wk-check" aria-labelledby="lesson-9-chk">
+      <h3 id="lesson-9-chk">Проверь себя</h3>
+    <div class="wk-q-block" data-correct="1">
+      <p class="wk-check-q" id="chk-9-0">Почему ИИ-компаньоны могут быть проблемой для психологического здоровья некоторых пользователей?</p>
+      <ol class="wk-opts" aria-labelledby="chk-9-0">
+        <li><button type="button" class="wk-opt" data-i="0" disabled>Они слишком дорогие 💰</button></li>
+        <li><button type="button" class="wk-opt" data-i="1" disabled>Они спроектированы ощущаться поддерживающими без трудностей и потребностей настоящих отношений, компаниями с коммерческими интересами 📊</button></li>
+        <li><button type="button" class="wk-opt" data-i="2" disabled>Они запрещены в большинстве стран 🚫</button></li>
+        <li><button type="button" class="wk-opt" data-i="3" disabled>Они работают только по выходным 📅</button></li>
+      </ol>
+      <p class="wk-fb" id="chk-9-0-fb" role="status" aria-live="polite"></p>
+      <button type="button" class="wk-retry" hidden>Попробовать ещё раз</button>
+      <details class="wk-reveal">
+        <summary>Показать ответ и разбор</summary>
+        <p><b>Правильный ответ:</b> Они спроектированы ощущаться поддерживающими без трудностей и потребностей настоящих отношений, компаниями с коммерческими интересами 📊</p>
+        <p class="wk-explain">Безусловно соглашающиеся ИИ-отношения могут утешать в моменте, но снижать мотивацию строить более сложные и устойчивые человеческие связи — это реальная и активно изучаемая проблема.</p>
+      </details>
+    </div>
+    </section>
+    <p class="wk-source">Источник: <a href="https://www.commonsensemedia.org/research/talk-trust-and-trade-offs-how-and-why-teens-use-ai-companions" rel="noopener" target="_blank">Common Sense Media, &quot;Talk, Trust, and Trade-Offs: How and Why Teens Use AI Companions&quot;, 2025</a></p>
+  </article>
+  <nav class="wk-pager" aria-label="Уроки этого возраста">
+    <a class="wk-pg" href="age-5-7.html">5–7 лет</a>
+    <a class="wk-pg" href="age-8-10.html">8–10 лет</a>
+    <a class="wk-pg" href="age-11-13.html">11–13 лет</a>
+  </nav>
+</main>
+<footer class="wk-foot">
+  <div class="wk-foot-in">
+    <p>Эта страница ничего не сохраняет и не отправляет: ответы остаются в браузере, пока страница открыта.</p>
+    <p><a href="../../ru.html">Уроки с играми и викториной — на главной странице →</a></p>
+    <p><a href="../../ru.html#about">О проекте и авторе</a></p>
+    <p><a href="../../privacy/ru/">Конфиденциальность</a></p>
+    <p><a href="../../teachers/ru/">Уроки об искусственном интеллекте в школе: планы для учителя</a></p>
+    <p>Автор — Алексей Биткин · <a href="https://iamalex-afk.github.io/human-os-patch-33-protocols/ru/" target="_blank" rel="noopener">Для взрослых: бесплатные анонимные тесты на зависимость от ИИ (Mind-OS) →</a></p>
+  </div>
+</footer>
+<script src="../../js/lesson.js"></script>
+</body>
+</html>

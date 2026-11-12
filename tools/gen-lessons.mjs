@@ -22,12 +22,13 @@ import { P as PRIVACY } from './privacy/texts.mjs';
 import { TT as TEACHERS } from './teachers/texts.mjs';
 import { T } from './entry-i18n.mjs';
 import { L } from './lesson-i18n.mjs';
+import { A } from './lesson-age-i18n.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://iamalex-afk.github.io/kids-ai-test/';
 // Date the lesson pages last changed in substance. Set by hand: a build must
 // not pretend that unchanged pages are new.
-export const LESSONS_LASTMOD = '2026-10-28';
+export const LESSONS_LASTMOD = '2026-11-12';   // lessons merged into one page per age
 export const AGES = [
   { key: 'tiny', slug: '5-7', range: '5-7' },
   { key: 'child', slug: '8-10', range: '8-10' },
@@ -38,6 +39,13 @@ const HTML_LANG = { pt: 'pt-BR' };
 const CSP = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none';";
 
 export const lessonFile = (slug, n) => `${slug}-${n}.html`;
+// Lesson id "<age-slug>-<n>" (e.g. "8-10-1") → its place on the age page: "age-8-10.html#lesson-1".
+// Every internal link uses this (Google: point internal links at the new URLs, not at redirects).
+export function lessonHref(id) {
+  const m = /^(5-7|8-10|11-13|14-plus)-(\d+)$/.exec(id);
+  if (!m) throw new Error(`lessonHref: bad lesson id ${id}`);
+  return `age-${m[1]}.html#lesson-${m[2]}`;
+}
 const url = (l, file = '') => `${SITE}lessons/${l}/${file}`;
 const fill = (s, v) => s.replace(/\{(\w+)\}/g, (_, k) => v[k]);
 
@@ -117,7 +125,7 @@ ${TEACHERS[l] ? `    <p><a href="../../teachers/${l}/">${esc(TEACHERS[l].hub.h1)
 
 function check(l, q, qi) {
   const t = L[l];
-  const id = `chk-${qi + 1}`;
+  const id = typeof qi === 'string' ? `chk-${qi}` : `chk-${qi + 1}`;   // age pages pass "<lesson>-<question>"
   const opts = q.options.map((o, i) => `        <li><button type="button" class="wk-opt" data-i="${i}" disabled>${esc(o)}</button></li>`).join('\n');
   return `    <div class="wk-q-block" data-correct="${q.correct}">
       <p class="wk-check-q" id="${id}">${esc(q.q)}</p>
@@ -183,6 +191,94 @@ ${x.miniTest.map((q, qi) => check(l, q, qi)).join('\n')}
 ${footer(l)}`;
 }
 
+// One page per age with every lesson of that age (owner decision 2026-11-12; Google: "substantial, complete" pages).
+export const ageFile = (slug) => `age-${slug}.html`;
+const endDot = (s) => (/[.!?…।]$/.test(s) ? s : s + '.');
+
+function agePage(l, ageIdx, lessons) {
+  const t = L[l], a = A[l], age = AGES[ageIdx], ageName = t.ages[ageIdx], file = ageFile(age.slug);
+  const h1 = fill(a.title, { age: ageName });
+  const title = fitTitle(`${h1} | Kids AI Test`, h1);
+  const desc = metaDesc(`${lessons.slice(0, 2).map((x) => endDot(x.title)).join(' ')} ${fill(a.tail, { n: lessons.length })}`, h1);
+  const home = `../../${pageOf(l)}`;
+  const ldItems = [[t.home, SITE + (l === 'en' ? '' : pageOf(l))], [t.all, url(l)], [ageName, url(l, file)]];
+  const ld = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: h1, description: desc, inLanguage: HTML_LANG[l] || l,
+    url: url(l, file), isAccessibleForFree: true, typicalAgeRange: age.range,
+    hasPart: lessons.map((x, i) => {
+      const o = { '@type': 'LearningResource', name: x.title, url: `${url(l, file)}#lesson-${i + 1}`, learningResourceType: 'lesson' };
+      if (x.sourceUrl) o.citation = { '@type': 'CreativeWork', name: x.source || x.sourceUrl, url: x.sourceUrl };
+      return o;
+    }) };
+  const toc = lessons.map((x, i) => `      <li><a href="#lesson-${i + 1}"><span class="wk-icon" aria-hidden="true">${esc(x.icon || '🤖')}</span> ${esc(x.title)}</a></li>`).join('\n');
+  const body = lessons.map((x, i) => {
+    const n = i + 1;
+    const src = x.sourceUrl
+      ? `<p class="wk-source">${esc(t.source)}: <a href="${esc(x.sourceUrl)}" rel="noopener" target="_blank">${esc(x.source || x.sourceUrl)}</a></p>`
+      : x.source ? `<p class="wk-source">${esc(t.source)}: ${esc(x.source)}</p>` : '';
+    return `  <article class="wk-card wk-voice-scope wk-age-lesson" id="lesson-${n}" aria-labelledby="lesson-${n}-h">
+    <p class="wk-meta"><span>${esc(fill(t.lessonOf, { n, m: lessons.length }))}</span></p>
+    <h2 class="wk-lesson-title" id="lesson-${n}-h" data-speak><span class="wk-icon" aria-hidden="true">${esc(x.icon || '🤖')}</span> ${esc(x.title)}</h2>
+    <div class="wk-voice" hidden>
+      <button type="button" class="wk-btn wk-listen">${esc(t.listen)}</button>
+      <button type="button" class="wk-btn wk-stop" disabled>${esc(t.stop)}</button>
+    </div>
+    <p class="wk-text" data-speak>${esc(x.text)}</p>
+${x.example ? `    <aside class="wk-example" aria-labelledby="lesson-${n}-ex">
+      <h3 id="lesson-${n}-ex">${esc(t.example)}</h3>
+      <p data-speak>${esc(x.example)}</p>
+    </aside>\n` : ''}${(x.miniTest || []).length ? `    <section class="wk-check" aria-labelledby="lesson-${n}-chk">
+      <h3 id="lesson-${n}-chk">${esc(t.check)}</h3>
+${x.miniTest.map((q, qi) => check(l, q, `${n}-${qi}`)).join('\n')}
+    </section>\n` : ''}    ${src}
+  </article>`;
+  }).join('\n');
+  const others = AGES.map((g, gi) => gi === ageIdx ? '' : `<a class="wk-pg" href="${ageFile(g.slug)}">${esc(t.ages[gi])}</a>`).filter(Boolean).join('\n    ');
+  return `${head(l, { title, desc, file })}
+${crumbsLd(ldItems)}
+  <script type="application/ld+json">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>
+</head>
+<body class="wk-home wk-page" data-age="${age.key}" data-right="${esc(t.right)}" data-wrong="${esc(t.wrong)}">
+${header(l, { home, langHref: (y) => `../${y}/${file}` })}
+<main id="main" class="wk-lesson wk-age-page">
+${crumbs(l, [[t.home, home], [t.all, './'], [ageName, file]], true)}
+  <h1 class="wk-cat-title">${esc(h1)}</h1>
+  <p class="wk-cat-lead">${esc(a.lead)}</p>
+${age.key === 'tiny' ? `  <p class="wk-tiny-note">${esc(t.tinyNote)}</p>\n` : ''}  <p class="wk-novoice" hidden>${esc(t.noVoice)}</p>
+  <nav class="wk-toc" aria-labelledby="toc-h">
+    <h2 id="toc-h">${esc(a.contents)}</h2>
+    <ol>
+${toc}
+    </ol>
+  </nav>
+${body}
+  <nav class="wk-pager" aria-label="${esc(t.pager)}">
+    ${others}
+  </nav>
+</main>
+${footer(l)}`;
+}
+
+// Old one-lesson address → instant meta refresh to its section on the age page (Google: instant meta refresh =
+// permanent redirect; keep for at least a year) + canonical to the age page. Not listed in the sitemap.
+function redirectPage(l, age, n, x) {
+  const target = `${ageFile(age.slug)}#lesson-${n}`;
+  return `<!DOCTYPE html>
+<html lang="${HTML_LANG[l] || l}" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="${CSP}">
+  <meta http-equiv="refresh" content="0; url=${target}">
+  <link rel="canonical" href="${url(l, ageFile(age.slug))}">
+  <title>${esc(x.title)} | Kids AI Test</title>
+</head>
+<body>
+  <p><a href="${target}">${esc(x.title)}</a></p>
+</body>
+</html>
+`;
+}
+export const REDIRECTS = new Set();
+
 function catalogPage(l, data) {
   const t = L[l];
   const home = `../../${pageOf(l)}`;
@@ -192,8 +288,9 @@ function catalogPage(l, data) {
     <h2 id="h-${age.slug}">${esc(t.ages[ai])}</h2>
     <p class="wk-cat-d">${esc(T[l].ages[ai])} · ${esc(fill(t.lessonsCount, { n: lessons.length }))}</p>
     <ol class="wk-cat-list">
-${lessons.map((x, i) => `      <li><a href="${lessonFile(age.slug, i + 1)}"><span class="wk-icon" aria-hidden="true">${esc(x.icon || '🤖')}</span> ${esc(x.title)}</a></li>`).join('\n')}
+${lessons.map((x, i) => `      <li><a href="${ageFile(age.slug)}#lesson-${i + 1}"><span class="wk-icon" aria-hidden="true">${esc(x.icon || '🤖')}</span> ${esc(x.title)}</a></li>`).join('\n')}
     </ol>
+    <p class="wk-cat-open"><a href="${ageFile(age.slug)}">${esc(A[l].open)} →</a></p>
   </section>`;
   }).join('\n');
   return `${head(l, { title: `${t.catTitle} | Kids AI Test`, desc: metaDesc(t.catDesc), file: '' })}
@@ -204,7 +301,7 @@ ${header(l, { home, langHref: (y) => `../${y}/` })}
 <main id="main" class="wk-lesson wk-catalog">
 ${crumbs(l, [[t.home, home], [t.all, './']], true)}
   <h1 class="wk-cat-title">${esc(t.catTitle)}</h1>
-  <p class="wk-cat-lead">${esc(t.catLead)}</p>
+  <p class="wk-cat-lead">${esc(A[l].catLead)}</p>
   <p class="wk-cat-play"><a href="${home}">${esc(t.play)}</a></p>
 ${sections}
 </main>
@@ -219,14 +316,19 @@ export function renderAll() {
     out.set(`lessons/${l}/index.html`, catalogPage(l, data));
     AGES.forEach((age, ai) => {
       const lessons = data.ages[age.key].lessons;
-      lessons.forEach((_, i) => out.set(`lessons/${l}/${lessonFile(age.slug, i + 1)}`, lessonPage(l, ai, lessons, i)));
+      out.set(`lessons/${l}/${ageFile(age.slug)}`, agePage(l, ai, lessons));
+      lessons.forEach((x, i) => {
+        const rel = `lessons/${l}/${lessonFile(age.slug, i + 1)}`;
+        REDIRECTS.add(rel);
+        out.set(rel, redirectPage(l, age, i + 1, x));
+      });
     });
   }
   return out;
 }
 
 export function sitemapBlock(files) {
-  const urls = [...files.keys()].map((f) => SITE + f.replace(/index\.html$/, ''));
+  const urls = [...files.keys()].filter((f) => !REDIRECTS.has(f)).map((f) => SITE + f.replace(/index\.html$/, ''));
   return urls.map((u) => `  <url>\n    <loc>${u}</loc>\n    <lastmod>${LESSONS_LASTMOD}</lastmod>\n  </url>`).join('\n');
 }
 

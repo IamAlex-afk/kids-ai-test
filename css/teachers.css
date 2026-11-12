@@ -16,3 +16,9 @@
   h2 { break-after: avoid; }
   li, p { break-inside: avoid; }
 }
+
+/* Teachers hub uses the shared hub layout (lesson.css .wk-catalog + .wk-cat-age): the article wrapper must not
+   break the grid. */
+.tc-hub { display: contents; }
+.wk-catalog .tc-made, .wk-catalog .tc-disclaimer, .wk-catalog .tc-hub > p { grid-column: 1 / -1; }
+.tc-hub > :not(.wk-cat-age) { grid-column: 1 / -1; }

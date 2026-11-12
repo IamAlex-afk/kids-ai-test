@@ -19,10 +19,11 @@ const pages = [
     .filter((l) => fs.statSync(path.join(ROOT, d, l)).isDirectory())
     .flatMap((l) => fs.readdirSync(path.join(ROOT, d, l)).filter((n) => n.endsWith('.html')).map((n) => `${d}/${l}/${n}`))),
 ];
+// Old one-lesson addresses are now instant meta-refresh redirects (not indexable pages) — checked in static.test.
 const meta = pages.map((f) => {
   const h = fs.readFileSync(path.join(ROOT, f), 'utf8');
   return { f, h, title: dec((h.match(/<title>([^<]*)<\/title>/) || [])[1] || ''), desc: dec((h.match(/<meta name="description" content="([^"]*)"/) || [])[1] || '') };
-});
+}).filter((p) => !/http-equiv="refresh"/.test(p.h));
 
 test('seo: title fits 60 characters, or is the bare topic when the topic is longer', () => {
   for (const { f, title } of meta) {

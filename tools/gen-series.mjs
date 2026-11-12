@@ -174,9 +174,14 @@ ${s.scripts.map((f) => `<script src="../../js/${f}"></script>`).join('\n')}
 
 function catalogPage(l) {
   const u = UI[l], home = `../../${pageOf(l)}`;
-  const items = SERIES.filter((s) => s.langs.includes(l)).map((s) => {
+  // Hub card = the age card of the lessons catalog (same component on every hub page).
+  const TONES = ['child', 'teen', 'adult', 'tiny'];
+  const items = SERIES.filter((s) => s.langs.includes(l)).map((s, i) => {
     const t = s.text[l].common;
-    return `      <li class="wk-cat-item"><a href="${s.file}"><b>${esc(t.title)}</b></a><span class="wk-cat-d">${esc(s.text[l].child.goal || t.goal)}</span></li>`;
+    return `  <section class="wk-cat-age" data-age="${TONES[i % 4]}">
+    <h2><a href="${s.file}">${esc(t.title)} →</a></h2>
+    <p class="wk-cat-d">${esc(s.text[l].child.goal || t.goal)}</p>
+  </section>`;
   }).join('\n');
   const ld = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: u.series, description: u.seriesLead,
     inLanguage: l, url: url(l),
@@ -190,13 +195,16 @@ ${header(l, { home, langHref: langHref('') })}
 ${crumbs(l, [[u.home, home], [u.catalog, './']])}
   <h1 class="wk-cat-title">${esc(u.series)}</h1>
   <p class="wk-cat-lead">${esc(u.seriesLead)}</p>
-  <ol class="wk-cat-list">
 ${items}
-  </ol>
-  <p class="wk-cat-play"><a href="../../lessons/${l}/">${esc(u.lessons)}</a></p>
+  <p class="wk-cat-play"><a href="../../lessons/${l}/">${esc(u.lessons)} →</a></p>
 </main>
 <footer class="wk-foot">
-  <div class="wk-foot-in"><p>${esc(u.privacy)}</p></div>
+  <div class="wk-foot-in">
+    <p>${esc(u.privacy)}</p>
+    <p><a href="../../${pageOf(l)}#about">${esc(T[l].about)}</a></p>
+    <p><a href="../../privacy/${l}/">${esc(PRIVACY[l].h1)}</a></p>
+    ${authorLine(T[l], l)}
+  </div>
 </footer>
 <script src="../../js/lesson.js"></script>
 </body>

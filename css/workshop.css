@@ -27,9 +27,11 @@
 }
 @media (max-width: 640px) { :root { --wk-gutter: 16px; } }
 
-/* Light theme: the shared tokens of main.css, re-pointed to the palette */
-body.wk-home {
+/* Light theme: the shared tokens of main.css, re-pointed to the palette. wk-light stays on while
+   lessons/quiz/games are open (one design for the whole site); status colours darkened for contrast on white. */
+body.wk-home, body.wk-light {
   color-scheme: light;
+  --green: #047857; --red: #b91c1c; --yellow: #b45309; --orange: #c2410c;
   --bg: var(--paper);  --bg2: #fff;
   --card: #fff;        --card2: #fff;
   --border: var(--line); --border2: #cfd3e3;
@@ -39,9 +41,9 @@ body.wk-home {
   font-size: 16px;
   line-height: 1.55;
 }
-body.wk-home .stars { display: none; }
+body.wk-home .stars, body.wk-light .stars { display: none; }
 body.wk-home .page { max-width: var(--wk-max); padding: 0 var(--wk-gutter) 64px; }
-body.wk-home :focus-visible { outline: 3px solid #4b43b0; outline-offset: 4px; }
+body.wk-home :focus-visible, body.wk-light :focus-visible { outline: 3px solid #4b43b0; outline-offset: 4px; }
 /* Home: the interactive sections open only after a choice. Static material
    (answers to children's questions, the parents' corner) stays visible below
    the entry screens, so a visitor from search sees it without choosing. */

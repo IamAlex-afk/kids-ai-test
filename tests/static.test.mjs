@@ -175,9 +175,9 @@ test('entry screens: styles and entry.js are wired, no boot overlay', () => {
 });
 
 test('sitemap: only canonical, indexable published pages; honest lastmod', async () => {
-  const { renderAll } = await import(new URL('tools/gen-lessons.mjs', root));
+  const { renderAll, REDIRECTS } = await import(new URL('tools/gen-lessons.mjs', root));
   const { renderAll: renderSeries } = await import(new URL('tools/gen-series.mjs', root));
-  const lessonFiles = [...renderAll().keys()];
+  const lessonFiles = [...renderAll().keys()].filter((f) => !REDIRECTS.has(f)); // redirects are not listed
   const seriesFiles = [...renderSeries().keys()];
   const { renderAll: renderArticles } = await import(new URL('tools/gen-articles.mjs', root));
   const articleFiles = [...(await renderArticles()).keys()];
@@ -213,7 +213,32 @@ test('sitemap: only canonical, indexable published pages; honest lastmod', async
   assert.match(read('404.html'), /Content-Security-Policy" content="default-src 'none';/);
 });
 
-test('lesson pages: match tools/gen-lessons.mjs, one page per lesson in every language', async () => {
+test('lesson pages: old one-lesson URLs redirect instantly to their own lesson on the age page', async () => {
+  const { renderAll, REDIRECTS, loadData, AGES, lessonFile, ageFile } = await import(new URL('tools/gen-lessons.mjs', root));
+  const files = renderAll();
+  const SITE = 'https://iamalex-afk.github.io/kids-ai-test/';
+  let n = 0;
+  for (const l of LANGS) {
+    const data = loadData(l);
+    for (const { key, slug } of AGES) {
+      const agePage = files.get(`lessons/${l}/${ageFile(slug)}`);
+      assert.ok(agePage, `${l} ${slug}: age page`);
+      data.ages[key].lessons.forEach((x, i) => {
+        const rel = `lessons/${l}/${lessonFile(slug, i + 1)}`;
+        const h = files.get(rel);
+        assert.ok(REDIRECTS.has(rel) && h, `${rel}: redirect kept (Google: keep redirects ≥ 1 year)`);
+        assert.match(h, new RegExp(`<meta http-equiv="refresh" content="0; url=${ageFile(slug)}#lesson-${i + 1}">`), `${rel}: instant refresh to its own lesson`);
+        assert.ok(h.includes(`<link rel="canonical" href="${SITE}lessons/${l}/${ageFile(slug)}">`), `${rel}: canonical to the age page`);
+        assert.ok(agePage.includes(`id="lesson-${i + 1}"`), `${rel}: target #lesson-${i + 1} exists`);
+        assert.ok(agePage.includes(x.title.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')), `${rel}: lesson text on the age page`);
+        n++;
+      });
+    }
+  }
+  assert.ok(n >= 290, `checked ${n} redirects`);
+});
+
+test('lesson pages: match tools/gen-lessons.mjs, every lesson reachable in every language', async () => {
   const { renderAll, loadData, AGES, lessonFile } = await import(new URL('tools/gen-lessons.mjs', root));
   const { L } = await import(new URL('tools/lesson-i18n.mjs', root));
   const files = renderAll();
@@ -235,9 +260,10 @@ test('lesson pages: match tools/gen-lessons.mjs, one page per lesson in every la
 });
 
 test('lesson pages: CSP, language, canonical/hreflang, one h1, no stored or sent answers', async () => {
-  const { renderAll } = await import(new URL('tools/gen-lessons.mjs', root));
+  const { renderAll, REDIRECTS } = await import(new URL('tools/gen-lessons.mjs', root));
   const SITE = 'https://iamalex-afk.github.io/kids-ai-test/';
   for (const [rel, html] of renderAll()) {
+    if (REDIRECTS.has(rel)) continue; // redirect stubs: checked above
     const l = rel.split('/')[1];
     const csp = html.match(/http-equiv="Content-Security-Policy" content="([^"]+)"/)[1];
     assert.match(csp, /connect-src 'self';/, rel);

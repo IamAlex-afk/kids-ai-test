@@ -1286,29 +1286,16 @@ function renderParentFaq(ageKey = S.age) {
   const d = (window.PARENTS_FAQ || {})[S.lang] || (window.PARENTS_FAQ || {}).en;
   const existing = body.querySelector('.pf-sourced-faq');
   if (existing) existing.remove();
-  if (d && Array.isArray(d.faq) && d.faq.length) {
+  // The same questions are already on the page in the #faq section (static, indexable). Showing them a second
+  // time here duplicated content (audit 2026-11-12) — link to that section instead.
+  if (d && Array.isArray(d.faq) && d.faq.length && document.getElementById('faq')) {
     const wrapEl = document.createElement('div');
     wrapEl.className = 'pf-sourced-faq';
-    wrapEl.innerHTML = `
-      <h3>${d.faq_h || 'Frequently Asked Questions'}</h3>
-      <div class="faq-section" style="margin-bottom:16px">
-        ${d.faq.map(item => `
-          <details class="faq-item">
-            <summary><h4>${item.q}</h4></summary>
-            <p class="faq-answer">${item.a}</p>
-          </details>`).join('')}
-      </div>
-      ${[ageKey].filter(k => Array.isArray(d['faq_'+k]) && d['faq_'+k].length).map(k => `
-        <h3>${d['faq_'+k+'_h'] || ''}</h3>
-        <div class="faq-section" style="margin-bottom:16px">
-          ${d['faq_'+k].map(item => `
-            <details class="faq-item">
-              <summary><h4>${item.q}</h4></summary>
-              <p class="faq-answer">${item.a}</p>
-            </details>`).join('')}
-        </div>`).join('')}
-      ${d.proto_desc ? `<p style="font-size:0.82rem;color:var(--muted2);">${d.proto_by || ''} <em>${d.proto_desc}</em></p>` : ''}
-    `;
+    const heading = document.getElementById('faq-heading');
+    const p = document.createElement('p'), a = document.createElement('a');
+    a.href = '#faq';
+    a.textContent = `${(heading && heading.textContent.trim()) || d.faq_h || 'FAQ'} →`;   // text, never HTML
+    p.appendChild(a); wrapEl.appendChild(p);
     body.appendChild(wrapEl);
   }
 }
