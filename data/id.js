@@ -140,7 +140,7 @@ window.LANG_DATA = {
         { unit:'letter', targets:['B','E','N','A','R'], decoys:['Z','X'], icon:'🔍',
           fact:'AI terkadang bisa mengatakan hal yang tidak benar. Selalu periksa dengan orang dewasa!' },
         { unit:'letter', targets:['K','O','D','E'], decoys:['X','Q'], icon:'💻',
-          fact:'Kode adalah bahasa komputer. AI mengerti kode tapi tidak mengerti perasaan!' },
+          fact:'Kode adalah bahasa komputer. Manusia menulis kode untuk membuat AI — lalu AI belajar dari contoh!' },
         { unit:'letter', targets:['C','E','P','A','T'], decoys:['X','Z'], icon:'⚡',
           fact:'AI sangat cepat — tapi cepat tidak selalu berarti benar. Selalu periksa!' },
         { unit:'letter', targets:['F','O','T','O'], decoys:['X','Q'], icon:'📸',

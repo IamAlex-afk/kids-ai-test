@@ -139,7 +139,7 @@ window.LANG_DATA = {
         { unit:'letter', targets:['W','A','H','R'], decoys:['Z','X'], icon:'🔍',
           fact:'KI kann manchmal Dinge sagen, die nicht wahr sind. Prüfe immer mit einem Erwachsenen!' },
         { unit:'letter', targets:['C','O','D','E'], decoys:['X','Q'], icon:'💻',
-          fact:'Code ist die Sprache der Computer. KI versteht Code, aber keine echten Gefühle!' },
+          fact:'Code ist die Sprache der Computer. Menschen schreiben Code, um KI zu bauen – dann lernt sie aus Beispielen!' },
         { unit:'letter', targets:['F','R','E','I'], decoys:['X','Z'], icon:'🕊️',
           fact:'Du kannst jederzeit aufhören, mit KI zu reden — du bist immer frei zu entscheiden!' },
         { unit:'letter', targets:['T','O','N'], decoys:['X','Q'], icon:'🔊',

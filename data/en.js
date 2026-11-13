@@ -663,7 +663,7 @@ window.LANG_DATA = {
           targets: ['C', 'O', 'D', 'E'],
           decoys:  ['X', 'Z'],
           icon:    '💻',
-          fact:    'CODE is the language of computers. Humans write code to tell AI exactly what to do.',
+          fact:    'CODE is the language of computers. People write code to build AI — and then AI learns from examples.',
         },
       ],
 

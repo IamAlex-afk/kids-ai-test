@@ -140,7 +140,7 @@ window.LANG_DATA = {
         { unit:'letter', targets:['D','O','G','R','U'], decoys:['Z','X'], icon:'🔍',
           fact:"YZ bazen doğru olmayan şeyler söyleyebilir. Her zaman bir yetişkinle kontrol et!" },
         { unit:'letter', targets:['K','O','D'], decoys:['X','Q'], icon:'💻',
-          fact:"Kod bilgisayarların dilidir. YZ kodu anlar ama duyguları anlamaz!" },
+          fact:"Kod bilgisayarların dilidir. İnsanlar YZ yapmak için kod yazar — sonra YZ örneklerden öğrenir!" },
         { unit:'letter', targets:['H','I','Z','L','I'], decoys:['X','Z'], icon:'⚡',
           fact:"YZ çok hızlıdır — ama hızlı her zaman doğru anlamına gelmez. Her zaman kontrol et!" },
         { unit:'letter', targets:['F','O','T','O'], decoys:['X','Q'], icon:'📸',
