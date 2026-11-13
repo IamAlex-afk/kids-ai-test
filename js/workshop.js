@@ -74,7 +74,8 @@
     // Rendered once per visit of a step: going Back and forth keeps answers.
     const bodies = steps.map(() => null);
 
-    function go(n) {
+    // focus the step title only when the user navigates, not on page load
+    function go(n, focus = true) {
       if (n < 0 || n >= steps.length) return;
       i = n;
       counter.textContent = fill(U.stepOf, { n: i + 1, m: steps.length });
@@ -85,14 +86,14 @@
       }
       body.replaceChildren(bodies[i]);
       sync();
-      h.focus({ preventScroll: false });
+      if (focus) h.focus({ preventScroll: false });
     }
     function sync() {
       back.disabled = i === 0;
       next.hidden = i === steps.length - 1;
       next.disabled = !doneSet.has(i);
     }
-    go(0);
+    go(0, false);
   }
 
   // Order of options on screen: two stay as written (yes/no, a pair of

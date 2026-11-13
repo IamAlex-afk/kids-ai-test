@@ -845,7 +845,7 @@ window.LANG_DATA = {
         { unit: 'word', targets: ['DẤU', 'CHÂN', 'SỐ', 'CỦA', 'BẠN', 'HUẤN', 'LUYỆN', 'AI', 'TƯƠNG', 'LAI'], decoys: ['BIẾN MẤT', 'VẪN RIÊNG TƯ'], icon: '👣',
           fact: 'Mọi thứ bạn đăng, tìm kiếm hoặc nhấp vào trên mạng đều có thể trở thành dữ liệu huấn luyện cho các hệ thống AI tương lai.' },
         { unit: 'word', targets: ['SỰ', 'ĐỒNG', 'Ý', 'QUAN', 'TRỌNG', 'VỚI', 'CẢ', 'HỆ', 'THỐNG', 'AI'], decoys: ['TÙY CHỌN', 'TỰ ĐỘNG'], icon: '📋',
-          fact: 'Đạo luật AI của EU và GDPR yêu cầu sự đồng ý có hiểu biết đối với các hệ thống AI thu thập, xử lý hoặc lập hồ sơ dữ liệu cá nhân.', source: 'Đạo luật AI của EU 2024', sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj' },
+          fact: 'Ở EU, GDPR chỉ cho phép xử lý dữ liệu cá nhân khi có cơ sở pháp lý — sự đồng ý là một trong số đó. Hãy hỏi ứng dụng làm gì với dữ liệu của em.', source: 'GDPR, Điều 6', sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2016/679/oj' },
       ],
 
       quiz: [
@@ -1022,9 +1022,9 @@ window.LANG_DATA = {
         {
           icon:  '⚗️',
           title: '"Suy luận" và "hiểu biết" nghĩa là gì (và không là gì) ở AI',
-          text:       "Theo báo cáo của OpenAI (2023), GPT-4 đã vượt qua một bài thi luật sư mô phỏng. Điều này có nghĩa nó biết suy luận không? Bài kiểm tra ARC của François Chollet (2019) được thiết kế riêng cho các nhiệm vụ mà AI không thể giải chỉ bằng cách ghép khuôn mẫu — nhiều năm liền các mô hình ngôn ngữ làm rất kém; các mô hình mới đã tiến bộ, nhưng phải tốn lượng tính toán khổng lồ, và phiên bản khó hơn của bài kiểm tra vẫn làm khó chúng. Prompt \"chuỗi suy nghĩ\" (chain-of-thought) tạo ra hiệu suất tốt hơn nhưng cơ chế vẫn còn tranh cãi: suy luận thật hay chỉ là khuôn mẫu văn bản giống-suy-luận đã học được? Một vấn đề riêng là khả năng diễn giải (interpretability): ngay cả khi mô hình trả lời đúng, chúng ta thường không thể giải thích được nó đã đi đến câu trả lời đó như thế nào ở bên trong.",
+          text:       "Theo báo cáo của OpenAI (2023), GPT-4 đã vượt qua một bài thi luật sư mô phỏng. Điều này có nghĩa nó biết suy luận không? Bài kiểm tra ARC của François Chollet (2019) được thiết kế riêng cho các nhiệm vụ mà AI không thể giải chỉ bằng cách ghép khuôn mẫu — nhiều năm liền các mô hình ngôn ngữ làm rất kém; năm 2024, một mô hình mới đạt hơn 75% nhưng phải tốn lượng tính toán khổng lồ, và từ đó các tác giả liên tục ra những phiên bản khó hơn của bài kiểm tra. Prompt \"chuỗi suy nghĩ\" (chain-of-thought) tạo ra hiệu suất tốt hơn nhưng cơ chế vẫn còn tranh cãi: suy luận thật hay chỉ là khuôn mẫu văn bản giống-suy-luận đã học được? Một vấn đề riêng là khả năng diễn giải (interpretability): ngay cả khi mô hình trả lời đúng, chúng ta thường không thể giải thích được nó đã đi đến câu trả lời đó như thế nào ở bên trong.",
           example: '♟️ Deep Blue đánh bại Kasparov trong cờ vua mà không "hiểu" cờ vua. Stockfish chơi giỏi hơn bất kỳ con người nào nhưng không có khái niệm về quân vua. Hiệu suất và sự hiểu biết là hai thứ tách biệt.',
-          source:    'Chollet, "On the Measure of Intelligence", 2019 + Mitchell, "AI: A Guide for Thinking Humans", 2021',
+          source:    'Chollet, "On the Measure of Intelligence", 2019 + Mitchell, "AI: A Guide for Thinking Humans", 2021 + ARC Prize, 2024',
           sourceUrl: 'https://arxiv.org/abs/1911.01547',
           miniTest: [
             {
@@ -1065,7 +1065,7 @@ window.LANG_DATA = {
           icon:  '🔭',
           title: 'Điều gì tiếp theo — và điều gì bạn thực sự có thể biết',
           text:  'Các định luật mở rộng quy mô (Kaplan et al., 2020) cho thấy năng lực mô hình mở rộng có thể dự đoán được theo compute, dữ liệu, và tham số — dẫn đến cuộc đua mở rộng quy mô. Nhưng việc mở rộng quy mô có thể đang chạm đến lợi ích giảm dần. Các mô hình cạnh tranh: AI neurosymbolic (kết hợp mạng nơ-ron với logic), mô hình thế giới (tầm nhìn của LeCun), gắn kết đa phương thức, và hệ thống agent. Câu trả lời trung thực: không ai biết điều gì sẽ đến tiếp theo. Bất kỳ ai tuyên bố chắc chắn đều đang bán một thứ gì đó.',
-          example: '🗓️ Năm 2021, GPT-3 được coi là đột phá. Năm 2022, DALL-E khiến mọi người sốc. Năm 2023, GPT-4 vượt qua kỳ thi luật sư. Năm 2024, các mô hình chạy cục bộ trên điện thoại. Các dự đoán về AI có thành tích kém — kể cả từ các chuyên gia.',
+          example: '🗓️ Năm 2021, GPT-3 được coi là đột phá. Năm 2022, DALL-E khiến mọi người sốc. Năm 2023, GPT-4 vượt qua một bài thi luật sư Mỹ mô phỏng. Năm 2024, các mô hình chạy cục bộ trên điện thoại. Các dự đoán về AI có thành tích kém — kể cả từ các chuyên gia.',
           source:    'Kaplan et al., "Scaling Laws for Neural Language Models", 2020',
           sourceUrl: 'https://arxiv.org/abs/2001.08361',
           miniTest: [
@@ -1271,7 +1271,7 @@ window.LANG_DATA = {
             'Độ chính xác khi tạo mã 💻',
           ],
           correct: 1,
-          explanation: 'Các nhiệm vụ ARC yêu cầu suy luận mới lạ thật sự — con người giải chúng dễ dàng; các mô hình ngôn ngữ đã gặp rất nhiều khó khăn trong nhiều năm, và các mô hình mới chỉ tiến bộ nhờ lượng tính toán khổng lồ. Đây là lý do Chollet cho rằng AI hiện tại về cơ bản khác với trí thông minh con người.',
+          explanation: 'Các nhiệm vụ ARC yêu cầu suy luận mới lạ thật sự — con người giải chúng dễ dàng; các mô hình ngôn ngữ đã gặp rất nhiều khó khăn trong nhiều năm, và các mô hình mới đã bắt kịp, lúc đầu chỉ nhờ lượng tính toán khổng lồ. Đây là lý do Chollet cho rằng AI hiện tại về cơ bản khác với trí thông minh con người.',
           source:    'Chollet, "On the Measure of Intelligence", 2019',
           sourceUrl: 'https://arxiv.org/abs/1911.01547',
         },
@@ -1431,7 +1431,7 @@ window.LANG_DATA = {
         { num: 4,  icon: '📚', title: 'Theo dõi ArXiv cs.AI và cs.CL', text: 'Bản thảo trước bình duyệt. Đọc phần tóm tắt. Theo dõi những gì lĩnh vực này thực sự đang tranh luận, khác với những gì báo chí đưa tin.' },
         { num: 5,  icon: '🏛️', title: 'Tham gia vào quản trị AI', text: 'Quy định diễn ra trong các đợt tham vấn công khai, bầu cử, và quyết định mua sắm. Sự tham gia có hiểu biết rất quan trọng.' },
         { num: 6,  icon: '🎯', title: 'Hiệu chỉnh đánh giá rủi ro của bạn', text: 'Tác hại cụ thể gần hạn so với rủi ro dài hạn mang tính suy đoán. Cả hai đều quan trọng nhưng cần cách ứng phó khác nhau.' },
-        { num: 7,  icon: '💼', title: 'Kiểm toán AI tại nơi làm việc của bạn', text: 'Hỏi xem những công cụ AI nào được dùng cho nhân sự, đánh giá hiệu suất, quyền truy cập. Bạn có quyền được biết ở hầu hết các khu vực pháp lý.' },
+        { num: 7,  icon: '💼', title: 'Kiểm toán AI tại nơi làm việc của bạn', text: 'Hỏi xem những công cụ AI nào được dùng cho nhân sự, đánh giá hiệu suất, quyền truy cập. Theo Đạo luật AI của EU (Điều 26), từ tháng 12/2027 người sử dụng lao động phải báo trước cho người lao động về các hệ thống rủi ro cao như vậy; các nước khác có quy định riêng.' },
         { num: 8,  icon: '🌍', title: 'Nghĩ về sự phân bổ tác hại', text: 'Rủi ro AI không đồng đều. Hãy hỏi: cộng đồng nào gánh chịu chi phí của việc triển khai này? Ai nhận được lợi ích?' },
         { num: 9,  icon: '🔬', title: 'Đầu tư vào kỹ năng con người mà AI không thể sao chép', text: 'Tổng hợp mới, phán đoán đạo đức, mối quan hệ chân thật, chuyên môn thực tế, và sự sáng tạo nguyên bản vẫn thuộc về con người.' },
         { num: 10, icon: '📡', title: 'Ủng hộ nghiên cứu mở và các mô hình mở', text: 'Tính minh bạch của AI phần nào phụ thuộc vào phát triển mã nguồn mở. Ủng hộ nghiên cứu mô hình mở cũng là một lựa chọn về quản trị.' },

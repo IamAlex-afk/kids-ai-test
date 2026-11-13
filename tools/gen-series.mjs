@@ -68,7 +68,7 @@ const langHref = (file) => (x) => (SERIES_LANGS.includes(x) ? `../${x}/${file}` 
 function crumbs(l, items) {
   return `    <nav class="wk-crumbs" aria-label="${esc(UI[l].crumbs)}">
       <ol>
-${items.map(([name, href], i) => `        <li><a href="${href}"${i === items.length - 1 && href === './' ? ' aria-current="page"' : ''}>${esc(name)}</a></li>`).join('\n')}
+${items.map(([name, href], i) => `        <li><a href="${href}"${i === items.length - 1 ? ' aria-current="page"' : ''}>${esc(name)}</a></li>`).join('\n')}
       </ol>
     </nav>`;
 }

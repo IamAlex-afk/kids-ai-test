@@ -258,7 +258,7 @@ window.LANG_DATA = {
           targets: ['A', 'I'],
           decoys:  ['X', 'Z'],
           icon:    '🤖',
-          fact:    'AI is short for Artificial Intelligence — a very smart computer program that learns from examples!',
+          fact:    'AI is short for Artificial Intelligence — a computer program that learns from examples!',
         },
         {
           unit:    'letter',
@@ -1064,9 +1064,9 @@ window.LANG_DATA = {
           targets: ['CONSENT', 'MATTERS', 'EVEN WITH', 'AI SYSTEMS'],
           decoys:  ['OPTIONAL', 'AUTOMATIC'],
           icon:    '📋',
-          fact:    'The EU AI Act and GDPR require informed consent for AI systems that collect, process, or profile personal data.',
-          source:    'EU AI Act 2024',
-          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
+          fact:    'In the EU, the GDPR allows personal data to be processed only on a lawful basis — consent is one of them. Ask what an app does with your data.',
+          source:    'GDPR, Article 6',
+          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2016/679/oj',
         },
       ],
 
@@ -1246,9 +1246,9 @@ window.LANG_DATA = {
         {
           icon:  '⚗️',
           title: 'What "reasoning" and "understanding" mean (and don\'t) in AI',
-          text:       "According to OpenAI's 2023 report, GPT-4 passed a simulated bar exam. Does this mean it reasons? François Chollet's ARC benchmark (2019) was designed for tasks that can't be solved by pattern matching alone — language models did very badly on it for years; newer models have made progress, but at huge computing cost, and the harder version of the test is still difficult for them. Chain-of-thought prompting elicits better performance but the mechanism is debated: genuine reasoning or learned patterns of reasoning-like text? A separate problem is interpretability: even when a model answers correctly, we often can't explain how it arrived at that answer internally.",
+          text:       "According to OpenAI's 2023 report, GPT-4 passed a simulated bar exam. Does this mean it reasons? François Chollet's ARC benchmark (2019) was designed for tasks that can't be solved by pattern matching alone — language models did very badly on it for years; in 2024 a new model scored over 75%, at huge computing cost, and since then the authors have been releasing harder versions of the test. Chain-of-thought prompting elicits better performance but the mechanism is debated: genuine reasoning or learned patterns of reasoning-like text? A separate problem is interpretability: even when a model answers correctly, we often can't explain how it arrived at that answer internally.",
           example: '♟️ Deep Blue beat Kasparov at chess without "understanding" chess. Stockfish plays better than any human but has no concept of a king. Performance and understanding are separable.',
-          source:    'Chollet, "On the Measure of Intelligence", 2019 + Mitchell, "AI: A Guide for Thinking Humans", 2021',
+          source:    'Chollet, "On the Measure of Intelligence", 2019 + Mitchell, "AI: A Guide for Thinking Humans", 2021 + ARC Prize, 2024',
           sourceUrl: 'https://arxiv.org/abs/1911.01547',
           miniTest: [
             {
@@ -1289,7 +1289,7 @@ window.LANG_DATA = {
           icon:  '🔭',
           title: 'What comes next — and what you can actually know',
           text:  'Scaling laws (Kaplan et al., 2020) showed that model capability scales predictably with compute, data, and parameters — leading to the race for scale. But scaling may be hitting diminishing returns. Competing paradigms: neurosymbolic AI (combining neural nets with logic), world models (LeCun\'s vision), multimodal grounding, and agent systems. The honest answer: nobody knows what comes next. Anyone claiming certainty is selling something.',
-          example: '🗓️ In 2021, GPT-3 was considered a breakthrough. In 2022, DALL-E shocked everyone. In 2023, GPT-4 passed the bar exam. In 2024, models ran locally on phones. Predictions in AI have a poor track record — including from experts.',
+          example: '🗓️ In 2021, GPT-3 was considered a breakthrough. In 2022, DALL-E shocked everyone. In 2023, GPT-4 passed a simulated US bar exam. In 2024, models ran locally on phones. Predictions in AI have a poor track record — including from experts.',
           source:    'Kaplan et al., "Scaling Laws for Neural Language Models", 2020',
           sourceUrl: 'https://arxiv.org/abs/2001.08361',
           miniTest: [
@@ -1551,7 +1551,7 @@ window.LANG_DATA = {
             'Code generation accuracy 💻',
           ],
           correct: 1,
-          explanation: 'ARC tasks require genuine novel reasoning — humans solve them easily; language models struggled badly for years, and newer ones are catching up only at huge computing cost. This is why Chollet argues current AI is fundamentally different from human intelligence.',
+          explanation: 'ARC tasks require genuine novel reasoning — humans solve them easily; language models struggled badly for years, and newer ones caught up, at first only at huge computing cost. This is why Chollet argues current AI is fundamentally different from human intelligence.',
           source:    'Chollet, "On the Measure of Intelligence", 2019',
           sourceUrl: 'https://arxiv.org/abs/1911.01547',
         },
@@ -1728,7 +1728,7 @@ window.LANG_DATA = {
         { num: 4,  icon: '📚', title: 'Follow ArXiv cs.AI and cs.CL', text: 'Preprints before peer review. Read abstracts. Track what the field is actually debating vs. what press covers.' },
         { num: 5,  icon: '🏛️', title: 'Participate in AI governance', text: 'Regulation happens in consultation periods, elections, and procurement decisions. Informed participation matters.' },
         { num: 6,  icon: '🎯', title: 'Calibrate your risk assessment', text: 'Near-term concrete harms vs. speculative long-term risks. Both matter but require different responses.' },
-        { num: 7,  icon: '💼', title: 'Audit AI in your workplace', text: 'Ask what AI tools are used for HR, performance, access. You have a right to know in most jurisdictions.' },
+        { num: 7,  icon: '💼', title: 'Audit AI in your workplace', text: 'Ask what AI tools are used for HR, performance, access. Under the EU AI Act (Art. 26), employers must tell workers in advance about such high-risk systems — from December 2027; other countries have their own rules.' },
         { num: 8,  icon: '🌍', title: 'Think about distribution of harm', text: 'AI risks are not equal. Ask: which communities bear the costs of this deployment? Who gets the benefits?' },
         { num: 9,  icon: '🔬', title: 'Invest in human skills AI cannot replicate', text: 'Novel synthesis, ethical judgment, genuine relationship, physical-world expertise, and original creativity remain deeply human.' },
         { num: 10, icon: '📡', title: 'Support open research and open models', text: 'Transparency in AI depends partly on open-source development. Supporting open model research is a governance choice.' },
