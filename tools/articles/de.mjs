@@ -24,6 +24,7 @@ export default {
     honesty: 'Die Fakten stammen aus den unten verlinkten Primärquellen. „Unsere Schlussfolgerung“ ist die Sicht der Seite auf Grundlage dieser Fakten, kein Zitat.',
     all: 'Alle Artikel',
     tinyNote: 'Für 5–7 Jahre: Ein Erwachsener liest gemeinsam mit dem Kind.',
+    basics: "Wie KI lernt und warum sie Fehler macht – einfach erklärt",
     adult: 'Für Erwachsene', adultGoal: 'Ziel', adultAsk: 'Fragen für das Gespräch', adultSigns: 'Zeichen von Verständnis',
   },
   'what-is-ai': {
@@ -52,11 +53,8 @@ export default {
     desc: 'Wie man einem Kind künstliche Intelligenz erklärt: fertige Sätze für 5–7, 8–10, 11–13 und ab 14 Jahren, Aktivitäten für 10 Minuten, häufige Irrtümer. Nach Empfehlungen von UNICEF und UNESCO.',
     lead: 'Ihr Kind begegnet KI schon: Sprachassistent, Vorschläge auf dem Handy, Video-Feed. Man kann sie mit einfachen Worten erklären – und ein kleiner gemeinsamer Versuch wirkt besser als ein Vortrag.',
     facts: [
-      'Kinder von 3 bis 10 Jahren sprachen, nachdem sie mit Sprachassistenten gespielt hatten, darüber, wie klug diese sind und „wer“ sie sind (Studie des MIT).',
       'In ihren Empfehlungen von 2025 verlangt UNICEF von KI für Kinder: Sicherheit, Schutz der Daten und der Privatsphäre von Kindern, Transparenz und die Vorbereitung von Kindern auf ein Leben mit KI.',
       'Der KI-Kompetenzrahmen der UNESCO für Lernende (2024) stellt eine „menschenzentrierte Haltung“ an den Anfang: die eigene Rolle gegenüber KI verstehen und behaupten.',
-      'Text von einer KI kann falsch sein, auch wenn er sicher klingt – Forschende nennen das Halluzination.',
-      'In der EU muss ein Chatbot mitteilen, dass Sie mit einer KI sprechen, und Deepfakes müssen gekennzeichnet sein.',
     ],
     ages: [
       { say: ['„Das ist ein Programm. Es hat viele Beispiele gelernt und rät.“', '„Es lebt nicht und ist kein Freund, auch wenn es freundlich spricht.“', '„Unseren Namen, unsere Adresse und Fotos sagen wir ihm nicht.“'] },

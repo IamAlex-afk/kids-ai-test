@@ -28,7 +28,7 @@ body.wk-page[data-age="adult"] { --age-ink: #185d50; --age-soft: #e2f3eb; --age-
 
 /* ── Breadcrumbs ── */
 .wk-crumbs ol { list-style: none; margin: 0 0 16px; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 0; font-size: .9375rem; }
-.wk-crumbs li { display: flex; align-items: center; }
+.wk-crumbs li { display: flex; align-items: baseline; }
 .wk-crumbs li + li::before { content: '›'; margin: 0 8px; color: var(--quiet); }
 .wk-crumbs a { display: inline-flex; align-items: center; min-height: 44px; color: var(--quiet); }
 .wk-crumbs a[aria-current] { color: var(--ink); font-weight: 600; text-decoration: none; }
