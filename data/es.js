@@ -333,7 +333,7 @@ window.LANG_DATA = {
         { title:'IA Experto 🏆', description:'Lo entiendes de verdad: la IA es una herramienta de reconocimiento de patrones, no un ser pensante. Sabes verificar, cuestionar y mantener el control. ¡Compártelo!' },
       ],
       protocols: [
-        { num:1, icon:'🔍', title:'Verifica siempre los hechos', text:'Si la IA dice algo importante — verifica en un sitio de confianza (biblioteca, .gov, universidad).' },
+        { num:1, icon:'🔍', title:'Verifica siempre los hechos', text:'Si la IA dice algo importante — verifica en un sitio de confianza (biblioteca, sitios oficiales .gob, universidad).' },
         { num:2, icon:'🧠', title:'Piensa antes de pegar', text:'La ayuda de la IA funciona mejor cuando primero entiendes la respuesta y luego la escribes tú mismo.' },
         { num:3, icon:'🚫', title:'La IA no es tu amiga', text:'Es una herramienta. Los amigos reales tienen sentimientos, recuerdos y se preocupan por ti. La IA no tiene ninguna de estas cosas.' },
         { num:4, icon:'⚠️', title:'La IA puede sonar muy equivocada', text:'Tono seguro ≠ respuesta correcta. La IA "alucina" — inventa hechos falsos que suenan reales.' },

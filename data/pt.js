@@ -321,7 +321,7 @@ window.LANG_DATA = {
         { title:'IA Especialista 🏆', description:'Você realmente entende: a IA é uma ferramenta de reconhecimento de padrões, não um ser pensante. Sabe verificar, questionar e manter o controle. Compartilhe!' },
       ],
       protocols: [
-        { num:1, icon:'🔍', title:'Sempre verifique os fatos', text:'Se a IA disser algo importante — verifique em um site confiável (biblioteca, .gov, universidade).' },
+        { num:1, icon:'🔍', title:'Sempre verifique os fatos', text:'Se a IA disser algo importante — verifique em um site confiável (biblioteca, sites oficiais .gov.br, universidade).' },
         { num:2, icon:'🧠', title:'Pense antes de copiar', text:'A ajuda da IA funciona melhor quando você primeiro entende a resposta e depois escreve com suas palavras.' },
         { num:3, icon:'🚫', title:'A IA não é sua amiga', text:'É uma ferramenta. Amigos de verdade têm sentimentos, memórias e se importam com você. A IA não tem nada disso.' },
         { num:4, icon:'⚠️', title:'A IA pode soar muito errada', text:'Tom confiante ≠ resposta correta. A IA "alucina" — inventa fatos falsos que soam reais.' },
