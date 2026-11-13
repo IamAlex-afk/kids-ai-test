@@ -500,7 +500,7 @@ window.LANG_DATA = {
         { unit: 'letter', targets: ['T','R','A','L','O','I'], decoys: ['X', 'Q'], icon: '💬',
           fact: 'AI đưa ra câu trả lời nhanh — nhưng nhanh không luôn đúng. Luôn kiểm tra!' },
         { unit: 'letter', targets: ['T','I','M'], decoys: ['X', 'Z', 'J'], icon: '🔍',
-          fact: 'ChatGPT không tìm kiếm trên internet — nó nhớ các mẫu từ quá trình huấn luyện!' },
+          fact: 'Nếu không bật tìm kiếm web, chatbot không tra internet: nó đoán từ dựa trên những gì đã học.' },
         { unit: 'letter', targets: ['T','H','O','N','G'], decoys: ['X', 'Z'], icon: '🌟',
           fact: 'AI rất giỏi nhận ra mẫu, nhưng không thật sự thông minh. Trí thông minh thật đến từ trải nghiệm!' },
         { unit: 'letter', targets: ['G','I','O','N','G'], decoys: ['X', 'Q'], icon: '🎙️',
@@ -510,7 +510,7 @@ window.LANG_DATA = {
         { unit: 'letter', targets: ['H','I','N','H'], decoys: ['X', 'Z'], icon: '🖼️',
           fact: 'AI có thể tạo hình ảnh — nhưng không thể thật sự nhìn hay cảm nhận như em!' },
         { unit: 'letter', targets: ['Q','U','Y','T','A','C'], decoys: ['X', 'Q'], icon: '📏',
-          fact: 'Tất cả hệ thống AI đều tuân theo quy tắc — không thể phát triển giá trị hay đạo đức riêng!' },
+          fact: 'AI không có giá trị riêng: nó lặp lại những gì học được từ dữ liệu và từ những người cài đặt nó.' },
       ],
 
       quiz: [

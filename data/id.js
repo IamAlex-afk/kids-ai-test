@@ -272,7 +272,7 @@ window.LANG_DATA = {
         { unit:'letter', targets:['J','A','W','A','B'], decoys:['X','Q'], icon:'💬',
           fact:'AI memberikan jawaban cepat — tapi cepat tidak selalu berarti benar. Selalu periksa!' },
         { unit:'letter', targets:['C','A','R','I'], decoys:['X','Z','J'], icon:'🔍',
-          fact:'ChatGPT tidak mencari di internet — ia mengingat pola dari pelatihannya!' },
+          fact:'Tanpa pencarian web, chatbot tidak membuka internet: ia menebak kata berdasarkan apa yang sudah dipelajarinya.' },
         { unit:'letter', targets:['P','I','N','T','A','R'], decoys:['X','Z'], icon:'🌟',
           fact:'AI sangat baik dalam mengenali pola, tapi tidak benar-benar pintar. Kecerdasan nyata datang dari pengalaman!' },
         { unit:'letter', targets:['S','U','A','R','A'], decoys:['X','Q'], icon:'🎙️',
@@ -282,7 +282,7 @@ window.LANG_DATA = {
         { unit:'letter', targets:['G','A','M','B','A','R'], decoys:['X','Z'], icon:'🖼️',
           fact:'AI bisa membuat gambar — tapi tidak bisa benar-benar melihat atau merasakan sepertimu!' },
         { unit:'letter', targets:['A','T','U','R','A','N'], decoys:['X','Q'], icon:'📏',
-          fact:'Semua sistem AI mengikuti aturan — tidak bisa mengembangkan nilai atau moral sendiri!' },
+          fact:'AI tidak punya nilai sendiri: ia mengulang apa yang dipelajari dari data dan dari orang yang mengaturnya.' },
       ],
       quiz: [
         { type:"choice", q:"Apa itu Kecerdasan Buatan (AI)?",

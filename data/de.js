@@ -270,7 +270,7 @@ window.LANG_DATA = {
         { unit:'letter', targets:['A','N','T','W','O','R','T'], decoys:['X','Q'], icon:'💬',
           fact:'KI gibt schnell Antworten — aber schnell bedeutet nicht immer richtig. Prüfe immer!' },
         { unit:'letter', targets:['S','U','C','H','E','N'], decoys:['X','Z','J'], icon:'🔍',
-          fact:'ChatGPT sucht nicht im Internet — es erinnert sich an Muster aus dem Training!' },
+          fact:'Ohne Websuche schaut ein Chatbot nicht ins Internet: Er sagt Wörter vorher – nach dem, was er gelernt hat.' },
         { unit:'letter', targets:['K','L','U','G'], decoys:['X','Z'], icon:'🌟',
           fact:'KI ist sehr gut bei Mustern, aber nicht wirklich klug. Echte Klugheit entsteht durch Erfahrung!' },
         { unit:'letter', targets:['S','T','I','M','M','E'], decoys:['X','Q','Z'], icon:'🎙️',
@@ -280,7 +280,7 @@ window.LANG_DATA = {
         { unit:'letter', targets:['B','I','L','D'], decoys:['X','Z'], icon:'🖼️',
           fact:'KI kann Bilder erstellen — aber nicht wirklich sehen oder fühlen wie du!' },
         { unit:'letter', targets:['R','E','G','E','L'], decoys:['X','Q'], icon:'📏',
-          fact:'Alle KI-Systeme folgen Regeln — sie können keine eigenen Werte oder Moral entwickeln!' },
+          fact:'KI hat keine eigenen Werte: Sie wiederholt, was sie aus Daten und von den Menschen gelernt hat, die sie einstellen.' },
       ],
       quiz: [
         { type:"choice", q:"Was ist Künstliche Intelligenz (KI)?",

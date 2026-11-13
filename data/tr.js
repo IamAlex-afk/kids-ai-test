@@ -272,7 +272,7 @@ window.LANG_DATA = {
         { unit:'letter', targets:['Y','A','N','I','T'], decoys:['X','Q'], icon:'💬',
           fact:"YZ hızlı yanıtlar verir — ama hızlı her zaman doğru anlamına gelmez. Her zaman kontrol et!" },
         { unit:'letter', targets:['A','R','A'], decoys:['X','Z','J'], icon:'🔍',
-          fact:"ChatGPT internette arama yapmaz — eğitiminden kalıpları hatırlar!" },
+          fact:"Web araması açık değilse sohbet botu internete bakmaz: öğrendiklerine göre kelime tahmin eder." },
         { unit:'letter', targets:['A','K','I','L','L','I'], decoys:['X','Z'], icon:'🌟',
           fact:"YZ kalıpları tanımada çok iyidir, ama gerçekten akıllı değildir. Gerçek zeka deneyimden gelir!" },
         { unit:'letter', targets:['S','E','S'], decoys:['X','Q'], icon:'🎙️',
@@ -282,7 +282,7 @@ window.LANG_DATA = {
         { unit:'letter', targets:['G','O','R','U','N','T','U'], decoys:['X','Z'], icon:'🖼️',
           fact:"YZ görüntüler oluşturabilir — ama senin gibi gerçekten göremez veya hissedemez!" },
         { unit:'letter', targets:['K','U','R','A','L'], decoys:['X','Q'], icon:'📏',
-          fact:"Tüm YZ sistemleri kurallara uyar — kendi değerlerini veya ahlakını geliştiremez!" },
+          fact:"YZ'nin kendi değerleri yoktur: verilerden ve onu ayarlayan insanlardan öğrendiklerini tekrarlar." },
       ],
       quiz: [
         { type:"choice", q:"Yapay Zekâ (AI) nedir?",
