@@ -1022,9 +1022,9 @@ window.LANG_DATA = {
         {
           icon:  '⚗️',
           title: '"Suy luận" và "hiểu biết" nghĩa là gì (và không là gì) ở AI',
-          text:       "Theo báo cáo của OpenAI (2023), GPT-4 đã vượt qua một bài thi luật sư mô phỏng. Điều này có nghĩa nó biết suy luận không? Bài kiểm tra ARC của François Chollet (2019) được thiết kế riêng cho các nhiệm vụ mà AI không thể giải chỉ bằng cách ghép khuôn mẫu — nhiều năm liền các mô hình ngôn ngữ làm rất kém; các mô hình mới đã tiến bộ, nhưng phải tốn lượng tính toán khổng lồ, và phiên bản khó hơn của bài kiểm tra vẫn làm khó chúng. Prompt \"chuỗi suy nghĩ\" (chain-of-thought) tạo ra hiệu suất tốt hơn nhưng cơ chế vẫn còn tranh cãi: suy luận thật hay chỉ là khuôn mẫu văn bản giống-suy-luận đã học được? Một vấn đề riêng là khả năng diễn giải (interpretability): ngay cả khi mô hình trả lời đúng, chúng ta thường không thể giải thích được nó đã đi đến câu trả lời đó như thế nào ở bên trong.",
+          text:       "Theo báo cáo của OpenAI (2023), GPT-4 đã vượt qua một bài thi luật sư mô phỏng. Điều này có nghĩa nó biết suy luận không? Bài kiểm tra ARC của François Chollet (2019) được thiết kế riêng cho các nhiệm vụ mà AI không thể giải chỉ bằng cách ghép khuôn mẫu — nhiều năm liền các mô hình ngôn ngữ làm rất kém; năm 2024, một mô hình mới đạt hơn 75% nhưng phải tốn lượng tính toán khổng lồ, và từ đó các tác giả liên tục ra những phiên bản khó hơn của bài kiểm tra. Prompt \"chuỗi suy nghĩ\" (chain-of-thought) tạo ra hiệu suất tốt hơn nhưng cơ chế vẫn còn tranh cãi: suy luận thật hay chỉ là khuôn mẫu văn bản giống-suy-luận đã học được? Một vấn đề riêng là khả năng diễn giải (interpretability): ngay cả khi mô hình trả lời đúng, chúng ta thường không thể giải thích được nó đã đi đến câu trả lời đó như thế nào ở bên trong.",
           example: '♟️ Deep Blue đánh bại Kasparov trong cờ vua mà không "hiểu" cờ vua. Stockfish chơi giỏi hơn bất kỳ con người nào nhưng không có khái niệm về quân vua. Hiệu suất và sự hiểu biết là hai thứ tách biệt.',
-          source:    'Chollet, "On the Measure of Intelligence", 2019 + Mitchell, "AI: A Guide for Thinking Humans", 2021',
+          source:    'Chollet, "On the Measure of Intelligence", 2019 + Mitchell, "AI: A Guide for Thinking Humans", 2021 + ARC Prize, 2024',
           sourceUrl: 'https://arxiv.org/abs/1911.01547',
           miniTest: [
             {
@@ -1271,7 +1271,7 @@ window.LANG_DATA = {
             'Độ chính xác khi tạo mã 💻',
           ],
           correct: 1,
-          explanation: 'Các nhiệm vụ ARC yêu cầu suy luận mới lạ thật sự — con người giải chúng dễ dàng; các mô hình ngôn ngữ đã gặp rất nhiều khó khăn trong nhiều năm, và các mô hình mới chỉ tiến bộ nhờ lượng tính toán khổng lồ. Đây là lý do Chollet cho rằng AI hiện tại về cơ bản khác với trí thông minh con người.',
+          explanation: 'Các nhiệm vụ ARC yêu cầu suy luận mới lạ thật sự — con người giải chúng dễ dàng; các mô hình ngôn ngữ đã gặp rất nhiều khó khăn trong nhiều năm, và các mô hình mới đã bắt kịp, lúc đầu chỉ nhờ lượng tính toán khổng lồ. Đây là lý do Chollet cho rằng AI hiện tại về cơ bản khác với trí thông minh con người.',
           source:    'Chollet, "On the Measure of Intelligence", 2019',
           sourceUrl: 'https://arxiv.org/abs/1911.01547',
         },

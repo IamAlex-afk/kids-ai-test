@@ -1246,9 +1246,9 @@ window.LANG_DATA = {
         {
           icon:  '⚗️',
           title: 'What "reasoning" and "understanding" mean (and don\'t) in AI',
-          text:       "According to OpenAI's 2023 report, GPT-4 passed a simulated bar exam. Does this mean it reasons? François Chollet's ARC benchmark (2019) was designed for tasks that can't be solved by pattern matching alone — language models did very badly on it for years; newer models have made progress, but at huge computing cost, and the harder version of the test is still difficult for them. Chain-of-thought prompting elicits better performance but the mechanism is debated: genuine reasoning or learned patterns of reasoning-like text? A separate problem is interpretability: even when a model answers correctly, we often can't explain how it arrived at that answer internally.",
+          text:       "According to OpenAI's 2023 report, GPT-4 passed a simulated bar exam. Does this mean it reasons? François Chollet's ARC benchmark (2019) was designed for tasks that can't be solved by pattern matching alone — language models did very badly on it for years; in 2024 a new model scored over 75%, at huge computing cost, and since then the authors have been releasing harder versions of the test. Chain-of-thought prompting elicits better performance but the mechanism is debated: genuine reasoning or learned patterns of reasoning-like text? A separate problem is interpretability: even when a model answers correctly, we often can't explain how it arrived at that answer internally.",
           example: '♟️ Deep Blue beat Kasparov at chess without "understanding" chess. Stockfish plays better than any human but has no concept of a king. Performance and understanding are separable.',
-          source:    'Chollet, "On the Measure of Intelligence", 2019 + Mitchell, "AI: A Guide for Thinking Humans", 2021',
+          source:    'Chollet, "On the Measure of Intelligence", 2019 + Mitchell, "AI: A Guide for Thinking Humans", 2021 + ARC Prize, 2024',
           sourceUrl: 'https://arxiv.org/abs/1911.01547',
           miniTest: [
             {
@@ -1551,7 +1551,7 @@ window.LANG_DATA = {
             'Code generation accuracy 💻',
           ],
           correct: 1,
-          explanation: 'ARC tasks require genuine novel reasoning — humans solve them easily; language models struggled badly for years, and newer ones are catching up only at huge computing cost. This is why Chollet argues current AI is fundamentally different from human intelligence.',
+          explanation: 'ARC tasks require genuine novel reasoning — humans solve them easily; language models struggled badly for years, and newer ones caught up, at first only at huge computing cost. This is why Chollet argues current AI is fundamentally different from human intelligence.',
           source:    'Chollet, "On the Measure of Intelligence", 2019',
           sourceUrl: 'https://arxiv.org/abs/1911.01547',
         },
