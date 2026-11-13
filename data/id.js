@@ -547,7 +547,7 @@ window.LANG_DATA = {
           icon:'🔭',
           title:'Apa yang akan terjadi selanjutnya — dan apa yang benar-benar bisa kamu ketahui',
           text:'Hukum penskalaan (Kaplan et al., 2020) menunjukkan bahwa kemampuan model meningkat secara dapat diprediksi dengan komputasi, data, dan parameter — yang mendorong perlombaan senjata menuju ukuran. Tapi penskalaan mungkin mencapai hasil yang semakin berkurang. Jawaban jujurnya: tidak ada yang tahu apa yang akan terjadi selanjutnya. Siapa pun yang mengklaim kepastian sedang menjual sesuatu.',
-          example:'🗓️ 2021 GPT-3 dianggap revolusioner. 2022 DALL-E mengejutkan semua orang. 2023 GPT-4 lulus ujian pengacara. 2024 model berjalan secara lokal di ponsel. Prediksi di AI punya rekam jejak buruk — bahkan dari para ahli.',
+          example:'🗓️ 2021 GPT-3 dianggap revolusioner. 2022 DALL-E mengejutkan semua orang. 2023 GPT-4 lulus simulasi ujian advokat di AS. 2024 model berjalan secara lokal di ponsel. Prediksi di AI punya rekam jejak buruk — bahkan dari para ahli.',
           source:'Kaplan dkk., "Scaling Laws for Neural Language Models", 2020', sourceUrl:'https://arxiv.org/abs/2001.08361',
           miniTest: [{ q:'Posisi epistemik paling aman tentang kemampuan AI masa depan adalah...',
             options:['"AI pasti akan mencapai kecerdasan manusia dalam 5 tahun" 🤖','"AI hanya autocorrect canggih dan tidak bisa berkembang secara signifikan" 🚫','"Trajektori saat ini menunjuk ke X, tapi ketidakpastian tinggi dan prediksi secara historis tidak dapat diandalkan" 📊','"Para ahli sepakat bulat tentang jadwalnya" 🤝'],

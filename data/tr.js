@@ -547,7 +547,7 @@ window.LANG_DATA = {
           icon:'🔭',
           title:'Sırada ne var — ve gerçekten ne bilebilirsin',
           text:"Ölçekleme yasaları (Kaplan ve ark., 2020), model yeteneklerinin hesaplama, veri ve parametrelerle öngörülebilir şekilde ölçeklendiğini gösterdi — bu büyüklüğe doğru silahlanma yarışını körükledi. Ama ölçekleme azalan getirilerle karşılaşabilir. Dürüst cevap: Sırada ne olduğunu kimse bilmiyor. Kesinlik iddia eden biri bir şeyler satıyor.",
-          example:"🗓️ 2021'de GPT-3 çığır açıcıydı. 2022'de DALL-E herkesi şaşırttı. 2023'te GPT-4 avukatlık sınavını geçti. 2024'te modeller telefonlarda yerel olarak çalışmaya başladı. YZ'deki tahminlerin — uzmanlarınki dahil — kötü bir sicili var.",
+          example:"🗓️ 2021'de GPT-3 çığır açıcıydı. 2022'de DALL-E herkesi şaşırttı. 2023'te GPT-4, ABD'deki avukatlık sınavının bir simülasyonunu geçti. 2024'te modeller telefonlarda yerel olarak çalışmaya başladı. YZ'deki tahminlerin — uzmanlarınki dahil — kötü bir sicili var.",
           source:'Kaplan ve ark., "Scaling Laws for Neural Language Models", 2020', sourceUrl:'https://arxiv.org/abs/2001.08361',
           miniTest: [{ q:'Gelecekteki YZ yetenekleri hakkında en güvenli epistemik pozisyon şudur:',
             options:["'YZ kesinlikle 5 yılda insan zekasına ulaşacak' 🤖","'YZ sadece sofistike bir otomatik tamamlamadır ve önemli ölçüde gelişemez' 🚫","'Mevcut eğilimler X'e işaret ediyor, ama belirsizlik yüksek ve tahminler tarihsel olarak güvenilmez oldu' 📊","'Uzmanlar zaman çizelgesinde oybirliğiyle hemfikir' 🤝"],

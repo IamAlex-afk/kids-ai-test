@@ -1289,7 +1289,7 @@ window.LANG_DATA = {
           icon:  '🔭',
           title: 'What comes next — and what you can actually know',
           text:  'Scaling laws (Kaplan et al., 2020) showed that model capability scales predictably with compute, data, and parameters — leading to the race for scale. But scaling may be hitting diminishing returns. Competing paradigms: neurosymbolic AI (combining neural nets with logic), world models (LeCun\'s vision), multimodal grounding, and agent systems. The honest answer: nobody knows what comes next. Anyone claiming certainty is selling something.',
-          example: '🗓️ In 2021, GPT-3 was considered a breakthrough. In 2022, DALL-E shocked everyone. In 2023, GPT-4 passed the bar exam. In 2024, models ran locally on phones. Predictions in AI have a poor track record — including from experts.',
+          example: '🗓️ In 2021, GPT-3 was considered a breakthrough. In 2022, DALL-E shocked everyone. In 2023, GPT-4 passed a simulated US bar exam. In 2024, models ran locally on phones. Predictions in AI have a poor track record — including from experts.',
           source:    'Kaplan et al., "Scaling Laws for Neural Language Models", 2020',
           sourceUrl: 'https://arxiv.org/abs/2001.08361',
           miniTest: [

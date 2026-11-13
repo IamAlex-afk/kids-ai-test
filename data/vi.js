@@ -1065,7 +1065,7 @@ window.LANG_DATA = {
           icon:  '🔭',
           title: 'Điều gì tiếp theo — và điều gì bạn thực sự có thể biết',
           text:  'Các định luật mở rộng quy mô (Kaplan et al., 2020) cho thấy năng lực mô hình mở rộng có thể dự đoán được theo compute, dữ liệu, và tham số — dẫn đến cuộc đua mở rộng quy mô. Nhưng việc mở rộng quy mô có thể đang chạm đến lợi ích giảm dần. Các mô hình cạnh tranh: AI neurosymbolic (kết hợp mạng nơ-ron với logic), mô hình thế giới (tầm nhìn của LeCun), gắn kết đa phương thức, và hệ thống agent. Câu trả lời trung thực: không ai biết điều gì sẽ đến tiếp theo. Bất kỳ ai tuyên bố chắc chắn đều đang bán một thứ gì đó.',
-          example: '🗓️ Năm 2021, GPT-3 được coi là đột phá. Năm 2022, DALL-E khiến mọi người sốc. Năm 2023, GPT-4 vượt qua kỳ thi luật sư. Năm 2024, các mô hình chạy cục bộ trên điện thoại. Các dự đoán về AI có thành tích kém — kể cả từ các chuyên gia.',
+          example: '🗓️ Năm 2021, GPT-3 được coi là đột phá. Năm 2022, DALL-E khiến mọi người sốc. Năm 2023, GPT-4 vượt qua một bài thi luật sư Mỹ mô phỏng. Năm 2024, các mô hình chạy cục bộ trên điện thoại. Các dự đoán về AI có thành tích kém — kể cả từ các chuyên gia.',
           source:    'Kaplan et al., "Scaling Laws for Neural Language Models", 2020',
           sourceUrl: 'https://arxiv.org/abs/2001.08361',
           miniTest: [

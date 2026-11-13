@@ -545,7 +545,7 @@ window.LANG_DATA = {
           icon:'🔭',
           title:'Was als Nächstes kommt — und was du wirklich wissen kannst',
           text:'Skalierungsgesetze (Kaplan et al., 2020) zeigten, dass Modellkapazitäten vorhersehbar mit Rechenleistung, Daten und Parametern skalieren — was zum Wettrüsten um Größe führte. Aber Skalierung könnte abnehmende Renditen erreichen. Die ehrliche Antwort: Niemand weiß, was als Nächstes kommt. Wer Gewissheit behauptet, verkauft etwas.',
-          example:'🗓️ 2021 galt GPT-3 als Durchbruch. 2022 überraschte DALL-E alle. 2023 bestand GPT-4 das Anwaltsexamen. 2024 liefen Modelle lokal auf Telefonen. Vorhersagen in der KI haben eine schlechte Bilanz — auch von Experten.',
+          example:'🗓️ 2021 galt GPT-3 als Durchbruch. 2022 überraschte DALL-E alle. 2023 bestand GPT-4 ein simuliertes US-Anwaltsexamen. 2024 liefen Modelle lokal auf Telefonen. Vorhersagen in der KI haben eine schlechte Bilanz — auch von Experten.',
           source:'Kaplan et al., "Scaling Laws for Neural Language Models", 2020', sourceUrl:'https://arxiv.org/abs/2001.08361',
           miniTest: [{ q:'Die sicherste epistemische Position zu zukünftigen KI-Fähigkeiten ist...',
             options:['"KI wird definitiv menschliche Intelligenz in 5 Jahren erreichen" 🤖','"KI ist nur eine ausgefeilte Autokorrektur und kann sich nicht bedeutend verbessern" 🚫','"Aktuelle Trajektorien deuten auf X hin, aber Unsicherheit ist hoch und Vorhersagen waren historisch unzuverlässig" 📊','"Experten sind sich einstimmig über den Zeitplan einig" 🤝'],

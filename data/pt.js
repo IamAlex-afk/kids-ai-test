@@ -545,7 +545,7 @@ window.LANG_DATA = {
           icon:'🔭',
           title:'O que vem a seguir — e o que você pode saber com certeza',
           text:'As leis de escala (Kaplan et al., 2020) mostraram que a capacidade do modelo escala previsivelmente com computação, dados e parâmetros — levando à corrida pela escala. Mas o escalonamento pode estar atingindo retornos decrescentes. A resposta honesta: ninguém sabe o que vem a seguir. Qualquer pessoa que afirme certeza está vendendo algo.',
-          example:'🗓️ Em 2021, o GPT-3 foi considerado um avanço. Em 2022, o DALL-E surpreendeu a todos. Em 2023, o GPT-4 passou no exame da OAB. Em 2024, modelos rodavam localmente em celulares. Previsões em IA têm um histórico ruim — incluindo de especialistas.',
+          example:'🗓️ Em 2021, o GPT-3 foi considerado um avanço. Em 2022, o DALL-E surpreendeu a todos. Em 2023, o GPT-4 passou em um exame simulado da ordem dos advogados dos EUA. Em 2024, modelos rodavam localmente em celulares. Previsões em IA têm um histórico ruim — incluindo de especialistas.',
           source:'Kaplan et al., "Scaling Laws for Neural Language Models", 2020', sourceUrl:'https://arxiv.org/abs/2001.08361',
           miniTest: [{ q:'A posição epistêmica mais segura sobre capacidades futuras da IA é...',
             options:['"A IA definitivamente alcançará inteligência a nível humano em 5 anos" 🤖','"A IA é apenas um autocomplete sofisticado e não pode melhorar significativamente" 🚫','"As trajetórias atuais sugerem X, mas a incerteza é alta e as previsões foram historicamente pouco confiáveis" 📊','"Especialistas concordam unanimemente sobre o cronograma" 🤝'],
