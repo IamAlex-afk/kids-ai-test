@@ -258,7 +258,7 @@ window.LANG_DATA = {
           targets: ['A', 'I'],
           decoys:  ['X', 'Z'],
           icon:    '🤖',
-          fact:    'AI is short for Artificial Intelligence — a very smart computer program that learns from examples!',
+          fact:    'AI is short for Artificial Intelligence — a computer program that learns from examples!',
         },
         {
           unit:    'letter',
