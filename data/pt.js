@@ -439,7 +439,7 @@ window.LANG_DATA = {
         { unit:'word', targets:['SUA PEGADA','DIGITAL','TREINA','FUTURAS IA'], decoys:['DESAPARECE','FICA PRIVADA'], icon:'👣',
           fact:'Tudo que voce posta, pesquisa ou clica online pode se tornar dados de treinamento para futuros sistemas de IA.' },
         { unit:'word', targets:['O CONSENTIMENTO','IMPORTA','MESMO COM','SISTEMAS DE IA'], decoys:['OPCIONAL','AUTOMATICO'], icon:'📋',
-          fact:'A Lei de IA da UE e o GDPR exigem consentimento informado para sistemas de IA que coletam, processam ou perfilam dados pessoais.', source:'Lei de IA da UE 2024', sourceUrl:'https://eur-lex.europa.eu/eli/reg/2024/1689/oj' },
+          fact:'Na UE, o GDPR só permite tratar dados pessoais com uma base legal — o consentimento é uma delas. Pergunte o que um app faz com seus dados.', source:'GDPR, artigo 6', sourceUrl:'https://eur-lex.europa.eu/eli/reg/2016/679/oj' },
       ],
       quiz: [
         { type:"choice", q:"Qual definição descreve melhor a IA moderna — como os chatbots que você usa todos os dias?",

@@ -845,7 +845,7 @@ window.LANG_DATA = {
         { unit: 'word', targets: ['DẤU', 'CHÂN', 'SỐ', 'CỦA', 'BẠN', 'HUẤN', 'LUYỆN', 'AI', 'TƯƠNG', 'LAI'], decoys: ['BIẾN MẤT', 'VẪN RIÊNG TƯ'], icon: '👣',
           fact: 'Mọi thứ bạn đăng, tìm kiếm hoặc nhấp vào trên mạng đều có thể trở thành dữ liệu huấn luyện cho các hệ thống AI tương lai.' },
         { unit: 'word', targets: ['SỰ', 'ĐỒNG', 'Ý', 'QUAN', 'TRỌNG', 'VỚI', 'CẢ', 'HỆ', 'THỐNG', 'AI'], decoys: ['TÙY CHỌN', 'TỰ ĐỘNG'], icon: '📋',
-          fact: 'Đạo luật AI của EU và GDPR yêu cầu sự đồng ý có hiểu biết đối với các hệ thống AI thu thập, xử lý hoặc lập hồ sơ dữ liệu cá nhân.', source: 'Đạo luật AI của EU 2024', sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj' },
+          fact: 'Ở EU, GDPR chỉ cho phép xử lý dữ liệu cá nhân khi có cơ sở pháp lý — sự đồng ý là một trong số đó. Hãy hỏi ứng dụng làm gì với dữ liệu của em.', source: 'GDPR, Điều 6', sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2016/679/oj' },
       ],
 
       quiz: [

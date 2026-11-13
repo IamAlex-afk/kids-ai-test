@@ -441,7 +441,7 @@ window.LANG_DATA = {
         { unit:'word', targets:['VERIDEKI','ONYARGI','YANLI','YZ','YARATIR'], decoys:['RASTGELE','TARAFSIZ'], icon:'⚖️',
           fact:"Eğitim verisi belirli grupları yeterince temsil etmezse, YZ programlanmadan bile ayrımcılık yapmayı öğrenir.", source:"Bender ve ark., \"Stochastic Parrots\", 2021", sourceUrl:"https://dl.acm.org/doi/10.1145/3442188.3445922" },
         { unit:'word', targets:['ONAY','YZ','SISTEMLERINDE','BILE','ONEMLIDIR'], decoys:['OPSIYONEL','OTOMATIK'], icon:'📋',
-          fact:"AB YZ Yasası ve GDPR, kişisel verileri toplayan, işleyen veya profilleyen YZ sistemleri için bilgilendirilmiş onay şartı getirir.", source:"AB YZ Yasası 2024", sourceUrl:"https://eur-lex.europa.eu/eli/reg/2024/1689/oj" },
+          fact:"AB'de GDPR, kişisel verilerin yalnızca hukuki bir dayanakla işlenmesine izin verir — rıza bunlardan biridir. Bir uygulamanın verilerinle ne yaptığını sor.", source:"GDPR, Madde 6", sourceUrl:"https://eur-lex.europa.eu/eli/reg/2016/679/oj" },
       ],
       quiz: [
         { type:"choice", q:"Her gün kullandığın sohbet botları gibi modern yapay zekâyı en doğru şekilde hangi tanım açıklar?",

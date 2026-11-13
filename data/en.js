@@ -1064,9 +1064,9 @@ window.LANG_DATA = {
           targets: ['CONSENT', 'MATTERS', 'EVEN WITH', 'AI SYSTEMS'],
           decoys:  ['OPTIONAL', 'AUTOMATIC'],
           icon:    '📋',
-          fact:    'The EU AI Act and GDPR require informed consent for AI systems that collect, process, or profile personal data.',
-          source:    'EU AI Act 2024',
-          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2024/1689/oj',
+          fact:    'In the EU, the GDPR allows personal data to be processed only on a lawful basis — consent is one of them. Ask what an app does with your data.',
+          source:    'GDPR, Article 6',
+          sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2016/679/oj',
         },
       ],
 

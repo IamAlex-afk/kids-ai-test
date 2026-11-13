@@ -441,7 +441,7 @@ window.LANG_DATA = {
         { unit:'word', targets:['BIAS','DALAM DATA','MENCIPTAKAN','AI YANG BIAS'], decoys:['ACAK','NETRAL'], icon:'⚖️',
           fact:'Jika data pelatihan kurang mewakili kelompok tertentu, AI belajar untuk berlaku diskriminatif — bahkan tanpa diprogram untuk itu.', source:'Bender dkk., "Stochastic Parrots", 2021', sourceUrl:'https://dl.acm.org/doi/10.1145/3442188.3445922' },
         { unit:'word', targets:['PERSETUJUAN','PENTING','BAHKAN','UNTUK SISTEM AI'], decoys:['OPSIONAL','OTOMATIS'], icon:'📋',
-          fact:'UU AI Uni Eropa dan GDPR mewajibkan persetujuan yang diinformasikan untuk sistem AI yang mengumpulkan, memproses, atau membuat profil data pribadi.', source:'UU AI Uni Eropa 2024', sourceUrl:'https://eur-lex.europa.eu/eli/reg/2024/1689/oj' },
+          fact:'Di Uni Eropa, GDPR hanya mengizinkan pemrosesan data pribadi dengan dasar hukum — persetujuan adalah salah satunya. Tanyakan apa yang dilakukan aplikasi dengan datamu.', source:'GDPR, Pasal 6', sourceUrl:'https://eur-lex.europa.eu/eli/reg/2016/679/oj' },
       ],
       quiz: [
         { type:"choice", q:"Definisi mana yang paling tepat menggambarkan AI modern — seperti chatbot yang kamu gunakan setiap hari?",
