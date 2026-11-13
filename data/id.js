@@ -174,7 +174,7 @@ window.LANG_DATA = {
       ],
       protocols: [
         { num:1, icon:'🤔', title:'Selalu tanya orang dewasa', text:'Kalau AI berkata sesuatu yang mengejutkan — selalu periksa dengan orang sungguhan.' },
-        { num:2, icon:'🎨', title:'Kamu adalah seniman', text:'AI bisa membantu, tapi KAMU yang menciptakan. Ideamu selalu lebih istimewa.' },
+        { num:2, icon:'🎨', title:'Kamu adalah seniman', text:'AI bisa membantu, tapi KAMU yang menciptakan. Idenya milikmu!' },
         { num:3, icon:'❤️', title:'Teman sejati punya perasaan', text:'Asisten suara tidak bisa jadi teman. Tapi orang sungguhan bisa!' },
         { num:4, icon:'🛑', title:'Tidak apa-apa untuk bilang TIDAK', text:'Kamu tidak perlu menuruti robot. Kamu selalu yang bos.' },
         { num:5, icon:'📚', title:'Belajar adalah kekuatan supermu', text:'AI belajar dari buku — kamu juga, dan kamu akan jauh lebih baik!' },
@@ -439,7 +439,7 @@ window.LANG_DATA = {
         { unit:'word', targets:['ALGORITMA','BISA','BIKIN','KECANDUAN'], decoys:['MEMBOSANKAN','ACAK'], icon:'⏳',
           fact:'Feed rekomendasi dibuat supaya kamu terus menonton. Sadari saat sebuah feed dirancang untuk membuatmu kecanduan, bukan memberi informasi.' },
         { unit:'word', targets:['BIAS','DALAM DATA','MENCIPTAKAN','AI YANG BIAS'], decoys:['ACAK','NETRAL'], icon:'⚖️',
-          fact:'Jika data pelatihan kurang mewakili kelompok tertentu, AI belajar untuk berlaku diskriminatif — bahkan tanpa diprogram untuk itu.', source:'Bender dkk., "Stochastic Parrots", 2021', sourceUrl:'https://dl.acm.org/doi/10.1145/3442188.3445922' },
+          fact:'Jika data pelatihan kurang mewakili kelompok tertentu, AI lebih sering keliru tentang mereka dan bisa tidak adil — bahkan tanpa diprogram untuk itu.', source:'Bender dkk., "Stochastic Parrots", 2021', sourceUrl:'https://dl.acm.org/doi/10.1145/3442188.3445922' },
         { unit:'word', targets:['PERSETUJUAN','PENTING','BAHKAN','UNTUK SISTEM AI'], decoys:['OPSIONAL','OTOMATIS'], icon:'📋',
           fact:'Di Uni Eropa, GDPR hanya mengizinkan pemrosesan data pribadi dengan dasar hukum — persetujuan adalah salah satunya. Tanyakan apa yang dilakukan aplikasi dengan datamu.', source:'GDPR, Pasal 6', sourceUrl:'https://eur-lex.europa.eu/eli/reg/2016/679/oj' },
       ],
@@ -680,7 +680,7 @@ window.LANG_DATA = {
       ],
       protocols: [
         { num:1, icon:'📊', title:'Bedakan kinerja dan pemahaman', text:'Lulus ujian ≠ pemahaman. Selalu tanya apa yang AI lakukan secara mekanistik.' },
-        { num:2, icon:'⚖️', title:'Baca EU AI Act', text:'Ini regulasi AI paling komprehensif di dunia. Ini langsung mempengaruhi siapa pun yang beroperasi atau menjual ke Eropa.' },
+        { num:2, icon:'⚖️', title:'Baca EU AI Act', text:'Komisi Eropa menyebutnya kerangka hukum AI menyeluruh pertama di dunia. Aturan ini berlaku bagi siapa pun yang menawarkan sistem AI di Uni Eropa.' },
         { num:3, icon:'🔍', title:'Minta interpretabilitas', text:'Untuk keputusan berisiko tinggi, tanya: apakah seseorang bisa menjelaskan mengapa AI membuat keputusan ini?' },
         { num:4, icon:'📚', title:'Ikuti arXiv cs.AI dan cs.CL', text:'Preprint sebelum peer review. Baca abstrak. Pantau apa yang benar-benar diperdebatkan bidang ini vs. apa yang dilaporkan pers.' },
         { num:5, icon:'🏛️', title:'Berpartisipasi dalam tata kelola AI', text:'Regulasi terjadi dalam fase konsultasi, pemilihan, dan keputusan pengadaan. Partisipasi yang terinformasi penting.' },

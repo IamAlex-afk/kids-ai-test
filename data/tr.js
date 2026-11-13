@@ -174,7 +174,7 @@ window.LANG_DATA = {
       ],
       protocols: [
         { num:1, icon:'🤔', title:'Her zaman bir yetişkine sor', text:"YZ şaşırtıcı bir şey söylerse — her zaman gerçek bir insanla kontrol et." },
-        { num:2, icon:'🎨', title:'Sen sanatçısın', text:"YZ yardımcı olabilir, ama YARATAN SENSİN. Senin fikirlerin her zaman daha özel." },
+        { num:2, icon:'🎨', title:'Sen sanatçısın', text:"YZ yardımcı olabilir, ama YARATAN SENSİN. Fikirler senin!" },
         { num:3, icon:'❤️', title:'Gerçek arkadaşların duyguları vardır', text:"Siri ve Google Asistan arkadaş olamaz. Ama gerçek insanlar olabilir!" },
         { num:4, icon:'🛑', title:"HAYIR demek tamam", text:"Bir robota asla uymak zorunda değilsin. Patron her zaman sensin." },
         { num:5, icon:'📚', title:'Öğrenmek senin süper gücün', text:"YZ kitaplardan öğrendi — sen de, ve çok daha iyi olacaksın!" },
@@ -439,7 +439,7 @@ window.LANG_DATA = {
         { unit:'word', targets:['ALGORITMALAR','BAGIMLILIK','YAPABILIR'], decoys:['SIKICI','RASTGELE'], icon:'⏳',
           fact:"Öneri akışları seni ekrana bağlı tutmak için tasarlanır. Bir akışın seni bilgilendirmek yerine bağımlı kılmak için tasarlandığını fark et." },
         { unit:'word', targets:['VERIDEKI','ONYARGI','YANLI','YZ','YARATIR'], decoys:['RASTGELE','TARAFSIZ'], icon:'⚖️',
-          fact:"Eğitim verisi belirli grupları yeterince temsil etmezse, YZ programlanmadan bile ayrımcılık yapmayı öğrenir.", source:"Bender ve ark., \"Stochastic Parrots\", 2021", sourceUrl:"https://dl.acm.org/doi/10.1145/3442188.3445922" },
+          fact:"Eğitim verisi belirli grupları yeterince temsil etmezse, YZ bu gruplar hakkında daha sık yanılır ve programlanmadan bile adaletsiz olabilir.", source:"Bender ve ark., \"Stochastic Parrots\", 2021", sourceUrl:"https://dl.acm.org/doi/10.1145/3442188.3445922" },
         { unit:'word', targets:['ONAY','YZ','SISTEMLERINDE','BILE','ONEMLIDIR'], decoys:['OPSIYONEL','OTOMATIK'], icon:'📋',
           fact:"AB'de GDPR, kişisel verilerin yalnızca hukuki bir dayanakla işlenmesine izin verir — rıza bunlardan biridir. Bir uygulamanın verilerinle ne yaptığını sor.", source:"GDPR, Madde 6", sourceUrl:"https://eur-lex.europa.eu/eli/reg/2016/679/oj" },
       ],
@@ -614,7 +614,7 @@ window.LANG_DATA = {
         { unit:'phrase', targets:['VERI','ZEHIRLEME','EGITIM','VERISINE','ZARARLI','ORNEKLER','ENJEKTE','EDER'], decoys:['SADECE TEORIKTIR','HER ZAMAN TESPIT EDILIR'], icon:'☣️',
           fact:"Eğitim verisine enjekte edilen kötü niyetli veriler gizli arka kapılar oluşturabilir — çıkarım sırasında belirli girdilerle tetiklenir." },
         { unit:'phrase', targets:['OLCEKLENEBILIR','GOZETIM','YZ','YARDIMI','KULLANIR','INSAN','YETENEGININ','OTESINDEKI','YZYI','DENETLEMEK','ICIN'], decoys:['TAMAMEN OTOMATIKTIR','INSAN GEREKTIRMEZ'], icon:'🔭',
-          fact:"YZ sistemleri belirli alanlarda insanüstü hale geldikçe, insanlar artık çalışmalarını doğrudan doğrulayamaz — bu da ölçeklenebilir gözetimi çözülmemiş temel bir sorun haline getirir.", source:"OpenAI, \"Weak-to-Strong Generalization\", 2023", sourceUrl:"https://arxiv.org/abs/2312.09390" },
+          fact:"YZ belirli görevlerde insanları geçtikçe, çalışmasını doğrulamak giderek zorlaşıyor — bu da ölçeklenebilir gözetimi çözülmemiş temel bir sorun haline getirir.", source:"OpenAI, \"Weak-to-Strong Generalization\", 2023", sourceUrl:"https://arxiv.org/abs/2312.09390" },
       ],
       quiz: [
         { type:"choice", q:"\"Yapay zekâ sistemi\" kavramının güncel bilimsel ve düzenleyici anlayışını en doğru şekilde hangi tanım yansıtır?",
@@ -680,7 +680,7 @@ window.LANG_DATA = {
       ],
       protocols: [
         { num:1, icon:'📊', title:'Performans ve anlayışı ayırt et', text:"Test geçmek ≠ anlayış. Her zaman YZ'nin mekanik olarak ne yaptığını sor." },
-        { num:2, icon:'⚖️', title:'AB YZ Yasasını oku', text:"Dünyanın en kapsamlı YZ düzenlemesidir. Avrupa'da faaliyet gösteren veya satış yapan herkesi doğrudan etkiliyor." },
+        { num:2, icon:'⚖️', title:'AB YZ Yasasını oku', text:"Avrupa Komisyonu onu yapay zekâ için dünyanın ilk kapsamlı hukuki çerçevesi olarak tanımlıyor. AB'de yapay zekâ sistemi sunan herkes için geçerli." },
         { num:3, icon:'🔍', title:'Yorumlanabilirlik iste', text:"Yüksek riskli kararlar için sor: Biri YZ'nin bu kararı neden verdiğini açıklayabilir mi?" },
         { num:4, icon:'📚', title:'arXiv cs.AI ve cs.CL\'yi takip et', text:"Hakemli inceleme öncesi ön baskılar. Özetleri oku. Alanın gerçekten neyi tartıştığını vs. basının neyi bildirdiğini takip et." },
         { num:5, icon:'🏛️', title:'YZ yönetişimine katıl', text:"Düzenleme danışma aşamalarında, seçimlerde ve tedarik kararlarında gerçekleşiyor. Bilinçli katılım önemlidir." },

@@ -173,7 +173,7 @@ window.LANG_DATA = {
       ],
       protocols: [
         { num:1, icon:'🤔', title:'Sempre pergunte a um adulto', text:'Se a IA disser algo surpreendente — sempre verifique com uma pessoa real.' },
-        { num:2, icon:'🎨', title:'Você é o artista', text:'A IA pode ajudar mas VOCÊ cria. Suas ideias são sempre mais especiais.' },
+        { num:2, icon:'🎨', title:'Quem cria é você', text:'A IA pode ajudar, mas quem cria é VOCÊ. As ideias são suas!' },
         { num:3, icon:'❤️', title:'Amigos de verdade têm sentimentos', text:'Alexa e Siri não podem ser seus amigos. Mas pessoas reais podem!' },
         { num:4, icon:'🛑', title:'Tudo bem dizer NÃO', text:'Você nunca tem que obedecer um robô. Você está sempre no controle.' },
         { num:5, icon:'📚', title:'Aprender é seu superpoder', text:'A IA aprendeu de livros — você também pode, e vai ser ainda melhor!' },
@@ -677,7 +677,7 @@ window.LANG_DATA = {
       ],
       protocols: [
         { num:1, icon:'📊', title:'Distingua desempenho de compreensão', text:'Passar em um teste ≠ compreensão. Sempre pergunte o que a IA está fazendo mecanisticamente.' },
-        { num:2, icon:'⚖️', title:'Leia a Lei de IA da UE', text:'É a regulação de IA mais abrangente do mundo. Afeta diretamente qualquer um que opere na Europa ou venda para ela.' },
+        { num:2, icon:'⚖️', title:'Leia a Lei de IA da UE', text:'A Comissão Europeia a chama de primeiro marco legal abrangente de IA do mundo. Vale para quem oferece sistemas de IA na UE.' },
         { num:3, icon:'🔍', title:'Exija interpretabilidade', text:'Para decisões de alto risco, pergunte: alguém pode explicar por que a IA tomou essa decisão?' },
         { num:4, icon:'📚', title:'Siga arXiv cs.AI e cs.CL', text:'Preprints antes da revisão por pares. Leia resumos. Rastreie o que o campo realmente debate vs. o que a imprensa cobre.' },
         { num:5, icon:'🏛️', title:'Participe da governança de IA', text:'A regulação acontece em períodos de consulta, eleições e decisões de aquisição. Participação informada importa.' },

@@ -318,7 +318,7 @@ window.LANG_DATA = {
 
       protocols: [
         { num: 1, icon: '🤔', title: 'Luôn hỏi người lớn', text: 'Nếu AI nói điều gì đó bất ngờ — luôn kiểm tra lại với một người thật.' },
-        { num: 2, icon: '🎨', title: 'Em là người nghệ sĩ', text: 'AI có thể giúp nhưng CHÍNH em mới là người sáng tạo. Ý tưởng của em luôn đặc biệt hơn.' },
+        { num: 2, icon: '🎨', title: 'Em là người nghệ sĩ', text: 'AI có thể giúp nhưng CHÍNH em mới là người sáng tạo. Ý tưởng là của em!' },
         { num: 3, icon: '❤️', title: 'Bạn thật sự có cảm xúc', text: 'Trợ lý Google hay Kiki không thể là bạn của em. Nhưng người thật thì có thể!' },
         { num: 4, icon: '🛑', title: 'Nói KHÔNG cũng được', text: 'Em không bao giờ phải nghe theo robot. Em luôn là người quyết định.' },
         { num: 5, icon: '📚', title: 'Học tập là siêu năng lực của em', text: 'AI học từ sách vở — em cũng có thể, và em sẽ còn giỏi hơn nữa!' },
@@ -841,7 +841,7 @@ window.LANG_DATA = {
         { unit: 'word', targets: ['MÔ', 'HÌNH', 'MỞ', 'CHO', 'PHÉP', 'KIỂM', 'SOÁT'], decoys: ['CHE GIẤU', 'CHẶN'], icon: '🔓',
           fact: 'Các mô hình AI mã nguồn mở có thể được kiểm tra bởi bất kỳ ai — minh bạch hơn, nhưng cũng có rủi ro.' },
         { unit: 'word', targets: ['THIÊN', 'LỆCH', 'TRONG', 'DỮ', 'LIỆU', 'TẠO', 'RA', 'AI', 'THIÊN', 'LỆCH'], decoys: ['NGẪU NHIÊN', 'TRUNG LẬP'], icon: '⚖️',
-          fact: 'Nếu dữ liệu huấn luyện thiếu đại diện cho một số nhóm, AI sẽ học cách phân biệt đối xử — ngay cả khi không được lập trình để làm vậy.', source: 'Bender và cộng sự, "Stochastic Parrots", 2021', sourceUrl: 'https://dl.acm.org/doi/10.1145/3442188.3445922' },
+          fact: 'Nếu dữ liệu huấn luyện thiếu đại diện cho một số nhóm, AI sẽ hay sai hơn với những nhóm đó và có thể bất công — ngay cả khi không được lập trình để làm vậy.', source: 'Bender và cộng sự, "Stochastic Parrots", 2021', sourceUrl: 'https://dl.acm.org/doi/10.1145/3442188.3445922' },
         { unit: 'word', targets: ['DẤU', 'CHÂN', 'SỐ', 'CỦA', 'BẠN', 'HUẤN', 'LUYỆN', 'AI', 'TƯƠNG', 'LAI'], decoys: ['BIẾN MẤT', 'VẪN RIÊNG TƯ'], icon: '👣',
           fact: 'Mọi thứ bạn đăng, tìm kiếm hoặc nhấp vào trên mạng đều có thể trở thành dữ liệu huấn luyện cho các hệ thống AI tương lai.' },
         { unit: 'word', targets: ['SỰ', 'ĐỒNG', 'Ý', 'QUAN', 'TRỌNG', 'VỚI', 'CẢ', 'HỆ', 'THỐNG', 'AI'], decoys: ['TÙY CHỌN', 'TỰ ĐỘNG'], icon: '📋',
@@ -1213,7 +1213,7 @@ window.LANG_DATA = {
         { unit: 'phrase', targets: ['ĐẦU', 'ĐỘC', 'DỮ', 'LIỆU', 'CHÈN', 'VÍ', 'DỤ', 'ĐỘC', 'HẠI', 'VÀO', 'DỮ', 'LIỆU', 'HUẤN', 'LUYỆN'], decoys: ['CHỈ LÀ LÝ THUYẾT', 'LUÔN PHÁT HIỆN ĐƯỢC'], icon: '☣️',
           fact: 'Dữ liệu độc hại được chèn vào tập huấn luyện có thể tạo ra cửa hậu ẩn — được kích hoạt bởi đầu vào cụ thể khi vận hành.' },
         { unit: 'phrase', targets: ['GIÁM', 'SÁT', 'QUY', 'MÔ', 'LỚN', 'DÙNG', 'AI', 'HỖ', 'TRỢ', 'ĐỂ', 'GIÁM', 'SÁT', 'AI', 'VƯỢT', 'KHẢ', 'NĂNG', 'CON', 'NGƯỜI'], decoys: ['HOÀN TOÀN TỰ ĐỘNG', 'KHÔNG CẦN CON NGƯỜI'], icon: '🔭',
-          fact: 'Khi hệ thống AI trở nên siêu phàm trong các lĩnh vực cụ thể, con người không còn có thể trực tiếp xác minh công việc của chúng — khiến giám sát quy mô lớn trở thành vấn đề trung tâm chưa có lời giải.', source: 'OpenAI, "Weak-to-Strong Generalization", 2023', sourceUrl: 'https://arxiv.org/abs/2312.09390' },
+          fact: 'Khi AI vượt con người ở những nhiệm vụ cụ thể, việc kiểm tra công việc của nó ngày càng khó — khiến giám sát quy mô lớn trở thành vấn đề trung tâm chưa có lời giải.', source: 'OpenAI, "Weak-to-Strong Generalization", 2023', sourceUrl: 'https://arxiv.org/abs/2312.09390' },
       ],
 
       quiz: [
@@ -1426,7 +1426,7 @@ window.LANG_DATA = {
 
       protocols: [
         { num: 1,  icon: '📊', title: 'Phân biệt hiệu suất và sự hiểu biết', text: 'Vượt qua bài kiểm tra ≠ sự thấu hiểu. Luôn hỏi AI thực sự đang làm gì về mặt cơ chế.' },
-        { num: 2,  icon: '⚖️', title: 'Đọc Đạo luật AI của EU', text: 'Đây là quy định AI toàn diện nhất thế giới. Nó ảnh hưởng trực tiếp đến bất kỳ ai hoạt động hoặc bán hàng tại châu Âu.' },
+        { num: 2,  icon: '⚖️', title: 'Đọc Đạo luật AI của EU', text: 'Ủy ban châu Âu gọi đây là khung pháp lý toàn diện đầu tiên trên thế giới về AI. Luật áp dụng cho bất kỳ ai cung cấp hệ thống AI tại EU.' },
         { num: 3,  icon: '🔍', title: 'Yêu cầu khả năng diễn giải', text: 'Với các quyết định rủi ro cao, hãy hỏi: có ai giải thích được vì sao AI đưa ra lựa chọn này không? Nếu không, nó có nên đưa ra quyết định đó không?' },
         { num: 4,  icon: '📚', title: 'Theo dõi ArXiv cs.AI và cs.CL', text: 'Bản thảo trước bình duyệt. Đọc phần tóm tắt. Theo dõi những gì lĩnh vực này thực sự đang tranh luận, khác với những gì báo chí đưa tin.' },
         { num: 5,  icon: '🏛️', title: 'Tham gia vào quản trị AI', text: 'Quy định diễn ra trong các đợt tham vấn công khai, bầu cử, và quyết định mua sắm. Sự tham gia có hiểu biết rất quan trọng.' },

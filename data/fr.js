@@ -173,9 +173,9 @@ window.LANG_DATA = {
       ],
       protocols: [
         { num:1, icon:'🤔', title:'Demande toujours à un adulte', text:"Si l'IA dit quelque chose de surprenant — vérifie toujours avec une vraie personne." },
-        { num:2, icon:'🎨', title:"Tu es l'artiste", text:"L'IA peut aider, mais C'EST TOI qui crées. Tes idées sont toujours plus spéciales." },
+        { num:2, icon:'🎨', title:"Tu es l'artiste", text:"L'IA peut aider, mais C'EST TOI qui crées. Les idées, ce sont les tiennes !" },
         { num:3, icon:'❤️', title:'Les vrais amis ont des sentiments', text:"Alexa et Siri ne peuvent pas être des amis. Mais les vraies personnes, oui !" },
-        { num:4, icon:'🛑', title:"C'est okay de dire NON", text:"Tu n'as jamais à obéir à un robot. Tu es toujours le chef." },
+        { num:4, icon:'🛑', title:"C'est okay de dire NON", text:"Tu n'as jamais à obéir à un robot. C'est toujours toi qui décides." },
         { num:5, icon:'📚', title:'Apprendre est ton superpouvoir', text:"L'IA a appris dans des livres — toi aussi, et tu deviendras encore meilleur !" },
         { num:6, icon:'🌍', title:"L'IA fait des erreurs", text:"L'IA peut dire des choses fausses. C'est pourquoi les humains qui pensent sont si importants." },
       ],
@@ -677,7 +677,7 @@ window.LANG_DATA = {
       ],
       protocols: [
         { num:1, icon:'📊', title:'Distingue performance et compréhension', text:"Réussir un test ne signifie pas comprendre. Demande toujours ce que l'IA fait mécaniquement." },
-        { num:2, icon:'⚖️', title:"Lis l'AI Act européen", text:"C'est la réglementation IA la plus complète du monde. Elle touche directement quiconque opère en Europe ou y vend." },
+        { num:2, icon:'⚖️', title:"Lis l'AI Act européen", text:"La Commission européenne le présente comme le premier cadre juridique complet sur l'IA au monde. Il s'applique à quiconque propose des systèmes d'IA dans l'UE." },
         { num:3, icon:'🔍', title:"Exige l'interprétabilité", text:"Pour les décisions à haut risque, demande : quelqu'un peut-il expliquer pourquoi l'IA a pris cette décision ?" },
         { num:4, icon:'📚', title:'Suis arXiv cs.AI et cs.CL', text:"Préprints avant la révision par les pairs. Lis les abstracts. Suis ce que le domaine débat vraiment vs. ce que la presse rapporte." },
         { num:5, icon:'🏛️', title:"Participe à la gouvernance IA", text:"La réglementation se fait en phases de consultation, élections et décisions d'approvisionnement. La participation informée compte." },

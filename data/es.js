@@ -185,7 +185,7 @@ window.LANG_DATA = {
       ],
       protocols: [
         { num:1, icon:'🤔', title:'Pregunta siempre a un adulto', text:'Si la IA dice algo sorprendente — verifica siempre con una persona real.' },
-        { num:2, icon:'🎨', title:'Tú eres el artista', text:'La IA puede ayudar pero TÚ creas. Tus ideas son siempre más especiales.' },
+        { num:2, icon:'🎨', title:'Tú creas', text:'La IA puede ayudar, pero TÚ creas. ¡Las ideas son tuyas!' },
         { num:3, icon:'❤️', title:'Los amigos reales sienten', text:'Alexa y Siri no pueden ser tus amigos. ¡Pero las personas reales sí!' },
         { num:4, icon:'🛑', title:'Está bien decir NO', text:'Nunca tienes que hacerle caso a un robot. Siempre estás a cargo.' },
         { num:5, icon:'📚', title:'Aprender es tu superpoder', text:'La IA aprendió de libros — tú también puedes, ¡y serás aún mejor!' },
@@ -690,7 +690,7 @@ window.LANG_DATA = {
       ],
       protocols: [
         { num:1, icon:'📊', title:'Distingue rendimiento de comprensión', text:'Aprobar un examen ≠ comprensión. Siempre pregunta qué está haciendo mecánicamente la IA.' },
-        { num:2, icon:'⚖️', title:'Lee la Ley de IA de la UE', text:'Es la regulación de IA más completa del mundo. Afecta directamente a cualquiera que opere en Europa o le venda.' },
+        { num:2, icon:'⚖️', title:'Lee la Ley de IA de la UE', text:'La Comisión Europea la llama el primer marco legal integral sobre IA del mundo. Se aplica a quien ofrezca sistemas de IA en la UE.' },
         { num:3, icon:'🔍', title:'Exige interpretabilidad', text:'Para decisiones de alto riesgo, pregunta: ¿puede alguien explicar por qué la IA tomó esta decisión?' },
         { num:4, icon:'📚', title:'Sigue arXiv cs.AI y cs.CL', text:'Preprints antes de la revisión por pares. Lee resúmenes. Rastrea lo que el campo debate realmente vs. lo que cubre la prensa.' },
         { num:5, icon:'🏛️', title:'Participa en la gobernanza de IA', text:'La regulación ocurre en períodos de consulta, elecciones y decisiones de adquisición. La participación informada importa.' },
