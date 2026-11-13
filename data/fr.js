@@ -340,7 +340,7 @@ window.LANG_DATA = {
           icon:'🎲',
           title:'L\'IA ne connaît pas la vérité — elle devine le mot suivant',
           text:'Quand tu écris à ChatGPT, il ne cherche pas une réponse — il devine le mot le plus probable, encore et encore, à partir de motifs appris sur des millions de textes lus auparavant. C\'est comme la saisie prédictive de ton téléphone, mais en beaucoup plus puissant. C\'est pourquoi il peut sembler totalement sûr de lui tout en se trompant.',
-          example:'📱 Ton téléphone suggère le mot suivant quand tu écris un message. Les chatbots IA font pareil — juste en plus intelligent et plus long. Ni l\'un ni l\'autre ne "sait" vraiment ce qui est vrai.',
+          example:'📱 Ton téléphone suggère le mot suivant quand tu écris un message. Les chatbots IA font pareil — mais entraînés sur bien plus de textes. Ni l\'un ni l\'autre ne "sait" vraiment ce qui est vrai.',
           source:'Ji et al., "Survey of Hallucination in NLG", 2023', sourceUrl:'https://arxiv.org/abs/2202.03629',
           miniTest: [{ q:'Pourquoi l\'IA peut-elle sembler sûre à 100% et pourtant se tromper ?',
             options:['Elle ment exprès 😈','Elle prédit des mots probables, pas vrais 🎲','Elle se fatigue et fait des erreurs 😴','Ça n\'arrive qu\'avec l\'ancienne IA 📅'],

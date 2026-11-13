@@ -635,7 +635,7 @@ window.LANG_DATA = {
           icon:  '🎲',
           title: 'AI không biết sự thật — nó đoán từ tiếp theo',
           text:  'Khi bạn gõ gì đó vào ChatGPT, nó không tìm câu trả lời — nó đoán từ có khả năng cao nhất, lặp đi lặp lại, dựa trên các mẫu từ hàng triệu văn bản nó đã đọc trước đó. Nó giống như gợi ý từ trên điện thoại của bạn, nhưng mạnh hơn nhiều. Đó là lý do nó có thể nghe rất chắc chắn mà vẫn sai.',
-          example: '📱 Điện thoại của bạn gợi ý từ tiếp theo khi bạn nhắn tin. Chatbot AI làm điều tương tự — chỉ thông minh hơn và dài hơn. Cả điện thoại lẫn chatbot đều không thực sự "biết" điều gì là đúng.',
+          example: '📱 Điện thoại của bạn gợi ý từ tiếp theo khi bạn nhắn tin. Chatbot AI làm điều tương tự — chỉ là được huấn luyện trên nhiều văn bản hơn rất nhiều. Cả điện thoại lẫn chatbot đều không thực sự "biết" điều gì là đúng.',
           source:    'Ji et al., "Survey of Hallucination in NLG", 2023',
           sourceUrl: 'https://arxiv.org/abs/2202.03629',
           miniTest: [

@@ -352,7 +352,7 @@ window.LANG_DATA = {
           icon:'🎲',
           title:'La IA no conoce la verdad — adivina la siguiente palabra',
           text:'Cuando escribes algo en ChatGPT, no busca una respuesta — adivina la palabra más probable, una y otra vez, basándose en patrones de millones de textos que leyó antes. Es como el autocompletar de tu teléfono, pero mucho más potente. Por eso puede sonar totalmente seguro y aun así equivocarse.',
-          example:'📱 Tu teléfono sugiere la siguiente palabra cuando escribes un mensaje. Los chatbots de IA hacen lo mismo — solo que más inteligente y más largo. Ni el teléfono ni el chatbot realmente "saben" qué es verdad.',
+          example:'📱 Tu teléfono sugiere la siguiente palabra cuando escribes un mensaje. Los chatbots de IA hacen lo mismo — solo que entrenados con muchísimos más textos. Ni el teléfono ni el chatbot realmente "saben" qué es verdad.',
           source:'Ji et al., "Survey of Hallucination in NLG", 2023', sourceUrl:'https://arxiv.org/abs/2202.03629',
           miniTest: [{ q:'¿Por qué puede sonar la IA 100% segura y aun así estar equivocada?',
             options:['Miente a propósito 😈','Predice palabras probables, no verdaderas 🎲','Se cansa y comete errores 😴','Solo pasa con IA antigua 📅'],

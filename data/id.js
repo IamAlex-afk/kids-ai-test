@@ -342,7 +342,7 @@ window.LANG_DATA = {
           icon:'🎲',
           title:'AI tidak tahu kebenaran — dia menebak kata berikutnya',
           text:'Saat kamu mengetik sesuatu ke ChatGPT, dia tidak mencari jawaban — dia menebak kata yang paling mungkin, berulang kali, berdasarkan pola dari jutaan teks yang pernah dibacanya. Ini seperti fitur prediksi kata di HP kamu, tapi jauh lebih canggih. Makanya dia bisa terdengar sangat yakin dan tetap saja salah.',
-          example:'📱 HP kamu menyarankan kata berikutnya saat kamu mengetik pesan. Chatbot AI melakukan hal yang sama — cuma lebih pintar dan lebih panjang. Baik HP maupun chatbot sebenarnya tidak "tahu" apa yang benar.',
+          example:'📱 HP kamu menyarankan kata berikutnya saat kamu mengetik pesan. Chatbot AI melakukan hal yang sama — hanya saja dilatih dengan jauh lebih banyak teks. Baik HP maupun chatbot sebenarnya tidak "tahu" apa yang benar.',
           source:'Ji dkk., "Survey of Hallucination in NLG", 2023', sourceUrl:'https://arxiv.org/abs/2202.03629',
           miniTest: [{ q:'Kenapa AI bisa terdengar 100% yakin tapi tetap salah?',
             options:['Dia sengaja bohong 😈','Dia memprediksi kata yang mungkin, bukan yang benar 🎲','Dia capek dan jadi salah 😴','Itu cuma terjadi pada AI lama 📅'],

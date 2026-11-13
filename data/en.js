@@ -791,7 +791,7 @@ window.LANG_DATA = {
           icon:  '🎲',
           title: 'AI doesn\'t know the truth — it guesses the next word',
           text:  'When you type into ChatGPT, it doesn\'t look up an answer — it guesses the most likely next word, over and over, based on patterns from millions of texts it read before. It\'s like the autocomplete on your phone, but much more powerful. That\'s why it can sound totally sure and still be wrong.',
-          example: '📱 Your phone suggests the next word when you text. AI chatbots do the same thing — just smarter and longer. Neither one actually "knows" what\'s true.',
+          example: '📱 Your phone suggests the next word when you text. AI chatbots do the same thing — just trained on far more text. Neither one actually "knows" what\'s true.',
           source:    'Ji et al., "Survey of Hallucination in NLG", 2023',
           sourceUrl: 'https://arxiv.org/abs/2202.03629',
           miniTest: [

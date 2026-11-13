@@ -340,7 +340,7 @@ window.LANG_DATA = {
           icon:'🎲',
           title:'KI kennt nicht die Wahrheit — sie rät das nächste Wort',
           text:'Wenn du ChatGPT etwas tippst, sucht es keine Antwort — es rät immer wieder das wahrscheinlichste nächste Wort, basierend auf Mustern aus Millionen Texten, die es vorher gelesen hat. Das ist wie die Autovervollständigung auf deinem Handy, nur viel stärker. Deshalb kann es total sicher klingen und trotzdem falschliegen.',
-          example:'📱 Dein Handy schlägt beim Tippen das nächste Wort vor. KI-Chatbots machen dasselbe — nur klüger und länger. Weder Handy noch Chatbot "wissen" wirklich, was wahr ist.',
+          example:'📱 Dein Handy schlägt beim Tippen das nächste Wort vor. KI-Chatbots machen dasselbe — nur mit viel mehr Texten trainiert. Weder Handy noch Chatbot "wissen" wirklich, was wahr ist.',
           source:'Ji et al., "Survey of Hallucination in NLG", 2023', sourceUrl:'https://arxiv.org/abs/2202.03629',
           miniTest: [{ q:'Warum kann KI zu 100% sicher klingen und trotzdem falschliegen?',
             options:['Sie lügt absichtlich 😈','Sie sagt wahrscheinliche Wörter voraus, nicht wahre 🎲','Sie wird müde und macht Fehler 😴','Das passiert nur bei alter KI 📅'],

@@ -342,7 +342,7 @@ window.LANG_DATA = {
           icon:'🎲',
           title:'Yapay zeka gerçeği bilmez — bir sonraki kelimeyi tahmin eder',
           text:'ChatGPT\'e bir şey yazdığında, bir cevap aramaz — daha önce okuduğu milyonlarca metinden öğrendiği kalıplara dayanarak en olası bir sonraki kelimeyi defalarca tahmin eder. Bu, telefonundaki kelime önerisine benzer, sadece çok daha güçlü. Bu yüzden son derece emin görünüp yine de yanılabilir.',
-          example:'📱 Bir mesaj yazarken telefonun bir sonraki kelimeyi önerir. Yapay zeka sohbet botları da aynısını yapar — sadece daha akıllı ve daha uzun. Ne telefon ne de sohbet botu neyin doğru olduğunu gerçekten "bilir".',
+          example:'📱 Bir mesaj yazarken telefonun bir sonraki kelimeyi önerir. Yapay zeka sohbet botları da aynısını yapar — sadece çok daha fazla metinle eğitilmiş olarak. Ne telefon ne de sohbet botu neyin doğru olduğunu gerçekten "bilir".',
           source:'Ji ve ark., "Survey of Hallucination in NLG", 2023', sourceUrl:'https://arxiv.org/abs/2202.03629',
           miniTest: [{ q:'Yapay zeka neden %100 emin görünüp yine de yanılabilir?',
             options:['Bilerek yalan söylüyor 😈','Doğru değil, olası kelimeleri tahmin ediyor 🎲','Yoruluyor ve hata yapıyor 😴','Bu sadece eski yapay zekada olur 📅'],

@@ -340,7 +340,7 @@ window.LANG_DATA = {
           icon:'🎲',
           title:'A IA não sabe a verdade — ela adivinha a próxima palavra',
           text:'Quando você digita algo no ChatGPT, ele não procura uma resposta — ele adivinha a palavra mais provável, repetidamente, com base em padrões de milhões de textos que já leu. É como o autocompletar do seu celular, só que muito mais poderoso. É por isso que ele pode soar totalmente confiante e ainda assim errar.',
-          example:'📱 Seu celular sugere a próxima palavra quando você digita uma mensagem. Chatbots de IA fazem a mesma coisa — só que mais inteligente e mais longa. Nem o celular nem o chatbot realmente "sabem" o que é verdade.',
+          example:'📱 Seu celular sugere a próxima palavra quando você digita uma mensagem. Chatbots de IA fazem a mesma coisa — só que treinados com muito mais textos. Nem o celular nem o chatbot realmente "sabem" o que é verdade.',
           source:'Ji et al., "Survey of Hallucination in NLG", 2023', sourceUrl:'https://arxiv.org/abs/2202.03629',
           miniTest: [{ q:'Por que a IA pode soar 100% confiante e mesmo assim estar errada?',
             options:['Ela mente de propósito 😈','Ela prevê palavras prováveis, não verdadeiras 🎲','Ela se cansa e comete erros 😴','Isso só acontece com IA antiga 📅'],
