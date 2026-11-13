@@ -1728,7 +1728,7 @@ window.LANG_DATA = {
         { num: 4,  icon: '📚', title: 'Follow ArXiv cs.AI and cs.CL', text: 'Preprints before peer review. Read abstracts. Track what the field is actually debating vs. what press covers.' },
         { num: 5,  icon: '🏛️', title: 'Participate in AI governance', text: 'Regulation happens in consultation periods, elections, and procurement decisions. Informed participation matters.' },
         { num: 6,  icon: '🎯', title: 'Calibrate your risk assessment', text: 'Near-term concrete harms vs. speculative long-term risks. Both matter but require different responses.' },
-        { num: 7,  icon: '💼', title: 'Audit AI in your workplace', text: 'Ask what AI tools are used for HR, performance, access. You have a right to know in most jurisdictions.' },
+        { num: 7,  icon: '💼', title: 'Audit AI in your workplace', text: 'Ask what AI tools are used for HR, performance, access. Under the EU AI Act (Art. 26), employers must tell workers in advance about such high-risk systems — from December 2027; other countries have their own rules.' },
         { num: 8,  icon: '🌍', title: 'Think about distribution of harm', text: 'AI risks are not equal. Ask: which communities bear the costs of this deployment? Who gets the benefits?' },
         { num: 9,  icon: '🔬', title: 'Invest in human skills AI cannot replicate', text: 'Novel synthesis, ethical judgment, genuine relationship, physical-world expertise, and original creativity remain deeply human.' },
         { num: 10, icon: '📡', title: 'Support open research and open models', text: 'Transparency in AI depends partly on open-source development. Supporting open model research is a governance choice.' },

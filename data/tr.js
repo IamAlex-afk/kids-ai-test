@@ -685,7 +685,7 @@ window.LANG_DATA = {
         { num:4, icon:'📚', title:'arXiv cs.AI ve cs.CL\'yi takip et', text:"Hakemli inceleme öncesi ön baskılar. Özetleri oku. Alanın gerçekten neyi tartıştığını vs. basının neyi bildirdiğini takip et." },
         { num:5, icon:'🏛️', title:'YZ yönetişimine katıl', text:"Düzenleme danışma aşamalarında, seçimlerde ve tedarik kararlarında gerçekleşiyor. Bilinçli katılım önemlidir." },
         { num:6, icon:'🎯', title:'Risk değerlendirmeni kalibre et', text:"Somut kısa vadeli zararlar vs. spekülatif uzun vadeli riskler. İkisi de önemli ama farklı yanıtlar gerektirir." },
-        { num:7, icon:'💼', title:'İşyerindeki YZ\'yi denetle', text:"İK, performans, erişim için hangi YZ araçlarının kullanıldığını sor. Çoğu yargı bölgesinde bilme hakkın var." },
+        { num:7, icon:'💼', title:'İşyerindeki YZ\'yi denetle', text:"İK, performans, erişim için hangi YZ araçlarının kullanıldığını sor. AB Yapay Zekâ Yasası'na (md. 26) göre işveren, bu tür yüksek riskli sistemleri çalışanlara önceden bildirmek zorunda — Aralık 2027'den itibaren; diğer ülkelerde kurallar farklı." },
         { num:8, icon:'🌍', title:'Zarar dağılımını düşün', text:"YZ riskleri eşit değil. Sor: Hangi topluluklar bu dağıtımın maliyetini taşıyor? Kim faydalanıyor?" },
         { num:9, icon:'🔬', title:"YZ'nin kopyalayamadığı insan becerilerine yatırım yap", text:"Yeni sentez, etik yargı, gerçek ilişki, fiziksel dünya uzmanlığı ve özgün yaratıcılık derinden insani olmaya devam ediyor." },
         { num:10, icon:'📡', title:'Açık araştırma ve açık modelleri destekle', text:"YZ'deki şeffaflık kısmen açık kaynak geliştirmeye bağlı. Açık model araştırmalarını desteklemek bir yönetişim kararıdır." },
