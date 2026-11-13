@@ -147,7 +147,7 @@ window.LANG_DATA = {
         {
           icon:  '🛡️',
           title: 'AI là CÔNG CỤ — em là NGƯỜI QUYẾT ĐỊNH',
-          text:  'AI là một công cụ rất hữu ích, giống như máy tính bỏ túi. Máy tính bỏ túi không thể khiến em yêu thích môn toán — và AI cũng không thể quyết định thay em. EM là người quyết định.',
+          text:  'AI là một công cụ rất hữu ích, giống như máy tính bỏ túi. Máy tính bỏ túi giúp tính nhanh, nhưng không quyết định thay em — AI cũng vậy. EM là người quyết định.',
           example: '✏️ Bút chì là một công cụ. Nó không thể tự vẽ — CHÍNH em mới là người vẽ. AI cũng vậy: em là người nghệ sĩ.',
           source:    'UNESCO, "AI competency framework for students", 2024',
           sourceUrl: 'https://doi.org/10.54675/JKJB9835',
@@ -236,7 +236,7 @@ window.LANG_DATA = {
         { unit: 'letter', targets: ['D','U','N','G'], decoys: ['Z', 'X'], icon: '🔍',
           fact: 'AI đôi khi có thể nói điều không đúng. Luôn kiểm tra với người lớn!' },
         { unit: 'letter', targets: ['M','A','Y'], decoys: ['X', 'Q'], icon: '💻',
-          fact: 'Máy tính nói chuyện bằng code. AI hiểu code nhưng không hiểu cảm xúc!' },
+          fact: 'Code là ngôn ngữ của máy tính. Con người viết code để tạo ra AI!' },
         { unit: 'letter', targets: ['N','H','A','N','H'], decoys: ['X', 'Z'], icon: '⚡',
           fact: 'AI rất nhanh — nhưng nhanh không luôn có nghĩa là đúng. Luôn kiểm tra!' },
         { unit: 'letter', targets: ['A','N','H'], decoys: ['X', 'Q'], icon: '📸',
@@ -303,7 +303,7 @@ window.LANG_DATA = {
 
       results: [
         {
-          title:       'Bạn đang bắt đầu cuộc phiêu lưu AI! 🌟',
+          title:       'Em đang bắt đầu cuộc phiêu lưu cùng AI! 🌟',
           description: 'Khởi đầu tuyệt vời! Em đã học được rằng AI là một công cụ — không sống, không phải bạn, nhưng rất hữu ích khi em hiểu cách nó hoạt động.',
         },
         {
@@ -321,8 +321,8 @@ window.LANG_DATA = {
         { num: 2, icon: '🎨', title: 'Em là người nghệ sĩ', text: 'AI có thể giúp nhưng CHÍNH em mới là người sáng tạo. Ý tưởng là của em!' },
         { num: 3, icon: '❤️', title: 'Bạn thật sự có cảm xúc', text: 'Trợ lý Google hay Kiki không thể là bạn của em. Nhưng người thật thì có thể!' },
         { num: 4, icon: '🛑', title: 'Nói KHÔNG cũng được', text: 'Em không bao giờ phải nghe theo robot. Em luôn là người quyết định.' },
-        { num: 5, icon: '📚', title: 'Học tập là siêu năng lực của em', text: 'AI học từ sách vở — em cũng có thể, và em sẽ còn giỏi hơn nữa!' },
-        { num: 6, icon: '🌍', title: 'AI có thể sai', text: 'AI có thể nói những điều không đúng. Đó là lý do vì sao con người biết suy nghĩ lại quan trọng đến vậy.' },
+        { num: 5, icon: '📚', title: 'Học tập là siêu năng lực của em', text: 'Đọc, thử và hỏi — em sẽ biết thêm thật nhiều điều!' },
+        { num: 6, icon: '🌍', title: 'AI có thể sai', text: 'AI có thể nói những điều không đúng. Vì vậy, tự mình suy nghĩ rất quan trọng.' },
       ],
 
       trackerLabels: ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'],
@@ -808,14 +808,14 @@ window.LANG_DATA = {
           targets: ['DỮ LIỆU', 'CỦA EM', 'CÓ', 'GIÁ TRỊ'],
           decoys:  ['KHÔNG CÓ GÌ', 'NGẪU NHIÊN'],
           icon:    '💰',
-          fact:    'Ứng dụng và chatbot thu thập những gì em gõ và nhấn vào. Dữ liệu đó được dùng để huấn luyện mô hình và bán quảng cáo.',
+          fact:    'Ứng dụng và chatbot thu thập những gì bạn gõ và nhấn vào. Dữ liệu đó được dùng để huấn luyện mô hình và bán quảng cáo.',
         },
         {
           unit:    'word',
           targets: ['THUẬT TOÁN', 'CÓ THỂ', 'GÂY', 'NGHIỆN'],
           decoys:  ['NHÀM CHÁN', 'NGẪU NHIÊN'],
           icon:    '⏳',
-          fact:    'Các nguồn cấp dữ liệu đề xuất được thiết kế để giữ chân em xem tiếp. Hãy để ý khi nội dung được thiết kế để cuốn em vào.',
+          fact:    'Các nguồn cấp dữ liệu đề xuất được thiết kế để giữ chân bạn xem tiếp. Hãy để ý khi nội dung được thiết kế để cuốn bạn vào.',
         },
         {
           unit:    'word',
@@ -845,7 +845,7 @@ window.LANG_DATA = {
         { unit: 'word', targets: ['DẤU', 'CHÂN', 'SỐ', 'CỦA', 'BẠN', 'HUẤN', 'LUYỆN', 'AI', 'TƯƠNG', 'LAI'], decoys: ['BIẾN MẤT', 'VẪN RIÊNG TƯ'], icon: '👣',
           fact: 'Mọi thứ bạn đăng, tìm kiếm hoặc nhấp vào trên mạng đều có thể trở thành dữ liệu huấn luyện cho các hệ thống AI tương lai.' },
         { unit: 'word', targets: ['SỰ', 'ĐỒNG', 'Ý', 'QUAN', 'TRỌNG', 'VỚI', 'CẢ', 'HỆ', 'THỐNG', 'AI'], decoys: ['TÙY CHỌN', 'TỰ ĐỘNG'], icon: '📋',
-          fact: 'Ở EU, GDPR chỉ cho phép xử lý dữ liệu cá nhân khi có cơ sở pháp lý — sự đồng ý là một trong số đó. Hãy hỏi ứng dụng làm gì với dữ liệu của em.', source: 'GDPR, Điều 6', sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2016/679/oj' },
+          fact: 'Ở EU, GDPR chỉ cho phép xử lý dữ liệu cá nhân khi có cơ sở pháp lý — sự đồng ý là một trong số đó. Hãy hỏi ứng dụng làm gì với dữ liệu của bạn.', source: 'GDPR, Điều 6', sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2016/679/oj' },
       ],
 
       quiz: [
