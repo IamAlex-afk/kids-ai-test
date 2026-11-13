@@ -612,7 +612,7 @@ window.LANG_DATA = {
       ],
 
       protocols: [
-        { num: 1, icon: '🔍', title: 'Luôn kiểm tra sự thật', text: 'Nếu AI nói điều gì quan trọng — kiểm tra trên trang đáng tin cậy (thư viện, .gov, trường đại học).' },
+        { num: 1, icon: '🔍', title: 'Luôn kiểm tra sự thật', text: 'Nếu AI nói điều gì quan trọng — kiểm tra trên trang đáng tin cậy (thư viện, trang chính thức .gov.vn, trường đại học).' },
         { num: 2, icon: '🧠', title: 'Suy nghĩ trước khi dán', text: 'AI giúp làm bài tập tốt nhất khi em hiểu câu trả lời trước, rồi tự viết lại.' },
         { num: 3, icon: '🚫', title: 'AI không phải bạn của em', text: 'Nó là công cụ. Bạn thật sự có cảm xúc, ký ức, và quan tâm đến em. AI không có gì trong số đó.' },
         { num: 4, icon: '⚠️', title: 'AI có thể sai mà vẫn nghe rất đúng', text: 'Giọng điệu tự tin ≠ câu trả lời đúng. AI "ảo giác" — bịa ra sự thật giả nghe như thật.' },
