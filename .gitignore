@@ -13,6 +13,8 @@ lighthouse/out/
 
 # Local audit scratch files
 .audit/
+# Local code map (graphify extract), rebuilt on demand
+graphify-out/
 
 # Local files: never committed. (Publication uses an explicit allowlist in
 # tools/build.mjs, so these could not reach the site even if committed.)

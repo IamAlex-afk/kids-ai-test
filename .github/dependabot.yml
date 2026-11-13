@@ -1,9 +1,14 @@
-# Proposes PRs when the pinned GitHub Actions get new releases (the SHA pins
-# in workflows are updated together with their version comments).
-# The site itself has no npm dependencies.
+# Proposes PRs when pinned dependencies get new releases: GitHub Actions (SHA
+# pins are updated with their version comments) and the two dev-only npm
+# folders (browser checks, Lighthouse). The site itself has no npm dependencies.
 version: 2
 updates:
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: monthly
+  - package-ecosystem: npm
+    directories: [/e2e, /lighthouse]
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 3
