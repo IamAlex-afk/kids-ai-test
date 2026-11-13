@@ -24,6 +24,7 @@ export default {
     honesty: 'The facts come from the primary sources linked below. "Our conclusion" is the site\'s view based on those facts, not a quote.',
     all: 'All articles',
     tinyNote: 'For ages 5–7: an adult reads together with the child.',
+    basics: "How AI learns and why it makes mistakes, in plain words",
     adult: 'For the adult', adultGoal: 'Goal', adultAsk: 'Questions to talk about', adultSigns: 'Signs of understanding',
   },
   'what-is-ai': {
@@ -52,11 +53,8 @@ export default {
     desc: 'How to explain artificial intelligence to a child: ready-made phrases for ages 5–7, 8–10, 11–13 and 14+, 10-minute activities and common misconceptions. Based on UNICEF and UNESCO guidance.',
     lead: 'Your child already meets AI: a voice assistant, suggestions on a phone, a video feed. You can explain it in simple words — and a small hands-on try works better than a lecture.',
     facts: [
-      'Children aged 3–10 who played with voice assistants talked about how smart they were and "who" they were (MIT study).',
       'In its 2025 guidance, UNICEF requires AI for children to ensure safety, protect children\'s data and privacy, be transparent, and prepare children for life with AI.',
       'UNESCO\'s AI competency framework for students (2024) puts a "human-centred mindset" first: understanding and asserting your own role in relation to AI.',
-      'Text from an AI can be wrong even when it sounds confident — researchers call this hallucination.',
-      'In the EU a chatbot must tell you that you are talking to an AI, and deepfakes must be labelled.',
     ],
     ages: [
       { say: ['"It is a program. It learned lots of examples and it guesses."', '"It is not alive and not a friend, even if it talks nicely."', '"We don\'t tell it our name, address or photos."'] },

@@ -26,6 +26,7 @@ export default {
     honesty: 'Các sự thật lấy từ những nguồn gốc dẫn bên dưới. "Kết luận của chúng tôi" là quan điểm của trang dựa trên các sự thật đó, không phải trích dẫn.',
     all: 'Tất cả bài viết',
     tinyNote: 'Cho trẻ 5–7 tuổi: người lớn đọc cùng trẻ.',
+    basics: "AI học như thế nào và vì sao mắc lỗi — bằng lời đơn giản",
     adult: 'Dành cho người lớn', adultGoal: 'Mục tiêu', adultAsk: 'Câu hỏi để trò chuyện', adultSigns: 'Dấu hiệu đã hiểu',
   },
   'what-is-ai': {
@@ -54,11 +55,8 @@ export default {
     desc: 'Cách giải thích trí tuệ nhân tạo cho trẻ: câu nói mẫu cho 5–7, 8–10, 11–13 và từ 14 tuổi, hoạt động 10 phút, những hiểu lầm thường gặp. Theo khuyến nghị của UNICEF và UNESCO.',
     lead: 'Con bạn đã gặp AI: trợ lý giọng nói, gợi ý trên điện thoại, danh sách video đề xuất. Có thể giải thích AI bằng lời đơn giản — và một trải nghiệm nhỏ cùng nhau hiệu quả hơn một bài giảng.',
     facts: [
-      'Trẻ 3–10 tuổi sau khi chơi với trợ lý giọng nói đã bàn xem chúng thông minh đến đâu và chúng "là ai" (nghiên cứu của MIT).',
       'Trong khuyến nghị năm 2025, UNICEF yêu cầu AI dành cho trẻ phải bảo đảm an toàn, bảo vệ dữ liệu và quyền riêng tư của trẻ, minh bạch và chuẩn bị cho trẻ sống cùng AI.',
       'Khung năng lực AI cho học sinh của UNESCO (2024) đặt "tư duy lấy con người làm trung tâm" lên đầu: hiểu và khẳng định vai trò của chính mình trong quan hệ với AI.',
-      'Chữ do AI viết có thể sai dù nghe rất tự tin — các nhà nghiên cứu gọi đó là ảo giác.',
-      'Ở EU, chatbot phải thông báo rằng bạn đang nói chuyện với AI, và deepfake phải được ghi rõ.',
     ],
     ages: [
       { say: ['"Đây là một chương trình. Nó đã học nhiều ví dụ và nó đoán."', '"Nó không sống và không phải là bạn, dù nó nói chuyện dễ thương."', '"Mình không nói cho nó tên, địa chỉ và không gửi ảnh."'] },

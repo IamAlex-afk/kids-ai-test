@@ -21,9 +21,11 @@ export const ARTICLES = [
   {
     slug: 'explain-ai-to-a-child',
     published: '2026-10-28',
-    checked: '2026-10-28',
+    checked: '2026-11-13',
     audience: 'parents',
-    facts: [['druga2017'], ['unicef2025'], ['unesco2024'], ['ji2023'], ['euai50']],
+    // the basics (how AI learns, errors, EU rule) live in 'what-is-ai' — linked, not repeated
+    basics: 'what-is-ai',
+    facts: [['unicef2025'], ['unesco2024']],
     myths: [['druga2017'], ['ji2023'], ['unicef2025'], ['unicef2025', 'unesco2024']],
     level: 'experts',
     links: ['workshop:sorter:5-7', 'workshop:sorter:8-10', 'workshop:check:11-13', 'workshop:share:14-plus'],

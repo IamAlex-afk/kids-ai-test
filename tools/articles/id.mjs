@@ -24,6 +24,7 @@ export default {
     honesty: 'Fakta diambil dari sumber primer yang ditautkan di bawah. "Kesimpulan kami" adalah pandangan situs berdasarkan fakta tersebut, bukan kutipan.',
     all: 'Semua artikel',
     tinyNote: 'Untuk usia 5–7: orang dewasa membaca bersama anak.',
+    basics: "Cara AI belajar dan mengapa ia bisa salah, dengan kata-kata sederhana",
     adult: 'Untuk orang dewasa', adultGoal: 'Tujuan', adultAsk: 'Pertanyaan untuk diobrolkan', adultSigns: 'Tanda sudah paham',
   },
   'what-is-ai': {
@@ -52,11 +53,8 @@ export default {
     desc: 'Cara menjelaskan kecerdasan buatan kepada anak: kalimat siap pakai untuk usia 5–7, 8–10, 11–13, dan 14+, kegiatan 10 menit, dan salah paham yang sering muncul. Berdasarkan rekomendasi UNICEF dan UNESCO.',
     lead: 'Anak Anda sudah bertemu AI: asisten suara, saran di ponsel, linimasa video. AI bisa dijelaskan dengan kata-kata sederhana — dan percobaan kecil bersama lebih berhasil daripada ceramah.',
     facts: [
-      'Anak usia 3–10 tahun yang bermain dengan asisten suara membicarakan seberapa pintar asisten itu dan "siapa" mereka (studi MIT).',
       'Dalam panduan tahun 2025, UNICEF mewajibkan AI untuk anak menjamin keamanan, melindungi data dan privasi anak, transparan, serta menyiapkan anak untuk hidup bersama AI.',
       'Kerangka kompetensi AI UNESCO untuk pelajar (2024) menempatkan "pola pikir yang berpusat pada manusia" di urutan pertama: memahami dan menegaskan peran diri sendiri dalam hubungan dengan AI.',
-      'Teks dari AI bisa salah walaupun terdengar yakin — para peneliti menyebutnya halusinasi.',
-      'Di UE, chatbot wajib memberi tahu bahwa Anda sedang berbicara dengan AI, dan deepfake wajib diberi tanda.',
     ],
     ages: [
       { say: ['"Ini program. Ia sudah belajar banyak contoh dan ia menebak."', '"Ia tidak hidup dan bukan teman, walaupun bicaranya ramah."', '"Nama, alamat, dan foto kita tidak kita berikan kepadanya."'] },

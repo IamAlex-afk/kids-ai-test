@@ -24,6 +24,7 @@ export default {
     honesty: 'Bilgiler aşağıda bağlantısı verilen birincil kaynaklardan alınmıştır. "Bizim sonucumuz", bu bilgilere dayanan site görüşüdür, alıntı değildir.',
     all: 'Tüm makaleler',
     tinyNote: '5–7 yaş için: bir yetişkin çocukla birlikte okur.',
+    basics: "Yapay zekâ nasıl öğrenir ve neden hata yapar? Basit bir dille",
     adult: 'Yetişkin için', adultGoal: 'Amaç', adultAsk: 'Sohbet için sorular', adultSigns: 'Anladığının işaretleri',
   },
   'what-is-ai': {
@@ -52,11 +53,8 @@ export default {
     desc: 'Çocuğa yapay zekâ nasıl anlatılır: 5–7, 8–10, 11–13 ve 14+ yaş için hazır cümleler, 10 dakikalık etkinlikler, sık görülen yanlış inanışlar. UNICEF ve UNESCO önerilerine göre.',
     lead: 'Çocuğunuz yapay zekâyla zaten karşılaşıyor: sesli asistan, telefondaki öneriler, video akışı. Basit sözlerle anlatılabilir; birlikte yapılan küçük bir deneme, bir dersten daha iyi işe yarar.',
     facts: [
-      'Sesli asistanlarla oynayan 3–10 yaş çocuklar, bu asistanların ne kadar akıllı olduğunu ve "kim" olduklarını konuştular (MIT araştırması).',
       'UNICEF 2025 tarihli rehberinde, çocuklara yönelik yapay zekânın güvenliği sağlamasını, çocukların verilerini ve mahremiyetini korumasını, şeffaf olmasını ve çocukları yapay zekâyla yaşama hazırlamasını şart koşar.',
       'UNESCO\'nun öğrenciler için yapay zekâ yetkinlik çerçevesi (2024), "insan merkezli bakış açısını" ilk sıraya koyar: yapay zekâ karşısında kendi rolünü anlamak ve savunmak.',
-      'Yapay zekânın yazdığı metin, kendinden emin görünse bile yanlış olabilir; araştırmacılar buna halüsinasyon der.',
-      'AB\'de bir sohbet botu, sizinle bir yapay zekânın konuştuğunu bildirmek zorundadır; deepfake\'ler de işaretlenmelidir.',
     ],
     ages: [
       { say: ['"Bu bir program. Bir sürü örnek öğrendi ve tahmin ediyor."', '"Nazik konuşsa da canlı değil, arkadaş da değil."', '"Ona adımızı, adresimizi söylemiyor, fotoğraf göndermiyoruz."'] },

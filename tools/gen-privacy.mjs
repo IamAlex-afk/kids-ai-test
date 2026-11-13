@@ -55,7 +55,7 @@ ${header(l, { home, langHref: (y) => (P[y] ? `../${y}/` : `../../${pageOf(y)}`) 
 <main id="main" class="wk-lesson ar-main">
   <nav class="wk-crumbs" aria-label="${esc(L[l].crumbs)}"><ol><li><a href="${home}">${esc(L[l].home)}</a></li><li><a href="./" aria-current="page">${esc(t.h1)}</a></li></ol></nav>
   <article class="ar-article">
-    <h1 class="wk-cat-title">${esc(t.h1)}</h1>
+    <h1 class="wk-lesson-title">${esc(t.h1)}</h1>
     <section><h2>${esc(t.short)}</h2>
 ${list(t.shortItems)}
     </section>

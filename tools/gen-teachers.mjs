@@ -138,7 +138,7 @@ function plan(l, s) {
     audience: { '@type': 'EducationalAudience', educationalRole: 'teacher' },
   };
   const steps = p.steps.map(([min, text]) => `      <li><b>${esc(min)} ${esc(u.min)}.</b> ${esc(text)}</li>`).join('\n');
-  const body = `    <h1 class="wk-cat-title">${esc(p.h1)}</h1>
+  const body = `    <h1 class="wk-lesson-title">${esc(p.h1)}</h1>
     <p class="tc-meta"><span>${esc(p.grade)}</span> · <span>45 ${esc(u.min)}</span></p>
     <section><h2>${esc(u.goal)}</h2>
       <p>${esc(p.goal)}</p>

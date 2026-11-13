@@ -25,6 +25,7 @@ export default {
     honesty: 'Os fatos vêm das fontes primárias indicadas abaixo. "Nossa conclusão" é a opinião do site com base nesses fatos, não uma citação.',
     all: 'Todos os artigos',
     tinyNote: 'Para 5–7 anos: um adulto lê junto com a criança.',
+    basics: "Como a IA aprende e por que erra, em palavras simples",
     adult: 'Para o adulto', adultGoal: 'Objetivo', adultAsk: 'Perguntas para conversar', adultSigns: 'Sinais de compreensão',
   },
   'what-is-ai': {
@@ -53,11 +54,8 @@ export default {
     desc: 'Como explicar inteligência artificial para uma criança: frases prontas para 5–7, 8–10, 11–13 e 14+ anos, atividades de 10 minutos e ideias erradas comuns. Com base nas recomendações do UNICEF e da UNESCO.',
     lead: 'Seu filho ou sua filha já encontra a IA: assistente de voz, sugestões no celular, feed de vídeos. Dá para explicar com palavras simples, e uma pequena experiência juntos funciona melhor que uma palestra.',
     facts: [
-      'Crianças de 3 a 10 anos que brincaram com assistentes de voz falaram sobre o quanto eles eram inteligentes e "quem" eles eram (estudo do MIT).',
       'Nas recomendações de 2025, o UNICEF exige que a IA para crianças garanta segurança, proteja os dados e a privacidade das crianças, seja transparente e prepare as crianças para viver com a IA.',
       'O referencial de competências em IA da UNESCO para estudantes (2024) coloca em primeiro lugar uma "mentalidade centrada no ser humano": entender e afirmar o próprio papel em relação à IA.',
-      'Um texto de IA pode estar errado mesmo soando confiante; os pesquisadores chamam isso de alucinação.',
-      'Na UE, um chatbot precisa avisar que você está falando com uma IA, e deepfakes precisam ser identificados.',
     ],
     ages: [
       { say: ['"É um programa. Ele aprendeu muitos exemplos e adivinha."', '"Ele não está vivo e não é amigo, mesmo falando com gentileza."', '"Não contamos para ele nosso nome, endereço nem mandamos fotos."'] },
