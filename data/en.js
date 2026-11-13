@@ -408,7 +408,7 @@ window.LANG_DATA = {
 
       protocols: [
         { num: 1, icon: '🤔', title: 'Always ask a grown-up', text: 'If AI says something surprising — always check with a real person.' },
-        { num: 2, icon: '🎨', title: 'You are the artist', text: 'AI can help but YOU create. Your ideas are always more special.' },
+        { num: 2, icon: '🎨', title: 'You are the artist', text: 'AI can help but YOU create. The ideas are yours!' },
         { num: 3, icon: '❤️', title: 'Real friends have feelings', text: 'Alexa and Siri cannot be your friends. But real people can!' },
         { num: 4, icon: '🛑', title: 'It\'s OK to say NO', text: 'You never have to listen to a robot. You are always in charge.' },
         { num: 5, icon: '📚', title: 'Learning is your superpower', text: 'AI learned from books — you can too, and you\'ll be even better!' },
@@ -663,7 +663,7 @@ window.LANG_DATA = {
           targets: ['C', 'O', 'D', 'E'],
           decoys:  ['X', 'Z'],
           icon:    '💻',
-          fact:    'CODE is the language of computers. Humans write code to tell AI exactly what to do.',
+          fact:    'CODE is the language of computers. People write code to build AI — and then AI learns from examples.',
         },
       ],
 
@@ -791,7 +791,7 @@ window.LANG_DATA = {
           icon:  '🎲',
           title: 'AI doesn\'t know the truth — it guesses the next word',
           text:  'When you type into ChatGPT, it doesn\'t look up an answer — it guesses the most likely next word, over and over, based on patterns from millions of texts it read before. It\'s like the autocomplete on your phone, but much more powerful. That\'s why it can sound totally sure and still be wrong.',
-          example: '📱 Your phone suggests the next word when you text. AI chatbots do the same thing — just smarter and longer. Neither one actually "knows" what\'s true.',
+          example: '📱 Your phone suggests the next word when you text. AI chatbots do the same thing — just trained on far more text. Neither one actually "knows" what\'s true.',
           source:    'Ji et al., "Survey of Hallucination in NLG", 2023',
           sourceUrl: 'https://arxiv.org/abs/2202.03629',
           miniTest: [
@@ -998,7 +998,7 @@ window.LANG_DATA = {
           targets: ['BIAS', 'IN DATA', 'CREATES', 'BIASED AI'],
           decoys:  ['RANDOM', 'NEUTRAL'],
           icon:    '⚖️',
-          fact:    'If training data under-represents certain groups, the AI learns to discriminate — even without being programmed to.',
+          fact:    'If training data under-represents certain groups, the AI makes more mistakes about them and can be unfair — even without being programmed to.',
           source:    'Bender et al., "Stochastic Parrots", 2021',
           sourceUrl: 'https://dl.acm.org/doi/10.1145/3442188.3445922',
         },
@@ -1007,7 +1007,7 @@ window.LANG_DATA = {
           targets: ['AI', 'CANNOT', 'FEEL', 'PAIN OR JOY'],
           decoys:  ['EMOTION', 'SUFFERING'],
           icon:    '🤖',
-          fact:    'No current AI system has subjective experience. "Emotion AI" detects facial patterns — it does not feel anything.',
+          fact:    'There is no evidence that current AI experiences anything. "Emotion AI" detects facial patterns — it does not feel anything.',
           source:    'LeCun, Y., 2022',
           sourceUrl: 'https://openreview.net/forum?id=BZ5a1r-kVsf',
         },
@@ -1057,7 +1057,7 @@ window.LANG_DATA = {
           targets: ['OPEN SOURCE AI', 'LETS ANYONE', 'INSPECT', 'THE MODEL'],
           decoys:  ['HIDDEN', 'SECRET CODE'],
           icon:    '🔓',
-          fact:    'Open-source models like LLaMA allow independent researchers to find safety issues — a key tool for AI accountability.',
+          fact:    'Open models like Llama allow independent researchers to find safety issues — a key tool for AI accountability.',
         },
         {
           unit:    'word',
@@ -1475,7 +1475,7 @@ window.LANG_DATA = {
           targets: ['MULTIMODAL MODELS', 'PROCESS TEXT', 'IMAGES AND AUDIO', 'IN A UNIFIED CONTEXT'],
           decoys:  ['HANDLE TEXT ONLY', 'REQUIRE SEPARATE MODELS'],
           icon:    '🖼️',
-          fact:    'GPT-4o, Gemini Ultra, and Claude 3 can jointly reason over mixed-modality inputs — enabling richer tasks like visual question answering.',
+          fact:    'Multimodal models work with text, images and sound at once — enabling richer tasks like answering questions about a picture.',
         },
         {
           unit:    'phrase',
@@ -1489,7 +1489,7 @@ window.LANG_DATA = {
           targets: ['SCALABLE OVERSIGHT', 'USES AI ASSISTANCE', 'TO SUPERVISE', 'AI BEYOND HUMAN ABILITY'],
           decoys:  ['IS FULLY AUTOMATED', 'REQUIRES NO HUMANS'],
           icon:    '🔭',
-          fact:    'As AI systems become superhuman in specific domains, humans can no longer directly verify their work — making scalable oversight a central unsolved problem.',
+          fact:    'As AI outperforms people at specific tasks, checking its work gets harder and harder — making scalable oversight a central unsolved problem.',
           source:    'OpenAI, "Weak-to-Strong Generalization", 2023',
           sourceUrl: 'https://arxiv.org/abs/2312.09390',
         },
@@ -1723,7 +1723,7 @@ window.LANG_DATA = {
 
       protocols: [
         { num: 1,  icon: '📊', title: 'Distinguish performance from understanding', text: 'Acing a test ≠ comprehension. Always ask what the AI is actually doing mechanistically.' },
-        { num: 2,  icon: '⚖️', title: 'Read the EU AI Act', text: 'It\'s the world\'s most comprehensive AI regulation. It directly affects anyone operating in or selling to Europe.' },
+        { num: 2,  icon: '⚖️', title: 'Read the EU AI Act', text: 'The European Commission calls it the first comprehensive AI law in the world. It applies to anyone offering AI systems in the EU.' },
         { num: 3,  icon: '🔍', title: 'Demand interpretability', text: 'For high-stakes decisions, ask: can anyone explain why the AI made this choice? If not, should it be making it?' },
         { num: 4,  icon: '📚', title: 'Follow ArXiv cs.AI and cs.CL', text: 'Preprints before peer review. Read abstracts. Track what the field is actually debating vs. what press covers.' },
         { num: 5,  icon: '🏛️', title: 'Participate in AI governance', text: 'Regulation happens in consultation periods, elections, and procurement decisions. Informed participation matters.' },

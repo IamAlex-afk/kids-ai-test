@@ -147,7 +147,7 @@ window.LANG_DATA = {
         {
           icon:  '🛡️',
           title: 'AI là CÔNG CỤ — em là NGƯỜI QUYẾT ĐỊNH',
-          text:  'AI là một công cụ rất hữu ích, giống như máy tính bỏ túi. Máy tính bỏ túi không thể khiến em yêu thích môn toán — và AI cũng không thể quyết định thay em. EM là người quyết định.',
+          text:  'AI là một công cụ rất hữu ích, giống như máy tính bỏ túi. Máy tính bỏ túi giúp tính nhanh, nhưng không quyết định thay em — AI cũng vậy. EM là người quyết định.',
           example: '✏️ Bút chì là một công cụ. Nó không thể tự vẽ — CHÍNH em mới là người vẽ. AI cũng vậy: em là người nghệ sĩ.',
           source:    'UNESCO, "AI competency framework for students", 2024',
           sourceUrl: 'https://doi.org/10.54675/JKJB9835',
@@ -236,7 +236,7 @@ window.LANG_DATA = {
         { unit: 'letter', targets: ['D','U','N','G'], decoys: ['Z', 'X'], icon: '🔍',
           fact: 'AI đôi khi có thể nói điều không đúng. Luôn kiểm tra với người lớn!' },
         { unit: 'letter', targets: ['M','A','Y'], decoys: ['X', 'Q'], icon: '💻',
-          fact: 'Máy tính nói chuyện bằng code. AI hiểu code nhưng không hiểu cảm xúc!' },
+          fact: 'Code là ngôn ngữ của máy tính. Con người viết code để tạo ra AI!' },
         { unit: 'letter', targets: ['N','H','A','N','H'], decoys: ['X', 'Z'], icon: '⚡',
           fact: 'AI rất nhanh — nhưng nhanh không luôn có nghĩa là đúng. Luôn kiểm tra!' },
         { unit: 'letter', targets: ['A','N','H'], decoys: ['X', 'Q'], icon: '📸',
@@ -303,7 +303,7 @@ window.LANG_DATA = {
 
       results: [
         {
-          title:       'Bạn đang bắt đầu cuộc phiêu lưu AI! 🌟',
+          title:       'Em đang bắt đầu cuộc phiêu lưu cùng AI! 🌟',
           description: 'Khởi đầu tuyệt vời! Em đã học được rằng AI là một công cụ — không sống, không phải bạn, nhưng rất hữu ích khi em hiểu cách nó hoạt động.',
         },
         {
@@ -318,11 +318,11 @@ window.LANG_DATA = {
 
       protocols: [
         { num: 1, icon: '🤔', title: 'Luôn hỏi người lớn', text: 'Nếu AI nói điều gì đó bất ngờ — luôn kiểm tra lại với một người thật.' },
-        { num: 2, icon: '🎨', title: 'Em là người nghệ sĩ', text: 'AI có thể giúp nhưng CHÍNH em mới là người sáng tạo. Ý tưởng của em luôn đặc biệt hơn.' },
+        { num: 2, icon: '🎨', title: 'Em là người nghệ sĩ', text: 'AI có thể giúp nhưng CHÍNH em mới là người sáng tạo. Ý tưởng là của em!' },
         { num: 3, icon: '❤️', title: 'Bạn thật sự có cảm xúc', text: 'Trợ lý Google hay Kiki không thể là bạn của em. Nhưng người thật thì có thể!' },
         { num: 4, icon: '🛑', title: 'Nói KHÔNG cũng được', text: 'Em không bao giờ phải nghe theo robot. Em luôn là người quyết định.' },
-        { num: 5, icon: '📚', title: 'Học tập là siêu năng lực của em', text: 'AI học từ sách vở — em cũng có thể, và em sẽ còn giỏi hơn nữa!' },
-        { num: 6, icon: '🌍', title: 'AI có thể sai', text: 'AI có thể nói những điều không đúng. Đó là lý do vì sao con người biết suy nghĩ lại quan trọng đến vậy.' },
+        { num: 5, icon: '📚', title: 'Học tập là siêu năng lực của em', text: 'Đọc, thử và hỏi — em sẽ biết thêm thật nhiều điều!' },
+        { num: 6, icon: '🌍', title: 'AI có thể sai', text: 'AI có thể nói những điều không đúng. Vì vậy, tự mình suy nghĩ rất quan trọng.' },
       ],
 
       trackerLabels: ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'],
@@ -500,7 +500,7 @@ window.LANG_DATA = {
         { unit: 'letter', targets: ['T','R','A','L','O','I'], decoys: ['X', 'Q'], icon: '💬',
           fact: 'AI đưa ra câu trả lời nhanh — nhưng nhanh không luôn đúng. Luôn kiểm tra!' },
         { unit: 'letter', targets: ['T','I','M'], decoys: ['X', 'Z', 'J'], icon: '🔍',
-          fact: 'ChatGPT không tìm kiếm trên internet — nó nhớ các mẫu từ quá trình huấn luyện!' },
+          fact: 'Nếu không bật tìm kiếm web, chatbot không tra internet: nó đoán từ dựa trên những gì đã học.' },
         { unit: 'letter', targets: ['T','H','O','N','G'], decoys: ['X', 'Z'], icon: '🌟',
           fact: 'AI rất giỏi nhận ra mẫu, nhưng không thật sự thông minh. Trí thông minh thật đến từ trải nghiệm!' },
         { unit: 'letter', targets: ['G','I','O','N','G'], decoys: ['X', 'Q'], icon: '🎙️',
@@ -510,7 +510,7 @@ window.LANG_DATA = {
         { unit: 'letter', targets: ['H','I','N','H'], decoys: ['X', 'Z'], icon: '🖼️',
           fact: 'AI có thể tạo hình ảnh — nhưng không thể thật sự nhìn hay cảm nhận như em!' },
         { unit: 'letter', targets: ['Q','U','Y','T','A','C'], decoys: ['X', 'Q'], icon: '📏',
-          fact: 'Tất cả hệ thống AI đều tuân theo quy tắc — không thể phát triển giá trị hay đạo đức riêng!' },
+          fact: 'AI không có giá trị riêng: nó lặp lại những gì học được từ dữ liệu và từ những người cài đặt nó.' },
       ],
 
       quiz: [
@@ -635,7 +635,7 @@ window.LANG_DATA = {
           icon:  '🎲',
           title: 'AI không biết sự thật — nó đoán từ tiếp theo',
           text:  'Khi bạn gõ gì đó vào ChatGPT, nó không tìm câu trả lời — nó đoán từ có khả năng cao nhất, lặp đi lặp lại, dựa trên các mẫu từ hàng triệu văn bản nó đã đọc trước đó. Nó giống như gợi ý từ trên điện thoại của bạn, nhưng mạnh hơn nhiều. Đó là lý do nó có thể nghe rất chắc chắn mà vẫn sai.',
-          example: '📱 Điện thoại của bạn gợi ý từ tiếp theo khi bạn nhắn tin. Chatbot AI làm điều tương tự — chỉ thông minh hơn và dài hơn. Cả điện thoại lẫn chatbot đều không thực sự "biết" điều gì là đúng.',
+          example: '📱 Điện thoại của bạn gợi ý từ tiếp theo khi bạn nhắn tin. Chatbot AI làm điều tương tự — chỉ là được huấn luyện trên nhiều văn bản hơn rất nhiều. Cả điện thoại lẫn chatbot đều không thực sự "biết" điều gì là đúng.',
           source:    'Ji et al., "Survey of Hallucination in NLG", 2023',
           sourceUrl: 'https://arxiv.org/abs/2202.03629',
           miniTest: [
@@ -808,14 +808,14 @@ window.LANG_DATA = {
           targets: ['DỮ LIỆU', 'CỦA EM', 'CÓ', 'GIÁ TRỊ'],
           decoys:  ['KHÔNG CÓ GÌ', 'NGẪU NHIÊN'],
           icon:    '💰',
-          fact:    'Ứng dụng và chatbot thu thập những gì em gõ và nhấn vào. Dữ liệu đó được dùng để huấn luyện mô hình và bán quảng cáo.',
+          fact:    'Ứng dụng và chatbot thu thập những gì bạn gõ và nhấn vào. Dữ liệu đó được dùng để huấn luyện mô hình và bán quảng cáo.',
         },
         {
           unit:    'word',
           targets: ['THUẬT TOÁN', 'CÓ THỂ', 'GÂY', 'NGHIỆN'],
           decoys:  ['NHÀM CHÁN', 'NGẪU NHIÊN'],
           icon:    '⏳',
-          fact:    'Các nguồn cấp dữ liệu đề xuất được thiết kế để giữ chân em xem tiếp. Hãy để ý khi nội dung được thiết kế để cuốn em vào.',
+          fact:    'Các nguồn cấp dữ liệu đề xuất được thiết kế để giữ chân bạn xem tiếp. Hãy để ý khi nội dung được thiết kế để cuốn bạn vào.',
         },
         {
           unit:    'word',
@@ -841,11 +841,11 @@ window.LANG_DATA = {
         { unit: 'word', targets: ['MÔ', 'HÌNH', 'MỞ', 'CHO', 'PHÉP', 'KIỂM', 'SOÁT'], decoys: ['CHE GIẤU', 'CHẶN'], icon: '🔓',
           fact: 'Các mô hình AI mã nguồn mở có thể được kiểm tra bởi bất kỳ ai — minh bạch hơn, nhưng cũng có rủi ro.' },
         { unit: 'word', targets: ['THIÊN', 'LỆCH', 'TRONG', 'DỮ', 'LIỆU', 'TẠO', 'RA', 'AI', 'THIÊN', 'LỆCH'], decoys: ['NGẪU NHIÊN', 'TRUNG LẬP'], icon: '⚖️',
-          fact: 'Nếu dữ liệu huấn luyện thiếu đại diện cho một số nhóm, AI sẽ học cách phân biệt đối xử — ngay cả khi không được lập trình để làm vậy.', source: 'Bender và cộng sự, "Stochastic Parrots", 2021', sourceUrl: 'https://dl.acm.org/doi/10.1145/3442188.3445922' },
+          fact: 'Nếu dữ liệu huấn luyện thiếu đại diện cho một số nhóm, AI sẽ hay sai hơn với những nhóm đó và có thể bất công — ngay cả khi không được lập trình để làm vậy.', source: 'Bender và cộng sự, "Stochastic Parrots", 2021', sourceUrl: 'https://dl.acm.org/doi/10.1145/3442188.3445922' },
         { unit: 'word', targets: ['DẤU', 'CHÂN', 'SỐ', 'CỦA', 'BẠN', 'HUẤN', 'LUYỆN', 'AI', 'TƯƠNG', 'LAI'], decoys: ['BIẾN MẤT', 'VẪN RIÊNG TƯ'], icon: '👣',
           fact: 'Mọi thứ bạn đăng, tìm kiếm hoặc nhấp vào trên mạng đều có thể trở thành dữ liệu huấn luyện cho các hệ thống AI tương lai.' },
         { unit: 'word', targets: ['SỰ', 'ĐỒNG', 'Ý', 'QUAN', 'TRỌNG', 'VỚI', 'CẢ', 'HỆ', 'THỐNG', 'AI'], decoys: ['TÙY CHỌN', 'TỰ ĐỘNG'], icon: '📋',
-          fact: 'Ở EU, GDPR chỉ cho phép xử lý dữ liệu cá nhân khi có cơ sở pháp lý — sự đồng ý là một trong số đó. Hãy hỏi ứng dụng làm gì với dữ liệu của em.', source: 'GDPR, Điều 6', sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2016/679/oj' },
+          fact: 'Ở EU, GDPR chỉ cho phép xử lý dữ liệu cá nhân khi có cơ sở pháp lý — sự đồng ý là một trong số đó. Hãy hỏi ứng dụng làm gì với dữ liệu của bạn.', source: 'GDPR, Điều 6', sourceUrl: 'https://eur-lex.europa.eu/eli/reg/2016/679/oj' },
       ],
 
       quiz: [
@@ -1213,7 +1213,7 @@ window.LANG_DATA = {
         { unit: 'phrase', targets: ['ĐẦU', 'ĐỘC', 'DỮ', 'LIỆU', 'CHÈN', 'VÍ', 'DỤ', 'ĐỘC', 'HẠI', 'VÀO', 'DỮ', 'LIỆU', 'HUẤN', 'LUYỆN'], decoys: ['CHỈ LÀ LÝ THUYẾT', 'LUÔN PHÁT HIỆN ĐƯỢC'], icon: '☣️',
           fact: 'Dữ liệu độc hại được chèn vào tập huấn luyện có thể tạo ra cửa hậu ẩn — được kích hoạt bởi đầu vào cụ thể khi vận hành.' },
         { unit: 'phrase', targets: ['GIÁM', 'SÁT', 'QUY', 'MÔ', 'LỚN', 'DÙNG', 'AI', 'HỖ', 'TRỢ', 'ĐỂ', 'GIÁM', 'SÁT', 'AI', 'VƯỢT', 'KHẢ', 'NĂNG', 'CON', 'NGƯỜI'], decoys: ['HOÀN TOÀN TỰ ĐỘNG', 'KHÔNG CẦN CON NGƯỜI'], icon: '🔭',
-          fact: 'Khi hệ thống AI trở nên siêu phàm trong các lĩnh vực cụ thể, con người không còn có thể trực tiếp xác minh công việc của chúng — khiến giám sát quy mô lớn trở thành vấn đề trung tâm chưa có lời giải.', source: 'OpenAI, "Weak-to-Strong Generalization", 2023', sourceUrl: 'https://arxiv.org/abs/2312.09390' },
+          fact: 'Khi AI vượt con người ở những nhiệm vụ cụ thể, việc kiểm tra công việc của nó ngày càng khó — khiến giám sát quy mô lớn trở thành vấn đề trung tâm chưa có lời giải.', source: 'OpenAI, "Weak-to-Strong Generalization", 2023', sourceUrl: 'https://arxiv.org/abs/2312.09390' },
       ],
 
       quiz: [
@@ -1426,7 +1426,7 @@ window.LANG_DATA = {
 
       protocols: [
         { num: 1,  icon: '📊', title: 'Phân biệt hiệu suất và sự hiểu biết', text: 'Vượt qua bài kiểm tra ≠ sự thấu hiểu. Luôn hỏi AI thực sự đang làm gì về mặt cơ chế.' },
-        { num: 2,  icon: '⚖️', title: 'Đọc Đạo luật AI của EU', text: 'Đây là quy định AI toàn diện nhất thế giới. Nó ảnh hưởng trực tiếp đến bất kỳ ai hoạt động hoặc bán hàng tại châu Âu.' },
+        { num: 2,  icon: '⚖️', title: 'Đọc Đạo luật AI của EU', text: 'Ủy ban châu Âu gọi đây là khung pháp lý toàn diện đầu tiên trên thế giới về AI. Luật áp dụng cho bất kỳ ai cung cấp hệ thống AI tại EU.' },
         { num: 3,  icon: '🔍', title: 'Yêu cầu khả năng diễn giải', text: 'Với các quyết định rủi ro cao, hãy hỏi: có ai giải thích được vì sao AI đưa ra lựa chọn này không? Nếu không, nó có nên đưa ra quyết định đó không?' },
         { num: 4,  icon: '📚', title: 'Theo dõi ArXiv cs.AI và cs.CL', text: 'Bản thảo trước bình duyệt. Đọc phần tóm tắt. Theo dõi những gì lĩnh vực này thực sự đang tranh luận, khác với những gì báo chí đưa tin.' },
         { num: 5,  icon: '🏛️', title: 'Tham gia vào quản trị AI', text: 'Quy định diễn ra trong các đợt tham vấn công khai, bầu cử, và quyết định mua sắm. Sự tham gia có hiểu biết rất quan trọng.' },
